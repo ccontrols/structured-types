@@ -1,6 +1,6 @@
 module.exports = {
   stories: ['../docs/*.mdx'],
-  siteUrl: 'https://component-controls.com',
+  siteUrl: 'https://structured-types.vercel.app/',
   webpack: (config = {}, options = {}) => {
     return {
       ...config,
