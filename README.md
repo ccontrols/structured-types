@@ -1,28 +1,22 @@
-# Table of contents
+# About
 
-- [Overview](#overview)
-- [Motivation](#motivation)
-- [Getting started](#getting-started)
-
-# Overview
-
-Extract structured documentation from javascript and typescript files using a combination of typescript types and jsdoc comments.
-
-Libraries in the same space:
-[react-docgen-typescript](https://github.com/styleguidist/react-docgen-typescript)
-[react-docgen](https://github.com/reactjs/react-docgen)
-[jsdoc](https://github.com/jsdoc2md/jsdoc-api)
-[typedoc](https://github.com/TypeStrong/typedoc)
-[ts-json-schema-generator](https://github.com/vega/ts-json-schema-generator)
+`structured-types` is a collection of libraries using the [Typescript Compiler API](https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API) to generate "structured" type information from jsdoc and typescript files.
 
 # Motivation
 
-The creation of `structured-types` come from the need of a library that can be used to document as well as instrument typescript and javascript code. The currently existing libraries are mostly meant just for documenting code.
+- Extract full types for your libraries, not just string representations of the type.
+- Plugin architecture, to extract custom types for frameworks such as `react`, `vue`, `angular` with the same package.
 
-- Extract fully structured types, that can be used to fully interact with the analyzed code - this can be used to automatically create tests, examples etc.
-- Use typescript types where available and supplement the type information with any jsdoc comments.
-- Exctract documentation down to the member-level - for example for an enum extract comments for the enum type, as well as for the individual enum member fields.
-- Swiss-army extensible architecture using resolution plugins, where the library can be used to analyze typescript files, as well as extract react, angular and more framework-specific types.
+# Roadmap
+
+- [x] JSDoc types
+- [x] Typescript types
+- [x] React plugin
+- [ ] Typescript playground plugin
+- [ ] component-controls integration
+- [ ] Automatically generate README.md files (structured-md)
+- [ ] Vue plugin
+- [ ] Angular plugin
 
 # Getting started
 
