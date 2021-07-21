@@ -6,7 +6,7 @@ import {
   getDocHomePage,
 } from '@component-controls/nextjs-plugin';
 
-const DocHome: typeof NextLayout = props => <NextLayout {...props} />;
+const DocHome: typeof NextLayout = (props) => <NextLayout {...props} />;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return { paths: getHomePagesPaths(), fallback: false };

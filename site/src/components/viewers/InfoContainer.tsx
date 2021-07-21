@@ -33,15 +33,14 @@ export const InfoContainer: FC = () => {
   const tabIndex = useMemo(() => {
     return Math.max(
       0,
-      visibleTabs.findIndex(name => name === selectedTab),
+      visibleTabs.findIndex((name) => name === selectedTab),
     );
   }, [selectedTab, visibleTabs]);
   const items: APIItem[] = useMemo(() => {
     const items: Record<ParserNames, Omit<APIItem, 'label'>> = {
       'structured-types': {
         selected: true,
-        link:
-          'https://github.com/ccontrols/structured-types/api',
+        link: 'https://github.com/ccontrols/structured-types/api',
         Panel: DataViewer,
         jsonTree: {
           valueRenderer: (
@@ -88,7 +87,7 @@ export const InfoContainer: FC = () => {
         Panel: DataViewer,
       },
     };
-    return Object.keys(items).map(key => {
+    return Object.keys(items).map((key) => {
       const item = items[key as ParserNames];
       return {
         ...item,
@@ -98,10 +97,10 @@ export const InfoContainer: FC = () => {
     });
   }, [visibleTabs]);
   const visibleItems = visibleTabs
-    .map(name => {
-      return items.find(item => item.label === name);
+    .map((name) => {
+      return items.find((item) => item.label === name);
     })
-    .filter(t => t) as APIItem[];
+    .filter((t) => t) as APIItem[];
   const typeItem = items[0];
   return (
     <div>
@@ -116,10 +115,12 @@ export const InfoContainer: FC = () => {
       >
         <Multiselect
           items={items}
-          onChange={item => {
-            const visibleItem = visibleTabs.find(name => name === item.label);
+          onChange={(item) => {
+            const visibleItem = visibleTabs.find((name) => name === item.label);
             if (visibleItem) {
-              const newTabs = visibleTabs.filter(name => name !== visibleItem);
+              const newTabs = visibleTabs.filter(
+                (name) => name !== visibleItem,
+              );
               setVisibleTabs(newTabs.length ? newTabs : ['structured-types']);
             } else {
               setVisibleTabs([...visibleTabs, item.label]);
@@ -138,7 +139,7 @@ export const InfoContainer: FC = () => {
       ) : (
         <Tabs
           selectedIndex={tabIndex}
-          onSelect={index => {
+          onSelect={(index: number) => {
             if (index >= 0 && index <= visibleTabs.length) {
               setSelectedTab(visibleTabs[index]);
             } else {
@@ -155,11 +156,11 @@ export const InfoContainer: FC = () => {
           }}
         >
           <TabList>
-            {visibleItems.map(item => (
+            {visibleItems.map((item) => (
               <Tab key={item.label}>{item.label}</Tab>
             ))}
           </TabList>
-          {visibleItems.map(item => (
+          {visibleItems.map((item) => (
             <TabPanel key={item.label}>
               <item.Panel
                 label={item.label}

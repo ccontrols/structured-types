@@ -3,30 +3,26 @@
   "compilerOptions": {
     "module": "esnext",
     "outDir": "dist",
-    "rootDirs": [
-      "src",
-      "pages"
-    ],
+    "rootDirs": ["src", "pages"],
     "declaration": true,
     "jsx": "preserve",
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "resolveJsonModule": true
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "resolveJsonModule": true,
+    "paths": {
+      "@structured-types/typescript-config": [
+        "../packages/typescript-config/src"
+      ],
+      "@structured-types/api": ["../packages/api/src"]
+    }
   },
-  "exclude": [
-    "node_modules",
-    "public",
-    ".cache"
-  ],
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
+  "exclude": ["node_modules", "public", ".cache"],
+  "include": ["**/*.ts", "**/*.tsx"],
+  "references": [
+    { "path": "../packages/typescript-config/src" },
+    { "path": "../packages/api/src" }
   ]
 }

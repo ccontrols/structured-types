@@ -1,12 +1,12 @@
-import * as ts from "typescript";
-import { NextApiRequest, NextApiResponse } from "next";
-import { getTypescriptConfig } from "@structured-types/typescript-config";
-import { Application, TypeDocReader, TSConfigReader } from "typedoc";
-import { createTempFile } from "./../../src/api/create-temp-file";
+import * as ts from 'typescript';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { getTypescriptConfig } from '@structured-types/typescript-config';
+import { Application, TypeDocReader, TSConfigReader } from 'typedoc';
+import { createTempFile } from './../../src/api/create-temp-file';
 
 export default async (
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ): Promise<void> => {
   const { code, tsoptions } = req.query as {
     code?: string;
@@ -15,8 +15,8 @@ export default async (
   const options = {
     ...(tsoptions ? JSON.parse(tsoptions) : undefined),
   };
-  const { lang = "typescript" } = options?.tsOptions || {};
-  const extension = lang === "javascript" ? "jsx" : "tsx";
+  const { lang = 'typescript' } = options?.tsOptions || {};
+  const extension = lang === 'javascript' ? 'jsx' : 'tsx';
 
   const app = new Application();
   app.options.addReader(new TypeDocReader());
@@ -30,13 +30,13 @@ export default async (
       (fileNames) => {
         return fileNames.reduce((acc, fileName) => {
           const tsOptions = getTypescriptConfig(fileName, options, true);
-          const tsconfig = createHash(Math.random().toString()) + ".json";
+          const tsconfig = createHash(Math.random().toString()) + '.json';
 
           ts.sys.writeFile(
             tsconfig,
             JSON.stringify({
               compilerOptions: tsOptions,
-            })
+            }),
           );
           try {
             app.bootstrap({ tsconfig });
@@ -47,8 +47,8 @@ export default async (
                 projectReferences: app.options.getProjectReferences(),
               });
               app.options.setValue(
-                "entryPoints",
-                app.expandInputFiles([fileName])
+                'entryPoints',
+                app.expandInputFiles([fileName]),
               );
               const reflection = app.convert();
               const serialized = app.serializer.toObject(reflection, program);
@@ -64,13 +64,13 @@ export default async (
           }
         }, {});
       },
-      code
+      code,
     );
     if (__errors.length) {
       result.__errors = __errors;
     }
     res.status(200).json(result);
   } else {
-    res.status(200).json({ __errors: "Can not locate host.createHash" });
+    res.status(200).json({ __errors: 'Can not locate host.createHash' });
   }
 };

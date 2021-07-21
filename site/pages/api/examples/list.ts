@@ -9,7 +9,7 @@ export type Examples = {
 const traverseFolder = (folder: string, examples: Examples): void => {
   const files = fs.readdirSync(folder);
 
-  files.forEach(fileName => {
+  files.forEach((fileName) => {
     const filePath = path.resolve(folder, fileName);
     const stat = fs.statSync(filePath);
     if (
@@ -32,7 +32,7 @@ const getExamples = (): Examples => {
   console.log(__dirname);
   const examplesFolder = path.resolve(
     __dirname,
-    '../../../',
+    '../../../../../../',
     'packages/api/test',
   );
   const examples = {};
@@ -42,13 +42,13 @@ const getExamples = (): Examples => {
 
 export const examples = getExamples();
 
-const list = Object.keys(examples).map(name => ({
+const list = Object.keys(examples).map((name) => ({
   name,
   items: Object.keys(examples[name])
-    .filter(key => typeof (examples[name] as Examples)[key] === 'object')
-    .map(key => ({
+    .filter((key) => typeof (examples[name] as Examples)[key] === 'object')
+    .map((key) => ({
       name: key,
-      items: Object.keys((examples[name] as Examples)[key]).map(name => ({
+      items: Object.keys((examples[name] as Examples)[key]).map((name) => ({
         name,
       })),
     })),

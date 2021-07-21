@@ -1,11 +1,11 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { withCompilerOptions, ParserOptions } from "react-docgen-typescript";
-import { getTypescriptConfig } from "@structured-types/typescript-config";
-import { createTempFile } from "./../../src/api/create-temp-file";
+import { NextApiRequest, NextApiResponse } from 'next';
+import { withCompilerOptions, ParserOptions } from 'react-docgen-typescript';
+import { getTypescriptConfig } from '@structured-types/typescript-config';
+import { createTempFile } from './../../src/api/create-temp-file';
 
 export default async (
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ): Promise<void> => {
   const { code, tsoptions } = req.query as {
     code?: string;
@@ -14,8 +14,8 @@ export default async (
   const options = {
     ...(tsoptions ? JSON.parse(tsoptions) : undefined),
   };
-  const { lang = "typescript" } = options || {};
-  const extension = lang === "javascript" ? "jsx" : "tsx";
+  const { lang = 'typescript' } = options || {};
+  const extension = lang === 'javascript' ? 'jsx' : 'tsx';
   const parserOptions: ParserOptions = {
     shouldIncludePropTagMap: true,
     shouldExtractLiteralValuesFromEnum: true,
@@ -38,7 +38,7 @@ export default async (
         }
       }, {});
     },
-    code
+    code,
   );
   if (__errors.length) {
     result.__errors = __errors;

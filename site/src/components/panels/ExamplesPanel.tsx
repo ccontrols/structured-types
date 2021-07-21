@@ -15,8 +15,8 @@ export const ExamplesPanel: FC<PanelContainerProps> = ({ onClose }) => {
   const [examples, setExamples] = useState<Example[]>([]);
   useEffect(() => {
     fetch('/api/examples/list')
-      .then(data => data.json())
-      .then(json => {
+      .then((data) => data.json())
+      .then((json) => {
         setExamples(json);
       });
   }, []);
@@ -25,7 +25,7 @@ export const ExamplesPanel: FC<PanelContainerProps> = ({ onClose }) => {
     <PanelContainer onClose={onClose}>
       <Tabs
         selectedIndex={tabIndex}
-        onSelect={index => {
+        onSelect={(index: number) => {
           setTabIndex(index);
         }}
       >
@@ -92,7 +92,7 @@ export const ExamplesPanel: FC<PanelContainerProps> = ({ onClose }) => {
                               group,
                             )}&section=${encodeURIComponent(section)}`,
                           )
-                            .then(data => data.json())
+                            .then((data) => data.json())
                             .then(({ code }) => {
                               updateCode(code);
                             });

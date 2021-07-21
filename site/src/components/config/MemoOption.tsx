@@ -5,16 +5,12 @@ import { Markdown } from '@component-controls/components';
 import { useUpdateOptions } from '../../contexts/OptionsContext';
 import { OptionsData, OptionsName } from '../../contexts/options';
 
-export const MemoOption: FC<{
-  paramName: OptionsName;
-  title: string;
-} & OptionsData> = ({
-  paramName,
-  title,
-  help,
-  value: propValue,
-  defaultValue,
-}) => {
+export const MemoOption: FC<
+  {
+    paramName: OptionsName;
+    title: string;
+  } & OptionsData
+> = ({ paramName, title, help, value: propValue, defaultValue }) => {
   const value = typeof propValue === 'undefined' ? defaultValue : propValue;
   const updateOption = useUpdateOptions(paramName, title);
   return (
@@ -32,8 +28,8 @@ export const MemoOption: FC<{
         value={Array.isArray(value) ? value.join('\n') : (value as string)}
         rows={10}
         aria-label={`enter a value for ${title}`}
-        onChange={e => {
-          updateOption(e.target.value.split('/n').map(l => l.trim()));
+        onChange={(e) => {
+          updateOption(e.target.value.split('/n').map((l) => l.trim()));
         }}
       />
       <Markdown sx={{ color: 'mutedText', maxWidth: '300px', my: 1 }}>

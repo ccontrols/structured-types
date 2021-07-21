@@ -25,9 +25,9 @@ const Contexts: Record<OptionsName, React.Context<OptionsContextProps>> = {
 
 export const getPureConfig = (value: OptionsType): PureOptions => {
   const modifiedOptions: Record<string, OptionValueType> = {};
-  Object.keys(value).forEach(sectionName => {
+  Object.keys(value).forEach((sectionName) => {
     const section = value[sectionName];
-    Object.keys(section).forEach(optionName => {
+    Object.keys(section).forEach((optionName) => {
       const option = section[optionName];
 
       if (
@@ -47,9 +47,9 @@ const getDecoratedConfig = (
 ): OptionsType => {
   const config: OptionsType = { ...defaultOptions[name] };
   if (options) {
-    Object.keys(config).forEach(sectionName => {
+    Object.keys(config).forEach((sectionName) => {
       const section = config[sectionName];
-      Object.keys(section).forEach(optionName => {
+      Object.keys(section).forEach((optionName) => {
         if (typeof options[optionName] !== 'undefined') {
           section[optionName].value = options[optionName];
         }
@@ -99,7 +99,7 @@ export const useOptions = <T extends OptionsType>(
   }, [name, params]);
   return [
     options,
-    newOptions => {
+    (newOptions) => {
       setOptions(newOptions);
       setParams(getPureConfig(newOptions));
     },

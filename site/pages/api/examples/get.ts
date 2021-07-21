@@ -5,7 +5,11 @@ export default async (
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> => {
-  const { name = '', group = '', section = '' } = req.query as {
+  const {
+    name = '',
+    group = '',
+    section = '',
+  } = req.query as {
     name?: string;
     group?: string;
     section?: string;

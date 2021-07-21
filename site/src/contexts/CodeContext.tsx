@@ -13,7 +13,7 @@ export const CodeContextProvider: FC = ({ children }) => {
     <CodeContext.Provider
       value={{
         code,
-        updateCode: source => {
+        updateCode: (source) => {
           setCode(source);
         },
       }}

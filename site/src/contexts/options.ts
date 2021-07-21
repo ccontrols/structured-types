@@ -52,8 +52,7 @@ export const defaultOptions: OptionsTypes = {
       },
       extractNames: {
         type: 'textarea',
-        help:
-          'List of export names to be extracted during parsing. By default all exports will be extracted.',
+        help: 'List of export names to be extracted during parsing. By default all exports will be extracted.',
       },
       saveParentProps: {
         defaultValue: true,
@@ -88,8 +87,7 @@ export const defaultOptions: OptionsTypes = {
           'JSON',
           'Latest',
         ],
-        help:
-          'Set the JavaScript language version for emitted JavaScript and include compatible library declarations.',
+        help: 'Set the JavaScript language version for emitted JavaScript and include compatible library declarations.',
       },
       jsx: {
         defaultValue: 'ReactJSX',
@@ -124,8 +122,7 @@ export const defaultOptions: OptionsTypes = {
         help: 'Enable all strict type checking options.',
       },
       noImplicitAny: {
-        help:
-          'Enable error reporting for expressions and declarations with an implied `any` type.',
+        help: 'Enable error reporting for expressions and declarations with an implied `any` type.',
         defaultValue: true,
       },
       strictNullChecks: {
@@ -134,18 +131,15 @@ export const defaultOptions: OptionsTypes = {
       },
       strictFunctionTypes: {
         defaultValue: true,
-        help:
-          'When assigning functions, check to ensure parameters and the return values are subtype-compatible.',
+        help: 'When assigning functions, check to ensure parameters and the return values are subtype-compatible.',
       },
       strictBindCallApply: {
         defaultValue: true,
-        help:
-          'Check that the arguments for `bind`, `call`, and `apply` methods match the original function.',
+        help: 'Check that the arguments for `bind`, `call`, and `apply` methods match the original function.',
       },
       strictPropertyInitialization: {
         defaultValue: true,
-        help:
-          'Check for class properties that are declared but not set in the constructor.',
+        help: 'Check for class properties that are declared but not set in the constructor.',
       },
       noImplicitThis: {
         defaultValue: true,
@@ -167,13 +161,11 @@ export const defaultOptions: OptionsTypes = {
       },
       noImplicitReturns: {
         defaultValue: true,
-        help:
-          'Enable error reporting for codepaths that do not explicitly return in a function.',
+        help: 'Enable error reporting for codepaths that do not explicitly return in a function.',
       },
       noFallthroughCasesInSwitch: {
         defaultValue: false,
-        help:
-          'Enable error reporting for fallthrough cases in switch statements.',
+        help: 'Enable error reporting for fallthrough cases in switch statements.',
       },
       noUncheckedIndexedAccess: {
         defaultValue: false,
@@ -181,20 +173,17 @@ export const defaultOptions: OptionsTypes = {
       },
       noImplicitOverride: {
         defaultValue: false,
-        help:
-          'Ensure overriding members in derived classes are marked with an override modifier.',
+        help: 'Ensure overriding members in derived classes are marked with an override modifier.',
       },
       noPropertyAccessFromIndexSignature: {
         defaultValue: false,
-        help:
-          'Enforces using indexed accessors for keys declared using an indexed type.',
+        help: 'Enforces using indexed accessors for keys declared using an indexed type.',
       },
     },
     'Project Options': {
       declaration: {
         defaultValue: true,
-        help:
-          'Generate .d.ts files from TypeScript and JavaScript files in your project.',
+        help: 'Generate .d.ts files from TypeScript and JavaScript files in your project.',
       },
       removeComments: {
         defaultValue: false,
@@ -202,30 +191,25 @@ export const defaultOptions: OptionsTypes = {
       },
       importHelpers: {
         defaultValue: false,
-        help:
-          'Allow importing helper functions from tslib once per project, instead of including them per-file.',
+        help: 'Allow importing helper functions from tslib once per project, instead of including them per-file.',
       },
       downlevelIteration: {
         defaultValue: false,
-        help:
-          'Emit more compliant, but verbose and less performant JavaScript for iteration.',
+        help: 'Emit more compliant, but verbose and less performant JavaScript for iteration.',
       },
       isolatedModules: {
         defaultValue: false,
-        help:
-          'Ensure that each file can be safely transpiled without relying on other imports.',
+        help: 'Ensure that each file can be safely transpiled without relying on other imports.',
       },
     },
     'Module Resolution': {
       allowSyntheticDefaultImports: {
         defaultValue: false,
-        help:
-          "Allow `import x from y` when a module doesn't have a default export.",
+        help: "Allow `import x from y` when a module doesn't have a default export.",
       },
       esModuleInterop: {
         defaultValue: true,
-        help:
-          'Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility.',
+        help: 'Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility.',
       },
       allowUmdGlobalAccess: {
         defaultValue: false,
@@ -239,8 +223,7 @@ export const defaultOptions: OptionsTypes = {
       },
       inlineSources: {
         defaultValue: false,
-        help:
-          'Include source code in the sourcemaps inside the emitted JavaScript.',
+        help: 'Include source code in the sourcemaps inside the emitted JavaScript.',
       },
     },
     Experimental: {
@@ -250,8 +233,7 @@ export const defaultOptions: OptionsTypes = {
       },
       emitDecoratorMetadata: {
         defaultValue: true,
-        help:
-          'Emit design-type metadata for decorated declarations in source files.',
+        help: 'Emit design-type metadata for decorated declarations in source files.',
       },
     },
     Advanced: {
@@ -261,28 +243,23 @@ export const defaultOptions: OptionsTypes = {
       },
       noLib: {
         defaultValue: false,
-        help:
-          'Disable including any library files, including the default lib.d.ts.',
+        help: 'Disable including any library files, including the default lib.d.ts.',
       },
       stripInternal: {
         defaultValue: false,
-        help:
-          'Disable emitting declarations that have `@internal` in their JSDoc comments.',
+        help: 'Disable emitting declarations that have `@internal` in their JSDoc comments.',
       },
       disableSourceOfProjectReferenceRedirect: {
         defaultValue: false,
-        help:
-          'Disable preferring source files instead of declaration files when referencing composite projects.',
+        help: 'Disable preferring source files instead of declaration files when referencing composite projects.',
       },
       noImplicitUseStrict: {
         defaultValue: false,
-        help:
-          'Disable adding `use strict` directives in emitted JavaScript files.',
+        help: 'Disable adding `use strict` directives in emitted JavaScript files.',
       },
       noEmitHelpers: {
         defaultValue: false,
-        help:
-          'Disable generating custom helper functions like `__extends` in compiled output.',
+        help: 'Disable generating custom helper functions like `__extends` in compiled output.',
       },
       preserveConstEnums: {
         defaultValue: false,
@@ -298,18 +275,15 @@ export const defaultOptions: OptionsTypes = {
       },
       suppressExcessPropertyErrors: {
         defaultValue: false,
-        help:
-          'Disable reporting of excess property errors during the creation of object literals.',
+        help: 'Disable reporting of excess property errors during the creation of object literals.',
       },
       suppressImplicitAnyIndexErrors: {
         defaultValue: false,
-        help:
-          'Suppress `noImplicitAny` errors when indexing objects that lack index signatures.',
+        help: 'Suppress `noImplicitAny` errors when indexing objects that lack index signatures.',
       },
       noStrictGenericChecks: {
         defaultValue: false,
-        help:
-          'Disable strict checking of generic signatures in function types.',
+        help: 'Disable strict checking of generic signatures in function types.',
       },
       useDefineForClassFields: {
         defaultValue: false,
@@ -317,8 +291,7 @@ export const defaultOptions: OptionsTypes = {
       },
       keyofStringsOnly: {
         defaultValue: false,
-        help:
-          'Make keyof only return strings instead of string, numbers or symbols. Legacy option.',
+        help: 'Make keyof only return strings instead of string, numbers or symbols. Legacy option.',
       },
     },
   },

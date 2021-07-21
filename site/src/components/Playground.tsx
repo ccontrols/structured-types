@@ -42,7 +42,7 @@ export const Playground: FC = () => {
           <ParsersContextProvider>
             <Tabs
               selectedIndex={tabIndex}
-              onSelect={(index, prevIndex) => {
+              onSelect={(index: number, prevIndex: number) => {
                 if (index === prevIndex) {
                   setTabIndex(0);
                 } else {

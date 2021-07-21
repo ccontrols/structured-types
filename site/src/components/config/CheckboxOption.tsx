@@ -6,16 +6,12 @@ import { Link, Markdown } from '@component-controls/components';
 import { useUpdateOptions } from '../../contexts/OptionsContext';
 import { OptionsData, OptionsName } from '../../contexts/options';
 
-export const CheckboxOption: FC<{
-  paramName: OptionsName;
-  title: string;
-} & OptionsData> = ({
-  paramName,
-  title,
-  help,
-  value: propValue,
-  defaultValue,
-}) => {
+export const CheckboxOption: FC<
+  {
+    paramName: OptionsName;
+    title: string;
+  } & OptionsData
+> = ({ paramName, title, help, value: propValue, defaultValue }) => {
   const value = typeof propValue === 'undefined' ? defaultValue : propValue;
   const updateOption = useUpdateOptions(paramName, title);
   return (

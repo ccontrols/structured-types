@@ -28,7 +28,7 @@ export const DataViewer: FC<DataViewerProps> = ({ jsonTree, label, link }) => {
           <Link
             href="#"
             aria-label="save to file"
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               const blob = new Blob([JSON.stringify(data, null, 2)], {
                 type: 'application/json;charset=utf-8',

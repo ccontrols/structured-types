@@ -15,10 +15,11 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "clean": "lerna run --parallel clean",
-    "startup": "yarn bootstrap && yarn build && yarn dev",
+    "start": "lerna run --scope structured-types-site server",
     "lint": "lerna run --parallel lint",
-    "build": "run-p clean && run-s build:api",
-    "build:api": "tsc -b ./packages/tsconfig.json",
+    "build": "run-p clean && run-s build:packages && run-s build:site",
+    "build:packages": "tsc -b ./packages/api/tsconfig.json && tsc -b ./packages/typescript-config/tsconfig.json",
+    "build:site": "lerna run --scope structured-types-site build",
     "test": "lerna run test --stream",
     "release": "lerna publish"
   },

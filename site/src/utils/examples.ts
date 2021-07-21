@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
 
 type Examples = {
   [name: string]: string | Examples;
@@ -11,12 +11,12 @@ const traverseFolder = (folder: string, examples: Examples): void => {
     const filePath = path.resolve(folder, fileName);
     const stat = fs.statSync(filePath);
     if (
-      !filePath.includes(".test.") &&
-      !fileName.startsWith("__") &&
-      !fileName.startsWith("fixtures")
+      !filePath.includes('.test.') &&
+      !fileName.startsWith('__') &&
+      !fileName.startsWith('fixtures')
     ) {
       if (stat.isFile()) {
-        const content = fs.readFileSync(filePath, "utf8");
+        const content = fs.readFileSync(filePath, 'utf8');
         examples[fileName] = content;
       } else {
         const subFolder: Examples = {};
@@ -29,8 +29,8 @@ const traverseFolder = (folder: string, examples: Examples): void => {
 export const getExamples = (): Examples => {
   const examplesFolder = path.resolve(
     __dirname,
-    "../../../../",
-    "packages/api/test"
+    '../../../../',
+    'packages/api/test',
   );
   const examples = {};
   traverseFolder(examplesFolder, examples);

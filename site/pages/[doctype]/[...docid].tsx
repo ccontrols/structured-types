@@ -6,7 +6,7 @@ import {
   getDocPage,
 } from '@component-controls/nextjs-plugin';
 
-const DocPage: typeof NextLayout = props => <NextLayout {...props} />;
+const DocPage: typeof NextLayout = (props) => <NextLayout {...props} />;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return { paths: getDocPagesPaths(), fallback: false };

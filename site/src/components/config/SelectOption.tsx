@@ -5,17 +5,12 @@ import { Markdown } from '@component-controls/components';
 import { useUpdateOptions } from '../../contexts/OptionsContext';
 import { OptionsData, OptionsName } from '../../contexts/options';
 
-export const SelectOption: FC<{
-  paramName: OptionsName;
-  title: string;
-} & OptionsData> = ({
-  paramName,
-  title,
-  help,
-  options,
-  value: propValue,
-  defaultValue,
-}) => {
+export const SelectOption: FC<
+  {
+    paramName: OptionsName;
+    title: string;
+  } & OptionsData
+> = ({ paramName, title, help, options, value: propValue, defaultValue }) => {
   const value = typeof propValue === 'undefined' ? defaultValue : propValue;
   const updateOption = useUpdateOptions(paramName, title);
   return (
@@ -40,11 +35,11 @@ export const SelectOption: FC<{
           aria-label={`select ${title} option`}
           sx={{ minWidth: '150px', py: 1 }}
           value={value as string}
-          onChange={e => {
+          onChange={(e) => {
             updateOption(e.target.value);
           }}
         >
-          {options?.map(option => (
+          {options?.map((option) => (
             <option value={option} key={option}>
               {option}
             </option>

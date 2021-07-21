@@ -26,7 +26,7 @@ export const ConfigPanel: FC<ExamplesPanelProps> = ({ onClose }) => {
           }}
         >
           {tsOptions &&
-            Object.keys(tsOptions.General).map(option => (
+            Object.keys(tsOptions.General).map((option) => (
               <SelectOption
                 key={option}
                 paramName="tsOptions"
@@ -44,7 +44,7 @@ export const ConfigPanel: FC<ExamplesPanelProps> = ({ onClose }) => {
         >
           {Object.keys(tsOptions)
             .slice(1)
-            .map(category => (
+            .map((category) => (
               <Box
                 key={category}
                 sx={{
@@ -56,7 +56,7 @@ export const ConfigPanel: FC<ExamplesPanelProps> = ({ onClose }) => {
                 <Heading as="h3" sx={{ py: 3, pl: 2, pr: 5 }}>
                   {category}
                 </Heading>
-                {Object.keys(tsOptions[category]).map(key => {
+                {Object.keys(tsOptions[category]).map((key) => {
                   const option = tsOptions[category][key];
                   return (
                     <CheckboxOption

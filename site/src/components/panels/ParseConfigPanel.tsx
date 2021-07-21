@@ -25,7 +25,7 @@ export const ParseConfigPanel: FC<ExamplesPanelProps> = ({ onClose }) => {
           }}
         >
           {parseOptions &&
-            Object.keys(parseOptions.General).map(option => (
+            Object.keys(parseOptions.General).map((option) => (
               <ConfigOption
                 key={option}
                 title={option}

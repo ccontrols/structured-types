@@ -61,7 +61,7 @@ export const useURLParams = <S extends unknown>(
   }, [name]);
   return [
     state,
-    newState => {
+    (newState) => {
       const newUrl = getUpdatedUrlParams(
         name,
         newState ? JSON.stringify(newState) : undefined,

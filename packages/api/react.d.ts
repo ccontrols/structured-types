@@ -1,1 +1,1 @@
-export * from './dist/frameworks/react';
+export * from './dist/frameworks/react.d';

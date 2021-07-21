@@ -4,10 +4,12 @@ import { MemoOption } from './MemoOption';
 import { CheckboxOption } from './CheckboxOption';
 import { SelectOption } from './SelectOption';
 
-export const ConfigOption: FC<{
-  paramName: OptionsName;
-  title: string;
-} & OptionsData> = props => {
+export const ConfigOption: FC<
+  {
+    paramName: OptionsName;
+    title: string;
+  } & OptionsData
+> = (props) => {
   const { value: propValue, options, defaultValue, type } = props;
   const value = typeof propValue === 'undefined' ? defaultValue : propValue;
   if (Array.isArray(value) || type === 'textarea') {
