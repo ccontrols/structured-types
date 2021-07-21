@@ -20,8 +20,11 @@ export const parserNames = [
 ] as const;
 export type ParserNames = typeof parserNames[number];
 
-type ParserResults = Record<string, any> | undefined;
-type DataContextState = { params: string; data: ParserResults } | undefined;
+type ParserResults = Record<string, any> | undefined | null;
+type DataContextState =
+  | { params: string; data: ParserResults }
+  | undefined
+  | null;
 type DataContextProps = [DataContextState, (newData: DataContextState) => void];
 
 const Contexts: Record<ParserNames, React.Context<DataContextProps>> = {
@@ -70,22 +73,23 @@ export const useParseResults = (name: ParserNames): ParserResults => {
   const [tsOptions] = useParams('tsOptions');
   const [parseOptions] = useParams('parseOptions');
   const params = useMemo(() => {
-    return `${
-      debouncedCode ? `?code=${encodeURIComponent(debouncedCode)}` : ''
-    }${
-      parseOptions
-        ? `&config=${encodeURIComponent(JSON.stringify(parseOptions))}`
-        : ''
-    }${
-      tsOptions
-        ? `&tsoptions=${encodeURIComponent(JSON.stringify(tsOptions))}`
-        : ''
-    }`;
+    return debouncedCode
+      ? `?code=${encodeURIComponent(debouncedCode)}${
+          parseOptions
+            ? `&config=${encodeURIComponent(JSON.stringify(parseOptions))}`
+            : ''
+        }${
+          tsOptions
+            ? `&tsoptions=${encodeURIComponent(JSON.stringify(tsOptions))}`
+            : ''
+        }`
+      : '';
   }, [debouncedCode, parseOptions, tsOptions]);
   useEffect(() => {
+    console.log('params', params);
     if (params && state?.params !== params) {
       const fetchData = async () => {
-        setState(undefined);
+        setState(null);
         try {
           const response = await fetch(`/api/${name}${params}`);
           const data = await response.json();
@@ -100,5 +104,5 @@ export const useParseResults = (name: ParserNames): ParserResults => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name, params, setState]);
 
-  return state?.data;
+  return state ? state?.data : state;
 };

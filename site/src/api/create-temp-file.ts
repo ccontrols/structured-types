@@ -1,5 +1,6 @@
 import * as ts from 'typescript';
-
+import { tmpdir } from 'os';
+import { sep } from 'path';
 /**
  * @param extension file extension
  * @param callback callback to do the parsing with temporaty file name
@@ -16,7 +17,7 @@ export const createTempFile = (
     const host = ts.createCompilerHost({});
     if (host.createHash) {
       const name = host.createHash(Math.random().toString()).substring(0, 12);
-      const fileName = `${name}.${extension}`;
+      const fileName = `${tmpdir}${sep}${name}.${extension}`;
 
       ts.sys.writeFile(fileName, code);
       try {

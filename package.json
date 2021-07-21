@@ -15,7 +15,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "clean": "lerna run --parallel clean",
-    "start": "cd site && yarn server",
+    "start": "cd site && yarn start",
     "lint": "lerna run --parallel lint",
     "build": "run-p clean && run-s build:packages && run-s build:site",
     "build:packages": "tsc -b ./packages/api/tsconfig.json && tsc -b ./packages/typescript-config/tsconfig.json",

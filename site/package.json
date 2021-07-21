@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "next",
+    "create-examples": "yarn node ./scripts/create-examples.js && yarn eslint ./src/api/examples.ts --fix",
     "lint": "yarn eslint . --ext mdx,ts,tsx --fix",
     "build": "next build",
     "server": "next start"

@@ -14,7 +14,6 @@ interface DataViewerProps {
 }
 export const DataViewer: FC<DataViewerProps> = ({ jsonTree, label, link }) => {
   const data = useParseResults(label);
-
   return (
     <Box
       sx={{
@@ -65,7 +64,11 @@ export const DataViewer: FC<DataViewerProps> = ({ jsonTree, label, link }) => {
           overflowY: 'auto',
         }}
       >
-        {data ? <JSONViewer data={data} {...jsonTree} /> : <LoadingIndicator />}
+        {data ? (
+          <JSONViewer data={data} {...jsonTree} />
+        ) : data === null ? (
+          <LoadingIndicator />
+        ) : null}
       </Box>
     </Box>
   );

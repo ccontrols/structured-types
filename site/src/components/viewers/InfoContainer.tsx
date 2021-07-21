@@ -40,7 +40,7 @@ export const InfoContainer: FC = () => {
     const items: Record<ParserNames, Omit<APIItem, 'label'>> = {
       'structured-types': {
         selected: true,
-        link: 'https://github.com/ccontrols/structured-types/api',
+        link: 'https://github.com/ccontrols/structured-types/tree/master/packages/api',
         Panel: DataViewer,
         jsonTree: {
           valueRenderer: (

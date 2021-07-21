@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { examples } from './list';
+import { examples } from '../../../src/api/examples';
 
 export default async (
   req: NextApiRequest,

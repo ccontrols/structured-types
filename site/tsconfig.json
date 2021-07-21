@@ -20,7 +20,7 @@
     }
   },
   "exclude": ["node_modules", "public", ".cache"],
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "scripts/create-examples.js"],
   "references": [
     { "path": "../packages/typescript-config/src" },
     { "path": "../packages/api/src" }
