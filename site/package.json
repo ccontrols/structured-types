@@ -1,0 +1,42 @@
+{
+  "name": "structured-types-site",
+  "description": "playground site for structured-types",
+  "version": "3.14.4",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "next",
+    "build-sample": "next build",
+    "server": "next start"
+  },
+  "homepage": "https://github.com/ccontrols/structured-types",
+  "bugs": {
+    "url": "https://github.com/ccontrols/structured-types/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccontrols/structured-types.git",
+    "directory": "site"
+  },
+  "dependencies": {
+    "@component-controls/nextjs-plugin": "^3.14.6",
+    "@structured-types/api": "^0.5.0",
+    "@monaco-editor/react": "^4.2.1",
+    "file-saver": "^2.0.5",
+    "jsdoc-api": "^7.0.1",
+    "next": "^10.0.7",
+    "query-string": "^7.0.1",
+    "react": "^17.0.1",
+    "react-docgen": "^5.4.0",
+    "react-docgen-typescript": "^2.0.0",
+    "react-dom": "^17.0.1",
+    "react-json-tree": "^0.15.0",
+    "react-split": "^2.0.11",
+    "ts-json-schema-generator": "^0.94.0",
+    "typedoc": "^0.21.2",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/file-saver": "^2.0.2"
+  }
+}

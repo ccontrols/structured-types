@@ -1,0 +1,52 @@
+{
+  "name": "@structured-types/typescript-config",
+  "version": "3.14.4",
+  "description": "Retrieve the configuration for a typescript file",
+  "keywords": [
+    "typescript"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "run-s clean build:tsc",
+    "build:tsc": "tsc -b",
+    "lint": "yarn eslint . --ext mdx,ts,tsx",
+    "clean": "rimraf dist coverage tsconfig.tsbuildinfo",
+    "test": "yarn jest"
+  },
+  "homepage": "https://github.com/ccontrols/component-controls",
+  "bugs": {
+    "url": "https://github.com/ccontrols/component-controls/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccontrols/component-controls.git",
+    "directory": "misc/typescript-config"
+  },
+  "license": "MIT",
+  "devDendencies": {
+    "deepmerge": "^4.2.2",
+    "typescript": "^4.2.4"
+  },
+  "peerDependencies": {
+    "typescript": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    "Atanas Stoyanov"
+  ],
+  "jest": {
+    "preset": "ts-jest",
+    "roots": [
+      "./test"
+    ]
+  }
+}

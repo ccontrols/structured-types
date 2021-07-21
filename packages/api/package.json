@@ -1,0 +1,60 @@
+{
+  "name": "@structured-types/api",
+  "version": "0.5.0",
+  "description": "api to extract structured type information from typescript types and jsdoc comments",
+  "keywords": [
+    "jsdoc",
+    "tsdoc",
+    "javascript"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "package.json",
+    "react.d.ts",
+    "react.js",
+    "types.d.ts",
+    "types.js",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "run-s clean build:tsc",
+    "build:tsc": "tsc -b",
+    "lint": "yarn eslint . --ext mdx,ts,tsx",
+    "clean": "rimraf dist coverage tsconfig.tsbuildinfo",
+    "test": "yarn jest"
+  },
+  "homepage": "https://github.com/ccontrols/structured-types",
+  "bugs": {
+    "url": "https://github.com/ccontrols/structured-types/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccontrols/structured-types.git",
+    "directory": "packages/api"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@structured-types/typescript-config": "^3.14.4",
+    "deepmerge": "^4.2.2"
+  },
+  "devDependencies": {
+    "react": "^17.0.1",
+    "typescript": "^4.2.4"
+  },
+  "peerDependencies": {
+    "typescript": "^4.0.0",
+    "react": "^16.8.0 || ^17.0.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "moduleNameMapper": {
+      "@structured-types/typescript-config": "<rootDir>../typescript-config/src"
+    },
+    "roots": [
+      "./test"
+    ]
+  }
+}

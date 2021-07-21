@@ -1,0 +1,71 @@
+{
+  "version": "0.5.0",
+  "description": "extract structured types from jsdoc and typescript files",
+  "license": "MIT",
+  "private": true,
+  "author": {
+    "name": "Atanas Stoyanov",
+    "email": "atanasster@gmail.com",
+    "url": "https://github.com/ccontrols"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccontrols/structured-types.git"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna run --parallel clean",
+    "startup": "yarn bootstrap && yarn build && yarn dev",
+    "lint": "lerna run --parallel lint",
+    "build": "run-p clean && run-s build:api",
+    "build:api": "tsc -b ./packages/tsconfig.json",
+    "test": "lerna run test --stream",
+    "release": "lerna publish"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@commitlint/config-lerna-scopes": "^12.1.4",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.3.3",
+    "@types/react": "^17.0.14",
+    "eslint": "^7.31.0",
+    "@typescript-eslint/parser": "^4.28.4",
+    "@typescript-eslint/eslint-plugin": "^4.28.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-mdx": "^1.14.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.0.1",
+    "jest": "^27.0.6",
+    "lerna": "^3.20.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "eslint --ext .tsx --ext .ts ./src --fix"
+    ],
+    "./src/**": [
+      "prettier --write ."
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "workspaces": {
+    "packages": [
+      "site",
+      "packages/*"
+    ]
+  }
+}
