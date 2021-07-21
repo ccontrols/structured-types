@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/typescript-config",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Retrieve the configuration for a typescript file",
   "keywords": [
     "typescript"
