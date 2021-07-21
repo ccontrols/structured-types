@@ -86,7 +86,6 @@ export const useParseResults = (name: ParserNames): ParserResults => {
       : '';
   }, [debouncedCode, parseOptions, tsOptions]);
   useEffect(() => {
-    console.log('params', params);
     if (params && state?.params !== params) {
       const fetchData = async () => {
         setState(null);
