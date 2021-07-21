@@ -56,5 +56,6 @@
     "roots": [
       "./test"
     ]
-  }
+  },
+  "gitHead": "94a5bb1f9af04fac928d4d273ab1b0e8f034daf5"
 }
