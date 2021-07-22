@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import reactPlugin from '@structured-types/api/react';
 
 import { parseFiles, DocsOptions } from '@structured-types/api';
-import { createTempFile } from './../../src/api/create-temp-file';
+import { getHost } from './tsvfs-host';
 
 export default async (
   req: NextApiRequest,
@@ -21,13 +21,8 @@ export default async (
 
   const { lang = 'typescript' } = options?.tsOptions || {};
   const extension = lang === 'javascript' ? 'jsx' : 'tsx';
-  const result = createTempFile(
-    extension,
-    (fileNames) => {
-      return parseFiles(fileNames, options);
-    },
-    code,
-  );
-
+  const fileName = `index.${extension}`;
+  const host = getHost(fileName, code || '');
+  const result = parseFiles([fileName], options, host.compilerHost);
   res.status(200).json(result);
 };
