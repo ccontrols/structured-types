@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useMemo,
 } from 'react';
-import { useDebounce } from '../hooks/usDebounce';
+import { useDebounce } from '../hooks/useDebounce';
 import { useParams } from './OptionsContext';
 import { useCodeContext } from './CodeContext';
 
