@@ -15,6 +15,7 @@ export const parserNames = [
   'react-docgen-typescript',
   'react-docgen',
   'jsdoc',
+  'api-extractor',
   'typedoc',
   'ts-json-schema-generator',
 ] as const;
@@ -33,6 +34,7 @@ const Contexts: Record<ParserNames, React.Context<DataContextProps>> = {
   'react-docgen-typescript': createContext<DataContextProps>(
     {} as DataContextProps,
   ),
+  'api-extractor': createContext<DataContextProps>({} as DataContextProps),
   'structured-types': createContext<DataContextProps>({} as DataContextProps),
   'ts-json-schema-generator': createContext<DataContextProps>(
     {} as DataContextProps,

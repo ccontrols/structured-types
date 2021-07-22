@@ -76,6 +76,11 @@ export const InfoContainer: FC = () => {
         link: 'https://github.com/jsdoc2md/jsdoc-api',
         Panel: DataViewer,
       },
+      'api-extractor': {
+        selected: false,
+        link: 'https://api-extractor.com',
+        Panel: DataViewer,
+      },
       typedoc: {
         selected: false,
         link: 'https://github.com/TypeStrong/typedoc',
