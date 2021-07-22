@@ -1,16 +1,17 @@
 import * as ts from 'typescript';
 import { PropTypes, PropDiagnostic } from './types';
-import { tsDefaults, DocsOptions } from './ts-utils';
+import { tsDefaults, DocsOptions, ProgramOptions } from './ts-utils';
 import { SymbolParser } from './SymbolParser';
 
 export const anaylizeFiles = (
   fileNames: string[],
   options: DocsOptions = {},
-  host?: ts.CompilerHost,
+  programOptions: ProgramOptions = {},
 ): PropTypes => {
   const { tsOptions = tsDefaults, ...parseOptions } = options;
   const { extractNames, collectDiagnostics } = parseOptions || {};
-  const program = ts.createProgram(fileNames, tsOptions, host);
+  const { program: userProgram, host } = programOptions;
+  const program = userProgram || ts.createProgram(fileNames, tsOptions, host);
   // Get the checker, we will use it to find more about classes
   const checker = program.getTypeChecker();
 

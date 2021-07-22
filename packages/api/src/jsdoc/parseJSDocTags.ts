@@ -1,4 +1,4 @@
-import ts from 'typescript';
+import * as ts from 'typescript';
 import { ISymbolParser } from '../ts-utils';
 import {
   FunctionProp,

@@ -223,7 +223,10 @@ export const defaultParseOptions: ParseOptions = {
 };
 
 export type DocsOptions = CompileOptions & ParseOptions;
-
+export type ProgramOptions = {
+  host?: ts.CompilerHost;
+  program?: ts.Program;
+};
 export type TypeResolver = (props: {
   symbolType: ts.Type;
   declaration?: ts.Declaration;

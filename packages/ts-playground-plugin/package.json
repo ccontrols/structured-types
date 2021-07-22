@@ -1,0 +1,49 @@
+{
+  "name": "@structured-types/playground-plugin",
+  "version": "0.5.3",
+  "description": "typescript playground plugin for structured-types",
+  "keywords": [
+    "structured-types",
+    "typescript",
+    "playground"
+  ],
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "build:tsc": "tsc -b",
+    "create-dts": "node scripts/getDTS.js",
+    "start": "concurrently -p \"[{name}]\" -n \"ROLLUP,SITE\" -c \"bgBlue.bold,bgMagenta.bold\" \"yarn rollup -c rollup.config.js --watch\" \"yarn serve dist\"",
+    "lint": "yarn eslint . --ext mdx,ts,tsx",
+    "clean": "rimraf dist coverage tsconfig.tsbuildinfo"
+  },
+  "homepage": "https://github.com/ccontrols/structured-types",
+  "bugs": {
+    "url": "https://github.com/ccontrols/structured-types/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccontrols/structured-types.git",
+    "directory": "packages/ts-playground-plugin"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@structured-types/api": "^0.5.3",
+    "node-fetch": "^2.6.0",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "rollup-plugin-external-globals": "^0.6.1",
+    "concurrently": "^5.1.0",
+    "serve": "^12.0.0",
+    "tslib": "^2.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

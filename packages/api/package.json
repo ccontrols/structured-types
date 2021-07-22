@@ -20,8 +20,10 @@
     "README.md"
   ],
   "scripts": {
-    "build": "run-s clean build:tsc",
-    "build:tsc": "tsc -b",
+    "build": "NODE_ENV=production yarn rollup -c",
+    "dev": "NODE_ENV=development yarn rollup -cw",
+    "fix": "yarn lint --fix",
+    "prepare": "yarn build",
     "lint": "yarn eslint . --ext mdx,ts,tsx",
     "clean": "rimraf dist coverage tsconfig.tsbuildinfo",
     "test": "yarn jest"
