@@ -72,23 +72,23 @@ const createDefaultMap = () => {
 };
 const options = getTypescriptConfig(path.resolve(__dirname, 'index.ts')) || {};
 const fsMap = createDefaultMap();
-// const reactPath = path.dirname(resolve.sync('react', { basedir: __dirname }));
-// const typesPath = path.resolve(reactPath, '../../node_modules/@types/react');
-// fsMap.set(
-//   '/react.d.ts',
-//   fs.readFileSync(path.resolve(typesPath, 'index.d.ts'), 'utf8'),
-// );
-// fsMap.set(
-//   '/global.d.ts',
-//   fs.readFileSync(path.resolve(typesPath, 'global.d.ts'), 'utf8'),
-// );
-// fsMap.set(
-//   '/csstype.d.ts',
-//   fs.readFileSync(
-//     path.resolve(reactPath, '../../node_modules/csstype/index.d.ts'),
-//     'utf8',
-//   ),
-// );
+const reactPath = path.dirname(resolve.sync('react', { basedir: __dirname }));
+const typesPath = path.resolve(reactPath, '../../node_modules/@types/react');
+fsMap.set(
+  '/react.d.ts',
+  fs.readFileSync(path.resolve(typesPath, 'index.d.ts'), 'utf8'),
+);
+fsMap.set(
+  '/global.d.ts',
+  fs.readFileSync(path.resolve(typesPath, 'global.d.ts'), 'utf8'),
+);
+fsMap.set(
+  '/csstype.d.ts',
+  fs.readFileSync(
+    path.resolve(reactPath, '../../node_modules/csstype/index.d.ts'),
+    'utf8',
+  ),
+);
 
 const system = tsvfs.createSystem(fsMap);
 

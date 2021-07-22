@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import reactPlugin from '@structured-types/api/react';
 
-import { parseFiles, DocsOptions } from '@structured-types/api';
+import { anaylizeFiles, DocsOptions } from '@structured-types/api';
 import { getHost } from '../../src/api/tsvfs-host';
 
 export default async (
@@ -23,6 +23,6 @@ export default async (
   const extension = lang === 'javascript' ? 'jsx' : 'tsx';
   const fileName = `index.${extension}`;
   const host = getHost(fileName, code || '');
-  const result = parseFiles([fileName], options, host.compilerHost);
+  const result = anaylizeFiles([fileName], options, host.compilerHost);
   res.status(200).json(result);
 };
