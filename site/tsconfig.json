@@ -10,19 +10,23 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
     "resolveJsonModule": true,
     "paths": {
       "@structured-types/typescript-config": [
         "../packages/typescript-config/src"
       ],
       "@structured-types/api": ["../packages/api/src"]
-    }
+    },
+    "lib": ["dom", "dom.iterable", "esnext"]
   },
   "exclude": ["node_modules", "public", ".cache"],
   "include": ["**/*.ts", "**/*.tsx", "scripts/create-examples.js"],
   "references": [
-    { "path": "../packages/typescript-config/src" },
-    { "path": "../packages/api/src" }
+    {
+      "path": "../packages/typescript-config/src"
+    },
+    {
+      "path": "../packages/api/src"
+    }
   ]
 }

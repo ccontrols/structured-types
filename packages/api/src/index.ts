@@ -6,6 +6,7 @@ import { tsDefaults, DocsOptions } from './ts-utils';
 export * from './types';
 export * from './ts-utils';
 
+export { anaylizeFiles };
 export const parseFiles = (
   filePaths: string[],
   options: DocsOptions = {},
