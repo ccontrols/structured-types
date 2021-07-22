@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import reactPlugin from '@structured-types/api/react';
 
 import { parseFiles, DocsOptions } from '@structured-types/api';
-import { getHost } from './tsvfs-host';
+import { getHost } from '../../src/api/tsvfs-host';
 
 export default async (
   req: NextApiRequest,
