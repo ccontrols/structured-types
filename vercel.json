@@ -1,6 +1,6 @@
 {
   "functions": {
-    "*": {
+    "pages/api/*": {
       "includeFiles": "node_modules/@types/react/**"
     }
   }
