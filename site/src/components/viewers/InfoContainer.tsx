@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { FC, useMemo, ComponentType } from 'react';
 import { jsx, Box, Link, Theme } from 'theme-ui';
+import { PropKind } from '@structured-types/api';
 import {
   Tabs,
   TabList,
@@ -8,8 +9,6 @@ import {
   TabPanel,
   Multiselect,
 } from '@component-controls/components';
-
-import { PropKind } from '@structured-types/api/types';
 import { useURLParams } from '../../utils/url';
 import { ParserNames } from '../../contexts/ParsersContext';
 import { ReactJSONProps } from './JSONViewer';

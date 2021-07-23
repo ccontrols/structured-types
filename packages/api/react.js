@@ -1,1 +1,1 @@
-module.exports = require('./dist/frameworks/react');
+module.exports = require('./dist/react');
