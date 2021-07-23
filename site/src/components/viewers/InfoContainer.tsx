@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { FC, useMemo, ComponentType } from 'react';
 import { jsx, Box, Link, Theme } from 'theme-ui';
-import { PropKind } from '@structured-types/api';
+import { PropKind } from '@structured-types/api/types';
 import {
   Tabs,
   TabList,
