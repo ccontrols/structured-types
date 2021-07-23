@@ -72,33 +72,15 @@ const createDefaultMap = () => {
 };
 const options = getTypescriptConfig(path.resolve(__dirname, 'index.ts')) || {};
 const fsMap = createDefaultMap();
-
 const reactPath = path.dirname(resolve.sync('react', { basedir: __dirname }));
-console.log(
-  'main',
-  JSON.stringify(
-    fs.readdirSync(path.resolve(reactPath, '../../site')),
-    null,
-    2,
-  ),
-);
+const typesPath = path.resolve(reactPath, '../@types/react');
 console.log(
   'node_modules',
   JSON.stringify(fs.readdirSync(path.resolve(reactPath, '..')), null, 2),
 );
-
-const typesPath = path.resolve(reactPath, '../@types/react');
 fsMap.set(
   '/react.d.ts',
   fs.readFileSync(path.resolve(typesPath, 'index.d.ts'), 'utf8'),
-);
-fsMap.set(
-  '/global.d.ts',
-  fs.readFileSync(path.resolve(typesPath, 'global.d.ts'), 'utf8'),
-);
-fsMap.set(
-  '/react-dom.d.ts',
-  fs.readFileSync(path.resolve(typesPath, '../react-dom/index.d.ts'), 'utf8'),
 );
 
 const system = tsvfs.createSystem(fsMap);

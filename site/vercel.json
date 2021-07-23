@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/*": {
+      "includeFiles": "node_modules/@types/react/**"
+    }
+  }
+}
