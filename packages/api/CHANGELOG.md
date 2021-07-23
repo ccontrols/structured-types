@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.16.0](https://github.com/ccontrols/structured-types/compare/v0.5.3...v3.16.0) (2021-07-23)
+
+
+### Bug Fixes
+
+* optimize exported scope ([e7f9220](https://github.com/ccontrols/structured-types/commit/e7f92200c17d7c1d53060583c67ca35a71139b67))
+
+
+### Features
+
+* display type information ([8071e4d](https://github.com/ccontrols/structured-types/commit/8071e4d940346a82d347e745917aaf997ace6013))
+* initial commit ([568bc41](https://github.com/ccontrols/structured-types/commit/568bc41794e5a9c8caed8e96c06cd29061edd745))
+
+
+
+
+
 ## [0.5.3](https://github.com/ccontrols/structured-types/compare/v0.5.2...v0.5.3) (2021-07-21)
 
 
