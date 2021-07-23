@@ -12,7 +12,7 @@
 - [x] JSDoc types
 - [x] Typescript types
 - [x] React plugin
-- [ ] Typescript playground plugin
+- [x] Typescript playground plugin
 - [ ] component-controls integration
 - [ ] Automatically generate README.md files (structured-md)
 - [ ] Vue plugin
