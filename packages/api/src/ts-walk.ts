@@ -1,36 +1,56 @@
 import * as ts from 'typescript';
 import { PropTypes, PropDiagnostic } from './types';
-import { tsDefaults, DocsOptions } from './ts-utils';
+import { tsDefaults, DocsOptions, ProgramOptions } from './ts-utils';
 import { SymbolParser } from './SymbolParser';
 
 export const anaylizeFiles = (
   fileNames: string[],
   options: DocsOptions = {},
-  host?: ts.CompilerHost,
+  programOptions: ProgramOptions = {},
 ): PropTypes => {
-  const { tsOptions = tsDefaults, ...parseOptions } = options;
+  const {
+    tsOptions = tsDefaults,
+    scope = 'exports',
+    ...parseOptions
+  } = options;
   const { extractNames, collectDiagnostics } = parseOptions || {};
-  const program = ts.createProgram(fileNames, tsOptions, host);
+  const { program: userProgram, host } = programOptions;
+  const program = userProgram || ts.createProgram(fileNames, tsOptions, host);
   // Get the checker, we will use it to find more about classes
   const checker = program.getTypeChecker();
 
   const parser = new SymbolParser(checker, parseOptions);
   const parsed: PropTypes = {};
+  const addSymbol = (symbol?: ts.Symbol): void => {
+    if (symbol) {
+      const symbolName = symbol.getName();
+      if (!extractNames || extractNames.includes(symbolName)) {
+        const prop = parser.parseSymbol(symbol);
+        if (prop) {
+          parsed[symbolName] = prop;
+        }
+      }
+    }
+  };
   for (const fileName of fileNames) {
     const sourceFile = program.getSourceFile(fileName);
     if (sourceFile) {
-      const module = checker.getSymbolAtLocation(sourceFile);
-      if (module) {
-        const exports = checker.getExportsOfModule(module);
-        exports.forEach((e) => {
-          const symbolName = e.getName();
-          if (!extractNames || extractNames.includes(symbolName)) {
-            const prop = parser.parseSymbol(e);
-            if (prop) {
-              parsed[symbolName] = prop;
+      if (scope === 'all') {
+        ts.forEachChild(sourceFile, (node: ts.Node) => {
+          if (!ts.isModuleDeclaration(node)) {
+            const namedNode = node as ts.ClassDeclaration;
+            if (namedNode.name) {
+              const symbol = checker.getSymbolAtLocation(namedNode.name);
+              addSymbol(symbol);
             }
           }
         });
+      } else {
+        const module = checker.getSymbolAtLocation(sourceFile);
+        if (module) {
+          const exports = checker.getExportsOfModule(module);
+          exports.forEach((symbol) => addSymbol(symbol));
+        }
       }
     }
   }

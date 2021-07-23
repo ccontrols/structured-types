@@ -194,6 +194,11 @@ export interface ParseOptions {
    * installed plugins can modify default options and install type resolvers
    */
   plugins?: ParsePlugin[];
+
+  /**
+   * by default collects only the exported symbols
+   */
+  scope?: 'exports' | 'all';
 }
 
 export type ParsePlugin = Omit<DocsOptions, 'resolvers'> & {
@@ -223,7 +228,10 @@ export const defaultParseOptions: ParseOptions = {
 };
 
 export type DocsOptions = CompileOptions & ParseOptions;
-
+export type ProgramOptions = {
+  host?: ts.CompilerHost;
+  program?: ts.Program;
+};
 export type TypeResolver = (props: {
   symbolType: ts.Type;
   declaration?: ts.Declaration;

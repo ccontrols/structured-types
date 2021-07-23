@@ -23,6 +23,8 @@ export default async (
   const extension = lang === 'javascript' ? 'jsx' : 'tsx';
   const fileName = `index.${extension}`;
   const host = getHost(fileName, code || '');
-  const result = anaylizeFiles([fileName], options, host.compilerHost);
+  const result = anaylizeFiles([fileName], options, {
+    host: host.compilerHost,
+  });
   res.status(200).json(result);
 };
