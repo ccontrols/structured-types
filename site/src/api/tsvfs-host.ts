@@ -20,6 +20,8 @@ const addLib = (name: string, map: Map<string, string>) => {
 
 const createDefaultMap = () => {
   const fsMap = new Map<string, string>();
+  addLib('lib.es5.d.ts', fsMap);
+  addLib('lib.es6.d.ts', fsMap);
   addLib('lib.es2015.d.ts', fsMap);
   addLib('lib.es2015.collection.d.ts', fsMap);
   addLib('lib.es2015.core.d.ts', fsMap);
@@ -30,11 +32,7 @@ const createDefaultMap = () => {
   addLib('lib.es2015.reflect.d.ts', fsMap);
   addLib('lib.es2015.symbol.d.ts', fsMap);
   addLib('lib.es2015.symbol.wellknown.d.ts', fsMap);
-  addLib('lib.es5.d.ts', fsMap);
-  addLib('lib.dom.d.ts', fsMap);
-  addLib('lib.dom.iterable.d.ts', fsMap);
-  addLib('lib.esnext.d.ts', fsMap);
-  addLib('lib.es2021.d.ts', fsMap);
+
   addLib('lib.es2020.d.ts', fsMap);
   addLib('lib.es2019.d.ts', fsMap);
   addLib('lib.es2018.d.ts', fsMap);
@@ -63,10 +61,19 @@ const createDefaultMap = () => {
   addLib('lib.es2020.string.d.ts', fsMap);
   addLib('lib.es2020.symbol.wellknown.d.ts', fsMap);
   addLib('lib.es2020.intl.d.ts', fsMap);
+  addLib('lib.es2021.d.ts', fsMap);
   addLib('lib.es2021.promise.d.ts', fsMap);
   addLib('lib.es2021.string.d.ts', fsMap);
   addLib('lib.es2021.weakref.d.ts', fsMap);
+  addLib('lib.dom.d.ts', fsMap);
+  addLib('lib.dom.iterable.d.ts', fsMap);
+  addLib('lib.esnext.d.ts', fsMap);
+  addLib('lib.esnext.full.d.ts', fsMap);
   addLib('lib.esnext.intl.d.ts', fsMap);
+  addLib('lib.esnext.promise.d.ts', fsMap);
+  addLib('lib.esnext.string.d.ts', fsMap);
+  addLib('lib.esnext.weakref.d.ts', fsMap);
+
   addLib('lib.webworker.importscripts.d.ts', fsMap);
   addLib('lib.scripthost.d.ts', fsMap);
 
