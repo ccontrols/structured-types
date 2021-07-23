@@ -92,13 +92,6 @@ fsMap.set(
   fs.readFileSync(path.resolve(typesPath, 'global.d.ts'), 'utf8'),
 );
 fsMap.set(
-  '/csstype.d.ts',
-  fs.readFileSync(
-    path.resolve(reactPath, '../../node_modules/csstype/index.d.ts'),
-    'utf8',
-  ),
-);
-fsMap.set(
   '/react-dom.d.ts',
   fs.readFileSync(path.resolve(typesPath, '../react-dom/index.d.ts'), 'utf8'),
 );
