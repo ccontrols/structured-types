@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import * as ts from 'typescript';
 import resolve from 'resolve';
+import { Attributes } from 'react';
 import * as tsvfs from '@typescript/vfs';
 import { getTypescriptConfig } from '@structured-types/typescript-config';
 
@@ -74,6 +75,8 @@ const options = getTypescriptConfig(path.resolve(__dirname, 'index.ts')) || {};
 const fsMap = createDefaultMap();
 const reactPath = path.dirname(resolve.sync('react', { basedir: __dirname }));
 const typesPath = path.resolve(reactPath, '../@types/react');
+const p: Attributes | undefined = undefined;
+console.log('Attributes', p);
 console.log(
   'node_modules',
   JSON.stringify(fs.readdirSync(path.resolve(reactPath, '..')), null, 2),
