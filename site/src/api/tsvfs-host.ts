@@ -74,14 +74,14 @@ const options = getTypescriptConfig(path.resolve(__dirname, 'index.ts')) || {};
 const fsMap = createDefaultMap();
 const reactPath = path.dirname(resolve.sync('react', { basedir: __dirname }));
 console.log(
+  'main',
+  JSON.stringify(fs.readdirSync(path.resolve(reactPath, '../..')), null, 2),
+);
+console.log(
   'node_modules',
   JSON.stringify(fs.readdirSync(path.resolve(reactPath, '..')), null, 2),
 );
 
-console.log(
-  '@types',
-  JSON.stringify(fs.readdirSync(path.resolve(reactPath, '../@types')), null, 2),
-);
 const typesPath = path.resolve(reactPath, '../@types/react');
 fsMap.set(
   '/react.d.ts',
