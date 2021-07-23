@@ -1,6 +1,6 @@
 import { config } from '../../rollup-config';
 
 export default config({
-  input: ['./src/index.ts', './src/types.ts', './src/frameworks/react.ts'],
+  input: ['./src/index.ts', './src/types.ts', './src/react.ts'],
   external: ['typescript'],
 });

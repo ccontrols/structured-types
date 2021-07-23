@@ -1,13 +1,13 @@
 import * as ts from 'typescript';
-import { getSymbolType, getFunctionLike, getInitializer } from '../ts-utils';
+import { getSymbolType, getFunctionLike, getInitializer } from './ts-utils';
 import {
   isObjectTypeDeclaration,
   getObjectStaticProp,
   ParsePlugin,
-} from '../ts-utils';
-import { PropKind } from '../types';
+} from './ts-utils';
+import { PropKind } from './types';
 
-const reactPLugin: ParsePlugin = {
+export const reactPlugin: ParsePlugin = {
   internalTypes: ['PropsWithChildren'],
   typesResolve: ({ symbolType, declaration, checker }) => {
     let propsType = symbolType;
@@ -87,5 +87,3 @@ const reactPLugin: ParsePlugin = {
     };
   },
 };
-
-export default reactPLugin;

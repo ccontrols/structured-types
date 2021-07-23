@@ -37,20 +37,17 @@ export const anaylizeFiles = (
     if (sourceFile) {
       if (scope === 'all') {
         ts.forEachChild(sourceFile, (node: ts.Node) => {
-          if (!ts.isModuleDeclaration(node)) {
-            const namedNode = node as ts.ClassDeclaration;
-            if (namedNode.name) {
-              const symbol = checker.getSymbolAtLocation(namedNode.name);
-              addSymbol(symbol);
-            }
+          const namedNode = node as ts.ClassDeclaration;
+          if (namedNode.name) {
+            const symbol = checker.getSymbolAtLocation(namedNode.name);
+            addSymbol(symbol);
           }
         });
-      } else {
-        const module = checker.getSymbolAtLocation(sourceFile);
-        if (module) {
-          const exports = checker.getExportsOfModule(module);
-          exports.forEach((symbol) => addSymbol(symbol));
-        }
+      }
+      const module = checker.getSymbolAtLocation(sourceFile);
+      if (module) {
+        const exports = checker.getExportsOfModule(module);
+        exports.forEach((symbol) => addSymbol(symbol));
       }
     }
   }

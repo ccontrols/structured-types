@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import reactPlugin from '@structured-types/api/react';
+import { reactPlugin } from '@structured-types/api/react';
 
 import { parseFiles, DocsOptions } from '@structured-types/api';
 import { createTempFile } from './../../src/api/create-temp-file';

@@ -1,7 +1,6 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "module": "esnext",
     "outDir": "dist",
     "rootDirs": ["src", "pages"],
     "declaration": true,

@@ -1,6 +1,6 @@
 import path from 'path';
 import { parseFiles } from '../../../src/index';
-import reactPlugin from '../../../src/frameworks/react';
+import { reactPlugin } from '../../../src/react';
 
 const simpleResults = {
   MyComponent: {

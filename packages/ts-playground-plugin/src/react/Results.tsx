@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { anaylizeFiles, PropTypes } from '@structured-types/api';
+import { reactPlugin } from '@structured-types/api';
 import type { Sandbox } from '../vendor/sandbox';
 import { PropTypeTree } from './PropTypeTree';
 
@@ -12,7 +13,7 @@ export const Results: FC<{ sandbox: Sandbox }> = ({ sandbox }) => {
       const files = tsvfs.program.getSourceFiles();
       const types = anaylizeFiles(
         [files[files.length - 1].fileName],
-        { scope: 'all' },
+        { scope: 'all', plugins: [reactPlugin] },
         { program: tsvfs.program },
       );
       setResults(types);

@@ -1,5 +1,6 @@
 import { getTypescriptConfig } from '@structured-types/typescript-config';
 import { anaylizeFiles } from './ts-walk';
+export * from './react';
 import { PropTypes } from './types';
 import { tsDefaults, DocsOptions, ProgramOptions } from './ts-utils';
 export * from './types';
