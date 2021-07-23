@@ -62,5 +62,10 @@
       "./test"
     ]
   },
+  "author": {
+    "name": "Atanas Stoyanov",
+    "email": "atanasster@gmail.com",
+    "url": "https://github.com/ccontrols"
+  },
   "gitHead": "6b63180832adf499bd1ec0808161c3bfc7ab6c1b"
 }

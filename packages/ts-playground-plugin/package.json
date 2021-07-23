@@ -47,6 +47,11 @@
     "serve": "^12.0.0",
     "tslib": "^2.3.0"
   },
+  "author": {
+    "name": "Atanas Stoyanov",
+    "email": "atanasster@gmail.com",
+    "url": "https://github.com/ccontrols"
+  },
   "publishConfig": {
     "access": "public"
   }

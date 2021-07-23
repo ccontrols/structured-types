@@ -42,9 +42,11 @@
   "publishConfig": {
     "access": "public"
   },
-  "authors": [
-    "Atanas Stoyanov"
-  ],
+  "author": {
+    "name": "Atanas Stoyanov",
+    "email": "atanasster@gmail.com",
+    "url": "https://github.com/ccontrols"
+  },
   "jest": {
     "preset": "ts-jest",
     "roots": [
