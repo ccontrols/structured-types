@@ -72,12 +72,12 @@ const createDefaultMap = () => {
 };
 const options = getTypescriptConfig(path.resolve(__dirname, 'index.ts')) || {};
 const fsMap = createDefaultMap();
-console.log('react', require.resolve('react'));
+
 const reactPath = path.dirname(resolve.sync('react', { basedir: __dirname }));
 console.log(
   'main',
   JSON.stringify(
-    fs.readdirSync(path.resolve(reactPath, '../../site/node_modules')),
+    fs.readdirSync(path.resolve(reactPath, '../../site')),
     null,
     2,
   ),
