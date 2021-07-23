@@ -3,15 +3,6 @@ import { PropTypes, PropDiagnostic } from './types';
 import { tsDefaults, DocsOptions, ProgramOptions } from './ts-utils';
 import { SymbolParser } from './SymbolParser';
 
-function isNodeExported(node: ts.Node): boolean {
-  return (
-    (ts.getCombinedModifierFlags(node as ts.Declaration) &
-      ts.ModifierFlags.Export) !==
-      0 ||
-    (!!node.parent && node.parent.kind === ts.SyntaxKind.SourceFile)
-  );
-}
-
 export const anaylizeFiles = (
   fileNames: string[],
   options: DocsOptions = {},
@@ -30,29 +21,37 @@ export const anaylizeFiles = (
 
   const parser = new SymbolParser(checker, parseOptions);
   const parsed: PropTypes = {};
+  const addSymbol = (symbol?: ts.Symbol): void => {
+    if (symbol) {
+      const symbolName = symbol.getName();
+      if (!extractNames || extractNames.includes(symbolName)) {
+        const prop = parser.parseSymbol(symbol);
+        if (prop) {
+          parsed[symbolName] = prop;
+        }
+      }
+    }
+  };
   for (const fileName of fileNames) {
     const sourceFile = program.getSourceFile(fileName);
     if (sourceFile) {
-      ts.forEachChild(sourceFile, (node: ts.Node) => {
-        if (!ts.isModuleDeclaration(node)) {
-          const include = scope === 'all' || isNodeExported(node);
-          if (include) {
+      if (scope === 'all') {
+        ts.forEachChild(sourceFile, (node: ts.Node) => {
+          if (!ts.isModuleDeclaration(node)) {
             const namedNode = node as ts.ClassDeclaration;
             if (namedNode.name) {
               const symbol = checker.getSymbolAtLocation(namedNode.name);
-              if (symbol) {
-                const symbolName = symbol.getName();
-                if (!extractNames || extractNames.includes(symbolName)) {
-                  const prop = parser.parseSymbol(symbol);
-                  if (prop) {
-                    parsed[symbolName] = prop;
-                  }
-                }
-              }
+              addSymbol(symbol);
             }
           }
+        });
+      } else {
+        const module = checker.getSymbolAtLocation(sourceFile);
+        if (module) {
+          const exports = checker.getExportsOfModule(module);
+          exports.forEach((symbol) => addSymbol(symbol));
         }
-      });
+      }
     }
   }
   // only return parents that are not already exported from the same file
