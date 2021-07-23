@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.16.2](https://github.com/ccontrols/structured-types/compare/v3.16.1...v3.16.2) (2021-07-23)
+
+
+### Bug Fixes
+
+* install react plugin ([591801a](https://github.com/ccontrols/structured-types/commit/591801a0e2d03260f47cda28c660d5f035dc640a))
+
+
+
+
+
 ## [3.16.1](https://github.com/ccontrols/structured-types/compare/v3.16.0...v3.16.1) (2021-07-23)
 
 
