@@ -33,38 +33,45 @@ const createDefaultMap = () => {
   addLib('lib.es2015.symbol.d.ts', fsMap);
   addLib('lib.es2015.symbol.wellknown.d.ts', fsMap);
 
-  addLib('lib.es2020.d.ts', fsMap);
-  addLib('lib.es2019.d.ts', fsMap);
-  addLib('lib.es2018.d.ts', fsMap);
-  addLib('lib.es2017.d.ts', fsMap);
   addLib('lib.es2016.d.ts', fsMap);
   addLib('lib.es2016.array.include.d.ts', fsMap);
+
+  addLib('lib.es2017.d.ts', fsMap);
+  addLib('lib.es2017.full.d.ts', fsMap);
+  addLib('lib.es2017.intl.d.ts', fsMap);
   addLib('lib.es2017.object.d.ts', fsMap);
   addLib('lib.es2017.sharedmemory.d.ts', fsMap);
   addLib('lib.es2017.string.d.ts', fsMap);
-  addLib('lib.es2017.intl.d.ts', fsMap);
   addLib('lib.es2017.typedarrays.d.ts', fsMap);
-  addLib('lib.es2017.full.d.ts', fsMap);
 
+  addLib('lib.es2018.d.ts', fsMap);
   addLib('lib.es2018.asynciterable.d.ts', fsMap);
   addLib('lib.es2018.asyncgenerator.d.ts', fsMap);
   addLib('lib.es2018.promise.d.ts', fsMap);
   addLib('lib.es2018.regexp.d.ts', fsMap);
   addLib('lib.es2018.intl.d.ts', fsMap);
+
+  addLib('lib.es2019.d.ts', fsMap);
   addLib('lib.es2019.array.d.ts', fsMap);
+  addLib('lib.es2019.full.d.ts', fsMap);
   addLib('lib.es2019.object.d.ts', fsMap);
   addLib('lib.es2019.string.d.ts', fsMap);
   addLib('lib.es2019.symbol.d.ts', fsMap);
+
+  addLib('lib.es2020.d.ts', fsMap);
   addLib('lib.es2020.bigint.d.ts', fsMap);
   addLib('lib.es2020.promise.d.ts', fsMap);
   addLib('lib.es2020.sharedmemory.d.ts', fsMap);
   addLib('lib.es2020.string.d.ts', fsMap);
   addLib('lib.es2020.symbol.wellknown.d.ts', fsMap);
   addLib('lib.es2020.intl.d.ts', fsMap);
+
   addLib('lib.es2021.d.ts', fsMap);
+  addLib('lib.es2021.full.d.ts', fsMap);
   addLib('lib.es2021.promise.d.ts', fsMap);
   addLib('lib.es2021.string.d.ts', fsMap);
   addLib('lib.es2021.weakref.d.ts', fsMap);
+
   addLib('lib.dom.d.ts', fsMap);
   addLib('lib.dom.iterable.d.ts', fsMap);
   addLib('lib.esnext.d.ts', fsMap);
@@ -74,7 +81,11 @@ const createDefaultMap = () => {
   addLib('lib.esnext.string.d.ts', fsMap);
   addLib('lib.esnext.weakref.d.ts', fsMap);
 
+  addLib('lib.d.ts', fsMap);
+  addLib('lib.webworker.d.ts', fsMap);
   addLib('lib.webworker.importscripts.d.ts', fsMap);
+  addLib('lib.webworker.iterable.d.ts', fsMap);
+
   addLib('lib.scripthost.d.ts', fsMap);
 
   return fsMap;
