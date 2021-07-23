@@ -28,6 +28,7 @@
     "file-saver": "^2.0.5",
     "jsdoc-api": "^7.0.1",
     "next": "^11.0.1",
+    "sync-fetch": "^0.3.0",
     "query-string": "^7.0.1",
     "react": "^17.0.1",
     "react-docgen": "^5.4.0",

@@ -1,8 +1,9 @@
 import path from 'path';
 import fs from 'fs';
+import { tmpdir } from 'os';
+const fetch = require('sync-fetch');
 import * as ts from 'typescript';
 import resolve from 'resolve';
-import { Attributes } from 'react';
 import * as tsvfs from '@typescript/vfs';
 import { getTypescriptConfig } from '@structured-types/typescript-config';
 
@@ -71,20 +72,26 @@ const createDefaultMap = () => {
 
   return fsMap;
 };
+
+const addReactLib = (
+  name: string,
+  resolveName: string,
+  map: Map<string, string>,
+) => {
+  const tmpFileName = `${tmpdir}${path.sep}${resolveName}`;
+  if (!fs.existsSync(tmpFileName)) {
+    const cdnContent = fetch(
+      `https://cdn.jsdelivr.net/npm/@types/react@17.0.14/${resolveName}`,
+    ).text();
+    fs.writeFileSync(tmpFileName, cdnContent, 'utf8');
+  }
+  map.set('/' + name, fs.readFileSync(tmpFileName, 'utf8'));
+};
 const options = getTypescriptConfig(path.resolve(__dirname, 'index.ts')) || {};
 const fsMap = createDefaultMap();
-const reactPath = path.dirname(resolve.sync('react', { basedir: __dirname }));
-const typesPath = path.resolve(reactPath, '../@types/react');
-const p: Attributes | undefined = undefined;
-console.log('Attributes', p);
-console.log(
-  'node_modules',
-  JSON.stringify(fs.readdirSync(path.resolve(reactPath, '..')), null, 2),
-);
-fsMap.set(
-  '/react.d.ts',
-  fs.readFileSync(path.resolve(typesPath, 'index.d.ts'), 'utf8'),
-);
+
+addReactLib('react.d.ts', 'index.d.ts', fsMap);
+addReactLib('global.d.ts', 'global.d.ts', fsMap);
 
 const system = tsvfs.createSystem(fsMap);
 
