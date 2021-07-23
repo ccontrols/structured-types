@@ -194,6 +194,11 @@ export interface ParseOptions {
    * installed plugins can modify default options and install type resolvers
    */
   plugins?: ParsePlugin[];
+
+  /**
+   * by default collects only the exported symbols
+   */
+  scope?: 'exports' | 'all';
 }
 
 export type ParsePlugin = Omit<DocsOptions, 'resolvers'> & {

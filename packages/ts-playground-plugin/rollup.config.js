@@ -6,6 +6,12 @@ export default config({
   output: {
     format: 'amd',
   },
-  external: ['typescript', 'fs', 'path'],
-  plugins: [externalGlobals({ typescript: 'window.ts' })],
+  external: ['typescript', 'react', 'react-dom'],
+  plugins: [
+    externalGlobals({
+      typescript: 'window.ts',
+      react: 'window.react',
+      'react-dom': 'window.reactDOM',
+    }),
+  ],
 });
