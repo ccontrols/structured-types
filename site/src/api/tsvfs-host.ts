@@ -98,6 +98,10 @@ fsMap.set(
     'utf8',
   ),
 );
+fsMap.set(
+  '/react-dom.d.ts',
+  fs.readFileSync(path.resolve(typesPath, '../react-dom/index.d.ts'), 'utf8'),
+);
 
 const system = tsvfs.createSystem(fsMap);
 
