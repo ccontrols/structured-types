@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.16.1](https://github.com/ccontrols/structured-types/compare/v3.16.0...v3.16.1) (2021-07-23)
+
+
+### Bug Fixes
+
+* update rollup build ([6c666fa](https://github.com/ccontrols/structured-types/commit/6c666fad2f022ab57066ed8be09bfacd8f26c671))
+
+
+
+
+
 # [3.16.0](https://github.com/ccontrols/structured-types/compare/v0.5.3...v3.16.0) (2021-07-23)
 
 

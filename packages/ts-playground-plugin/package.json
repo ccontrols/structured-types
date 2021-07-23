@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/playground-plugin",
-  "version": "3.16.0",
+  "version": "3.16.1",
   "description": "typescript playground plugin for structured-types",
   "keywords": [
     "structured-types",
@@ -33,7 +33,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@structured-types/api": "^3.16.0",
+    "@structured-types/api": "^3.16.1",
     "node-fetch": "^2.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
