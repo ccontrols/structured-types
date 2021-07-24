@@ -13,7 +13,8 @@ export const anaylizeFiles = (
     scope = 'exports',
     ...parseOptions
   } = options;
-  const { extractNames, collectDiagnostics } = parseOptions || {};
+  const { extractNames, collectDiagnostics, internalTypes } =
+    parseOptions || {};
   const { program: userProgram, host } = programOptions;
   const program = userProgram || ts.createProgram(fileNames, tsOptions, host);
   // Get the checker, we will use it to find more about classes
@@ -24,7 +25,10 @@ export const anaylizeFiles = (
   const addSymbol = (symbol?: ts.Symbol): void => {
     if (symbol) {
       const symbolName = symbol.getName();
-      if (!extractNames || extractNames.includes(symbolName)) {
+      if (
+        !internalTypes?.includes(symbolName) &&
+        (!extractNames || extractNames.includes(symbolName))
+      ) {
         const prop = parser.parseSymbol(symbol);
         if (prop) {
           parsed[symbolName] = prop;

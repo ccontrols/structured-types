@@ -1,19 +1,15 @@
 require('polyfill-localstorage-node');
-const nodeFetch = require('node-fetch').default;
 import * as ts from 'typescript';
 import * as tsvfs from '@typescript/vfs';
+import { addDTSMapping } from './dts-file';
 
-const addReactLib = async (
-  name: string,
-  resolveName: string,
-  map: Map<string, string>,
-) => {
-  const cdnFile = await nodeFetch(
-    `https://cdn.jsdelivr.net/npm/@types/react@17.0.2/${resolveName}`,
+const addReactLib = async (name: string, map: Map<string, string>) => {
+  await addDTSMapping(
+    'https://cdn.jsdelivr.net/npm/@types/react@17.0.2/',
+    '/node_modules/@types/react/',
+    name,
+    map,
   );
-  const cdnContent = await cdnFile.text();
-
-  map.set("/node_modules/@types/react/ + name, cdnContent);
 };
 
 export const getHost = async (
@@ -27,7 +23,14 @@ export const getHost = async (
     true,
     ts,
   );
-  await addReactLib('index.d.ts', 'index.d.ts', fsMap);
+  await addReactLib('index.d.ts', fsMap);
+  await addReactLib('global.d.ts', fsMap);
+  await addDTSMapping(
+    'https://cdn.jsdelivr.net/npm/csstype@3.0.8/',
+    '/node_modules/@types/csstype/',
+    'index.d.ts',
+    fsMap,
+  );
   fsMap.set(fileName, code);
   const system = tsvfs.createSystem(fsMap);
   return tsvfs.createVirtualCompilerHost(system, compilerOptions, ts);

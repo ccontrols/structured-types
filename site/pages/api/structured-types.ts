@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { reactPlugin } from '@structured-types/api/react';
 
-import { parseFiles, DocsOptions } from '@structured-types/api';
-import { createTempFile } from './../../src/api/create-temp-file';
+import { anaylizeFiles, DocsOptions } from '@structured-types/api';
+import { getHost } from '../../src/api/tsvfs-host';
 
 export default async (
   req: NextApiRequest,
@@ -19,15 +19,12 @@ export default async (
     tsOptions: tsoptions ? JSON.parse(tsoptions) : undefined,
   };
 
-  const { lang = 'typescript' } = options?.tsOptions || {};
+  const { lang = 'typescript', ...compilerOptions } = options?.tsOptions || {};
   const extension = lang === 'javascript' ? 'jsx' : 'tsx';
-  const result = createTempFile(
-    extension,
-    (fileNames) => {
-      return parseFiles(fileNames, options);
-    },
-    code,
-  );
-
+  const fileName = `index.${extension}`;
+  const host = await getHost(fileName, code || '', compilerOptions);
+  const result = anaylizeFiles([fileName], options, {
+    host: host.compilerHost,
+  });
   res.status(200).json(result);
 };

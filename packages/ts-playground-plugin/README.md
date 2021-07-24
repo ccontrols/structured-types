@@ -2,7 +2,7 @@
 
 A TypeScript playground plugin which shows the type information for the current file.
 
-![./types.jpg](./types.jpg)
+![./react-types.jpg](./react-types.jpg)
 
 ## Running this plugin
 

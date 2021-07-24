@@ -224,6 +224,7 @@ export const defaultParseOptions: ParseOptions = {
     'ConcatArray',
     'ReadonlyArray',
     'TemplateStringsArray',
+    'IfSchedulerTracing',
   ],
 };
 

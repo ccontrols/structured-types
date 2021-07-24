@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import * as ts from 'typescript';
 import { withCompilerOptions, ParserOptions } from 'react-docgen-typescript';
-import { getTypescriptConfig } from '@structured-types/typescript-config';
-import { createTempFile } from './../../src/api/create-temp-file';
+import { getHost } from '../../src/api/tsvfs-host';
 
 export default async (
   req: NextApiRequest,
@@ -14,7 +14,7 @@ export default async (
   const options = {
     ...(tsoptions ? JSON.parse(tsoptions) : undefined),
   };
-  const { lang = 'typescript' } = options || {};
+  const { lang = 'typescript', ...compilerOptions } = options || {};
   const extension = lang === 'javascript' ? 'jsx' : 'tsx';
   const parserOptions: ParserOptions = {
     shouldIncludePropTagMap: true,
@@ -23,23 +23,18 @@ export default async (
     savePropValueAsString: false,
   };
   const __errors: any[] = [];
-  const result = createTempFile(
-    extension,
-    (fileNames) => {
-      return fileNames.reduce((acc, fileName) => {
-        const tsOptions = getTypescriptConfig(fileName, options);
-        const parser = withCompilerOptions(tsOptions || {}, parserOptions);
-        try {
-          const docgenInfo = parser.parse(fileName);
-          return { ...acc, ...docgenInfo };
-        } catch (e) {
-          __errors.push(e.toString());
-          return acc;
-        }
-      }, {});
-    },
-    code,
-  );
+  const fileName = `index.${extension}`;
+  let result: Record<string, any> = {};
+  const host = await getHost(fileName, code || '', compilerOptions);
+
+  const parser = withCompilerOptions(compilerOptions, parserOptions);
+  try {
+    result = parser.parseWithProgramProvider(fileName, () =>
+      ts.createProgram([fileName], compilerOptions, host.compilerHost),
+    );
+  } catch (e) {
+    __errors.push(e.toString());
+  }
   if (__errors.length) {
     result.__errors = __errors;
   }
