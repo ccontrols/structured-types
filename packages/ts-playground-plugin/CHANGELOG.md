@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.16.4](https://github.com/ccontrols/structured-types/compare/v3.16.3...v3.16.4) (2021-07-24)
+
+
+### Bug Fixes
+
+* add tsvfs.program.getCompilerOptions() ([7c4064a](https://github.com/ccontrols/structured-types/commit/7c4064a4d1660c6bc69fc81895004db1dd29acec))
+* update tsvfs hosts ([5866a0d](https://github.com/ccontrols/structured-types/commit/5866a0d7bc616919381edfff3662f5f1756dba52))
+
+
+
+
+
 ## [3.16.3](https://github.com/ccontrols/structured-types/compare/v3.16.2...v3.16.3) (2021-07-24)
 
 
