@@ -4,8 +4,8 @@
   "description": "typescript playground plugin for structured-types",
   "keywords": [
     "structured-types",
-    "typescript",
-    "playground"
+    "playground-plugin",
+    "typescript"
   ],
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

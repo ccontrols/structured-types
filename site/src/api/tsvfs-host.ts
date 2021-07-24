@@ -106,6 +106,8 @@ const addReactLib = (
   map.set('/' + name, fs.readFileSync(tmpFileName, 'utf8'));
 };
 const options = getTypescriptConfig(path.resolve(__dirname, 'index.ts')) || {};
+const reactPath = path.dirname(resolve.sync('react', { basedir: __dirname }));
+console.log(fs.readdirSync(path.resolve(reactPath, '..')));
 const fsMap = createDefaultMap();
 
 addReactLib('react.d.ts', 'index.d.ts', fsMap);
