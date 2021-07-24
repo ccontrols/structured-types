@@ -19,10 +19,10 @@ export default async (
     tsOptions: tsoptions ? JSON.parse(tsoptions) : undefined,
   };
 
-  const { lang = 'typescript' } = options?.tsOptions || {};
+  const { lang = 'typescript', ...compilerOptions } = options?.tsOptions || {};
   const extension = lang === 'javascript' ? 'jsx' : 'tsx';
   const fileName = `index.${extension}`;
-  const host = getHost(fileName, code || '');
+  const host = await getHost(fileName, code || '', compilerOptions);
   const result = anaylizeFiles([fileName], options, {
     host: host.compilerHost,
   });

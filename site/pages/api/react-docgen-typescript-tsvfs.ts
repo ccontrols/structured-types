@@ -25,7 +25,7 @@ export default async (
   const __errors: any[] = [];
   const fileName = `index.${extension}`;
   let result: Record<string, any> = {};
-  const host = getHost(fileName, code || '');
+  const host = await getHost(fileName, code || '', compilerOptions);
 
   const parser = withCompilerOptions(compilerOptions, parserOptions);
   try {
