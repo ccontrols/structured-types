@@ -19,6 +19,7 @@ export const Results: FC<{ sandbox: Sandbox }> = ({ sandbox }) => {
           scope: 'all',
           plugins: [reactPlugin],
           collectDiagnostics,
+          tsOptions: tsvfs.program.getCompilerOptions(),
         },
         { program: tsvfs.program },
       );
