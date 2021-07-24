@@ -29,7 +29,6 @@ export const getHost = async (
   );
   await addReactLib('/react.d.ts', 'index.d.ts', fsMap);
   fsMap.set(fileName, code);
-  console.log(fsMap.keys());
   const system = tsvfs.createSystem(fsMap);
   return tsvfs.createVirtualCompilerHost(system, compilerOptions, ts);
 };

@@ -6,14 +6,21 @@ import { PropTypeTree } from './PropTypeTree';
 
 export const Results: FC<{ sandbox: Sandbox }> = ({ sandbox }) => {
   const [results, setResults] = useState<PropTypes>({});
-  const onClick = async () => {
+  const [diagnostics, setDiagnostics] = useState<boolean>(false);
+
+  const onClick = async (collectDiagnostics: boolean) => {
     const tsvfs = await sandbox.setupTSVFS();
     sandbox.editor.updateOptions({ readOnly: true });
     try {
       const files = tsvfs.program.getSourceFiles();
+      console.log(diagnostics);
       const types = anaylizeFiles(
         [files[files.length - 1].fileName],
-        { scope: 'all', plugins: [reactPlugin] },
+        {
+          scope: 'all',
+          plugins: [reactPlugin],
+          collectDiagnostics,
+        },
         { program: tsvfs.program },
       );
       setResults(types);
@@ -23,7 +30,36 @@ export const Results: FC<{ sandbox: Sandbox }> = ({ sandbox }) => {
   };
   return (
     <div>
-      <button onClick={onClick}>Get types</button>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        <button onClick={() => onClick(diagnostics)}>Get types</button>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}
+        >
+          <input
+            type="checkbox"
+            id="diagnostics"
+            checked={diagnostics}
+            onClick={() => {
+              setDiagnostics(!diagnostics);
+              onClick(!diagnostics);
+            }}
+          />
+          <label htmlFor="diagnostics">
+            <span style={{ paddingLeft: '2px' }}>diagnostics</span>
+          </label>
+        </div>
+      </div>
       <div style={{ marginTop: '20px' }}>
         {Object.keys(results).map((key) => (
           <div key={key} className="ast" style={{ paddingBottom: '15px' }}>

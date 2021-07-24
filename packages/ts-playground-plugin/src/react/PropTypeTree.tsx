@@ -66,16 +66,25 @@ export const PropTypeTree: FC<PropTypeTreeProps> = ({ data, name }) => {
         </a>
       )}
       <ul className="ast-tree">
-        {Object.keys(data).map((key) => (
-          <li key={key}>
-            {`${key}${
-              Array.isArray((data as any)[key])
-                ? ` (${(data as any)[key].length})`
-                : ''
-            }: `}
-            {propValue(key, (data as any)[key])}
-          </li>
-        ))}
+        {Array.isArray(data)
+          ? data.map((row, idx) => (
+              <li key={idx}>
+                <PropTypeTree data={row} name={idx.toString()} />
+              </li>
+            ))
+          : Object.keys(data).map((key) => (
+              <li key={key}>
+                {`${key}${
+                  Array.isArray((data as any)[key])
+                    ? ` (${(data as any)[key].length})`
+                    : ''
+                }: `}
+                {propValue(
+                  key,
+                  typeof data === 'object' ? (data as any)[key] : data,
+                )}
+              </li>
+            ))}
       </ul>
     </div>
   );
