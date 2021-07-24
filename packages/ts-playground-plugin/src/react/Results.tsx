@@ -13,7 +13,6 @@ export const Results: FC<{ sandbox: Sandbox }> = ({ sandbox }) => {
     sandbox.editor.updateOptions({ readOnly: true });
     try {
       const files = tsvfs.program.getSourceFiles();
-      console.log(diagnostics);
       const types = anaylizeFiles(
         [files[files.length - 1].fileName],
         {
