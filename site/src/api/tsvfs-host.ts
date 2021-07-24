@@ -13,7 +13,7 @@ const addReactLib = async (
   );
   const cdnContent = await cdnFile.text();
 
-  map.set(name, cdnContent);
+  map.set("/node_modules/@types/react/ + name, cdnContent);
 };
 
 export const getHost = async (
@@ -27,7 +27,7 @@ export const getHost = async (
     true,
     ts,
   );
-  await addReactLib('/react.d.ts', 'index.d.ts', fsMap);
+  await addReactLib('index.d.ts', 'index.d.ts', fsMap);
   fsMap.set(fileName, code);
   const system = tsvfs.createSystem(fsMap);
   return tsvfs.createVirtualCompilerHost(system, compilerOptions, ts);
