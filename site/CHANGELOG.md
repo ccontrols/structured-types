@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.16.3](https://github.com/ccontrols/structured-types/compare/v3.16.2...v3.16.3) (2021-07-24)
+
+
+### Bug Fixes
+
+* install types dependencies ([35651c2](https://github.com/ccontrols/structured-types/commit/35651c25913453775a24c6d155cc1d4d3c9aac22))
+* remove csstype resolution ([bd2a2c8](https://github.com/ccontrols/structured-types/commit/bd2a2c8ec9662fb667fc0af3309627627fae0336))
+* versions ([208e345](https://github.com/ccontrols/structured-types/commit/208e3451c57fa47d44628a763c0c940f87bc0612))
+
+
+
+
+
 ## [3.16.2](https://github.com/ccontrols/structured-types/compare/v3.16.1...v3.16.2) (2021-07-23)
 
 

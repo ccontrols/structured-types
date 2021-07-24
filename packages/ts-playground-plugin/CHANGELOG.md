@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.16.3](https://github.com/ccontrols/structured-types/compare/v3.16.2...v3.16.3) (2021-07-24)
+
+
+### Bug Fixes
+
+* remove log ([359e556](https://github.com/ccontrols/structured-types/commit/359e556676a970fea71b7e92dfa5bbf9aee4c722))
+
+
+
+
+
 ## [3.16.2](https://github.com/ccontrols/structured-types/compare/v3.16.1...v3.16.2) (2021-07-23)
 
 
