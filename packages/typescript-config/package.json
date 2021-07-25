@@ -16,9 +16,9 @@
   "scripts": {
     "build": "NODE_ENV=production yarn rollup -c",
     "dev": "NODE_ENV=development yarn rollup -cw",
-    "fix": "yarn lint --fix",
     "prepare": "yarn build",
-    "lint": "yarn eslint . --ext mdx,ts,tsx",
+    "lint": "yarn eslint . --ext ts,tsx",
+    "fix": "yarn lint --fix",
     "clean": "rimraf dist coverage tsconfig.tsbuildinfo",
     "test": "yarn jest"
   },

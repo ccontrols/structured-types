@@ -19,7 +19,8 @@
     "build:tsc": "tsc -b",
     "create-dts": "node scripts/getDTS.js",
     "start": "NODE_ENV=development concurrently -p \"[{name}]\" -n \"ROLLUP,SITE\" -c \"bgBlue.bold,bgMagenta.bold\" \"yarn rollup -c rollup.config.js --watch\" \"yarn serve dist\"",
-    "lint": "yarn eslint . --ext mdx,ts,tsx",
+    "lint": "yarn eslint . --ext ts,tsx",
+    "fix": "yarn lint --fix",
     "clean": "rimraf dist coverage tsconfig.tsbuildinfo"
   },
   "homepage": "https://github.com/ccontrols/structured-types",

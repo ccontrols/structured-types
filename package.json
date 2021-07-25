@@ -16,12 +16,18 @@
     "bootstrap": "lerna bootstrap",
     "clean": "lerna run --parallel clean",
     "start": "cd site && yarn start",
-    "lint": "lerna run --parallel lint",
     "dev": "lerna run --parallel dev",
     "build": "lerna run build",
     "build:site": "lerna run --scope structured-types-site build",
+    "packages": "yarn fix && yarn lint && yarn build && yarn test",
+    "fix": "lerna run --parallel fix && echo",
+    "startup": "yarn bootstrap && yarn build && yarn dev",
+    "lint": "lerna run --parallel lint",
     "test": "lerna run test --stream",
-    "release": "lerna publish"
+    "prerelease": "yarn run packages",
+    "release": "lerna publish --conventional-commits --yes",
+    "precommit": "lint-staged",
+    "commit": "git-cz"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
