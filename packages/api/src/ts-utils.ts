@@ -187,6 +187,11 @@ export interface ParseOptions {
    */
   consolidateParents?: boolean;
   /**
+   * whether to collect generics parameters
+   */
+  collectGenerics?: boolean;
+
+  /**
    * whether to collect errors/diagnostics
    */
   collectDiagnostics?: boolean;
@@ -212,6 +217,7 @@ export type ParsePlugin = Omit<DocsOptions, 'resolvers'> & {
 
 export const defaultParseOptions: ParseOptions = {
   consolidateParents: false,
+  collectGenerics: true,
   internalTypes: [
     'Function',
     'CallableFunction',

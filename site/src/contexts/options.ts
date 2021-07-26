@@ -54,13 +54,17 @@ export const defaultOptions: OptionsTypes = {
         type: 'textarea',
         help: 'List of export names to be extracted during parsing. By default all exports will be extracted.',
       },
+      collectDiagnostics: {
+        defaultValue: false,
+        help: 'Whether to collect errors/diagnostics from the typescript compiler',
+      },
       consolidateParents: {
         defaultValue: false,
         help: 'Whether to extract and consolidate the "parent" props into their own branch `__parents`. Will allow full introspection of parent-level properties and can save space if the same properties are used multiple times across your code.',
       },
-      collectDiagnostics: {
-        defaultValue: false,
-        help: 'Whether to collect errors/diagnostics from the typescript compiler',
+      collectGenerics: {
+        defaultValue: true,
+        help: 'Whether to collect generics parameters.',
       },
     },
   },

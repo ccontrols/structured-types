@@ -356,7 +356,12 @@ export class SymbolParser implements ISymbolParser {
         if (node.type?.kind && tsKindToPropKind[node.type.kind]) {
           prop.kind = tsKindToPropKind[node.type.kind];
         }
-        if (hasGenerics(prop) && isGenericsType(node) && node.typeParameters) {
+        if (
+          this.options.collectGenerics &&
+          hasGenerics(prop) &&
+          isGenericsType(node) &&
+          node.typeParameters
+        ) {
           prop.generics = this.parseProperties(node.typeParameters);
         }
         this.parseTypeValueComments(prop, node.type);
@@ -380,6 +385,7 @@ export class SymbolParser implements ISymbolParser {
 
         if (isObjectLikeProp(prop)) {
           if (
+            this.options.collectGenerics &&
             hasGenerics(prop) &&
             isGenericsType(node) &&
             !ts.isTypeLiteralNode(node) &&
@@ -423,7 +429,11 @@ export class SymbolParser implements ISymbolParser {
         } else {
           prop.type = node.getText();
         }
-        if (node.typeArguments?.length && hasGenerics(prop)) {
+        if (
+          this.options.collectGenerics &&
+          node.typeArguments?.length &&
+          hasGenerics(prop)
+        ) {
           prop.generics = this.parseProperties(node.typeArguments);
         }
         prop.kind = PropKind.Type;
@@ -650,6 +660,7 @@ export class SymbolParser implements ISymbolParser {
           }
 
           if (
+            this.options.collectGenerics &&
             !resolved.skipGenerics &&
             resolvedDeclaration &&
             isTypeParameterType(resolvedDeclaration) &&
