@@ -17,20 +17,20 @@ describe('function-component', () => {
     });
     expect(result).toEqual({
       default: {
-        displayName: 'CustomComponentName',
+        name: 'CustomComponentName',
         framework: 'react',
         kind: 11,
         properties: [
           {
             parent: 'OwnProps',
             optional: true,
-            displayName: 'stringProp',
+            name: 'stringProp',
             kind: 1,
             description: 'stringProp description',
           },
           {
             parent: 'OwnProps',
-            displayName: 'numberProp',
+            name: 'numberProp',
             kind: 2,
             description: 'numberProp description',
           },
@@ -45,21 +45,21 @@ describe('function-component', () => {
     });
     expect(result).toEqual({
       default: {
-        displayName: 'MyComponent',
+        name: 'MyComponent',
         framework: 'react',
         kind: 11,
         properties: [
           {
             parent: 'OwnProps',
             optional: true,
-            displayName: 'stringProp',
+            name: 'stringProp',
             kind: 1,
             description: 'stringProp description',
             value: 'test',
           },
           {
             parent: 'OwnProps',
-            displayName: 'numberProp',
+            name: 'numberProp',
             kind: 2,
             description: 'numberProp description',
           },
@@ -74,19 +74,19 @@ describe('function-component', () => {
     });
     expect(result).toEqual({
       MyComponent: {
-        displayName: 'MyComponent',
+        name: 'MyComponent',
         kind: 11,
         framework: 'react',
         properties: [
           {
             parent: 'PrimitmiveProps',
-            displayName: 'stringProp',
+            name: 'stringProp',
             kind: 1,
           },
           {
             parent: 'ComponentProps',
             optional: true,
-            displayName: 'prop1',
+            name: 'prop1',
             kind: 4,
             properties: [
               {
@@ -109,7 +109,7 @@ describe('function-component', () => {
     });
     expect(result).toEqual({
       MyComponent: {
-        displayName: 'MyComponent',
+        name: 'MyComponent',
         kind: 11,
         framework: 'react',
       },
@@ -122,19 +122,19 @@ describe('function-component', () => {
     });
     expect(result).toEqual({
       MyComponent: {
-        displayName: 'MyComponent',
+        name: 'MyComponent',
         kind: 11,
         framework: 'react',
         properties: [
           {
             optional: true,
-            displayName: 'name',
+            name: 'name',
             kind: 1,
             description: 'optional string prop',
             value: 'hello',
           },
           {
-            displayName: 'numProp',
+            name: 'numProp',
             kind: 2,
             description: 'a required number prop',
           },
@@ -152,12 +152,12 @@ describe('function-component', () => {
     );
     expect(result).toEqual({
       MyComponent: {
-        displayName: 'MyComponent',
+        name: 'MyComponent',
         kind: 11,
         framework: 'react',
         properties: [
           {
-            displayName: 'name',
+            name: 'name',
             optional: true,
             kind: 1,
             value: 'hello',
@@ -172,12 +172,12 @@ describe('function-component', () => {
     });
     expect(result).toEqual({
       MyComponent: {
-        displayName: 'MyComponent',
+        name: 'MyComponent',
         kind: 11,
         framework: 'react',
         properties: [
           {
-            displayName: 'name',
+            name: 'name',
             optional: true,
             kind: 1,
             value: 'hello',

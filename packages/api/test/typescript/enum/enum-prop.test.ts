@@ -6,26 +6,26 @@ describe('enum', () => {
     const results = parseFiles([path.resolve(__dirname, 'string-enum.ts')]);
     expect(results).toEqual({
       StringEnums: {
-        displayName: 'StringEnums',
+        name: 'StringEnums',
         kind: 5,
         properties: [
           {
-            displayName: 'Up',
+            name: 'Up',
             kind: 1,
             value: 'UP',
           },
           {
-            displayName: 'Down',
+            name: 'Down',
             kind: 1,
             value: 'DOWN',
           },
           {
-            displayName: 'Left',
+            name: 'Left',
             kind: 1,
             value: 'LEFT',
           },
           {
-            displayName: 'Right',
+            name: 'Right',
             kind: 1,
             value: 'RIGHT',
             description: 'right enum property',
@@ -41,23 +41,23 @@ describe('enum', () => {
       InitializedEnum: {
         description: 'this is an enum with an initialized element',
         kind: 5,
-        displayName: 'InitializedEnum',
+        name: 'InitializedEnum',
         properties: [
           {
             description: 'enum starts at 1',
-            displayName: 'Up',
+            name: 'Up',
             kind: 2,
             value: 1,
           },
           {
             description: 'second element',
-            displayName: 'Down',
+            name: 'Down',
           },
           {
-            displayName: 'Left',
+            name: 'Left',
           },
           {
-            displayName: 'Right',
+            name: 'Right',
           },
         ],
       },

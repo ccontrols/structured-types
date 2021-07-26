@@ -9,10 +9,10 @@ const simpleResults = {
     properties: [
       {
         kind: 1,
-        displayName: 'name',
+        name: 'name',
       },
     ],
-    displayName: 'MyComponent',
+    name: 'MyComponent',
   },
 };
 describe('class-component', () => {
@@ -26,14 +26,14 @@ describe('class-component', () => {
     );
     expect(result).toEqual({
       default: {
-        displayName: 'CustomComponentName',
+        name: 'CustomComponentName',
         framework: 'react',
         kind: 13,
         properties: [
           {
             parent: 'OwnProps',
             optional: true,
-            displayName: 'stringProp',
+            name: 'stringProp',
             kind: 1,
             description: 'stringProp description',
             value: 'test',
@@ -41,7 +41,7 @@ describe('class-component', () => {
           {
             parent: 'OwnProps',
             kind: 2,
-            displayName: 'numberProp',
+            name: 'numberProp',
             description: 'numberProp description',
           },
         ],
@@ -59,14 +59,14 @@ describe('class-component', () => {
     );
     expect(result).toEqual({
       default: {
-        displayName: 'MyComponent',
+        name: 'MyComponent',
         kind: 13,
         framework: 'react',
         properties: [
           {
             parent: 'OwnProps',
             optional: true,
-            displayName: 'stringProp',
+            name: 'stringProp',
             kind: 1,
             description: 'stringProp description',
             value: 'test',
@@ -74,7 +74,7 @@ describe('class-component', () => {
           {
             parent: 'OwnProps',
             kind: 2,
-            displayName: 'numberProp',
+            name: 'numberProp',
             description: 'numberProp description',
           },
         ],
@@ -93,7 +93,7 @@ describe('class-component', () => {
     expect(result).toEqual({
       MyComponent: {
         framework: 'react',
-        displayName: 'CustomComponentName',
+        name: 'CustomComponentName',
         kind: 13,
         description: 'MyComponent special component',
       },
@@ -111,13 +111,13 @@ describe('class-component', () => {
     expect(result).toEqual({
       MyComponent: {
         framework: 'react',
-        displayName: 'MyComponent',
+        name: 'MyComponent',
         kind: 13,
         properties: [
           {
             parent: 'OwnProps',
             optional: true,
-            displayName: 'stringProp',
+            name: 'stringProp',
             kind: 1,
             description: 'stringProp description',
             value: 'test',
@@ -125,7 +125,7 @@ describe('class-component', () => {
           {
             parent: 'OwnProps',
             kind: 2,
-            displayName: 'numberProp',
+            name: 'numberProp',
             description: 'numberProp description',
           },
         ],
@@ -182,21 +182,21 @@ describe('class-component', () => {
     });
     expect(result).toEqual({
       default: {
-        displayName: 'MyComponent',
+        name: 'MyComponent',
         kind: 13,
         framework: 'react',
         properties: [
           {
             parent: 'OwnProps',
             optional: true,
-            displayName: 'stringProp',
+            name: 'stringProp',
             kind: 1,
             description: 'stringProp description',
           },
           {
             parent: 'OwnProps',
             kind: 2,
-            displayName: 'numberProp',
+            name: 'numberProp',
             description: 'numberProp description',
           },
         ],
@@ -211,21 +211,21 @@ describe('class-component', () => {
     });
     expect(result).toEqual({
       MyComponent: {
-        displayName: 'MyComponent',
+        name: 'MyComponent',
         kind: 13,
         framework: 'react',
         properties: [
           {
             parent: 'OwnProps',
             optional: true,
-            displayName: 'stringProp',
+            name: 'stringProp',
             kind: 1,
             description: 'stringProp description',
           },
           {
             parent: 'OwnProps',
             kind: 2,
-            displayName: 'numberProp',
+            name: 'numberProp',
             description: 'numberProp description',
           },
         ],

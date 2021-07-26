@@ -31,8 +31,8 @@ const propValue = (name: string, value: any): ReactNode => {
         return (
           <div>
             {value.map((v, idx) => (
-              <div key={v.displayName || idx}>
-                <PropTypeTree data={v} name={v.displayName || idx.toString()} />
+              <div key={v.name || idx}>
+                <PropTypeTree data={v} name={v.name || idx.toString()} />
               </div>
             ))}
           </div>

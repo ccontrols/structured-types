@@ -12,19 +12,19 @@ describe('type', () => {
             description: 'type index property',
             kind: 20,
             index: {
-              displayName: 'index',
+              name: 'index',
               kind: 1,
             },
             type: {
               kind: 15,
               properties: [
                 {
-                  displayName: 'a',
+                  name: 'a',
                   kind: 15,
                   type: 'Bear',
                 },
                 {
-                  displayName: 'b',
+                  name: 'b',
                   kind: 10,
                 },
               ],
@@ -33,11 +33,11 @@ describe('type', () => {
           {
             description: 'this is an additional name prop',
             optional: true,
-            displayName: 'name',
+            name: 'name',
             kind: 1,
           },
         ],
-        displayName: 'IndexT',
+        name: 'IndexT',
       },
     });
   });
@@ -48,17 +48,17 @@ describe('type', () => {
         kind: 15,
         generics: [
           {
-            displayName: 'Type',
+            name: 'Type',
           },
         ],
         properties: [
           {
             type: 'Type',
             kind: 15,
-            displayName: 'contents',
+            name: 'contents',
           },
         ],
-        displayName: 'GenericType',
+        name: 'GenericType',
       },
     });
   });
@@ -67,17 +67,17 @@ describe('type', () => {
     const results = parseFiles([path.resolve(__dirname, 'generic-array.ts')]);
     expect(results).toEqual({
       GenericArrayType: {
-        displayName: 'GenericArrayType',
+        name: 'GenericArrayType',
         kind: 16,
         generics: [
           {
-            displayName: 'Type',
+            name: 'Type',
           },
         ],
         properties: [
           {
             kind: 15,
-            displayName: 'Type',
+            name: 'Type',
           },
         ],
       },
@@ -92,18 +92,18 @@ describe('type', () => {
         properties: [
           {
             description: 'field a',
-            displayName: 'a',
+            name: 'a',
             kind: 1,
             value: 'field a',
           },
           {
             description: 'field b',
             optional: true,
-            displayName: 'b',
+            name: 'b',
             kind: 2,
           },
         ],
-        displayName: 'obj',
+        name: 'obj',
       },
     });
   });
@@ -119,28 +119,28 @@ describe('type', () => {
         properties: [
           {
             description: 'interface prop',
-            displayName: 'm',
+            name: 'm',
             kind: 15,
             type: 'Type',
             parent: 'GenericInterface',
           },
         ],
-        displayName: 'GenericConsumer',
+        name: 'GenericConsumer',
       },
       __parents: {
         GenericInterface: {
           description: 'upstream interface',
-          displayName: 'GenericInterface',
+          name: 'GenericInterface',
           kind: 14,
           generics: [
             {
-              displayName: 'Type',
+              name: 'Type',
             },
           ],
           properties: [
             {
               description: 'interface prop',
-              displayName: 'm',
+              name: 'm',
               kind: 15,
               type: 'Type',
             },
@@ -160,37 +160,37 @@ describe('type', () => {
         kind: 15,
         properties: [
           {
-            displayName: 'a',
+            name: 'a',
             kind: 1,
             parent: 'A',
           },
           {
-            displayName: 'b',
+            name: 'b',
             kind: 2,
             parent: 'B',
           },
         ],
-        displayName: 'Intersect',
+        name: 'Intersect',
       },
       __parents: {
         A: {
           description: 'type A',
-          displayName: 'A',
+          name: 'A',
           kind: 15,
           properties: [
             {
-              displayName: 'a',
+              name: 'a',
               kind: 1,
             },
           ],
         },
         B: {
           description: 'type B',
-          displayName: 'B',
+          name: 'B',
           kind: 15,
           properties: [
             {
-              displayName: 'b',
+              name: 'b',
               kind: 2,
             },
           ],
@@ -210,27 +210,27 @@ describe('type', () => {
         properties: [
           {
             description: 'base type member property',
-            displayName: 'm',
+            name: 'm',
             kind: 1,
             parent: 'T',
           },
           {
             description: 'own member',
-            displayName: 'honey',
+            name: 'honey',
             kind: 3,
           },
         ],
-        displayName: 'ExtendT',
+        name: 'ExtendT',
       },
       __parents: {
         T: {
           description: 'base type',
-          displayName: 'T',
+          name: 'T',
           kind: 15,
           properties: [
             {
               description: 'base type member property',
-              displayName: 'm',
+              name: 'm',
               kind: 1,
             },
           ],
@@ -248,34 +248,34 @@ describe('type', () => {
         properties: [
           {
             description: 'member field',
-            displayName: 'm',
+            name: 'm',
             kind: 15,
             type: 'Type',
             parent: 'GenericArrayType',
           },
         ],
-        displayName: 'NestedGenericType',
+        name: 'NestedGenericType',
 
         generics: [
           {
-            displayName: 'Type',
+            name: 'Type',
           },
         ],
       },
       __parents: {
         GenericArrayType: {
           description: 'generic interface',
-          displayName: 'GenericArrayType',
+          name: 'GenericArrayType',
           kind: 15,
           generics: [
             {
-              displayName: 'Type',
+              name: 'Type',
             },
           ],
           properties: [
             {
               description: 'member field',
-              displayName: 'm',
+              name: 'm',
               kind: 15,
               type: 'Type',
             },
@@ -289,11 +289,11 @@ describe('type', () => {
     const results = parseFiles([path.resolve(__dirname, 'union-generic.ts')]);
     expect(results).toEqual({
       UnionGenericType: {
-        displayName: 'UnionGenericType',
+        name: 'UnionGenericType',
         kind: 4,
         properties: [
           {
-            displayName: 'Type',
+            name: 'Type',
             kind: 15,
           },
           {
@@ -314,10 +314,10 @@ describe('type', () => {
           {
             description: 'type member property',
             kind: 1,
-            displayName: 'm',
+            name: 'm',
           },
         ],
-        displayName: 'T',
+        name: 'T',
       },
     });
   });

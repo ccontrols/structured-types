@@ -6,23 +6,23 @@ describe('@enum', () => {
     const results = parseFiles([path.resolve(__dirname, 'numeric-enum.js')]);
     expect(results).toEqual({
       triState: {
-        displayName: 'triState',
+        name: 'triState',
         kind: 5,
         properties: [
           {
             kind: 2,
-            displayName: 'TRUE',
+            name: 'TRUE',
             value: 1,
             description: 'The true value',
           },
           {
             kind: 2,
-            displayName: 'FALSE',
+            name: 'FALSE',
             value: -1,
           },
           {
             kind: 3,
-            displayName: 'MAYBE',
+            name: 'MAYBE',
             value: true,
           },
         ],

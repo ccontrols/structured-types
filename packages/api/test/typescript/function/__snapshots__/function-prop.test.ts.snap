@@ -3,72 +3,72 @@
 exports[`function react fc 1`] = `
 Object {
   "TypedInitializedFunction": Object {
-    "displayName": "TypedInitializedFunction",
     "generics": Array [
       Object {
-        "displayName": "P",
+        "name": "P",
       },
     ],
     "kind": 11,
+    "name": "TypedInitializedFunction",
     "parameters": Array [
       Object {
-        "displayName": "props",
         "generics": Array [
           Object {
-            "displayName": "P",
+            "name": "P",
           },
         ],
         "kind": 15,
+        "name": "props",
         "properties": Array [
           Object {
-            "displayName": "m",
             "kind": 1,
+            "name": "m",
             "optional": true,
             "parent": "Props",
           },
           Object {
-            "displayName": "children",
             "kind": 4,
+            "name": "children",
             "optional": true,
             "parent": "PropsWithChildren",
             "properties": Array [
               Object {
-                "displayName": "ReactNode",
                 "kind": 4,
+                "name": "ReactNode",
                 "properties": Array [
                   Object {
-                    "displayName": "ReactChild",
                     "kind": 4,
+                    "name": "ReactChild",
                     "properties": Array [
                       Object {
-                        "displayName": "ReactElement",
                         "generics": Array [
                           Object {
-                            "displayName": "P",
+                            "name": "P",
                           },
                           Object {
-                            "displayName": "T",
+                            "name": "T",
                           },
                         ],
                         "kind": 14,
+                        "name": "ReactElement",
                         "properties": Array [
                           Object {
-                            "displayName": "type",
                             "kind": 15,
+                            "name": "type",
                             "type": "T",
                           },
                           Object {
-                            "displayName": "props",
                             "kind": 15,
+                            "name": "props",
                             "type": "P",
                           },
                           Object {
-                            "displayName": "key",
                             "kind": 4,
+                            "name": "key",
                             "properties": Array [
                               Object {
-                                "displayName": "Key",
                                 "kind": 4,
+                                "name": "Key",
                                 "properties": Array [
                                   Object {
                                     "kind": 1,
@@ -86,8 +86,8 @@ Object {
                         ],
                       },
                       Object {
-                        "displayName": "ReactText",
                         "kind": 4,
+                        "name": "ReactText",
                         "properties": Array [
                           Object {
                             "kind": 1,
@@ -100,25 +100,25 @@ Object {
                     ],
                   },
                   Object {
-                    "displayName": "ReactFragment",
                     "kind": 4,
+                    "name": "ReactFragment",
                     "properties": Array [
                       Object {
                         "kind": 15,
                       },
                       Object {
-                        "displayName": "ReactNodeArray",
                         "kind": 14,
+                        "name": "ReactNodeArray",
                         "properties": Array [
                           Object {
                             "index": Object {
-                              "displayName": "n",
                               "kind": 2,
+                              "name": "n",
                             },
                             "kind": 20,
                             "type": Object {
-                              "displayName": "T",
                               "kind": 15,
+                              "name": "T",
                             },
                           },
                         ],
@@ -126,16 +126,16 @@ Object {
                     ],
                   },
                   Object {
-                    "displayName": "ReactPortal",
                     "kind": 14,
+                    "name": "ReactPortal",
                     "properties": Array [
                       Object {
-                        "displayName": "key",
                         "kind": 4,
+                        "name": "key",
                         "properties": Array [
                           Object {
-                            "displayName": "Key",
                             "kind": 4,
+                            "name": "Key",
                             "properties": Array [
                               Object {
                                 "kind": 1,
@@ -151,42 +151,42 @@ Object {
                         ],
                       },
                       Object {
-                        "displayName": "children",
                         "kind": 4,
+                        "name": "children",
                         "properties": Array [
                           Object {
-                            "displayName": "ReactChild",
                             "kind": 4,
+                            "name": "ReactChild",
                             "properties": Array [
                               Object {
-                                "displayName": "ReactElement",
                                 "generics": Array [
                                   Object {
-                                    "displayName": "P",
+                                    "name": "P",
                                   },
                                   Object {
-                                    "displayName": "T",
+                                    "name": "T",
                                   },
                                 ],
                                 "kind": 14,
+                                "name": "ReactElement",
                                 "properties": Array [
                                   Object {
-                                    "displayName": "type",
                                     "kind": 15,
+                                    "name": "type",
                                     "type": "T",
                                   },
                                   Object {
-                                    "displayName": "props",
                                     "kind": 15,
+                                    "name": "props",
                                     "type": "P",
                                   },
                                   Object {
-                                    "displayName": "key",
                                     "kind": 4,
+                                    "name": "key",
                                     "properties": Array [
                                       Object {
-                                        "displayName": "Key",
                                         "kind": 4,
+                                        "name": "Key",
                                         "properties": Array [
                                           Object {
                                             "kind": 1,
@@ -204,8 +204,8 @@ Object {
                                 ],
                               },
                               Object {
-                                "displayName": "ReactText",
                                 "kind": 4,
+                                "name": "ReactText",
                                 "properties": Array [
                                   Object {
                                     "kind": 1,
@@ -218,20 +218,20 @@ Object {
                             ],
                           },
                           Object {
-                            "displayName": "ReactFragment",
                             "kind": 4,
+                            "name": "ReactFragment",
                             "properties": Array [
                               Object {
                                 "kind": 15,
                               },
                               Object {
-                                "displayName": "ReactNodeArray",
                                 "kind": 14,
+                                "name": "ReactNodeArray",
                                 "properties": Array [
                                   Object {
                                     "index": Object {
-                                      "displayName": "n",
                                       "kind": 2,
+                                      "name": "n",
                                     },
                                     "kind": 20,
                                     "type": Object {
@@ -243,16 +243,16 @@ Object {
                             ],
                           },
                           Object {
-                            "displayName": "ReactPortal",
                             "kind": 14,
+                            "name": "ReactPortal",
                             "properties": Array [
                               Object {
-                                "displayName": "key",
                                 "kind": 4,
+                                "name": "key",
                                 "properties": Array [
                                   Object {
-                                    "displayName": "Key",
                                     "kind": 4,
+                                    "name": "Key",
                                     "properties": Array [
                                       Object {
                                         "kind": 1,
@@ -268,8 +268,8 @@ Object {
                                 ],
                               },
                               Object {
-                                "displayName": "children",
                                 "kind": 4,
+                                "name": "children",
                                 "properties": Array [
                                   Object {
                                     "kind": 15,
@@ -293,14 +293,14 @@ Object {
                                 "type": "ReactNode",
                               },
                               Object {
-                                "displayName": "type",
                                 "kind": 15,
+                                "name": "type",
                                 "parent": "ReactElement",
                                 "type": "T",
                               },
                               Object {
-                                "displayName": "props",
                                 "kind": 15,
+                                "name": "props",
                                 "parent": "ReactElement",
                                 "type": "P",
                               },
@@ -319,14 +319,14 @@ Object {
                         "type": "ReactNode",
                       },
                       Object {
-                        "displayName": "type",
                         "kind": 15,
+                        "name": "type",
                         "parent": "ReactElement",
                         "type": "T",
                       },
                       Object {
-                        "displayName": "props",
                         "kind": 15,
+                        "name": "props",
                         "parent": "ReactElement",
                         "type": "P",
                       },
@@ -353,19 +353,19 @@ Object {
     ],
     "properties": Array [
       Object {
-        "displayName": "propTypes",
         "kind": 4,
+        "name": "propTypes",
         "optional": true,
         "parent": "FunctionComponent",
         "properties": Array [
           Object {
-            "displayName": "WeakValidationMap",
             "generics": Array [
               Object {
-                "displayName": "T",
+                "name": "T",
               },
             ],
             "kind": 15,
+            "name": "WeakValidationMap",
           },
           Object {
             "kind": 8,
@@ -373,19 +373,19 @@ Object {
         ],
       },
       Object {
-        "displayName": "contextTypes",
         "kind": 4,
+        "name": "contextTypes",
         "optional": true,
         "parent": "FunctionComponent",
         "properties": Array [
           Object {
-            "displayName": "ValidationMap",
             "generics": Array [
               Object {
-                "displayName": "T",
+                "name": "T",
               },
             ],
             "kind": 15,
+            "name": "ValidationMap",
           },
           Object {
             "kind": 8,
@@ -393,20 +393,20 @@ Object {
         ],
       },
       Object {
-        "displayName": "defaultProps",
         "kind": 4,
+        "name": "defaultProps",
         "optional": true,
         "parent": "FunctionComponent",
         "properties": Array [
           Object {
             "description": "Make all properties in T optional",
-            "displayName": "Partial",
             "generics": Array [
               Object {
-                "displayName": "T",
+                "name": "T",
               },
             ],
             "kind": 15,
+            "name": "Partial",
           },
           Object {
             "kind": 8,
@@ -414,8 +414,8 @@ Object {
         ],
       },
       Object {
-        "displayName": "displayName",
         "kind": 4,
+        "name": "displayName",
         "optional": true,
         "parent": "FunctionComponent",
         "properties": Array [

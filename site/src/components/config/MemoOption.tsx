@@ -32,9 +32,9 @@ export const MemoOption: FC<
           updateOption(e.target.value.split('/n').map((l) => l.trim()));
         }}
       />
-      <Markdown sx={{ color: 'mutedText', maxWidth: '300px', my: 1 }}>
-        {help}
-      </Markdown>
+      <div sx={{ '>div': { color: 'mutedText', maxWidth: '400px', my: 1 } }}>
+        <Markdown>{help}</Markdown>
+      </div>
     </Box>
   );
 };

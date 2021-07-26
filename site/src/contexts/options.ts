@@ -56,11 +56,11 @@ export const defaultOptions: OptionsTypes = {
       },
       consolidateParents: {
         defaultValue: false,
-        help: 'Whether to save the "parent" props',
+        help: 'Whether to extract and consolidate the "parent" props into their own branch `__parents`. Will allow full introspection of parent-level properties and can save space if the same properties are used multiple times across your code.',
       },
       collectDiagnostics: {
         defaultValue: false,
-        help: 'whether to collect errors/diagnostics',
+        help: 'Whether to collect errors/diagnostics from the typescript compiler',
       },
     },
   },

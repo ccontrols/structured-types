@@ -9,7 +9,7 @@ describe('any', () => {
         kind: 17,
         description: 'this is any type',
         value: 'as',
-        displayName: 'a',
+        name: 'a',
       },
     });
   });

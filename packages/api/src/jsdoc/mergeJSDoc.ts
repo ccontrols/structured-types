@@ -14,9 +14,7 @@ const mergeProps = (prop: PropType, parsed: PropType) =>
               const existingIdx =
                 src.length === dest.length
                   ? idx
-                  : src.findIndex(
-                      (p) => p.displayName === (s as PropType).displayName,
-                    );
+                  : src.findIndex((p) => p.name === (s as PropType).name);
               if (existingIdx >= 0) {
                 const merged = mergeProps(s, src[existingIdx]);
                 Object.assign(s, merged);

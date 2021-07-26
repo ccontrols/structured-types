@@ -6,14 +6,14 @@ describe('@example', () => {
     const results = parseFiles([path.resolve(__dirname, 'caption.js')]);
     expect(results).toEqual({
       method1: {
-        displayName: 'method1',
+        name: 'method1',
         kind: 11,
         parameters: [
           {
-            displayName: 'a',
+            name: 'a',
           },
           {
-            displayName: 'b',
+            name: 'b',
           },
         ],
         description: 'Solves equations of the form a * x = b',
@@ -34,14 +34,14 @@ describe('@example', () => {
     const results = parseFiles([path.resolve(__dirname, 'examples.js')]);
     expect(results).toEqual({
       method1: {
-        displayName: 'method1',
+        name: 'method1',
         kind: 11,
         parameters: [
           {
-            displayName: 'a',
+            name: 'a',
           },
           {
-            displayName: 'b',
+            name: 'b',
           },
         ],
         description: 'Solves equations of the form a * x = b',

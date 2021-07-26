@@ -5,7 +5,7 @@ describe('tuple', () => {
     const results = parseFiles([path.resolve(__dirname, 'optional-member.ts')]);
     expect(results).toEqual({
       OptionalTuple: {
-        displayName: 'OptionalTuple',
+        name: 'OptionalTuple',
         kind: 6,
         properties: [
           {
@@ -27,7 +27,7 @@ describe('tuple', () => {
     const results = parseFiles([path.resolve(__dirname, 'spread-member.ts')]);
     expect(results).toEqual({
       SpreadTuple: {
-        displayName: 'SpreadTuple',
+        name: 'SpreadTuple',
         description: 'spread member of tuple',
         kind: 6,
         properties: [
@@ -58,7 +58,7 @@ describe('tuple', () => {
     expect(results).toEqual({
       Tuple: {
         kind: 6,
-        displayName: 'Tuple',
+        name: 'Tuple',
         description: 'simple tuple',
         properties: [
           {

@@ -7,13 +7,13 @@ describe('class', () => {
 
     expect(results).toEqual({
       ClassGetters: {
-        displayName: 'ClassGetters',
+        name: 'ClassGetters',
         kind: 13,
         properties: [
           {
             description: 'member description',
             kind: 2,
-            displayName: '_length',
+            name: '_length',
             value: 0,
           },
           {
@@ -27,7 +27,7 @@ describe('class', () => {
             parameters: [
               {
                 kind: 2,
-                displayName: 'value',
+                name: 'value',
                 description: 'the new value',
               },
             ],
@@ -42,7 +42,7 @@ describe('class', () => {
     const results = parseFiles([path.resolve(__dirname, 'index-signature.ts')]);
     expect(results).toEqual({
       ClassIndexSignature: {
-        displayName: 'ClassIndexSignature',
+        name: 'ClassIndexSignature',
         kind: 13,
         properties: [
           {
@@ -50,7 +50,7 @@ describe('class', () => {
             kind: 20,
             index: {
               kind: 1,
-              displayName: 's',
+              name: 's',
             },
             type: {
               kind: 4,
@@ -63,7 +63,7 @@ describe('class', () => {
                   parameters: [
                     {
                       kind: 1,
-                      displayName: 's',
+                      name: 's',
                     },
                   ],
                   returns: {
@@ -80,12 +80,12 @@ describe('class', () => {
             },
             parameters: [
               {
-                displayName: 's',
+                name: 's',
                 description: 'input string',
                 kind: 1,
               },
             ],
-            displayName: 'check',
+            name: 'check',
             kind: 11,
           },
         ],
@@ -96,13 +96,13 @@ describe('class', () => {
     const results = parseFiles([path.resolve(__dirname, 'arrow-function.ts')]);
     expect(results).toEqual({
       ArrowFunctionClass: {
-        displayName: 'ArrowFunctionClass',
+        name: 'ArrowFunctionClass',
         kind: 13,
         properties: [
           {
             description: 'name value initialzied',
             kind: 1,
-            displayName: 'name',
+            name: 'name',
             value: 'MyClass',
           },
           {
@@ -111,7 +111,7 @@ describe('class', () => {
               kind: 1,
             },
             description: 'name accessor',
-            displayName: 'getName',
+            name: 'getName',
             kind: 11,
           },
         ],
@@ -123,26 +123,26 @@ describe('class', () => {
     const results = parseFiles([path.resolve(__dirname, 'param-modifiers.ts')]);
     expect(results).toEqual({
       ParameterModifiers: {
-        displayName: 'ParameterModifiers',
+        name: 'ParameterModifiers',
         kind: 13,
         properties: [
           {
             parameters: [
               {
-                displayName: 'x',
+                name: 'x',
                 description: 'x coordinate',
                 kind: 2,
                 visibility: 'public',
                 readonly: true,
               },
               {
-                displayName: 'y',
+                name: 'y',
                 description: 'y coordinate',
                 kind: 2,
                 visibility: 'protected',
               },
               {
-                displayName: 'z',
+                name: 'z',
                 description: 'z coordinate',
                 kind: 2,
                 visibility: 'private',
@@ -161,17 +161,17 @@ describe('class', () => {
     ]);
     expect(results).toEqual({
       GreeterInitializedMembers: {
-        displayName: 'GreeterInitializedMembers',
+        name: 'GreeterInitializedMembers',
         kind: 13,
         properties: [
           {
             kind: 1,
             readonly: true,
-            displayName: 'name',
+            name: 'name',
             value: 'world',
           },
           {
-            displayName: 'err',
+            name: 'err',
             kind: 11,
             returns: {
               kind: 12,
@@ -186,12 +186,12 @@ describe('class', () => {
     const results = parseFiles([path.resolve(__dirname, 'constructor.ts')]);
     expect(results).toEqual({
       ClassWithConstrunctor: {
-        displayName: 'ClassWithConstrunctor',
+        name: 'ClassWithConstrunctor',
         kind: 13,
         properties: [
           {
             kind: 1,
-            displayName: 'name',
+            name: 'name',
           },
           {
             description: 'constructor description',
@@ -200,7 +200,7 @@ describe('class', () => {
               {
                 kind: 1,
                 optional: true,
-                displayName: 'x',
+                name: 'x',
               },
             ],
           },
@@ -213,18 +213,18 @@ describe('class', () => {
     expect(results).toEqual({
       Point: {
         description: 'this is a class with two members',
-        displayName: 'Point',
+        name: 'Point',
         kind: 13,
         properties: [
           {
             description: 'COORDINATE X',
             kind: 2,
-            displayName: 'x',
+            name: 'x',
           },
           {
             description: 'COORDINATE Y',
             kind: 2,
-            displayName: 'y',
+            name: 'y',
           },
         ],
       },
@@ -235,18 +235,18 @@ describe('class', () => {
     const results = parseFiles([path.resolve(__dirname, 'static-members.ts')]);
     expect(results).toEqual({
       ClassStatic: {
-        displayName: 'ClassStatic',
+        name: 'ClassStatic',
         kind: 13,
         properties: [
           {
             kind: 2,
             static: true,
-            displayName: 'x',
+            name: 'x',
             value: 0,
           },
           {
             static: true,
-            displayName: 'printX',
+            name: 'printX',
             kind: 11,
           },
         ],
@@ -260,25 +260,25 @@ describe('class', () => {
 
     expect(results).toEqual({
       MemberVisibikity: {
-        displayName: 'MemberVisibikity',
+        name: 'MemberVisibikity',
         kind: 13,
         properties: [
           {
             description: 'a public method',
             visibility: 'public',
-            displayName: 'method1',
+            name: 'method1',
             kind: 11,
           },
           {
             description: 'a protected method',
             visibility: 'protected',
-            displayName: 'method2',
+            name: 'method2',
             kind: 11,
           },
           {
             description: 'a private method',
             visibility: 'private',
-            displayName: 'method3',
+            name: 'method3',
             kind: 11,
           },
         ],

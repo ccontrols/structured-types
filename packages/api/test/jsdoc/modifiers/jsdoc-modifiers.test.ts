@@ -6,18 +6,18 @@ describe('modifiers', () => {
     const results = parseFiles([path.resolve(__dirname, 'readonly.js')]);
     expect(results).toEqual({
       pieOptions: {
-        displayName: 'pieOptions',
+        name: 'pieOptions',
         kind: 15,
         properties: [
           {
             kind: 1,
-            displayName: 'plain',
+            name: 'plain',
             value: 'pie',
             description: 'Plain.',
           },
           {
             kind: 22,
-            displayName: 'aLaMode',
+            name: 'aLaMode',
             description: 'A la mode.',
             readonly: true,
           },
@@ -30,18 +30,18 @@ describe('modifiers', () => {
     const results = parseFiles([path.resolve(__dirname, 'public.js')]);
     expect(results).toEqual({
       Documents: {
-        displayName: 'Documents',
+        name: 'Documents',
         kind: 15,
         properties: [
           {
             kind: 2,
-            displayName: 'Newspaper',
+            name: 'Newspaper',
             value: 1,
             description: 'An ordinary newspaper.',
           },
           {
             kind: 2,
-            displayName: 'Diary',
+            name: 'Diary',
             value: 2,
             description: 'My diary.',
             visibility: 'public',
@@ -54,18 +54,18 @@ describe('modifiers', () => {
     const results = parseFiles([path.resolve(__dirname, 'protected.js')]);
     expect(results).toEqual({
       Documents: {
-        displayName: 'Documents',
+        name: 'Documents',
         kind: 15,
         properties: [
           {
             kind: 2,
-            displayName: 'Newspaper',
+            name: 'Newspaper',
             value: 1,
             description: 'An ordinary newspaper.',
           },
           {
             kind: 2,
-            displayName: 'Diary',
+            name: 'Diary',
             value: 2,
             description: 'My diary.',
             visibility: 'protected',
@@ -78,18 +78,18 @@ describe('modifiers', () => {
     const results = parseFiles([path.resolve(__dirname, 'private.js')]);
     expect(results).toEqual({
       Documents: {
-        displayName: 'Documents',
+        name: 'Documents',
         kind: 15,
         properties: [
           {
             kind: 2,
-            displayName: 'Newspaper',
+            name: 'Newspaper',
             value: 1,
             description: 'An ordinary newspaper.',
           },
           {
             kind: 2,
-            displayName: 'Diary',
+            name: 'Diary',
             value: 2,
             description: 'My diary.',
             visibility: 'private',

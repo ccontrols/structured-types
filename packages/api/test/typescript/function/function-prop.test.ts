@@ -11,13 +11,13 @@ describe('function', () => {
 
     expect(results).toEqual({
       fn: {
-        displayName: 'fn',
+        name: 'fn',
         kind: 11,
         properties: [
           {
             kind: 1,
             description: 'custom property for a function',
-            displayName: 'customProp',
+            name: 'customProp',
             value: 'my custom prop',
           },
         ],
@@ -37,26 +37,26 @@ describe('function', () => {
       printCoord: {
         parameters: [
           {
-            displayName: 'pt',
+            name: 'pt',
             description: 'object parameter',
             kind: 15,
             properties: [
               {
                 description: 'x coordinate',
                 kind: 2,
-                displayName: 'x',
+                name: 'x',
               },
               {
                 description: 'optional y coordinate',
                 kind: 2,
                 optional: true,
-                displayName: 'y',
+                name: 'y',
               },
             ],
           },
         ],
         description: 'print coordinates',
-        displayName: 'printCoord',
+        name: 'printCoord',
         kind: 11,
         returns: {
           kind: 12,
@@ -71,28 +71,28 @@ describe('function', () => {
     );
     expect(results).toEqual({
       genericFunction: {
-        displayName: 'genericFunction',
+        name: 'genericFunction',
         kind: 11,
         parameters: [
           {
-            displayName: 'box',
+            name: 'box',
             kind: 14,
             properties: [
               {
                 parent: 'GenericInterface',
-                displayName: 'm',
+                name: 'm',
                 kind: 15,
                 type: 'T',
               },
             ],
             generics: [
               {
-                displayName: 'T',
+                name: 'T',
               },
             ],
           },
           {
-            displayName: 'newContents',
+            name: 'newContents',
             kind: 15,
             type: 'Type',
           },
@@ -101,38 +101,38 @@ describe('function', () => {
           kind: 14,
           properties: [
             {
-              displayName: 'm',
+              name: 'm',
               kind: 15,
               type: 'T',
             },
           ],
           generics: [
             {
-              displayName: 'T',
+              name: 'T',
             },
           ],
-          displayName: 'GenericInterface',
+          name: 'GenericInterface',
         },
         types: [
           {
-            displayName: 'Type',
+            name: 'Type',
           },
         ],
       },
       __parents: {
         GenericInterface: {
-          displayName: 'GenericInterface',
+          name: 'GenericInterface',
           kind: 14,
           properties: [
             {
-              displayName: 'm',
+              name: 'm',
               kind: 15,
               type: 'T',
             },
           ],
           generics: [
             {
-              displayName: 'T',
+              name: 'T',
             },
           ],
         },
@@ -147,7 +147,7 @@ describe('function', () => {
     );
     expect(results).toEqual({
       paintHomeyBear: {
-        displayName: 'paintHomeyBear',
+        name: 'paintHomeyBear',
         kind: 11,
         parameters: [
           {
@@ -156,17 +156,17 @@ describe('function', () => {
               {
                 parent: 'T',
                 kind: 1,
-                displayName: 'm',
+                name: 'm',
                 description: 'base type member property',
               },
               {
                 kind: 3,
-                displayName: 'honey',
+                name: 'honey',
                 description: 'own member',
               },
             ],
             description: 'extended type',
-            displayName: 'ExtendT',
+            name: 'ExtendT',
           },
         ],
         returns: {
@@ -174,41 +174,41 @@ describe('function', () => {
           properties: [
             {
               kind: 3,
-              displayName: 'honey',
+              name: 'honey',
               description: 'boolean type member',
             },
             {
               parent: 'Internal',
               kind: 1,
-              displayName: 'm',
+              name: 'm',
               description: 'string type member',
             },
           ],
           description: 'interface extending another one',
-          displayName: 'Bear',
+          name: 'Bear',
         },
         description: 'exported function',
       },
       __parents: {
         T: {
-          displayName: 'T',
+          name: 'T',
           kind: 15,
           properties: [
             {
               kind: 1,
-              displayName: 'm',
+              name: 'm',
               description: 'base type member property',
             },
           ],
           description: 'base type',
         },
         Internal: {
-          displayName: 'Internal',
+          name: 'Internal',
           kind: 14,
           properties: [
             {
               kind: 1,
-              displayName: 'm',
+              name: 'm',
               description: 'string type member',
             },
           ],
@@ -222,7 +222,7 @@ describe('function', () => {
     const results = parseFiles([path.resolve(__dirname, 'tuple-parameter.ts')]);
     expect(results).toEqual({
       distanceFromOrigin: {
-        displayName: 'distanceFromOrigin',
+        name: 'distanceFromOrigin',
         kind: 11,
         parameters: [
           {
@@ -249,11 +249,11 @@ describe('function', () => {
     ]);
     expect(results).toEqual({
       spreadTupleFunction: {
-        displayName: 'spreadTupleFunction',
+        name: 'spreadTupleFunction',
         kind: 11,
         parameters: [
           {
-            displayName: 'args',
+            name: 'args',
             kind: 6,
             properties: [
               {
@@ -287,11 +287,11 @@ describe('function', () => {
     const results = parseFiles([path.resolve(__dirname, 'union-parameter.ts')]);
     expect(results).toEqual({
       printId: {
-        displayName: 'printId',
+        name: 'printId',
         kind: 11,
         parameters: [
           {
-            displayName: 'id',
+            name: 'id',
             kind: 4,
             properties: [
               {
@@ -316,13 +316,13 @@ describe('function', () => {
       greet: {
         parameters: [
           {
-            displayName: 'name',
+            name: 'name',
             description: 'string type parameters',
             kind: 1,
           },
         ],
         description: 'greeting function',
-        displayName: 'greet',
+        name: 'greet',
         kind: 11,
       },
     });
@@ -332,13 +332,13 @@ describe('function', () => {
     expect(results).toEqual({
       arrowGreet: {
         description: 'arrow greeting function',
-        displayName: 'arrowGreet',
+        name: 'arrowGreet',
         kind: 11,
         parameters: [
           {
             description: 'name parameter inline description',
             kind: 1,
-            displayName: 'name',
+            name: 'name',
           },
         ],
         returns: {

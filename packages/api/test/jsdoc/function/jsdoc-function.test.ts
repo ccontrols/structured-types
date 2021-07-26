@@ -6,16 +6,16 @@ describe('function', () => {
     const results = parseFiles([path.resolve(__dirname, 'return-promise.js')]);
     expect(results).toEqual({
       sumAsync: {
-        displayName: 'sumAsync',
+        name: 'sumAsync',
         kind: 11,
         parameters: [
           {
             kind: 2,
-            displayName: 'a',
+            name: 'a',
           },
           {
             kind: 2,
-            displayName: 'b',
+            name: 'b',
           },
         ],
         returns: {
@@ -31,20 +31,20 @@ describe('function', () => {
     const results = parseFiles([path.resolve(__dirname, 'multiple-types.js')]);
     expect(results).toEqual({
       sum: {
-        displayName: 'sum',
+        name: 'sum',
         kind: 11,
         parameters: [
           {
             kind: 2,
-            displayName: 'a',
+            name: 'a',
           },
           {
             kind: 2,
-            displayName: 'b',
+            name: 'b',
           },
           {
             kind: 3,
-            displayName: 'retArr',
+            name: 'retArr',
             description: 'If set to true, the function will return an array',
           },
         ],
@@ -71,16 +71,16 @@ describe('function', () => {
     ]);
     expect(results).toEqual({
       sum: {
-        displayName: 'sum',
+        name: 'sum',
         kind: 11,
         parameters: [
           {
             kind: 2,
-            displayName: 'a',
+            name: 'a',
           },
           {
             kind: 2,
-            displayName: 'b',
+            name: 'b',
           },
         ],
         returns: {
@@ -95,16 +95,16 @@ describe('function', () => {
     const results = parseFiles([path.resolve(__dirname, 'return-type.js')]);
     expect(results).toEqual({
       sum: {
-        displayName: 'sum',
+        name: 'sum',
         kind: 11,
         parameters: [
           {
             kind: 2,
-            displayName: 'a',
+            name: 'a',
           },
           {
             kind: 2,
-            displayName: 'b',
+            name: 'b',
           },
         ],
         returns: {
@@ -118,17 +118,17 @@ describe('function', () => {
     const results = parseFiles([path.resolve(__dirname, 'tags-function.js')]);
     expect(results).toEqual({
       sum: {
-        displayName: 'sum',
+        name: 'sum',
         kind: 11,
         parameters: [
           {
             kind: 2,
-            displayName: 'a',
+            name: 'a',
             description: 'first parameter to add',
           },
           {
             kind: 2,
-            displayName: 'b',
+            name: 'b',
             value: 1,
             description: 'second parameter to add',
           },

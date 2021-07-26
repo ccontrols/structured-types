@@ -6,7 +6,7 @@ describe('license', () => {
     const results = parseFiles([path.resolve(__dirname, 'full-license.js')]);
     expect(results).toEqual({
       util: {
-        displayName: 'util',
+        name: 'util',
         kind: 11,
         tags: [
           {
@@ -22,7 +22,7 @@ describe('license', () => {
     const results = parseFiles([path.resolve(__dirname, 'apache-2.js')]);
     expect(results).toEqual({
       util: {
-        displayName: 'util',
+        name: 'util',
         kind: 11,
         description: 'Utility functions for the foo package.',
         tags: [

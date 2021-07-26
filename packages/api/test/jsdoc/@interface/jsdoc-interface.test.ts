@@ -6,7 +6,7 @@ describe('@interface', () => {
     const results = parseFiles([path.resolve(__dirname, 'interface.js')]);
     expect(results).toEqual({
       Color: {
-        displayName: 'Color',
+        name: 'Color',
         kind: 14,
         description: 'Interface for classes that represent a color.',
       },

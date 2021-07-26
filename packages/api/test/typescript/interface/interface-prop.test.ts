@@ -8,11 +8,11 @@ describe('interface', () => {
     });
     expect(results).toEqual({
       InterfaceWithEnumConstant: {
-        displayName: 'InterfaceWithEnumConstant',
+        name: 'InterfaceWithEnumConstant',
         kind: 14,
         properties: [
           {
-            displayName: 'kind',
+            name: 'kind',
             kind: 1,
             description: 'kind is an enumm constant',
             parent: 'StringEnums',
@@ -21,18 +21,18 @@ describe('interface', () => {
           },
           {
             kind: 2,
-            displayName: 'radius',
+            name: 'radius',
             description: 'radius property',
           },
         ],
       },
       __parents: {
         StringEnums: {
-          displayName: 'StringEnums',
+          name: 'StringEnums',
           kind: 5,
           properties: [
             {
-              displayName: 'Up',
+              name: 'Up',
               kind: 1,
               value: 'UP',
             },
@@ -46,14 +46,14 @@ describe('interface', () => {
 
     expect(results).toEqual({
       IndexInterface: {
-        displayName: 'IndexInterface',
+        name: 'IndexInterface',
         kind: 14,
         properties: [
           {
             kind: 20,
             index: {
               kind: 2,
-              displayName: 'index',
+              name: 'index',
             },
             type: {
               kind: 1,
@@ -67,11 +67,11 @@ describe('interface', () => {
     const results = parseFiles([path.resolve(__dirname, 'jsdoc-default.ts')]);
     expect(results).toEqual({
       Interface: {
-        displayName: 'Interface',
+        name: 'Interface',
         kind: 14,
         properties: [
           {
-            displayName: 'eat',
+            name: 'eat',
             kind: 4,
             properties: [
               {
@@ -100,23 +100,23 @@ describe('interface', () => {
     ]);
     expect(results).toEqual({
       InterfaceArrayType: {
-        displayName: 'InterfaceArrayType',
+        name: 'InterfaceArrayType',
         kind: 14,
         properties: [
           {
             kind: 2,
-            displayName: 'length',
+            name: 'length',
             description: 'Gets or sets the length of the array.',
           },
           {
-            displayName: 'pop',
+            name: 'pop',
             kind: 11,
             returns: {
               kind: 4,
               properties: [
                 {
                   kind: 15,
-                  displayName: 'Type',
+                  name: 'Type',
                 },
                 {
                   kind: 8,
@@ -127,16 +127,16 @@ describe('interface', () => {
               'Removes the last element from an array and returns it.',
           },
           {
-            displayName: 'push',
+            name: 'push',
             kind: 11,
             parameters: [
               {
-                displayName: 'items',
+                name: 'items',
                 kind: 16,
                 properties: [
                   {
                     kind: 15,
-                    displayName: 'Type',
+                    name: 'Type',
                   },
                 ],
               },
@@ -150,7 +150,7 @@ describe('interface', () => {
         ],
         generics: [
           {
-            displayName: 'Type',
+            name: 'Type',
           },
         ],
       },
@@ -163,23 +163,23 @@ describe('interface', () => {
     });
     expect(results).toEqual({
       Bear: {
-        displayName: 'Bear',
+        name: 'Bear',
         kind: 14,
         properties: [
           {
             kind: 3,
-            displayName: 'honey',
+            name: 'honey',
             description: 'boolean type member',
           },
           {
             parent: 'Internal',
             kind: 1,
-            displayName: 'm',
+            name: 'm',
             description: 'string type member',
           },
           {
             parent: 'Home',
-            displayName: 'resident',
+            name: 'resident',
             kind: 15,
           },
         ],
@@ -187,32 +187,32 @@ describe('interface', () => {
       },
       __parents: {
         Internal: {
-          displayName: 'Internal',
+          name: 'Internal',
           kind: 14,
           properties: [
             {
               kind: 1,
-              displayName: 'm',
+              name: 'm',
               description: 'string type member',
             },
           ],
           description: 'internal interface with one member',
         },
         Home: {
-          displayName: 'Home',
+          name: 'Home',
           kind: 14,
           properties: [
             {
-              displayName: 'resident',
+              name: 'resident',
               kind: 15,
               properties: [
                 {
                   kind: 1,
-                  displayName: 'name',
+                  name: 'name',
                 },
                 {
                   kind: 2,
-                  displayName: 'age',
+                  name: 'age',
                 },
               ],
             },
@@ -226,37 +226,37 @@ describe('interface', () => {
     const results = parseFiles([path.resolve(__dirname, 'combined-props.ts')]);
     expect(results).toEqual({
       StringNumberPair: {
-        displayName: 'StringNumberPair',
+        name: 'StringNumberPair',
         kind: 14,
         properties: [
           {
             description: 'specialized properties',
-            displayName: 'length',
+            name: 'length',
             kind: 2,
             value: 2,
           },
           {
             kind: 1,
-            displayName: '0',
+            name: '0',
           },
           {
             kind: 2,
-            displayName: '1',
+            name: '1',
           },
           {
             description: "Other 'Array<string | number>' members...",
-            displayName: 'slice',
+            name: 'slice',
             kind: 11,
             parameters: [
               {
                 kind: 2,
                 optional: true,
-                displayName: 'start',
+                name: 'start',
               },
               {
                 kind: 2,
                 optional: true,
-                displayName: 'end',
+                name: 'end',
               },
             ],
             returns: {
@@ -284,16 +284,16 @@ describe('interface', () => {
     const results = parseFiles([path.resolve(__dirname, 'generics.ts')]);
     expect(results).toEqual({
       GenericInterface: {
-        displayName: 'GenericInterface',
+        name: 'GenericInterface',
         kind: 14,
         generics: [
           {
-            displayName: 'Type',
+            name: 'Type',
           },
         ],
         properties: [
           {
-            displayName: 'contents',
+            name: 'contents',
             kind: 15,
             type: 'Type',
           },
@@ -307,13 +307,13 @@ describe('interface', () => {
     expect(results).toEqual({
       I: {
         description: 'this is interface\nmultiple lines',
-        displayName: 'I',
+        name: 'I',
         kind: 14,
         properties: [
           {
             description: 'interface member property',
             kind: 1,
-            displayName: 'm',
+            name: 'm',
           },
         ],
       },

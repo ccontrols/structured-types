@@ -8,7 +8,7 @@ describe('union', () => {
       union: {
         description: 'strings union',
         kind: 4,
-        displayName: 'union',
+        name: 'union',
         properties: [
           {
             kind: 1,

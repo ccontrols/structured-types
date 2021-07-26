@@ -11,15 +11,15 @@ describe('object', () => {
           {
             kind: 2,
             value: 12,
-            displayName: 'a',
+            name: 'a',
           },
           {
             kind: 1,
             value: 'test',
-            displayName: 'b',
+            name: 'b',
           },
         ],
-        displayName: 'initializedObj',
+        name: 'initializedObj',
         description: 'initialized object',
       },
     });
@@ -31,7 +31,7 @@ describe('object', () => {
       obj: {
         kind: 0,
         value: undefined,
-        displayName: 'obj',
+        name: 'obj',
         description: 'exported undefined object',
       },
     });

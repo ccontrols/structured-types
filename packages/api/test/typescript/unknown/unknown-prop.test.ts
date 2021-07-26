@@ -8,7 +8,7 @@ describe('unknown', () => {
         kind: 9,
         value: undefined,
         description: 'named export unknown type',
-        displayName: 'a',
+        name: 'a',
       },
     });
   });

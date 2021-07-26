@@ -8,7 +8,7 @@ describe('number', () => {
       default: {
         kind: 2,
         description: 'export default variable',
-        displayName: 'mynumber',
+        name: 'mynumber',
       },
     });
   });
@@ -17,7 +17,7 @@ describe('number', () => {
     expect(results).toEqual({
       num: {
         kind: 2,
-        displayName: 'mynumber',
+        name: 'mynumber',
       },
     });
   });
@@ -29,7 +29,7 @@ describe('number', () => {
         kind: 2,
         value: 3.14,
         description: 'initialiazed number variable',
-        displayName: 'myNum',
+        name: 'myNum',
       },
     });
   });

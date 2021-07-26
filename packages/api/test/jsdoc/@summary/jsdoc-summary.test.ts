@@ -6,7 +6,7 @@ describe('summary', () => {
     const results = parseFiles([path.resolve(__dirname, 'summary.js')]);
     expect(results).toEqual({
       bloviate: {
-        displayName: 'bloviate',
+        name: 'bloviate',
         kind: 11,
         summary: 'A concise summary.',
         description:

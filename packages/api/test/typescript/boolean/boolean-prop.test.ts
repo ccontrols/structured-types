@@ -4,7 +4,7 @@ import { parseFiles } from '../../../src/index';
 describe('boolean', () => {
   it('export named boolean', () => {
     const results = parseFiles([path.resolve(__dirname, 'named-export.ts')]);
-    expect(results).toEqual({ bool: { kind: 3, displayName: 'bool' } });
+    expect(results).toEqual({ bool: { kind: 3, name: 'bool' } });
   });
   it('false boolean', () => {
     const results = parseFiles([
@@ -14,7 +14,7 @@ describe('boolean', () => {
       bool: {
         kind: 3,
         value: false,
-        displayName: 'bool',
+        name: 'bool',
         description: 'boolean variable initialized to false',
       },
     });
@@ -28,7 +28,7 @@ describe('boolean', () => {
       bool: {
         kind: 3,
         value: true,
-        displayName: 'bool',
+        name: 'bool',
         description: 'boolean variable initialized to true',
       },
     });

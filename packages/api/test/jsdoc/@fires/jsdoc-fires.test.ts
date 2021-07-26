@@ -6,11 +6,11 @@ describe('@fires', () => {
     const results = parseFiles([path.resolve(__dirname, 'fire-event.js')]);
     expect(results).toEqual({
       Milkshake: {
-        displayName: 'Milkshake',
+        name: 'Milkshake',
         kind: 15,
         properties: [
           {
-            displayName: 'drink',
+            name: 'drink',
             kind: 11,
           },
         ],

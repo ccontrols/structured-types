@@ -7,7 +7,7 @@ describe('string', () => {
       default: {
         kind: 1,
         description: 'export default variable',
-        displayName: 'mystring',
+        name: 'mystring',
       },
     });
   });
@@ -19,7 +19,7 @@ describe('string', () => {
         kind: 1,
         description: 'initialiazed string variable',
         value: 'a',
-        displayName: 's',
+        name: 's',
       },
     });
   });
@@ -30,7 +30,7 @@ describe('string', () => {
     expect(results).toEqual({
       str: {
         kind: 1,
-        displayName: 'mystring',
+        name: 'mystring',
       },
     });
   });

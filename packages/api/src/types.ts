@@ -49,7 +49,7 @@ export interface PropType {
    * generic properties
    */
   kind?: PropKind;
-  displayName?: string;
+  name?: string;
   parent?: string;
   optional?: boolean;
   readonly?: boolean;

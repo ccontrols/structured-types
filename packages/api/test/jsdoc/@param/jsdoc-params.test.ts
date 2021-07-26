@@ -6,11 +6,11 @@ describe('params', () => {
     const results = parseFiles([path.resolve(__dirname, 'default-string.js')]);
     expect(results).toEqual({
       sayHello: {
-        displayName: 'sayHello',
+        name: 'sayHello',
         kind: 11,
         parameters: [
           {
-            displayName: 'somebody',
+            name: 'somebody',
             description: "Somebody's name.",
             kind: 1,
             value: 'John Doe',
@@ -24,11 +24,11 @@ describe('params', () => {
     const results = parseFiles([path.resolve(__dirname, 'default-numeric.js')]);
     expect(results).toEqual({
       m: {
-        displayName: 'm',
+        name: 'm',
         kind: 11,
         parameters: [
           {
-            displayName: 'x',
+            name: 'x',
             description: 'd4 damage',
             kind: 2,
             optional: true,
@@ -43,11 +43,11 @@ describe('params', () => {
     const results = parseFiles([path.resolve(__dirname, 'optional.js')]);
     expect(results).toEqual({
       sayHello: {
-        displayName: 'sayHello',
+        name: 'sayHello',
         kind: 11,
         parameters: [
           {
-            displayName: 'somebody',
+            name: 'somebody',
             description: "Somebody's name.",
             kind: 1,
             optional: true,
@@ -63,12 +63,12 @@ describe('params', () => {
     ]);
     expect(results).toEqual({
       sayHello: {
-        displayName: 'sayHello',
+        name: 'sayHello',
         kind: 11,
         parameters: [
           {
             kind: 1,
-            displayName: 'somebody',
+            name: 'somebody',
             description: "Somebody's name.",
           },
         ],
@@ -82,12 +82,12 @@ describe('params', () => {
     ]);
     expect(results).toEqual({
       sayHello: {
-        displayName: 'sayHello',
+        name: 'sayHello',
         kind: 11,
         parameters: [
           {
             kind: 1,
-            displayName: 'somebody',
+            name: 'somebody',
             description: "Somebody's name.",
           },
         ],
@@ -99,12 +99,12 @@ describe('params', () => {
     const results = parseFiles([path.resolve(__dirname, 'name-type.js')]);
     expect(results).toEqual({
       sayHello: {
-        displayName: 'sayHello',
+        name: 'sayHello',
         kind: 11,
         parameters: [
           {
             kind: 1,
-            displayName: 'somebody',
+            name: 'somebody',
           },
         ],
       },
@@ -114,11 +114,11 @@ describe('params', () => {
     const results = parseFiles([path.resolve(__dirname, 'just-param.js')]);
     expect(results).toEqual({
       sayHello: {
-        displayName: 'sayHello',
+        name: 'sayHello',
         kind: 11,
         parameters: [
           {
-            displayName: 'somebody',
+            name: 'somebody',
           },
         ],
       },

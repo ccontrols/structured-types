@@ -6,7 +6,7 @@ describe('@ignore', () => {
     const results = parseFiles([path.resolve(__dirname, 'member-ignore.js')]);
     expect(results).toEqual({
       Clothes: {
-        displayName: 'Clothes',
+        name: 'Clothes',
         kind: 15,
         properties: [],
       },

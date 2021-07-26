@@ -22,7 +22,7 @@ describe('array', () => {
             value: 'blue',
           },
         ],
-        displayName: 'ArrayNew',
+        name: 'ArrayNew',
         description: 'create a new array object',
       },
     });
@@ -31,7 +31,7 @@ describe('array', () => {
     const results = parseFiles([path.resolve(__dirname, 'array-keyword.ts')]);
     expect(results).toEqual({
       ArrayKeyword: {
-        displayName: 'ArrayKeyword',
+        name: 'ArrayKeyword',
         kind: 16,
         properties: [
           {
@@ -53,7 +53,7 @@ describe('array', () => {
     const results = parseFiles([path.resolve(__dirname, 'string-const.ts')]);
     expect(results).toEqual({
       arrString: {
-        displayName: 'arrString',
+        name: 'arrString',
         kind: 16,
         properties: [
           {
@@ -80,7 +80,7 @@ describe('array', () => {
     ]);
     expect(results).toEqual({
       names: {
-        displayName: 'names',
+        name: 'names',
         kind: 16,
         value: [
           {
@@ -105,7 +105,7 @@ describe('array', () => {
 
     expect(results).toEqual({
       arrType: {
-        displayName: 'arrType',
+        name: 'arrType',
         kind: 16,
         properties: [
           {
@@ -113,10 +113,10 @@ describe('array', () => {
             properties: [
               {
                 kind: 1,
-                displayName: 'm',
+                name: 'm',
               },
             ],
-            displayName: 'Internal',
+            name: 'Internal',
           },
         ],
         deprecated: true,

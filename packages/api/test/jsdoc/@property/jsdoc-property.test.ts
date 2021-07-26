@@ -6,33 +6,33 @@ describe('@property', () => {
     const results = parseFiles([path.resolve(__dirname, 'enum.js')]);
     expect(results).toEqual({
       food: {
-        displayName: 'food',
+        name: 'food',
         kind: 15,
         properties: [
           {
             kind: 1,
-            displayName: 'name',
+            name: 'name',
             value: 'beef',
           },
           {
             kind: 1,
-            displayName: 'type',
+            name: 'type',
             value: 'meat',
           },
         ],
         type: 'Food',
       },
       Food: {
-        displayName: 'Food',
+        name: 'Food',
         kind: 15,
         properties: [
           {
             kind: 1,
-            displayName: 'name',
+            name: 'name',
             description: 'What the food should be called',
           },
           {
-            displayName: 'type',
+            name: 'type',
             description: "The food's type",
             kind: 4,
             properties: [
@@ -58,30 +58,30 @@ describe('@property', () => {
     const results = parseFiles([path.resolve(__dirname, 'nested.js')]);
     expect(results).toEqual({
       config: {
-        displayName: 'config',
+        name: 'config',
         kind: 15,
         properties: [
           {
-            displayName: 'defaults',
+            name: 'defaults',
             kind: 15,
             properties: [
               {
                 kind: 2,
-                displayName: 'players',
+                name: 'players',
                 value: 1,
               },
               {
                 kind: 1,
-                displayName: 'level',
+                name: 'level',
                 value: 'beginner',
               },
               {
-                displayName: 'treasure',
+                name: 'treasure',
                 kind: 15,
                 properties: [
                   {
                     kind: 2,
-                    displayName: 'gold',
+                    name: 'gold',
                     value: 0,
                   },
                 ],
@@ -92,30 +92,30 @@ describe('@property', () => {
         type: 'Config',
       },
       Config: {
-        displayName: 'Config',
+        name: 'Config',
         kind: 15,
         properties: [
           {
-            displayName: 'defaults',
+            name: 'defaults',
             kind: 15,
             properties: [
               {
                 kind: 2,
-                displayName: 'players',
+                name: 'players',
                 description: 'The default number of players.',
               },
               {
                 kind: 1,
-                displayName: 'level',
+                name: 'level',
                 description: 'The default level for the party.',
               },
               {
-                displayName: 'treasure',
+                name: 'treasure',
                 kind: 15,
                 properties: [
                   {
                     kind: 2,
-                    displayName: 'gold',
+                    name: 'gold',
                     description: 'How much gold the party starts with.',
                   },
                 ],
@@ -132,12 +132,12 @@ describe('@property', () => {
     const results = parseFiles([path.resolve(__dirname, 'optional.js')]);
     expect(results).toEqual({
       user: {
-        displayName: 'user',
+        name: 'user',
         kind: 15,
         properties: [
           {
             kind: 1,
-            displayName: 'email',
+            name: 'email',
             value: 's',
           },
         ],
@@ -145,15 +145,15 @@ describe('@property', () => {
         type: 'User',
       },
       User: {
-        displayName: 'User',
+        name: 'User',
         kind: 15,
         properties: [
           {
             kind: 1,
-            displayName: 'email',
+            name: 'email',
           },
           {
-            displayName: 'nickName',
+            name: 'nickName',
             kind: 1,
             optional: true,
           },

@@ -7,7 +7,7 @@ describe('@type', () => {
     expect(results).toEqual({
       bar: {
         kind: 2,
-        displayName: 'bar',
+        name: 'bar',
         value: 1,
       },
     });
@@ -16,7 +16,7 @@ describe('@type', () => {
     const results = parseFiles([path.resolve(__dirname, 'union.js')]);
     expect(results).toEqual({
       foo: {
-        displayName: 'foo',
+        name: 'foo',
         kind: 4,
         properties: [
           {

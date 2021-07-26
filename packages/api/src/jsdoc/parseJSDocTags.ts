@@ -62,7 +62,7 @@ const parseJSDocProperty = (
   tag: ts.JSDocPropertyLikeTag,
 ): PropType => {
   const prop: PropType = {
-    displayName: getDeclarationName(tag),
+    name: getDeclarationName(tag),
   };
   const comment = tagCommentToString(tag.comment);
   if (comment) {

@@ -6,8 +6,8 @@ describe('@description', () => {
     add: {
       kind: 11,
       description: 'Add two numbers.',
-      parameters: [{ displayName: 'a' }, { displayName: 'b' }],
-      displayName: 'add',
+      parameters: [{ name: 'a' }, { name: 'b' }],
+      name: 'add',
     },
   };
   it('desc tag', () => {

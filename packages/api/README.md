@@ -71,17 +71,17 @@ const docs = parseFiles(['../src/sum.js']);
 ````json
 {
   "sum": {
-    "displayName": "sum",
+    "name": "sum",
     "kind": 11,
     "parameters": [
       {
         "kind": 2,
-        "displayName": "a",
+        "name": "a",
         "description": "first parameter to add"
       },
       {
         "kind": 2,
-        "displayName": "b",
+        "name": "b",
         "value": 1,
         "description": "second parameter to add"
       }
