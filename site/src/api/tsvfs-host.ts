@@ -25,6 +25,7 @@ export const getHost = async (
   );
   await addReactLib('index.d.ts', fsMap);
   await addReactLib('global.d.ts', fsMap);
+  await addReactLib('jsx-runtime.d.ts', fsMap);
   await addDTSMapping(
     'https://cdn.jsdelivr.net/npm/csstype@3.0.8/',
     '/node_modules/@types/csstype/',

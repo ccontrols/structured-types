@@ -91,7 +91,7 @@ export const anaylizeFiles = (
   }
   if (consolidateParents) {
     // only return parents that are not already exported from the same file
-    const parents = Object.keys(parser.parents)
+    const parents: Record<string, PropType> = Object.keys(parser.parents)
       .filter((name) => parsed[name] === undefined)
       .reduce((acc, name) => ({ ...acc, [name]: parser.parents[name] }), {});
     if (Object.keys(parents).length) {
@@ -101,7 +101,12 @@ export const anaylizeFiles = (
           [key]: consolidateParentProps([parsed[key]], parents)[0],
         };
       }, {});
-      parsed.__parents = parents;
+      parsed.__parents = Object.keys(parents).reduce((acc, key) => {
+        return {
+          ...acc,
+          [key]: consolidateParentProps([parents[key]], parents)[0],
+        };
+      }, {});
     }
   }
   if (collectDiagnostics) {
