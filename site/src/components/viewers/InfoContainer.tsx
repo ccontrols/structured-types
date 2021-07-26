@@ -21,6 +21,15 @@ type APIItem = {
   link: string;
   jsonTree?: ReactJSONProps;
 };
+
+const kindEntries = Object.entries(PropKind);
+const getKindName = (kind: PropKind): string | PropKind | undefined => {
+  const strKind = kind.toString();
+  const found = kindEntries.find(([v, _]) => {
+    return v === strKind;
+  });
+  return found ? found[1] : undefined;
+};
 export const InfoContainer: FC = () => {
   const [visibleTabs, setVisibleTabs] = useURLParams<string[]>('viewer-tabs', [
     'structured-types',
@@ -42,18 +51,27 @@ export const InfoContainer: FC = () => {
         link: 'https://github.com/ccontrols/structured-types/tree/master/packages/api',
         Panel: DataViewer,
         jsonTree: {
+          // eslint-disable-next-line react/display-name
+          getItemString: (type, data, itemType, itemString) => {
+            if (type === 'Object' && 'name' in data) {
+              const typename = getKindName(data.kind);
+              return `${data.name}${typename ? ` (${typename})` : ''}`;
+            }
+            return (
+              <span>
+                {itemType} {itemString}
+              </span>
+            );
+          },
           valueRenderer: (
             valueAsString: any,
             value: any,
             ...keyPath: (string | number)[]
           ) => {
             if (keyPath.length && keyPath[0] === 'kind') {
-              const strValue = value.toString();
-              const typename = Object.entries(PropKind).find(([v, _]) => {
-                return v === strValue;
-              });
+              const typename = getKindName(value);
               if (typename) {
-                return `${typename[1]} (${valueAsString})`;
+                return `${typename} (${valueAsString})`;
               }
             }
             return valueAsString;
