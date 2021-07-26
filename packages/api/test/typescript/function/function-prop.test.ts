@@ -65,9 +65,10 @@ describe('function', () => {
     });
   });
   it('generic function parameter', () => {
-    const results = parseFiles([
-      path.resolve(__dirname, 'generic-parameter.ts'),
-    ]);
+    const results = parseFiles(
+      [path.resolve(__dirname, 'generic-parameter.ts')],
+      { consolidateParents: true },
+    );
     expect(results).toEqual({
       genericFunction: {
         displayName: 'genericFunction',
@@ -140,9 +141,10 @@ describe('function', () => {
   });
 
   it('extended parameter', () => {
-    const results = parseFiles([
-      path.resolve(__dirname, 'extends-parameter.ts'),
-    ]);
+    const results = parseFiles(
+      [path.resolve(__dirname, 'extends-parameter.ts')],
+      { consolidateParents: true },
+    );
     expect(results).toEqual({
       paintHomeyBear: {
         displayName: 'paintHomeyBear',

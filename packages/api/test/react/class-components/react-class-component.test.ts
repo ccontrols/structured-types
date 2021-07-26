@@ -21,7 +21,7 @@ describe('class-component', () => {
       [path.resolve(__dirname, 'display-name-field.tsx')],
       {
         plugins: [reactPlugin],
-        saveParentProps: false,
+        consolidateParents: false,
       },
     );
     expect(result).toEqual({
@@ -54,7 +54,7 @@ describe('class-component', () => {
       [path.resolve(__dirname, 'default-props-field.tsx')],
       {
         plugins: [reactPlugin],
-        saveParentProps: false,
+        consolidateParents: false,
       },
     );
     expect(result).toEqual({
@@ -87,7 +87,7 @@ describe('class-component', () => {
       [path.resolve(__dirname, 'display-name-static.tsx')],
       {
         plugins: [reactPlugin],
-        saveParentProps: false,
+        consolidateParents: false,
       },
     );
     expect(result).toEqual({
@@ -105,7 +105,7 @@ describe('class-component', () => {
       [path.resolve(__dirname, 'default-props-static.tsx')],
       {
         plugins: [reactPlugin],
-        saveParentProps: false,
+        consolidateParents: false,
       },
     );
     expect(result).toEqual({
@@ -178,7 +178,7 @@ describe('class-component', () => {
   it('default-export', () => {
     const result = parseFiles([path.resolve(__dirname, 'default-export.tsx')], {
       plugins: [reactPlugin],
-      saveParentProps: false,
+      consolidateParents: false,
     });
     expect(result).toEqual({
       default: {
@@ -207,7 +207,7 @@ describe('class-component', () => {
   it('named-export', () => {
     const result = parseFiles([path.resolve(__dirname, 'named-export.tsx')], {
       plugins: [reactPlugin],
-      saveParentProps: false,
+      consolidateParents: false,
     });
     expect(result).toEqual({
       MyComponent: {

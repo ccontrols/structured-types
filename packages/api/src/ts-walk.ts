@@ -1,7 +1,36 @@
 import * as ts from 'typescript';
-import { PropTypes, PropDiagnostic } from './types';
+import { PropTypes, PropType, PropDiagnostic, FunctionProp } from './types';
 import { tsDefaults, DocsOptions, ProgramOptions } from './ts-utils';
 import { SymbolParser } from './SymbolParser';
+
+const cleanPropParemts = (
+  prop: FunctionProp,
+  propsName: 'properties' | 'parameters' | 'types',
+  parents: Record<string, PropType>,
+) => {
+  if (prop[propsName]) {
+    if (prop.parent && parents[prop.parent]) {
+      delete prop[propsName];
+    } else {
+      prop[propsName] = consolidateParentProps(
+        prop[propsName] as PropType[],
+        parents,
+      );
+    }
+  }
+};
+const consolidateParentProps = (
+  props: PropType[],
+  parents: Record<string, PropType>,
+): PropType[] => {
+  return props.map((prop) => {
+    const propFn = prop as FunctionProp;
+    cleanPropParemts(propFn, 'properties', parents);
+    cleanPropParemts(propFn, 'parameters', parents);
+    cleanPropParemts(propFn, 'types', parents);
+    return propFn;
+  });
+};
 
 export const anaylizeFiles = (
   fileNames: string[],
@@ -9,19 +38,24 @@ export const anaylizeFiles = (
   programOptions: ProgramOptions = {},
 ): PropTypes => {
   const {
-    tsOptions = tsDefaults,
+    tsOptions: userTsOptions,
     scope = 'exports',
     ...parseOptions
   } = options;
-  const { extractNames, collectDiagnostics, internalTypes } =
-    parseOptions || {};
+  const tsOptions = { ...tsDefaults, ...userTsOptions };
+  const {
+    extractNames,
+    collectDiagnostics,
+    internalTypes,
+    consolidateParents,
+  } = parseOptions || {};
   const { program: userProgram, host } = programOptions;
   const program = userProgram || ts.createProgram(fileNames, tsOptions, host);
   // Get the checker, we will use it to find more about classes
   const checker = program.getTypeChecker();
 
   const parser = new SymbolParser(checker, parseOptions);
-  const parsed: PropTypes = {};
+  let parsed: PropTypes = {};
   const addSymbol = (symbol?: ts.Symbol): void => {
     if (symbol) {
       const symbolName = symbol.getName();
@@ -55,12 +89,20 @@ export const anaylizeFiles = (
       }
     }
   }
-  // only return parents that are not already exported from the same file
-  const parents = Object.keys(parser.parents)
-    .filter((name) => parsed[name] === undefined)
-    .reduce((acc, name) => ({ ...acc, [name]: parser.parents[name] }), {});
-  if (Object.keys(parents).length) {
-    parsed.__parents = parents;
+  if (consolidateParents) {
+    // only return parents that are not already exported from the same file
+    const parents = Object.keys(parser.parents)
+      .filter((name) => parsed[name] === undefined)
+      .reduce((acc, name) => ({ ...acc, [name]: parser.parents[name] }), {});
+    if (Object.keys(parents).length) {
+      parsed = Object.keys(parsed).reduce((acc, key) => {
+        return {
+          ...acc,
+          [key]: consolidateParentProps([parsed[key]], parents)[0],
+        };
+      }, {});
+      parsed.__parents = parents;
+    }
   }
   if (collectDiagnostics) {
     const allDiagnostics = ts

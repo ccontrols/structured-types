@@ -32,8 +32,10 @@
     "directory": "misc/typescript-config"
   },
   "license": "MIT",
+  "dependencies": {
+    "deepmerge": "^4.2.2"
+  },
   "devDendencies": {
-    "deepmerge": "^4.2.2",
     "typescript": "^4.2.4"
   },
   "peerDependencies": {

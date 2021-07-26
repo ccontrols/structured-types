@@ -3,7 +3,9 @@ import { parseFiles } from '../../../src/index';
 
 describe('interface', () => {
   it('enum-prop', () => {
-    const results = parseFiles([path.resolve(__dirname, 'enum-prop.ts')]);
+    const results = parseFiles([path.resolve(__dirname, 'enum-prop.ts')], {
+      consolidateParents: true,
+    });
     expect(results).toEqual({
       InterfaceWithEnumConstant: {
         displayName: 'InterfaceWithEnumConstant',
@@ -156,7 +158,9 @@ describe('interface', () => {
   });
 
   it('extends', () => {
-    const results = parseFiles([path.resolve(__dirname, 'extends.ts')]);
+    const results = parseFiles([path.resolve(__dirname, 'extends.ts')], {
+      consolidateParents: true,
+    });
     expect(results).toEqual({
       Bear: {
         displayName: 'Bear',
@@ -177,18 +181,6 @@ describe('interface', () => {
             parent: 'Home',
             displayName: 'resident',
             kind: 15,
-            properties: [
-              {
-                parent: 'Home',
-                kind: 1,
-                displayName: 'name',
-              },
-              {
-                parent: 'Home',
-                kind: 2,
-                displayName: 'age',
-              },
-            ],
           },
         ],
         description: 'interface extending another one',

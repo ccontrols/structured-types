@@ -156,6 +156,7 @@ export const tsDefaults: ts.CompilerOptions = {
   strictFunctionTypes: true,
   strictBindCallApply: true,
   strictPropertyInitialization: true,
+  esModuleInterop: true,
   noImplicitThis: true,
   alwaysStrict: true,
   allowJs: true,
@@ -184,7 +185,7 @@ export interface ParseOptions {
    * whether to save the "parent" props
    * if set to false will result in a smaller result
    */
-  saveParentProps?: boolean;
+  consolidateParents?: boolean;
   /**
    * whether to collect errors/diagnostics
    */
@@ -210,7 +211,7 @@ export type ParsePlugin = Omit<DocsOptions, 'resolvers'> & {
 };
 
 export const defaultParseOptions: ParseOptions = {
-  saveParentProps: true,
+  consolidateParents: false,
   internalTypes: [
     'Function',
     'CallableFunction',

@@ -96,7 +96,7 @@ export class SymbolParser implements ISymbolParser {
       return false;
     }
     const addParentRef = (parent: PropType, symbol: ts.Symbol) => {
-      if (this.options.saveParentProps) {
+      if (this.options.consolidateParents) {
         const name = parent.displayName;
         if (name) {
           if (!this.propParents[name]) {

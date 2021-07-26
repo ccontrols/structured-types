@@ -181,6 +181,7 @@ export interface BaseFunctionProp extends PropType {
 
 export interface FunctionProp extends BaseFunctionProp {
   kind: PropKind.Function;
+  properties?: PropType[];
 }
 
 export interface ConstructorProp extends BaseFunctionProp {
@@ -360,9 +361,10 @@ export type PropDiagnostic = {
   column?: number;
   fileName?: string;
 };
-export type PropTypes = {
-  [propName: string]: PropType;
-} & { __parents?: Record<string, PropType>; __diagnostics?: PropDiagnostic[] };
+export type PropTypes = Record<string, PropType> & {
+  __parents?: Record<string, PropType>;
+  __diagnostics?: PropDiagnostic[];
+};
 
 export const typeNameToPropKind = (type: string): PropKind | undefined => {
   const loopup: Record<string, PropKind> = {

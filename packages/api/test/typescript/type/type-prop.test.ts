@@ -109,7 +109,9 @@ describe('type', () => {
   });
 
   it('generics', () => {
-    const results = parseFiles([path.resolve(__dirname, 'generics.ts')]);
+    const results = parseFiles([path.resolve(__dirname, 'generics.ts')], {
+      consolidateParents: true,
+    });
     expect(results).toEqual({
       GenericConsumer: {
         description: 'reference type description',
@@ -149,7 +151,9 @@ describe('type', () => {
   });
 
   it('intersection', () => {
-    const results = parseFiles([path.resolve(__dirname, 'intersection.ts')]);
+    const results = parseFiles([path.resolve(__dirname, 'intersection.ts')], {
+      consolidateParents: true,
+    });
     expect(results).toEqual({
       Intersect: {
         description: 'intersect type',
@@ -196,7 +200,9 @@ describe('type', () => {
   });
 
   it('extend-type', () => {
-    const results = parseFiles([path.resolve(__dirname, 'extend-type.ts')]);
+    const results = parseFiles([path.resolve(__dirname, 'extend-type.ts')], {
+      consolidateParents: true,
+    });
     expect(results).toEqual({
       ExtendT: {
         description: 'extended type',
@@ -233,7 +239,9 @@ describe('type', () => {
     });
   });
   it('nested-generic', () => {
-    const results = parseFiles([path.resolve(__dirname, 'nested-generic.ts')]);
+    const results = parseFiles([path.resolve(__dirname, 'nested-generic.ts')], {
+      consolidateParents: true,
+    });
     expect(results).toEqual({
       NestedGenericType: {
         kind: 15,

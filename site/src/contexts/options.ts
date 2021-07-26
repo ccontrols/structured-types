@@ -54,8 +54,8 @@ export const defaultOptions: OptionsTypes = {
         type: 'textarea',
         help: 'List of export names to be extracted during parsing. By default all exports will be extracted.',
       },
-      saveParentProps: {
-        defaultValue: true,
+      consolidateParents: {
+        defaultValue: false,
         help: 'Whether to save the "parent" props',
       },
       collectDiagnostics: {
