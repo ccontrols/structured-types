@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { anaylizeFiles, PropTypes } from '@structured-types/api';
-import { reactPlugin } from '@structured-types/api';
+import { reactPlugin } from '@structured-types/react-plugin';
 import { Loader } from './Loader';
 import { addDTSMapping } from '../utilities/dts-file';
 import type { Sandbox } from '../vendor/sandbox';

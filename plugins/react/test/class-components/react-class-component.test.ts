@@ -1,6 +1,6 @@
 import path from 'path';
-import { parseFiles } from '../../../src/index';
-import { reactPlugin } from '../../../src/react';
+import { parseFiles } from '@structured-types/api';
+import { reactPlugin } from '../../src';
 
 const simpleResults = {
   MyComponent: {

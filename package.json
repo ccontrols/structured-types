@@ -79,7 +79,8 @@
   "workspaces": {
     "packages": [
       "site",
-      "packages/*"
+      "packages/*",
+      "plugins/*"
     ]
   }
 }

@@ -1,6 +1,5 @@
 import { config } from '../../rollup-config';
 
 export default config({
-  input: ['./src/index.ts', './src/types.ts'],
-  external: ['typescript'],
+  input: ['./src/index.ts'],
 });

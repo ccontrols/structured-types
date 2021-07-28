@@ -1,11 +1,13 @@
 import * as ts from 'typescript';
-import { getSymbolType, getFunctionLike, getInitializer } from './ts-utils';
 import {
+  getSymbolType,
+  getFunctionLike,
+  getInitializer,
   isObjectTypeDeclaration,
   getObjectStaticProp,
   ParsePlugin,
-} from './ts-utils';
-import { PropKind } from './types';
+  PropKind,
+} from '@structured-types/api';
 
 export const reactPlugin: ParsePlugin = {
   internalTypes: ['PropsWithChildren'],
@@ -87,3 +89,5 @@ export const reactPlugin: ParsePlugin = {
     };
   },
 };
+
+export default reactPlugin;

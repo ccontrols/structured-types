@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { reactPlugin } from '@structured-types/api/react';
+import { reactPlugin } from '@structured-types/react-plugin';
 
 import { anaylizeFiles, DocsOptions } from '@structured-types/api';
 import { getHost } from '../../src/api/tsvfs-host';

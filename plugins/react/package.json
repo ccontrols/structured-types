@@ -1,11 +1,10 @@
 {
-  "name": "@structured-types/api",
+  "name": "@structured-types/react-plugin",
   "version": "3.17.0",
-  "description": "api to extract structured type information from typescript types and jsdoc comments",
+  "description": "react plugin for structured-types",
   "keywords": [
-    "jsdoc",
-    "tsdoc",
-    "javascript"
+    "structured-types",
+    "react"
   ],
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -13,8 +12,6 @@
   "files": [
     "dist/",
     "package.json",
-    "types.d.ts",
-    "types.js",
     "README.md"
   ],
   "scripts": {
@@ -33,17 +30,18 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ccontrols/structured-types.git",
-    "directory": "packages/api"
+    "directory": "plugins/react"
   },
   "license": "MIT",
   "dependencies": {
-    "@structured-types/typescript-config": "^3.17.0",
-    "deepmerge": "^4.2.2"
+    "@structured-types/api": "^3.17.0"
   },
   "devDependencies": {
+    "react": "^17.0.1",
     "typescript": "^4.2.4"
   },
   "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0",
     "typescript": "^4.0.0"
   },
   "publishConfig": {
@@ -51,9 +49,6 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "moduleNameMapper": {
-      "@structured-types/typescript-config": "<rootDir>../typescript-config/src"
-    },
     "roots": [
       "./test"
     ]

@@ -1,8 +1,5 @@
 {
-  "packages": [
-    "packages/*",
-    "site"
-  ],
+  "packages": ["packages/*", "plugins/*", "site"],
   "version": "3.17.0",
   "npmClient": "yarn",
   "useWorkspaces": true,

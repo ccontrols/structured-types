@@ -35,6 +35,7 @@
   "license": "MIT",
   "dependencies": {
     "@structured-types/api": "^3.17.0",
+    "@structured-types/react-plugin": "^3.17.0",
     "lz-string": "^1.4.4",
     "node-fetch": "^2.6.0",
     "react": "^17.0.2",

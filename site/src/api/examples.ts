@@ -113,57 +113,6 @@ export const examples: Examples = {
         "/**\n * Options for ordering a delicious slice of pie.\n */\nexport const pieOptions = {\n  /**\n   * Plain.\n   */\n  plain: 'pie',\n  /**\n   * A la mode.\n   * @readonly\n   */\n  get aLaMode() {\n    return this.plain + ' with ice cream';\n  },\n};\n",
     },
   },
-  react: {
-    'class-components': {
-      'alias-component.tsx':
-        "import React, { Component as C } from 'react';\n\nexport class MyComponent extends C<{ name: string }> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n",
-      'composed-props.tsx':
-        "import React, { Component, BaseHTMLAttributes } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n  /**\n   * function props description\n   */\n  fnProp: () => void;\n\n  /**\n   * unionProp description\n   * @deprecated since version 1.0\n   */\n  unionProp: 'option1' | 'option2' | 'option3';\n} & BaseHTMLAttributes<HTMLDivElement>;\n\n/**\n * MyComponent special component\n */\n\nexport class MyComponent extends Component<OwnProps> {\n  render(): React.ReactNode {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n",
-      'default-export.tsx':
-        "import React, { Component } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nclass MyComponent extends Component<OwnProps> {\n  render(): React.ReactNode {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n\nexport default MyComponent;\n",
-      'default-props-field.tsx':
-        "import React, { Component } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nclass MyComponent extends Component<OwnProps> {\n  render(): React.ReactNode {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n\nMyComponent.defaultProps = {\n  stringProp: 'test',\n};\n\nexport default MyComponent;\n",
-      'default-props-static.tsx':
-        "import React, { Component } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nexport class MyComponent extends Component<OwnProps> {\n  static defaultProps = {\n    stringProp: 'test',\n  };\n  render(): React.ReactNode {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n",
-      'display-name-field.tsx':
-        "import React, { Component } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nclass MyComponent extends Component<OwnProps> {\n  render(): React.ReactNode {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n\nMyComponent.defaultProps = {\n  stringProp: 'test',\n};\n\nMyComponent.name = 'CustomComponentName';\n\nexport default MyComponent;\n",
-      'display-name-static.tsx':
-        "import React, { Component } from 'react';\n/**\n * MyComponent special component\n */\nexport class MyComponent extends Component {\n  static name = 'CustomComponentName';\n  render(): React.ReactNode {\n    return null;\n  }\n}\n",
-      hoc: {},
-      'inline-props.tsx':
-        "import React from 'react';\n\nexport class MyComponent extends React.Component<{ name: string }> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n",
-      'named-component.tsx':
-        "import React, { Component } from 'react';\n\nexport class MyComponent extends Component<{ name: string }> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n",
-      'named-export.tsx':
-        "import React, { Component } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nexport class MyComponent extends Component<OwnProps, Record<string, unknown>> {\n  render(): React.ReactNode {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n",
-      'pure-component.tsx':
-        "import React, { PureComponent } from 'react';\n\nexport class MyComponent extends PureComponent<{ name: string }> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n",
-      'star-import.tsx':
-        "import * as R from 'react';\n\nexport class MyComponent extends R.Component<{ name: string }> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n",
-    },
-    'function-components': {
-      'default-props.tsx':
-        "import React, { FC } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nconst MyComponent: FC<OwnProps> = ({ stringProp }) => <div>{stringProp}</div>;\n\nMyComponent.defaultProps = {\n  stringProp: 'test',\n};\n\nexport default MyComponent;\n",
-      'display-name.tsx':
-        "import React, { FC } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nconst MyComponent: FC<OwnProps> = ({ stringProp }) => <div>{stringProp}</div>;\n\nMyComponent.name = 'CustomComponentName';\n\nexport default MyComponent;\n",
-      'function-inline-props.tsx':
-        "import React from 'react';\n\nexport function MyComponent({\n  name = 'hello',\n}: {\n  name?: string;\n}): React.ReactNode {\n  return <span>Hello, {name}!</span>;\n}\n",
-      'inline-props.tsx':
-        "import React from 'react';\n\nexport const MyComponent = ({\n  name = 'hello',\n}: {\n  name?: string;\n}): React.ReactNode => <span>Hello, {name}!</span>;\n",
-      'no-props.tsx':
-        "import React from 'react';\n\nexport const MyComponent = () => <span>Hello</span>;\n",
-      'omit-props.tsx':
-        "import React from 'react';\n\ninterface PrimitmiveProps {\n  stringProp: string;\n  boolProp: boolean;\n}\ntype OmitProps = Omit<PrimitmiveProps, 'boolProp'>;\ntype ComponentProps = OmitProps & {\n  prop1?: 'this' | 'that';\n};\n\nexport const MyComponent: React.FC<ComponentProps> = props => {\n  return <span>Hello, {props.stringProp}!</span>;\n};\n",
-      'pick-props.tsx':
-        "import React, { BaseHTMLAttributes } from 'react';\n/**\n * MyComponent special component\n */\n\nexport const MyComponent = (\n  props: Pick<BaseHTMLAttributes<HTMLDivElement>, 'style'>,\n) => <div {...props}>Hello</div>;\n",
-      'typed-props.tsx':
-        "import React from 'react';\n\n/**\n * special react component\n */\nexport const MyComponent: React.FC<{\n  /**\n   * optional string prop\n   */\n  name?: string;\n  /**\n   * a required number prop\n   */\n  numProp: number;\n}> = ({ name = 'hello' }) => <span>Hello, {name}!</span>;\n",
-    },
-    'no-plugins': {
-      'react-types.tsx':
-        "import { BaseHTMLAttributes } from 'react';\n/**\n * own properties.\n */\nexport type OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n  /**\n   * function props description\n   */\n  fnProp: () => void;\n\n  /**\n   * unionProp description\n   * @deprecated since version 1.0\n   */\n  unionProp: 'option1' | 'option2' | 'option3';\n} & BaseHTMLAttributes<HTMLDivElement>;\n",
-    },
-  },
   typescript: {
     any: {
       'export-const.ts':
@@ -309,6 +258,53 @@ export const examples: Examples = {
     unknown: {
       'export-const.ts':
         '/**\n * named export unknown type\n */\nexport const a: unknown = undefined;\n',
+    },
+  },
+  react: {
+    'class-components': {
+      'alias-component.tsx':
+        "import React, { Component as C } from 'react';\n\nexport class MyComponent extends C<{ name: string }> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n",
+      'composed-props.tsx':
+        "import React, { Component, BaseHTMLAttributes } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n  /**\n   * function props description\n   */\n  fnProp: () => void;\n\n  /**\n   * unionProp description\n   * @deprecated since version 1.0\n   */\n  unionProp: 'option1' | 'option2' | 'option3';\n} & BaseHTMLAttributes<HTMLDivElement>;\n\n/**\n * MyComponent special component\n */\n\nexport class MyComponent extends Component<OwnProps> {\n  render(): React.ReactNode {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n",
+      'default-export.tsx':
+        "import React, { Component } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nclass MyComponent extends Component<OwnProps> {\n  render(): React.ReactNode {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n\nexport default MyComponent;\n",
+      'default-props-field.tsx':
+        "import React, { Component } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nclass MyComponent extends Component<OwnProps> {\n  render(): React.ReactNode {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n\nMyComponent.defaultProps = {\n  stringProp: 'test',\n};\n\nexport default MyComponent;\n",
+      'default-props-static.tsx':
+        "import React, { Component } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nexport class MyComponent extends Component<OwnProps> {\n  static defaultProps = {\n    stringProp: 'test',\n  };\n  render(): React.ReactNode {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n",
+      'display-name-field.tsx':
+        "import React, { Component } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nclass MyComponent extends Component<OwnProps> {\n  render(): React.ReactNode {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n\nMyComponent.defaultProps = {\n  stringProp: 'test',\n};\n\nMyComponent.displayName = 'CustomComponentName';\n\nexport default MyComponent;\n",
+      'display-name-static.tsx':
+        "import React, { Component } from 'react';\n/**\n * MyComponent special component\n */\nexport class MyComponent extends Component {\n  static displayName = 'CustomComponentName';\n  render(): React.ReactNode {\n    return null;\n  }\n}\n",
+      hoc: {},
+      'inline-props.tsx':
+        "import React from 'react';\n\nexport class MyComponent extends React.Component<{ name: string }> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n",
+      'named-component.tsx':
+        "import React, { Component } from 'react';\n\nexport class MyComponent extends Component<{ name: string }> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n",
+      'named-export.tsx':
+        "import React, { Component } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nexport class MyComponent extends Component<OwnProps, Record<string, unknown>> {\n  render(): React.ReactNode {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n",
+      'pure-component.tsx':
+        "import React, { PureComponent } from 'react';\n\nexport class MyComponent extends PureComponent<{ name: string }> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n",
+      'star-import.tsx':
+        "import * as R from 'react';\n\nexport class MyComponent extends R.Component<{ name: string }> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n",
+    },
+    'function-components': {
+      'default-props.tsx':
+        "import React, { FC } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nconst MyComponent: FC<OwnProps> = ({ stringProp }) => <div>{stringProp}</div>;\n\nMyComponent.defaultProps = {\n  stringProp: 'test',\n};\n\nexport default MyComponent;\n",
+      'display-name.tsx':
+        "import React, { FC } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nconst MyComponent: FC<OwnProps> = ({ stringProp }) => <div>{stringProp}</div>;\n\nMyComponent.displayName = 'CustomComponentName';\n\nexport default MyComponent;\n",
+      'function-inline-props.tsx':
+        "import React from 'react';\n\nexport function MyComponent({\n  name = 'hello',\n}: {\n  name?: string;\n}): React.ReactNode {\n  return <span>Hello, {name}!</span>;\n}\n",
+      'inline-props.tsx':
+        "import React from 'react';\n\nexport const MyComponent = ({\n  name = 'hello',\n}: {\n  name?: string;\n}): React.ReactNode => <span>Hello, {name}!</span>;\n",
+      'no-props.tsx':
+        "import React from 'react';\n\nexport const MyComponent = () => <span>Hello</span>;\n",
+      'omit-props.tsx':
+        "import React from 'react';\n\ninterface PrimitmiveProps {\n  stringProp: string;\n  boolProp: boolean;\n}\ntype OmitProps = Omit<PrimitmiveProps, 'boolProp'>;\ntype ComponentProps = OmitProps & {\n  prop1?: 'this' | 'that';\n};\n\nexport const MyComponent: React.FC<ComponentProps> = props => {\n  return <span>Hello, {props.stringProp}!</span>;\n};\n",
+      'pick-props.tsx':
+        "import React, { BaseHTMLAttributes } from 'react';\n/**\n * MyComponent special component\n */\n\nexport const MyComponent = (\n  props: Pick<BaseHTMLAttributes<HTMLDivElement>, 'style'>,\n) => <div {...props}>Hello</div>;\n",
+      'typed-props.tsx':
+        "import React from 'react';\n\n/**\n * special react component\n */\nexport const MyComponent: React.FC<{\n  /**\n   * optional string prop\n   */\n  name?: string;\n  /**\n   * a required number prop\n   */\n  numProp: number;\n}> = ({ name = 'hello' }) => <span>Hello, {name}!</span>;\n",
     },
   },
 };
