@@ -79,6 +79,13 @@ export const anaylizeFiles = (
           if (namedNode.name) {
             const symbol = checker.getSymbolAtLocation(namedNode.name);
             addSymbol(symbol);
+          } else if (ts.isVariableStatement(node)) {
+            node.declarationList.declarations.forEach((d) => {
+              if (d.name) {
+                const symbol = checker.getSymbolAtLocation(d.name);
+                addSymbol(symbol);
+              }
+            });
           }
         });
       }

@@ -1,6 +1,6 @@
 import path from 'path';
 import { parseFiles } from '@structured-types/api';
-import { reactPlugin } from '../../src';
+import reactPlugin from '../../src';
 
 describe('function-component', () => {
   it('pick-props', () => {

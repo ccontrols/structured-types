@@ -419,12 +419,12 @@ export const getObjectStaticProp = (
     isObjectTypeDeclaration(obj) &&
     obj.members &&
     (obj.members.find as unknown as NodeFind)(
-      (m) => m.name.getText() === propName,
+      (m) => m.name?.getText() === propName,
     );
   if (staticProp) {
     return staticProp.initializer;
   }
-  //find filoe global static props assigments
+  //find file global static props assignments
   //ie MyComponent.displayName = 'XXX';
   if ('name' in obj) {
     const objName = ((obj as any)['name'] as ts.PropertyName)?.getText();

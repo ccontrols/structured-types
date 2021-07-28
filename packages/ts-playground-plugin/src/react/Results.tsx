@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { anaylizeFiles, PropTypes } from '@structured-types/api';
-import { reactPlugin } from '@structured-types/react-plugin';
+import reactPlugin from '@structured-types/react-plugin';
 import { Loader } from './Loader';
 import { addDTSMapping } from '../utilities/dts-file';
 import type { Sandbox } from '../vendor/sandbox';
@@ -41,8 +41,11 @@ export const Results: FC<{ sandbox: Sandbox }> = ({ sandbox }) => {
     setLoading(true);
     try {
       const files = tsvfs.program.getSourceFiles();
+      const file =
+        files.find((f) => f.fileName.startsWith('/input')) ||
+        files[files.length - 1];
       const types = anaylizeFiles(
-        [files[files.length - 1].fileName],
+        [file.fileName],
         {
           scope: 'all',
           plugins: [reactPlugin],

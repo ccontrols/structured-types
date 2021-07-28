@@ -9,7 +9,7 @@ import {
   PropKind,
 } from '@structured-types/api';
 
-export const reactPlugin: ParsePlugin = {
+const reactPlugin: ParsePlugin = {
   internalTypes: ['PropsWithChildren'],
   typesResolve: ({ symbolType, declaration, checker }) => {
     let propsType = symbolType;

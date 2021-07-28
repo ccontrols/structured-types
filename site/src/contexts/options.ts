@@ -66,6 +66,11 @@ export const defaultOptions: OptionsTypes = {
         defaultValue: true,
         help: 'Whether to collect generics parameters.',
       },
+      scope: {
+        defaultValue: 'exports',
+        options: ['exports', 'all'],
+        help: 'Whether to extract all symbols, or only the exported symbols.',
+      },
     },
   },
   tsOptions: {

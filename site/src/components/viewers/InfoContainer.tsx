@@ -24,7 +24,7 @@ type APIItem = {
 
 const kindEntries = Object.entries(PropKind);
 const getKindName = (kind: PropKind): string | PropKind | undefined => {
-  const strKind = kind.toString();
+  const strKind = kind ? kind.toString() : 'unknown';
   const found = kindEntries.find(([v, _]) => {
     return v === strKind;
   });
