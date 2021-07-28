@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/playground-plugin",
-  "version": "3.17.1",
+  "version": "3.17.2",
   "description": "A plugin to extract structured type information.",
   "keywords": [
     "structured-types",
@@ -34,8 +34,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@structured-types/api": "^3.17.1",
-    "@structured-types/react-plugin": "^3.17.1",
+    "@structured-types/api": "^3.17.2",
+    "@structured-types/react-plugin": "^3.17.2",
     "lz-string": "^1.4.4",
     "node-fetch": "^2.6.0",
     "react": "^17.0.2",
