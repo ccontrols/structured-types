@@ -21,6 +21,7 @@ export const ParseConfigPanel: FC<ExamplesPanelProps> = ({ onClose }) => {
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
+            flexWrap: 'wrap',
             flexDirection: ['column', 'column', 'row'],
           }}
         >

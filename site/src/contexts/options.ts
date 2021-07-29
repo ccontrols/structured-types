@@ -6,7 +6,7 @@ export interface OptionsData {
   value?: OptionValueType;
   defaultValue?: OptionValueType;
   options?: string[];
-  link?: string;
+  skipLink?: boolean;
   type?: 'textarea' | 'checkbox' | 'select';
 }
 
@@ -56,18 +56,22 @@ export const defaultOptions: OptionsTypes = {
       },
       collectDiagnostics: {
         defaultValue: false,
+        skipLink: true,
         help: 'Whether to collect errors/diagnostics from the typescript compiler',
       },
       consolidateParents: {
         defaultValue: false,
+        skipLink: true,
         help: 'Whether to extract and consolidate the "parent" props into their own branch `__parents`. Will allow full introspection of parent-level properties and can save space if the same properties are used multiple times across your code.',
       },
       collectGenerics: {
         defaultValue: true,
+        skipLink: true,
         help: 'Whether to collect generics parameters.',
       },
       collectFilePath: {
         defaultValue: true,
+        skipLink: true,
         help: 'Whether to collect the file path of objects.',
       },
       scope: {

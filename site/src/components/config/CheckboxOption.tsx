@@ -11,7 +11,7 @@ export const CheckboxOption: FC<
     paramName: OptionsName;
     title: string;
   } & OptionsData
-> = ({ paramName, title, help, value: propValue, defaultValue }) => {
+> = ({ paramName, title, help, value: propValue, defaultValue, skipLink }) => {
   const value = typeof propValue === 'undefined' ? defaultValue : propValue;
   const updateOption = useUpdateOptions(paramName, title);
   return (
@@ -53,25 +53,27 @@ export const CheckboxOption: FC<
             }}
           >
             {`${title}`}
-            <Link
-              sx={{
-                paddingRight: `20px`,
-                right: '-20px',
-                position: 'absolute',
-                margin: 'auto',
-                top: 0,
-                bottom: 0,
-                height: '32px',
-                visibility: 'hidden',
-                ':hover': {
-                  visibility: 'visible',
-                },
-              }}
-              href={`https://www.typescriptlang.org/tsconfig#${title}`}
-              aria-label={`view documentation for ${title}`}
-            >
-              <InfoIcon size={20} verticalAlign="middle" />
-            </Link>
+            {skipLink !== true && (
+              <Link
+                sx={{
+                  paddingRight: `20px`,
+                  right: '-20px',
+                  position: 'absolute',
+                  margin: 'auto',
+                  top: 0,
+                  bottom: 0,
+                  height: '32px',
+                  visibility: 'hidden',
+                  ':hover': {
+                    visibility: 'visible',
+                  },
+                }}
+                href={`https://www.typescriptlang.org/tsconfig#${title}`}
+                aria-label={`view documentation for ${title}`}
+              >
+                <InfoIcon size={20} verticalAlign="middle" />
+              </Link>
+            )}
           </Heading>
         </Label>
       </Box>
