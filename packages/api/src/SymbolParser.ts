@@ -587,7 +587,6 @@ export class SymbolParser implements ISymbolParser {
     const declaration = symbolDeclaration;
 
     updateModifiers(prop, declaration);
-
     if (declaration) {
       prop.name = getDeclarationName(declaration);
     }
@@ -613,6 +612,7 @@ export class SymbolParser implements ISymbolParser {
         resolvedType &&
         resolvedType.flags & (ts.TypeFlags.Object | ts.TypeFlags.Intersection)
       ) {
+        this.parseFilePath(prop, declaration);
         const resolvedSymbol = resolvedType.aliasSymbol || resolvedType.symbol;
         const resolvedDeclaration = resolvedSymbol
           ? resolvedSymbol.valueDeclaration || resolvedSymbol.declarations?.[0]
@@ -625,7 +625,6 @@ export class SymbolParser implements ISymbolParser {
             isArrayLike(resolvedDeclaration.type)
           )
         ) {
-          this.parseFilePath(prop, resolvedDeclaration);
           const kind =
             resolved.kind !== undefined
               ? resolved.kind

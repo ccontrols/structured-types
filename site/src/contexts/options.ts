@@ -66,6 +66,10 @@ export const defaultOptions: OptionsTypes = {
         defaultValue: true,
         help: 'Whether to collect generics parameters.',
       },
+      collectFilePath: {
+        defaultValue: true,
+        help: 'Whether to collect the file path of objects.',
+      },
       scope: {
         defaultValue: 'exports',
         options: ['exports', 'all'],
