@@ -172,6 +172,7 @@ describe('class-component', () => {
   it('composed-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'composed-props.tsx')], {
       plugins: [reactPlugin],
+      collectFilePath: false,
     });
     expect(result).toMatchSnapshot();
   });

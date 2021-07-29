@@ -54,7 +54,7 @@ export const anaylizeFiles = (
   // Get the checker, we will use it to find more about classes
   const checker = program.getTypeChecker();
 
-  const parser = new SymbolParser(checker, parseOptions);
+  const parser = new SymbolParser(checker, fileNames, parseOptions);
   let parsed: PropTypes = {};
   const addSymbol = (symbol?: ts.Symbol): void => {
     if (symbol) {

@@ -68,8 +68,14 @@ export class SymbolParser implements ISymbolParser {
   private options: Required<ParseOptions>;
   private refSymbols: { props: PropType[]; symbol: ts.Symbol }[] = [];
   private propParents: Record<string, PropType> = {};
-  constructor(checker: ts.TypeChecker, options?: ParseOptions) {
+  private fileNames: string[];
+  constructor(
+    checker: ts.TypeChecker,
+    fileNames: string[],
+    options?: ParseOptions,
+  ) {
     this.checker = checker;
+    this.fileNames = fileNames;
     this.options = (options?.plugins || []).reduce(
       (acc, o) => deepmerge(acc, o),
       {
@@ -143,7 +149,21 @@ export class SymbolParser implements ISymbolParser {
     }
     return false;
   }
-
+  private parseFilePath = (prop: PropType, node?: ts.Node): PropType => {
+    if (this.options.collectFilePath) {
+      let parent = node;
+      while (parent) {
+        if (ts.isSourceFile(parent)) {
+          if (!this.fileNames.includes(parent.fileName)) {
+            prop.filePath = parent.fileName;
+          }
+          break;
+        }
+        parent = parent.parent;
+      }
+    }
+    return prop;
+  };
   private parseProperties(
     properties: ts.NodeArray<
       | ts.ClassElement
@@ -605,6 +625,7 @@ export class SymbolParser implements ISymbolParser {
             isArrayLike(resolvedDeclaration.type)
           )
         ) {
+          this.parseFilePath(prop, resolvedDeclaration);
           const kind =
             resolved.kind !== undefined
               ? resolved.kind

@@ -3,7 +3,9 @@ import { parseFiles } from '../../../src/index';
 
 describe('function', () => {
   it('react fc', () => {
-    const results = parseFiles([path.resolve(__dirname, 'react-fc.ts')]);
+    const results = parseFiles([path.resolve(__dirname, 'react-fc.ts')], {
+      collectFilePath: false,
+    });
     expect(results).toMatchSnapshot();
   });
   it('function properties', () => {

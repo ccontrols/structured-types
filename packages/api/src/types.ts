@@ -56,6 +56,7 @@ export interface PropType {
   abstract?: boolean;
   visibility?: 'private' | 'protected' | 'public';
   static?: boolean;
+  filePath?: string;
   type?: PropType | string;
   /**
    * framework name as set by plugins

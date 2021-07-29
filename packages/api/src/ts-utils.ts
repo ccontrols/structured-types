@@ -205,6 +205,11 @@ export interface ParseOptions {
    * by default collects only the exported symbols
    */
   scope?: 'exports' | 'all';
+
+  /**
+   * whether to collect the file path of objects
+   */
+  collectFilePath?: boolean;
 }
 
 export type ParsePlugin = Omit<DocsOptions, 'resolvers'> & {
@@ -218,6 +223,7 @@ export type ParsePlugin = Omit<DocsOptions, 'resolvers'> & {
 export const defaultParseOptions: ParseOptions = {
   consolidateParents: false,
   collectGenerics: true,
+  collectFilePath: true,
   internalTypes: [
     'Function',
     'CallableFunction',

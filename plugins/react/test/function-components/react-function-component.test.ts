@@ -2,11 +2,16 @@ import path from 'path';
 import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
+const reactDTS = path.resolve(
+  require.resolve('react'),
+  '../../@types/react/index.d.ts',
+);
 describe('function-component', () => {
   it('pick-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'pick-props.tsx')], {
       plugins: [reactPlugin],
       consolidateParents: false,
+      collectFilePath: false,
     });
     expect(result).toMatchSnapshot();
   });
@@ -17,6 +22,7 @@ describe('function-component', () => {
     });
     expect(result).toEqual({
       default: {
+        filePath: reactDTS,
         name: 'CustomComponentName',
         framework: 'react',
         kind: 11,
@@ -46,6 +52,7 @@ describe('function-component', () => {
     expect(result).toEqual({
       default: {
         name: 'MyComponent',
+        filePath: reactDTS,
         framework: 'react',
         kind: 11,
         properties: [
@@ -75,6 +82,7 @@ describe('function-component', () => {
     expect(result).toEqual({
       MyComponent: {
         name: 'MyComponent',
+        filePath: reactDTS,
         kind: 11,
         framework: 'react',
         properties: [
@@ -123,6 +131,7 @@ describe('function-component', () => {
     expect(result).toEqual({
       MyComponent: {
         name: 'MyComponent',
+        filePath: reactDTS,
         kind: 11,
         framework: 'react',
         properties: [
