@@ -2,6 +2,30 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('type', () => {
+  it('initialized', () => {
+    const results = parseFiles([path.resolve(__dirname, 'initialized.ts')]);
+    expect(results).toEqual({
+      obj: {
+        description: 'this is an object',
+        kind: 15,
+        properties: [
+          {
+            description: 'field a',
+            name: 'a',
+            kind: 1,
+            value: 'field a',
+          },
+          {
+            description: 'field b',
+            optional: true,
+            name: 'b',
+            kind: 2,
+          },
+        ],
+        name: 'obj',
+      },
+    });
+  });
   it('index-prop', () => {
     const results = parseFiles([path.resolve(__dirname, 'index-prop.ts')]);
     expect(results).toEqual({
@@ -80,30 +104,6 @@ describe('type', () => {
             name: 'Type',
           },
         ],
-      },
-    });
-  });
-  it('initialized', () => {
-    const results = parseFiles([path.resolve(__dirname, 'initialized.ts')]);
-    expect(results).toEqual({
-      obj: {
-        description: 'this is an object',
-        kind: 15,
-        properties: [
-          {
-            description: 'field a',
-            name: 'a',
-            kind: 1,
-            value: 'field a',
-          },
-          {
-            description: 'field b',
-            optional: true,
-            name: 'b',
-            kind: 2,
-          },
-        ],
-        name: 'obj',
       },
     });
   });

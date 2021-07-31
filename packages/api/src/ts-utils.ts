@@ -192,6 +192,11 @@ export interface ParseOptions {
   collectGenerics?: boolean;
 
   /**
+   * whether to collect function parameters
+   */
+  collectParameters?: boolean;
+
+  /**
    * whether to collect errors/diagnostics
    */
   collectDiagnostics?: boolean;
@@ -216,13 +221,19 @@ export type ParsePlugin = Omit<DocsOptions, 'resolvers'> & {
   /**
    * type resolving custom function
    * ie from a react component will return the props type
+   * if the plugin does not recognize the type, should return undefined
    */
-  typesResolve?: TypeResolver;
+  typesResolve: TypeResolver;
+  /**
+   * plugin name
+   */
+  pluginName?: string;
 };
 
 export const defaultParseOptions: ParseOptions = {
   consolidateParents: false,
   collectGenerics: true,
+  collectParameters: true,
   collectFilePath: true,
   internalTypes: [
     'Function',
@@ -246,45 +257,18 @@ export type ProgramOptions = {
   host?: ts.CompilerHost;
   program?: ts.Program;
 };
-export type TypeResolver = (props: {
-  symbolType: ts.Type;
-  declaration?: ts.Declaration;
-  checker: ts.TypeChecker;
-}) => {
+export type ResolverReturnType = {
   type: ts.Type | undefined;
   initializer?: ts.Node;
   name?: string;
   kind?: PropKind;
-  framework?: string;
-  skipGenerics?: boolean;
-  skipParameters?: boolean;
-};
-
-export const resolveType: (
-  props: Parameters<TypeResolver>[0],
-  options?: DocsOptions,
-) => ReturnType<TypeResolver> = (props, options) => {
-  if (options?.plugins) {
-    return options.plugins.reduce(
-      (acc: ReturnType<TypeResolver>, o) => {
-        if (o.typesResolve) {
-          return (
-            o.typesResolve({
-              ...props,
-              symbolType: acc.type || props.symbolType,
-            }) || acc
-          );
-        }
-        return acc;
-      },
-      { type: props.symbolType },
-    );
-  }
-  return {
-    type: props.symbolType,
-    initializer: getInitializer(props.declaration),
-  };
-};
+  pluginName?: string;
+} & Omit<DocsOptions, 'resolvers'>;
+export type TypeResolver = (props: {
+  symbolType: ts.Type;
+  declaration?: ts.Declaration;
+  checker: ts.TypeChecker;
+}) => ResolverReturnType | undefined;
 
 export const updatePropKind = (
   prop: PropType,
@@ -340,20 +324,9 @@ export const getSymbolType = (
 };
 
 export interface ISymbolParser {
-  parseType(prop: PropType, node?: ts.Node): PropType;
-  parseSymbol(symbol: ts.Symbol): PropType | null;
+  parseType(prop: PropType, options: ParseOptions, node?: ts.Node): PropType;
+  parseSymbol(symbol: ts.Symbol, options: ParseOptions): PropType | null;
 }
-
-export const getInitializer = (
-  declaration?: ts.Node,
-): ts.Expression | undefined =>
-  declaration
-    ? isVariableLikeDeclaration(declaration)
-      ? declaration?.initializer
-      : ts.isBinaryExpression(declaration.parent)
-      ? declaration.parent.right
-      : undefined
-    : undefined;
 
 type NodeCallback = (m: ts.PropertyDeclaration) => boolean;
 type NodeFind = (callback: NodeCallback) => ts.PropertyDeclaration | undefined;

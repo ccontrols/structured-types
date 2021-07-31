@@ -8,6 +8,7 @@ import {
   JSDocPropTag,
   propValue,
 } from '../types';
+import { ParseOptions } from '../ts-utils';
 
 export const getDeclarationName = (
   node: ts.Declaration,
@@ -59,6 +60,7 @@ export const tagCommentToString = (
 
 const parseJSDocProperty = (
   parser: ISymbolParser,
+  options: ParseOptions,
   tag: ts.JSDocPropertyLikeTag,
 ): PropType => {
   const prop: PropType = {
@@ -69,7 +71,7 @@ const parseJSDocProperty = (
     prop.description = comment;
   }
   if (tag.typeExpression?.type) {
-    parser.parseType(prop, tag.typeExpression.type);
+    parser.parseType(prop, options, tag.typeExpression.type);
   }
   if (tag.isBracketed) {
     prop.optional = true;
@@ -93,6 +95,7 @@ const parseJSDocProperty = (
 };
 export const parseJSDocTag = (
   parser: ISymbolParser,
+  options: ParseOptions,
   prop: PropType,
   tag: ts.JSDocTag,
 ): PropType => {
@@ -111,9 +114,9 @@ export const parseJSDocTag = (
   } else if (ts.isJSDocEnumTag(tag)) {
     prop.kind = PropKind.Enum;
   } else if (ts.isJSDocTypeTag(tag)) {
-    parser.parseType(prop, tag.typeExpression.type);
+    parser.parseType(prop, options, tag.typeExpression.type);
   } else if (ts.isJSDocParameterTag(tag)) {
-    const parameter = parseJSDocProperty(parser, tag);
+    const parameter = parseJSDocProperty(parser, options, tag);
     const resultAsFn = prop as FunctionProp;
     if (!resultAsFn.parameters) {
       resultAsFn.parameters = [];
@@ -122,11 +125,15 @@ export const parseJSDocTag = (
   } else if (ts.isJSDocTypedefTag(tag)) {
     prop.type = tag.name?.text;
   } else if (ts.isJSDocPropertyTag(tag)) {
-    Object.assign(prop, parseJSDocProperty(parser, tag));
+    Object.assign(prop, parseJSDocProperty(parser, options, tag));
   } else if (ts.isJSDocReturnTag(tag)) {
     const resultAsFn = prop as FunctionProp;
     if (tag.typeExpression) {
-      resultAsFn.returns = parser.parseType({}, tag.typeExpression.type);
+      resultAsFn.returns = parser.parseType(
+        {},
+        options,
+        tag.typeExpression.type,
+      );
     }
     const comment = tagCommentToString(tag.comment);
     if (comment) {
@@ -228,6 +235,7 @@ export const parseJSDocTag = (
 };
 export const parseJSDocTags = (
   parser: ISymbolParser,
+  options: ParseOptions,
   declaration?: ts.Node,
 ): PropType | undefined | null => {
   if (declaration) {
@@ -241,7 +249,7 @@ export const parseJSDocTags = (
       if (tag.tagName.text === 'ignore') {
         return null;
       }
-      parseJSDocTag(parser, result, tag);
+      parseJSDocTag(parser, options, result, tag);
     }
     return result;
   }

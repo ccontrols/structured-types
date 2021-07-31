@@ -1,7 +1,7 @@
 import deepmerge from 'deepmerge';
 import * as ts from 'typescript';
 import { PropType } from '../types';
-import { ISymbolParser } from '../ts-utils';
+import { ISymbolParser, ParseOptions } from '../ts-utils';
 import { parseJSDocTags } from './parseJSDocTags';
 
 const mergeProps = (prop: PropType, parsed: PropType) =>
@@ -27,10 +27,11 @@ const mergeProps = (prop: PropType, parsed: PropType) =>
   });
 export const mergeJSDoc = (
   parser: ISymbolParser,
+  options: ParseOptions,
   prop: PropType = {},
   node?: ts.Node,
 ): PropType | null => {
-  const parsed = parseJSDocTags(parser, node);
+  const parsed = parseJSDocTags(parser, options, node);
   if (parsed === null) {
     return null;
   }

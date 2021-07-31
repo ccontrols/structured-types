@@ -324,8 +324,7 @@ Object {
         "parent": "HTMLAttributes",
         "properties": Array [
           Object {
-            "framework": "react",
-            "kind": 13,
+            "kind": 14,
             "name": "CSSProperties",
             "properties": Array [
               Object {
@@ -107339,7 +107338,6 @@ A hint could be a sample value or a brief description of the expected format.",
                 "name": "ReactChild",
                 "properties": Array [
                   Object {
-                    "framework": "react",
                     "generics": Array [
                       Object {
                         "name": "P",
@@ -107348,7 +107346,7 @@ A hint could be a sample value or a brief description of the expected format.",
                         "name": "T",
                       },
                     ],
-                    "kind": 13,
+                    "kind": 14,
                     "name": "ReactElement",
                     "properties": Array [
                       Object {
@@ -107406,8 +107404,7 @@ A hint could be a sample value or a brief description of the expected format.",
                     "kind": 15,
                   },
                   Object {
-                    "framework": "react",
-                    "kind": 13,
+                    "kind": 14,
                     "name": "ReactNodeArray",
                     "properties": Array [
                       Object {
@@ -107426,8 +107423,7 @@ A hint could be a sample value or a brief description of the expected format.",
                 ],
               },
               Object {
-                "framework": "react",
-                "kind": 13,
+                "kind": 14,
                 "name": "ReactPortal",
                 "properties": Array [
                   Object {
@@ -107460,7 +107456,6 @@ A hint could be a sample value or a brief description of the expected format.",
                         "name": "ReactChild",
                         "properties": Array [
                           Object {
-                            "framework": "react",
                             "generics": Array [
                               Object {
                                 "name": "P",
@@ -107469,7 +107464,7 @@ A hint could be a sample value or a brief description of the expected format.",
                                 "name": "T",
                               },
                             ],
-                            "kind": 13,
+                            "kind": 14,
                             "name": "ReactElement",
                             "properties": Array [
                               Object {
@@ -107527,8 +107522,7 @@ A hint could be a sample value or a brief description of the expected format.",
                             "kind": 15,
                           },
                           Object {
-                            "framework": "react",
-                            "kind": 13,
+                            "kind": 14,
                             "name": "ReactNodeArray",
                             "properties": Array [
                               Object {
@@ -107546,8 +107540,7 @@ A hint could be a sample value or a brief description of the expected format.",
                         ],
                       },
                       Object {
-                        "framework": "react",
-                        "kind": 13,
+                        "kind": 14,
                         "name": "ReactPortal",
                         "properties": Array [
                           Object {

@@ -36,12 +36,13 @@ import {
   FunctionLike,
   isFunctionLike,
   isArrayLike,
-  resolveType,
   ISymbolParser,
-  getInitializer,
   updatePropKind,
   updateModifiers,
 } from './ts-utils';
+import { resolveType } from './ts/resolveType';
+import { getInitializer } from './ts/getInitializer';
+
 import {
   cleanJSDocText,
   getDeclarationName,
@@ -76,13 +77,10 @@ export class SymbolParser implements ISymbolParser {
   ) {
     this.checker = checker;
     this.fileNames = fileNames;
-    this.options = (options?.plugins || []).reduce(
-      (acc, o) => deepmerge(acc, o),
-      {
-        ...defaultParseOptions,
-        ...options,
-      },
-    ) as Required<ParseOptions>;
+    this.options = deepmerge(
+      defaultParseOptions,
+      options as Required<ParseOptions>,
+    );
   }
   private addRefSymbol(prop: PropType, symbol: ts.Symbol): PropType {
     const refSymbol = this.refSymbols.find((r) => r.symbol === symbol);
@@ -95,6 +93,7 @@ export class SymbolParser implements ISymbolParser {
   }
   private getParent(
     parentProp: PropType,
+    options: ParseOptions,
     node?: ts.Node,
     parentName?: string,
   ): PropType | false | undefined {
@@ -102,7 +101,7 @@ export class SymbolParser implements ISymbolParser {
       return false;
     }
     const addParentRef = (parent: PropType, symbol: ts.Symbol) => {
-      if (this.options.consolidateParents) {
+      if (options.consolidateParents) {
         const name = parent.name;
         if (name) {
           if (!this.propParents[name]) {
@@ -116,7 +115,7 @@ export class SymbolParser implements ISymbolParser {
     let parent = node.parent;
     if (ts.isPropertyAccessExpression(node)) {
       const name = node.expression.getText();
-      if (!this.skipProperty(name)) {
+      if (!this.skipProperty(options, name)) {
         if (name === parentName || name === parentProp.parent) {
           return false;
         }
@@ -130,7 +129,7 @@ export class SymbolParser implements ISymbolParser {
     while (parent) {
       if (isTypeParameterType(parent) || ts.isEnumDeclaration(parent)) {
         const name = parent.name ? parent.name.getText() : undefined;
-        if (!name || !this.skipProperty(name)) {
+        if (!name || !this.skipProperty(options, name)) {
           if (name === parentName || name === parentProp.parent) {
             return false;
           }
@@ -141,7 +140,10 @@ export class SymbolParser implements ISymbolParser {
               return addParentRef(propParent, symbol);
             }
           }
-          return this.parseTypeValueComments(propParent, parent) || undefined;
+          return (
+            this.parseTypeValueComments(propParent, options, parent) ||
+            undefined
+          );
         }
         return undefined;
       }
@@ -149,8 +151,12 @@ export class SymbolParser implements ISymbolParser {
     }
     return false;
   }
-  private parseFilePath = (prop: PropType, node?: ts.Node): PropType => {
-    if (this.options.collectFilePath) {
+  private parseFilePath = (
+    prop: PropType,
+    options: ParseOptions,
+    node?: ts.Node,
+  ): PropType => {
+    if (options.collectFilePath) {
       let parent = node;
       while (parent) {
         if (ts.isSourceFile(parent)) {
@@ -176,6 +182,7 @@ export class SymbolParser implements ISymbolParser {
       | ts.ParameterDeclaration
       | ts.TypeParameterDeclaration
     >,
+    options: ParseOptions,
     types: PropType[] = [],
   ): PropType[] {
     const results: PropType[] = [...types];
@@ -210,7 +217,7 @@ export class SymbolParser implements ISymbolParser {
         if (numProps.length <= 1) {
           const symbol = this.checker.getSymbolAtLocation(p.name);
           if (symbol) {
-            const prop = this.parseSymbolProp({}, symbol);
+            const prop = this.parseSymbolProp({}, options, symbol);
             if (prop) {
               addProp(prop);
             }
@@ -218,43 +225,51 @@ export class SymbolParser implements ISymbolParser {
           }
         }
       }
-      const prop = this.parseTypeValueComments({}, p, p);
+      const prop = this.parseTypeValueComments({}, options, p, p);
       if (prop) {
         addProp(prop);
       }
     }
     return results;
   }
-  private parseFunction(prop: PropType, node: FunctionLike): PropType {
+  private parseFunction(
+    prop: PropType,
+    options: ParseOptions,
+    node: FunctionLike,
+  ): PropType {
     prop.kind = tsKindToPropKind[node.kind];
     if (isFunctionBaseType(prop)) {
       if (node.parameters.length && !prop.parameters) {
-        prop.parameters = this.parseProperties(node.parameters);
+        prop.parameters = this.parseProperties(node.parameters, options);
       }
       if (node.type && !prop.returns) {
-        const returns = this.parseTypeValueComments({}, node.type);
+        const returns = this.parseTypeValueComments({}, options, node.type);
         if (returns) {
           prop.returns = returns;
         }
       }
       if (node.typeParameters?.length && !prop.types) {
-        prop.types = this.parseProperties(node.typeParameters);
+        prop.types = this.parseProperties(node.typeParameters, options);
       }
     }
     return prop;
   }
 
-  private parseValue(prop: PropType, node?: ts.Node): PropType {
+  private parseValue(
+    prop: PropType,
+    options: ParseOptions,
+    node?: ts.Node,
+  ): PropType {
     if (node) {
       if (isFunctionLike(node)) {
-        return this.parseFunction(prop, node);
+        return this.parseFunction(prop, options, node);
       } else if (ts.isObjectBindingPattern(node) && 'properties' in prop) {
         node.elements.forEach((e) => {
           const p = (prop as ClassProp).properties?.find(
             (p) => p.name === e.name.getText(),
           );
           if (p) {
-            this.parseValue(p, e.initializer);
+            this.parseValue(p, options, e.initializer);
           }
         });
       } else if (ts.isObjectLiteralExpression(node) && 'properties' in prop) {
@@ -263,7 +278,7 @@ export class SymbolParser implements ISymbolParser {
             (p) => p.name === e.name?.getText(),
           );
           if (p && ts.isPropertyAssignment(e)) {
-            this.parseValue(p, e.initializer);
+            this.parseValue(p, options, e.initializer);
           }
         });
       } else if (
@@ -274,6 +289,7 @@ export class SymbolParser implements ISymbolParser {
         if (isArrayProp(prop)) {
           prop.value = this.parseProperties(
             node.elements as ts.NodeArray<ts.ArrayBindingElement>,
+            options,
           );
         }
       } else if (ts.isNewExpression(node)) {
@@ -281,6 +297,7 @@ export class SymbolParser implements ISymbolParser {
         if (node.arguments) {
           (prop as ObjectProp).properties = this.parseProperties(
             node.arguments as ts.NodeArray<ts.ArrayBindingElement>,
+            options,
           );
         }
       } else if (ts.isNumericLiteral(node)) {
@@ -322,11 +339,12 @@ export class SymbolParser implements ISymbolParser {
         if (ts.isObjectLiteralExpression(node)) {
           prop.properties = this.parseProperties(
             node.properties,
+            options,
             prop.properties,
           );
         }
       } else if (ts.isPrefixUnaryExpression(node)) {
-        this.parseValue(prop, node.operand);
+        this.parseValue(prop, options, node.operand);
         if (
           node.operator === ts.SyntaxKind.MinusToken &&
           isNumberProp(prop) &&
@@ -339,19 +357,24 @@ export class SymbolParser implements ISymbolParser {
     return prop;
   }
 
-  public parseType(prop: PropType, node?: ts.Node): PropType {
+  public parseType(
+    prop: PropType,
+    options: ParseOptions,
+    node?: ts.Node,
+  ): PropType {
     if (node) {
       if (isFunctionLike(node)) {
-        return this.parseFunction(prop, node);
+        return this.parseFunction(prop, options, node);
       } else if (isArrayLike(node)) {
         prop.kind = PropKind.Array;
 
         if (ts.isArrayTypeNode(node)) {
-          const element = this.parseType({}, node.elementType);
+          const element = this.parseType({}, options, node.elementType);
           (prop as ArrayProp).properties = [element];
         } else if (ts.isTypeReferenceNode(node) && node.typeArguments?.length) {
           (prop as ArrayProp).properties = this.parseProperties(
             node.typeArguments,
+            options,
           );
         }
       } else if (ts.isIndexSignatureDeclaration(node)) {
@@ -362,13 +385,14 @@ export class SymbolParser implements ISymbolParser {
             {
               name: index.name.getText(),
             },
+            options,
             index,
           );
           if (indexProp) {
             prop.index = indexProp;
           }
         }
-        const type = this.parseTypeValueComments({}, node.type);
+        const type = this.parseTypeValueComments({}, options, node.type);
         if (type) {
           prop.type = type;
         }
@@ -377,14 +401,14 @@ export class SymbolParser implements ISymbolParser {
           prop.kind = tsKindToPropKind[node.type.kind];
         }
         if (
-          this.options.collectGenerics &&
+          options.collectGenerics &&
           hasGenerics(prop) &&
           isGenericsType(node) &&
           node.typeParameters
         ) {
-          prop.generics = this.parseProperties(node.typeParameters);
+          prop.generics = this.parseProperties(node.typeParameters, options);
         }
-        this.parseTypeValueComments(prop, node.type);
+        this.parseTypeValueComments(prop, options, node.type);
       } else if (ts.isExportAssignment(node)) {
         const symbol = this.checker.getSymbolAtLocation(node.expression);
         if (symbol) {
@@ -405,16 +429,19 @@ export class SymbolParser implements ISymbolParser {
 
         if (isObjectLikeProp(prop)) {
           if (
-            this.options.collectGenerics &&
+            options.collectGenerics &&
             hasGenerics(prop) &&
             isGenericsType(node) &&
             !ts.isTypeLiteralNode(node) &&
             node.typeParameters
           ) {
-            prop.generics = this.parseProperties(node.typeParameters);
+            prop.generics = this.parseProperties(node.typeParameters, options);
           }
 
-          const properties: PropType[] = this.parseProperties(node.members);
+          const properties: PropType[] = this.parseProperties(
+            node.members,
+            options,
+          );
           if (
             (ts.isClassLike(node) || ts.isInterfaceDeclaration(node)) &&
             node.heritageClauses?.length
@@ -441,7 +468,7 @@ export class SymbolParser implements ISymbolParser {
         if (
           symbol &&
           symbol.escapedName &&
-          !this.skipProperty(symbol.escapedName.toString())
+          !this.skipProperty(options, symbol.escapedName.toString())
         ) {
           if (prop.parent) {
           }
@@ -450,11 +477,11 @@ export class SymbolParser implements ISymbolParser {
           prop.type = node.getText();
         }
         if (
-          this.options.collectGenerics &&
+          options.collectGenerics &&
           node.typeArguments?.length &&
           hasGenerics(prop)
         ) {
-          prop.generics = this.parseProperties(node.typeArguments);
+          prop.generics = this.parseProperties(node.typeArguments, options);
         }
         prop.kind = PropKind.Type;
       } else if (ts.isIntersectionTypeNode(node)) {
@@ -468,7 +495,7 @@ export class SymbolParser implements ISymbolParser {
               childProp.kind = tsKindToPropKind[t.kind];
             }
 
-            this.parseTypeValueComments(childProp, t);
+            this.parseTypeValueComments(childProp, options, t);
             if (isClassLikeProp(childProp) && childProp.properties) {
               properties.push(...childProp.properties);
             }
@@ -476,37 +503,49 @@ export class SymbolParser implements ISymbolParser {
         });
         (prop as TypeProp).properties = properties;
       } else if (ts.isLiteralTypeNode(node)) {
-        this.parseTypeValueComments(prop, node.literal);
+        this.parseTypeValueComments(prop, options, node.literal);
       } else if (ts.isParenthesizedTypeNode(node)) {
-        this.parseTypeValueComments(prop, node.type);
+        this.parseTypeValueComments(prop, options, node.type);
       } else if (ts.isTypeLiteralNode(node)) {
         prop.kind = PropKind.Type;
         if (node.members.length) {
-          (prop as TypeProp).properties = this.parseProperties(node.members);
+          (prop as TypeProp).properties = this.parseProperties(
+            node.members,
+            options,
+          );
         }
       } else if (ts.isOptionalTypeNode(node)) {
         prop.optional = true;
-        this.parseTypeValueComments(prop, node.type);
+        this.parseTypeValueComments(prop, options, node.type);
       } else if (ts.isRestTypeNode(node)) {
         prop.kind = PropKind.Rest;
-        const type = this.parseTypeValueComments({}, node.type);
+        const type = this.parseTypeValueComments({}, options, node.type);
         if (type) {
           prop.type = type;
         }
       } else if (ts.isUnionTypeNode(node)) {
         prop.kind = PropKind.Union;
-        (prop as UnionProp).properties = this.parseProperties(node.types);
+        (prop as UnionProp).properties = this.parseProperties(
+          node.types,
+          options,
+        );
       } else if (ts.isEnumDeclaration(node)) {
         prop.kind = PropKind.Enum;
-        (prop as EnumProp).properties = this.parseProperties(node.members);
+        (prop as EnumProp).properties = this.parseProperties(
+          node.members,
+          options,
+        );
       } else if (ts.isEnumMember(node)) {
-        const parent = this.getParent(prop, node, prop.parent);
+        const parent = this.getParent(prop, options, node, prop.parent);
         if (parent) {
           prop.parent = parent.name;
         }
       } else if (ts.isTupleTypeNode(node)) {
         prop.kind = PropKind.Tuple;
-        (prop as TupleProp).properties = this.parseProperties(node.elements);
+        (prop as TupleProp).properties = this.parseProperties(
+          node.elements,
+          options,
+        );
       } else {
         switch (node.kind) {
           case ts.SyntaxKind.NumberKeyword:
@@ -540,7 +579,7 @@ export class SymbolParser implements ISymbolParser {
             break;
           case ts.SyntaxKind.JSDocPropertyTag:
           case ts.SyntaxKind.JSDocParameterTag:
-            parseJSDocTag(this, prop, node as ts.JSDocTag);
+            parseJSDocTag(this, options, prop, node as ts.JSDocTag);
             break;
         }
       }
@@ -548,7 +587,7 @@ export class SymbolParser implements ISymbolParser {
     return prop;
   }
 
-  private getTypeIndexes(type: ts.Type): PropType[] {
+  private getTypeIndexes(type: ts.Type, options: ParseOptions): PropType[] {
     interface InterfaceOrTypeWithINdex extends ts.InterfaceType {
       stringIndexInfo?: ts.IndexInfo;
       numberIndexInfo?: ts.IndexInfo;
@@ -560,6 +599,7 @@ export class SymbolParser implements ISymbolParser {
         if (numberIndex?.declaration) {
           const index = this.parseTypeValueComments(
             {},
+            options,
             numberIndex.declaration,
           );
           if (index) {
@@ -570,6 +610,7 @@ export class SymbolParser implements ISymbolParser {
         if (stringIndex?.declaration) {
           const index = this.parseTypeValueComments(
             {},
+            options,
             stringIndex.declaration,
           );
           if (index) {
@@ -580,7 +621,11 @@ export class SymbolParser implements ISymbolParser {
     }
     return result;
   }
-  private parseSymbolProp(prop: PropType, symbol: ts.Symbol): PropType | null {
+  private parseSymbolProp(
+    prop: PropType,
+    defaultOptions: ParseOptions,
+    symbol: ts.Symbol,
+  ): PropType | null {
     const symbolDeclaration =
       symbol.valueDeclaration || symbol.declarations?.[0];
     const symbolType = getSymbolType(this.checker, symbol);
@@ -591,28 +636,35 @@ export class SymbolParser implements ISymbolParser {
       prop.name = getDeclarationName(declaration);
     }
     if (symbolType) {
-      const resolved = resolveType(
+      const pluginResolved = resolveType(
         {
           symbolType,
           declaration,
           checker: this.checker,
         },
-        this.options,
+        defaultOptions,
       );
-      const initializer = resolved.initializer;
-      const resolvedType = resolved.type;
-      if (resolved.framework) {
-        prop.framework = resolved.framework;
+      const {
+        type: resolvedType,
+        initializer,
+        pluginName,
+        name: resolvedName,
+        kind: resolvedKind,
+        ...resolvedOptions
+      } = pluginResolved;
+      const options = deepmerge(defaultOptions, resolvedOptions);
+      if (pluginName) {
+        prop.framework = pluginName;
       }
       updatePropKind(prop, resolvedType);
-      if (resolved.name) {
-        prop.name = resolved.name;
+      if (resolvedName) {
+        prop.name = resolvedName;
       }
       if (
         resolvedType &&
         resolvedType.flags & (ts.TypeFlags.Object | ts.TypeFlags.Intersection)
       ) {
-        this.parseFilePath(prop, declaration);
+        this.parseFilePath(prop, options, declaration);
         const resolvedSymbol = resolvedType.aliasSymbol || resolvedType.symbol;
         const resolvedDeclaration = resolvedSymbol
           ? resolvedSymbol.valueDeclaration || resolvedSymbol.declarations?.[0]
@@ -626,8 +678,8 @@ export class SymbolParser implements ISymbolParser {
           )
         ) {
           const kind =
-            resolved.kind !== undefined
-              ? resolved.kind
+            resolvedKind !== undefined
+              ? resolvedKind
               : tsKindToPropKind[
                   resolvedDeclaration?.kind ||
                     ts.SyntaxKind.TypeAliasDeclaration
@@ -642,14 +694,16 @@ export class SymbolParser implements ISymbolParser {
               //tuple members do not carry type information
               return this.parseTypeValueComments(
                 prop,
+                options,
                 declaration,
                 initializer,
               );
             }
-            const parent = this.getParent(prop, d, prop.name);
+            const parent = this.getParent(prop, options, d, prop.name);
             if (parent !== undefined) {
               const childProp = this.parseSymbolProp(
                 { parent: prop.name },
+                options,
                 childSymbol,
               );
               if (childProp) {
@@ -663,54 +717,58 @@ export class SymbolParser implements ISymbolParser {
               }
             }
           }
-          const indexes = this.getTypeIndexes(resolvedType);
-          properties.unshift(...indexes);
-          if (!resolved.skipParameters) {
+          if (options.collectParameters) {
             const callSignatures = resolvedType.getCallSignatures();
             if (callSignatures?.length) {
               const fnDeclaration = callSignatures[0].declaration;
               if (fnDeclaration && isFunctionLike(fnDeclaration)) {
-                this.parseFunction(prop, fnDeclaration);
+                this.parseFunction(prop, options, fnDeclaration);
               }
             }
           }
-
-          if (properties.length) {
-            (prop as TypeProp).properties = properties;
-          }
-
           if (
-            this.options.collectGenerics &&
-            !resolved.skipGenerics &&
+            options.collectGenerics &&
             resolvedDeclaration &&
             isTypeParameterType(resolvedDeclaration) &&
             resolvedDeclaration.typeParameters?.length
           ) {
             (prop as TypeProp).generics = this.parseProperties(
               resolvedDeclaration.typeParameters,
+              options,
             );
           }
+          const indexes = this.getTypeIndexes(resolvedType, options);
+          properties.unshift(...indexes);
+
+          if (properties.length) {
+            (prop as TypeProp).properties = properties;
+          }
+
           //any initializer values
-          this.parseValue(prop, initializer);
+          this.parseValue(prop, options, initializer);
           if (!prop.name) {
             prop.name = symbol.getName();
           }
-
-          return this.mergeNodeComments(prop, declaration);
+          return this.mergeNodeComments(prop, options, declaration);
         }
       }
     }
 
     return this.parseTypeValueComments(
       prop,
+      defaultOptions,
       declaration,
       getInitializer(declaration),
     );
   }
-  private skipProperty(name?: string): boolean {
-    return name !== undefined && this.options.internalTypes.includes(name);
+  private skipProperty(options: ParseOptions, name?: string): boolean {
+    return name !== undefined && !!options.internalTypes?.includes(name);
   }
-  private mergeNodeComments(prop: PropType, node?: ts.Node): PropType | null {
+  private mergeNodeComments(
+    prop: PropType,
+    options: ParseOptions,
+    node?: ts.Node,
+  ): PropType | null {
     if (node) {
       //jsdoc comments at the symbol level are mangled for overloaded methods
       // example getters/setters and index properties
@@ -744,7 +802,7 @@ export class SymbolParser implements ISymbolParser {
           }
         }
       }
-      const merged = mergeJSDoc(this, prop, node);
+      const merged = mergeJSDoc(this, options, prop, node);
       if (merged === null) {
         return null;
       }
@@ -754,23 +812,25 @@ export class SymbolParser implements ISymbolParser {
   }
   private parseTypeValue(
     prop: PropType,
+    options: ParseOptions,
     declaration?: ts.Node,
     initializer?: ts.Node,
   ): PropType {
-    this.parseType(prop, declaration);
+    this.parseType(prop, options, declaration);
     if (declaration && ts.isLiteralTypeNode(declaration)) {
-      this.parseValue(prop, declaration.literal);
+      this.parseValue(prop, options, declaration.literal);
     }
-    this.parseValue(prop, initializer);
+    this.parseValue(prop, options, initializer);
     return prop;
   }
   private parseTypeValueComments(
     prop: PropType,
+    options: ParseOptions,
     declaration?: ts.Node,
     initializer?: ts.Node,
   ): PropType | null {
-    this.parseTypeValue(prop, declaration, initializer);
-    return this.mergeNodeComments(prop, declaration);
+    this.parseTypeValue(prop, options, declaration, initializer);
+    return this.mergeNodeComments(prop, options, declaration);
   }
 
   private resolveRefTypes = () => {
@@ -783,7 +843,7 @@ export class SymbolParser implements ISymbolParser {
       chachedSymbols.forEach((ref) => {
         const { props, symbol } = ref;
         ref.props = [];
-        const p = this.parseSymbolProp({}, symbol);
+        const p = this.parseSymbolProp({}, this.options, symbol);
         if (p) {
           const { name, ...rest } = p;
           const type: PropType | string | undefined = Object.keys(rest).length
@@ -821,7 +881,7 @@ export class SymbolParser implements ISymbolParser {
     this.propParents = {};
   }
   public parseSymbol(symbol: ts.Symbol): PropType | null {
-    const prop = this.parseSymbolProp({}, symbol);
+    const prop = this.parseSymbolProp({}, this.options, symbol);
     this.resolveRefTypes();
     return prop;
   }

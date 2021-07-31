@@ -11,33 +11,39 @@ import {
 
 const reactPlugin: ParsePlugin = {
   internalTypes: ['PropsWithChildren'],
+  pluginName: 'react',
   typesResolve: ({ symbolType, declaration, checker }) => {
-    let propsType = symbolType;
-    let initializer: ts.Node | undefined = undefined;
-    let name = undefined;
-    let kind = undefined;
-    let framework = undefined;
-    let defaultProps = undefined;
-    let displayName = undefined;
     if ((symbolType.flags & ts.TypeFlags.Object) === ts.TypeFlags.Object) {
       if (declaration) {
         if (isObjectTypeDeclaration(declaration)) {
-          initializer = getInitializer(declaration);
           const jsx = checker.getJsxIntrinsicTagNamesAt(declaration);
           if (jsx) {
-            defaultProps = getObjectStaticProp(declaration, 'defaultProps');
-            displayName = getObjectStaticProp(declaration, 'displayName');
+            const defaultProps =
+              getObjectStaticProp(declaration, 'defaultProps') ||
+              getInitializer(declaration);
+            const displayName = getObjectStaticProp(declaration, 'displayName');
 
-            framework = 'react';
-            kind = PropKind.Class;
             const signatures = symbolType.getConstructSignatures();
             if (signatures.length > 0 && signatures[0].parameters.length) {
               const props = signatures[0].parameters[0];
-              propsType = getSymbolType(checker, props) || symbolType;
+              let propsType = getSymbolType(checker, props) || symbolType;
 
               if (propsType.isUnionOrIntersection()) {
                 propsType = propsType.types[0];
               }
+              const name =
+                typeof displayName === 'string'
+                  ? displayName
+                  : displayName && ts.isStringLiteral(displayName)
+                  ? displayName.text
+                  : undefined;
+
+              return {
+                type: propsType,
+                name,
+                initializer: defaultProps,
+                kind: PropKind.Class,
+              };
             }
           }
         } else {
@@ -45,48 +51,43 @@ const reactPlugin: ParsePlugin = {
           if (reactFunction) {
             const jsx = checker.getJsxIntrinsicTagNamesAt(reactFunction);
             if (jsx) {
-              defaultProps = getObjectStaticProp(
+              let propsType = undefined;
+              let defaultProps: ts.Node | undefined = getObjectStaticProp(
                 reactFunction.parent,
                 'defaultProps',
               );
-              displayName =
+              const displayName =
                 getObjectStaticProp(reactFunction.parent, 'displayName') ||
                 reactFunction.name?.getText() ||
                 (ts.isVariableDeclaration(reactFunction.parent) &&
                   reactFunction.parent.name.getText());
-              framework = 'react';
-              kind = PropKind.Function;
               if (reactFunction.parameters.length) {
                 const props = reactFunction.parameters[0];
-                if (ts.isObjectBindingPattern(props.name)) {
-                  initializer = props.name;
+                if (!defaultProps && ts.isObjectBindingPattern(props.name)) {
+                  defaultProps = props.name;
                 }
                 propsType = checker.getTypeAtLocation(props);
               }
+              const name =
+                typeof displayName === 'string'
+                  ? displayName
+                  : displayName && ts.isStringLiteral(displayName)
+                  ? displayName.text
+                  : undefined;
+              return {
+                type: propsType,
+                name,
+                initializer: defaultProps,
+                kind: PropKind.Function,
+                collectGenerics: false,
+                collectParameters: false,
+              };
             }
           }
         }
       }
     }
-    name =
-      typeof displayName === 'string'
-        ? displayName
-        : displayName && ts.isStringLiteral(displayName)
-        ? displayName.text
-        : undefined;
-    if (defaultProps) {
-      initializer = defaultProps;
-    }
-
-    return {
-      type: propsType,
-      name,
-      initializer,
-      kind,
-      framework,
-      skipGenerics: kind === PropKind.Function,
-      skipParameters: kind === PropKind.Function,
-    };
+    return undefined;
   },
 };
 

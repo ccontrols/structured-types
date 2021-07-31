@@ -15,8 +15,7 @@ Object {
         "parent": "HTMLAttributes",
         "properties": Array [
           Object {
-            "framework": "react",
-            "kind": 13,
+            "kind": 14,
             "name": "CSSProperties",
             "properties": Array [
               Object {

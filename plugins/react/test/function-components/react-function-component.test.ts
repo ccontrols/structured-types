@@ -3,39 +3,15 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('function-component', () => {
-  it('pick-props', () => {
-    const result = parseFiles([path.resolve(__dirname, 'pick-props.tsx')], {
+  it('no-props', () => {
+    const result = parseFiles([path.resolve(__dirname, 'no-props.tsx')], {
       plugins: [reactPlugin],
-      consolidateParents: false,
-      collectFilePath: false,
-    });
-    expect(result).toMatchSnapshot();
-  });
-  it('display-name', () => {
-    const result = parseFiles([path.resolve(__dirname, 'display-name.tsx')], {
-      plugins: [reactPlugin],
-      consolidateParents: false,
     });
     expect(result).toEqual({
-      default: {
-        name: 'CustomComponentName',
-        framework: 'react',
+      MyComponent: {
+        name: 'MyComponent',
         kind: 11,
-        properties: [
-          {
-            parent: 'OwnProps',
-            optional: true,
-            name: 'stringProp',
-            kind: 1,
-            description: 'stringProp description',
-          },
-          {
-            parent: 'OwnProps',
-            name: 'numberProp',
-            kind: 2,
-            description: 'numberProp description',
-          },
-        ],
+        framework: 'react',
       },
     });
   });
@@ -68,6 +44,43 @@ describe('function-component', () => {
       },
     });
   });
+  it('display-name', () => {
+    const result = parseFiles([path.resolve(__dirname, 'display-name.tsx')], {
+      plugins: [reactPlugin],
+      consolidateParents: false,
+    });
+    expect(result).toEqual({
+      default: {
+        name: 'CustomComponentName',
+        framework: 'react',
+        kind: 11,
+        properties: [
+          {
+            parent: 'OwnProps',
+            optional: true,
+            name: 'stringProp',
+            kind: 1,
+            description: 'stringProp description',
+          },
+          {
+            parent: 'OwnProps',
+            name: 'numberProp',
+            kind: 2,
+            description: 'numberProp description',
+          },
+        ],
+      },
+    });
+  });
+  it('pick-props', () => {
+    const result = parseFiles([path.resolve(__dirname, 'pick-props.tsx')], {
+      plugins: [reactPlugin],
+      consolidateParents: false,
+      collectFilePath: false,
+    });
+    expect(result).toMatchSnapshot();
+  });
+
   it('omit-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'omit-props.tsx')], {
       plugins: [reactPlugin],
@@ -101,18 +114,6 @@ describe('function-component', () => {
             ],
           },
         ],
-      },
-    });
-  });
-  it('no-props', () => {
-    const result = parseFiles([path.resolve(__dirname, 'no-props.tsx')], {
-      plugins: [reactPlugin],
-    });
-    expect(result).toEqual({
-      MyComponent: {
-        name: 'MyComponent',
-        kind: 11,
-        framework: 'react',
       },
     });
   });
