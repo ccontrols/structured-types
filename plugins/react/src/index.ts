@@ -10,8 +10,8 @@ import {
 } from '@structured-types/api';
 
 const reactPlugin: ParsePlugin = {
-  internalTypes: ['PropsWithChildren'],
   pluginName: 'react',
+  filter: (prop) => prop.name !== 'children',
   typesResolve: ({ symbolType, declaration, checker }) => {
     if ((symbolType.flags & ts.TypeFlags.Object) === ts.TypeFlags.Object) {
       if (declaration) {

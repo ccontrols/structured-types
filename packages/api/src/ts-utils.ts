@@ -181,6 +181,11 @@ export interface ParseOptions {
    * by default all exports are extracted
    */
   extractNames?: string[];
+
+  /**
+   * filter properties function
+   */
+  filter?: (prop: PropType) => boolean;
   /**
    * whether to save the "parent" props
    * if set to false will result in a smaller result

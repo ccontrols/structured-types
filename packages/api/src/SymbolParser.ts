@@ -713,7 +713,9 @@ export class SymbolParser implements ISymbolParser {
                 } else {
                   delete childProp.parent;
                 }
-                properties.push(childProp);
+                if (this.filterProperty(childProp, options)) {
+                  properties.push(childProp);
+                }
               }
             }
           }
@@ -763,6 +765,9 @@ export class SymbolParser implements ISymbolParser {
   }
   private skipProperty(options: ParseOptions, name?: string): boolean {
     return name !== undefined && !!options.internalTypes?.includes(name);
+  }
+  private filterProperty(prop: PropType, options: ParseOptions): boolean {
+    return !options.filter || options.filter(prop);
   }
   private mergeNodeComments(
     prop: PropType,
