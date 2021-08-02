@@ -186,6 +186,11 @@ export interface ParseOptions {
    * filter properties function
    */
   filter?: (prop: PropType) => boolean;
+
+  /**
+   * max depth for extracting child props. default is 5
+   */
+  maxDepth?: number;
   /**
    * whether to save the "parent" props
    * if set to false will result in a smaller result

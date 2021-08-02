@@ -67,7 +67,11 @@ const strToValue = (s: string): any => {
 export class SymbolParser implements ISymbolParser {
   private checker: ts.TypeChecker;
   private options: Required<ParseOptions>;
-  private refSymbols: { props: PropType[]; symbol: ts.Symbol }[] = [];
+  private refSymbols: {
+    props: PropType[];
+    symbol: ts.Symbol;
+  }[] = [];
+  private visitedSymbols: ts.Symbol[] = [];
   private propParents: Record<string, PropType> = {};
   private fileNames: string[];
   constructor(
@@ -84,7 +88,13 @@ export class SymbolParser implements ISymbolParser {
   }
   private addRefSymbol(prop: PropType, symbol: ts.Symbol): PropType {
     const refSymbol = this.refSymbols.find((r) => r.symbol === symbol);
-    if (!refSymbol) {
+    if (this.visitedSymbols.find((s) => s === symbol)) {
+      if (prop.name) {
+        prop.type = symbol.getName();
+      } else {
+        prop.name = symbol.getName();
+      }
+    } else if (!refSymbol) {
       this.refSymbols.push({ props: [prop], symbol });
     } else {
       refSymbol.props.push(prop);
@@ -630,7 +640,7 @@ export class SymbolParser implements ISymbolParser {
       symbol.valueDeclaration || symbol.declarations?.[0];
     const symbolType = getSymbolType(this.checker, symbol);
     const declaration = symbolDeclaration;
-
+    this.visitedSymbols.push(symbol);
     updateModifiers(prop, declaration);
     if (declaration) {
       prop.name = getDeclarationName(declaration);
@@ -840,7 +850,8 @@ export class SymbolParser implements ISymbolParser {
 
   private resolveRefTypes = () => {
     let i = 0;
-    while (i < 5) {
+    const { maxDepth = 5 } = this.options;
+    while (i < maxDepth) {
       const chachedSymbols = this.refSymbols.filter((r) => r.props.length);
       if (!chachedSymbols.length) {
         break;

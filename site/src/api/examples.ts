@@ -232,6 +232,8 @@ export const examples: Examples = {
         '/**\n * spread member of tuple\n */\nexport type SpreadTuple = [...boolean[], string, number];\n',
     },
     type: {
+      'circular-reference.ts':
+        '/**\n * this is type Children\n */\ntype Children = {\n  parent: Parent;\n  /**\n   * self-referencing items\n   */\n  items?: Children[];\n};\n\n/**\n * this is type Parent\n */\nexport type Parent = {\n  /**\n   * child elements\n   */\n  children?: Children[];\n};\n',
       'extend-type.ts':
         '/**\n * base type\n */\ntype T = {\n  /**\n   * base type member property\n   */\n  m: string;\n};\n\n/**\n * extended type\n */\n\nexport type ExtendT = T & {\n  /**\n   * own member\n   */\n  honey: boolean;\n};\n',
       'generic-array.ts': 'export type GenericArrayType<Type> = Type[];\n',
@@ -247,6 +249,8 @@ export const examples: Examples = {
         '/** type A */\ntype A = {\n  a: string;\n};\n/**\n * type B\n */\n\ntype B = {\n  b: number;\n};\n/** intersect type */\nexport type Intersect = A & B;\n',
       'nested-generic.ts':
         "type UnionGenericType<Type> = Type | 'a string';\n\n/**\n * generic interface\n */\n\ntype GenericArrayType<Type> = {\n  /**\n   * member field\n   */\n\n  m: Type;\n};\nexport type NestedGenericType<Type> = GenericArrayType<UnionGenericType<Type>>;\n",
+      'self-reference.ts':
+        '/**\n * this is type\n */\nexport type Node = {\n  /**\n   * self-referencing items\n   */\n  items?: Node[];\n};\n',
       'simple.ts':
         '/**\n * this is type\n */\nexport type T = {\n  /**\n   * type member property\n   */\n  m: string;\n};\n',
       'union-generic.ts': 'export type UnionGenericType<Type> = Type | null;\n',

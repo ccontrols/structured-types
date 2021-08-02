@@ -2,6 +2,90 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('type', () => {
+  it('circular-reference', () => {
+    const results = parseFiles([
+      path.resolve(__dirname, 'circular-reference.ts'),
+    ]);
+    expect(results).toEqual({
+      Parent: {
+        name: 'Parent',
+        kind: 15,
+        properties: [
+          {
+            optional: true,
+            name: 'children',
+            kind: 16,
+            properties: [
+              {
+                kind: 15,
+                properties: [
+                  {
+                    name: 'parent',
+                    kind: 15,
+                    properties: [
+                      {
+                        parent: 'Parent',
+                        optional: true,
+                        name: 'children',
+                        kind: 16,
+                        properties: [
+                          {
+                            name: 'Children',
+                            kind: 15,
+                          },
+                        ],
+                        description: 'child elements',
+                      },
+                    ],
+                  },
+                  {
+                    optional: true,
+                    name: 'items',
+                    kind: 16,
+                    properties: [
+                      {
+                        name: 'Children',
+                        kind: 15,
+                      },
+                    ],
+                    description: 'self-referencing items',
+                  },
+                ],
+                description: 'this is type Children',
+                name: 'Children',
+              },
+            ],
+            description: 'child elements',
+          },
+        ],
+        description: 'this is type Parent',
+      },
+    });
+  });
+  it('self-reference', () => {
+    const results = parseFiles([path.resolve(__dirname, 'self-reference.ts')]);
+    expect(results).toEqual({
+      Node: {
+        name: 'Node',
+        kind: 15,
+        properties: [
+          {
+            optional: true,
+            name: 'items',
+            kind: 16,
+            properties: [
+              {
+                name: 'Node',
+                kind: 15,
+              },
+            ],
+            description: 'self-referencing items',
+          },
+        ],
+        description: 'this is type',
+      },
+    });
+  });
   it('initialized', () => {
     const results = parseFiles([path.resolve(__dirname, 'initialized.ts')]);
     expect(results).toEqual({
