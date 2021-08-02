@@ -1,7 +1,7 @@
 {
   "name": "@structured-types/playground-plugin",
   "version": "3.17.2",
-  "description": "A plugin to extract structured type information.",
+  "description": "Extract structured types and documentation from the your source code.",
   "keywords": [
     "structured-types",
     "playground-plugin",
