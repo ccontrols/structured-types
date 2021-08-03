@@ -45,7 +45,6 @@ import { getInitializer } from './ts/getInitializer';
 
 import {
   cleanJSDocText,
-  getDeclarationName,
   parseJSDocTag,
   tagCommentToString,
 } from './jsdoc/parseJSDocTags';
@@ -261,7 +260,30 @@ export class SymbolParser implements ISymbolParser {
       if (node.typeParameters?.length && !prop.types) {
         prop.types = this.parseProperties(node.typeParameters, options);
       }
+      if (
+        !prop.returns &&
+        (ts.isFunctionDeclaration(node) ||
+          ts.isMethodDeclaration(node) ||
+          ts.isArrowFunction(node))
+      ) {
+        if (node.body && ts.isBlock(node.body)) {
+          const returnStatement =
+            (node.body?.statements.find((s) =>
+              ts.isReturnStatement(s),
+            ) as ts.ReturnStatement) || undefined;
+          if (returnStatement?.expression) {
+            const returnType = this.checker.getTypeAtLocation(
+              returnStatement.expression,
+            );
+            const returnProp = updatePropKind({}, returnType);
+            if (returnProp.kind) {
+              prop.returns = returnProp;
+            }
+          }
+        }
+      }
     }
+
     return prop;
   }
 
@@ -366,7 +388,17 @@ export class SymbolParser implements ISymbolParser {
     }
     return prop;
   }
-
+  public updateSymbolName(prop: PropType, node?: ts.Declaration): PropType {
+    const name = (node as ts.NamedDeclaration).name;
+    if (name) {
+      if (ts.isQualifiedName(name)) {
+        prop.name = (name as ts.QualifiedName).right.text;
+      } else {
+        prop.name = name.getText();
+      }
+    }
+    return prop;
+  }
   public parseType(
     prop: PropType,
     options: ParseOptions,
@@ -642,9 +674,7 @@ export class SymbolParser implements ISymbolParser {
     const declaration = symbolDeclaration;
     this.visitedSymbols.push(symbol);
     updateModifiers(prop, declaration);
-    if (declaration) {
-      prop.name = getDeclarationName(declaration);
-    }
+    this.updateSymbolName(prop, declaration);
     if (symbolType) {
       const pluginResolved = resolveType(
         {
@@ -666,7 +696,12 @@ export class SymbolParser implements ISymbolParser {
       if (pluginName) {
         prop.framework = pluginName;
       }
-      updatePropKind(prop, resolvedType);
+      if (resolvedKind) {
+        prop.kind = resolvedKind;
+      } else {
+        updatePropKind(prop, resolvedType);
+      }
+
       if (resolvedName) {
         prop.name = resolvedName;
       }
@@ -687,14 +722,12 @@ export class SymbolParser implements ISymbolParser {
             isArrayLike(resolvedDeclaration.type)
           )
         ) {
-          const kind =
-            resolvedKind !== undefined
-              ? resolvedKind
-              : tsKindToPropKind[
-                  resolvedDeclaration?.kind ||
-                    ts.SyntaxKind.TypeAliasDeclaration
-                ] || PropKind.Type;
-          prop.kind = kind;
+          if (!prop.kind) {
+            prop.kind =
+              tsKindToPropKind[
+                resolvedDeclaration?.kind || ts.SyntaxKind.TypeAliasDeclaration
+              ] || PropKind.Type;
+          }
           const childProps = resolvedType.getApparentProperties();
           const properties: PropType[] = [];
           for (const childSymbol of childProps) {

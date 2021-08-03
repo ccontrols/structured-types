@@ -2,6 +2,30 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('function', () => {
+  it('infer-return', () => {
+    const results = parseFiles([path.resolve(__dirname, 'infer-return.ts')], {
+      collectFilePath: false,
+    });
+    expect(results).toEqual({
+      fn: {
+        name: 'fn',
+        kind: 11,
+        parameters: [
+          {
+            name: 'in1',
+            kind: 2,
+          },
+          {
+            name: 'in2',
+            kind: 2,
+          },
+        ],
+        returns: {
+          kind: 2,
+        },
+      },
+    });
+  });
   it('react fc', () => {
     const results = parseFiles([path.resolve(__dirname, 'react-fc.ts')], {
       collectFilePath: false,

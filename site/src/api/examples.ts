@@ -172,6 +172,8 @@ export const examples: Examples = {
         "export function fn(): void {}\n/**\n * custom property for a function\n */\n\nfn.customProp = 'my custom prop';\n",
       'generic-parameter.ts':
         'interface GenericInterface<T> {\n  m: T;\n}\nexport function genericFunction<Type>(\n  box: GenericInterface<Type>,\n  newContents: Type,\n): GenericInterface<Type> {}\n',
+      'infer-return.ts':
+        'export const fn = (in1: number, in2: number) => {\n  return in1 * in2;\n};\n',
       'jsdoc-parameter.ts':
         '/**\n * greeting function\n * @param name string type parameters\n */\nexport function greet(name: string) {}\n',
       'object-parameter.ts':
@@ -280,7 +282,6 @@ export const examples: Examples = {
         "import React, { Component } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nclass MyComponent extends Component<OwnProps> {\n  render(): React.ReactNode {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n\nMyComponent.defaultProps = {\n  stringProp: 'test',\n};\n\nMyComponent.displayName = 'CustomComponentName';\n\nexport default MyComponent;\n",
       'display-name-static.tsx':
         "import React, { Component } from 'react';\n/**\n * MyComponent special component\n */\nexport class MyComponent extends Component {\n  static displayName = 'CustomComponentName';\n  render(): React.ReactNode {\n    return null;\n  }\n}\n",
-      hoc: {},
       'inline-props.tsx':
         "import React from 'react';\n\nexport class MyComponent extends React.Component<{ name: string }> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n",
       'named-component.tsx':
@@ -291,6 +292,26 @@ export const examples: Examples = {
         "import React, { PureComponent } from 'react';\n\nexport class MyComponent extends PureComponent<{ name: string }> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n",
       'star-import.tsx':
         "import * as R from 'react';\n\nexport class MyComponent extends R.Component<{ name: string }> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n",
+    },
+    'forward-ref': {
+      'composed-props.tsx':
+        "import React, { BaseHTMLAttributes } from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nexport const FancyButton = React.forwardRef<\n  HTMLButtonElement,\n  OwnProps & BaseHTMLAttributes<HTMLButtonElement>\n>((props, ref) => (\n  <button ref={ref} title={props.stringProp}>\n    {props.children}\n  </button>\n));\n",
+      'default-props.tsx':
+        "import React from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nexport const FancyButton = React.forwardRef<HTMLButtonElement, OwnProps>(\n  (props, ref) => (\n    <button ref={ref} title={props.stringProp}>\n      {props.children}\n    </button>\n  ),\n);\n\nFancyButton.defaultProps = {\n  stringProp: 'default value',\n};\n",
+      'display-name.tsx':
+        "import React from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n\nexport const FancyButton = React.forwardRef<HTMLButtonElement, OwnProps>(\n  (props, ref) => (\n    <button ref={ref} title={props.stringProp}>\n      {props.children}\n    </button>\n  ),\n);\n\nFancyButton.displayName = 'CustomComponentName';\n",
+      'hoc.tsx':
+        "import React, { BaseHTMLAttributes } from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nconst FancyButton = React.forwardRef<\n  HTMLButtonElement,\n  OwnProps & BaseHTMLAttributes<HTMLButtonElement>\n>((props, ref) => (\n  <button ref={ref} title={props.stringProp}>\n    {props.children}\n  </button>\n));\n\nfunction logProps(WrappedComponent) {\n  class LogProps extends React.Component {\n    componentDidUpdate(prevProps) {\n      console.log('old props:', prevProps);\n      console.log('new props:', this.props);\n    }\n\n    render() {\n      return <WrappedComponent {...this.props} />;\n    }\n  }\n\n  function forwardRef(props, ref) {\n    return <LogProps {...props} forwardedRef={ref} />;\n  }\n\n  return React.forwardRef(forwardRef);\n}\n\nexport default logProps(FancyButton);\n",
+      'initialized.tsx':
+        "import React from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nexport const FancyButton = React.forwardRef<HTMLButtonElement, OwnProps>(\n  ({ children, stringProp = 'test' }, ref) => (\n    <button ref={ref} title={stringProp}>\n      {children}\n    </button>\n  ),\n);\n",
+      'inline-initialized.tsx':
+        "import React from 'react';\n\ntype OwnProps = React.PropsWithChildren<{\n  /**\n   * own string prop\n   */\n  stringProp?: string;\n}>;\n\n// eslint-disable-next-line react/display-name\nexport const FancyButton = React.forwardRef<HTMLButtonElement>(\n  (props: OwnProps = { stringProp: 'hello' }, ref) => (\n    <button ref={ref} title={props.stringProp}>\n      {props.children}\n    </button>\n  ),\n);\n",
+      'inline-props.tsx':
+        "import React from 'react';\n\ntype OwnProps = React.PropsWithChildren<{\n  /**\n   * own string prop\n   */\n  stringProp?: string;\n}>;\n\n// eslint-disable-next-line react/display-name\nexport const FancyButton = React.forwardRef<HTMLButtonElement>(\n  (props: OwnProps, ref) => (\n    <button ref={ref} title={props.stringProp}>\n      {props.children}\n    </button>\n  ),\n);\n",
+      'no-props.tsx':
+        "import React from 'react';\n\n// eslint-disable-next-line react/display-name\nexport default React.forwardRef<HTMLButtonElement>((props, ref) => (\n  <button ref={ref}>{props.children}</button>\n));\n",
+      'own-props.tsx':
+        "import React from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nexport const FancyButton = React.forwardRef<HTMLButtonElement, OwnProps>(\n  (props, ref) => (\n    <button ref={ref} title={props.stringProp}>\n      {props.children}\n    </button>\n  ),\n);\n",
     },
     'function-components': {
       'default-props.tsx':

@@ -10,18 +10,6 @@ import {
 } from '../types';
 import { ParseOptions } from '../ts-utils';
 
-export const getDeclarationName = (
-  node: ts.Declaration,
-): string | undefined => {
-  const name = (node as ts.NamedDeclaration).name;
-  if (name) {
-    if (ts.isQualifiedName(name)) {
-      return (name as ts.QualifiedName).right.text;
-    }
-    return name.getText();
-  }
-  return undefined;
-};
 export const cleanJSDocText = (s: string): string => {
   const result = s
     .replace(/^[\r\n]+|[\r\n]+$/g, '')
@@ -63,9 +51,8 @@ const parseJSDocProperty = (
   options: ParseOptions,
   tag: ts.JSDocPropertyLikeTag,
 ): PropType => {
-  const prop: PropType = {
-    name: getDeclarationName(tag),
-  };
+  const prop: PropType = {};
+  parser.updateSymbolName(prop, tag);
   const comment = tagCommentToString(tag.comment);
   if (comment) {
     prop.description = comment;

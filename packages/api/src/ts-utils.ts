@@ -334,6 +334,7 @@ export const getSymbolType = (
 };
 
 export interface ISymbolParser {
+  updateSymbolName(prop: PropType, node?: ts.Declaration): PropType;
   parseType(prop: PropType, options: ParseOptions, node?: ts.Node): PropType;
   parseSymbol(symbol: ts.Symbol, options: ParseOptions): PropType | null;
 }
