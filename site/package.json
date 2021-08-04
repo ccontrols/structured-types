@@ -1,6 +1,6 @@
 {
   "name": "structured-types-site",
-  "description": "playground site for structured-types",
+  "description": "documentation site for structured-types",
   "version": "3.17.2",
   "private": true,
   "license": "MIT",
