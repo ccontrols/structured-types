@@ -18,7 +18,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
     if (declaration) {
       if (isObjectTypeDeclaration(declaration)) {
         const jsx = checker.getJsxIntrinsicTagNamesAt(declaration);
-        if (jsx) {
+        if (jsx.length) {
           const defaultProps =
             getObjectStaticProp(declaration, 'defaultProps') ||
             getInitializer(declaration);
@@ -105,7 +105,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
         const reactFunction = getFunctionLike(checker, declaration);
         if (reactFunction) {
           const jsx = checker.getJsxIntrinsicTagNamesAt(reactFunction);
-          if (jsx) {
+          if (jsx.length) {
             let propsType = undefined;
             let defaultProps: ts.Node | undefined = getObjectStaticProp(
               reactFunction.parent,

@@ -3,6 +3,32 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('function-component', () => {
+  it('not-react', () => {
+    const result = parseFiles([path.resolve(__dirname, 'not-react.tsx')], {
+      plugins: [reactPlugin],
+    });
+    expect(result).toEqual({
+      NotReactClass: {
+        name: 'NotReactClass',
+        kind: 13,
+        properties: [
+          {
+            name: 'exec',
+            kind: 11,
+            parameters: [
+              {
+                name: 'condition',
+                kind: 3,
+              },
+            ],
+            returns: {
+              kind: 3,
+            },
+          },
+        ],
+      },
+    });
+  });
   it('no-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'no-props.tsx')], {
       plugins: [reactPlugin],
