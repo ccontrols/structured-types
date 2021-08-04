@@ -301,7 +301,7 @@ export const examples: Examples = {
       'display-name.tsx':
         "import React from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n\nexport const FancyButton = React.forwardRef<HTMLButtonElement, OwnProps>(\n  (props, ref) => (\n    <button ref={ref} title={props.stringProp}>\n      {props.children}\n    </button>\n  ),\n);\n\nFancyButton.displayName = 'CustomComponentName';\n",
       'hoc.tsx':
-        "import React, { BaseHTMLAttributes } from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nconst FancyButton = React.forwardRef<\n  HTMLButtonElement,\n  OwnProps & BaseHTMLAttributes<HTMLButtonElement>\n>((props, ref) => (\n  <button ref={ref} title={props.stringProp}>\n    {props.children}\n  </button>\n));\n\nfunction logProps(WrappedComponent) {\n  class LogProps extends React.Component {\n    componentDidUpdate(prevProps) {\n      console.log('old props:', prevProps);\n      console.log('new props:', this.props);\n    }\n\n    render() {\n      return <WrappedComponent {...this.props} />;\n    }\n  }\n\n  function forwardRef(props, ref) {\n    return <LogProps {...props} forwardedRef={ref} />;\n  }\n\n  return React.forwardRef(forwardRef);\n}\n\nexport default logProps(FancyButton);\n",
+        "import React from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nconst FancyButton = React.forwardRef<HTMLButtonElement, OwnProps>(\n  (props, ref) => (\n    <button ref={ref} title={props.stringProp}>\n      {props.children}\n    </button>\n  ),\n);\n\nfunction logProps(WrappedComponent) {\n  class LogProps extends React.Component {\n    componentDidUpdate(prevProps) {\n      console.log('old props:', prevProps);\n      console.log('new props:', this.props);\n    }\n\n    render() {\n      return <WrappedComponent {...this.props} />;\n    }\n  }\n\n  function forwardRef(props, ref) {\n    return <LogProps {...props} forwardedRef={ref} />;\n  }\n\n  return React.forwardRef(forwardRef);\n}\n\nexport default logProps(FancyButton);\n",
       'initialized.tsx':
         "import React from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nexport const FancyButton = React.forwardRef<HTMLButtonElement, OwnProps>(\n  ({ children, stringProp = 'test' }, ref) => (\n    <button ref={ref} title={stringProp}>\n      {children}\n    </button>\n  ),\n);\n",
       'inline-initialized.tsx':
@@ -324,6 +324,8 @@ export const examples: Examples = {
         "import React from 'react';\n\nexport const MyComponent = ({\n  name = 'hello',\n}: {\n  name?: string;\n}): React.ReactNode => <span>Hello, {name}!</span>;\n",
       'no-props.tsx':
         "import React from 'react';\n\nexport const MyComponent = () => <span>Hello</span>;\n",
+      'not-react.tsx':
+        'export class NotReactClass {\n  exec(condition: boolean) {\n    return !condition;\n  }\n}\n',
       'omit-props.tsx':
         "import React from 'react';\n\ninterface PrimitmiveProps {\n  stringProp: string;\n  boolProp: boolean;\n}\ntype OmitProps = Omit<PrimitmiveProps, 'boolProp'>;\ntype ComponentProps = OmitProps & {\n  prop1?: 'this' | 'that';\n};\n\nexport const MyComponent: React.FC<ComponentProps> = props => {\n  return <span>Hello, {props.stringProp}!</span>;\n};\n",
       'pick-props.tsx':

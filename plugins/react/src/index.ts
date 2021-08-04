@@ -16,13 +16,77 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
 }) => {
   if ((symbolType.flags & ts.TypeFlags.Object) === ts.TypeFlags.Object) {
     if (declaration) {
+      const functionCall =
+        ts.isExportAssignment(declaration) &&
+        declaration.expression &&
+        ts.isCallExpression(declaration.expression) &&
+        declaration.expression.arguments.length
+          ? declaration.expression.arguments[0]
+          : undefined;
+      if (functionCall) {
+        const type = checker.getTypeAtLocation(functionCall);
+        const typeSymbol = type.getSymbol();
+        const typeDeclaration =
+          typeSymbol?.valueDeclaration || typeSymbol?.declarations?.[0];
+        const results = typesResolve({
+          checker,
+          declaration: typeDeclaration,
+          symbolType: type,
+        });
+        const symbol = checker.getSymbolAtLocation(functionCall);
+        if (symbol && results && !results.name) {
+          results.name = symbol.getName();
+        }
+        return results;
+      }
+      const symbol = symbolType.aliasSymbol || symbolType.symbol;
+      if (symbol && ['ForwardRefExoticComponent'].includes(symbol.getName())) {
+        let type;
+        let initializer;
+        const props =
+          ts.hasOnlyExpressionInitializer(declaration) &&
+          declaration.initializer &&
+          ts.isCallExpression(declaration.initializer) &&
+          declaration.initializer.arguments.length &&
+          ts.isFunctionLike(declaration.initializer.arguments[0]) &&
+          declaration.initializer.arguments[0].parameters.length
+            ? declaration.initializer.arguments[0].parameters[0]
+            : undefined;
+        if (props) {
+          initializer = ts.isParameter(props)
+            ? props.initializer || props.name
+            : undefined;
+          type = checker.getTypeAtLocation(props);
+        } else {
+          const typeRef = symbolType as ts.TypeReference;
+          type =
+            typeRef.typeArguments?.length &&
+            typeRef.typeArguments[0].isUnionOrIntersection() &&
+            typeRef.typeArguments[0].types.length
+              ? typeRef.typeArguments[0].types[0]
+              : undefined;
+        }
+        const displayName = getObjectStaticProp(declaration, 'displayName');
+        const name =
+          displayName && ts.isStringLiteral(displayName)
+            ? displayName.text
+            : undefined;
+        const defaultProps: ts.Node | undefined = getObjectStaticProp(
+          declaration,
+          'defaultProps',
+        );
+        return {
+          type,
+          initializer: defaultProps || initializer,
+          name,
+          kind: PropKind.Function,
+          collectGenerics: false,
+          collectParameters: false,
+        };
+      }
       if (isObjectTypeDeclaration(declaration)) {
         const jsx = checker.getJsxIntrinsicTagNamesAt(declaration);
         if (jsx.length) {
-          const defaultProps =
-            getObjectStaticProp(declaration, 'defaultProps') ||
-            getInitializer(declaration);
-
           const signatures = symbolType.getConstructSignatures();
           if (signatures.length > 0 && signatures[0].parameters.length) {
             const props = signatures[0].parameters[0];
@@ -39,7 +103,9 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
                 : displayName && ts.isStringLiteral(displayName)
                 ? displayName.text
                 : undefined;
-
+            const defaultProps =
+              getObjectStaticProp(declaration, 'defaultProps') ||
+              getInitializer(declaration);
             return {
               type: propsType,
               name,
@@ -49,59 +115,6 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
           }
         }
       } else {
-        const symbol = symbolType.aliasSymbol || symbolType.symbol;
-        if (
-          symbol &&
-          ['ForwardRefExoticComponent'].includes(symbol.getName())
-        ) {
-          let type;
-          let initializer;
-          const props =
-            ts.hasOnlyExpressionInitializer(declaration) &&
-            declaration.initializer &&
-            ts.isCallExpression(declaration.initializer) &&
-            declaration.initializer.arguments.length &&
-            ts.isFunctionLike(declaration.initializer.arguments[0]) &&
-            declaration.initializer.arguments[0].parameters.length
-              ? declaration.initializer.arguments[0].parameters[0]
-              : ts.isExportAssignment(declaration) &&
-                declaration.expression &&
-                ts.isCallExpression(declaration.expression) &&
-                declaration.expression.arguments.length
-              ? declaration.expression.arguments[0]
-              : undefined;
-          if (props) {
-            initializer = ts.isParameter(props)
-              ? props.initializer || props.name
-              : undefined;
-            type = checker.getTypeAtLocation(props);
-          } else {
-            const typeRef = symbolType as ts.TypeReference;
-            type =
-              typeRef.typeArguments?.length &&
-              typeRef.typeArguments[0].isUnionOrIntersection() &&
-              typeRef.typeArguments[0].types.length
-                ? typeRef.typeArguments[0].types[0]
-                : undefined;
-          }
-          const displayName = getObjectStaticProp(declaration, 'displayName');
-          const name =
-            displayName && ts.isStringLiteral(displayName)
-              ? displayName.text
-              : undefined;
-          const defaultProps: ts.Node | undefined = getObjectStaticProp(
-            declaration,
-            'defaultProps',
-          );
-          return {
-            type,
-            initializer: defaultProps || initializer,
-            name,
-            kind: PropKind.Function,
-            collectGenerics: false,
-            collectParameters: false,
-          };
-        }
         const reactFunction = getFunctionLike(checker, declaration);
         if (reactFunction) {
           const jsx = checker.getJsxIntrinsicTagNamesAt(reactFunction);

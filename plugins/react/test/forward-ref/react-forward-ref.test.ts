@@ -7,7 +7,21 @@ describe('react-forward-ref', () => {
     const result = parseFiles([path.resolve(__dirname, 'hoc.tsx')], {
       plugins: [reactPlugin],
     });
-    expect(result).toMatchSnapshot();
+    expect(result).toEqual({
+      default: {
+        framework: 'react',
+        kind: 11,
+        properties: [
+          {
+            parent: 'OwnProps',
+            optional: true,
+            name: 'stringProp',
+            kind: 1,
+          },
+        ],
+        name: 'FancyButton',
+      },
+    });
   });
   it('composed-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'composed-props.tsx')], {
