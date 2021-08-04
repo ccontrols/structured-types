@@ -79,6 +79,11 @@ export const defaultOptions: OptionsTypes = {
         options: ['exports', 'all'],
         help: 'Whether to extract all symbols, or only the exported symbols.',
       },
+      extensions: {
+        defaultValue: 'react',
+        options: ['none', 'react'],
+        help: 'Whether to use any type plugins.',
+      },
     },
   },
   tsOptions: {

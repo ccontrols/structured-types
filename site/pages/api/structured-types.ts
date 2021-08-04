@@ -13,9 +13,11 @@ export default async (
     config?: string;
     tsoptions?: string;
   };
+  const parseOptions = config ? JSON.parse(config) : {};
+  const { extensions, ...otherOptions } = parseOptions;
   const options: DocsOptions = {
-    plugins: [reactPlugin],
-    ...(config ? JSON.parse(config) : undefined),
+    plugins: extensions !== 'none' ? [reactPlugin] : undefined,
+    ...otherOptions,
     tsOptions: tsoptions ? JSON.parse(tsoptions) : undefined,
   };
 
