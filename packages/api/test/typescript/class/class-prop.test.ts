@@ -248,6 +248,9 @@ describe('class', () => {
             static: true,
             name: 'printX',
             kind: 11,
+            returns: {
+              kind: 12,
+            },
           },
         ],
       },
@@ -268,18 +271,27 @@ describe('class', () => {
             visibility: 'public',
             name: 'method1',
             kind: 11,
+            returns: {
+              kind: 12,
+            },
           },
           {
             description: 'a protected method',
             visibility: 'protected',
             name: 'method2',
             kind: 11,
+            returns: {
+              kind: 12,
+            },
           },
           {
             description: 'a private method',
             visibility: 'private',
             name: 'method3',
             kind: 11,
+            returns: {
+              kind: 12,
+            },
           },
         ],
       },

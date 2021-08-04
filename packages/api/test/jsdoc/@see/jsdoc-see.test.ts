@@ -12,6 +12,9 @@ describe('see', () => {
           '[foo](#foo) for further information.',
           '[GitHub](https://github.com)',
         ],
+        returns: {
+          kind: 12,
+        },
       },
     });
   });
@@ -23,6 +26,9 @@ describe('see', () => {
         kind: 11,
         description: 'Both of these will link to the bar function.',
         see: ['[bar](#bar)', 'bar'],
+        returns: {
+          kind: 12,
+        },
       },
     });
   });
@@ -34,6 +40,9 @@ describe('see', () => {
         kind: 11,
         description: 'external link documentation',
         see: ['https://reactjs.org/docs/context.html'],
+        returns: {
+          kind: 1,
+        },
       },
     });
   });

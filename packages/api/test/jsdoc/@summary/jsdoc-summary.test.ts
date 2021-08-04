@@ -9,6 +9,9 @@ describe('summary', () => {
         name: 'bloviate',
         kind: 11,
         summary: 'A concise summary.',
+        returns: {
+          kind: 12,
+        },
         description:
           'A very long, verbose, wordy, long-winded, tedious, verbacious, tautological,\nprofuse, expansive, enthusiastic, redundant, flowery, eloquent, articulate,\nloquacious, garrulous, chatty, extended, babbling description.',
       },

@@ -17,6 +17,9 @@ describe('params', () => {
             optional: true,
           },
         ],
+        returns: {
+          kind: 12,
+        },
       },
     });
   });
@@ -35,6 +38,9 @@ describe('params', () => {
             value: 1,
           },
         ],
+        returns: {
+          kind: 12,
+        },
       },
     });
   });
@@ -54,6 +60,9 @@ describe('params', () => {
           },
         ],
         description: 'An optional parameter (using JSDoc syntax)',
+        returns: {
+          kind: 12,
+        },
       },
     });
   });
@@ -72,6 +81,9 @@ describe('params', () => {
             description: "Somebody's name.",
           },
         ],
+        returns: {
+          kind: 12,
+        },
       },
     });
   });
@@ -91,6 +103,9 @@ describe('params', () => {
             description: "Somebody's name.",
           },
         ],
+        returns: {
+          kind: 12,
+        },
       },
     });
   });
@@ -107,6 +122,9 @@ describe('params', () => {
             name: 'somebody',
           },
         ],
+        returns: {
+          kind: 12,
+        },
       },
     });
   });
@@ -121,6 +139,9 @@ describe('params', () => {
             name: 'somebody',
           },
         ],
+        returns: {
+          kind: 12,
+        },
       },
     });
   });

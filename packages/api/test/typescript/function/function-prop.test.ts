@@ -350,6 +350,9 @@ describe('function', () => {
         description: 'greeting function',
         name: 'greet',
         kind: 11,
+        returns: {
+          kind: 12,
+        },
       },
     });
   });

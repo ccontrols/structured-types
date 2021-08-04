@@ -266,19 +266,12 @@ export class SymbolParser implements ISymbolParser {
           ts.isMethodDeclaration(node) ||
           ts.isArrowFunction(node))
       ) {
-        if (node.body && ts.isBlock(node.body)) {
-          const returnStatement =
-            (node.body?.statements.find((s) =>
-              ts.isReturnStatement(s),
-            ) as ts.ReturnStatement) || undefined;
-          if (returnStatement?.expression) {
-            const returnType = this.checker.getTypeAtLocation(
-              returnStatement.expression,
-            );
-            const returnProp = updatePropKind({}, returnType);
-            if (returnProp.kind) {
-              prop.returns = returnProp;
-            }
+        const signature = this.checker.getSignatureFromDeclaration(node);
+        if (signature) {
+          const returnType = this.checker.getReturnTypeOfSignature(signature);
+          const returnProp = updatePropKind({}, returnType);
+          if (returnProp.kind) {
+            prop.returns = returnProp;
           }
         }
       }

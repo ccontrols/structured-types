@@ -9,6 +9,9 @@ describe('@interface', () => {
         name: 'Color',
         kind: 14,
         description: 'Interface for classes that represent a color.',
+        returns: {
+          kind: 12,
+        },
       },
     });
   });

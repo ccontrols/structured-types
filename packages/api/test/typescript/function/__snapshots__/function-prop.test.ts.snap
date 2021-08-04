@@ -265,6 +265,9 @@ Object {
         ],
       },
     ],
+    "returns": Object {
+      "kind": 12,
+    },
   },
 }
 `;
