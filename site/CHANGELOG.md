@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.18.0](https://github.com/ccontrols/structured-types/compare/v3.17.2...v3.18.0) (2021-08-05)
+
+
+### Bug Fixes
+
+* filePath from original object ([a4071eb](https://github.com/ccontrols/structured-types/commit/a4071eb2ee4c372e27dc97e1bf0d3f4dfc0ec10f))
+* option plugin react ([d443a66](https://github.com/ccontrols/structured-types/commit/d443a66175ec4c2e21da5b68462602e2f2e80091))
+
+
+### Features
+
+* react forward ref ([e0062b8](https://github.com/ccontrols/structured-types/commit/e0062b80cc91a334f71ee4f8a60ca63ac0aa1253))
+* react memo support ([b213397](https://github.com/ccontrols/structured-types/commit/b21339779cb58b83b4cbdab685edbef5671bdae4))
+
+
+
+
+
 ## [3.17.2](https://github.com/ccontrols/structured-types/compare/v3.17.1...v3.17.2) (2021-07-28)
 
 
