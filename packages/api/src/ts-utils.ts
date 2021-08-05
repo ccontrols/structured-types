@@ -52,6 +52,26 @@ export const isHasType = (node: ts.Node): node is ts.HasType => {
   );
 };
 
+export const isSignatureDeclaration = (
+  node: ts.Node,
+): node is ts.SignatureDeclaration => {
+  return (
+    node.kind === ts.SyntaxKind.CallSignature ||
+    node.kind === ts.SyntaxKind.ConstructSignature ||
+    node.kind === ts.SyntaxKind.MethodSignature ||
+    node.kind === ts.SyntaxKind.IndexSignature ||
+    node.kind === ts.SyntaxKind.FunctionType ||
+    node.kind === ts.SyntaxKind.ConstructorType ||
+    node.kind === ts.SyntaxKind.JSDocFunctionType ||
+    node.kind === ts.SyntaxKind.FunctionDeclaration ||
+    node.kind === ts.SyntaxKind.MethodDeclaration ||
+    node.kind === ts.SyntaxKind.Constructor ||
+    node.kind === ts.SyntaxKind.GetAccessor ||
+    node.kind === ts.SyntaxKind.SetAccessor ||
+    node.kind === ts.SyntaxKind.FunctionExpression ||
+    node.kind === ts.SyntaxKind.ArrowFunction
+  );
+};
 export const tsKindToPropKind: { [key in ts.SyntaxKind]?: PropKind } = {
   [ts.SyntaxKind.StringKeyword]: PropKind.String,
   [ts.SyntaxKind.StringLiteral]: PropKind.String,

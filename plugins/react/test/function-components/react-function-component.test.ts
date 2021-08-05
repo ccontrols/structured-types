@@ -3,6 +3,58 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('function-component', () => {
+  it('function-inline-props', () => {
+    const result = parseFiles(
+      [path.resolve(__dirname, 'function-inline-props.tsx')],
+      {
+        plugins: [reactPlugin],
+      },
+    );
+    expect(result).toEqual({
+      MyComponent: {
+        name: 'MyComponent',
+        kind: 11,
+        framework: 'react',
+        properties: [
+          {
+            name: 'name',
+            optional: true,
+            kind: 1,
+            value: 'hello',
+          },
+        ],
+      },
+    });
+  });
+  it('default-props', () => {
+    const result = parseFiles([path.resolve(__dirname, 'default-props.tsx')], {
+      plugins: [reactPlugin],
+      consolidateParents: false,
+    });
+    expect(result).toEqual({
+      default: {
+        name: 'MyComponent',
+        framework: 'react',
+        kind: 11,
+        properties: [
+          {
+            parent: 'OwnProps',
+            optional: true,
+            name: 'stringProp',
+            kind: 1,
+            description: 'stringProp description',
+            value: 'test',
+          },
+          {
+            parent: 'OwnProps',
+            name: 'numberProp',
+            kind: 2,
+            description: 'numberProp description',
+          },
+        ],
+      },
+    });
+  });
   it('not-react', () => {
     const result = parseFiles([path.resolve(__dirname, 'not-react.tsx')], {
       plugins: [reactPlugin],
@@ -41,35 +93,7 @@ describe('function-component', () => {
       },
     });
   });
-  it('default-props', () => {
-    const result = parseFiles([path.resolve(__dirname, 'default-props.tsx')], {
-      plugins: [reactPlugin],
-      consolidateParents: false,
-    });
-    expect(result).toEqual({
-      default: {
-        name: 'MyComponent',
-        framework: 'react',
-        kind: 11,
-        properties: [
-          {
-            parent: 'OwnProps',
-            optional: true,
-            name: 'stringProp',
-            kind: 1,
-            description: 'stringProp description',
-            value: 'test',
-          },
-          {
-            parent: 'OwnProps',
-            name: 'numberProp',
-            kind: 2,
-            description: 'numberProp description',
-          },
-        ],
-      },
-    });
-  });
+
   it('display-name', () => {
     const result = parseFiles([path.resolve(__dirname, 'display-name.tsx')], {
       plugins: [reactPlugin],
@@ -171,29 +195,7 @@ describe('function-component', () => {
       },
     });
   });
-  it('function-inline-props', () => {
-    const result = parseFiles(
-      [path.resolve(__dirname, 'function-inline-props.tsx')],
-      {
-        plugins: [reactPlugin],
-      },
-    );
-    expect(result).toEqual({
-      MyComponent: {
-        name: 'MyComponent',
-        kind: 11,
-        framework: 'react',
-        properties: [
-          {
-            name: 'name',
-            optional: true,
-            kind: 1,
-            value: 'hello',
-          },
-        ],
-      },
-    });
-  });
+
   it('inline-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'inline-props.tsx')], {
       plugins: [reactPlugin],

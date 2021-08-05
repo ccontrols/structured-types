@@ -333,5 +333,23 @@ export const examples: Examples = {
       'typed-props.tsx':
         "import React from 'react';\n\n/**\n * special react component\n */\nexport const MyComponent: React.FC<{\n  /**\n   * optional string prop\n   */\n  name?: string;\n  /**\n   * a required number prop\n   */\n  numProp: number;\n}> = ({ name = 'hello' }) => <span>Hello, {name}!</span>;\n",
     },
+    'react-memo': {
+      'composed-props.tsx':
+        "import React, { BaseHTMLAttributes } from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nexport const FancyButton = React.memo<\n  OwnProps & BaseHTMLAttributes<HTMLButtonElement>\n>((props, ref) => (\n  <button ref={ref} title={props.stringProp}>\n    {props.children}\n  </button>\n));\n",
+      'display-name.tsx':
+        "import React from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n\nexport const FancyButton = React.memo<OwnProps>((props, ref) => (\n  <button ref={ref} title={props.stringProp}>\n    {props.children}\n  </button>\n));\n\nFancyButton.displayName = 'CustomComponentName';\n",
+      'hoc.tsx':
+        "import React from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nconst FancyButton = React.memo<OwnProps>((props, ref) => (\n  <button ref={ref} title={props.stringProp}>\n    {props.children}\n  </button>\n));\n\nfunction logProps(WrappedComponent) {\n  class LogProps extends React.Component {\n    componentDidUpdate(prevProps) {\n      console.log('old props:', prevProps);\n      console.log('new props:', this.props);\n    }\n\n    render() {\n      return <WrappedComponent {...this.props} />;\n    }\n  }\n\n  // eslint-disable-next-line react/display-name\n  return (props) => <LogProps {...props} />;\n}\n\nexport default logProps(FancyButton);\n",
+      'initialized.tsx':
+        "import React from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nexport const MemoButton = React.memo<OwnProps>(\n  ({ stringProp = 'default value', children }) => (\n    <button title={stringProp}>{children}</button>\n  ),\n);\n",
+      'inline-initialized.tsx':
+        "import React from 'react';\n\ntype OwnProps = React.PropsWithChildren<{\n  stringProp?: string;\n}>;\n// eslint-disable-next-line react/display-name\nexport const MemoButton = React.memo(\n  ({ stringProp = 'default value', children }: OwnProps) => (\n    <button title={stringProp}>{children}</button>\n  ),\n);\n",
+      'inline-props.tsx':
+        "import React from 'react';\n\ntype OwnProps = React.PropsWithChildren<{\n  /**\n   * own string prop\n   */\n  stringProp?: string;\n}>;\n\n// eslint-disable-next-line react/display-name\nexport const FancyButton = React.memo((props: OwnProps) => (\n  <button title={props.stringProp}>{props.children}</button>\n));\n",
+      'no-props.tsx':
+        "import React from 'react';\n\n// eslint-disable-next-line react/display-name\nexport default React.memo((props, ref) => (\n  <button ref={ref}>{props.children}</button>\n));\n",
+      'own-props.tsx':
+        "import React from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nexport const FancyButton = React.memo<OwnProps>((props, ref) => (\n  <button ref={ref} title={props.stringProp}>\n    {props.children}\n  </button>\n));\n",
+    },
   },
 };
