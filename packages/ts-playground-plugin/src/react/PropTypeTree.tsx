@@ -39,7 +39,7 @@ const propValue = (name: string, value: any): ReactNode => {
         );
       }
       if (name === 'returns') {
-        return <PropTypeTree data={value} name={' '} />;
+        return <PropTypeTree data={value} name={name} />;
       }
       return (
         <div>
