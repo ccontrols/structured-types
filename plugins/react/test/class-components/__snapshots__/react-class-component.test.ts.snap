@@ -4,7 +4,7 @@ exports[`class-component composed-props 1`] = `
 Object {
   "MyComponent": Object {
     "description": "MyComponent special component",
-    "framework": "react",
+    "extension": "react",
     "kind": 13,
     "name": "MyComponent",
     "properties": Array [

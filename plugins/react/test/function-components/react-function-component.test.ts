@@ -14,7 +14,7 @@ describe('function-component', () => {
       MyComponent: {
         name: 'MyComponent',
         kind: 11,
-        framework: 'react',
+        extension: 'react',
         properties: [
           {
             name: 'name',
@@ -34,7 +34,7 @@ describe('function-component', () => {
     expect(result).toEqual({
       default: {
         name: 'MyComponent',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -89,7 +89,7 @@ describe('function-component', () => {
       MyComponent: {
         name: 'MyComponent',
         kind: 11,
-        framework: 'react',
+        extension: 'react',
       },
     });
   });
@@ -102,7 +102,7 @@ describe('function-component', () => {
     expect(result).toEqual({
       default: {
         name: 'CustomComponentName',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -140,7 +140,7 @@ describe('function-component', () => {
       MyComponent: {
         name: 'MyComponent',
         kind: 11,
-        framework: 'react',
+        extension: 'react',
         properties: [
           {
             parent: 'PrimitmiveProps',
@@ -176,7 +176,7 @@ describe('function-component', () => {
       MyComponent: {
         name: 'MyComponent',
         kind: 11,
-        framework: 'react',
+        extension: 'react',
         properties: [
           {
             optional: true,
@@ -204,7 +204,7 @@ describe('function-component', () => {
       MyComponent: {
         name: 'MyComponent',
         kind: 11,
-        framework: 'react',
+        extension: 'react',
         properties: [
           {
             name: 'name',

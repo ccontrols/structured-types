@@ -10,7 +10,7 @@ describe('react-hoc', () => {
     expect(result).toEqual({
       NamedClassImport: {
         name: 'ClassComponent',
-        framework: 'react',
+        extension: 'react',
         kind: 13,
         properties: [
           {
@@ -23,7 +23,7 @@ describe('react-hoc', () => {
       },
       NamedFunctionImport: {
         name: 'FunctionComponent',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -46,7 +46,7 @@ describe('react-hoc', () => {
     expect(result).toEqual({
       NamedImport: {
         name: 'MyComponent',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -58,7 +58,7 @@ describe('react-hoc', () => {
         ],
       },
       default: {
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         name: 'MyComponent',
         properties: [
@@ -82,7 +82,7 @@ describe('react-hoc', () => {
     expect(result).toEqual({
       NamedImport: {
         name: 'MyComponent',
-        framework: 'react',
+        extension: 'react',
         kind: 13,
         properties: [
           {
@@ -94,7 +94,7 @@ describe('react-hoc', () => {
         ],
       },
       default: {
-        framework: 'react',
+        extension: 'react',
         kind: 13,
         name: 'MyComponent',
         properties: [

@@ -687,7 +687,7 @@ export class SymbolParser implements ISymbolParser {
       } = pluginResolved;
       const options = deepmerge(defaultOptions, resolvedOptions);
       if (pluginName) {
-        prop.framework = pluginName;
+        prop.extension = pluginName;
       }
       if (resolvedKind) {
         prop.kind = resolvedKind;

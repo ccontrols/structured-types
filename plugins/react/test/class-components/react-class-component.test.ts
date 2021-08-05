@@ -5,7 +5,7 @@ import reactPlugin from '../../src';
 const simpleResults = {
   MyComponent: {
     kind: 13,
-    framework: 'react',
+    extension: 'react',
     properties: [
       {
         kind: 1,
@@ -27,7 +27,7 @@ describe('class-component', () => {
     expect(result).toEqual({
       default: {
         name: 'CustomComponentName',
-        framework: 'react',
+        extension: 'react',
         kind: 13,
         properties: [
           {
@@ -61,7 +61,7 @@ describe('class-component', () => {
       default: {
         name: 'MyComponent',
         kind: 13,
-        framework: 'react',
+        extension: 'react',
         properties: [
           {
             parent: 'OwnProps',
@@ -92,7 +92,7 @@ describe('class-component', () => {
     );
     expect(result).toEqual({
       MyComponent: {
-        framework: 'react',
+        extension: 'react',
         name: 'CustomComponentName',
         kind: 13,
         description: 'MyComponent special component',
@@ -110,7 +110,7 @@ describe('class-component', () => {
     );
     expect(result).toEqual({
       MyComponent: {
-        framework: 'react',
+        extension: 'react',
         name: 'MyComponent',
         kind: 13,
         properties: [
@@ -185,7 +185,7 @@ describe('class-component', () => {
       default: {
         name: 'MyComponent',
         kind: 13,
-        framework: 'react',
+        extension: 'react',
         properties: [
           {
             parent: 'OwnProps',
@@ -214,7 +214,7 @@ describe('class-component', () => {
       MyComponent: {
         name: 'MyComponent',
         kind: 13,
-        framework: 'react',
+        extension: 'react',
         properties: [
           {
             parent: 'OwnProps',

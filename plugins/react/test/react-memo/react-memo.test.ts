@@ -10,7 +10,7 @@ describe('react-memo', () => {
     expect(result).toEqual({
       FancyButton: {
         name: 'FancyButton',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -30,7 +30,7 @@ describe('react-memo', () => {
     expect(result).toEqual({
       FancyButton: {
         name: 'FancyButton',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -50,7 +50,7 @@ describe('react-memo', () => {
     });
     expect(result).toEqual({
       default: {
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -71,7 +71,7 @@ describe('react-memo', () => {
     expect(result).toEqual({
       FancyButton: {
         name: 'CustomComponentName',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -100,7 +100,7 @@ describe('react-memo', () => {
     expect(result).toEqual({
       MemoButton: {
         name: 'MemoButton',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -121,7 +121,7 @@ describe('react-memo', () => {
     expect(result).toEqual({
       MemoButton: {
         name: 'MemoButton',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -141,7 +141,7 @@ describe('react-memo', () => {
     });
     expect(result).toEqual({
       default: {
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         name: 'default',
       },

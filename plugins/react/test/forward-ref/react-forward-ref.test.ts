@@ -9,7 +9,7 @@ describe('react-forward-ref', () => {
     });
     expect(result).toEqual({
       default: {
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -36,7 +36,7 @@ describe('react-forward-ref', () => {
     expect(result).toEqual({
       FancyButton: {
         name: 'FancyButton',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -57,7 +57,7 @@ describe('react-forward-ref', () => {
     expect(result).toEqual({
       FancyButton: {
         name: 'CustomComponentName',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -80,7 +80,7 @@ describe('react-forward-ref', () => {
     expect(result).toEqual({
       FancyButton: {
         name: 'FancyButton',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -102,7 +102,7 @@ describe('react-forward-ref', () => {
     expect(result).toEqual({
       FancyButton: {
         name: 'FancyButton',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -122,7 +122,7 @@ describe('react-forward-ref', () => {
     });
     expect(result).toEqual({
       default: {
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         name: 'default',
       },
@@ -135,7 +135,7 @@ describe('react-forward-ref', () => {
     expect(result).toEqual({
       FancyButton: {
         name: 'FancyButton',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {
@@ -156,7 +156,7 @@ describe('react-forward-ref', () => {
     expect(result).toEqual({
       FancyButton: {
         name: 'FancyButton',
-        framework: 'react',
+        extension: 'react',
         kind: 11,
         properties: [
           {

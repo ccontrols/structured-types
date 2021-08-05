@@ -4,7 +4,7 @@ exports[`function-component pick-props 1`] = `
 Object {
   "MyComponent": Object {
     "description": "MyComponent special component",
-    "framework": "react",
+    "extension": "react",
     "kind": 11,
     "name": "MyComponent",
     "properties": Array [

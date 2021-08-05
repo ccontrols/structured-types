@@ -59,10 +59,10 @@ export interface PropType {
   filePath?: string;
   type?: PropType | string;
   /**
-   * framework name as set by plugins
+   * used plugin name
    * ie 'react'...
    */
-  framework?: string;
+  extension?: string;
   /**
    * jsdoc comments parsing
    */
