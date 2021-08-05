@@ -341,6 +341,14 @@ export const examples: Examples = {
       'multiple-hoc.tsx':
         "import React from 'react';\n\nconst logProps = (\n  WrappedComponent: React.ComponentType,\n): React.ComponentType => {\n  class LogProps extends React.Component {\n    componentDidUpdate(prevProps) {\n      console.log('old props:', prevProps);\n      console.log('new props:', this.props);\n    }\n\n    render() {\n      return <WrappedComponent {...this.props} />;\n    }\n  }\n\n  // eslint-disable-next-line react/display-name\n  return (props) => <LogProps {...props} />;\n};\n\ntype OwnProps = {\n  stringProp?: string;\n};\n\nclass ClassComponent extends React.Component<OwnProps> {\n  render() {\n    return <span>Hello, {this.props.stringProp}!</span>;\n  }\n}\n\nconst FunctionComponent: React.FunctionComponent<OwnProps> = (props) => (\n  <span>Hello, {props.stringProp}!</span>\n);\n\nexport const NamedClassImport = logProps(logProps(logProps(ClassComponent)));\nexport const NamedFunctionImport = logProps(\n  logProps(logProps(FunctionComponent)),\n);\n",
     },
+    'react-flow': {
+      'class-component.tsx':
+        "//@flow\nimport * as React from 'react';\n\ntype Props = {\n  foo: number;\n  bar?: string;\n};\n\nexport class MyComponent extends React.Component<Props> {\n  render() {\n    return <div>{this.props.bar}</div>;\n  }\n}\n",
+      'extend-props.tsx':
+        "//@flow\nimport * as React from 'react';\n\ntype DefaultProps = {|\n  foo: number,\n|}\n\ntype Props = {\n  ...DefaultProps,\n  bar?: string;\n};\n\nexport class MyComponent extends React.Component<Props> {\n  render() {\n    return <div>{this.props.bar}</div>;\n  }\n}\n",
+      'function-component.tsx':
+        "//@flow\nimport * as React from 'react';\n\ntype Props = {\n  foo: number;\n  bar?: string;\n};\n\nexport function MyComponent(props: Props): React.ReactNode {\n  return <div>{props.bar}</div>;\n}\n",
+    },
     'react-memo': {
       'composed-props.tsx':
         "import React, { BaseHTMLAttributes } from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nexport const FancyButton = React.memo<\n  OwnProps & BaseHTMLAttributes<HTMLButtonElement>\n>((props, ref) => (\n  <button ref={ref} title={props.stringProp}>\n    {props.children}\n  </button>\n));\n",
