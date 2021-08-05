@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.19.0](https://github.com/ccontrols/structured-types/compare/v3.18.2...v3.19.0) (2021-08-05)
+
+
+### Features
+
+* react hoc ([c7e6fba](https://github.com/ccontrols/structured-types/commit/c7e6fbab31809144103d617c7ccef600ad052795))
+
+
+
+
+
 ## [3.18.2](https://github.com/ccontrols/structured-types/compare/v3.18.1...v3.18.2) (2021-08-05)
 
 
