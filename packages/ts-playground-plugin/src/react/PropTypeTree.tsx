@@ -38,6 +38,9 @@ const propValue = (name: string, value: any): ReactNode => {
           </div>
         );
       }
+      if (name === 'returns') {
+        return <PropTypeTree data={value} name={' '} />;
+      }
       return (
         <div>
           {Object.keys(value).map((key) => (

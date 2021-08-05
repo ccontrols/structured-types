@@ -270,7 +270,7 @@ export class SymbolParser implements ISymbolParser {
         if (signature) {
           const returnType = this.checker.getReturnTypeOfSignature(signature);
           const returnProp = updatePropKind({}, returnType);
-          if (returnProp.kind) {
+          if (returnProp.kind !== undefined) {
             prop.returns = returnProp;
           }
         }
