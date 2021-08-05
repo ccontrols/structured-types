@@ -404,19 +404,22 @@ const findFileNode = (node: ts.Node): ts.SourceFile | undefined => {
 export const getFunctionLike = (
   checker: ts.TypeChecker,
   input: ts.Node,
-): FunctionLike | undefined => {
+): FunctionLike | ts.CallExpression | undefined => {
   let node = input;
   if (ts.isExpressionStatement(node) || ts.isExportAssignment(node)) {
     const symbol = checker.getSymbolAtLocation(node.expression);
     node = symbol?.valueDeclaration || symbol?.declarations?.[0] || node;
   }
-  if (
-    ts.isVariableDeclaration(node) &&
-    node.initializer &&
-    isFunctionLike(node.initializer)
-  ) {
-    return node.initializer;
-  } else if (isFunctionLike(node)) {
+  if (ts.isVariableDeclaration(node) && node.initializer) {
+    if (
+      isFunctionLike(node.initializer) ||
+      ts.isCallExpression(node.initializer)
+    ) {
+      return node.initializer;
+    }
+  }
+
+  if (isFunctionLike(node)) {
     return node;
   }
   return undefined;

@@ -10,6 +10,33 @@ import {
   PropKind,
 } from '@structured-types/api';
 
+const getNodeResults = (
+  checker: ts.TypeChecker,
+  node: ts.Node,
+): ReturnType<ParsePlugin['typesResolve']> => {
+  if (ts.isCallExpression(node) && node.arguments.length) {
+    return getNodeResults(checker, node.arguments[0]);
+  }
+  const symbol = checker.getSymbolAtLocation(node);
+  const type = checker.getTypeAtLocation(node);
+  if (type) {
+    const typeSymbol = type.aliasSymbol || type.symbol;
+
+    const typeDeclaration = ts.isIdentifier(node)
+      ? symbol?.valueDeclaration || typeSymbol?.declarations?.[0]
+      : typeSymbol?.valueDeclaration || typeSymbol?.declarations?.[0];
+    const results = typesResolve({
+      checker,
+      declaration: typeDeclaration,
+      symbolType: type,
+    });
+    if (symbol && results && !results.name) {
+      results.name = symbol.getName();
+    }
+    return results;
+  }
+  return undefined;
+};
 const typesResolve: ParsePlugin['typesResolve'] = ({
   symbolType,
   declaration,
@@ -25,20 +52,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
           ? declaration.expression.arguments[0]
           : undefined;
       if (functionCall) {
-        const type = checker.getTypeAtLocation(functionCall);
-        const typeSymbol = type.getSymbol();
-        const typeDeclaration =
-          typeSymbol?.valueDeclaration || typeSymbol?.declarations?.[0];
-        const results = typesResolve({
-          checker,
-          declaration: typeDeclaration,
-          symbolType: type,
-        });
-        const symbol = checker.getSymbolAtLocation(functionCall);
-        if (symbol && results && !results.name) {
-          results.name = symbol.getName();
-        }
-        return results;
+        return getNodeResults(checker, functionCall);
       }
       const symbol = symbolType.aliasSymbol || symbolType.symbol;
       if (
@@ -126,48 +140,56 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
         const reactFunction = getFunctionLike(checker, declaration);
         if (reactFunction) {
           const jsx = checker.getJsxIntrinsicTagNamesAt(reactFunction);
-          if (jsx.length && isSignatureDeclaration(reactFunction)) {
-            const signature =
-              checker.getSignatureFromDeclaration(reactFunction);
-            if (signature) {
-              const returnType = checker.getReturnTypeOfSignature(signature);
-              const returnSymbol = returnType.aliasSymbol || returnType.symbol;
-              if (
-                returnSymbol &&
-                ['Element', 'ReactNode'].includes(returnSymbol.getName())
-              ) {
-                let propsType = undefined;
-                let defaultProps: ts.Node | undefined = getObjectStaticProp(
-                  reactFunction.parent,
-                  'defaultProps',
-                );
-                const displayName =
-                  getObjectStaticProp(reactFunction.parent, 'displayName') ||
-                  reactFunction.name?.getText() ||
-                  (ts.isVariableDeclaration(reactFunction.parent) &&
-                    reactFunction.parent.name.getText());
-                if (reactFunction.parameters.length) {
-                  const props = reactFunction.parameters[0];
-                  if (!defaultProps && ts.isObjectBindingPattern(props.name)) {
-                    defaultProps = props.name;
+          if (jsx.length) {
+            if (isSignatureDeclaration(reactFunction)) {
+              const signature =
+                checker.getSignatureFromDeclaration(reactFunction);
+              if (signature) {
+                const returnType = checker.getReturnTypeOfSignature(signature);
+                const returnSymbol =
+                  returnType.aliasSymbol || returnType.symbol;
+                if (
+                  returnSymbol &&
+                  ['Element', 'ReactNode'].includes(returnSymbol.getName())
+                ) {
+                  let propsType = undefined;
+                  let defaultProps: ts.Node | undefined = getObjectStaticProp(
+                    reactFunction.parent,
+                    'defaultProps',
+                  );
+                  const displayName =
+                    getObjectStaticProp(reactFunction.parent, 'displayName') ||
+                    reactFunction.name?.getText() ||
+                    (ts.isVariableDeclaration(reactFunction.parent) &&
+                      reactFunction.parent.name.getText());
+                  if (reactFunction.parameters.length) {
+                    const props = reactFunction.parameters[0];
+                    if (
+                      !defaultProps &&
+                      ts.isObjectBindingPattern(props.name)
+                    ) {
+                      defaultProps = props.name;
+                    }
+                    propsType = checker.getTypeAtLocation(props);
                   }
-                  propsType = checker.getTypeAtLocation(props);
+                  const name =
+                    typeof displayName === 'string'
+                      ? displayName
+                      : displayName && ts.isStringLiteral(displayName)
+                      ? displayName.text
+                      : undefined;
+                  return {
+                    type: propsType,
+                    name,
+                    initializer: defaultProps,
+                    kind: PropKind.Function,
+                    collectGenerics: false,
+                    collectParameters: false,
+                  };
                 }
-                const name =
-                  typeof displayName === 'string'
-                    ? displayName
-                    : displayName && ts.isStringLiteral(displayName)
-                    ? displayName.text
-                    : undefined;
-                return {
-                  type: propsType,
-                  name,
-                  initializer: defaultProps,
-                  kind: PropKind.Function,
-                  collectGenerics: false,
-                  collectParameters: false,
-                };
               }
+            } else if (reactFunction.arguments.length) {
+              return getNodeResults(checker, reactFunction.arguments[0]);
             }
           }
         }

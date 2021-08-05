@@ -333,6 +333,12 @@ export const examples: Examples = {
       'typed-props.tsx':
         "import React from 'react';\n\n/**\n * special react component\n */\nexport const MyComponent: React.FC<{\n  /**\n   * optional string prop\n   */\n  name?: string;\n  /**\n   * a required number prop\n   */\n  numProp: number;\n}> = ({ name = 'hello' }) => <span>Hello, {name}!</span>;\n",
     },
+    'higher-order-components': {
+      'class-component.tsx':
+        "import React from 'react';\n\nconst logProps = (WrappedComponent: React.ComponentType): React.ReactNode => {\n  class LogProps extends React.Component {\n    componentDidUpdate(prevProps) {\n      console.log('old props:', prevProps);\n      console.log('new props:', this.props);\n    }\n\n    render() {\n      return <WrappedComponent {...this.props} />;\n    }\n  }\n\n  // eslint-disable-next-line react/display-name\n  return (props) => <LogProps {...props} />;\n};\n\ntype OwnProps = {\n  stringProp?: string;\n};\n\nclass MyComponent extends React.Component<OwnProps> {\n  render() {\n    return <span>Hello, {this.props.stringProp}!</span>;\n  }\n}\n\nexport const NamedImport = logProps(MyComponent);\n\nexport default logProps(MyComponent);\n",
+      'function-component.tsx':
+        "import React from 'react';\n\nconst logProps = (WrappedComponent: React.ComponentType): React.ReactNode => {\n  class LogProps extends React.Component {\n    componentDidUpdate(prevProps) {\n      console.log('old props:', prevProps);\n      console.log('new props:', this.props);\n    }\n\n    render() {\n      return <WrappedComponent {...this.props} />;\n    }\n  }\n\n  // eslint-disable-next-line react/display-name\n  return (props) => <LogProps {...props} />;\n};\n\ntype OwnProps = {\n  stringProp?: string;\n};\n\nconst MyComponent: React.FunctionComponent<OwnProps> = (props) => (\n  <span>Hello, {props.stringProp}!</span>\n);\n\nexport const NamedImport = logProps(MyComponent);\n\nexport default logProps(MyComponent);\n",
+    },
     'react-memo': {
       'composed-props.tsx':
         "import React, { BaseHTMLAttributes } from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nexport const FancyButton = React.memo<\n  OwnProps & BaseHTMLAttributes<HTMLButtonElement>\n>((props, ref) => (\n  <button ref={ref} title={props.stringProp}>\n    {props.children}\n  </button>\n));\n",
