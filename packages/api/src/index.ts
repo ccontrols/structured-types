@@ -2,6 +2,7 @@ import { getTypescriptConfig } from '@structured-types/typescript-config';
 import { anaylizeFiles } from './anaylizeFiles';
 import { PropTypes } from './types';
 import { tsDefaults, DocsOptions, ProgramOptions } from './ts-utils';
+export * from './jsdoc';
 export * from './ts';
 export * from './types';
 export * from './ts-utils';

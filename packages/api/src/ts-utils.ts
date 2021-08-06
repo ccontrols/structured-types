@@ -227,6 +227,11 @@ export interface ParseOptions {
   collectParameters?: boolean;
 
   /**
+   * whether to collect object/type properties
+   */
+  collectProperties?: boolean;
+
+  /**
    * whether to collect errors/diagnostics
    */
   collectDiagnostics?: boolean;
@@ -264,6 +269,7 @@ export const defaultParseOptions: ParseOptions = {
   consolidateParents: false,
   collectGenerics: true,
   collectParameters: true,
+  collectProperties: true,
   collectFilePath: true,
   internalTypes: [
     'Function',
@@ -290,14 +296,13 @@ export type ProgramOptions = {
 export type ResolverReturnType = {
   type: ts.Type | undefined;
   initializer?: ts.Node;
-  name?: string;
-  kind?: PropKind;
+  prop?: PropType;
   pluginName?: string;
 } & Omit<DocsOptions, 'resolvers'>;
 export type TypeResolver = (props: {
   symbolType: ts.Type;
   declaration?: ts.Declaration;
-  checker: ts.TypeChecker;
+  parser: ISymbolParser;
 }) => ResolverReturnType | undefined;
 
 export const updatePropKind = (
@@ -354,6 +359,7 @@ export const getSymbolType = (
 };
 
 export interface ISymbolParser {
+  readonly checker: ts.TypeChecker;
   updateSymbolName(prop: PropType, node?: ts.Declaration): PropType;
   parseType(prop: PropType, options: ParseOptions, node?: ts.Node): PropType;
   parseSymbol(symbol: ts.Symbol, options: ParseOptions): PropType | null;

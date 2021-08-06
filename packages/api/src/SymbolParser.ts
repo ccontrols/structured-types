@@ -1,6 +1,6 @@
 import * as ts from 'typescript';
 import deepmerge from 'deepmerge';
-import { mergeJSDoc } from './jsdoc/mergeJSDoc';
+
 import {
   PropType,
   PropKind,
@@ -11,7 +11,6 @@ import {
   isObjectLikeProp,
   isIndexProp,
   TypeProp,
-  JSDocInfoType,
   UnionProp,
   ArrayProp,
   hasGenerics,
@@ -42,12 +41,8 @@ import {
 } from './ts-utils';
 import { resolveType } from './ts/resolveType';
 import { getInitializer } from './ts/getInitializer';
-
-import {
-  cleanJSDocText,
-  parseJSDocTag,
-  tagCommentToString,
-} from './jsdoc/parseJSDocTags';
+import { mergeNodeComments } from './jsdoc/mergeJSDoc';
+import { parseJSDocTag } from './jsdoc/parseJSDocTags';
 
 const strToValue = (s: string): any => {
   switch (s) {
@@ -64,7 +59,7 @@ const strToValue = (s: string): any => {
 };
 
 export class SymbolParser implements ISymbolParser {
-  private checker: ts.TypeChecker;
+  public checker: ts.TypeChecker;
   private options: Required<ParseOptions>;
   private refSymbols: {
     props: PropType[];
@@ -673,7 +668,7 @@ export class SymbolParser implements ISymbolParser {
         {
           symbolType,
           declaration,
-          checker: this.checker,
+          parser: this,
         },
         defaultOptions,
       );
@@ -681,22 +676,16 @@ export class SymbolParser implements ISymbolParser {
         type: resolvedType,
         initializer,
         pluginName,
-        name: resolvedName,
-        kind: resolvedKind,
+        prop: resolvedProp,
         ...resolvedOptions
       } = pluginResolved;
       const options = deepmerge(defaultOptions, resolvedOptions);
-      if (pluginName) {
+      if (pluginName && !prop.parent) {
         prop.extension = pluginName;
       }
-      if (resolvedKind) {
-        prop.kind = resolvedKind;
-      } else {
+      Object.assign(prop, resolvedProp);
+      if (prop.kind === undefined) {
         updatePropKind(prop, resolvedType);
-      }
-
-      if (resolvedName) {
-        prop.name = resolvedName;
       }
       if (
         resolvedType &&
@@ -721,7 +710,10 @@ export class SymbolParser implements ISymbolParser {
                 resolvedDeclaration?.kind || ts.SyntaxKind.TypeAliasDeclaration
               ] || PropKind.Type;
           }
-          const childProps = resolvedType.getApparentProperties();
+          const childProps =
+            options.collectProperties === false
+              ? []
+              : resolvedType.getApparentProperties();
           const properties: PropType[] = [];
           for (const childSymbol of childProps) {
             const d =
@@ -787,7 +779,7 @@ export class SymbolParser implements ISymbolParser {
           if (!prop.name) {
             prop.name = symbol.getName();
           }
-          return this.mergeNodeComments(prop, options, declaration);
+          return mergeNodeComments(this, prop, options, declaration);
         }
       }
     }
@@ -805,52 +797,7 @@ export class SymbolParser implements ISymbolParser {
   private filterProperty(prop: PropType, options: ParseOptions): boolean {
     return !options.filter || options.filter(prop);
   }
-  private mergeNodeComments(
-    prop: PropType,
-    options: ParseOptions,
-    node?: ts.Node,
-  ): PropType | null {
-    if (node) {
-      //jsdoc comments at the symbol level are mangled for overloaded methods
-      // example getters/setters and index properties
-      // so first try if jsdoc comments are already chached.
-      const { jsDoc } = node as unknown as {
-        jsDoc: JSDocInfoType[];
-      };
-      if (jsDoc) {
-        const description = jsDoc
-          .map(({ comment }) => tagCommentToString(comment))
-          .join('');
-        if (description) {
-          prop.description = description;
-        }
-      } else {
-        const symbol =
-          'name' in node
-            ? this.checker.getSymbolAtLocation(node['name'])
-            : 'symbol' in node
-            ? node['symbol']
-            : undefined;
-        if (symbol) {
-          const description = cleanJSDocText(
-            symbol
-              .getDocumentationComment(this.checker)
-              .map(({ text }) => text)
-              .join(''),
-          );
-          if (description) {
-            prop.description = description;
-          }
-        }
-      }
-      const merged = mergeJSDoc(this, options, prop, node);
-      if (merged === null) {
-        return null;
-      }
-      Object.assign(prop, merged);
-    }
-    return prop;
-  }
+
   private parseTypeValue(
     prop: PropType,
     options: ParseOptions,
@@ -871,7 +818,7 @@ export class SymbolParser implements ISymbolParser {
     initializer?: ts.Node,
   ): PropType | null {
     this.parseTypeValue(prop, options, declaration, initializer);
-    return this.mergeNodeComments(prop, options, declaration);
+    return mergeNodeComments(this, prop, options, declaration);
   }
 
   private resolveRefTypes = () => {

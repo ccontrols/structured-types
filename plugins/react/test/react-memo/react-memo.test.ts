@@ -3,6 +3,26 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('react-memo', () => {
+  it('hoc', () => {
+    const result = parseFiles([path.resolve(__dirname, 'hoc.tsx')], {
+      plugins: [reactPlugin],
+    });
+    expect(result).toEqual({
+      default: {
+        extension: 'react',
+        kind: 11,
+        properties: [
+          {
+            parent: 'OwnProps',
+            optional: true,
+            name: 'stringProp',
+            kind: 1,
+          },
+        ],
+        name: 'FancyButton',
+      },
+    });
+  });
   it('own-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'own-props.tsx')], {
       plugins: [reactPlugin],
@@ -44,26 +64,7 @@ describe('react-memo', () => {
       },
     });
   });
-  it('hoc', () => {
-    const result = parseFiles([path.resolve(__dirname, 'hoc.tsx')], {
-      plugins: [reactPlugin],
-    });
-    expect(result).toEqual({
-      default: {
-        extension: 'react',
-        kind: 11,
-        properties: [
-          {
-            parent: 'OwnProps',
-            optional: true,
-            name: 'stringProp',
-            kind: 1,
-          },
-        ],
-        name: 'FancyButton',
-      },
-    });
-  });
+
   it('display-name', () => {
     const result = parseFiles([path.resolve(__dirname, 'display-name.tsx')], {
       plugins: [reactPlugin],

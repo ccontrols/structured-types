@@ -1,0 +1,65 @@
+{
+  "name": "@structured-types/prop-types-plugin",
+  "version": "3.19.0",
+  "description": "react prop-types plugin for structured-types",
+  "keywords": [
+    "structured-types",
+    "react"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "NODE_ENV=production yarn rollup -c",
+    "dev": "NODE_ENV=development yarn rollup -cw",
+    "prepare": "yarn build",
+    "lint": "yarn eslint . --ext ts,tsx",
+    "fix": "yarn lint --fix",
+    "clean": "rimraf dist coverage tsconfig.tsbuildinfo",
+    "test": "yarn jest"
+  },
+  "homepage": "https://github.com/ccontrols/structured-types",
+  "bugs": {
+    "url": "https://github.com/ccontrols/structured-types/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccontrols/structured-types.git",
+    "directory": "plugins/react-prop-types"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@structured-types/api": "^3.19.0",
+    "@structured-types/react-plugin": "^3.19.0"
+  },
+  "devDependencies": {
+    "react": "^17.0.1",
+    "prop-types": "^15.7.2",
+    "typescript": "^4.2.4"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0",
+    "prop-types": "^15.0.0",
+    "typescript": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "roots": [
+      "./test"
+    ]
+  },
+  "author": {
+    "name": "Atanas Stoyanov",
+    "email": "atanasster@gmail.com",
+    "url": "https://github.com/ccontrols"
+  },
+  "gitHead": "6b63180832adf499bd1ec0808161c3bfc7ab6c1b"
+}

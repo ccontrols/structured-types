@@ -8,17 +8,18 @@ import {
   getObjectStaticProp,
   ParsePlugin,
   PropKind,
+  ISymbolParser,
 } from '@structured-types/api';
 
 const getNodeResults = (
-  checker: ts.TypeChecker,
+  parser: ISymbolParser,
   node: ts.Node,
 ): ReturnType<ParsePlugin['typesResolve']> => {
   if (ts.isCallExpression(node) && node.arguments.length) {
-    return getNodeResults(checker, node.arguments[0]);
+    return getNodeResults(parser, node.arguments[0]);
   }
-  const symbol = checker.getSymbolAtLocation(node);
-  const type = checker.getTypeAtLocation(node);
+  const symbol = parser.checker.getSymbolAtLocation(node);
+  const type = parser.checker.getTypeAtLocation(node);
   if (type) {
     const typeSymbol = type.aliasSymbol || type.symbol;
 
@@ -26,13 +27,14 @@ const getNodeResults = (
       ? symbol?.valueDeclaration || typeSymbol?.declarations?.[0]
       : typeSymbol?.valueDeclaration || typeSymbol?.declarations?.[0];
     const results = typesResolve({
-      checker,
+      parser,
       declaration: typeDeclaration,
       symbolType: type,
     });
-    if (symbol && results && !results.name) {
-      results.name = symbol.getName();
+    if (symbol && results && !results.prop?.name) {
+      results.prop = { ...results.prop, name: symbol.getName() };
     }
+
     return results;
   }
   return undefined;
@@ -40,8 +42,9 @@ const getNodeResults = (
 const typesResolve: ParsePlugin['typesResolve'] = ({
   symbolType,
   declaration,
-  checker,
+  parser,
 }) => {
+  const { checker } = parser;
   if (symbolType.flags & (ts.TypeFlags.Object | ts.TypeFlags.StructuredType)) {
     if (declaration) {
       const functionCall =
@@ -52,7 +55,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
           ? declaration.expression.arguments[0]
           : undefined;
       if (functionCall) {
-        return getNodeResults(checker, functionCall);
+        return getNodeResults(parser, functionCall);
       }
       const symbol = symbolType.aliasSymbol || symbolType.symbol;
       if (
@@ -99,9 +102,8 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
         );
         return {
           type,
+          prop: { kind: PropKind.Function, name },
           initializer: defaultProps || initializer,
-          name,
-          kind: PropKind.Function,
           collectGenerics: false,
           collectParameters: false,
         };
@@ -112,7 +114,14 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
           const signatures = symbolType.getConstructSignatures();
           if (signatures.length > 0 && signatures[0].parameters.length) {
             const props = signatures[0].parameters[0];
-            let propsType = getSymbolType(checker, props) || symbolType;
+            let propsType = getSymbolType(checker, props);
+            if (
+              !propsType ||
+              (propsType as unknown as { intrinsicName?: string })
+                .intrinsicName === 'any'
+            ) {
+              propsType = symbolType;
+            }
 
             if (propsType.isUnionOrIntersection()) {
               propsType = propsType.types[0];
@@ -124,15 +133,14 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
                 ? displayName
                 : displayName && ts.isStringLiteral(displayName)
                 ? displayName.text
-                : undefined;
+                : declaration.name?.text;
             const defaultProps =
               getObjectStaticProp(declaration, 'defaultProps') ||
               getInitializer(declaration);
             return {
               type: propsType,
-              name,
+              prop: { kind: PropKind.Class, name },
               initializer: defaultProps,
-              kind: PropKind.Class,
             };
           }
         }
@@ -180,16 +188,15 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
                       : undefined;
                   return {
                     type: propsType,
-                    name,
                     initializer: defaultProps,
-                    kind: PropKind.Function,
+                    prop: { kind: PropKind.Function, name },
                     collectGenerics: false,
                     collectParameters: false,
                   };
                 }
               }
             } else if (reactFunction.arguments.length) {
-              return getNodeResults(checker, reactFunction.arguments[0]);
+              return getNodeResults(parser, reactFunction.arguments[0]);
             }
           }
         }
