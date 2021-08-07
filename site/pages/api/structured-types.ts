@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import reactPlugin from '@structured-types/react-plugin';
+import propTypesPlugin from '@structured-types/prop-types-plugin';
 
 import { anaylizeFiles, DocsOptions } from '@structured-types/api';
 import { getHost } from '../../src/api/tsvfs-host';
@@ -14,9 +15,18 @@ export default async (
     tsoptions?: string;
   };
   const parseOptions = config ? JSON.parse(config) : {};
-  const { extensions, ...otherOptions } = parseOptions;
+  const { extensions: e, ...otherOptions } = parseOptions;
+  const extensions = !e ? ['react-prop-types', 'react'] : e;
+  const plugins = [];
+  if (extensions.includes('react-prop-types')) {
+    plugins.push(propTypesPlugin);
+  }
+  if (extensions.includes('react')) {
+    plugins.push(reactPlugin);
+  }
+
   const options: DocsOptions = {
-    plugins: extensions !== 'none' ? [reactPlugin] : undefined,
+    plugins,
     ...otherOptions,
     tsOptions: tsoptions ? JSON.parse(tsoptions) : undefined,
   };

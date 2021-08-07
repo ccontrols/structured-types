@@ -12,10 +12,10 @@ export const ConfigOption: FC<
 > = (props) => {
   const { value: propValue, options, defaultValue, type } = props;
   const value = typeof propValue === 'undefined' ? defaultValue : propValue;
-  if (Array.isArray(value) || type === 'textarea') {
-    return <MemoOption {...props} />;
-  } else if (Array.isArray(options) || type === 'select') {
+  if (Array.isArray(options) || type === 'select') {
     return <SelectOption {...props} />;
+  } else if (Array.isArray(value) || type === 'textarea') {
+    return <MemoOption {...props} />;
   }
   return <CheckboxOption {...props} />;
 };

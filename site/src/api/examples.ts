@@ -368,4 +368,16 @@ export const examples: Examples = {
         "import React from 'react';\n\ntype OwnProps = {\n  stringProp?: string;\n};\n// eslint-disable-next-line react/display-name\nexport const FancyButton = React.memo<OwnProps>((props, ref) => (\n  <button ref={ref} title={props.stringProp}>\n    {props.children}\n  </button>\n));\n",
     },
   },
+  'react-prop-types': {
+    'class-components': {
+      'default-export.jsx':
+        "import React, { Component } from 'react';\nimport PT from 'prop-types';\n\n/**\n * MyComponent special component\n */\nclass MyComponent extends Component {\n  render() {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n\nMyComponent.propTypes = {\n  /** stringProp description */\n  stringProp: PT.string,\n  /** numberProp description */\n  numberProp: PT.number.isRequired,\n};\n\nMyComponent.defaultProps = {\n  stringProp: 'test',\n};\n\nexport default MyComponent;\n",
+      'default-props-static.jsx':
+        "import React, { Component } from 'react';\nimport PT from 'prop-types';\n\n/**\n * MyComponent special component\n */\nexport class MyComponent extends Component {\n  static propTypes = {\n    /** stringProp description */\n    stringProp: PT.string,\n    /** numberProp description */\n    numberProp: PT.number.isRequired,\n  };\n  static defaultProps = {\n    stringProp: 'test',\n  };\n  render() {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n",
+      'hoc.jsx':
+        "import React from 'react';\nimport PropTypes from 'prop-types';\n\nconst logProps = (WrappedComponent) => {\n  class LogProps extends React.Component {\n    componentDidUpdate(prevProps) {\n      console.log('old props:', prevProps);\n      console.log('new props:', this.props);\n    }\n\n    render() {\n      return <WrappedComponent {...this.props} />;\n    }\n  }\n\n  // eslint-disable-next-line react/display-name\n  return (props) => <LogProps {...props} />;\n};\n\n/**\n * MyComponent special component\n */\nclass MyComponent extends React.Component {\n  static propTypes = {\n    /** stringProp description */\n    stringProp: PropTypes.string,\n    /** numberProp description */\n    numberProp: PropTypes.number.isRequired,\n  };\n  static defaultProps = {\n    stringProp: 'test',\n  };\n  render() {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n\nexport const NamedClassImport = logProps(logProps(logProps(MyComponent)));\n",
+      'named-export.jsx':
+        "import React, { Component } from 'react';\nimport PT from 'prop-types';\n\n/**\n * MyComponent special component\n */\nexport class MyComponent extends Component {\n  render() {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n\nMyComponent.propTypes = {\n  /** stringProp description */\n  stringProp: PT.string,\n  /** numberProp description */\n  numberProp: PT.number.isRequired,\n};\n\nMyComponent.defaultProps = {\n  stringProp: 'test',\n};\n",
+    },
+  },
 };

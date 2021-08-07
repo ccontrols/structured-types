@@ -26,10 +26,16 @@ const traverseFolder = (folder, examples) => {
 
 const examplesFolder = path.resolve(__dirname, '../../', 'packages/api/test');
 const reactFolder = path.resolve(__dirname, '../../', 'plugins/react/test');
+
 const examples = {};
 traverseFolder(examplesFolder, examples);
 examples.react = {};
 traverseFolder(reactFolder, examples.react);
+examples['react-prop-types'] = {};
+traverseFolder(
+  path.resolve(__dirname, '../../', 'plugins/react-prop-types/test'),
+  examples['react-prop-types'],
+);
 
 fs.writeFileSync(
   path.resolve(__dirname, '../src/api/examples.ts'),

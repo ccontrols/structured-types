@@ -80,9 +80,9 @@ export const defaultOptions: OptionsTypes = {
         help: 'Whether to extract all symbols, or only the exported symbols.',
       },
       extensions: {
-        defaultValue: 'react',
-        options: ['none', 'react'],
-        help: 'Whether to use any type plugins.',
+        defaultValue: ['react-prop-types', 'react'],
+        options: ['react-prop-types', 'react'],
+        help: 'Select the extensions/plugins to use.',
       },
     },
   },
