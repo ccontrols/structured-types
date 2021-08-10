@@ -264,8 +264,11 @@ export class SymbolParser implements ISymbolParser {
         const signature = this.checker.getSignatureFromDeclaration(node);
         if (signature) {
           const returnType = this.checker.getReturnTypeOfSignature(signature);
-          const returnProp = updatePropKind({}, returnType);
-          if (returnProp.kind !== undefined) {
+          const symbol = returnType.aliasSymbol || returnType.symbol;
+          const returnProp = symbol
+            ? this.parseSymbolProp({}, options, symbol)
+            : updatePropKind({}, returnType);
+          if (returnProp?.kind !== undefined) {
             prop.returns = returnProp;
           }
         }
