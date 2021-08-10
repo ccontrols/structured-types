@@ -91,6 +91,8 @@ export const examples: Examples = {
       'union.js': '/** @type {(string|Array)} */\nexport var foo;\n',
     },
     function: {
+      'infer-return-type.js':
+        'class MyClass {}\nexport class Test {\n  make() {\n    return new MyClass();\n  }\n}\n',
       'multiple-types.js':
         '/**\n * Returns the sum of a and b\n * @param {number} a\n * @param {number} b\n * @param {boolean} retArr If set to true, the function will return an array\n * @returns {(number|Array)} Sum of a and b or an array that contains a, b and the sum of a and b.\n */\nexport function sum(a, b, retArr) {\n  if (retArr) {\n    return [a, b, a + b];\n  }\n  return a + b;\n}\n',
       'return-description.js':
