@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/prop-types-plugin",
-  "version": "3.19.0",
+  "version": "3.20.0",
   "description": "react prop-types plugin for structured-types",
   "keywords": [
     "structured-types",
@@ -34,17 +34,17 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@structured-types/api": "^3.19.0",
-    "@structured-types/react-plugin": "^3.19.0"
+    "@structured-types/api": "^3.20.0",
+    "@structured-types/react-plugin": "^3.20.0"
   },
   "devDependencies": {
-    "react": "^17.0.1",
     "prop-types": "^15.7.2",
+    "react": "^17.0.1",
     "typescript": "^4.2.4"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0",
     "prop-types": "^15.0.0",
+    "react": "^16.8.0 || ^17.0.0",
     "typescript": "^4.0.0"
   },
   "publishConfig": {

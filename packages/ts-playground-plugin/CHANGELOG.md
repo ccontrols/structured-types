@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.20.0](https://github.com/ccontrols/structured-types/compare/v3.19.0...v3.20.0) (2021-08-10)
+
+
+### Features
+
+* react prop types ([cc21802](https://github.com/ccontrols/structured-types/commit/cc218027e5fa843c340c4f9b57efb394751428da))
+
+
+
+
+
 # [3.19.0](https://github.com/ccontrols/structured-types/compare/v3.18.2...v3.19.0) (2021-08-05)
 
 **Note:** Version bump only for package @structured-types/playground-plugin
