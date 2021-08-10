@@ -257,6 +257,7 @@ export class SymbolParser implements ISymbolParser {
       }
       if (
         !prop.returns &&
+        !prop.extension &&
         (ts.isFunctionDeclaration(node) ||
           ts.isMethodDeclaration(node) ||
           ts.isArrowFunction(node))
