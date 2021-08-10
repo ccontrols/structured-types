@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.20.1](https://github.com/ccontrols/structured-types/compare/v3.20.0...v3.20.1) (2021-08-10)
+
+
+### Bug Fixes
+
+* avoid internal symbol type lookup ([c2f8974](https://github.com/ccontrols/structured-types/commit/c2f8974245316c258a92c0a0769c977e191c9d88))
+* fn return type if extension used ([28b8f7c](https://github.com/ccontrols/structured-types/commit/28b8f7c39425c0c202c8a5f1b9b7d426aacc8126))
+
+
+
+
+
 # [3.20.0](https://github.com/ccontrols/structured-types/compare/v3.19.0...v3.20.0) (2021-08-10)
 
 
