@@ -2,28 +2,6 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('function', () => {
-  it('infer-return-type', () => {
-    const results = parseFiles([
-      path.resolve(__dirname, 'infer-return-type.js'),
-    ]);
-    expect(results).toEqual({
-      Test: {
-        name: 'Test',
-        kind: 13,
-        properties: [
-          {
-            name: 'make',
-            kind: 11,
-            returns: {
-              name: 'MyClass',
-              kind: 13,
-              properties: [],
-            },
-          },
-        ],
-      },
-    });
-  });
   it('return promise', () => {
     const results = parseFiles([path.resolve(__dirname, 'return-promise.js')]);
     expect(results).toEqual({
@@ -49,6 +27,29 @@ describe('function', () => {
       },
     });
   });
+  it('infer-return-type', () => {
+    const results = parseFiles([
+      path.resolve(__dirname, 'infer-return-type.js'),
+    ]);
+    expect(results).toEqual({
+      Test: {
+        name: 'Test',
+        kind: 13,
+        properties: [
+          {
+            name: 'make',
+            kind: 11,
+            returns: {
+              name: 'MyClass',
+              kind: 13,
+              properties: [],
+            },
+          },
+        ],
+      },
+    });
+  });
+
   it('multiple types', () => {
     const results = parseFiles([path.resolve(__dirname, 'multiple-types.js')]);
     expect(results).toEqual({
