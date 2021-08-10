@@ -102,6 +102,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
         );
         return {
           type,
+          declaration,
           prop: { kind: PropKind.Function, name },
           initializer: defaultProps || initializer,
           collectGenerics: false,
@@ -139,6 +140,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
               getInitializer(declaration);
             return {
               type: propsType,
+              declaration,
               prop: { kind: PropKind.Class, name },
               initializer: defaultProps,
             };
@@ -187,6 +189,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
                       ? displayName.text
                       : undefined;
                   return {
+                    declaration: reactFunction.parent,
                     type: propsType,
                     initializer: defaultProps,
                     prop: { kind: PropKind.Function, name },

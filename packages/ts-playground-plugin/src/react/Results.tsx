@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { anaylizeFiles, PropTypes } from '@structured-types/api';
 import reactPlugin from '@structured-types/react-plugin';
+import propTypesPlugin from '@structured-types/prop-types-plugin';
 import { Loader } from './Loader';
 import { addDTSMapping } from '../utilities/dts-file';
 import type { Sandbox } from '../vendor/sandbox';
@@ -31,6 +32,12 @@ export const Results: FC<{ sandbox: Sandbox }> = ({ sandbox }) => {
         'index.d.ts',
         fsMap,
       );
+      await addDTSMapping(
+        'https://cdn.jsdelivr.net/npm/@types/prop-types@15.7.4/',
+        '/node_modules/@types/prop-types/',
+        'index.d.ts',
+        fsMap,
+      );
       setFsExtra(fsMap);
     };
     addMappings();
@@ -48,7 +55,7 @@ export const Results: FC<{ sandbox: Sandbox }> = ({ sandbox }) => {
         [file.fileName],
         {
           scope: 'all',
-          plugins: [reactPlugin],
+          plugins: [propTypesPlugin, reactPlugin],
           collectDiagnostics,
           tsOptions: tsvfs.program.getCompilerOptions(),
         },

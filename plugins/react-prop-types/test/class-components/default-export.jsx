@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PT from 'prop-types';
+import PropTypes from 'prop-types';
 
 /**
  * MyComponent special component
@@ -13,9 +13,9 @@ class MyComponent extends Component {
 
 MyComponent.propTypes = {
   /** stringProp description */
-  stringProp: PT.string,
+  stringProp: PropTypes.string,
   /** numberProp description */
-  numberProp: PT.number.isRequired,
+  numberProp: PropTypes.number.isRequired,
 };
 
 MyComponent.defaultProps = {

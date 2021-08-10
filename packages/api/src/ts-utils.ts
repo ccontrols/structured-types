@@ -296,6 +296,7 @@ export type ProgramOptions = {
 export type ResolverReturnType = {
   type: ts.Type | undefined;
   initializer?: ts.Node;
+  declaration?: ts.Node;
   prop?: PropType;
   pluginName?: string;
 } & Omit<DocsOptions, 'resolvers'>;
@@ -360,8 +361,30 @@ export const getSymbolType = (
 
 export interface ISymbolParser {
   readonly checker: ts.TypeChecker;
+  readonly options: ParseOptions;
+  parseProperties(
+    properties: ts.NodeArray<
+      | ts.ClassElement
+      | ts.ObjectLiteralElementLike
+      | ts.TypeElement
+      | ts.TypeNode
+      | ts.HeritageClause
+      | ts.EnumMember
+      | ts.ArrayBindingElement
+      | ts.ParameterDeclaration
+      | ts.TypeParameterDeclaration
+    >,
+    options: ParseOptions,
+    types?: PropType[],
+  ): PropType[];
   updateSymbolName(prop: PropType, node?: ts.Declaration): PropType;
   parseType(prop: PropType, options: ParseOptions, node?: ts.Node): PropType;
+  parseTypeValueComments(
+    prop: PropType,
+    options: ParseOptions,
+    declaration?: ts.Node,
+    initializer?: ts.Node,
+  ): PropType | null;
   parseSymbol(symbol: ts.Symbol, options: ParseOptions): PropType | null;
 }
 

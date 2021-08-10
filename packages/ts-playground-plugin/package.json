@@ -36,6 +36,7 @@
   "dependencies": {
     "@structured-types/api": "^3.19.0",
     "@structured-types/react-plugin": "^3.19.0",
+    "@structured-types/prop-types-plugin": "^3.19.0",
     "lz-string": "^1.4.4",
     "node-fetch": "^2.6.0",
     "react": "^17.0.2",

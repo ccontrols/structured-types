@@ -60,7 +60,7 @@ const strToValue = (s: string): any => {
 
 export class SymbolParser implements ISymbolParser {
   public checker: ts.TypeChecker;
-  private options: Required<ParseOptions>;
+  public readonly options: Required<ParseOptions>;
   private refSymbols: {
     props: PropType[];
     symbol: ts.Symbol;
@@ -174,7 +174,7 @@ export class SymbolParser implements ISymbolParser {
     }
     return prop;
   };
-  private parseProperties(
+  public parseProperties(
     properties: ts.NodeArray<
       | ts.ClassElement
       | ts.ObjectLiteralElementLike
@@ -677,6 +677,8 @@ export class SymbolParser implements ISymbolParser {
         initializer,
         pluginName,
         prop: resolvedProp,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        declaration: _,
         ...resolvedOptions
       } = pluginResolved;
       const options = deepmerge(defaultOptions, resolvedOptions);
@@ -811,7 +813,7 @@ export class SymbolParser implements ISymbolParser {
     this.parseValue(prop, options, initializer);
     return prop;
   }
-  private parseTypeValueComments(
+  public parseTypeValueComments(
     prop: PropType,
     options: ParseOptions,
     declaration?: ts.Node,

@@ -1,15 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
  * MyComponent special component
  */
-export class MyComponent extends Component {
-  render() {
-    const { stringProp } = this.props;
-    return <div>{stringProp}</div>;
-  }
-}
+const MyComponent = ({ stringProp }) => <div>{stringProp}</div>;
 
 MyComponent.propTypes = {
   /** stringProp description */
@@ -21,3 +16,5 @@ MyComponent.propTypes = {
 MyComponent.defaultProps = {
   stringProp: 'test',
 };
+
+export default MyComponent;

@@ -32,6 +32,12 @@ export const getHost = async (
     'index.d.ts',
     fsMap,
   );
+  await addDTSMapping(
+    'https://cdn.jsdelivr.net/npm/@types/prop-types@15.7.4/',
+    '/node_modules/@types/prop-types/',
+    'index.d.ts',
+    fsMap,
+  );
   fsMap.set(fileName, code);
   const system = tsvfs.createSystem(fsMap);
   return tsvfs.createVirtualCompilerHost(system, compilerOptions, ts);
