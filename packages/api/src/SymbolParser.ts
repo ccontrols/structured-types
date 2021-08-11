@@ -119,7 +119,8 @@ export class SymbolParser implements ISymbolParser {
     let parent = node.parent;
     if (ts.isPropertyAccessExpression(node)) {
       const name = node.expression.getText();
-      if (!this.skipProperty(options, name)) {
+      const internalKind = this.internalKind(options, name);
+      if (internalKind === undefined) {
         if (name === parentName || name === parentProp.parent) {
           return false;
         }
@@ -128,12 +129,18 @@ export class SymbolParser implements ISymbolParser {
           return addParentRef({ name: name }, symbol);
         }
       }
+      if (internalKind !== PropKind.Any) {
+        parentProp.kind = internalKind;
+      }
       return undefined;
     }
     while (parent) {
       if (isTypeParameterType(parent) || ts.isEnumDeclaration(parent)) {
         const name = parent.name ? parent.name.getText() : undefined;
-        if (!name || !this.skipProperty(options, name)) {
+        const internalKind = name
+          ? this.internalKind(options, name)
+          : undefined;
+        if (internalKind === undefined) {
           if (name === parentName || name === parentProp.parent) {
             return false;
           }
@@ -143,11 +150,14 @@ export class SymbolParser implements ISymbolParser {
             if (symbol) {
               return addParentRef(propParent, symbol);
             }
+            return (
+              this.parseTypeValueComments(propParent, options, parent) ||
+              undefined
+            );
           }
-          return (
-            this.parseTypeValueComments(propParent, options, parent) ||
-            undefined
-          );
+        }
+        if (internalKind !== PropKind.Any) {
+          parentProp.kind = internalKind;
         }
         return undefined;
       }
@@ -267,7 +277,7 @@ export class SymbolParser implements ISymbolParser {
           const returnType = this.checker.getReturnTypeOfSignature(signature);
           const symbol = returnType.aliasSymbol || returnType.symbol;
           const returnProp =
-            symbol && !options.internalTypes?.includes(symbol.getName())
+            symbol && this.internalKind(options, symbol.getName()) === undefined
               ? this.parseSymbolProp({}, options, symbol)
               : updatePropKind({}, returnType);
           if (returnProp?.kind !== undefined) {
@@ -500,16 +510,29 @@ export class SymbolParser implements ISymbolParser {
         }
       } else if (ts.isTypeReferenceNode(node)) {
         const symbol = this.checker.getSymbolAtLocation(node.typeName);
-        if (
-          symbol &&
-          symbol.escapedName &&
-          !this.skipProperty(options, symbol.escapedName.toString())
-        ) {
-          if (prop.parent) {
+        if (symbol && symbol.escapedName) {
+          const internalKind = this.internalKind(
+            options,
+            symbol.escapedName.toString(),
+          );
+          if (internalKind === undefined) {
+            if (prop.parent) {
+            }
+            this.addRefSymbol(prop, symbol);
+          } else {
+            if (internalKind !== PropKind.Any) {
+              prop.kind = internalKind;
+            }
+            const type = node.getText();
+            if (typeof type === 'string') {
+              prop.type = type;
+            }
           }
-          this.addRefSymbol(prop, symbol);
         } else {
-          prop.type = node.getText();
+          const type = node.getText();
+          if (typeof type === 'string') {
+            prop.type = type;
+          }
         }
         if (
           options.collectGenerics &&
@@ -798,8 +821,11 @@ export class SymbolParser implements ISymbolParser {
       getInitializer(declaration),
     );
   }
-  private skipProperty(options: ParseOptions, name?: string): boolean {
-    return name !== undefined && !!options.internalTypes?.includes(name);
+  private internalKind(
+    options: ParseOptions,
+    name?: string,
+  ): PropKind | undefined {
+    return typeof name === 'string' ? options.internalTypes?.[name] : undefined;
   }
   private filterProperty(prop: PropType, options: ParseOptions): boolean {
     return !options.filter || options.filter(prop);

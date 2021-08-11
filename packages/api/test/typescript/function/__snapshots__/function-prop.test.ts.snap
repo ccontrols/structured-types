@@ -107,7 +107,7 @@ Object {
                         "kind": 15,
                       },
                       Object {
-                        "kind": 14,
+                        "kind": 16,
                         "name": "ReactNodeArray",
                         "properties": Array [
                           Object {

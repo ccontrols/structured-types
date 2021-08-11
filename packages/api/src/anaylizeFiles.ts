@@ -60,7 +60,7 @@ export const anaylizeFiles = (
     if (symbol) {
       const symbolName = symbol.getName();
       if (
-        !internalTypes?.includes(symbolName) &&
+        internalTypes?.[symbolName] === undefined &&
         (!extractNames || extractNames.includes(symbolName))
       ) {
         const prop = parser.parseSymbol(symbol);

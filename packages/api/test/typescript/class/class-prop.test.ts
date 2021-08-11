@@ -2,6 +2,28 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('class', () => {
+  it('object-type', () => {
+    const results = parseFiles([path.resolve(__dirname, 'object-type.ts')]);
+
+    expect(results).toEqual({
+      Test: {
+        name: 'Test',
+        kind: 13,
+        properties: [
+          {
+            name: 'make',
+            kind: 11,
+            parameters: [
+              {
+                name: 'gen',
+                kind: 9,
+              },
+            ],
+          },
+        ],
+      },
+    });
+  });
   it('getters/setters', () => {
     const results = parseFiles([path.resolve(__dirname, 'getters-setters.ts')]);
 

@@ -152,6 +152,8 @@ export const examples: Examples = {
         "export class GreeterInitializedMembers {\n  readonly name: string = 'world';\n  err(): void {\n    console.log(this.name);\n  }\n}\n",
       'member-visibility.ts':
         '/* eslint-disable @typescript-eslint/no-empty-function */\n/* eslint-disable @typescript-eslint/explicit-module-boundary-types */\nexport class MemberVisibikity {\n  /**\n   * a public method\n   */\n  public method1() {}\n  /**\n   * a protected method\n   */\n\n  protected method2() {}\n  /**\n   * a private method\n   */\n\n  private method3() {}\n}\n',
+      'object-type.ts':
+        'export class Test {\n  make(gen: Object) {\n    return gen;\n  }\n}\n',
       'param-modifiers.ts':
         'export class ParameterModifiers {\n  /**\n   * constructor implementation\n   * @param x x coordinate\n   * @param y y coordinate\n   * @param z z coordinate\n   */\n  constructor(\n    public readonly x: number,\n    protected y: number,\n    private z: number,\n  ) {\n    // No body necessary\n  }\n}\n',
       'simple.ts':

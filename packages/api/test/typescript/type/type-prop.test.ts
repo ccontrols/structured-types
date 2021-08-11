@@ -2,6 +2,45 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('type', () => {
+  it('index-prop', () => {
+    const results = parseFiles([path.resolve(__dirname, 'index-prop.ts')]);
+    expect(results).toEqual({
+      IndexT: {
+        kind: 15,
+        properties: [
+          {
+            description: 'type index property',
+            kind: 20,
+            index: {
+              name: 'index',
+              kind: 1,
+            },
+            type: {
+              kind: 15,
+              properties: [
+                {
+                  name: 'a',
+                  kind: 15,
+                  type: 'Bear',
+                },
+                {
+                  name: 'b',
+                  kind: 10,
+                },
+              ],
+            },
+          },
+          {
+            description: 'this is an additional name prop',
+            optional: true,
+            name: 'name',
+            kind: 1,
+          },
+        ],
+        name: 'IndexT',
+      },
+    });
+  });
   it('circular-reference', () => {
     const results = parseFiles([
       path.resolve(__dirname, 'circular-reference.ts'),
@@ -110,45 +149,7 @@ describe('type', () => {
       },
     });
   });
-  it('index-prop', () => {
-    const results = parseFiles([path.resolve(__dirname, 'index-prop.ts')]);
-    expect(results).toEqual({
-      IndexT: {
-        kind: 15,
-        properties: [
-          {
-            description: 'type index property',
-            kind: 20,
-            index: {
-              name: 'index',
-              kind: 1,
-            },
-            type: {
-              kind: 15,
-              properties: [
-                {
-                  name: 'a',
-                  kind: 15,
-                  type: 'Bear',
-                },
-                {
-                  name: 'b',
-                  kind: 10,
-                },
-              ],
-            },
-          },
-          {
-            description: 'this is an additional name prop',
-            optional: true,
-            name: 'name',
-            kind: 1,
-          },
-        ],
-        name: 'IndexT',
-      },
-    });
-  });
+
   it('generic-type', () => {
     const results = parseFiles([path.resolve(__dirname, 'generic-type.ts')]);
     expect(results).toEqual({

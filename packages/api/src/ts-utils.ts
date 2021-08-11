@@ -195,7 +195,7 @@ export interface ParseOptions {
    * internal types - libs
    * by default includes classes such as `String`, `Function`...
    */
-  internalTypes?: string[];
+  internalTypes?: Record<string, PropKind>;
   /**
    * list of export names to be extracted.
    * by default all exports are extracted
@@ -271,21 +271,22 @@ export const defaultParseOptions: ParseOptions = {
   collectParameters: true,
   collectProperties: true,
   collectFilePath: true,
-  internalTypes: [
-    'Function',
-    'CallableFunction',
-    'NewableFunction',
-    'String',
-    'Boolean',
-    'Booleanish',
-    'Number',
-    'Array',
-    'Promise',
-    'ConcatArray',
-    'ReadonlyArray',
-    'TemplateStringsArray',
-    'IfSchedulerTracing',
-  ],
+  internalTypes: {
+    Function: PropKind.Function,
+    CallableFunction: PropKind.Function,
+    NewableFunction: PropKind.Function,
+    Object: PropKind.Unknown,
+    String: PropKind.String,
+    Boolean: PropKind.Boolean,
+    Booleanish: PropKind.Boolean,
+    Number: PropKind.Number,
+    Array: PropKind.Array,
+    Promise: PropKind.Any,
+    ConcatArray: PropKind.Boolean,
+    ReadonlyArray: PropKind.Boolean,
+    TemplateStringsArray: PropKind.Boolean,
+    IfSchedulerTracing: PropKind.Any,
+  },
 };
 
 export type DocsOptions = CompileOptions & ParseOptions;
