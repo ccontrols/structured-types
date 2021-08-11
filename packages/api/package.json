@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/api",
-  "version": "3.20.1",
+  "version": "3.20.2",
   "description": "api to extract structured type information from typescript types and jsdoc comments",
   "keywords": [
     "jsdoc",
