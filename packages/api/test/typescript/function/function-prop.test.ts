@@ -113,7 +113,7 @@ describe('function', () => {
             ],
             generics: [
               {
-                name: 'T',
+                name: 'Type',
               },
             ],
           },

@@ -2,6 +2,27 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('type', () => {
+  it('generic-type', () => {
+    const results = parseFiles([path.resolve(__dirname, 'generic-type.ts')]);
+    expect(results).toEqual({
+      GenericType: {
+        kind: 15,
+        generics: [
+          {
+            name: 'Type',
+          },
+        ],
+        properties: [
+          {
+            type: 'Type',
+            kind: 15,
+            name: 'contents',
+          },
+        ],
+        name: 'GenericType',
+      },
+    });
+  });
   it('index-prop', () => {
     const results = parseFiles([path.resolve(__dirname, 'index-prop.ts')]);
     expect(results).toEqual({
@@ -150,28 +171,6 @@ describe('type', () => {
     });
   });
 
-  it('generic-type', () => {
-    const results = parseFiles([path.resolve(__dirname, 'generic-type.ts')]);
-    expect(results).toEqual({
-      GenericType: {
-        kind: 15,
-        generics: [
-          {
-            name: 'Type',
-          },
-        ],
-        properties: [
-          {
-            type: 'Type',
-            kind: 15,
-            name: 'contents',
-          },
-        ],
-        name: 'GenericType',
-      },
-    });
-  });
-
   it('generic-array', () => {
     const results = parseFiles([path.resolve(__dirname, 'generic-array.ts')]);
     expect(results).toEqual({
@@ -201,6 +200,12 @@ describe('type', () => {
       GenericConsumer: {
         description: 'reference type description',
         kind: 15,
+        generics: [
+          {
+            kind: 1,
+            name: 'string',
+          },
+        ],
         properties: [
           {
             description: 'interface prop',

@@ -2,6 +2,68 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('interface', () => {
+  it('array-implementation', () => {
+    const results = parseFiles([
+      path.resolve(__dirname, 'array-implementation.ts'),
+    ]);
+    expect(results).toEqual({
+      InterfaceArrayType: {
+        name: 'InterfaceArrayType',
+        kind: 14,
+        properties: [
+          {
+            kind: 2,
+            name: 'length',
+            description: 'Gets or sets the length of the array.',
+          },
+          {
+            name: 'pop',
+            kind: 11,
+            returns: {
+              kind: 4,
+              properties: [
+                {
+                  kind: 15,
+                  name: 'Type',
+                },
+                {
+                  kind: 8,
+                },
+              ],
+            },
+            description:
+              'Removes the last element from an array and returns it.',
+          },
+          {
+            name: 'push',
+            kind: 11,
+            parameters: [
+              {
+                name: 'items',
+                kind: 16,
+                properties: [
+                  {
+                    kind: 15,
+                    name: 'Type',
+                  },
+                ],
+              },
+            ],
+            returns: {
+              kind: 2,
+            },
+            description:
+              'Appends new elements to an array, and returns the new length of the array.',
+          },
+        ],
+        generics: [
+          {
+            name: 'Type',
+          },
+        ],
+      },
+    });
+  });
   it('enum-prop', () => {
     const results = parseFiles([path.resolve(__dirname, 'enum-prop.ts')], {
       consolidateParents: true,
@@ -89,68 +151,6 @@ describe('interface', () => {
             ],
             value: 'bread',
             description: 'union prop',
-          },
-        ],
-      },
-    });
-  });
-  it('array-implementation', () => {
-    const results = parseFiles([
-      path.resolve(__dirname, 'array-implementation.ts'),
-    ]);
-    expect(results).toEqual({
-      InterfaceArrayType: {
-        name: 'InterfaceArrayType',
-        kind: 14,
-        properties: [
-          {
-            kind: 2,
-            name: 'length',
-            description: 'Gets or sets the length of the array.',
-          },
-          {
-            name: 'pop',
-            kind: 11,
-            returns: {
-              kind: 4,
-              properties: [
-                {
-                  kind: 15,
-                  name: 'Type',
-                },
-                {
-                  kind: 8,
-                },
-              ],
-            },
-            description:
-              'Removes the last element from an array and returns it.',
-          },
-          {
-            name: 'push',
-            kind: 11,
-            parameters: [
-              {
-                name: 'items',
-                kind: 16,
-                properties: [
-                  {
-                    kind: 15,
-                    name: 'Type',
-                  },
-                ],
-              },
-            ],
-            returns: {
-              kind: 2,
-            },
-            description:
-              'Appends new elements to an array, and returns the new length of the array.',
-          },
-        ],
-        generics: [
-          {
-            name: 'Type',
           },
         ],
       },

@@ -786,16 +786,32 @@ export class SymbolParser implements ISymbolParser {
               }
             }
           }
-          if (
-            options.collectGenerics &&
-            resolvedDeclaration &&
-            isTypeParameterType(resolvedDeclaration) &&
-            resolvedDeclaration.typeParameters?.length
-          ) {
-            (prop as TypeProp).generics = this.parseProperties(
-              resolvedDeclaration.typeParameters,
-              options,
-            );
+          if (options.collectGenerics) {
+            if (
+              (resolvedType as any).objectFlags & ts.ObjectFlags.Reference &&
+              (resolvedType as ts.TypeReference).typeArguments?.length
+            ) {
+              (prop as TypeProp).generics = (
+                resolvedType as ts.TypeReference
+              ).typeArguments?.map((t) => {
+                const p: PropType = {};
+                const name = (t as any).intrinsicName || t.getSymbol()?.name;
+                if (name) {
+                  p.name = name;
+                }
+                updatePropKind(p, t);
+                return p;
+              });
+            } else if (
+              resolvedDeclaration &&
+              isTypeParameterType(resolvedDeclaration) &&
+              resolvedDeclaration.typeParameters?.length
+            ) {
+              (prop as TypeProp).generics = this.parseProperties(
+                resolvedDeclaration.typeParameters,
+                options,
+              );
+            }
           }
           const indexes = this.getTypeIndexes(resolvedType, options);
           properties.unshift(...indexes);

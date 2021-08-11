@@ -5,7 +5,7 @@ Object {
   "TypedInitializedFunction": Object {
     "generics": Array [
       Object {
-        "name": "P",
+        "name": "Props",
       },
     ],
     "kind": 11,
