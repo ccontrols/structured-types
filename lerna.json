@@ -4,7 +4,7 @@
     "plugins/*",
     "site"
   ],
-  "version": "3.20.2",
+  "version": "3.20.3",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {
