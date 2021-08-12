@@ -491,14 +491,21 @@ export class SymbolParser implements ISymbolParser {
             (ts.isClassLike(node) || ts.isInterfaceDeclaration(node)) &&
             node.heritageClauses?.length
           ) {
-            let extendsProp: string[] | undefined = undefined;
+            let extendsProp: PropType[] | undefined = undefined;
             if (isClassLikeProp(prop)) {
               extendsProp = [];
             }
             node.heritageClauses.forEach((h) => {
               h.types.forEach((t) => {
-                if (extendsProp) {
-                  extendsProp.push(t.expression.getText());
+                const extendsType = this.checker.getTypeAtLocation(t);
+                const symbol = extendsType.aliasSymbol || extendsType.symbol;
+                const p: PropType | null =
+                  symbol &&
+                  this.internalKind(options, symbol.getName()) === undefined
+                    ? this.parseSymbolProp({}, options, symbol)
+                    : updatePropKind({}, extendsType);
+                if (extendsProp && p) {
+                  extendsProp.push(p);
                 }
               });
             });

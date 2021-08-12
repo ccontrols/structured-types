@@ -2,6 +2,32 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('class', () => {
+  it('extends', () => {
+    const results = parseFiles([path.resolve(__dirname, 'extends.ts')]);
+
+    expect(results).toEqual({
+      Bar: {
+        name: 'Bar',
+        kind: 13,
+        extends: [
+          {
+            name: 'Foo',
+            kind: 13,
+            properties: [
+              {
+                static: true,
+                readonly: true,
+                name: 'dummy',
+                kind: 3,
+                value: false,
+              },
+            ],
+          },
+        ],
+        properties: [],
+      },
+    });
+  });
   it('generics', () => {
     const results = parseFiles([path.resolve(__dirname, 'generics.ts')]);
 

@@ -226,7 +226,7 @@ export const isVoidProp = (prop: PropType): prop is VoidProp => {
 
 export interface ClassProp extends PropType {
   implements?: InterfaceProp[];
-  extends?: string[];
+  extends?: PropType[];
   generics?: PropType[];
   properties?: PropType[];
 }
@@ -238,7 +238,7 @@ export const isClassProp = (prop: PropType): prop is ClassProp => {
 };
 
 export interface InterfaceProp extends PropType {
-  extends?: string[];
+  extends?: PropType[];
   properties?: PropType[];
   generics?: PropType[];
 }
@@ -248,7 +248,7 @@ export const isInterfaceProp = (prop: PropType): prop is InterfaceProp => {
 };
 
 export interface TypeProp extends PropType {
-  extends?: string[];
+  extends?: PropType[];
   properties?: PropType[];
   generics?: PropType[];
 }
