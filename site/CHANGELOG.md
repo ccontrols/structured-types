@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.20.4](https://github.com/ccontrols/structured-types/compare/v3.20.3...v3.20.4) (2021-08-12)
+
+
+### Bug Fixes
+
+* static properties workaround getApparentProperties ([e56d19f](https://github.com/ccontrols/structured-types/commit/e56d19f5a6bbf2e7855d2f220cd56077480d93fb))
+
+
+
+
+
 ## [3.20.3](https://github.com/ccontrols/structured-types/compare/v3.20.2...v3.20.3) (2021-08-11)
 
 **Note:** Version bump only for package structured-types-site

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.20.4](https://github.com/ccontrols/structured-types/compare/v3.20.3...v3.20.4) (2021-08-12)
+
+
+### Bug Fixes
+
+* extends props extended info ([562d72a](https://github.com/ccontrols/structured-types/commit/562d72aab7f66fe3c70f589e66f74fb7eb77664c))
+* static properties workaround getApparentProperties ([e56d19f](https://github.com/ccontrols/structured-types/commit/e56d19f5a6bbf2e7855d2f220cd56077480d93fb))
+
+
+
+
+
 ## [3.20.3](https://github.com/ccontrols/structured-types/compare/v3.20.2...v3.20.3) (2021-08-11)
 
 
