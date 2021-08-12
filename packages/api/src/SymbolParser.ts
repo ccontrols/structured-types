@@ -751,8 +751,29 @@ export class SymbolParser implements ISymbolParser {
             options.collectProperties === false
               ? []
               : resolvedType.getApparentProperties();
+          //static props do not show up from ts.Type.getApparentProperties
+          const staticProps: ts.Symbol[] = [];
+          if (
+            resolvedDeclaration &&
+            options.collectProperties !== false &&
+            isObjectTypeDeclaration(resolvedDeclaration)
+          ) {
+            resolvedDeclaration.members.forEach((m) => {
+              if (
+                m.modifiers?.find((f) => f.kind === ts.SyntaxKind.StaticKeyword)
+              ) {
+                if (m.name) {
+                  const s = this.checker.getSymbolAtLocation(m.name);
+                  if (s) {
+                    staticProps.push(s);
+                  }
+                }
+              }
+            });
+          }
+
           const properties: PropType[] = [];
-          for (const childSymbol of childProps) {
+          for (const childSymbol of [...staticProps, ...childProps]) {
             const d =
               childSymbol.valueDeclaration || childSymbol.declarations?.[0];
             if (!d) {
@@ -802,7 +823,8 @@ export class SymbolParser implements ISymbolParser {
                 resolvedType as ts.TypeReference
               ).typeArguments?.map((t) => {
                 const p: PropType = {};
-                const name = (t as any).intrinsicName || t.getSymbol()?.name;
+                const name =
+                  (t as any).intrinsicName || (t.aliasSymbol || t.symbol)?.name;
                 if (name) {
                   p.name = name;
                 }
@@ -826,7 +848,6 @@ export class SymbolParser implements ISymbolParser {
           if (properties.length) {
             (prop as TypeProp).properties = properties;
           }
-
           //any initializer values
           this.parseValue(prop, options, initializer);
           if (!prop.name) {

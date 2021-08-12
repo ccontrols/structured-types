@@ -144,6 +144,10 @@ export const examples: Examples = {
         "export class ArrowFunctionClass {\n  /**\n   * name value initialzied\n   */\n  name = 'MyClass';\n  /**\n   * name accessor\n   * @returns a string value\n   */\n  getName = (): string => {\n    return this.name;\n  };\n}\n",
       'constructor.ts':
         'export class ClassWithConstrunctor {\n  name: string;\n\n  /**\n   * constructor description\n   */\n  constructor(x?: string) {\n    this.name = x;\n  }\n}\n',
+      'extends.ts':
+        'class Foo {\n  static readonly dummy = false;\n}\n\nexport class Bar extends Foo {}\n',
+      'generics.ts':
+        'class Generic<T> {\n  value: T;\n  constructor(value: T) {\n    this.value = value;\n  }\n}\n\nexport class Test {\n  make(gen: Generic<boolean>) {\n    return gen.value;\n  }\n}\n',
       'getters-setters.ts':
         'export class ClassGetters {\n  /**\n   * member description\n   */\n  _length = 0;\n  /**\n   * getter description\n   */\n  get length(): number {\n    return this._length;\n  }\n  /**\n   * setter description\n   *\n   * @param value the new value\n   */\n  set length(value: number) {\n    this._length = value;\n  }\n}\n',
       'index-signature.ts':
@@ -170,6 +174,8 @@ export const examples: Examples = {
     function: {
       'arrow-function.ts':
         '/**\n * arrow greeting function\n */\nexport const arrowGreet = (\n  /**\n   * name parameter inline description\n   */\n  name: string,\n): void => {};\n',
+      'class-prop.ts':
+        'class Foo {\n  static readonly dummy = false;\n}\nexport class Boz {\n  fn(foo: Foo) {}\n}\n',
       'extends-parameter.ts':
         '/**\n * base type\n */\ntype T = {\n  /**\n   * base type member property\n   */\n  m: string;\n};\n\n/**\n * extended type\n */\n\ntype ExtendT = T & {\n  /**\n   * own member\n   */\n  honey: boolean;\n};\n\n/**\n * internal interface with one member\n */\n\ninterface Internal {\n  /**\n   * string type member\n   */\n\n  m: string;\n}\n/**\n * interface extending another one\n */\n\ninterface Bear extends Internal, Home {\n  /**\n   * boolean type member\n   */\n\n  honey: boolean;\n}\n/**\n * exported function\n */\n\nexport function paintHomeyBear({ m, honey = true }: ExtendT): Bear {\n  return { honey, m };\n}\n',
       'function-props.ts':
