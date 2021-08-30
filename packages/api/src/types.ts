@@ -16,7 +16,6 @@ export interface JSDocPropTag {
 }
 
 export enum PropKind {
-  Object = 0,
   String = 1,
   Number = 2,
   Boolean = 3,
@@ -42,6 +41,7 @@ export enum PropKind {
   Setter = 23,
   BigInt = 24,
   Component = 25,
+  Object = 26,
 }
 
 export interface PropType {
@@ -268,6 +268,29 @@ export const hasGenerics = (prop: PropType): prop is HasGenericsProp => {
   );
 };
 
+export type HasPropertiesProp =
+  | UnionProp
+  | ObjectProp
+  | EnumProp
+  | TupleProp
+  | FunctionProp
+  | TypeProp
+  | InterfaceProp
+  | ClassProp;
+
+export const hasProperties = (prop: PropType): prop is HasGenericsProp => {
+  return (
+    prop.kind === PropKind.Union ||
+    prop.kind === PropKind.Object ||
+    prop.kind === PropKind.Enum ||
+    prop.kind === PropKind.Tuple ||
+    prop.kind === PropKind.Function ||
+    prop.kind === PropKind.Type ||
+    prop.kind === PropKind.Class ||
+    prop.kind === PropKind.Interface
+  );
+};
+
 export interface ArrayProp extends PropType {
   properties?: PropType[];
   value?: PropType[];
@@ -400,3 +423,6 @@ export const propValue = (prop: PropType, value?: string): PropType => {
   }
   return prop;
 };
+
+export const trimQuotes = (txt: string): string =>
+  txt ? txt.replace(/['"]+/g, '') : txt;

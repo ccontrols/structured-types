@@ -7,7 +7,7 @@ describe('@ignore', () => {
     expect(results).toEqual({
       Clothes: {
         name: 'Clothes',
-        kind: 15,
+        kind: 26,
         properties: [],
       },
     });

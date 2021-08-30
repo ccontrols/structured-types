@@ -3,6 +3,12 @@
 - [Overview](#overview)
 - [Motivation](#motivation)
 - [Getting started](#getting-started)
+  - - [1. Installation](#1-installation)
+    - [2. Your API source file (sum.js):](#2-your-api-source-file-sumjs)
+    - [3. Your documentation extraction](#3-your-documentation-extraction)
+    - [4. The result](#4-the-result)
+- [API](#api)
+  - [JSDocInfoType](#jsdocinfotype)
 
 # Overview
 
@@ -105,3 +111,11 @@ const docs = parseFiles(['../src/sum.js']);
   }
 }
 ````
+
+# API
+
+<api-readme extract="JSDocInfoType" files="./src/types.ts"/>
+
+<!-- START-API-README -->
+
+<!-- END-API-README -->

@@ -2,6 +2,72 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('type', () => {
+  it('referenced-type', () => {
+    const results = parseFiles(
+      [path.resolve(__dirname, 'referenced-type.ts')],
+      {
+        collectFilePath: false,
+      },
+    );
+    expect(results).toEqual({
+      JSDocInfoType: {
+        name: 'JSDocInfoType',
+        kind: 15,
+        properties: [
+          {
+            optional: true,
+            name: 'comment',
+            readonly: true,
+            kind: 4,
+            properties: [
+              {
+                kind: 1,
+              },
+              {
+                kind: 14,
+                generics: [
+                  {
+                    name: 'T',
+                  },
+                ],
+                properties: [
+                  {
+                    kind: 20,
+                    index: {
+                      name: 'n',
+                      kind: 2,
+                    },
+                    type: {
+                      kind: 15,
+                      name: 'T',
+                    },
+                  },
+                  {
+                    optional: true,
+                    name: 'hasTrailingComma',
+                    kind: 3,
+                  },
+                  {
+                    parent: 'ReadonlyTextRange',
+                    readonly: true,
+                    name: 'pos',
+                    kind: 2,
+                  },
+                  {
+                    parent: 'ReadonlyTextRange',
+                    readonly: true,
+                    name: 'end',
+                    kind: 2,
+                  },
+                ],
+                name: 'NodeArray',
+              },
+            ],
+          },
+        ],
+      },
+    });
+  });
   it('generic-type', () => {
     const results = parseFiles([path.resolve(__dirname, 'generic-type.ts')]);
     expect(results).toEqual({

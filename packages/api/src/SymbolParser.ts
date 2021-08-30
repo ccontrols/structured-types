@@ -22,6 +22,7 @@ import {
   isClassLikeProp,
   propValue,
   ClassProp,
+  trimQuotes,
 } from './types';
 import {
   getSymbolType,
@@ -129,7 +130,7 @@ export class SymbolParser implements ISymbolParser {
           return addParentRef({ name: name }, symbol);
         }
       }
-      if (internalKind !== PropKind.Any) {
+      if (parentProp.kind === undefined && internalKind !== PropKind.Any) {
         parentProp.kind = internalKind;
       }
       return undefined;
@@ -156,7 +157,7 @@ export class SymbolParser implements ISymbolParser {
             );
           }
         }
-        if (internalKind !== PropKind.Any) {
+        if (parentProp.kind === undefined && internalKind !== PropKind.Any) {
           parentProp.kind = internalKind;
         }
         return undefined;
@@ -441,6 +442,19 @@ export class SymbolParser implements ISymbolParser {
         if (type) {
           prop.type = type;
         }
+      } else if (
+        ts.isIndexedAccessTypeNode(node) &&
+        ts.isLiteralTypeNode(node.indexType) &&
+        ts.isTypeReferenceNode(node.objectType)
+      ) {
+        const propName = trimQuotes(node.indexType.literal.getText());
+        const refSymbol = this.checker.getSymbolAtLocation(
+          node.objectType.typeName,
+        );
+        const typeSymbol = refSymbol?.members?.get(propName as ts.__String);
+        if (typeSymbol) {
+          return this.addRefSymbol(prop, typeSymbol);
+        }
       } else if (isHasType(node) && node.type) {
         if (node.type?.kind && tsKindToPropKind[node.type.kind]) {
           prop.kind = tsKindToPropKind[node.type.kind];
@@ -523,8 +537,6 @@ export class SymbolParser implements ISymbolParser {
             symbol.escapedName.toString(),
           );
           if (internalKind === undefined) {
-            if (prop.parent) {
-            }
             this.addRefSymbol(prop, symbol);
           } else {
             if (internalKind !== PropKind.Any) {
@@ -642,6 +654,9 @@ export class SymbolParser implements ISymbolParser {
           case ts.SyntaxKind.UndefinedKeyword:
             prop.kind = PropKind.Undefined;
             break;
+          case ts.SyntaxKind.JSDocTypeLiteral:
+            prop.kind = PropKind.Type;
+            break;
           case ts.SyntaxKind.JSDocPropertyTag:
           case ts.SyntaxKind.JSDocParameterTag:
             parseJSDocTag(this, options, prop, node as ts.JSDocTag);
@@ -741,11 +756,10 @@ export class SymbolParser implements ISymbolParser {
             isArrayLike(resolvedDeclaration.type)
           )
         ) {
-          if (!prop.kind) {
-            prop.kind =
-              tsKindToPropKind[
-                resolvedDeclaration?.kind || ts.SyntaxKind.TypeAliasDeclaration
-              ] || PropKind.Type;
+          if (!prop.kind && resolvedDeclaration?.kind !== undefined) {
+            if (tsKindToPropKind[resolvedDeclaration.kind] !== undefined) {
+              prop.kind = tsKindToPropKind[resolvedDeclaration.kind];
+            }
           }
           const childProps =
             options.collectProperties === false

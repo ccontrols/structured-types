@@ -10,7 +10,7 @@
       "name": "api",
       "program": "${workspaceFolder}/node_modules/.bin/jest",
       "cwd": "${workspaceFolder}/packages/api",
-      "args": ["function-prop"],
+      "args": ["type-prop"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true,
@@ -39,6 +39,20 @@
       "program": "${workspaceFolder}/node_modules/.bin/jest",
       "cwd": "${workspaceFolder}/plugins/react-prop-types",
       "args": ["prop-types-types"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "api-readme",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "cwd": "${workspaceFolder}/packages/api-readme",
+      "args": ["update-api"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true,

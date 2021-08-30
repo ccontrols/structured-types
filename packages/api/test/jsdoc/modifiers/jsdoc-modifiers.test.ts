@@ -7,7 +7,7 @@ describe('modifiers', () => {
     expect(results).toEqual({
       pieOptions: {
         name: 'pieOptions',
-        kind: 15,
+        kind: 26,
         properties: [
           {
             kind: 1,
@@ -31,7 +31,7 @@ describe('modifiers', () => {
     expect(results).toEqual({
       Documents: {
         name: 'Documents',
-        kind: 15,
+        kind: 26,
         properties: [
           {
             kind: 2,
@@ -55,7 +55,7 @@ describe('modifiers', () => {
     expect(results).toEqual({
       Documents: {
         name: 'Documents',
-        kind: 15,
+        kind: 26,
         properties: [
           {
             kind: 2,
@@ -79,7 +79,7 @@ describe('modifiers', () => {
     expect(results).toEqual({
       Documents: {
         name: 'Documents',
-        kind: 15,
+        kind: 26,
         properties: [
           {
             kind: 2,

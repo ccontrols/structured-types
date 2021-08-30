@@ -16,7 +16,7 @@ describe('prop-types-types', () => {
         properties: [
           {
             name: 'aPerson',
-            kind: 14,
+            kind: 26,
             properties: [
               {
                 kind: 1,
@@ -62,7 +62,7 @@ describe('prop-types-types', () => {
         properties: [
           {
             name: 'aPerson',
-            kind: 14,
+            kind: 26,
             properties: [
               {
                 kind: 1,
@@ -112,7 +112,7 @@ describe('prop-types-types', () => {
               kind: 2,
               optional: true,
             },
-            kind: 14,
+            kind: 26,
             optional: true,
             description: 'optional object prop description',
           },
@@ -382,7 +382,7 @@ describe('prop-types-types', () => {
         properties: [
           {
             name: 'optionalObj',
-            kind: 14,
+            kind: 26,
             optional: true,
             description: 'optional object prop description',
           },

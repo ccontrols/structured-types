@@ -73,6 +73,7 @@ export const isSignatureDeclaration = (
   );
 };
 export const tsKindToPropKind: { [key in ts.SyntaxKind]?: PropKind } = {
+  [ts.SyntaxKind.ObjectLiteralExpression]: PropKind.Object,
   [ts.SyntaxKind.StringKeyword]: PropKind.String,
   [ts.SyntaxKind.StringLiteral]: PropKind.String,
   [ts.SyntaxKind.NumberKeyword]: PropKind.Number,
@@ -104,6 +105,8 @@ export const tsKindToPropKind: { [key in ts.SyntaxKind]?: PropKind } = {
   [ts.SyntaxKind.TypeAliasDeclaration]: PropKind.Type,
   [ts.SyntaxKind.IndexSignature]: PropKind.Index,
   [ts.SyntaxKind.ArrayType]: PropKind.Array,
+  [ts.SyntaxKind.JSDocTypeLiteral]: PropKind.Type,
+  [ts.SyntaxKind.JSDocTypedefTag]: PropKind.Type,
 };
 export type ObjectTypeDeclaration =
   | ts.ClassDeclaration

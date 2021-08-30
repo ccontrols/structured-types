@@ -7,7 +7,7 @@ describe('@fires', () => {
     expect(results).toEqual({
       Milkshake: {
         name: 'Milkshake',
-        kind: 15,
+        kind: 26,
         properties: [
           {
             name: 'drink',

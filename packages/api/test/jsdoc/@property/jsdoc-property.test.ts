@@ -7,7 +7,7 @@ describe('@property', () => {
     expect(results).toEqual({
       food: {
         name: 'food',
-        kind: 15,
+        kind: 26,
         properties: [
           {
             kind: 1,
@@ -59,11 +59,11 @@ describe('@property', () => {
     expect(results).toEqual({
       config: {
         name: 'config',
-        kind: 15,
+        kind: 26,
         properties: [
           {
             name: 'defaults',
-            kind: 15,
+            kind: 26,
             properties: [
               {
                 kind: 2,
@@ -77,7 +77,7 @@ describe('@property', () => {
               },
               {
                 name: 'treasure',
-                kind: 15,
+                kind: 26,
                 properties: [
                   {
                     kind: 2,
@@ -133,7 +133,7 @@ describe('@property', () => {
     expect(results).toEqual({
       user: {
         name: 'user',
-        kind: 15,
+        kind: 26,
         properties: [
           {
             kind: 1,

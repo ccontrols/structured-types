@@ -6,7 +6,7 @@ describe('object', () => {
     const results = parseFiles([path.resolve(__dirname, 'initialized.ts')]);
     expect(results).toEqual({
       initializedObj: {
-        kind: 0,
+        kind: 26,
         properties: [
           {
             kind: 2,
@@ -29,7 +29,7 @@ describe('object', () => {
     const results = parseFiles([path.resolve(__dirname, 'export-const.ts')]);
     expect(results).toEqual({
       obj: {
-        kind: 0,
+        kind: 26,
         value: undefined,
         name: 'obj',
         description: 'exported undefined object',
