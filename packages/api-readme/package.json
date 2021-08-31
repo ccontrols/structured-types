@@ -36,9 +36,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@@structured-types/api": "3.20.4",
-    "@structured-types/react-plugin": "3.20.4",
-    "@structured-types/prop-types-plugin": "3.20.4",
+    "@@structured-types/api": "3.20.0",
+    "@structured-types/react-plugin": "3.20.0",
+    "@structured-types/prop-types-plugin": "3.20.0",
     "chalk": "^4.1.0",
     "remark": "^11.0.2",
     "remark-toc": "^7.0.0",
