@@ -63,12 +63,7 @@ export const anaylizeFiles = (
 
   const isLibraryFile =
     defaultLibraryPath === '/'
-      ? (file: ts.SourceFile) => {
-          if (file.hasNoDefaultLib) {
-            return true;
-          }
-          return equalityComparer(file.fileName, defaultLibraryFileName);
-        }
+      ? program.isSourceFileDefaultLibrary
       : (file: ts.SourceFile) => {
           if (file.hasNoDefaultLib) {
             return true;
