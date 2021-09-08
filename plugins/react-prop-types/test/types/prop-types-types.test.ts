@@ -1,8 +1,90 @@
 import path from 'path';
 import { parseFiles } from '@structured-types/api';
+import reactPlugin from '@structured-types/react-plugin';
 import propsPlugin from '../../src';
 
 describe('prop-types-types', () => {
+  it('default-props', () => {
+    const result = parseFiles([path.resolve(__dirname, 'default-props.tsx')], {
+      plugins: [propsPlugin, reactPlugin],
+      consolidateParents: false,
+    });
+    expect(result).toEqual({
+      default: {
+        name: 'MyComponent',
+        extension: 'react',
+        kind: 11,
+        properties: [
+          {
+            name: 'stringProp',
+            parent: 'OwnProps',
+            kind: 1,
+            value: 'test',
+            optional: true,
+            description: 'stringProp description',
+          },
+          {
+            name: 'numberProp',
+            parent: 'OwnProps',
+            kind: 2,
+            description: 'numberProp description',
+          },
+        ],
+      },
+    });
+  });
+  it('instance-of', () => {
+    const result = parseFiles([path.resolve(__dirname, 'instance-of.jsx')], {
+      plugins: [propsPlugin],
+      consolidateParents: false,
+    });
+    expect(result).toEqual({
+      MyComponent: {
+        name: 'MyComponent',
+        extension: 'react-prop-types',
+        kind: 11,
+        properties: [
+          {
+            name: 'Person',
+            kind: 13,
+            properties: [
+              {
+                name: 'name',
+                kind: 1,
+                description: 'name of a person is a string',
+              },
+            ],
+            description: 'Creates a new Person.',
+            optional: true,
+          },
+        ],
+        description: 'MyComponent special component',
+      },
+    });
+  });
+  it('boolean', () => {
+    const result = parseFiles([path.resolve(__dirname, 'boolean.jsx')], {
+      plugins: [propsPlugin],
+      consolidateParents: false,
+    });
+    expect(result).toEqual({
+      MyComponent: {
+        name: 'MyComponent',
+        extension: 'react-prop-types',
+        kind: 11,
+        properties: [
+          {
+            name: 'optionalBool',
+            kind: 3,
+            optional: true,
+            value: false,
+            description: 'optional bool prop description',
+          },
+        ],
+        description: 'MyComponent special component',
+      },
+    });
+  });
   it('exact', () => {
     const result = parseFiles([path.resolve(__dirname, 'exact.jsx')], {
       plugins: [propsPlugin],
@@ -226,35 +308,7 @@ describe('prop-types-types', () => {
       },
     });
   });
-  it('instance-of', () => {
-    const result = parseFiles([path.resolve(__dirname, 'instance-of.jsx')], {
-      plugins: [propsPlugin],
-      consolidateParents: false,
-    });
-    expect(result).toEqual({
-      MyComponent: {
-        name: 'MyComponent',
-        extension: 'react-prop-types',
-        kind: 11,
-        properties: [
-          {
-            name: 'Person',
-            kind: 13,
-            properties: [
-              {
-                name: 'name',
-                kind: 1,
-                description: 'name of a person is a string',
-              },
-            ],
-            description: 'Creates a new Person.',
-            optional: true,
-          },
-        ],
-        description: 'MyComponent special component',
-      },
-    });
-  });
+
   it('element-type', () => {
     const result = parseFiles([path.resolve(__dirname, 'element-type.jsx')], {
       plugins: [propsPlugin],
@@ -436,29 +490,7 @@ describe('prop-types-types', () => {
       },
     });
   });
-  it('boolean', () => {
-    const result = parseFiles([path.resolve(__dirname, 'boolean.jsx')], {
-      plugins: [propsPlugin],
-      consolidateParents: false,
-    });
-    expect(result).toEqual({
-      MyComponent: {
-        name: 'MyComponent',
-        extension: 'react-prop-types',
-        kind: 11,
-        properties: [
-          {
-            name: 'optionalBool',
-            kind: 3,
-            optional: true,
-            value: false,
-            description: 'optional bool prop description',
-          },
-        ],
-        description: 'MyComponent special component',
-      },
-    });
-  });
+
   it('array', () => {
     const result = parseFiles([path.resolve(__dirname, 'array.jsx')], {
       plugins: [propsPlugin],

@@ -3,7 +3,9 @@ import { parseFiles } from '../../../src/index';
 
 describe('function', () => {
   it('return promise', () => {
-    const results = parseFiles([path.resolve(__dirname, 'return-promise.js')]);
+    const results = parseFiles([path.resolve(__dirname, 'return-promise.js')], {
+      collectFilePath: false,
+    });
     expect(results).toEqual({
       sumAsync: {
         name: 'sumAsync',
@@ -20,7 +22,8 @@ describe('function', () => {
         ],
         returns: {
           description: 'Promise object represents the sum of a and b',
-          kind: 15,
+          kind: 14,
+          name: 'Promise',
           type: 'Promise',
         },
         description: 'Returns the sum of a and b',

@@ -236,12 +236,13 @@ export default {
           declaration: input.declaration,
           type: input.symbolType,
           prop,
+          collectExtension: false,
           collectGenerics: false,
           collectParameters: false,
           collectProperties: false,
         };
       }
     }
-    return react;
+    return undefined;
   },
 } as ParsePlugin;

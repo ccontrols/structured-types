@@ -3,24 +3,77 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('function-component', () => {
-  it('function-inline-props', () => {
-    const result = parseFiles(
-      [path.resolve(__dirname, 'function-inline-props.tsx')],
-      {
-        plugins: [reactPlugin],
-      },
-    );
+  it('record-props', () => {
+    const result = parseFiles([path.resolve(__dirname, 'record-props.tsx')], {
+      plugins: [reactPlugin],
+    });
     expect(result).toEqual({
-      MyComponent: {
+      default: {
         name: 'MyComponent',
-        kind: 11,
         extension: 'react',
+        kind: 11,
         properties: [
           {
-            name: 'name',
+            name: 'first',
+            parent: 'MyProps',
+            kind: 15,
+            type: 'Record',
+            generics: [
+              {
+                kind: 1,
+              },
+              {
+                kind: 1,
+              },
+            ],
+          },
+          {
+            name: 'second',
+            parent: 'MyProps',
             optional: true,
-            kind: 1,
-            value: 'hello',
+            kind: 15,
+            type: 'Record',
+            generics: [
+              {
+                kind: 1,
+              },
+              {
+                kind: 1,
+              },
+            ],
+          },
+        ],
+      },
+      MyProps: {
+        kind: 14,
+        name: 'MyProps',
+        properties: [
+          {
+            generics: [
+              {
+                kind: 1,
+              },
+              {
+                kind: 1,
+              },
+            ],
+            kind: 15,
+            name: 'first',
+            type: 'Record',
+          },
+          {
+            generics: [
+              {
+                kind: 1,
+              },
+              {
+                kind: 1,
+              },
+            ],
+            kind: 15,
+            name: 'second',
+            optional: true,
+            type: 'Record',
           },
         ],
       },
@@ -55,6 +108,30 @@ describe('function-component', () => {
       },
     });
   });
+  it('function-inline-props', () => {
+    const result = parseFiles(
+      [path.resolve(__dirname, 'function-inline-props.tsx')],
+      {
+        plugins: [reactPlugin],
+      },
+    );
+    expect(result).toEqual({
+      MyComponent: {
+        name: 'MyComponent',
+        kind: 11,
+        extension: 'react',
+        properties: [
+          {
+            name: 'name',
+            optional: true,
+            kind: 1,
+            value: 'hello',
+          },
+        ],
+      },
+    });
+  });
+
   it('not-react', () => {
     const result = parseFiles([path.resolve(__dirname, 'not-react.tsx')], {
       plugins: [reactPlugin],

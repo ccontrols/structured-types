@@ -174,10 +174,12 @@ export const examples: Examples = {
     function: {
       'arrow-function.ts':
         '/**\n * arrow greeting function\n */\nexport const arrowGreet = (\n  /**\n   * name parameter inline description\n   */\n  name: string,\n): void => {};\n',
+      'async-function.ts':
+        'class MyClass {\n  x = 0;\n}\n\nexport async function genMyClass() {\n  return new MyClass();\n}\n',
       'class-prop.ts':
         'class Foo {\n  static readonly dummy = false;\n}\nexport class Boz {\n  fn(foo: Foo) {}\n}\n',
       'extends-parameter.ts':
-        '/**\n * base type\n */\ntype T = {\n  /**\n   * base type member property\n   */\n  m: string;\n};\n\n/**\n * extended type\n */\n\ntype ExtendT = T & {\n  /**\n   * own member\n   */\n  honey: boolean;\n};\n\n/**\n * internal interface with one member\n */\n\ninterface Internal {\n  /**\n   * string type member\n   */\n\n  m: string;\n}\n/**\n * interface extending another one\n */\n\ninterface Bear extends Internal, Home {\n  /**\n   * boolean type member\n   */\n\n  honey: boolean;\n}\n/**\n * exported function\n */\n\nexport function paintHomeyBear({ m, honey = true }: ExtendT): Bear {\n  return { honey, m };\n}\n',
+        '/**\n * base type\n */\ntype T = {\n  /**\n   * base type member property\n   */\n  m: string;\n};\n\n/**\n * extended type\n */\n\ntype ExtendT = T & {\n  /**\n   * own member\n   */\n  honey: boolean;\n};\n\n/**\n * internal interface with one member\n */\n\ninterface Internal {\n  /**\n   * string type member\n   */\n\n  m: string;\n}\n/**\n * interface extending another one\n */\n\ninterface Bear extends Internal {\n  /**\n   * boolean type member\n   */\n\n  honey: boolean;\n}\n/**\n * exported function\n */\n\nexport function paintHomeyBear({ m, honey = true }: ExtendT): Bear {\n  return { honey, m };\n}\n',
       'function-props.ts':
         "export function fn(): void {}\n/**\n * custom property for a function\n */\n\nfn.customProp = 'my custom prop';\n",
       'generic-parameter.ts':
@@ -203,7 +205,7 @@ export const examples: Examples = {
       'combined-props.ts':
         "export interface StringNumberPair {\n  /**\n   *  specialized properties\n   */\n  length: 2;\n  0: string;\n  1: number;\n  /**\n   *  Other 'Array<string | number>' members...\n   */\n  slice(start?: number, end?: number): Array<string | number>;\n}\n",
       'enum-prop.ts':
-        "enum StringEnums {\n  Up = 'UP',\n}\nexport interface InterfaceWithEnumConstant {\n  /**\n   * kind is an enumm constant\n   */\n  kind: StringEnums.Up;\n  /**\n   * radius property\n   */\n  radius: number;\n}\n",
+        "enum StringEnums {\n  Up = 'UP',\n}\nexport interface InterfaceWithEnumConstant {\n  /**\n   * kind is an enum constant\n   */\n  kind: StringEnums.Up;\n  /**\n   * radius property\n   */\n  radius: number;\n}\n",
       'extends.ts':
         'interface Home {\n  resident: { name: string; age: number };\n}\n/**\n * internal interface with one member\n */\n\ninterface Internal {\n  /**\n   * string type member\n   */\n\n  m: string;\n}\n/**\n * interface extending another one\n */\n\nexport interface Bear extends Internal, Home {\n  /**\n   * boolean type member\n   */\n\n  honey: boolean;\n}\n',
       'generics.ts':
@@ -212,6 +214,8 @@ export const examples: Examples = {
         'export interface IndexInterface {\n  [index: number]: string;\n}\n',
       'jsdoc-default.ts':
         "export interface Interface {\n  /**\n   * union prop\n   * @default bread\n   */\n  eat: 'honey' | 'bread' | 'meat';\n}\n",
+      'record-props.ts':
+        'export interface MyProps {\n  first: Record<string, string>;\n  second?: Record<string, string>;\n}\n',
       'simple.ts':
         '/**\n * this is interface\n * multiple lines\n */\nexport interface I {\n  /**\n   * interface member property\n   */\n  m: string;\n}\n',
     },
@@ -261,6 +265,8 @@ export const examples: Examples = {
         '/** type A */\ntype A = {\n  a: string;\n};\n/**\n * type B\n */\n\ntype B = {\n  b: number;\n};\n/** intersect type */\nexport type Intersect = A & B;\n',
       'nested-generic.ts':
         "type UnionGenericType<Type> = Type | 'a string';\n\n/**\n * generic interface\n */\n\ntype GenericArrayType<Type> = {\n  /**\n   * member field\n   */\n\n  m: Type;\n};\nexport type NestedGenericType<Type> = GenericArrayType<UnionGenericType<Type>>;\n",
+      'referenced-type.ts':
+        "import * as ts from 'typescript';\n\nexport type JSDocInfoType = {\n  comment?: ts.JSDocTag['comment'];\n};\n",
       'self-reference.ts':
         '/**\n * this is type\n */\nexport type Node = {\n  /**\n   * self-referencing items\n   */\n  items?: Node[];\n};\n',
       'simple.ts':
@@ -340,6 +346,8 @@ export const examples: Examples = {
         "import React from 'react';\n\ninterface PrimitmiveProps {\n  stringProp: string;\n  boolProp: boolean;\n}\ntype OmitProps = Omit<PrimitmiveProps, 'boolProp'>;\ntype ComponentProps = OmitProps & {\n  prop1?: 'this' | 'that';\n};\n\nexport const MyComponent: React.FC<ComponentProps> = props => {\n  return <span>Hello, {props.stringProp}!</span>;\n};\n",
       'pick-props.tsx':
         "import React, { BaseHTMLAttributes } from 'react';\n/**\n * MyComponent special component\n */\n\nexport const MyComponent = (\n  props: Pick<BaseHTMLAttributes<HTMLDivElement>, 'style'>,\n) => <div {...props}>Hello</div>;\n",
+      'record-props.tsx':
+        "import React from 'react';\n\nexport interface MyProps {\n  first: Record<string, string>;\n  second?: Record<string, string>;\n}\n\nexport default function MyComponent({ first = {}, second = {} }: MyProps) {\n  return <div {...first} {...second} />;\n}\n",
       'typed-props.tsx':
         "import React from 'react';\n\n/**\n * special react component\n */\nexport const MyComponent: React.FC<{\n  /**\n   * optional string prop\n   */\n  name?: string;\n  /**\n   * a required number prop\n   */\n  numProp: number;\n}> = ({ name = 'hello' }) => <span>Hello, {name}!</span>;\n",
     },

@@ -3,7 +3,7 @@ enum StringEnums {
 }
 export interface InterfaceWithEnumConstant {
   /**
-   * kind is an enumm constant
+   * kind is an enum constant
    */
   kind: StringEnums.Up;
   /**

@@ -86,7 +86,6 @@ export const tsKindToPropKind: { [key in ts.SyntaxKind]?: PropKind } = {
   [ts.SyntaxKind.ClassDeclaration]: PropKind.Class,
   [ts.SyntaxKind.InterfaceDeclaration]: PropKind.Interface,
   [ts.SyntaxKind.TypeLiteral]: PropKind.Type,
-  [ts.SyntaxKind.TypeReference]: PropKind.Type,
   [ts.SyntaxKind.CallSignature]: PropKind.Function,
   [ts.SyntaxKind.ConstructSignature]: PropKind.Constructor,
   [ts.SyntaxKind.MethodSignature]: PropKind.Function,
@@ -206,7 +205,7 @@ export interface ParseOptions {
   extractNames?: string[];
 
   /**
-   * filter properties function
+   * filter properties function. By default filter out all props with ignore === true
    */
   filter?: (prop: PropType) => boolean;
 
@@ -233,6 +232,11 @@ export interface ParseOptions {
    * whether to collect object/type properties
    */
   collectProperties?: boolean;
+
+  /**
+   * whether to collect the plugin/extension name
+   */
+  collectExtension?: boolean;
 
   /**
    * whether to collect errors/diagnostics
@@ -274,6 +278,8 @@ export const defaultParseOptions: ParseOptions = {
   collectParameters: true,
   collectProperties: true,
   collectFilePath: true,
+  collectExtension: true,
+  filter: (prop) => !prop.ignore,
   internalTypes: {
     Function: PropKind.Function,
     CallableFunction: PropKind.Function,
@@ -310,32 +316,31 @@ export type TypeResolver = (props: {
   parser: ISymbolParser;
 }) => ResolverReturnType | undefined;
 
-export const updatePropKind = (
-  prop: PropType,
-  typeNode?: ts.Type,
-): PropType => {
+export const getTypeKind = (typeNode?: ts.Type): PropKind | undefined => {
   if (typeNode) {
     if (typeNode.flags & ts.TypeFlags.Unknown) {
-      prop.kind = PropKind.Unknown;
+      return PropKind.Unknown;
     } else if (typeNode.flags & ts.TypeFlags.String) {
-      prop.kind = PropKind.String;
+      return PropKind.String;
     } else if (typeNode.flags & ts.TypeFlags.Number) {
-      prop.kind = PropKind.Number;
+      return PropKind.Number;
     } else if (typeNode.flags & ts.TypeFlags.Boolean) {
-      prop.kind = PropKind.Boolean;
+      return PropKind.Boolean;
     } else if (typeNode.flags & ts.TypeFlags.Enum) {
-      prop.kind = PropKind.Enum;
+      return PropKind.Enum;
     } else if (typeNode.flags & ts.TypeFlags.BigInt) {
-      prop.kind = PropKind.BigInt;
+      return PropKind.BigInt;
     } else if (typeNode.flags & ts.TypeFlags.Void) {
-      prop.kind = PropKind.Void;
+      return PropKind.Void;
     } else if (typeNode.flags & ts.TypeFlags.Undefined) {
-      prop.kind = PropKind.Undefined;
+      return PropKind.Undefined;
     } else if (typeNode.flags & ts.TypeFlags.Null) {
-      prop.kind = PropKind.Null;
+      return PropKind.Null;
+    } else if (typeNode.flags & ts.TypeFlags.Never) {
+      return PropKind.Unknown;
     }
   }
-  return prop;
+  return undefined;
 };
 
 export const getSymbolType = (
@@ -367,6 +372,7 @@ export interface ISymbolParser {
   readonly checker: ts.TypeChecker;
   readonly options: ParseOptions;
   parseProperties(
+    parent: PropType,
     properties: ts.NodeArray<
       | ts.ClassElement
       | ts.ObjectLiteralElementLike
@@ -389,7 +395,7 @@ export interface ISymbolParser {
     declaration?: ts.Node,
     initializer?: ts.Node,
   ): PropType | null;
-  parseSymbol(symbol: ts.Symbol, options: ParseOptions): PropType | null;
+  parseSymbol(symbol: ts.Symbol, options: ParseOptions): PropType | undefined;
 }
 
 type NodeCallback = (m: ts.PropertyDeclaration) => boolean;
@@ -417,6 +423,8 @@ export const updateModifiers = (
           prop.readonly = true;
         } else if (m.kind === ts.SyntaxKind.AbstractKeyword) {
           prop.abstract = true;
+        } else if (m.kind === ts.SyntaxKind.AsyncKeyword) {
+          prop.async = true;
         }
       }
     }

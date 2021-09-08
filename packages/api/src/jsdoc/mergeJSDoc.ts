@@ -34,11 +34,8 @@ export const mergeJSDoc = (
   prop: PropType,
   options: ParseOptions,
   node?: ts.Node,
-): PropType | null => {
+): PropType => {
   const parsed = parseJSDocTags(parser, options, node);
-  if (parsed === null) {
-    return null;
-  }
   if (parsed) {
     return mergeProps(prop, parsed);
   }
@@ -79,15 +76,12 @@ export const mergeNodeComments = (
             .map(({ text }) => text)
             .join(''),
         );
-        if (description) {
+        if (description && !prop.description) {
           prop.description = description;
         }
       }
     }
     const merged = mergeJSDoc(parser, prop, options, node);
-    if (merged === null) {
-      return null;
-    }
     Object.assign(prop, merged);
   }
   return prop;

@@ -2,29 +2,35 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('class', () => {
-  it('extends', () => {
-    const results = parseFiles([path.resolve(__dirname, 'extends.ts')]);
+  it('object-type', () => {
+    const results = parseFiles([path.resolve(__dirname, 'object-type.ts')], {
+      collectFilePath: false,
+    });
 
     expect(results).toEqual({
-      Bar: {
-        name: 'Bar',
+      Test: {
+        name: 'Test',
         kind: 13,
-        extends: [
+        properties: [
           {
-            name: 'Foo',
-            kind: 13,
-            properties: [
+            name: 'make',
+            kind: 11,
+            parameters: [
               {
-                static: true,
-                readonly: true,
-                name: 'dummy',
-                kind: 3,
-                value: false,
+                name: 'gen',
+                kind: 9,
+                type: 'Object',
               },
             ],
+            returns: {
+              description:
+                'Provides functionality common to all JavaScript objects.',
+              kind: 14,
+              name: 'Object',
+              type: 'ObjectConstructor',
+            },
           },
         ],
-        properties: [],
       },
     });
   });
@@ -53,7 +59,7 @@ describe('class', () => {
                   {
                     parent: 'Generic',
                     name: 'value',
-                    kind: 15,
+                    kind: 3,
                     type: 'T',
                   },
                 ],
@@ -67,21 +73,24 @@ describe('class', () => {
       },
     });
   });
-  it('object-type', () => {
-    const results = parseFiles([path.resolve(__dirname, 'object-type.ts')]);
+  it('extends', () => {
+    const results = parseFiles([path.resolve(__dirname, 'extends.ts')]);
 
     expect(results).toEqual({
-      Test: {
-        name: 'Test',
+      Bar: {
+        name: 'Bar',
         kind: 13,
-        properties: [
+        extends: [
           {
-            name: 'make',
-            kind: 11,
-            parameters: [
+            name: 'Foo',
+            kind: 13,
+            properties: [
               {
-                name: 'gen',
-                kind: 9,
+                static: true,
+                readonly: true,
+                name: 'dummy',
+                kind: 3,
+                value: false,
               },
             ],
           },
@@ -89,6 +98,7 @@ describe('class', () => {
       },
     });
   });
+
   it('getters/setters', () => {
     const results = parseFiles([path.resolve(__dirname, 'getters-setters.ts')]);
 

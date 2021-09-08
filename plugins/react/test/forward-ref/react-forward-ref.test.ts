@@ -3,6 +3,27 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('react-forward-ref', () => {
+  it('initialized', () => {
+    const result = parseFiles([path.resolve(__dirname, 'initialized.tsx')], {
+      plugins: [reactPlugin],
+    });
+    expect(result).toEqual({
+      FancyButton: {
+        name: 'FancyButton',
+        extension: 'react',
+        kind: 11,
+        properties: [
+          {
+            parent: 'OwnProps',
+            optional: true,
+            name: 'stringProp',
+            kind: 1,
+            value: 'test',
+          },
+        ],
+      },
+    });
+  });
   it('hoc', () => {
     const result = parseFiles([path.resolve(__dirname, 'hoc.tsx')], {
       plugins: [reactPlugin],
@@ -128,27 +149,7 @@ describe('react-forward-ref', () => {
       },
     });
   });
-  it('initialized', () => {
-    const result = parseFiles([path.resolve(__dirname, 'initialized.tsx')], {
-      plugins: [reactPlugin],
-    });
-    expect(result).toEqual({
-      FancyButton: {
-        name: 'FancyButton',
-        extension: 'react',
-        kind: 11,
-        properties: [
-          {
-            parent: 'OwnProps',
-            optional: true,
-            name: 'stringProp',
-            kind: 1,
-            value: 'test',
-          },
-        ],
-      },
-    });
-  });
+
   it('own-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'own-props.tsx')], {
       plugins: [reactPlugin],

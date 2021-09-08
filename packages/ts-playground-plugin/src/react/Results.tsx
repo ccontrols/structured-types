@@ -59,7 +59,7 @@ export const Results: FC<{ sandbox: Sandbox }> = ({ sandbox }) => {
           collectDiagnostics,
           tsOptions: tsvfs.program.getCompilerOptions(),
         },
-        { program: tsvfs.program },
+        { program: tsvfs.program, host: tsvfs.host.compilerHost },
       );
       setResults(types);
     } finally {

@@ -1,4 +1,5 @@
 import * as ts from 'typescript';
+import { dirname } from 'path';
 import { PropTypes, PropType, PropDiagnostic, FunctionProp } from './types';
 import { tsDefaults, DocsOptions, ProgramOptions } from './ts-utils';
 import { SymbolParser } from './SymbolParser';
@@ -49,12 +50,37 @@ export const anaylizeFiles = (
     internalTypes,
     consolidateParents,
   } = parseOptions || {};
-  const { program: userProgram, host } = programOptions;
+  const { program: userProgram, host: userHost } = programOptions;
+  const host = userHost || ts.createCompilerHost(tsOptions);
   const program = userProgram || ts.createProgram(fileNames, tsOptions, host);
-  // Get the checker, we will use it to find more about classes
-  const checker = program.getTypeChecker();
+  const defaultLibraryFileName = host.getDefaultLibFileName(tsOptions);
+  const defaultLibraryPath = host.getDefaultLibLocation
+    ? host.getDefaultLibLocation()
+    : dirname(defaultLibraryFileName);
+  const equalityComparer = host.useCaseSensitiveFileNames()
+    ? (s1: string, s2: string) => s1 === s2
+    : (s1: string, s2: string) => s1.toUpperCase() === s2.toUpperCase();
 
-  const parser = new SymbolParser(checker, fileNames, parseOptions);
+  const isLibraryFile =
+    defaultLibraryPath === '/'
+      ? (file: ts.SourceFile) => {
+          if (file.hasNoDefaultLib) {
+            return true;
+          }
+          return equalityComparer(file.fileName, defaultLibraryFileName);
+        }
+      : (file: ts.SourceFile) => {
+          if (file.hasNoDefaultLib) {
+            return true;
+          }
+          return equalityComparer(dirname(file.fileName), defaultLibraryPath);
+        };
+  const parser = new SymbolParser(
+    program,
+    isLibraryFile,
+    fileNames,
+    parseOptions,
+  );
   let parsed: PropTypes = {};
   const addSymbol = (symbol?: ts.Symbol): void => {
     if (symbol) {
@@ -63,7 +89,7 @@ export const anaylizeFiles = (
         internalTypes?.[symbolName] === undefined &&
         (!extractNames || extractNames.includes(symbolName))
       ) {
-        const prop = parser.parseSymbol(symbol);
+        const prop = parser.parse(symbol);
         if (prop) {
           parsed[symbolName] = prop;
         }
@@ -77,21 +103,21 @@ export const anaylizeFiles = (
         ts.forEachChild(sourceFile, (node: ts.Node) => {
           const namedNode = node as ts.ClassDeclaration;
           if (namedNode.name) {
-            const symbol = checker.getSymbolAtLocation(namedNode.name);
+            const symbol = parser.checker.getSymbolAtLocation(namedNode.name);
             addSymbol(symbol);
           } else if (ts.isVariableStatement(node)) {
             node.declarationList.declarations.forEach((d) => {
               if (d.name) {
-                const symbol = checker.getSymbolAtLocation(d.name);
+                const symbol = parser.checker.getSymbolAtLocation(d.name);
                 addSymbol(symbol);
               }
             });
           }
         });
       }
-      const module = checker.getSymbolAtLocation(sourceFile);
+      const module = parser.checker.getSymbolAtLocation(sourceFile);
       if (module) {
-        const exports = checker.getExportsOfModule(module);
+        const exports = parser.checker.getExportsOfModule(module);
         exports.forEach((symbol) => addSymbol(symbol));
       }
     }

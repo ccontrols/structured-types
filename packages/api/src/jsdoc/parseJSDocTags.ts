@@ -53,6 +53,7 @@ const parseJSDocProperty = (
 ): PropType => {
   const prop: PropType = {};
   parser.updateSymbolName(prop, tag);
+
   const comment = tagCommentToString(tag.comment);
   if (comment) {
     prop.description = comment;
@@ -158,6 +159,10 @@ export const parseJSDocTag = (
         prop.kind = PropKind.Interface;
         break;
       }
+      case 'ignore': {
+        prop.ignore = true;
+        break;
+      }
 
       case 'example': {
         const comment = tagCommentToString(tag.comment);
@@ -224,7 +229,7 @@ export const parseJSDocTags = (
   parser: ISymbolParser,
   options: ParseOptions,
   declaration?: ts.Node,
-): PropType | undefined | null => {
+): PropType | undefined => {
   if (declaration) {
     const result: PropType = {};
     const parentTags = ts.getJSDocTags(declaration.parent) || [];
@@ -233,9 +238,6 @@ export const parseJSDocTags = (
     });
 
     for (const tag of tags) {
-      if (tag.tagName.text === 'ignore') {
-        return null;
-      }
       parseJSDocTag(parser, options, result, tag);
     }
     return result;

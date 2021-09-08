@@ -2,6 +2,58 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('type', () => {
+  it('circular-reference', () => {
+    const results = parseFiles([
+      path.resolve(__dirname, 'circular-reference.ts'),
+    ]);
+    expect(results).toEqual({
+      Parent: {
+        name: 'Parent',
+        kind: 15,
+        properties: [
+          {
+            name: 'children',
+            optional: true,
+            kind: 16,
+            properties: [
+              {
+                kind: 15,
+                type: 'Children',
+                properties: [
+                  {
+                    name: 'parent',
+                    kind: 15,
+                    properties: [
+                      {
+                        name: 'children',
+                        parent: 'Parent',
+                      },
+                    ],
+                  },
+                  {
+                    name: 'items',
+                    optional: true,
+                    kind: 16,
+                    properties: [
+                      {
+                        kind: 15,
+                        type: 'Children',
+                      },
+                    ],
+                    description: 'self-referencing items',
+                  },
+                ],
+                name: 'Children',
+                description: 'this is type Children',
+              },
+            ],
+            description: 'child elements',
+          },
+        ],
+        description: 'this is type Parent',
+      },
+    });
+  });
   it('referenced-type', () => {
     const results = parseFiles(
       [path.resolve(__dirname, 'referenced-type.ts')],
@@ -15,8 +67,8 @@ describe('type', () => {
         kind: 15,
         properties: [
           {
-            optional: true,
             name: 'comment',
+            optional: true,
             readonly: true,
             kind: 4,
             properties: [
@@ -25,42 +77,22 @@ describe('type', () => {
               },
               {
                 kind: 14,
+                type: 'NodeArray',
                 generics: [
                   {
-                    name: 'T',
+                    kind: 4,
+                    properties: [
+                      {
+                        kind: 14,
+                        type: 'JSDocText',
+                      },
+                      {
+                        kind: 14,
+                        type: 'JSDocLink',
+                      },
+                    ],
                   },
                 ],
-                properties: [
-                  {
-                    kind: 20,
-                    index: {
-                      name: 'n',
-                      kind: 2,
-                    },
-                    type: {
-                      kind: 15,
-                      name: 'T',
-                    },
-                  },
-                  {
-                    optional: true,
-                    name: 'hasTrailingComma',
-                    kind: 3,
-                  },
-                  {
-                    parent: 'ReadonlyTextRange',
-                    readonly: true,
-                    name: 'pos',
-                    kind: 2,
-                  },
-                  {
-                    parent: 'ReadonlyTextRange',
-                    readonly: true,
-                    name: 'end',
-                    kind: 2,
-                  },
-                ],
-                name: 'NodeArray',
               },
             ],
           },
@@ -68,6 +100,87 @@ describe('type', () => {
       },
     });
   });
+  it('union-generic', () => {
+    const results = parseFiles([path.resolve(__dirname, 'union-generic.ts')]);
+    expect(results).toEqual({
+      UnionGenericType: {
+        name: 'UnionGenericType',
+        kind: 4,
+        properties: [
+          {
+            type: 'Type',
+          },
+          {
+            kind: 10,
+          },
+        ],
+      },
+    });
+  });
+  it('self-reference', () => {
+    const results = parseFiles([path.resolve(__dirname, 'self-reference.ts')]);
+    expect(results).toEqual({
+      Node: {
+        name: 'Node',
+        kind: 15,
+        properties: [
+          {
+            optional: true,
+            name: 'items',
+            kind: 16,
+            properties: [
+              {
+                type: 'Node',
+                kind: 15,
+              },
+            ],
+            description: 'self-referencing items',
+          },
+        ],
+        description: 'this is type',
+      },
+    });
+  });
+  it('extend-type', () => {
+    const results = parseFiles([path.resolve(__dirname, 'extend-type.ts')], {
+      consolidateParents: true,
+    });
+    expect(results).toEqual({
+      ExtendT: {
+        description: 'extended type',
+        kind: 15,
+        properties: [
+          {
+            description: 'base type member property',
+            name: 'm',
+            kind: 1,
+            parent: 'T',
+          },
+          {
+            description: 'own member',
+            name: 'honey',
+            kind: 3,
+          },
+        ],
+        name: 'ExtendT',
+      },
+      __parents: {
+        T: {
+          description: 'base type',
+          name: 'T',
+          kind: 15,
+          properties: [
+            {
+              description: 'base type member property',
+              name: 'm',
+              kind: 1,
+            },
+          ],
+        },
+      },
+    });
+  });
+
   it('generic-type', () => {
     const results = parseFiles([path.resolve(__dirname, 'generic-type.ts')]);
     expect(results).toEqual({
@@ -81,7 +194,6 @@ describe('type', () => {
         properties: [
           {
             type: 'Type',
-            kind: 15,
             name: 'contents',
           },
         ],
@@ -107,7 +219,6 @@ describe('type', () => {
               properties: [
                 {
                   name: 'a',
-                  kind: 15,
                   type: 'Bear',
                 },
                 {
@@ -128,90 +239,7 @@ describe('type', () => {
       },
     });
   });
-  it('circular-reference', () => {
-    const results = parseFiles([
-      path.resolve(__dirname, 'circular-reference.ts'),
-    ]);
-    expect(results).toEqual({
-      Parent: {
-        name: 'Parent',
-        kind: 15,
-        properties: [
-          {
-            optional: true,
-            name: 'children',
-            kind: 16,
-            properties: [
-              {
-                kind: 15,
-                properties: [
-                  {
-                    name: 'parent',
-                    kind: 15,
-                    properties: [
-                      {
-                        parent: 'Parent',
-                        optional: true,
-                        name: 'children',
-                        kind: 16,
-                        properties: [
-                          {
-                            name: 'Children',
-                            kind: 15,
-                          },
-                        ],
-                        description: 'child elements',
-                      },
-                    ],
-                  },
-                  {
-                    optional: true,
-                    name: 'items',
-                    kind: 16,
-                    properties: [
-                      {
-                        name: 'Children',
-                        kind: 15,
-                      },
-                    ],
-                    description: 'self-referencing items',
-                  },
-                ],
-                description: 'this is type Children',
-                name: 'Children',
-              },
-            ],
-            description: 'child elements',
-          },
-        ],
-        description: 'this is type Parent',
-      },
-    });
-  });
-  it('self-reference', () => {
-    const results = parseFiles([path.resolve(__dirname, 'self-reference.ts')]);
-    expect(results).toEqual({
-      Node: {
-        name: 'Node',
-        kind: 15,
-        properties: [
-          {
-            optional: true,
-            name: 'items',
-            kind: 16,
-            properties: [
-              {
-                name: 'Node',
-                kind: 15,
-              },
-            ],
-            description: 'self-referencing items',
-          },
-        ],
-        description: 'this is type',
-      },
-    });
-  });
+
   it('initialized', () => {
     const results = parseFiles([path.resolve(__dirname, 'initialized.ts')]);
     expect(results).toEqual({
@@ -250,8 +278,7 @@ describe('type', () => {
         ],
         properties: [
           {
-            kind: 15,
-            name: 'Type',
+            type: 'Type',
           },
         ],
       },
@@ -276,7 +303,7 @@ describe('type', () => {
           {
             description: 'interface prop',
             name: 'm',
-            kind: 15,
+            kind: 1,
             type: 'Type',
             parent: 'GenericInterface',
           },
@@ -297,7 +324,6 @@ describe('type', () => {
             {
               description: 'interface prop',
               name: 'm',
-              kind: 15,
               type: 'Type',
             },
           ],
@@ -355,45 +381,6 @@ describe('type', () => {
     });
   });
 
-  it('extend-type', () => {
-    const results = parseFiles([path.resolve(__dirname, 'extend-type.ts')], {
-      consolidateParents: true,
-    });
-    expect(results).toEqual({
-      ExtendT: {
-        description: 'extended type',
-        kind: 15,
-        properties: [
-          {
-            description: 'base type member property',
-            name: 'm',
-            kind: 1,
-            parent: 'T',
-          },
-          {
-            description: 'own member',
-            name: 'honey',
-            kind: 3,
-          },
-        ],
-        name: 'ExtendT',
-      },
-      __parents: {
-        T: {
-          description: 'base type',
-          name: 'T',
-          kind: 15,
-          properties: [
-            {
-              description: 'base type member property',
-              name: 'm',
-              kind: 1,
-            },
-          ],
-        },
-      },
-    });
-  });
   it('nested-generic', () => {
     const results = parseFiles([path.resolve(__dirname, 'nested-generic.ts')], {
       consolidateParents: true,
@@ -405,7 +392,6 @@ describe('type', () => {
           {
             description: 'member field',
             name: 'm',
-            kind: 15,
             type: 'Type',
             parent: 'GenericArrayType',
           },
@@ -432,30 +418,10 @@ describe('type', () => {
             {
               description: 'member field',
               name: 'm',
-              kind: 15,
               type: 'Type',
             },
           ],
         },
-      },
-    });
-  });
-
-  it('union-generic', () => {
-    const results = parseFiles([path.resolve(__dirname, 'union-generic.ts')]);
-    expect(results).toEqual({
-      UnionGenericType: {
-        name: 'UnionGenericType',
-        kind: 4,
-        properties: [
-          {
-            name: 'Type',
-            kind: 15,
-          },
-          {
-            kind: 10,
-          },
-        ],
       },
     });
   });

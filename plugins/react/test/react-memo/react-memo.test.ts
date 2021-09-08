@@ -3,6 +3,27 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('react-memo', () => {
+  it('initialized', () => {
+    const result = parseFiles([path.resolve(__dirname, 'initialized.tsx')], {
+      plugins: [reactPlugin],
+    });
+    expect(result).toEqual({
+      MemoButton: {
+        name: 'MemoButton',
+        extension: 'react',
+        kind: 11,
+        properties: [
+          {
+            parent: 'OwnProps',
+            optional: true,
+            name: 'stringProp',
+            kind: 1,
+            value: 'default value',
+          },
+        ],
+      },
+    });
+  });
   it('hoc', () => {
     const result = parseFiles([path.resolve(__dirname, 'hoc.tsx')], {
       plugins: [reactPlugin],
@@ -115,27 +136,7 @@ describe('react-memo', () => {
       },
     });
   });
-  it('initialized', () => {
-    const result = parseFiles([path.resolve(__dirname, 'initialized.tsx')], {
-      plugins: [reactPlugin],
-    });
-    expect(result).toEqual({
-      MemoButton: {
-        name: 'MemoButton',
-        extension: 'react',
-        kind: 11,
-        properties: [
-          {
-            parent: 'OwnProps',
-            optional: true,
-            name: 'stringProp',
-            kind: 1,
-            value: 'default value',
-          },
-        ],
-      },
-    });
-  });
+
   it('no-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'no-props.tsx')], {
       plugins: [reactPlugin],

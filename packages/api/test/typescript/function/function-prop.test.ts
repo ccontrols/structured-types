@@ -2,6 +2,176 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('function', () => {
+  it('async-function', () => {
+    const results = parseFiles([path.resolve(__dirname, 'async-function.ts')], {
+      collectFilePath: false,
+    });
+    expect(results).toEqual({
+      genMyClass: {
+        async: true,
+        name: 'genMyClass',
+        kind: 11,
+        returns: {
+          description: 'Represents the completion of an asynchronous operation',
+          kind: 14,
+          name: 'Promise',
+          type: 'PromiseConstructor',
+        },
+      },
+    });
+  });
+  it('extends-parameter', () => {
+    const results = parseFiles(
+      [path.resolve(__dirname, 'extends-parameter.ts')],
+      { consolidateParents: true },
+    );
+    expect(results).toEqual({
+      paintHomeyBear: {
+        name: 'paintHomeyBear',
+        kind: 11,
+        parameters: [
+          {
+            kind: 15,
+            type: 'ExtendT',
+            properties: [
+              {
+                name: 'm',
+                parent: 'T',
+                kind: 1,
+                description: 'base type member property',
+              },
+              {
+                name: 'honey',
+                kind: 3,
+                description: 'own member',
+              },
+            ],
+            name: 'ExtendT',
+            description: 'extended type',
+          },
+        ],
+        returns: {
+          kind: 14,
+          type: 'Bear',
+          properties: [
+            {
+              name: 'honey',
+              kind: 3,
+              description: 'boolean type member',
+            },
+            {
+              name: 'm',
+              parent: 'Internal',
+              kind: 1,
+              description: 'string type member',
+            },
+          ],
+          name: 'Bear',
+          description: 'interface extending another one',
+        },
+        description: 'exported function',
+      },
+      __parents: {
+        T: {
+          name: 'T',
+          kind: 15,
+          properties: [
+            {
+              name: 'm',
+              kind: 1,
+              description: 'base type member property',
+            },
+          ],
+          description: 'base type',
+        },
+
+        Internal: {
+          name: 'Internal',
+          kind: 14,
+          properties: [
+            {
+              name: 'm',
+              kind: 1,
+              description: 'string type member',
+            },
+          ],
+          description: 'internal interface with one member',
+        },
+      },
+    });
+  });
+  it('generic-parameter', () => {
+    const results = parseFiles(
+      [path.resolve(__dirname, 'generic-parameter.ts')],
+      { consolidateParents: true },
+    );
+    expect(results).toEqual({
+      genericFunction: {
+        name: 'genericFunction',
+        kind: 11,
+        parameters: [
+          {
+            name: 'box',
+            kind: 14,
+            generics: [
+              {
+                name: 'Type',
+              },
+            ],
+            properties: [
+              {
+                parent: 'GenericInterface',
+                name: 'm',
+                type: 'T',
+              },
+            ],
+          },
+          {
+            name: 'newContents',
+            type: 'Type',
+          },
+        ],
+        returns: {
+          kind: 14,
+          generics: [
+            {
+              name: 'T',
+            },
+          ],
+          name: 'GenericInterface',
+          type: 'GenericInterface',
+          properties: [
+            {
+              name: 'm',
+              type: 'T',
+            },
+          ],
+        },
+        types: [
+          {
+            name: 'Type',
+          },
+        ],
+      },
+      __parents: {
+        GenericInterface: {
+          name: 'GenericInterface',
+          kind: 14,
+          generics: [
+            {
+              name: 'T',
+            },
+          ],
+          properties: [
+            {
+              name: 'm',
+              type: 'T',
+            },
+          ],
+        },
+      },
+    });
+  });
   it('class-prop', () => {
     const results = parseFiles([path.resolve(__dirname, 'class-prop.ts')], {
       collectFilePath: false,
@@ -122,159 +292,6 @@ describe('function', () => {
         kind: 11,
         returns: {
           kind: 12,
-        },
-      },
-    });
-  });
-  it('generic function parameter', () => {
-    const results = parseFiles(
-      [path.resolve(__dirname, 'generic-parameter.ts')],
-      { consolidateParents: true },
-    );
-    expect(results).toEqual({
-      genericFunction: {
-        name: 'genericFunction',
-        kind: 11,
-        parameters: [
-          {
-            name: 'box',
-            kind: 14,
-            properties: [
-              {
-                parent: 'GenericInterface',
-                name: 'm',
-                kind: 15,
-                type: 'T',
-              },
-            ],
-            generics: [
-              {
-                name: 'Type',
-              },
-            ],
-          },
-          {
-            name: 'newContents',
-            kind: 15,
-            type: 'Type',
-          },
-        ],
-        returns: {
-          kind: 14,
-          properties: [
-            {
-              name: 'm',
-              kind: 15,
-              type: 'T',
-            },
-          ],
-          generics: [
-            {
-              name: 'T',
-            },
-          ],
-          name: 'GenericInterface',
-        },
-        types: [
-          {
-            name: 'Type',
-          },
-        ],
-      },
-      __parents: {
-        GenericInterface: {
-          name: 'GenericInterface',
-          kind: 14,
-          properties: [
-            {
-              name: 'm',
-              kind: 15,
-              type: 'T',
-            },
-          ],
-          generics: [
-            {
-              name: 'T',
-            },
-          ],
-        },
-      },
-    });
-  });
-
-  it('extended parameter', () => {
-    const results = parseFiles(
-      [path.resolve(__dirname, 'extends-parameter.ts')],
-      { consolidateParents: true },
-    );
-    expect(results).toEqual({
-      paintHomeyBear: {
-        name: 'paintHomeyBear',
-        kind: 11,
-        parameters: [
-          {
-            kind: 15,
-            properties: [
-              {
-                parent: 'T',
-                kind: 1,
-                name: 'm',
-                description: 'base type member property',
-              },
-              {
-                kind: 3,
-                name: 'honey',
-                description: 'own member',
-              },
-            ],
-            description: 'extended type',
-            name: 'ExtendT',
-          },
-        ],
-        returns: {
-          kind: 14,
-          properties: [
-            {
-              kind: 3,
-              name: 'honey',
-              description: 'boolean type member',
-            },
-            {
-              parent: 'Internal',
-              kind: 1,
-              name: 'm',
-              description: 'string type member',
-            },
-          ],
-          description: 'interface extending another one',
-          name: 'Bear',
-        },
-        description: 'exported function',
-      },
-      __parents: {
-        T: {
-          name: 'T',
-          kind: 15,
-          properties: [
-            {
-              kind: 1,
-              name: 'm',
-              description: 'base type member property',
-            },
-          ],
-          description: 'base type',
-        },
-        Internal: {
-          name: 'Internal',
-          kind: 14,
-          properties: [
-            {
-              kind: 1,
-              name: 'm',
-              description: 'string type member',
-            },
-          ],
-          description: 'internal interface with one member',
         },
       },
     });

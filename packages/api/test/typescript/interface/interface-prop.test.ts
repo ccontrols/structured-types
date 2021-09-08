@@ -2,161 +2,47 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('interface', () => {
-  it('array-implementation', () => {
-    const results = parseFiles([
-      path.resolve(__dirname, 'array-implementation.ts'),
-    ]);
+  it('record-props', () => {
+    const results = parseFiles(
+      [path.resolve(__dirname, 'record-props.ts')],
+      {},
+    );
     expect(results).toEqual({
-      InterfaceArrayType: {
-        name: 'InterfaceArrayType',
+      MyProps: {
+        name: 'MyProps',
         kind: 14,
         properties: [
           {
-            kind: 2,
-            name: 'length',
-            description: 'Gets or sets the length of the array.',
-          },
-          {
-            name: 'pop',
-            kind: 11,
-            returns: {
-              kind: 4,
-              properties: [
-                {
-                  kind: 15,
-                  name: 'Type',
-                },
-                {
-                  kind: 8,
-                },
-              ],
-            },
-            description:
-              'Removes the last element from an array and returns it.',
-          },
-          {
-            name: 'push',
-            kind: 11,
-            parameters: [
+            name: 'first',
+            kind: 15,
+            type: 'Record',
+            generics: [
               {
-                name: 'items',
-                kind: 16,
-                properties: [
-                  {
-                    kind: 15,
-                    name: 'Type',
-                  },
-                ],
+                kind: 1,
+              },
+              {
+                kind: 1,
               },
             ],
-            returns: {
-              kind: 2,
-            },
-            description:
-              'Appends new elements to an array, and returns the new length of the array.',
-          },
-        ],
-        generics: [
-          {
-            name: 'Type',
-          },
-        ],
-      },
-    });
-  });
-  it('enum-prop', () => {
-    const results = parseFiles([path.resolve(__dirname, 'enum-prop.ts')], {
-      consolidateParents: true,
-    });
-    expect(results).toEqual({
-      InterfaceWithEnumConstant: {
-        name: 'InterfaceWithEnumConstant',
-        kind: 14,
-        properties: [
-          {
-            name: 'kind',
-            kind: 1,
-            description: 'kind is an enumm constant',
-            parent: 'StringEnums',
-            value: 'UP',
-            type: 'Up',
           },
           {
-            kind: 2,
-            name: 'radius',
-            description: 'radius property',
-          },
-        ],
-      },
-      __parents: {
-        StringEnums: {
-          name: 'StringEnums',
-          kind: 5,
-          properties: [
-            {
-              name: 'Up',
-              kind: 1,
-              value: 'UP',
-            },
-          ],
-        },
-      },
-    });
-  });
-  it('index-prop', () => {
-    const results = parseFiles([path.resolve(__dirname, 'index-prop.ts')]);
-
-    expect(results).toEqual({
-      IndexInterface: {
-        name: 'IndexInterface',
-        kind: 14,
-        properties: [
-          {
-            kind: 20,
-            index: {
-              kind: 2,
-              name: 'index',
-            },
-            type: {
-              kind: 1,
-            },
-          },
-        ],
-      },
-    });
-  });
-  it('jsdoc-default', () => {
-    const results = parseFiles([path.resolve(__dirname, 'jsdoc-default.ts')]);
-    expect(results).toEqual({
-      Interface: {
-        name: 'Interface',
-        kind: 14,
-        properties: [
-          {
-            name: 'eat',
-            kind: 4,
-            properties: [
+            name: 'second',
+            optional: true,
+            kind: 15,
+            type: 'Record',
+            generics: [
               {
                 kind: 1,
-                value: 'honey',
               },
               {
                 kind: 1,
-                value: 'bread',
-              },
-              {
-                kind: 1,
-                value: 'meat',
               },
             ],
-            value: 'bread',
-            description: 'union prop',
           },
         ],
       },
     });
   });
-
   it('extends', () => {
     const results = parseFiles([path.resolve(__dirname, 'extends.ts')], {
       consolidateParents: true,
@@ -221,6 +107,181 @@ describe('interface', () => {
       },
     });
   });
+  it('enum-prop', () => {
+    const results = parseFiles([path.resolve(__dirname, 'enum-prop.ts')], {
+      consolidateParents: true,
+    });
+    expect(results).toEqual({
+      InterfaceWithEnumConstant: {
+        name: 'InterfaceWithEnumConstant',
+        kind: 14,
+        properties: [
+          {
+            name: 'kind',
+            kind: 1,
+            description: 'kind is an enum constant',
+            parent: 'StringEnums',
+            value: 'UP',
+            type: 'Up',
+          },
+          {
+            kind: 2,
+            name: 'radius',
+            description: 'radius property',
+          },
+        ],
+      },
+      __parents: {
+        StringEnums: {
+          name: 'StringEnums',
+          kind: 5,
+          properties: [
+            {
+              name: 'Up',
+              kind: 1,
+              value: 'UP',
+            },
+          ],
+        },
+      },
+    });
+  });
+
+  it('array-implementation', () => {
+    const results = parseFiles([
+      path.resolve(__dirname, 'array-implementation.ts'),
+    ]);
+    expect(results).toEqual({
+      InterfaceArrayType: {
+        name: 'InterfaceArrayType',
+        kind: 14,
+        properties: [
+          {
+            kind: 2,
+            name: 'length',
+            description: 'Gets or sets the length of the array.',
+          },
+          {
+            name: 'pop',
+            kind: 11,
+            returns: {
+              kind: 4,
+              properties: [
+                {
+                  type: 'Type',
+                },
+                {
+                  kind: 8,
+                },
+              ],
+            },
+            description:
+              'Removes the last element from an array and returns it.',
+          },
+          {
+            name: 'push',
+            kind: 11,
+            parameters: [
+              {
+                name: 'items',
+                kind: 16,
+                properties: [
+                  {
+                    type: 'Type',
+                  },
+                ],
+              },
+            ],
+            returns: {
+              kind: 2,
+            },
+            description:
+              'Appends new elements to an array, and returns the new length of the array.',
+          },
+        ],
+        generics: [
+          {
+            name: 'Type',
+          },
+        ],
+      },
+    });
+  });
+
+  it('generics', () => {
+    const results = parseFiles([path.resolve(__dirname, 'generics.ts')]);
+    expect(results).toEqual({
+      GenericInterface: {
+        name: 'GenericInterface',
+        kind: 14,
+        generics: [
+          {
+            name: 'Type',
+          },
+        ],
+        properties: [
+          {
+            name: 'contents',
+            type: 'Type',
+          },
+        ],
+      },
+    });
+  });
+
+  it('index-prop', () => {
+    const results = parseFiles([path.resolve(__dirname, 'index-prop.ts')]);
+
+    expect(results).toEqual({
+      IndexInterface: {
+        name: 'IndexInterface',
+        kind: 14,
+        properties: [
+          {
+            kind: 20,
+            index: {
+              kind: 2,
+              name: 'index',
+            },
+            type: {
+              kind: 1,
+            },
+          },
+        ],
+      },
+    });
+  });
+  it('jsdoc-default', () => {
+    const results = parseFiles([path.resolve(__dirname, 'jsdoc-default.ts')]);
+    expect(results).toEqual({
+      Interface: {
+        name: 'Interface',
+        kind: 14,
+        properties: [
+          {
+            name: 'eat',
+            kind: 4,
+            properties: [
+              {
+                kind: 1,
+                value: 'honey',
+              },
+              {
+                kind: 1,
+                value: 'bread',
+              },
+              {
+                kind: 1,
+                value: 'meat',
+              },
+            ],
+            value: 'bread',
+            description: 'union prop',
+          },
+        ],
+      },
+    });
+  });
 
   it('combined-props', () => {
     const results = parseFiles([path.resolve(__dirname, 'combined-props.ts')]);
@@ -275,27 +336,6 @@ describe('interface', () => {
                 },
               ],
             },
-          },
-        ],
-      },
-    });
-  });
-  it('generics', () => {
-    const results = parseFiles([path.resolve(__dirname, 'generics.ts')]);
-    expect(results).toEqual({
-      GenericInterface: {
-        name: 'GenericInterface',
-        kind: 14,
-        generics: [
-          {
-            name: 'Type',
-          },
-        ],
-        properties: [
-          {
-            name: 'contents',
-            kind: 15,
-            type: 'Type',
           },
         ],
       },

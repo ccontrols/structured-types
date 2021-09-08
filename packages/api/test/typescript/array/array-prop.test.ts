@@ -2,7 +2,32 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('array', () => {
-  it('array new', () => {
+  it('objects', () => {
+    const results = parseFiles([path.resolve(__dirname, 'objects.ts')]);
+
+    expect(results).toEqual({
+      arrType: {
+        name: 'arrType',
+        kind: 16,
+        properties: [
+          {
+            kind: 14,
+            properties: [
+              {
+                kind: 1,
+                name: 'm',
+              },
+            ],
+            name: 'Internal',
+            type: 'Internal',
+          },
+        ],
+        deprecated: true,
+        description: 'type array of interface type',
+      },
+    });
+  });
+  it('array-new', () => {
     const results = parseFiles([path.resolve(__dirname, 'array-new.ts')]);
 
     expect(results).toEqual({
@@ -27,7 +52,7 @@ describe('array', () => {
       },
     });
   });
-  it('array keyword', () => {
+  it('array-keyword', () => {
     const results = parseFiles([path.resolve(__dirname, 'array-keyword.ts')]);
     expect(results).toEqual({
       ArrayKeyword: {
@@ -49,7 +74,7 @@ describe('array', () => {
     });
   });
 
-  it('array of strings const', () => {
+  it('strings-const', () => {
     const results = parseFiles([path.resolve(__dirname, 'string-const.ts')]);
     expect(results).toEqual({
       arrString: {
@@ -74,7 +99,7 @@ describe('array', () => {
       },
     });
   });
-  it('array of strings', () => {
+  it('initialized-strings', () => {
     const results = parseFiles([
       path.resolve(__dirname, 'initialized-strings.ts'),
     ]);
@@ -97,30 +122,6 @@ describe('array', () => {
           },
         ],
         description: 'const array of strings',
-      },
-    });
-  });
-  it('array of objects', () => {
-    const results = parseFiles([path.resolve(__dirname, 'objects.ts')]);
-
-    expect(results).toEqual({
-      arrType: {
-        name: 'arrType',
-        kind: 16,
-        properties: [
-          {
-            kind: 14,
-            properties: [
-              {
-                kind: 1,
-                name: 'm',
-              },
-            ],
-            name: 'Internal',
-          },
-        ],
-        deprecated: true,
-        description: 'type array of interface type',
       },
     });
   });

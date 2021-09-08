@@ -54,6 +54,7 @@ export interface PropType {
   optional?: boolean;
   readonly?: boolean;
   abstract?: boolean;
+  async?: boolean;
   visibility?: 'private' | 'protected' | 'public';
   static?: boolean;
   filePath?: string;
@@ -73,6 +74,7 @@ export interface PropType {
   tags?: JSDocPropTag[];
   summary?: string;
   deprecated?: string | true;
+  ignore?: boolean;
 }
 
 export interface ObjectProp extends PropType {

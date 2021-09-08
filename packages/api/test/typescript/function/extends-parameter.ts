@@ -34,7 +34,7 @@ interface Internal {
  * interface extending another one
  */
 
-interface Bear extends Internal, Home {
+interface Bear extends Internal {
   /**
    * boolean type member
    */
