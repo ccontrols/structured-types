@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.21.0](https://github.com/ccontrols/structured-types/compare/v3.20.4...v3.21.0) (2021-09-08)
+
+
+### Bug Fixes
+
+* package deps ([ad93794](https://github.com/ccontrols/structured-types/commit/ad93794007fa67c1b14b80e15b0f4355d18ef72f))
+* update deps ([92f18ee](https://github.com/ccontrols/structured-types/commit/92f18ee58faa12d72f33638165e0b8083a32c0dd))
+* update versions ([d97fced](https://github.com/ccontrols/structured-types/commit/d97fceda6e5c7f0bbcfe91d36bdf330c5235979d))
+
+
+### Features
+
+* initial check-in api-readme ([b203c8b](https://github.com/ccontrols/structured-types/commit/b203c8b5b227e3fa345c92595036831634b16441))
+
+
+
+
+
 ## [3.8.2](https://github.com/ccontrols/component-controls/compare/v3.8.1...v3.8.2) (2021-04-30)
 
 **Note:** Version bump only for package @component-controls/ts-markdown-docs

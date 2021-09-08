@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.21.0](https://github.com/ccontrols/structured-types/compare/v3.20.4...v3.21.0) (2021-09-08)
+
+
+### Features
+
+* refactor recursive types ([e5a4e39](https://github.com/ccontrols/structured-types/commit/e5a4e390ce8a8ea17c83d9ed1f26e8cebe316b8d))
+
+
+
+
+
 ## [3.20.4](https://github.com/ccontrols/structured-types/compare/v3.20.3...v3.20.4) (2021-08-12)
 
 **Note:** Version bump only for package @structured-types/playground-plugin
