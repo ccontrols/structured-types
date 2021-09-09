@@ -151,23 +151,14 @@ export class SymbolParser implements ISymbolParser {
     }
     return undefined;
   }
-  private getNodeSource = (node: ts.Node): ts.SourceFile | undefined => {
-    let parent = node;
-    while (parent) {
-      if (ts.isSourceFile(parent)) {
-        return parent;
-      }
-      parent = parent.parent;
-    }
-    return undefined;
-  };
+
   private parseFilePath = (
     prop: PropType,
     options: ParseOptions,
     node?: ts.Node,
   ): PropType => {
     if (node && options.collectFilePath) {
-      const source = this.getNodeSource(node);
+      const source = node.getSourceFile();
       if (source && !this.fileNames.includes(source.fileName)) {
         prop.filePath = source.fileName;
       }
@@ -936,7 +927,7 @@ export class SymbolParser implements ISymbolParser {
   }
   private internalNode(node?: ts.Node): PropKind | undefined {
     if (node) {
-      const source = this.getNodeSource(node);
+      const source = node.getSourceFile();
       if (source) {
         const isInternal = this.checkLibrary(source);
         if (isInternal) {
