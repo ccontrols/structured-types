@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import { Node } from '../common/types';
 import { extractCustomTag, inlineNewContent } from '../common/utils';
-import { extractTSDoc } from './extract-tsdoc';
+import { ExtractProps } from './extract-tsdoc';
 
 export const insertTSDoc = (fileName: string) => (): ((node: Node) => void) => {
   const resolve = (file: string): string => {
@@ -49,14 +49,12 @@ export const insertTSDoc = (fileName: string) => (): ((node: Node) => void) => {
             }
           }
           if (files.length) {
-            const tsNodes = extractTSDoc(
+            const extractProps = new ExtractProps(
               files,
               splitCommaAttribute(attributes, 'extract'),
             );
-            if (tsNodes) {
-              newNodes.push(...tsNodes);
-            }
-            // console.log(tsdocs);
+            const tsNodes = extractProps.extract();
+            newNodes.push(...tsNodes);
           }
           inlineNewContent(attrs, newNodes);
         }

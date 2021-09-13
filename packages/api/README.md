@@ -1,14 +1,15 @@
 # Table of contents
 
-- [Overview](#overview)
-- [Motivation](#motivation)
-- [Getting started](#getting-started)
-  - - [1. Installation](#1-installation)
-    - [2. Your API source file (sum.js):](#2-your-api-source-file-sumjs)
-    - [3. Your documentation extraction](#3-your-documentation-extraction)
-    - [4. The result](#4-the-result)
-- [API](#api)
-  - [JSDocInfoType](#jsdocinfotype)
+-   [Overview](#overview)
+-   [Motivation](#motivation)
+-   [Getting started](#getting-started)
+    -   -   [1. Installation](#1-installation)
+        -   [2. Your API source file (sum.js):](#2-your-api-source-file-sumjs)
+        -   [3. Your documentation extraction](#3-your-documentation-extraction)
+        -   [4. The result](#4-the-result)
+-   [API](#api)
+    -   [PropType](#proptype)
+    -   [PropKind](#propkind)
 
 # Overview
 
@@ -25,10 +26,10 @@ Libraries in the same space:
 
 The creation of `structured-types` come from the need of a library that can be used to document as well as instrument typescript and javascript code. The currently existing libraries are mostly meant just for documenting code.
 
-- Extract fully structured types, that can be used to fully interact with the analyzed code - this can be used to automatically create tests, examples etc.
-- Use typescript types where available and supplement the type information with any jsdoc comments.
-- Exctract documentation down to the member-level - for example for an enum extract comments for the enum type, as well as for the individual enum member fields.
-- Swiss-army extensible architecture using resolution plugins, where the library can be used to analyze typescript files, as well as extract react, angular and more framework-specific types.
+-   Extract fully structured types, that can be used to fully interact with the analyzed code - this can be used to automatically create tests, examples etc.
+-   Use typescript types where available and supplement the type information with any jsdoc comments.
+-   Exctract documentation down to the member-level - for example for an enum extract comments for the enum type, as well as for the individual enum member fields.
+-   Swiss-army extensible architecture using resolution plugins, where the library can be used to analyze typescript files, as well as extract react, angular and more framework-specific types.
 
 # Getting started
 
@@ -114,8 +115,74 @@ const docs = parseFiles(['../src/sum.js']);
 
 # API
 
-<api-readme extract="JSDocInfoType" files="./src/types.ts"/>
+<api-readme extract="PropType" files="./src/types.ts"/>
 
 <!-- START-API-README -->
+
+## PropType
+
+Base prop type interface
+
+
+
+### properties
+
+| Name          | Type                                                 | Description                                                                                 |
+| ------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `kind`        | [PropKind](#propkind)                                | The property type or kind                                                                   |
+| `name`        | string                                               | name of the property                                                                        |
+| `parent`      | string                                               | the name of the parent property, if combined props                                          |
+| `optional`    | boolean                                              | by default, properties are required                                                         |
+| `readonly`    | boolean                                              | readonly property                                                                           |
+| `abstract`    | boolean                                              | abstract property                                                                           |
+| `async`       | boolean                                              | async function                                                                              |
+| `visibility`  | private \| protected \| public                       | property visibility                                                                         |
+| `static`      | boolean                                              | true, of the class property is static                                                       |
+| `filePath`    | string                                               | name of the file where the property is defined only if different from the default file path |
+| `type`        | [PropType](#proptype) \| string                      | type name of the property                                                                   |
+| `extension`   | string                                               | used plugin name ie 'react'...                                                              |
+| `description` | string                                               | jsdoc description                                                                           |
+| `fires`       | string\[]                                            | jsdoc fires events list                                                                     |
+| `see`         | string\[]                                            | jsdoc see links list                                                                        |
+| `examples`    | JSDocExample&lt;caption: string, content: string>\[] | jsdoc examples list                                                                         |
+| `tags`        | JSDocPropTag&lt;tag: string, content: string>\[]     | jsdoc generic tags, not covered by other props                                              |
+| `summary`     | string                                               | jsdoc summary                                                                               |
+| `deprecated`  | string \| true                                       | jsdoc deprecated tag                                                                        |
+| `ignore`      | boolean                                              | jsdoc ignore tag, to be excluded from documentations                                        |
+
+## PropKind
+
+The property type or kind
+
+
+
+### properties
+
+| Name           | Type   | Value | Description |
+| -------------- | ------ | ----- | ----------- |
+| `String*`      | number | 1     |             |
+| `Number*`      | number | 2     |             |
+| `Boolean*`     | number | 3     |             |
+| `Union*`       | number | 4     |             |
+| `Enum*`        | number | 5     |             |
+| `Tuple*`       | number | 6     |             |
+| `Rest*`        | number | 7     |             |
+| `Undefined*`   | number | 8     |             |
+| `Unknown*`     | number | 9     |             |
+| `Null*`        | number | 10    |             |
+| `Function*`    | number | 11    |             |
+| `Void*`        | number | 12    |             |
+| `Class*`       | number | 13    |             |
+| `Interface*`   | number | 14    |             |
+| `Type*`        | number | 15    |             |
+| `Array*`       | number | 16    |             |
+| `Any*`         | number | 17    |             |
+| `Index*`       | number | 20    |             |
+| `Constructor*` | number | 21    |             |
+| `Getter*`      | number | 22    |             |
+| `Setter*`      | number | 23    |             |
+| `BigInt*`      | number | 24    |             |
+| `Component*`   | number | 25    |             |
+| `Object*`      | number | 26    |             |
 
 <!-- END-API-README -->
