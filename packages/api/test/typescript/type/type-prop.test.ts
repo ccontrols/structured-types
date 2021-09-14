@@ -29,6 +29,7 @@ describe('type', () => {
                         parent: 'Parent',
                       },
                     ],
+                    type: 'Parent',
                   },
                   {
                     name: 'items',

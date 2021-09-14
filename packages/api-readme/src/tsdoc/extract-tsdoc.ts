@@ -306,7 +306,9 @@ export class ExtractProps {
               return result;
             }, [])
           : [];
-        const result: Node[] = this.propLink(prop.name);
+        const result: Node[] = this.propLink(
+          typeof prop.type === 'string' ? prop.type : prop.name,
+        );
         if (typeArguments.length) {
           result.push(
             ...[

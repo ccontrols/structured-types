@@ -48,6 +48,7 @@ describe('array', () => {
           },
         ],
         name: 'ArrayNew',
+        type: 'Array',
         description: 'create a new array object',
       },
     });
@@ -63,6 +64,7 @@ describe('array', () => {
             kind: 1,
           },
         ],
+        type: 'Array',
         value: [
           {
             kind: 1,
@@ -80,6 +82,7 @@ describe('array', () => {
       arrString: {
         name: 'arrString',
         kind: 16,
+        type: 'Array',
         properties: [
           {
             kind: 1,
@@ -107,6 +110,7 @@ describe('array', () => {
       names: {
         name: 'names',
         kind: 16,
+        type: 'Array',
         value: [
           {
             kind: 1,

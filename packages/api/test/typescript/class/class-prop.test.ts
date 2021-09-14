@@ -63,6 +63,7 @@ describe('class', () => {
                     type: 'T',
                   },
                 ],
+                type: 'Generic',
               },
             ],
             returns: {

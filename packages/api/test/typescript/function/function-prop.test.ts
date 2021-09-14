@@ -2,6 +2,43 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('function', () => {
+  it('class-prop', () => {
+    const results = parseFiles([path.resolve(__dirname, 'class-prop.ts')], {
+      collectFilePath: false,
+    });
+    expect(results).toEqual({
+      Boz: {
+        name: 'Boz',
+        kind: 13,
+        properties: [
+          {
+            name: 'fn',
+            kind: 11,
+            parameters: [
+              {
+                name: 'foo',
+                kind: 13,
+                type: 'Foo',
+                properties: [
+                  {
+                    parent: 'Foo',
+                    static: true,
+                    readonly: true,
+                    name: 'dummy',
+                    kind: 3,
+                    value: false,
+                  },
+                ],
+              },
+            ],
+            returns: {
+              kind: 12,
+            },
+          },
+        ],
+      },
+    });
+  });
   it('async-function', () => {
     const results = parseFiles([path.resolve(__dirname, 'async-function.ts')], {
       collectFilePath: false,
@@ -118,6 +155,7 @@ describe('function', () => {
                 name: 'Type',
               },
             ],
+            type: 'GenericInterface',
             properties: [
               {
                 parent: 'GenericInterface',
@@ -172,42 +210,7 @@ describe('function', () => {
       },
     });
   });
-  it('class-prop', () => {
-    const results = parseFiles([path.resolve(__dirname, 'class-prop.ts')], {
-      collectFilePath: false,
-    });
-    expect(results).toEqual({
-      Boz: {
-        name: 'Boz',
-        kind: 13,
-        properties: [
-          {
-            name: 'fn',
-            kind: 11,
-            parameters: [
-              {
-                name: 'foo',
-                kind: 13,
-                properties: [
-                  {
-                    parent: 'Foo',
-                    static: true,
-                    readonly: true,
-                    name: 'dummy',
-                    kind: 3,
-                    value: false,
-                  },
-                ],
-              },
-            ],
-            returns: {
-              kind: 12,
-            },
-          },
-        ],
-      },
-    });
-  });
+
   it('infer-return', () => {
     const results = parseFiles([path.resolve(__dirname, 'infer-return.ts')], {
       collectFilePath: false,

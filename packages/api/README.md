@@ -8,6 +8,7 @@
         -   [3. Your documentation extraction](#3-your-documentation-extraction)
         -   [4. The result](#4-the-result)
 -   [API](#api)
+    -   [isObjectProp](#isobjectprop)
     -   [PropType](#proptype)
     -   [PropKind](#propkind)
 
@@ -115,9 +116,22 @@ const docs = parseFiles(['../src/sum.js']);
 
 # API
 
-<api-readme extract="PropType" files="./src/types.ts"/>
+<api-readme extract="isObjectProp" files="./src/types.ts"/>
 
 <!-- START-API-README -->
+
+## isObjectProp
+
+ObjectProp type guard predicate
+
+**function** isObjectProp(`prop`\*: [PropType](#proptype)&lt;kind: [PropKind](#propkind), name: [:PropType](#proptype), parent: [:PropType](#proptype), optional: [:PropType](#proptype), readonly: [:PropType](#proptype), abstract: [:PropType](#proptype), async: [:PropType](#proptype), visibility: [:PropType](#proptype), static: [:PropType](#proptype), filePath: [:PropType](#proptype), type: [:PropType](#proptype), extension: [:PropType](#proptype), description: [:PropType](#proptype), fires: [:PropType](#proptype), see: [:PropType](#proptype), examples: [:PropType](#proptype), tags: [:PropType](#proptype), summary: [:PropType](#proptype), deprecated: [:PropType](#proptype), ignore: [:PropType](#proptype)>): ObjectProp&lt;kind: Object, properties: array, value: array, name: [:PropType](#proptype), parent: [:PropType](#proptype), optional: [:PropType](#proptype), readonly: [:PropType](#proptype), abstract: [:PropType](#proptype), async: [:PropType](#proptype), visibility: [:PropType](#proptype), static: [:PropType](#proptype), filePath: [:PropType](#proptype), type: [:PropType](#proptype), extension: [:PropType](#proptype), description: [:PropType](#proptype), fires: [:PropType](#proptype), see: [:PropType](#proptype), examples: [:PropType](#proptype), tags: [:PropType](#proptype), summary: [:PropType](#proptype), deprecated: [:PropType](#proptype), ignore: [:PropType](#proptype)>;
+
+### parameters
+
+| Name      | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Description     |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- |
+| `prop*`   | [PropType](#proptype)&lt;kind: [PropKind](#propkind), name: [:PropType](#proptype), parent: [:PropType](#proptype), optional: [:PropType](#proptype), readonly: [:PropType](#proptype), abstract: [:PropType](#proptype), async: [:PropType](#proptype), visibility: [:PropType](#proptype), static: [:PropType](#proptype), filePath: [:PropType](#proptype), type: [:PropType](#proptype), extension: [:PropType](#proptype), description: [:PropType](#proptype), fires: [:PropType](#proptype), see: [:PropType](#proptype), examples: [:PropType](#proptype), tags: [:PropType](#proptype), summary: [:PropType](#proptype), deprecated: [:PropType](#proptype), ignore: [:PropType](#proptype)>        |                 |
+| `returns` | ObjectProp&lt;kind: Object, properties: array, value: array, name: [:PropType](#proptype), parent: [:PropType](#proptype), optional: [:PropType](#proptype), readonly: [:PropType](#proptype), abstract: [:PropType](#proptype), async: [:PropType](#proptype), visibility: [:PropType](#proptype), static: [:PropType](#proptype), filePath: [:PropType](#proptype), type: [:PropType](#proptype), extension: [:PropType](#proptype), description: [:PropType](#proptype), fires: [:PropType](#proptype), see: [:PropType](#proptype), examples: [:PropType](#proptype), tags: [:PropType](#proptype), summary: [:PropType](#proptype), deprecated: [:PropType](#proptype), ignore: [:PropType](#proptype)> | Object property |
 
 ## PropType
 
@@ -127,28 +141,28 @@ Base prop type interface
 
 ### properties
 
-| Name          | Type                                                 | Description                                                                                 |
-| ------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `kind`        | [PropKind](#propkind)                                | The property type or kind                                                                   |
-| `name`        | string                                               | name of the property                                                                        |
-| `parent`      | string                                               | the name of the parent property, if combined props                                          |
-| `optional`    | boolean                                              | by default, properties are required                                                         |
-| `readonly`    | boolean                                              | readonly property                                                                           |
-| `abstract`    | boolean                                              | abstract property                                                                           |
-| `async`       | boolean                                              | async function                                                                              |
-| `visibility`  | private \| protected \| public                       | property visibility                                                                         |
-| `static`      | boolean                                              | true, of the class property is static                                                       |
-| `filePath`    | string                                               | name of the file where the property is defined only if different from the default file path |
-| `type`        | [PropType](#proptype) \| string                      | type name of the property                                                                   |
-| `extension`   | string                                               | used plugin name ie 'react'...                                                              |
-| `description` | string                                               | jsdoc description                                                                           |
-| `fires`       | string\[]                                            | jsdoc fires events list                                                                     |
-| `see`         | string\[]                                            | jsdoc see links list                                                                        |
-| `examples`    | JSDocExample&lt;caption: string, content: string>\[] | jsdoc examples list                                                                         |
-| `tags`        | JSDocPropTag&lt;tag: string, content: string>\[]     | jsdoc generic tags, not covered by other props                                              |
-| `summary`     | string                                               | jsdoc summary                                                                               |
-| `deprecated`  | string \| true                                       | jsdoc deprecated tag                                                                        |
-| `ignore`      | boolean                                              | jsdoc ignore tag, to be excluded from documentations                                        |
+| Name          | Type                                                                                                                                                                                                             | Description                                                                                 |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `kind`        | [PropKind](#propkind)                                                                                                                                                                                            | The property type or kind                                                                   |
+| `name`        | string                                                                                                                                                                                                           | name of the property                                                                        |
+| `parent`      | string                                                                                                                                                                                                           | the name of the parent property, if combined props                                          |
+| `optional`    | boolean                                                                                                                                                                                                          | by default, properties are required                                                         |
+| `readonly`    | boolean                                                                                                                                                                                                          | readonly property                                                                           |
+| `abstract`    | boolean                                                                                                                                                                                                          | abstract property                                                                           |
+| `async`       | boolean                                                                                                                                                                                                          | async function                                                                              |
+| `visibility`  | private \| protected \| public                                                                                                                                                                                   | property visibility                                                                         |
+| `static`      | boolean                                                                                                                                                                                                          | true, of the class property is static                                                       |
+| `filePath`    | string                                                                                                                                                                                                           | name of the file where the property is defined only if different from the default file path |
+| `type`        | [PropType](#proptype)&lt;kind, name, parent, optional, readonly, abstract, async, visibility, static, filePath, type, extension, description, fires, see, examples, tags, summary, deprecated, ignore> \| string | type name of the property                                                                   |
+| `extension`   | string                                                                                                                                                                                                           | used plugin name ie 'react'...                                                              |
+| `description` | string                                                                                                                                                                                                           | jsdoc description                                                                           |
+| `fires`       | string\[]                                                                                                                                                                                                        | jsdoc fires events list                                                                     |
+| `see`         | string\[]                                                                                                                                                                                                        | jsdoc see links list                                                                        |
+| `examples`    | JSDocExample&lt;caption: string, content: string>\[]                                                                                                                                                             | jsdoc examples list                                                                         |
+| `tags`        | JSDocPropTag&lt;tag: string, content: string>\[]                                                                                                                                                                 | jsdoc generic tags, not covered by other props                                              |
+| `summary`     | string                                                                                                                                                                                                           | jsdoc summary                                                                               |
+| `deprecated`  | string \| true                                                                                                                                                                                                   | jsdoc deprecated tag                                                                        |
+| `ignore`      | boolean                                                                                                                                                                                                          | jsdoc ignore tag, to be excluded from documentations                                        |
 
 ## PropKind
 

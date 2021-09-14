@@ -102,6 +102,7 @@ Object {
             ],
           },
         ],
+        "type": "PropsWithChildren",
       },
     ],
     "properties": Array [
@@ -185,6 +186,7 @@ Object {
     "returns": Object {
       "kind": 12,
     },
+    "type": "FC",
   },
 }
 `;

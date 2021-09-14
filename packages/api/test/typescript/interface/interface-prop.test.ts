@@ -190,6 +190,7 @@ describe('interface', () => {
                     type: 'Type',
                   },
                 ],
+                type: 'Array',
               },
             ],
             returns: {

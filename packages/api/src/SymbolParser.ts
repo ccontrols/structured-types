@@ -95,7 +95,7 @@ export class SymbolParser implements ISymbolParser {
     parentProp: PropType,
     options: ParseOptions,
   ): string | undefined | '__internal' {
-    const propName = this.getSymbolName(node as ts.Declaration);
+    const propName = this.geDeclarationName(node as ts.Declaration);
     const addParentRef = (
       declaration: ts.Node,
     ): string | undefined | '__internal' => {
@@ -105,14 +105,14 @@ export class SymbolParser implements ISymbolParser {
       let parent = declaration.parent;
       //find immediate parent
       while (parent) {
-        const name = this.getSymbolName(parent as ts.Declaration);
+        const name = this.geDeclarationName(parent as ts.Declaration);
         if (name && propName !== name) {
           break;
         }
         parent = parent.parent;
       }
       if (parent) {
-        const name = this.getSymbolName(parent as ts.Declaration);
+        const name = this.geDeclarationName(parent as ts.Declaration);
         if (name) {
           if (this.internalNode(node) === undefined) {
             const parentName =
@@ -416,13 +416,14 @@ export class SymbolParser implements ISymbolParser {
     }
     return prop;
   }
-  private getSymbolName(declaration: ts.Declaration): string | undefined {
+  private geDeclarationName(declaration?: ts.Declaration): string | undefined {
     const name = ts.getNameOfDeclaration(declaration);
     return name && 'text' in name ? name.getText() : undefined;
   }
+
   public updateSymbolName(prop: PropType, node?: ts.Declaration): PropType {
     if (node && prop.name === undefined) {
-      const name = this.getSymbolName(node);
+      const name = this.geDeclarationName(node);
       if (name && name !== prop.type) {
         prop.name = name;
       }
@@ -594,7 +595,7 @@ export class SymbolParser implements ISymbolParser {
           );
         }
       } else if (ts.isTypeParameterDeclaration(node)) {
-        const typeName = this.getSymbolName(node);
+        const typeName = this.geDeclarationName(node);
         if (typeName && prop.name !== typeName) {
           prop.type = typeName;
         }
@@ -789,6 +790,12 @@ export class SymbolParser implements ISymbolParser {
           ? resolvedSymbol.valueDeclaration || resolvedSymbol.declarations?.[0]
           : undefined;
 
+        if (!pluginName && !prop.type) {
+          const typeName = this.geDeclarationName(resolvedDeclaration);
+          if (typeName && prop.name !== typeName) {
+            prop.type = typeName;
+          }
+        }
         if (
           this.internalNode(resolvedDeclaration) === undefined &&
           (!resolvedDeclaration ||
@@ -934,7 +941,7 @@ export class SymbolParser implements ISymbolParser {
           const type = this.checker.getTypeAtLocation(node);
           const kind = getTypeKind(type);
           if (!kind) {
-            const name = this.getSymbolName(node as ts.Declaration);
+            const name = this.geDeclarationName(node as ts.Declaration);
             if (name) {
               return this.options.internalTypes[name] || PropKind.Any;
             }
