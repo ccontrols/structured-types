@@ -1073,11 +1073,13 @@ export class SymbolParser implements ISymbolParser {
     this.propParents = {};
   }
   public parseSymbol(symbol: ts.Symbol): PropType | undefined {
+    this.refSymbols = [];
     const prop = this.addRefSymbol({}, symbol);
     this.resolveRefTypes();
     return this.filterProps(prop) ? prop : undefined;
   }
   public parse(symbol: ts.Symbol): PropType | undefined {
+    this.refSymbols = [];
     this.root = this.addRefSymbol({}, symbol);
     this.resolveRefTypes();
     return this.filterProps(this.root) ? this.root : undefined;
