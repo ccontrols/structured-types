@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.21.1](https://github.com/ccontrols/structured-types/compare/v3.21.0...v3.21.1) (2021-09-15)
+
+
+### Bug Fixes
+
+* reset ref symbols ([c3c95c1](https://github.com/ccontrols/structured-types/commit/c3c95c1ddb4e3aeda1cace3dd956ae6164271c1b))
+
+
+
+
+
 # [3.21.0](https://github.com/ccontrols/structured-types/compare/v3.20.4...v3.21.0) (2021-09-08)
 
 
