@@ -461,7 +461,15 @@ export class ExtractProps {
         consolidateParents: true,
         plugins: [propTypesPlugin, reactPlugin],
       });
-      Object.keys(props).forEach((key) => {
+      let propKeys = Object.keys(props);
+      if (this.names?.length) {
+        const names = this.names;
+        propKeys = propKeys.sort((key1, key2) => {
+          return names.indexOf(key1) - names.indexOf(key2);
+        });
+      }
+
+      propKeys.forEach((key) => {
         if (key !== '__parents' && key !== '__diagnostics') {
           this.topLevelProps[key] = props[key];
         }
@@ -472,8 +480,7 @@ export class ExtractProps {
           this.topLevelProps[key] = parents[key];
         });
       }
-      Object.keys(this.topLevelProps).forEach((key) => {
-        const prop = this.topLevelProps[key];
+      Object.values(this.topLevelProps).forEach((prop) => {
         const nodes = this.extractTSType(prop);
         result.push(...nodes);
       });

@@ -8,8 +8,8 @@
         -   [3. Your documentation extraction](#3-your-documentation-extraction)
         -   [4. The result](#4-the-result)
 -   [API](#api)
-    -   [ObjectProp](#objectprop)
     -   [isObjectProp](#isobjectprop)
+    -   [ObjectProp](#objectprop)
     -   [PropKind](#propkind)
     -   [PropType](#proptype)
     -   [JSDocExample](#jsdocexample)
@@ -123,6 +123,19 @@ const docs = parseFiles(['../src/sum.js']);
 
 <!-- START-API-README -->
 
+## isObjectProp
+
+ObjectProp type guard predicate
+
+**function** isObjectProp(`prop`\*: [PropType](#proptype)): [ObjectProp](#objectprop);
+
+### parameters
+
+| Name      | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Description     |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| `prop*`   | [PropType](#proptype)&lt;kind: [PropKind](#propkind), name: [:PropType](#proptype), parent: [:PropType](#proptype), optional: [:PropType](#proptype), readonly: [:PropType](#proptype), abstract: [:PropType](#proptype), async: [:PropType](#proptype), visibility: [:PropType](#proptype), static: [:PropType](#proptype), filePath: [:PropType](#proptype), type: [:PropType](#proptype), extension: [:PropType](#proptype), description: [:PropType](#proptype), fires: [:PropType](#proptype), see: [:PropType](#proptype), examples: [:PropType](#proptype), tags: [:PropType](#proptype), summary: [:PropType](#proptype), deprecated: [:PropType](#proptype), ignore: [:PropType](#proptype)>                       |                 |
+| `returns` | [ObjectProp](#objectprop)&lt;kind: Object, properties: array, value: array, name: [:PropType](#proptype), parent: [:PropType](#proptype), optional: [:PropType](#proptype), readonly: [:PropType](#proptype), abstract: [:PropType](#proptype), async: [:PropType](#proptype), visibility: [:PropType](#proptype), static: [:PropType](#proptype), filePath: [:PropType](#proptype), type: [:PropType](#proptype), extension: [:PropType](#proptype), description: [:PropType](#proptype), fires: [:PropType](#proptype), see: [:PropType](#proptype), examples: [:PropType](#proptype), tags: [:PropType](#proptype), summary: [:PropType](#proptype), deprecated: [:PropType](#proptype), ignore: [:PropType](#proptype)> | Object property |
+
 ## ObjectProp
 
 Object property
@@ -155,19 +168,6 @@ Object property
 | `summary`     | [:PropType](#proptype)                                                                                                                                                                                                                                                                                                                                                                  |       | jsdoc summary                                                                               |
 | `deprecated`  | [:PropType](#proptype)                                                                                                                                                                                                                                                                                                                                                                  |       | jsdoc deprecated tag                                                                        |
 | `ignore`      | [:PropType](#proptype)                                                                                                                                                                                                                                                                                                                                                                  |       | jsdoc ignore tag, to be excluded from documentations                                        |
-
-## isObjectProp
-
-ObjectProp type guard predicate
-
-**function** isObjectProp(`prop`\*: [PropType](#proptype)): [ObjectProp](#objectprop);
-
-### parameters
-
-| Name      | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Description     |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| `prop*`   | [PropType](#proptype)&lt;kind: [PropKind](#propkind), name: [:PropType](#proptype), parent: [:PropType](#proptype), optional: [:PropType](#proptype), readonly: [:PropType](#proptype), abstract: [:PropType](#proptype), async: [:PropType](#proptype), visibility: [:PropType](#proptype), static: [:PropType](#proptype), filePath: [:PropType](#proptype), type: [:PropType](#proptype), extension: [:PropType](#proptype), description: [:PropType](#proptype), fires: [:PropType](#proptype), see: [:PropType](#proptype), examples: [:PropType](#proptype), tags: [:PropType](#proptype), summary: [:PropType](#proptype), deprecated: [:PropType](#proptype), ignore: [:PropType](#proptype)>                       |                 |
-| `returns` | [ObjectProp](#objectprop)&lt;kind: Object, properties: array, value: array, name: [:PropType](#proptype), parent: [:PropType](#proptype), optional: [:PropType](#proptype), readonly: [:PropType](#proptype), abstract: [:PropType](#proptype), async: [:PropType](#proptype), visibility: [:PropType](#proptype), static: [:PropType](#proptype), filePath: [:PropType](#proptype), type: [:PropType](#proptype), extension: [:PropType](#proptype), description: [:PropType](#proptype), fires: [:PropType](#proptype), see: [:PropType](#proptype), examples: [:PropType](#proptype), tags: [:PropType](#proptype), summary: [:PropType](#proptype), deprecated: [:PropType](#proptype), ignore: [:PropType](#proptype)> | Object property |
 
 ## PropKind
 
