@@ -116,14 +116,15 @@ export class SymbolParser implements ISymbolParser {
               (typeof parentProp.type === 'string'
                 ? parentProp.type
                 : undefined);
-            if (parentName !== name) {
-              if (options.consolidateParents) {
-                if (!this.propParents[name]) {
-                  const prop = { name };
-                  this.propParents[name] = prop;
-                  this.addRefSymbol(prop, (parent as any).symbol);
-                }
+
+            if (options.consolidateParents) {
+              if (!this.propParents[name]) {
+                const prop = { name };
+                this.propParents[name] = prop;
+                this.addRefSymbol(prop, (parent as any).symbol);
               }
+            }
+            if (parentName !== name) {
               return name;
             }
             return undefined;

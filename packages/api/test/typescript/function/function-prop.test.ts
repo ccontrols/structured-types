@@ -109,6 +109,43 @@ describe('function', () => {
         description: 'exported function',
       },
       __parents: {
+        Bear: {
+          description: 'interface extending another one',
+          kind: 14,
+          name: 'Bear',
+          properties: [
+            {
+              description: 'boolean type member',
+              kind: 3,
+              name: 'honey',
+            },
+            {
+              description: 'string type member',
+              kind: 1,
+              name: 'm',
+              parent: 'Internal',
+            },
+          ],
+        },
+        ExtendT: {
+          description: 'extended type',
+          kind: 15,
+          name: 'ExtendT',
+          properties: [
+            {
+              description: 'base type member property',
+              kind: 1,
+              name: 'm',
+              parent: 'T',
+            },
+            {
+              description: 'own member',
+              kind: 3,
+              name: 'honey',
+            },
+          ],
+        },
+
         T: {
           name: 'T',
           kind: 15,

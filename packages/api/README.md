@@ -12,6 +12,8 @@
     -   [isObjectProp](#isobjectprop)
     -   [PropKind](#propkind)
     -   [PropType](#proptype)
+    -   [JSDocExample](#jsdocexample)
+    -   [JSDocPropTag](#jsdocproptag)
 
 # Overview
 
@@ -227,10 +229,36 @@ Base prop type interface
 | `description` | string                                                                                                                                                                                                                                  | jsdoc description                                                                           |
 | `fires`       | string\[]                                                                                                                                                                                                                               | jsdoc fires events list                                                                     |
 | `see`         | string\[]                                                                                                                                                                                                                               | jsdoc see links list                                                                        |
-| `examples`    | JSDocExample&lt;caption: string, content: string>\[]                                                                                                                                                                                    | jsdoc examples list                                                                         |
-| `tags`        | JSDocPropTag&lt;tag: string, content: string>\[]                                                                                                                                                                                        | jsdoc generic tags, not covered by other props                                              |
+| `examples`    | [JSDocExample](#jsdocexample)&lt;caption: string, content: string>\[]                                                                                                                                                                   | jsdoc examples list                                                                         |
+| `tags`        | [JSDocPropTag](#jsdocproptag)&lt;tag: string, content: string>\[]                                                                                                                                                                       | jsdoc generic tags, not covered by other props                                              |
 | `summary`     | string                                                                                                                                                                                                                                  | jsdoc summary                                                                               |
 | `deprecated`  | string \| true                                                                                                                                                                                                                          | jsdoc deprecated tag                                                                        |
 | `ignore`      | boolean                                                                                                                                                                                                                                 | jsdoc ignore tag, to be excluded from documentations                                        |
+
+## JSDocExample
+
+JSDoc example item
+
+
+
+### properties
+
+| Name      | Type   | Description            |
+| --------- | ------ | ---------------------- |
+| `caption` | string | example caption/title  |
+| `content` | string | example source/content |
+
+## JSDocPropTag
+
+JSDoc generic tag item
+
+
+
+### properties
+
+| Name      | Type   | Description          |
+| --------- | ------ | -------------------- |
+| `tag*`    | string | tag name             |
+| `content` | string | optional tag content |
 
 <!-- END-API-README -->
