@@ -50,7 +50,7 @@ export class SymbolParser implements ISymbolParser {
   public checker: ts.TypeChecker;
   public readonly options: Required<ParseOptions>;
   private refSymbols: {
-    props: { prop: PropType; parent?: PropType }[];
+    props: { prop: PropType }[];
     resolved?: PropType;
     symbol: ts.Symbol;
   }[] = [];
@@ -72,14 +72,10 @@ export class SymbolParser implements ISymbolParser {
       options as Required<ParseOptions>,
     );
   }
-  private addRefSymbol(
-    prop: PropType,
-    symbol: ts.Symbol,
-    parent?: PropType,
-  ): PropType {
+  private addRefSymbol(prop: PropType, symbol: ts.Symbol): PropType {
     const refSymbol = this.refSymbols.find((r) => r.symbol === symbol);
     if (!refSymbol) {
-      this.refSymbols.push({ props: [{ prop, parent }], symbol });
+      this.refSymbols.push({ props: [{ prop }], symbol });
     } else if (!refSymbol.resolved) {
       refSymbol.props.push({ prop });
     } else {
@@ -166,7 +162,6 @@ export class SymbolParser implements ISymbolParser {
     return prop;
   };
   public parseProperties(
-    parent: PropType,
     properties: ts.NodeArray<
       | ts.ClassElement
       | ts.ObjectLiteralElementLike
@@ -218,7 +213,6 @@ export class SymbolParser implements ISymbolParser {
             const prop = this.addRefSymbol(
               { name: symbol.escapedName as string },
               symbol,
-              parent,
             );
             if (prop) {
               addProp(prop);
@@ -242,16 +236,31 @@ export class SymbolParser implements ISymbolParser {
     prop.kind = tsKindToPropKind[node.kind];
     if (isFunctionBaseType(prop)) {
       if (node.parameters.length && !prop.parameters) {
-        prop.parameters = this.parseProperties(prop, node.parameters, options);
+        prop.parameters = this.parseProperties(node.parameters, options);
       }
       if (node.type && !prop.returns) {
-        const returns = this.parseTypeValueComments({}, options, node.type);
-        if (returns) {
-          prop.returns = returns;
+        if (
+          ts.isTypePredicateNode(node.type) &&
+          node.type.type &&
+          ts.isTypeReferenceNode(node.type.type)
+        ) {
+          const returnSymbol = this.checker.getSymbolAtLocation(
+            node.type.type?.typeName,
+          );
+          if (returnSymbol) {
+            prop.returns = this.addRefSymbol({}, returnSymbol);
+          }
+        }
+
+        if (!prop.returns) {
+          const returns = this.parseTypeValueComments({}, options, node.type);
+          if (returns) {
+            prop.returns = returns;
+          }
         }
       }
       if (node.typeParameters?.length && !prop.types) {
-        prop.types = this.parseProperties(prop, node.typeParameters, options);
+        prop.types = this.parseProperties(node.typeParameters, options);
       }
       if (
         !prop.returns &&
@@ -261,13 +270,19 @@ export class SymbolParser implements ISymbolParser {
           ts.isArrowFunction(node))
       ) {
         const signature = this.checker.getSignatureFromDeclaration(node);
+
         if (signature) {
           const returnType = this.checker.getReturnTypeOfSignature(signature);
           const symbol = returnType.aliasSymbol || returnType.symbol;
           const returnProp = symbol
-            ? this.parseSymbolProp({}, symbol, options)
+            ? this.parseSymbolProp(
+                { name: symbol.escapedName as string },
+                symbol,
+                options,
+              )
             : this.updatePropKind({}, returnType);
-          if (returnProp?.kind !== undefined) {
+
+          if (returnProp && returnProp.kind !== undefined) {
             prop.returns = returnProp;
           }
         }
@@ -329,7 +344,6 @@ export class SymbolParser implements ISymbolParser {
         prop.kind = PropKind.Array;
         if (isArrayProp(prop)) {
           prop.value = this.parseProperties(
-            prop,
             node.elements as ts.NodeArray<ts.ArrayBindingElement>,
             options,
           );
@@ -338,7 +352,6 @@ export class SymbolParser implements ISymbolParser {
         prop.kind = PropKind.Object;
         if (node.arguments) {
           (prop as ObjectProp).properties = this.parseProperties(
-            prop,
             node.arguments as ts.NodeArray<ts.ArrayBindingElement>,
             options,
           );
@@ -397,7 +410,6 @@ export class SymbolParser implements ISymbolParser {
       } else if (isObjectLikeProp(prop)) {
         if (ts.isObjectLiteralExpression(node)) {
           prop.properties = this.parseProperties(
-            prop,
             node.properties,
             options,
             prop.properties,
@@ -446,7 +458,6 @@ export class SymbolParser implements ISymbolParser {
           (prop as ArrayProp).properties = [element];
         } else if (ts.isTypeReferenceNode(node) && node.typeArguments?.length) {
           (prop as ArrayProp).properties = this.parseProperties(
-            prop,
             node.typeArguments,
             options,
           );
@@ -493,11 +504,7 @@ export class SymbolParser implements ISymbolParser {
           isGenericsType(node) &&
           node.typeParameters
         ) {
-          prop.generics = this.parseProperties(
-            prop,
-            node.typeParameters,
-            options,
-          );
+          prop.generics = this.parseProperties(node.typeParameters, options);
         }
         this.parseTypeValueComments(prop, options, node.type);
       } else if (ts.isExportAssignment(node)) {
@@ -526,15 +533,10 @@ export class SymbolParser implements ISymbolParser {
             !ts.isTypeLiteralNode(node) &&
             node.typeParameters
           ) {
-            prop.generics = this.parseProperties(
-              prop,
-              node.typeParameters,
-              options,
-            );
+            prop.generics = this.parseProperties(node.typeParameters, options);
           }
 
           const properties: PropType[] = this.parseProperties(
-            prop,
             node.members,
             options,
           );
@@ -589,7 +591,6 @@ export class SymbolParser implements ISymbolParser {
         }
         if (options.collectGenerics && node.typeArguments?.length) {
           (prop as HasGenericsProp).generics = this.parseProperties(
-            prop,
             node.typeArguments,
             options,
           );
@@ -625,7 +626,6 @@ export class SymbolParser implements ISymbolParser {
         prop.kind = PropKind.Type;
         if (node.members.length) {
           (prop as TypeProp).properties = this.parseProperties(
-            prop,
             node.members,
             options,
           );
@@ -642,14 +642,12 @@ export class SymbolParser implements ISymbolParser {
       } else if (ts.isUnionTypeNode(node)) {
         prop.kind = PropKind.Union;
         (prop as UnionProp).properties = this.parseProperties(
-          prop,
           node.types,
           options,
         );
       } else if (ts.isEnumDeclaration(node)) {
         prop.kind = PropKind.Enum;
         (prop as EnumProp).properties = this.parseProperties(
-          prop,
           node.members,
           options,
         );
@@ -661,7 +659,6 @@ export class SymbolParser implements ISymbolParser {
       } else if (ts.isTupleTypeNode(node)) {
         prop.kind = PropKind.Tuple;
         (prop as TupleProp).properties = this.parseProperties(
-          prop,
           node.elements,
           options,
         );
@@ -853,7 +850,6 @@ export class SymbolParser implements ISymbolParser {
               const childProp = this.addRefSymbol(
                 { name: childSymbol.name },
                 childSymbol,
-                prop,
               );
               if (childProp) {
                 if (parent) {
@@ -897,7 +893,6 @@ export class SymbolParser implements ISymbolParser {
               resolvedDeclaration.typeParameters?.length
             ) {
               (prop as TypeProp).generics = this.parseProperties(
-                prop,
                 resolvedDeclaration.typeParameters,
                 options,
               );

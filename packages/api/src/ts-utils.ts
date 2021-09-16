@@ -372,7 +372,6 @@ export interface ISymbolParser {
   readonly checker: ts.TypeChecker;
   readonly options: ParseOptions;
   parseProperties(
-    parent: PropType,
     properties: ts.NodeArray<
       | ts.ClassElement
       | ts.ObjectLiteralElementLike
