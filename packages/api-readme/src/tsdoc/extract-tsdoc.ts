@@ -104,7 +104,11 @@ export class ExtractProps {
             type: 'text',
             value: ': ',
           });
-          declaration.children.push(...this.extractPropType(p));
+          declaration.children.push(
+            ...this.extractPropType(p, {
+              extractProperties: false,
+            }),
+          );
         }
       }
       declaration.children.push({
@@ -116,7 +120,11 @@ export class ExtractProps {
           type: 'text',
           value: ': ',
         });
-        declaration.children.push(...this.extractPropType(node.returns));
+        declaration.children.push(
+          ...this.extractPropType(node.returns, {
+            extractProperties: false,
+          }),
+        );
       }
       declaration.children.push({
         type: 'text',
@@ -236,7 +244,7 @@ export class ExtractProps {
     }
     return typeNode || [];
   }
-  private typeNode(prop: PropType, showValue = false): Node[] {
+  private typeNode(prop: PropType, showValue = true): Node[] {
     const type =
       typeof prop.type === 'string'
         ? prop.type
@@ -276,25 +284,30 @@ export class ExtractProps {
 
   private extractPropType(
     prop: PropType,
-    expandGenerics = true,
-    showValue = false,
+    options?: { showValue?: boolean; extractProperties?: boolean },
   ): Node[] {
+    const { showValue = false, extractProperties = true } = options || {};
     if (isUnionProp(prop) && prop.properties) {
       return [
         {
           type: 'paragraph',
-          children: prop.properties?.reduce((acc: Node[], t, idx) => {
-            const r = [...acc, ...this.extractPropType(t, true, true)];
-            if (prop.properties && idx < prop.properties.length - 1) {
-              r.push({ type: 'text', value: ' | ' });
-            }
-            return r;
-          }, []),
+          children: extractProperties
+            ? prop.properties?.reduce((acc: Node[], t, idx) => {
+                const r = [
+                  ...acc,
+                  ...this.extractPropType(t, { showValue: true }),
+                ];
+                if (prop.properties && idx < prop.properties.length - 1) {
+                  r.push({ type: 'text', value: ' | ' });
+                }
+                return r;
+              }, [])
+            : undefined,
         },
       ];
     } else if (isClassLikeProp(prop)) {
       if (prop.properties) {
-        const typeArguments: Node[] = expandGenerics
+        const typeArguments: Node[] = extractProperties
           ? prop.properties.reduce((acc: Node[], p: PropType, idx: number) => {
               const result = [...acc, ...this.inlineType(p)];
               if (prop.properties && idx < prop.properties.length - 1) {
@@ -326,19 +339,18 @@ export class ExtractProps {
         }
         return result;
       } else {
-        const genericArguments: Node[] | undefined = prop.generics?.reduce(
-          (acc: Node[], p: PropType, idx: number) => {
-            const result = [...acc, ...this.inlineType(p)];
-            if (prop.generics && idx < prop.generics.length - 1) {
-              result.push({
-                type: 'text',
-                value: ', ',
-              });
-            }
-            return result;
-          },
-          [],
-        );
+        const genericArguments: Node[] | undefined = extractProperties
+          ? prop.generics?.reduce((acc: Node[], p: PropType, idx: number) => {
+              const result = [...acc, ...this.inlineType(p)];
+              if (prop.generics && idx < prop.generics.length - 1) {
+                result.push({
+                  type: 'text',
+                  value: ', ',
+                });
+              }
+              return result;
+            }, [])
+          : [];
         const result: Node[] = this.typeNode(prop);
         if (genericArguments?.length) {
           result.push(
@@ -361,45 +373,49 @@ export class ExtractProps {
       return [
         {
           type: 'paragraph',
-          children: [
-            ...prop.properties.reduce(
-              (acc: Node[], p: PropType, idx: number) => {
-                const result = this.extractPropType(p);
-                if (prop.properties && idx < prop.properties.length - 1) {
-                  result.push({
-                    type: 'text',
-                    value: ', ',
-                  });
-                }
-                return [...acc, ...result];
-              },
-              [],
-            ),
-            { type: 'text', value: '[]' },
-          ],
+          children: extractProperties
+            ? [
+                ...prop.properties.reduce(
+                  (acc: Node[], p: PropType, idx: number) => {
+                    const result = this.extractPropType(p);
+                    if (prop.properties && idx < prop.properties.length - 1) {
+                      result.push({
+                        type: 'text',
+                        value: ', ',
+                      });
+                    }
+                    return [...acc, ...result];
+                  },
+                  [],
+                ),
+                { type: 'text', value: '[]' },
+              ]
+            : undefined,
         },
       ];
     } else if (isTupleProp(prop) && prop.properties) {
       return [
         {
           type: 'paragraph',
-          children: [
-            { type: 'text', value: '[' },
-            ...prop.properties.reduce(
-              (acc: Node[], p: PropType, idx: number) => {
-                const result = this.extractPropType(p);
-                if (prop.properties && idx < prop.properties.length - 1) {
-                  result.push({
-                    type: 'text',
-                    value: ', ',
-                  });
-                }
-                return [...acc, ...result];
-              },
-              [],
-            ),
-            { type: 'text', value: ']' },
-          ],
+          children: extractProperties
+            ? [
+                { type: 'text', value: '[' },
+                ...prop.properties.reduce(
+                  (acc: Node[], p: PropType, idx: number) => {
+                    const result = this.extractPropType(p);
+                    if (prop.properties && idx < prop.properties.length - 1) {
+                      result.push({
+                        type: 'text',
+                        value: ', ',
+                      });
+                    }
+                    return [...acc, ...result];
+                  },
+                  [],
+                ),
+                { type: 'text', value: ']' },
+              ]
+            : undefined,
         },
       ];
     } else {
