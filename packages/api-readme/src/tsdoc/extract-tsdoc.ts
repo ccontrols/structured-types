@@ -16,11 +16,7 @@ import {
   hasValue,
   isArrayProp,
 } from '@structured-types/api';
-import {
-  createPropsRow,
-  createPropsTable,
-  PropItem,
-} from '../blocks/props-table';
+import { createPropsTable, PropItem } from '../blocks/props-table';
 import { Node, NodeChildren } from '../common/types';
 
 export class ExtractProps {
@@ -35,7 +31,7 @@ export class ExtractProps {
 
   private extractPropTable(
     props: PropType[],
-    title: string,
+    title?: string,
   ): ReturnType<typeof createPropsTable> {
     const items: PropItem[] = props.map(
       (prop) =>
@@ -49,7 +45,7 @@ export class ExtractProps {
           value: hasValue(prop) ? prop.value : undefined,
         } as PropItem),
     );
-    return createPropsTable(title, items);
+    return createPropsTable(items, title);
   }
   private extractFunction(node: FunctionProp, _extractTable = true): Node[] {
     const result: Node[] = [];
@@ -130,26 +126,26 @@ export class ExtractProps {
         type: 'text',
         value: ';',
       });
-      if (node.parameters) {
-        const { propsTable, table, hasValues } = this.extractPropTable(
-          node.parameters,
-          'parameters',
-        );
-        if (table && node.returns && node.returns.kind !== PropKind.Void) {
-          table.children.push(
-            createPropsRow(
-              {
-                name: 'returns',
-                isOptional: true,
-                type: this.extractPropType(node.returns),
-                description: node.returns.description || '',
-              },
-              hasValues,
-            ),
-          );
-        }
-        result.push(...propsTable);
-      }
+      // if (node.parameters) {
+      //   const { propsTable, table, hasValues } = this.extractPropTable(
+      //     node.parameters,
+      //     'parameters',
+      //   );
+      //   if (table && node.returns && node.returns.kind !== PropKind.Void) {
+      //     table.children.push(
+      //       createPropsRow(
+      //         {
+      //           name: 'returns',
+      //           isOptional: true,
+      //           type: this.extractPropType(node.returns),
+      //           description: node.returns.description || '',
+      //         },
+      //         hasValues,
+      //       ),
+      //     );
+      //   }
+      //   result.push(...propsTable);
+      // }
     }
     return result;
   }
@@ -181,12 +177,10 @@ export class ExtractProps {
           ],
         });
       }
-
-      if (hasProperties(prop) && prop.properties) {
-        const { propsTable } = this.extractPropTable(
-          prop.properties,
-          'properties',
-        );
+      if (isUnionProp(prop)) {
+        result.push(...this.extractPropType(prop));
+      } else if (hasProperties(prop) && prop.properties) {
+        const { propsTable } = this.extractPropTable(prop.properties);
         result.push(...propsTable);
       }
     }
@@ -434,7 +428,27 @@ export class ExtractProps {
       depth: 2,
       children: [{ type: 'text', value: prop.name }],
     });
-
+    if (prop.kind) {
+      result.push({
+        type: 'strong',
+        children: [
+          {
+            type: 'inlineCode',
+            value: `${PropKind[prop.kind].toLowerCase()}`,
+          },
+        ],
+      });
+    } else if (typeof prop.type === 'string') {
+      result.push({
+        type: 'strong',
+        children: [
+          {
+            type: 'inlineCode',
+            value: prop.type,
+          },
+        ],
+      });
+    }
     if (prop.description) {
       result.push(
         ...prop.description.split('\n').map((d) => ({

@@ -46,28 +46,30 @@ export const createPropsRow = (
 };
 
 export const createPropsTable = (
-  title: string,
   children: PropItem[],
+  title?: string,
 ): { propsTable: Node[]; table?: NodeChildren; hasValues: boolean } => {
   const propsTable: Node[] = [];
   let table: NodeChildren | undefined = undefined;
   let hasValues = false;
   if (children) {
-    propsTable.push({
-      type: 'paragraph',
-      children: [
-        {
-          type: 'heading',
-          depth: 3,
-          children: [
-            {
-              type: 'text',
-              value: title,
-            },
-          ],
-        },
-      ],
-    });
+    if (title) {
+      propsTable.push({
+        type: 'paragraph',
+        children: [
+          {
+            type: 'heading',
+            depth: 3,
+            children: [
+              {
+                type: 'text',
+                value: title,
+              },
+            ],
+          },
+        ],
+      });
+    }
     const columns: Node[] = [
       { type: 'tableCell', children: [{ type: 'text', value: 'Name' }] },
       { type: 'tableCell', children: [{ type: 'text', value: 'Type' }] },

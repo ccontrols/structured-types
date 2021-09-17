@@ -169,6 +169,9 @@ export const isObjectProp = (prop: PropType): prop is ObjectProp => {
   return prop.kind === PropKind.Object;
 };
 
+/**
+ * String property
+ */
 export interface StringProp extends PropType {
   kind: PropKind.String;
   value?: string;
