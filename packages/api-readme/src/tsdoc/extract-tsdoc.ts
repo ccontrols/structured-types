@@ -302,18 +302,13 @@ export class ExtractProps {
       return [
         {
           type: 'paragraph',
-          children: extractProperties
-            ? prop.properties?.reduce((acc: Node[], t, idx) => {
-                const r = [
-                  ...acc,
-                  ...this.extractPropType(t, { showValue: true }),
-                ];
-                if (prop.properties && idx < prop.properties.length - 1) {
-                  r.push({ type: 'text', value: ' | ' });
-                }
-                return r;
-              }, [])
-            : [],
+          children: prop.properties?.reduce((acc: Node[], t, idx) => {
+            const r = [...acc, ...this.extractPropType(t, { showValue: true })];
+            if (prop.properties && idx < prop.properties.length - 1) {
+              r.push({ type: 'text', value: ' | ' });
+            }
+            return r;
+          }, []),
         },
       ];
     } else if (isClassLikeProp(prop)) {
