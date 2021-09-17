@@ -201,12 +201,11 @@ export class ExtractProps {
       },
     ];
     if (typeof type === 'string') {
-      const propName = type.startsWith(':') ? type.substring(1) : type;
-      if (this.topLevelProps[propName]) {
+      if (this.topLevelProps[type]) {
         return [
           {
             type: 'link',
-            url: `#${propName.toLowerCase()}`,
+            url: `#${type.toLowerCase()}`,
             children: typeText,
           },
         ];
@@ -217,14 +216,8 @@ export class ExtractProps {
 
   private inlineType(prop: PropType): Node[] {
     let typeNode: Node[] | undefined = undefined;
-    const type =
-      typeof prop.type === 'string'
-        ? prop.type
-        : prop.parent
-        ? `:${prop.parent}`
-        : undefined;
-    if (typeof type === 'string') {
-      typeNode = this.propLink(type);
+    if (typeof prop.type === 'string') {
+      typeNode = this.propLink(prop.type);
     } else if (prop.kind) {
       typeNode = [
         {
@@ -245,14 +238,8 @@ export class ExtractProps {
     return typeNode || [];
   }
   private typeNode(prop: PropType, showValue = true): Node[] {
-    const type =
-      typeof prop.type === 'string'
-        ? prop.type
-        : prop.parent
-        ? `:${prop.parent}`
-        : undefined;
-    if (typeof type === 'string') {
-      return this.propLink(type);
+    if (typeof prop.type === 'string') {
+      return this.propLink(prop.type);
     }
     if (showValue && hasValue(prop) && prop.value !== undefined) {
       return [
@@ -263,12 +250,27 @@ export class ExtractProps {
       ];
     }
     if (prop.kind) {
-      return [
+      const typeNode: Node[] = [
         {
           type: 'text',
           value: `${PropKind[prop.kind].toLowerCase()}`,
         },
       ];
+      if (typeof prop.parent === 'string') {
+        const link = this.propLink(prop.parent);
+        if (link.length) {
+          typeNode.push({
+            type: 'text',
+            value: ` (`,
+          });
+          typeNode.push(...link);
+          typeNode.push({
+            type: 'text',
+            value: `)`,
+          });
+        }
+      }
+      return typeNode;
     }
     if (prop.name) {
       return [
