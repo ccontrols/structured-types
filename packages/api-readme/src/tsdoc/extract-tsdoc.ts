@@ -288,7 +288,7 @@ export class ExtractProps {
     prop: PropType,
     options?: { showValue?: boolean; extractProperties?: boolean },
   ): Node[] {
-    const { showValue = false, extractProperties = true } = options || {};
+    const { showValue = false, extractProperties = false } = options || {};
     if (isUnionProp(prop) && prop.properties) {
       return [
         {
@@ -304,7 +304,7 @@ export class ExtractProps {
                 }
                 return r;
               }, [])
-            : undefined,
+            : [],
         },
       ];
     } else if (isClassLikeProp(prop)) {
@@ -392,17 +392,17 @@ export class ExtractProps {
                 ),
                 { type: 'text', value: '[]' },
               ]
-            : undefined,
+            : [],
         },
       ];
     } else if (isTupleProp(prop) && prop.properties) {
       return [
         {
           type: 'paragraph',
-          children: extractProperties
-            ? [
-                { type: 'text', value: '[' },
-                ...prop.properties.reduce(
+          children: [
+            { type: 'text', value: '[' },
+            ...(extractProperties
+              ? prop.properties.reduce(
                   (acc: Node[], p: PropType, idx: number) => {
                     const result = this.extractPropType(p);
                     if (prop.properties && idx < prop.properties.length - 1) {
@@ -414,10 +414,10 @@ export class ExtractProps {
                     return [...acc, ...result];
                   },
                   [],
-                ),
-                { type: 'text', value: ']' },
-              ]
-            : undefined,
+                )
+              : []),
+            { type: 'text', value: ']' },
+          ],
         },
       ];
     } else {
