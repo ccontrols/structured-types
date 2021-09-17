@@ -239,6 +239,15 @@ export class ExtractProps {
   }
   private typeNode(prop: PropType, showValue = true): Node[] {
     if (typeof prop.type === 'string') {
+      if (typeof prop.parent === 'string') {
+        return [
+          ...this.propLink(prop.parent),
+          {
+            type: 'text',
+            value: `.${prop.type}`,
+          },
+        ];
+      }
       return this.propLink(prop.type);
     }
     if (showValue && hasValue(prop) && prop.value !== undefined) {
@@ -375,24 +384,22 @@ export class ExtractProps {
       return [
         {
           type: 'paragraph',
-          children: extractProperties
-            ? [
-                ...prop.properties.reduce(
-                  (acc: Node[], p: PropType, idx: number) => {
-                    const result = this.extractPropType(p);
-                    if (prop.properties && idx < prop.properties.length - 1) {
-                      result.push({
-                        type: 'text',
-                        value: ', ',
-                      });
-                    }
-                    return [...acc, ...result];
-                  },
-                  [],
-                ),
-                { type: 'text', value: '[]' },
-              ]
-            : [],
+          children: [
+            ...prop.properties.reduce(
+              (acc: Node[], p: PropType, idx: number) => {
+                const result = this.extractPropType(p);
+                if (prop.properties && idx < prop.properties.length - 1) {
+                  result.push({
+                    type: 'text',
+                    value: ', ',
+                  });
+                }
+                return [...acc, ...result];
+              },
+              [],
+            ),
+            { type: 'text', value: '[]' },
+          ],
         },
       ];
     } else if (isTupleProp(prop) && prop.properties) {
