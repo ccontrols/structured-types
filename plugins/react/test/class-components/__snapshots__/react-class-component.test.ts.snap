@@ -368,6 +368,9 @@ Object {
         "parent": "HTMLAttributes",
         "properties": Array [
           Object {
+            "extends": Array [
+              "Properties",
+            ],
             "kind": 14,
             "name": "CSSProperties",
             "properties": Array [

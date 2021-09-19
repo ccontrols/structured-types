@@ -82,7 +82,7 @@ describe('function-component', () => {
   it('default-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'default-props.tsx')], {
       plugins: [reactPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       default: {
@@ -174,7 +174,7 @@ describe('function-component', () => {
   it('display-name', () => {
     const result = parseFiles([path.resolve(__dirname, 'display-name.tsx')], {
       plugins: [reactPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       default: {
@@ -202,7 +202,7 @@ describe('function-component', () => {
   it('pick-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'pick-props.tsx')], {
       plugins: [reactPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
       collectFilePath: false,
     });
     expect(result).toMatchSnapshot();
@@ -211,7 +211,7 @@ describe('function-component', () => {
   it('omit-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'omit-props.tsx')], {
       plugins: [reactPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {

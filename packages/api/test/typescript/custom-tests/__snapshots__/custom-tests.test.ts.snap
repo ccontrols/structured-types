@@ -732,6 +732,9 @@ Object {
                       "kind": 11,
                       "parameters": Array [
                         Object {
+                          "extends": Array [
+                            "Error",
+                          ],
                           "kind": 13,
                           "name": "warning",
                           "properties": Array [
@@ -3668,6 +3671,9 @@ Object {
                       "kind": 11,
                       "parameters": Array [
                         Object {
+                          "extends": Array [
+                            "Error",
+                          ],
                           "kind": 13,
                           "name": "warning",
                           "properties": Array [

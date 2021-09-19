@@ -8,17 +8,11 @@
         -   [3. Your documentation extraction](#3-your-documentation-extraction)
         -   [4. The result](#4-the-result)
 -   [API](#api)
-    -   [HasValueProp](#hasvalueprop)
-    -   [isObjectProp](#isobjectprop)
-    -   [PropType](#proptype)
-    -   [PropKind](#propkind)
     -   [ObjectProp](#objectprop)
+    -   [PropKind](#propkind)
+    -   [PropType](#proptype)
     -   [JSDocExample](#jsdocexample)
     -   [JSDocPropTag](#jsdocproptag)
-    -   [StringProp](#stringprop)
-    -   [NumberProp](#numberprop)
-    -   [BooleanProp](#booleanprop)
-    -   [UnionProp](#unionprop)
 
 # Overview
 
@@ -124,56 +118,42 @@ const docs = parseFiles(['../src/sum.js']);
 
 # API
 
-<api-readme extract="HasValueProp,isObjectProp" files="./src/types.ts"/>
+<api-readme extract="ObjectProp" files="./src/types.ts"/>
 
 <!-- START-API-README -->
 
-## HasValueProp
-
-**`union`**
-
-
-
-[StringProp](#stringprop) \| [NumberProp](#numberprop) \| [BooleanProp](#booleanprop) \| [UnionProp](#unionprop)
-
-## isObjectProp
-
-**`function`**
-
-ObjectProp type guard predicate
-
-**function** isObjectProp(`prop`\*: [PropType](#proptype)): [ObjectProp](#objectprop);
-
-## PropType
+## ObjectProp
 
 **`interface`**
 
-Base prop type interface
+Object property
 
+** extends [PropType](#proptype)**
 
-
-| Name          | Type                             | Description                                                                                 |
-| ------------- | -------------------------------- | ------------------------------------------------------------------------------------------- |
-| `kind`        | [PropKind](#propkind)            | The property type or kind                                                                   |
-| `name`        | string                           | name of the property                                                                        |
-| `parent`      | string                           | the name of the parent property, if combined props                                          |
-| `optional`    | boolean                          | by default, properties are required                                                         |
-| `readonly`    | boolean                          | readonly property                                                                           |
-| `abstract`    | boolean                          | abstract property                                                                           |
-| `async`       | boolean                          | async function                                                                              |
-| `visibility`  | private \| protected \| public   | property visibility                                                                         |
-| `static`      | boolean                          | true, of the class property is static                                                       |
-| `filePath`    | string                           | name of the file where the property is defined only if different from the default file path |
-| `type`        | [PropType](#proptype) \| string  | type name of the property                                                                   |
-| `extension`   | string                           | used plugin name ie 'react'...                                                              |
-| `description` | string                           | jsdoc description                                                                           |
-| `fires`       | string\[]                        | jsdoc fires events list                                                                     |
-| `see`         | string\[]                        | jsdoc see links list                                                                        |
-| `examples`    | [JSDocExample](#jsdocexample)\[] | jsdoc examples list                                                                         |
-| `tags`        | [JSDocPropTag](#jsdocproptag)\[] | jsdoc generic tags, not covered by other props                                              |
-| `summary`     | string                           | jsdoc summary                                                                               |
-| `deprecated`  | string \| true                   | jsdoc deprecated tag                                                                        |
-| `ignore`      | boolean                          | jsdoc ignore tag, to be excluded from documentations                                        |
+| Name          | Type                            | Value | Description                                                                                 |
+| ------------- | ------------------------------- | ----- | ------------------------------------------------------------------------------------------- |
+| `kind*`       | [PropKind](#propkind).Object    | 26    | generic properties                                                                          |
+| `properties`  | [PropType](#proptype)\[]        |       | object properties list                                                                      |
+| `value`       | [PropType](#proptype)\[]        |       | value, if the object is initialized                                                         |
+| `name`        | string ([PropType](#proptype))  |       | name of the property                                                                        |
+| `parent`      | string ([PropType](#proptype))  |       | the name of the parent property, if combined props                                          |
+| `optional`    | boolean ([PropType](#proptype)) |       | by default, properties are required                                                         |
+| `readonly`    | boolean ([PropType](#proptype)) |       | readonly property                                                                           |
+| `abstract`    | boolean ([PropType](#proptype)) |       | abstract property                                                                           |
+| `async`       | boolean ([PropType](#proptype)) |       | async function                                                                              |
+| `visibility`  | union ([PropType](#proptype))   |       | property visibility                                                                         |
+| `static`      | boolean ([PropType](#proptype)) |       | true, of the class property is static                                                       |
+| `filePath`    | string ([PropType](#proptype))  |       | name of the file where the property is defined only if different from the default file path |
+| `type`        | union ([PropType](#proptype))   |       | type name of the property                                                                   |
+| `extension`   | string ([PropType](#proptype))  |       | used plugin name ie 'react'...                                                              |
+| `description` | string ([PropType](#proptype))  |       | jsdoc description                                                                           |
+| `fires`       | array ([PropType](#proptype))   |       | jsdoc fires events list                                                                     |
+| `see`         | array ([PropType](#proptype))   |       | jsdoc see links list                                                                        |
+| `examples`    | array ([PropType](#proptype))   |       | jsdoc examples list                                                                         |
+| `tags`        | array ([PropType](#proptype))   |       | jsdoc generic tags, not covered by other props                                              |
+| `summary`     | string ([PropType](#proptype))  |       | jsdoc summary                                                                               |
+| `deprecated`  | union ([PropType](#proptype))   |       | jsdoc deprecated tag                                                                        |
+| `ignore`      | boolean ([PropType](#proptype)) |       | jsdoc ignore tag, to be excluded from documentations                                        |
 
 ## PropKind
 
@@ -210,38 +190,36 @@ The property type or kind
 | `Component*`   | number | 25    |             |
 | `Object*`      | number | 26    |             |
 
-## ObjectProp
+## PropType
 
 **`interface`**
 
-Object property
+Base prop type interface
 
 
 
-| Name          | Type                            | Value | Description                                                                                 |
-| ------------- | ------------------------------- | ----- | ------------------------------------------------------------------------------------------- |
-| `kind*`       | [PropKind](#propkind).Object    | 26    | generic properties                                                                          |
-| `properties`  | [PropType](#proptype)\[]        |       | object properties list                                                                      |
-| `value`       | [PropType](#proptype)\[]        |       | value, if the object is initialized                                                         |
-| `name`        | string ([PropType](#proptype))  |       | name of the property                                                                        |
-| `parent`      | string ([PropType](#proptype))  |       | the name of the parent property, if combined props                                          |
-| `optional`    | boolean ([PropType](#proptype)) |       | by default, properties are required                                                         |
-| `readonly`    | boolean ([PropType](#proptype)) |       | readonly property                                                                           |
-| `abstract`    | boolean ([PropType](#proptype)) |       | abstract property                                                                           |
-| `async`       | boolean ([PropType](#proptype)) |       | async function                                                                              |
-| `visibility`  | union ([PropType](#proptype))   |       | property visibility                                                                         |
-| `static`      | boolean ([PropType](#proptype)) |       | true, of the class property is static                                                       |
-| `filePath`    | string ([PropType](#proptype))  |       | name of the file where the property is defined only if different from the default file path |
-| `type`        | union ([PropType](#proptype))   |       | type name of the property                                                                   |
-| `extension`   | string ([PropType](#proptype))  |       | used plugin name ie 'react'...                                                              |
-| `description` | string ([PropType](#proptype))  |       | jsdoc description                                                                           |
-| `fires`       | array ([PropType](#proptype))   |       | jsdoc fires events list                                                                     |
-| `see`         | array ([PropType](#proptype))   |       | jsdoc see links list                                                                        |
-| `examples`    | array ([PropType](#proptype))   |       | jsdoc examples list                                                                         |
-| `tags`        | array ([PropType](#proptype))   |       | jsdoc generic tags, not covered by other props                                              |
-| `summary`     | string ([PropType](#proptype))  |       | jsdoc summary                                                                               |
-| `deprecated`  | union ([PropType](#proptype))   |       | jsdoc deprecated tag                                                                        |
-| `ignore`      | boolean ([PropType](#proptype)) |       | jsdoc ignore tag, to be excluded from documentations                                        |
+| Name          | Type                             | Description                                                                                 |
+| ------------- | -------------------------------- | ------------------------------------------------------------------------------------------- |
+| `kind`        | [PropKind](#propkind)            | The property type or kind                                                                   |
+| `name`        | string                           | name of the property                                                                        |
+| `parent`      | string                           | the name of the parent property, if combined props                                          |
+| `optional`    | boolean                          | by default, properties are required                                                         |
+| `readonly`    | boolean                          | readonly property                                                                           |
+| `abstract`    | boolean                          | abstract property                                                                           |
+| `async`       | boolean                          | async function                                                                              |
+| `visibility`  | private \| protected \| public   | property visibility                                                                         |
+| `static`      | boolean                          | true, of the class property is static                                                       |
+| `filePath`    | string                           | name of the file where the property is defined only if different from the default file path |
+| `type`        | [PropType](#proptype) \| string  | type name of the property                                                                   |
+| `extension`   | string                           | used plugin name ie 'react'...                                                              |
+| `description` | string                           | jsdoc description                                                                           |
+| `fires`       | string\[]                        | jsdoc fires events list                                                                     |
+| `see`         | string\[]                        | jsdoc see links list                                                                        |
+| `examples`    | [JSDocExample](#jsdocexample)\[] | jsdoc examples list                                                                         |
+| `tags`        | [JSDocPropTag](#jsdocproptag)\[] | jsdoc generic tags, not covered by other props                                              |
+| `summary`     | string                           | jsdoc summary                                                                               |
+| `deprecated`  | string \| true                   | jsdoc deprecated tag                                                                        |
+| `ignore`      | boolean                          | jsdoc ignore tag, to be excluded from documentations                                        |
 
 ## JSDocExample
 
@@ -268,128 +246,5 @@ JSDoc generic tag item
 | --------- | ------ | -------------------- |
 | `tag*`    | string | tag name             |
 | `content` | string | optional tag content |
-
-## StringProp
-
-**`interface`**
-
-String property
-
-
-
-| Name          | Type                            | Value | Description                                                                                 |
-| ------------- | ------------------------------- | ----- | ------------------------------------------------------------------------------------------- |
-| `kind*`       | [PropKind](#propkind).String    | 1     | generic properties                                                                          |
-| `value`       | string                          |       |                                                                                             |
-| `name`        | string ([PropType](#proptype))  |       | name of the property                                                                        |
-| `parent`      | string ([PropType](#proptype))  |       | the name of the parent property, if combined props                                          |
-| `optional`    | boolean ([PropType](#proptype)) |       | by default, properties are required                                                         |
-| `readonly`    | boolean ([PropType](#proptype)) |       | readonly property                                                                           |
-| `abstract`    | boolean ([PropType](#proptype)) |       | abstract property                                                                           |
-| `async`       | boolean ([PropType](#proptype)) |       | async function                                                                              |
-| `visibility`  | union ([PropType](#proptype))   |       | property visibility                                                                         |
-| `static`      | boolean ([PropType](#proptype)) |       | true, of the class property is static                                                       |
-| `filePath`    | string ([PropType](#proptype))  |       | name of the file where the property is defined only if different from the default file path |
-| `type`        | union ([PropType](#proptype))   |       | type name of the property                                                                   |
-| `extension`   | string ([PropType](#proptype))  |       | used plugin name ie 'react'...                                                              |
-| `description` | string ([PropType](#proptype))  |       | jsdoc description                                                                           |
-| `fires`       | array ([PropType](#proptype))   |       | jsdoc fires events list                                                                     |
-| `see`         | array ([PropType](#proptype))   |       | jsdoc see links list                                                                        |
-| `examples`    | array ([PropType](#proptype))   |       | jsdoc examples list                                                                         |
-| `tags`        | array ([PropType](#proptype))   |       | jsdoc generic tags, not covered by other props                                              |
-| `summary`     | string ([PropType](#proptype))  |       | jsdoc summary                                                                               |
-| `deprecated`  | union ([PropType](#proptype))   |       | jsdoc deprecated tag                                                                        |
-| `ignore`      | boolean ([PropType](#proptype)) |       | jsdoc ignore tag, to be excluded from documentations                                        |
-
-## NumberProp
-
-**`interface`**
-
-
-
-| Name          | Type                            | Value | Description                                                                                 |
-| ------------- | ------------------------------- | ----- | ------------------------------------------------------------------------------------------- |
-| `kind*`       | [PropKind](#propkind).Number    | 2     | generic properties                                                                          |
-| `value`       | number                          |       |                                                                                             |
-| `name`        | string ([PropType](#proptype))  |       | name of the property                                                                        |
-| `parent`      | string ([PropType](#proptype))  |       | the name of the parent property, if combined props                                          |
-| `optional`    | boolean ([PropType](#proptype)) |       | by default, properties are required                                                         |
-| `readonly`    | boolean ([PropType](#proptype)) |       | readonly property                                                                           |
-| `abstract`    | boolean ([PropType](#proptype)) |       | abstract property                                                                           |
-| `async`       | boolean ([PropType](#proptype)) |       | async function                                                                              |
-| `visibility`  | union ([PropType](#proptype))   |       | property visibility                                                                         |
-| `static`      | boolean ([PropType](#proptype)) |       | true, of the class property is static                                                       |
-| `filePath`    | string ([PropType](#proptype))  |       | name of the file where the property is defined only if different from the default file path |
-| `type`        | union ([PropType](#proptype))   |       | type name of the property                                                                   |
-| `extension`   | string ([PropType](#proptype))  |       | used plugin name ie 'react'...                                                              |
-| `description` | string ([PropType](#proptype))  |       | jsdoc description                                                                           |
-| `fires`       | array ([PropType](#proptype))   |       | jsdoc fires events list                                                                     |
-| `see`         | array ([PropType](#proptype))   |       | jsdoc see links list                                                                        |
-| `examples`    | array ([PropType](#proptype))   |       | jsdoc examples list                                                                         |
-| `tags`        | array ([PropType](#proptype))   |       | jsdoc generic tags, not covered by other props                                              |
-| `summary`     | string ([PropType](#proptype))  |       | jsdoc summary                                                                               |
-| `deprecated`  | union ([PropType](#proptype))   |       | jsdoc deprecated tag                                                                        |
-| `ignore`      | boolean ([PropType](#proptype)) |       | jsdoc ignore tag, to be excluded from documentations                                        |
-
-## BooleanProp
-
-**`interface`**
-
-
-
-| Name          | Type                            | Value | Description                                                                                 |
-| ------------- | ------------------------------- | ----- | ------------------------------------------------------------------------------------------- |
-| `kind*`       | [PropKind](#propkind).Boolean   | 3     | generic properties                                                                          |
-| `value`       | boolean                         |       |                                                                                             |
-| `name`        | string ([PropType](#proptype))  |       | name of the property                                                                        |
-| `parent`      | string ([PropType](#proptype))  |       | the name of the parent property, if combined props                                          |
-| `optional`    | boolean ([PropType](#proptype)) |       | by default, properties are required                                                         |
-| `readonly`    | boolean ([PropType](#proptype)) |       | readonly property                                                                           |
-| `abstract`    | boolean ([PropType](#proptype)) |       | abstract property                                                                           |
-| `async`       | boolean ([PropType](#proptype)) |       | async function                                                                              |
-| `visibility`  | union ([PropType](#proptype))   |       | property visibility                                                                         |
-| `static`      | boolean ([PropType](#proptype)) |       | true, of the class property is static                                                       |
-| `filePath`    | string ([PropType](#proptype))  |       | name of the file where the property is defined only if different from the default file path |
-| `type`        | union ([PropType](#proptype))   |       | type name of the property                                                                   |
-| `extension`   | string ([PropType](#proptype))  |       | used plugin name ie 'react'...                                                              |
-| `description` | string ([PropType](#proptype))  |       | jsdoc description                                                                           |
-| `fires`       | array ([PropType](#proptype))   |       | jsdoc fires events list                                                                     |
-| `see`         | array ([PropType](#proptype))   |       | jsdoc see links list                                                                        |
-| `examples`    | array ([PropType](#proptype))   |       | jsdoc examples list                                                                         |
-| `tags`        | array ([PropType](#proptype))   |       | jsdoc generic tags, not covered by other props                                              |
-| `summary`     | string ([PropType](#proptype))  |       | jsdoc summary                                                                               |
-| `deprecated`  | union ([PropType](#proptype))   |       | jsdoc deprecated tag                                                                        |
-| `ignore`      | boolean ([PropType](#proptype)) |       | jsdoc ignore tag, to be excluded from documentations                                        |
-
-## UnionProp
-
-**`interface`**
-
-
-
-| Name          | Type                            | Value | Description                                                                                 |
-| ------------- | ------------------------------- | ----- | ------------------------------------------------------------------------------------------- |
-| `kind*`       | [PropKind](#propkind).Union     | 4     | generic properties                                                                          |
-| `properties`  | [PropType](#proptype)\[]        |       |                                                                                             |
-| `value`       | any                             |       |                                                                                             |
-| `name`        | string ([PropType](#proptype))  |       | name of the property                                                                        |
-| `parent`      | string ([PropType](#proptype))  |       | the name of the parent property, if combined props                                          |
-| `optional`    | boolean ([PropType](#proptype)) |       | by default, properties are required                                                         |
-| `readonly`    | boolean ([PropType](#proptype)) |       | readonly property                                                                           |
-| `abstract`    | boolean ([PropType](#proptype)) |       | abstract property                                                                           |
-| `async`       | boolean ([PropType](#proptype)) |       | async function                                                                              |
-| `visibility`  | union ([PropType](#proptype))   |       | property visibility                                                                         |
-| `static`      | boolean ([PropType](#proptype)) |       | true, of the class property is static                                                       |
-| `filePath`    | string ([PropType](#proptype))  |       | name of the file where the property is defined only if different from the default file path |
-| `type`        | union ([PropType](#proptype))   |       | type name of the property                                                                   |
-| `extension`   | string ([PropType](#proptype))  |       | used plugin name ie 'react'...                                                              |
-| `description` | string ([PropType](#proptype))  |       | jsdoc description                                                                           |
-| `fires`       | array ([PropType](#proptype))   |       | jsdoc fires events list                                                                     |
-| `see`         | array ([PropType](#proptype))   |       | jsdoc see links list                                                                        |
-| `examples`    | array ([PropType](#proptype))   |       | jsdoc examples list                                                                         |
-| `tags`        | array ([PropType](#proptype))   |       | jsdoc generic tags, not covered by other props                                              |
-| `summary`     | string ([PropType](#proptype))  |       | jsdoc summary                                                                               |
-| `deprecated`  | union ([PropType](#proptype))   |       | jsdoc deprecated tag                                                                        |
-| `ignore`      | boolean ([PropType](#proptype)) |       | jsdoc ignore tag, to be excluded from documentations                                        |
 
 <!-- END-API-README -->

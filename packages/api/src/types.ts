@@ -360,7 +360,7 @@ export const isVoidProp = (prop: PropType): prop is VoidProp => {
 
 export interface ClassProp extends PropType {
   implements?: InterfaceProp[];
-  extends?: PropType[];
+  extends?: string[];
   generics?: PropType[];
   properties?: PropType[];
 }
@@ -375,7 +375,7 @@ export const isClassProp = (prop: PropType): prop is ClassProp => {
 };
 
 export interface InterfaceProp extends PropType {
-  extends?: PropType[];
+  extends?: string[];
   properties?: PropType[];
   generics?: PropType[];
 }
@@ -388,7 +388,7 @@ export const isInterfaceProp = (prop: PropType): prop is InterfaceProp => {
 };
 
 export interface TypeProp extends PropType {
-  extends?: PropType[];
+  extends?: string[];
   properties?: PropType[];
   generics?: PropType[];
 }
@@ -545,10 +545,10 @@ export type PropDiagnostic = {
 };
 
 /**
- * Top-level prop type, with aded optional __parents and __diagnostics fields
+ * Top-level prop type, with aded optional __helpers and __diagnostics fields
  */
 export type PropTypes = Record<string, PropType> & {
-  __parents?: Record<string, PropType>;
+  __helpers?: Record<string, PropType>;
   __diagnostics?: PropDiagnostic[];
 };
 

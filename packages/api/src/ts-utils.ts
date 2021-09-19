@@ -214,10 +214,10 @@ export interface ParseOptions {
    */
   maxDepth?: number;
   /**
-   * whether to save the "parent" props
-   * if set to false will result in a smaller result
+   * whether to save "helper" props that are used by the main parsed props
+   * if set to false will result in a smaller result set
    */
-  consolidateParents?: boolean;
+  collectHelpers?: boolean;
   /**
    * whether to collect generics parameters
    */
@@ -232,12 +232,15 @@ export interface ParseOptions {
    * whether to collect object/type properties
    */
   collectProperties?: boolean;
+  /**
+   * whether to collect the inheritance properties
+   */
+  collectInheritance?: boolean;
 
   /**
    * whether to collect the plugin/extension name
    */
   collectExtension?: boolean;
-
   /**
    * whether to collect errors/diagnostics
    */
@@ -273,10 +276,11 @@ export type ParsePlugin = Omit<DocsOptions, 'resolvers'> & {
 };
 
 export const defaultParseOptions: ParseOptions = {
-  consolidateParents: false,
+  collectHelpers: true,
   collectGenerics: true,
   collectParameters: true,
   collectProperties: true,
+  collectInheritance: true,
   collectFilePath: true,
   collectExtension: true,
   filter: (prop) => !prop.ignore,

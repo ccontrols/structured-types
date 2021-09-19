@@ -6,7 +6,7 @@ describe('prop-types-class-component', () => {
   it('hoc', () => {
     const result = parseFiles([path.resolve(__dirname, 'hoc.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       NamedClassImport: {
@@ -34,7 +34,7 @@ describe('prop-types-class-component', () => {
   it('named-export', () => {
     const result = parseFiles([path.resolve(__dirname, 'named-export.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -63,7 +63,7 @@ describe('prop-types-class-component', () => {
   it('default-export', () => {
     const result = parseFiles([path.resolve(__dirname, 'default-export.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       default: {

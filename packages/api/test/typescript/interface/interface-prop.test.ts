@@ -45,12 +45,13 @@ describe('interface', () => {
   });
   it('extends', () => {
     const results = parseFiles([path.resolve(__dirname, 'extends.ts')], {
-      consolidateParents: true,
+      collectHelpers: true,
     });
     expect(results).toEqual({
       Bear: {
         name: 'Bear',
         kind: 14,
+        extends: ['Internal', 'Home'],
         properties: [
           {
             kind: 3,
@@ -71,7 +72,7 @@ describe('interface', () => {
         ],
         description: 'interface extending another one',
       },
-      __parents: {
+      __helpers: {
         resident: {
           kind: 15,
           name: 'resident',
@@ -124,7 +125,7 @@ describe('interface', () => {
   });
   it('enum-prop', () => {
     const results = parseFiles([path.resolve(__dirname, 'enum-prop.ts')], {
-      consolidateParents: true,
+      collectHelpers: true,
     });
     expect(results).toEqual({
       InterfaceWithEnumConstant: {
@@ -146,7 +147,7 @@ describe('interface', () => {
           },
         ],
       },
-      __parents: {
+      __helpers: {
         StringEnums: {
           name: 'StringEnums',
           kind: 5,

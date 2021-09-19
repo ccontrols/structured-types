@@ -330,6 +330,9 @@ Object {
         "parent": "HTMLAttributes",
         "properties": Array [
           Object {
+            "extends": Array [
+              "Properties",
+            ],
             "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "kind": 14,
             "name": "CSSProperties",

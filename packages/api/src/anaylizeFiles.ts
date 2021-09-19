@@ -44,12 +44,8 @@ export const anaylizeFiles = (
     ...parseOptions
   } = options;
   const tsOptions = { ...tsDefaults, ...userTsOptions };
-  const {
-    extractNames,
-    collectDiagnostics,
-    internalTypes,
-    consolidateParents,
-  } = parseOptions || {};
+  const { extractNames, collectDiagnostics, internalTypes, collectHelpers } =
+    parseOptions || {};
   const { program: userProgram, host: userHost } = programOptions;
   const host = userHost || ts.createCompilerHost(tsOptions);
   const program = userProgram || ts.createProgram(fileNames, tsOptions, host);
@@ -117,7 +113,7 @@ export const anaylizeFiles = (
       }
     }
   }
-  if (consolidateParents) {
+  if (collectHelpers) {
     // only return parents that are not already exported from the same file
     const parents: Record<string, PropType> = Object.keys(parser.parents)
       .filter((name) => parsed[name] === undefined)
@@ -129,7 +125,7 @@ export const anaylizeFiles = (
           [key]: consolidateParentProps([parsed[key]], parents)[0],
         };
       }, {});
-      parsed.__parents = Object.keys(parents).reduce((acc, key) => {
+      parsed.__helpers = Object.keys(parents).reduce((acc, key) => {
         return {
           ...acc,
           [key]: consolidateParentProps([parents[key]], parents)[0],

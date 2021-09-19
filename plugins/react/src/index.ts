@@ -107,6 +107,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
           initializer: defaultProps || initializer,
           collectGenerics: false,
           collectParameters: false,
+          collectInheritance: false,
         };
       }
       if (isObjectTypeDeclaration(declaration)) {
@@ -195,6 +196,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
                     prop: { kind: PropKind.Function, name },
                     collectGenerics: false,
                     collectParameters: false,
+                    collectInheritance: false,
                   };
                 }
               }

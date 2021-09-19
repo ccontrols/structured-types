@@ -11,6 +11,9 @@ Object {
       Object {
         "generics": Array [
           Object {
+            "extends": Array [
+              "HTMLAttributes",
+            ],
             "generics": Array [
               Object {
                 "name": "T",
@@ -334,6 +337,9 @@ Object {
                 "parent": "HTMLAttributes",
                 "properties": Array [
                   Object {
+                    "extends": Array [
+                      "Properties",
+                    ],
                     "kind": 14,
                     "name": "CSSProperties",
                     "properties": Array [

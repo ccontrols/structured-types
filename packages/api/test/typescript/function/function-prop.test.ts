@@ -60,7 +60,7 @@ describe('function', () => {
   it('extends-parameter', () => {
     const results = parseFiles(
       [path.resolve(__dirname, 'extends-parameter.ts')],
-      { consolidateParents: true },
+      { collectHelpers: true },
     );
     expect(results).toEqual({
       paintHomeyBear: {
@@ -90,6 +90,7 @@ describe('function', () => {
         returns: {
           kind: 14,
           type: 'Bear',
+          extends: ['Internal'],
           properties: [
             {
               name: 'honey',
@@ -108,11 +109,12 @@ describe('function', () => {
         },
         description: 'exported function',
       },
-      __parents: {
+      __helpers: {
         Bear: {
           description: 'interface extending another one',
           kind: 14,
           name: 'Bear',
+          extends: ['Internal'],
           properties: [
             {
               description: 'boolean type member',
@@ -177,7 +179,7 @@ describe('function', () => {
   it('generic-parameter', () => {
     const results = parseFiles(
       [path.resolve(__dirname, 'generic-parameter.ts')],
-      { consolidateParents: true },
+      { collectHelpers: true },
     );
     expect(results).toEqual({
       genericFunction: {
@@ -228,7 +230,7 @@ describe('function', () => {
           },
         ],
       },
-      __parents: {
+      __helpers: {
         GenericInterface: {
           name: 'GenericInterface',
           kind: 14,

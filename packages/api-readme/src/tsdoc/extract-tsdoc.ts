@@ -160,6 +160,13 @@ export class ExtractProps {
       result.push(declaration);
 
       if (prop.extends?.length) {
+        const extendsList = prop.extends.reduce((acc: Node[], key: string) => {
+          const extProp = this.topLevelProps[key];
+          if (extProp) {
+            return [...acc, ...this.extractPropType(extProp)];
+          }
+          return acc;
+        }, []);
         declaration.children.push({
           type: 'strong',
           children: [
@@ -167,13 +174,7 @@ export class ExtractProps {
               type: 'text',
               value: ' extends ',
             },
-            ...prop.extends.reduce(
-              (acc: Node[], p: PropType) => [
-                ...acc,
-                ...this.extractPropType(p),
-              ],
-              [],
-            ),
+            ...extendsList,
           ],
         });
       }
@@ -444,11 +445,12 @@ export class ExtractProps {
         children: [
           {
             type: 'inlineCode',
-            value: prop.type,
+            children: this.propLink(prop.type),
           },
         ],
       });
     }
+
     if (prop.description) {
       result.push(
         ...prop.description.split('\n').map((d) => ({
@@ -476,7 +478,7 @@ export class ExtractProps {
       const props = parseFiles(this.files, {
         collectFilePath: true,
         extractNames: this.names,
-        consolidateParents: true,
+        collectHelpers: true,
         plugins: [propTypesPlugin, reactPlugin],
       });
       let propKeys = Object.keys(props);
@@ -488,14 +490,14 @@ export class ExtractProps {
       }
 
       propKeys.forEach((key) => {
-        if (key !== '__parents' && key !== '__diagnostics') {
+        if (key !== '__helpers' && key !== '__diagnostics') {
           this.topLevelProps[key] = props[key];
         }
       });
-      const parents = props['__parents'];
-      if (parents) {
-        Object.keys(parents).forEach((key) => {
-          this.topLevelProps[key] = parents[key];
+      const helpers = props.__helpers;
+      if (helpers) {
+        Object.keys(helpers).forEach((key) => {
+          this.topLevelProps[key] = helpers[key];
         });
       }
       Object.values(this.topLevelProps).forEach((prop) => {

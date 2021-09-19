@@ -63,6 +63,9 @@ Object {
                     "type": "ReactFragment",
                   },
                   Object {
+                    "extends": Array [
+                      "ReactElement",
+                    ],
                     "kind": 14,
                     "name": "ReactPortal",
                     "properties": Array [

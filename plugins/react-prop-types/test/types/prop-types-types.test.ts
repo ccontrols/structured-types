@@ -7,7 +7,7 @@ describe('prop-types-types', () => {
   it('default-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'default-props.tsx')], {
       plugins: [propsPlugin, reactPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       default: {
@@ -36,7 +36,7 @@ describe('prop-types-types', () => {
   it('instance-of', () => {
     const result = parseFiles([path.resolve(__dirname, 'instance-of.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -65,7 +65,7 @@ describe('prop-types-types', () => {
   it('boolean', () => {
     const result = parseFiles([path.resolve(__dirname, 'boolean.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -88,7 +88,7 @@ describe('prop-types-types', () => {
   it('exact', () => {
     const result = parseFiles([path.resolve(__dirname, 'exact.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -134,7 +134,7 @@ describe('prop-types-types', () => {
   it('shape', () => {
     const result = parseFiles([path.resolve(__dirname, 'shape.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -180,7 +180,7 @@ describe('prop-types-types', () => {
   it('object-of', () => {
     const result = parseFiles([path.resolve(__dirname, 'object-of.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -206,7 +206,7 @@ describe('prop-types-types', () => {
   it('array-of', () => {
     const result = parseFiles([path.resolve(__dirname, 'array-of.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -234,7 +234,7 @@ describe('prop-types-types', () => {
   it('one-of-type', () => {
     const result = parseFiles([path.resolve(__dirname, 'one-of-type.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -279,7 +279,7 @@ describe('prop-types-types', () => {
   it('one-of', () => {
     const result = parseFiles([path.resolve(__dirname, 'one-of.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -312,7 +312,7 @@ describe('prop-types-types', () => {
   it('element-type', () => {
     const result = parseFiles([path.resolve(__dirname, 'element-type.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -334,7 +334,7 @@ describe('prop-types-types', () => {
   it('element', () => {
     const result = parseFiles([path.resolve(__dirname, 'element.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -347,6 +347,7 @@ describe('prop-types-types', () => {
             kind: 15,
             type: 'React.Element',
             optional: true,
+            extends: ['Validator'],
             description: 'optional element prop description',
           },
         ],
@@ -357,7 +358,7 @@ describe('prop-types-types', () => {
   it('node', () => {
     const result = parseFiles([path.resolve(__dirname, 'node.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -370,6 +371,7 @@ describe('prop-types-types', () => {
             kind: 15,
             type: 'React.ReactNode',
             optional: true,
+            extends: ['Validator'],
             description: 'optional node prop description',
           },
         ],
@@ -380,7 +382,7 @@ describe('prop-types-types', () => {
   it('symbol', () => {
     const result = parseFiles([path.resolve(__dirname, 'symbol.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -403,7 +405,7 @@ describe('prop-types-types', () => {
   it('string', () => {
     const result = parseFiles([path.resolve(__dirname, 'string.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -426,7 +428,7 @@ describe('prop-types-types', () => {
   it('object', () => {
     const result = parseFiles([path.resolve(__dirname, 'object.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -448,7 +450,7 @@ describe('prop-types-types', () => {
   it('number', () => {
     const result = parseFiles([path.resolve(__dirname, 'number.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -471,7 +473,7 @@ describe('prop-types-types', () => {
   it('function', () => {
     const result = parseFiles([path.resolve(__dirname, 'function.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -494,7 +496,7 @@ describe('prop-types-types', () => {
   it('array', () => {
     const result = parseFiles([path.resolve(__dirname, 'array.jsx')], {
       plugins: [propsPlugin],
-      consolidateParents: false,
+      collectHelpers: false,
     });
     expect(result).toEqual({
       MyComponent: {

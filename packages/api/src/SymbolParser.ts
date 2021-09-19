@@ -86,6 +86,20 @@ export class SymbolParser implements ISymbolParser {
     }
     return prop;
   }
+
+  private addParentSymbol(
+    name: string,
+    symbol: ts.Symbol,
+    options: ParseOptions,
+  ) {
+    if (options.collectHelpers) {
+      if (!this.propParents[name]) {
+        const prop = { name };
+        this.propParents[name] = prop;
+        this.addRefSymbol(prop, symbol);
+      }
+    }
+  }
   private getParent(
     node: ts.Node,
     parentProp: PropType,
@@ -116,14 +130,7 @@ export class SymbolParser implements ISymbolParser {
               (typeof parentProp.type === 'string'
                 ? parentProp.type
                 : undefined);
-
-            if (options.consolidateParents) {
-              if (!this.propParents[name]) {
-                const prop = { name };
-                this.propParents[name] = prop;
-                this.addRefSymbol(prop, (parent as any).symbol);
-              }
-            }
+            this.addParentSymbol(name, (parent as any).symbol, options);
             if (parentName !== name) {
               return name;
             }
@@ -293,6 +300,33 @@ export class SymbolParser implements ISymbolParser {
     return prop;
   }
 
+  private parseHeritageClauses(
+    prop: PropType,
+    options: ParseOptions,
+    node?: ts.Node,
+  ) {
+    if (
+      node &&
+      (ts.isClassLike(node) || ts.isInterfaceDeclaration(node)) &&
+      node.heritageClauses?.length &&
+      isClassLikeProp(prop)
+    ) {
+      const extendsProp: string[] = [];
+      node.heritageClauses.forEach((h) => {
+        h.types.forEach((t) => {
+          const symbol = this.checker.getSymbolAtLocation(t.expression);
+          if (symbol) {
+            const name = symbol.escapedName as string;
+            extendsProp.push(name);
+            this.addParentSymbol(name, symbol, options);
+          }
+        });
+      });
+      if (extendsProp.length) {
+        prop.extends = extendsProp;
+      }
+    }
+  }
   private parseValue(
     prop: PropType,
     options: ParseOptions,
@@ -541,31 +575,10 @@ export class SymbolParser implements ISymbolParser {
             node.members,
             options,
           );
-          if (
-            (ts.isClassLike(node) || ts.isInterfaceDeclaration(node)) &&
-            node.heritageClauses?.length
-          ) {
-            let extendsProp: PropType[] | undefined = undefined;
-            if (isClassLikeProp(prop)) {
-              extendsProp = [];
-            }
-            node.heritageClauses.forEach((h) => {
-              h.types.forEach((t) => {
-                const extendsType = this.checker.getTypeAtLocation(t);
-                const symbol = extendsType.aliasSymbol || extendsType.symbol;
-                const p: PropType | null =
-                  symbol && this.internalSymbol(symbol) === undefined
-                    ? this.addRefSymbol({}, symbol)
-                    : this.updatePropKind({}, extendsType);
-                if (extendsProp && p) {
-                  extendsProp.push(p);
-                }
-              });
-            });
-            if (isClassLikeProp(prop)) {
-              prop.extends = extendsProp;
-            }
+          if (options.collectInheritance) {
+            this.parseHeritageClauses(prop, options, node);
           }
+
           prop.properties = properties;
         }
       } else if (ts.isTypeReferenceNode(node)) {
@@ -870,6 +883,9 @@ export class SymbolParser implements ISymbolParser {
                 this.parseFunction(prop, options, fnDeclaration);
               }
             }
+          }
+          if (options.collectInheritance) {
+            this.parseHeritageClauses(prop, options, resolvedDeclaration);
           }
           if (options.collectGenerics) {
             if (

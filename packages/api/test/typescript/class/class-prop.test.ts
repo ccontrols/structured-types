@@ -2,6 +2,34 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('class', () => {
+  it('extends', () => {
+    const results = parseFiles([path.resolve(__dirname, 'extends.ts')], {
+      collectHelpers: true,
+    });
+
+    expect(results).toEqual({
+      Bar: {
+        name: 'Bar',
+        kind: 13,
+        extends: ['Foo'],
+      },
+      __helpers: {
+        Foo: {
+          name: 'Foo',
+          kind: 13,
+          properties: [
+            {
+              name: 'dummy',
+              static: true,
+              readonly: true,
+              kind: 3,
+              value: false,
+            },
+          ],
+        },
+      },
+    });
+  });
   it('object-type', () => {
     const results = parseFiles([path.resolve(__dirname, 'object-type.ts')], {
       collectFilePath: false,
@@ -69,31 +97,6 @@ describe('class', () => {
             returns: {
               kind: 3,
             },
-          },
-        ],
-      },
-    });
-  });
-  it('extends', () => {
-    const results = parseFiles([path.resolve(__dirname, 'extends.ts')]);
-
-    expect(results).toEqual({
-      Bar: {
-        name: 'Bar',
-        kind: 13,
-        extends: [
-          {
-            name: 'Foo',
-            kind: 13,
-            properties: [
-              {
-                static: true,
-                readonly: true,
-                name: 'dummy',
-                kind: 3,
-                value: false,
-              },
-            ],
           },
         ],
       },
