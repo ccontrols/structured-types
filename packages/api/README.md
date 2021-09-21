@@ -128,7 +128,7 @@ const docs = parseFiles(['../src/sum.js']);
 
 Object property
 
-** extends [PropType](#proptype)**
+**extends [PropType](#proptype)**
 
 | Name          | Type                            | Value | Description                                                                                 |
 | ------------- | ------------------------------- | ----- | ------------------------------------------------------------------------------------------- |

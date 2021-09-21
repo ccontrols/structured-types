@@ -126,26 +126,6 @@ export class ExtractProps {
         type: 'text',
         value: ';',
       });
-      // if (node.parameters) {
-      //   const { propsTable, table, hasValues } = this.extractPropTable(
-      //     node.parameters,
-      //     'parameters',
-      //   );
-      //   if (table && node.returns && node.returns.kind !== PropKind.Void) {
-      //     table.children.push(
-      //       createPropsRow(
-      //         {
-      //           name: 'returns',
-      //           isOptional: true,
-      //           type: this.extractPropType(node.returns),
-      //           description: node.returns.description || '',
-      //         },
-      //         hasValues,
-      //       ),
-      //     );
-      //   }
-      //   result.push(...propsTable);
-      // }
     }
     return result;
   }
@@ -160,19 +140,36 @@ export class ExtractProps {
       result.push(declaration);
 
       if (prop.extends?.length) {
-        const extendsList = prop.extends.reduce((acc: Node[], key: string) => {
-          const extProp = this.topLevelProps[key];
-          if (extProp) {
-            return [...acc, ...this.extractPropType(extProp)];
-          }
-          return acc;
-        }, []);
+        const extendsList = prop.extends.reduce(
+          (acc: Node[], key: string, idx: number) => {
+            const p = this.topLevelProps[key];
+            let result: Node[];
+            if (p) {
+              result = this.extractPropType(p);
+            } else {
+              result = [
+                {
+                  type: 'text',
+                  value: key,
+                },
+              ];
+            }
+            if (prop.extends && idx < prop.extends.length - 1) {
+              result.push({
+                type: 'text',
+                value: ', ',
+              });
+            }
+            return [...acc, ...result];
+          },
+          [],
+        );
         declaration.children.push({
           type: 'strong',
           children: [
             {
               type: 'text',
-              value: ' extends ',
+              value: 'extends ',
             },
             ...extendsList,
           ],
