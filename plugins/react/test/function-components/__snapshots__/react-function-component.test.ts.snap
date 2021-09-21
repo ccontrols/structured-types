@@ -5287,7 +5287,6 @@ A hint could be a sample value or a brief description of the expected format.",
                 "kind": 4,
                 "name": "children",
                 "optional": true,
-                "parent": "React",
                 "properties": Array [
                   Object {
                     "kind": 4,

@@ -55,12 +55,12 @@ export class SymbolParser implements ISymbolParser {
     symbol: ts.Symbol;
   }[] = [];
   private root?: PropType;
-  private checkLibrary: (fileName: ts.SourceFile) => boolean;
+  private checkLibrary: (fileName: ts.SourceFile, node: ts.Node) => boolean;
   private propParents: Record<string, PropType> = {};
   private fileNames: string[];
   constructor(
     program: ts.Program,
-    checkLibrary: (fileName: ts.SourceFile) => boolean,
+    checkLibrary: (fileName: ts.SourceFile, node: ts.Node) => boolean,
     fileNames: string[],
     options?: ParseOptions,
   ) {
@@ -464,6 +464,9 @@ export class SymbolParser implements ISymbolParser {
     return prop;
   }
   private geDeclarationName(declaration?: ts.Declaration): string | undefined {
+    if (!declaration || ts.isModuleDeclaration(declaration)) {
+      return undefined;
+    }
     const name = ts.getNameOfDeclaration(declaration);
     return name && 'text' in name ? name.getText() : undefined;
   }
@@ -948,7 +951,7 @@ export class SymbolParser implements ISymbolParser {
     if (node) {
       const source = node.getSourceFile();
       if (source) {
-        const isInternal = this.checkLibrary(source);
+        const isInternal = this.checkLibrary(source, node);
         if (isInternal) {
           const type = this.checker.getTypeAtLocation(node);
           const kind = getTypeKind(type);

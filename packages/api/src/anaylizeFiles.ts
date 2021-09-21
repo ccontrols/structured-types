@@ -60,9 +60,15 @@ export const anaylizeFiles = (
   const isLibraryFile =
     defaultLibraryPath === '/'
       ? program.isSourceFileDefaultLibrary
-      : (file: ts.SourceFile) => {
+      : (file: ts.SourceFile, node: ts.Node) => {
           if (file.hasNoDefaultLib) {
             return true;
+          }
+          if (typeof parseOptions.isInternal === 'function') {
+            const result = parseOptions.isInternal(file, node);
+            if (result !== undefined) {
+              return result;
+            }
           }
           return equalityComparer(dirname(file.fileName), defaultLibraryPath);
         };

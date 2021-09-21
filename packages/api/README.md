@@ -8,11 +8,7 @@
         -   [3. Your documentation extraction](#3-your-documentation-extraction)
         -   [4. The result](#4-the-result)
 -   [API](#api)
-    -   [ObjectProp](#objectprop)
-    -   [PropKind](#propkind)
-    -   [PropType](#proptype)
-    -   [JSDocExample](#jsdocexample)
-    -   [JSDocPropTag](#jsdocproptag)
+    -   [PropDiagnostic](#propdiagnostic)
 
 # Overview
 
@@ -118,133 +114,24 @@ const docs = parseFiles(['../src/sum.js']);
 
 # API
 
-<api-readme extract="ObjectProp" files="./src/types.ts"/>
+<api-readme extract="PropDiagnostic" files="./src/types.ts"/>
 
 <!-- START-API-README -->
 
-## ObjectProp
+## PropDiagnostic
 
-**`interface`**
+**`type`**
 
-Object property
-
-**extends [PropType](#proptype)**
-
-| Name          | Type                            | Value | Description                                                                                 |
-| ------------- | ------------------------------- | ----- | ------------------------------------------------------------------------------------------- |
-| `kind*`       | [PropKind](#propkind).Object    | 26    | generic properties                                                                          |
-| `properties`  | [PropType](#proptype)\[]        |       | object properties list                                                                      |
-| `value`       | [PropType](#proptype)\[]        |       | value, if the object is initialized                                                         |
-| `name`        | string ([PropType](#proptype))  |       | name of the property                                                                        |
-| `parent`      | string ([PropType](#proptype))  |       | the name of the parent property, if combined props                                          |
-| `optional`    | boolean ([PropType](#proptype)) |       | by default, properties are required                                                         |
-| `readonly`    | boolean ([PropType](#proptype)) |       | readonly property                                                                           |
-| `abstract`    | boolean ([PropType](#proptype)) |       | abstract property                                                                           |
-| `async`       | boolean ([PropType](#proptype)) |       | async function                                                                              |
-| `visibility`  | union ([PropType](#proptype))   |       | property visibility                                                                         |
-| `static`      | boolean ([PropType](#proptype)) |       | true, of the class property is static                                                       |
-| `filePath`    | string ([PropType](#proptype))  |       | name of the file where the property is defined only if different from the default file path |
-| `type`        | union ([PropType](#proptype))   |       | type name of the property                                                                   |
-| `extension`   | string ([PropType](#proptype))  |       | used plugin name ie 'react'...                                                              |
-| `description` | string ([PropType](#proptype))  |       | jsdoc description                                                                           |
-| `fires`       | array ([PropType](#proptype))   |       | jsdoc fires events list                                                                     |
-| `see`         | array ([PropType](#proptype))   |       | jsdoc see links list                                                                        |
-| `examples`    | array ([PropType](#proptype))   |       | jsdoc examples list                                                                         |
-| `tags`        | array ([PropType](#proptype))   |       | jsdoc generic tags, not covered by other props                                              |
-| `summary`     | string ([PropType](#proptype))  |       | jsdoc summary                                                                               |
-| `deprecated`  | union ([PropType](#proptype))   |       | jsdoc deprecated tag                                                                        |
-| `ignore`      | boolean ([PropType](#proptype)) |       | jsdoc ignore tag, to be excluded from documentations                                        |
-
-## PropKind
-
-**`enum`**
-
-The property type or kind
+diagnostics row data
 
 
 
-| Name           | Type   | Value | Description |
-| -------------- | ------ | ----- | ----------- |
-| `String*`      | number | 1     |             |
-| `Number*`      | number | 2     |             |
-| `Boolean*`     | number | 3     |             |
-| `Union*`       | number | 4     |             |
-| `Enum*`        | number | 5     |             |
-| `Tuple*`       | number | 6     |             |
-| `Rest*`        | number | 7     |             |
-| `Undefined*`   | number | 8     |             |
-| `Unknown*`     | number | 9     |             |
-| `Null*`        | number | 10    |             |
-| `Function*`    | number | 11    |             |
-| `Void*`        | number | 12    |             |
-| `Class*`       | number | 13    |             |
-| `Interface*`   | number | 14    |             |
-| `Type*`        | number | 15    |             |
-| `Array*`       | number | 16    |             |
-| `Any*`         | number | 17    |             |
-| `Index*`       | number | 20    |             |
-| `Constructor*` | number | 21    |             |
-| `Getter*`      | number | 22    |             |
-| `Setter*`      | number | 23    |             |
-| `BigInt*`      | number | 24    |             |
-| `Component*`   | number | 25    |             |
-| `Object*`      | number | 26    |             |
-
-## PropType
-
-**`interface`**
-
-Base prop type interface
-
-
-
-| Name          | Type                             | Description                                                                                 |
-| ------------- | -------------------------------- | ------------------------------------------------------------------------------------------- |
-| `kind`        | [PropKind](#propkind)            | The property type or kind                                                                   |
-| `name`        | string                           | name of the property                                                                        |
-| `parent`      | string                           | the name of the parent property, if combined props                                          |
-| `optional`    | boolean                          | by default, properties are required                                                         |
-| `readonly`    | boolean                          | readonly property                                                                           |
-| `abstract`    | boolean                          | abstract property                                                                           |
-| `async`       | boolean                          | async function                                                                              |
-| `visibility`  | private \| protected \| public   | property visibility                                                                         |
-| `static`      | boolean                          | true, of the class property is static                                                       |
-| `filePath`    | string                           | name of the file where the property is defined only if different from the default file path |
-| `type`        | [PropType](#proptype) \| string  | type name of the property                                                                   |
-| `extension`   | string                           | used plugin name ie 'react'...                                                              |
-| `description` | string                           | jsdoc description                                                                           |
-| `fires`       | string\[]                        | jsdoc fires events list                                                                     |
-| `see`         | string\[]                        | jsdoc see links list                                                                        |
-| `examples`    | [JSDocExample](#jsdocexample)\[] | jsdoc examples list                                                                         |
-| `tags`        | [JSDocPropTag](#jsdocproptag)\[] | jsdoc generic tags, not covered by other props                                              |
-| `summary`     | string                           | jsdoc summary                                                                               |
-| `deprecated`  | string \| true                   | jsdoc deprecated tag                                                                        |
-| `ignore`      | boolean                          | jsdoc ignore tag, to be excluded from documentations                                        |
-
-## JSDocExample
-
-**`interface`**
-
-JSDoc example item
-
-
-
-| Name      | Type   | Description            |
-| --------- | ------ | ---------------------- |
-| `caption` | string | example caption/title  |
-| `content` | string | example source/content |
-
-## JSDocPropTag
-
-**`interface`**
-
-JSDoc generic tag item
-
-
-
-| Name      | Type   | Description          |
-| --------- | ------ | -------------------- |
-| `tag*`    | string | tag name             |
-| `content` | string | optional tag content |
+| Name        | Type                  | Description                     |
+| ----------- | --------------------- | ------------------------------- |
+| `category*` | ts.DiagnosticCategory | error category                  |
+| `message*`  | string                | error text message              |
+| `row`       | number                | source code line of the error   |
+| `column`    | number                | source code column of the error |
+| `fileName`  | string                | source file name                |
 
 <!-- END-API-README -->

@@ -30,7 +30,6 @@ Object {
             "kind": 4,
             "name": "children",
             "optional": true,
-            "parent": "React",
             "properties": Array [
               Object {
                 "kind": 4,
@@ -74,7 +73,6 @@ Object {
                       },
                       Object {
                         "name": "children",
-                        "parent": "React",
                       },
                       Object {
                         "name": "type",

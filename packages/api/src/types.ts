@@ -56,6 +56,7 @@ export enum PropKind {
   BigInt = 24,
   Component = 25,
   Object = 26,
+  Namespace = 27,
 }
 
 /**
@@ -534,13 +535,28 @@ export const isObjectLikeProp = (prop: PropType): prop is ObjectLikeProp => {
 };
 
 /**
- * PropDiagnostic row data
+ * diagnostics row data
  */
 export type PropDiagnostic = {
+  /**
+   * error category
+   */
   category: ts.DiagnosticCategory;
+  /**
+   * error text message
+   */
   message: string;
+  /**
+   * source code line of the error
+   */
   row?: number;
+  /**
+   * source code column of the error
+   */
   column?: number;
+  /**
+   * source file name
+   */
   fileName?: string;
 };
 
@@ -553,7 +569,7 @@ export type PropTypes = Record<string, PropType> & {
 };
 
 export const typeNameToPropKind = (type: string): PropKind | undefined => {
-  const loopup: Record<string, PropKind> = {
+  const lookup: Record<string, PropKind> = {
     object: PropKind.Object,
     string: PropKind.String,
     number: PropKind.Number,
@@ -566,16 +582,22 @@ export const typeNameToPropKind = (type: string): PropKind | undefined => {
     type: PropKind.Function,
     array: PropKind.Array,
   };
-  return loopup[type];
+  return lookup[type];
 };
 
 /**
- * Helper class to extract jsdoc comments from tyescript compiler
+ * Helper class to extract jsdoc comments from typescript compiler
  */
 export type JSDocInfoType = {
   comment?: ts.JSDocTag['comment'];
 };
 
+/**
+ * assign the value of a property, with type conversion
+ * @param prop the input property
+ * @param value the value as a string
+ * @returns the modified property
+ */
 export const propValue = (prop: PropType, value?: string): PropType => {
   if (value) {
     if (isNumberProp(prop)) {
@@ -589,5 +611,10 @@ export const propValue = (prop: PropType, value?: string): PropType => {
   return prop;
 };
 
+/**
+ * remove single and double quotes around a string
+ * @param txt the input text
+ * @returns the text without the enclosing quotes
+ */
 export const trimQuotes = (txt: string): string =>
   txt ? txt.replace(/['"]+/g, '') : txt;

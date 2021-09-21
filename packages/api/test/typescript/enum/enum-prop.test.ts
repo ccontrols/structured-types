@@ -2,7 +2,53 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('enum', () => {
-  it('string enum', () => {
+  it('enum-namespace', () => {
+    const results = parseFiles([path.resolve(__dirname, 'enum-namespace.ts')], {
+      collectFilePath: false,
+    });
+    expect(results).toEqual({
+      PropDiagnostic: {
+        name: 'PropDiagnostic',
+        kind: 15,
+        properties: [
+          {
+            name: 'category',
+            kind: 5,
+            type: 'ts.DiagnosticCategory',
+            description: 'error category',
+            properties: [
+              {
+                name: 'Warning',
+                parent: 'DiagnosticCategory',
+                kind: 2,
+                value: 0,
+              },
+              {
+                name: 'Error',
+                parent: 'DiagnosticCategory',
+                kind: 2,
+                value: 1,
+              },
+              {
+                name: 'Suggestion',
+                parent: 'DiagnosticCategory',
+                kind: 2,
+                value: 2,
+              },
+              {
+                name: 'Message',
+                parent: 'DiagnosticCategory',
+                kind: 2,
+                value: 3,
+              },
+            ],
+          },
+        ],
+        description: 'diagnostics row data',
+      },
+    });
+  });
+  it('string-enum', () => {
     const results = parseFiles([path.resolve(__dirname, 'string-enum.ts')]);
     expect(results).toEqual({
       StringEnums: {
@@ -35,7 +81,7 @@ describe('enum', () => {
       },
     });
   });
-  it('initialized enum', () => {
+  it('initialized', () => {
     const results = parseFiles([path.resolve(__dirname, 'initialized.ts')]);
     expect(results).toEqual({
       InitializedEnum: {

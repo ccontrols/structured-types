@@ -106,6 +106,9 @@ export const tsKindToPropKind: { [key in ts.SyntaxKind]?: PropKind } = {
   [ts.SyntaxKind.ArrayType]: PropKind.Array,
   [ts.SyntaxKind.JSDocTypeLiteral]: PropKind.Type,
   [ts.SyntaxKind.JSDocTypedefTag]: PropKind.Type,
+  [ts.SyntaxKind.ModuleDeclaration]: PropKind.Namespace,
+  [ts.SyntaxKind.NamespaceExportDeclaration]: PropKind.Namespace,
+  [ts.SyntaxKind.NamespaceKeyword]: PropKind.Namespace,
 };
 export type ObjectTypeDeclaration =
   | ts.ClassDeclaration
@@ -210,6 +213,12 @@ export interface ParseOptions {
   filter?: (prop: PropType) => boolean;
 
   /**
+   * callback function to determine if a node is an internal (typescript) symbol
+   * return undefined if you need to use the default isInternal processing
+   */
+  isInternal?: (file: ts.SourceFile, node: ts.Node) => boolean | undefined;
+
+  /**
    * max depth for extracting child props. default is 5
    */
   maxDepth?: number;
@@ -262,7 +271,7 @@ export interface ParseOptions {
   collectFilePath?: boolean;
 }
 
-export type ParsePlugin = Omit<DocsOptions, 'resolvers'> & {
+export type ParsePlugin = Omit<DocsOptions, 'resolvers' | 'isInternal'> & {
   /**
    * type resolving custom function
    * ie from a react component will return the props type
