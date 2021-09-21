@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.22.0](https://github.com/ccontrols/structured-types/compare/v3.21.1...v3.22.0) (2021-09-21)
+
+
+### Bug Fixes
+
+* refactor __parents into __helpers ([87b8741](https://github.com/ccontrols/structured-types/commit/87b8741fda54ef39dd240157eb01ca908f18c6c1))
+
+
+
+
+
 ## [3.21.1](https://github.com/ccontrols/structured-types/compare/v3.21.0...v3.21.1) (2021-09-15)
 
 **Note:** Version bump only for package @structured-types/prop-types-plugin

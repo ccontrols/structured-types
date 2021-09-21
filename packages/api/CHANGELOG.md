@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.22.0](https://github.com/ccontrols/structured-types/compare/v3.21.1...v3.22.0) (2021-09-21)
+
+
+### Bug Fixes
+
+* clean parameters table and type description ([0d05ca9](https://github.com/ccontrols/structured-types/commit/0d05ca9bebd5ffbbcf25382abc2fd384d6b70f5a))
+* internal types ([580f894](https://github.com/ccontrols/structured-types/commit/580f8941bf17db6444c5b3a93d8d2d5db88bd3e3))
+* reduce child parameters ([aced217](https://github.com/ccontrols/structured-types/commit/aced2178d3da7a978037507a668aef57586969cd))
+* refactor __parents into __helpers ([87b8741](https://github.com/ccontrols/structured-types/commit/87b8741fda54ef39dd240157eb01ca908f18c6c1))
+* **api-readme:** preserve order of props ([9dbbaa1](https://github.com/ccontrols/structured-types/commit/9dbbaa11b5529e02c5be4152e167a74ddbdfd7db))
+
+
+### Features
+
+* child reference parent ([cddc3dd](https://github.com/ccontrols/structured-types/commit/cddc3ddc4e91915157350b94ef712b00ff35858a))
+* parent consolidate for own prop ([866a8a9](https://github.com/ccontrols/structured-types/commit/866a8a929c879b681220fea6bc2a1984097fdf34))
+* reference to parent prop ([dfa9e5a](https://github.com/ccontrols/structured-types/commit/dfa9e5ad71757bcf4780d7467da3316fc54da0b2))
+
+
+
+
+
 ## [3.21.1](https://github.com/ccontrols/structured-types/compare/v3.21.0...v3.21.1) (2021-09-15)
 
 
