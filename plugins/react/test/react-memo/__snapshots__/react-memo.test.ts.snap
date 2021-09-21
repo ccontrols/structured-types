@@ -73,7 +73,7 @@ Object {
                 "kind": 1,
               },
             ],
-            "kind": 3,
+            "kind": 16,
             "type": "ReadonlyArray",
           },
           Object {

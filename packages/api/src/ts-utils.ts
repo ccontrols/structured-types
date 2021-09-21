@@ -295,10 +295,9 @@ export const defaultParseOptions: ParseOptions = {
     Number: PropKind.Number,
     Array: PropKind.Array,
     Promise: PropKind.Any,
-    ConcatArray: PropKind.Boolean,
-    ReadonlyArray: PropKind.Boolean,
-    TemplateStringsArray: PropKind.Boolean,
-    IfSchedulerTracing: PropKind.Any,
+    ConcatArray: PropKind.Array,
+    ReadonlyArray: PropKind.Array,
+    TemplateStringsArray: PropKind.Array,
   },
 };
 
