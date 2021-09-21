@@ -335,6 +335,7 @@ describe('prop-types-types', () => {
     const result = parseFiles([path.resolve(__dirname, 'element.jsx')], {
       plugins: [propsPlugin],
       collectHelpers: false,
+      collectInheritance: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -347,7 +348,6 @@ describe('prop-types-types', () => {
             kind: 15,
             type: 'React.Element',
             optional: true,
-            extends: ['Validator'],
             description: 'optional element prop description',
           },
         ],
@@ -359,6 +359,7 @@ describe('prop-types-types', () => {
     const result = parseFiles([path.resolve(__dirname, 'node.jsx')], {
       plugins: [propsPlugin],
       collectHelpers: false,
+      collectInheritance: false,
     });
     expect(result).toEqual({
       MyComponent: {
@@ -371,7 +372,6 @@ describe('prop-types-types', () => {
             kind: 15,
             type: 'React.ReactNode',
             optional: true,
-            extends: ['Validator'],
             description: 'optional node prop description',
           },
         ],
