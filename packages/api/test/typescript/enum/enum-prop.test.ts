@@ -3,9 +3,7 @@ import { parseFiles } from '../../../src/index';
 
 describe('enum', () => {
   it('enum-namespace', () => {
-    const results = parseFiles([path.resolve(__dirname, 'enum-namespace.ts')], {
-      collectFilePath: false,
-    });
+    const results = parseFiles([path.resolve(__dirname, 'enum-namespace.ts')]);
     expect(results).toEqual({
       PropDiagnostic: {
         name: 'PropDiagnostic',

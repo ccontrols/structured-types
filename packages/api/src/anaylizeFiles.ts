@@ -72,12 +72,7 @@ export const anaylizeFiles = (
           }
           return equalityComparer(dirname(file.fileName), defaultLibraryPath);
         };
-  const parser = new SymbolParser(
-    program,
-    isLibraryFile,
-    fileNames,
-    parseOptions,
-  );
+  const parser = new SymbolParser(program, isLibraryFile, parseOptions);
   let parsed: PropTypes = {};
   const addSymbol = (symbol?: ts.Symbol): void => {
     if (symbol) {

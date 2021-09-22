@@ -3,9 +3,7 @@ import { parseFiles } from '../../../src/index';
 
 describe('function', () => {
   it('return promise', () => {
-    const results = parseFiles([path.resolve(__dirname, 'return-promise.js')], {
-      collectFilePath: false,
-    });
+    const results = parseFiles([path.resolve(__dirname, 'return-promise.js')]);
     expect(results).toEqual({
       sumAsync: {
         name: 'sumAsync',

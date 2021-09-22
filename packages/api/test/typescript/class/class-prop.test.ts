@@ -31,9 +31,7 @@ describe('class', () => {
     });
   });
   it('object-type', () => {
-    const results = parseFiles([path.resolve(__dirname, 'object-type.ts')], {
-      collectFilePath: false,
-    });
+    const results = parseFiles([path.resolve(__dirname, 'object-type.ts')]);
 
     expect(results).toEqual({
       Test: {

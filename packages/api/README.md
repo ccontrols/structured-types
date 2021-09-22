@@ -121,6 +121,8 @@ const docs = parseFiles(['../src/sum.js']);
 
 ## PropDiagnostic
 
+_defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L546)_
+
 **`type`**
 
 diagnostics row data
@@ -136,6 +138,8 @@ diagnostics row data
 | `fileName`  | string                                       | source file name                |
 
 ## DiagnosticCategory
+
+_defined in [typescript/lib/typescript.d.ts](https://github.com/Microsoft/TypeScript)_
 
 **`enum`**
 

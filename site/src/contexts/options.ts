@@ -70,10 +70,16 @@ export const defaultOptions: OptionsTypes = {
         help: 'Whether to collect generics parameters.',
       },
       collectFilePath: {
-        defaultValue: true,
+        defaultValue: false,
         skipLink: true,
         help: 'Whether to collect the file path of objects.',
       },
+      collectLinesOfCode: {
+        defaultValue: false,
+        skipLink: true,
+        help: 'Whether to collect the source code locations of symbols.',
+      },
+
       scope: {
         defaultValue: 'exports',
         options: ['exports', 'all'],

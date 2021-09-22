@@ -1,7 +1,8 @@
 /* eslint-disable prefer-spread */
+import path from 'path';
+import fs from 'fs';
 import reactPlugin from '@structured-types/react-plugin';
 import propTypesPlugin from '@structured-types/prop-types-plugin';
-
 import {
   InterfaceProp,
   isTupleProp,
@@ -17,6 +18,7 @@ import {
   isArrayProp,
   ParseOptions,
 } from '@structured-types/api';
+import { getRepoPath } from '../common/package-info';
 import { createPropsTable, PropItem } from '../blocks/props-table';
 import { Node, NodeChildren } from '../common/types';
 
@@ -24,7 +26,14 @@ export class ExtractProps {
   private files: string[];
   private names?: string[];
   private topLevelProps: Record<string, PropType> = {};
-
+  private repoNames: {
+    [key: string]: {
+      repo?: string;
+      filePath?: string;
+      packageName?: string;
+      relativePath?: string;
+    };
+  } = {};
   constructor(files: string[]) {
     this.files = files;
   }
@@ -430,6 +439,58 @@ export class ExtractProps {
       depth: 2,
       children: [{ type: 'text', value: prop.name }],
     });
+    const { filePath } = prop;
+    if (filePath) {
+      if (!this.repoNames[filePath]) {
+        this.repoNames[filePath] = getRepoPath(
+          path.dirname(path.resolve(filePath)),
+        );
+        if (this.repoNames[filePath].filePath) {
+          this.repoNames[filePath].packageName = JSON.parse(
+            fs.readFileSync(this.repoNames[filePath].filePath || '', 'utf8'),
+          ).name;
+          this.repoNames[filePath].relativePath = path.relative(
+            path.dirname(this.repoNames[filePath].filePath || './'),
+            filePath,
+          );
+        }
+      }
+
+      if (this.repoNames[filePath]) {
+        const { repo, relativePath, packageName } = this.repoNames[filePath];
+        if (!repo) {
+          console.log(filePath, this.repoNames);
+        }
+        const { line } = prop.loc || {};
+        const sourceLocation = filePath.includes('node_modules')
+          ? repo
+          : `${repo}/${relativePath}${line ? `#L${line}` : ''}`;
+        result.push({
+          type: 'paragraph',
+          children: [
+            {
+              type: 'emphasis',
+              children: [
+                {
+                  type: 'text',
+                  value: 'defined in ',
+                },
+                {
+                  type: 'link',
+                  url: sourceLocation,
+                  children: [
+                    {
+                      type: 'text',
+                      value: `${packageName}/${relativePath}`,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        });
+      }
+    }
     if (prop.kind) {
       result.push({
         type: 'strong',
@@ -479,6 +540,7 @@ export class ExtractProps {
       const props = parseFiles(this.files, {
         collectFilePath: true,
         collectHelpers: true,
+        collectLinesOfCode: true,
         plugins: [propTypesPlugin, reactPlugin],
         ...options,
       });

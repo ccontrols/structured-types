@@ -56,12 +56,7 @@ describe('type', () => {
     });
   });
   it('referenced-type', () => {
-    const results = parseFiles(
-      [path.resolve(__dirname, 'referenced-type.ts')],
-      {
-        collectFilePath: false,
-      },
-    );
+    const results = parseFiles([path.resolve(__dirname, 'referenced-type.ts')]);
     expect(results).toEqual({
       JSDocInfoType: {
         name: 'JSDocInfoType',

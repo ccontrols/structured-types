@@ -105,6 +105,12 @@ export interface PropType {
    * only if different from the default file path
    */
   filePath?: string;
+
+  /**
+   * source code location for the symbol declaration
+   * available if collectLinesOfCode is set to true
+   */
+  loc?: { line: number; col: number };
   /**
    * type name of the property
    */

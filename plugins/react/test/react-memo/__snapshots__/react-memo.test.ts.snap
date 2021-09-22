@@ -333,7 +333,6 @@ Object {
             "extends": Array [
               "Properties",
             ],
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "kind": 14,
             "name": "CSSProperties",
             "properties": Array [
@@ -31117,7 +31116,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31148,7 +31146,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31179,7 +31176,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31210,7 +31206,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31241,7 +31236,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31272,7 +31266,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31303,7 +31296,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31334,7 +31326,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31365,7 +31356,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31396,7 +31386,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31427,7 +31416,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31458,7 +31446,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31489,7 +31476,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31520,7 +31506,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31551,7 +31536,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31582,7 +31566,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31613,7 +31596,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31644,7 +31626,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31675,7 +31656,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31706,7 +31686,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31737,7 +31716,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31768,7 +31746,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31799,7 +31776,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31830,7 +31806,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31861,7 +31836,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31892,7 +31866,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31923,7 +31896,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31954,7 +31926,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -31985,7 +31956,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32016,7 +31986,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32047,7 +32016,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32078,7 +32046,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32109,7 +32076,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32140,7 +32106,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32171,7 +32136,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32202,7 +32166,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32233,7 +32196,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32264,7 +32226,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32295,7 +32256,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32326,7 +32286,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32357,7 +32316,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32388,7 +32346,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32419,7 +32376,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32450,7 +32406,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32481,7 +32436,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32512,7 +32466,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32543,7 +32496,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32574,7 +32526,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32605,7 +32556,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32636,7 +32586,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32667,7 +32616,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32698,7 +32646,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32729,7 +32676,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32760,7 +32706,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32791,7 +32736,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32822,7 +32766,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32853,7 +32796,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32884,7 +32826,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32915,7 +32856,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32946,7 +32886,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -32977,7 +32916,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33008,7 +32946,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33039,7 +32976,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33070,7 +33006,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33101,7 +33036,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33132,7 +33066,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33163,7 +33096,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33194,7 +33126,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33225,7 +33156,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33256,7 +33186,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33287,7 +33216,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33318,7 +33246,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33349,7 +33276,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33380,7 +33306,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33411,7 +33336,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33442,7 +33366,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33473,7 +33396,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33504,7 +33426,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33535,7 +33456,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33566,7 +33486,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33597,7 +33516,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33628,7 +33546,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33659,7 +33576,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33690,7 +33606,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33721,7 +33636,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33752,7 +33666,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33783,7 +33696,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33814,7 +33726,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33845,7 +33756,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33876,7 +33786,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33907,7 +33816,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33938,7 +33846,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -33969,7 +33876,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34000,7 +33906,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34031,7 +33936,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34062,7 +33966,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34093,7 +33996,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34124,7 +34026,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34155,7 +34056,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34186,7 +34086,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34217,7 +34116,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34248,7 +34146,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34279,7 +34176,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34310,7 +34206,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34341,7 +34236,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34372,7 +34266,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34403,7 +34296,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34434,7 +34326,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34465,7 +34356,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34496,7 +34386,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34527,7 +34416,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34558,7 +34446,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34589,7 +34476,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34620,7 +34506,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34651,7 +34536,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34682,7 +34566,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34713,7 +34596,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34744,7 +34626,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34775,7 +34656,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34806,7 +34686,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34837,7 +34716,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34868,7 +34746,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34899,7 +34776,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34930,7 +34806,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34961,7 +34836,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -34992,7 +34866,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35023,7 +34896,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35054,7 +34926,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35085,7 +34956,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35116,7 +34986,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35147,7 +35016,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35178,7 +35046,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35209,7 +35076,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35240,7 +35106,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35271,7 +35136,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35302,7 +35166,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35333,7 +35196,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35364,7 +35226,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35395,7 +35256,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35426,7 +35286,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35457,7 +35316,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35488,7 +35346,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35519,7 +35376,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35550,7 +35406,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35581,7 +35436,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35612,7 +35466,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35643,7 +35496,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35674,7 +35526,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35705,7 +35556,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35736,7 +35586,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35767,7 +35616,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35798,7 +35646,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35829,7 +35676,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35860,7 +35706,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35891,7 +35736,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35922,7 +35766,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35953,7 +35796,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -35984,7 +35826,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -36015,7 +35856,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",
@@ -36046,7 +35886,6 @@ A hint could be a sample value or a brief description of the expected format.",
         "parent": "DOMAttributes",
         "properties": Array [
           Object {
-            "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
             "generics": Array [
               Object {
                 "name": "T",

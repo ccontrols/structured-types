@@ -203,7 +203,6 @@ describe('function-component', () => {
     const result = parseFiles([path.resolve(__dirname, 'pick-props.tsx')], {
       plugins: [reactPlugin],
       collectHelpers: false,
-      collectFilePath: false,
     });
     expect(result).toMatchSnapshot();
   });

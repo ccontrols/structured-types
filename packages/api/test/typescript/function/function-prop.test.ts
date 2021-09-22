@@ -3,9 +3,7 @@ import { parseFiles } from '../../../src/index';
 
 describe('function', () => {
   it('class-prop', () => {
-    const results = parseFiles([path.resolve(__dirname, 'class-prop.ts')], {
-      collectFilePath: false,
-    });
+    const results = parseFiles([path.resolve(__dirname, 'class-prop.ts')]);
     expect(results).toEqual({
       Boz: {
         name: 'Boz',
@@ -40,9 +38,7 @@ describe('function', () => {
     });
   });
   it('async-function', () => {
-    const results = parseFiles([path.resolve(__dirname, 'async-function.ts')], {
-      collectFilePath: false,
-    });
+    const results = parseFiles([path.resolve(__dirname, 'async-function.ts')]);
     expect(results).toEqual({
       genMyClass: {
         async: true,
@@ -251,9 +247,7 @@ describe('function', () => {
   });
 
   it('infer-return', () => {
-    const results = parseFiles([path.resolve(__dirname, 'infer-return.ts')], {
-      collectFilePath: false,
-    });
+    const results = parseFiles([path.resolve(__dirname, 'infer-return.ts')]);
     expect(results).toEqual({
       fn: {
         name: 'fn',
@@ -275,9 +269,7 @@ describe('function', () => {
     });
   });
   it('react fc', () => {
-    const results = parseFiles([path.resolve(__dirname, 'react-fc.ts')], {
-      collectFilePath: false,
-    });
+    const results = parseFiles([path.resolve(__dirname, 'react-fc.ts')]);
     expect(results).toMatchSnapshot();
   });
   it('function properties', () => {
