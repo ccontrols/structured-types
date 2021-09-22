@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.23.0](https://github.com/ccontrols/structured-types/compare/v3.22.0...v3.23.0) (2021-09-22)
+
+
+### Features
+
+* collect source code locations ([6123acc](https://github.com/ccontrols/structured-types/commit/6123acc331da1de710f815ce85cf3e3c457732da))
+* customizable isInternal props ([86be527](https://github.com/ccontrols/structured-types/commit/86be527f6b0fc6781ffbed6879f8ac8e67195cd4))
+
+
+
+
+
 # [3.22.0](https://github.com/ccontrols/structured-types/compare/v3.21.1...v3.22.0) (2021-09-21)
 
 

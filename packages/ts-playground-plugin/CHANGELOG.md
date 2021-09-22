@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.23.0](https://github.com/ccontrols/structured-types/compare/v3.22.0...v3.23.0) (2021-09-22)
+
+**Note:** Version bump only for package @structured-types/playground-plugin
+
+
+
+
+
 # [3.22.0](https://github.com/ccontrols/structured-types/compare/v3.21.1...v3.22.0) (2021-09-21)
 
 **Note:** Version bump only for package @structured-types/playground-plugin
