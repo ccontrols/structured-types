@@ -15,6 +15,7 @@ import {
   PropKind,
   hasValue,
   isArrayProp,
+  ParseOptions,
 } from '@structured-types/api';
 import { createPropsTable, PropItem } from '../blocks/props-table';
 import { Node, NodeChildren } from '../common/types';
@@ -24,9 +25,8 @@ export class ExtractProps {
   private names?: string[];
   private topLevelProps: Record<string, PropType> = {};
 
-  constructor(files: string[], names: string[] | undefined) {
+  constructor(files: string[]) {
     this.files = files;
-    this.names = names;
   }
 
   private extractPropTable(
@@ -129,7 +129,10 @@ export class ExtractProps {
     }
     return result;
   }
-
+  private getPropLink = (key: string) => {
+    const nameParts = key.split('.');
+    return this.topLevelProps[nameParts[nameParts.length - 1]];
+  };
   private extractInterface(prop: InterfaceProp): Node[] {
     const result: Node[] = [];
     if (prop.name) {
@@ -142,7 +145,7 @@ export class ExtractProps {
       if (prop.extends?.length) {
         const extendsList = prop.extends.reduce(
           (acc: Node[], key: string, idx: number) => {
-            const p = this.topLevelProps[key];
+            const p = this.getPropLink(key);
             let result: Node[];
             if (p) {
               result = this.extractPropType(p);
@@ -193,11 +196,12 @@ export class ExtractProps {
       },
     ];
     if (typeof type === 'string') {
-      if (this.topLevelProps[type]) {
+      const link = this.getPropLink(type);
+      if (link) {
         return [
           {
             type: 'link',
-            url: `#${type.toLowerCase()}`,
+            url: `#${link.name?.toLowerCase()}`,
             children: typeText,
           },
         ];
@@ -469,18 +473,18 @@ export class ExtractProps {
     return result;
   }
 
-  public extract(): Node[] {
+  public extract(options: ParseOptions): Node[] {
     const result: Node[] = [];
     if (this.files) {
       const props = parseFiles(this.files, {
         collectFilePath: true,
-        extractNames: this.names,
         collectHelpers: true,
         plugins: [propTypesPlugin, reactPlugin],
+        ...options,
       });
       let propKeys = Object.keys(props);
-      if (this.names?.length) {
-        const names = this.names;
+      if (options.extract?.length) {
+        const names = options.extract;
         propKeys = propKeys.sort((key1, key2) => {
           return names.indexOf(key1) - names.indexOf(key2);
         });

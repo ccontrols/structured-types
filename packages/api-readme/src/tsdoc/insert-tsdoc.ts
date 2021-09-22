@@ -49,11 +49,22 @@ export const insertTSDoc = (fileName: string) => (): ((node: Node) => void) => {
             }
           }
           if (files.length) {
-            const extractProps = new ExtractProps(
-              files,
-              splitCommaAttribute(attributes, 'extract'),
-            );
-            const tsNodes = extractProps.extract();
+            const extractProps = new ExtractProps(files);
+            const options = attributes.reduce((acc, attr) => {
+              let value;
+              const strValue = attr[1];
+              if (strValue === 'true') {
+                value = true;
+              } else if (strValue === 'false') {
+                value = true;
+              } else if (!isNaN(parseFloat(strValue))) {
+                value = parseFloat(strValue);
+              } else if (typeof attr[1] === 'string') {
+                value = splitCommaAttribute(attributes, attr[0]);
+              }
+              return { ...acc, [attr[0]]: value };
+            }, {});
+            const tsNodes = extractProps.extract(options);
             newNodes.push(...tsNodes);
           }
           inlineNewContent(attrs, newNodes);

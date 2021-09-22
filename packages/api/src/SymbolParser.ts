@@ -948,7 +948,7 @@ export class SymbolParser implements ISymbolParser {
     );
   }
   private internalNode(node?: ts.Node): PropKind | undefined {
-    if (node) {
+    if (node && !this.options.collectInternals) {
       const source = node.getSourceFile();
       if (source) {
         const isInternal = this.checkLibrary(source, node);

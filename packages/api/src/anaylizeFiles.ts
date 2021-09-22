@@ -44,7 +44,7 @@ export const anaylizeFiles = (
     ...parseOptions
   } = options;
   const tsOptions = { ...tsDefaults, ...userTsOptions };
-  const { extractNames, collectDiagnostics, internalTypes, collectHelpers } =
+  const { extract, collectDiagnostics, internalTypes, collectHelpers } =
     parseOptions || {};
   const { program: userProgram, host: userHost } = programOptions;
   const host = userHost || ts.createCompilerHost(tsOptions);
@@ -84,7 +84,7 @@ export const anaylizeFiles = (
       const symbolName = symbol.getName();
       if (
         internalTypes?.[symbolName] === undefined &&
-        (!extractNames || extractNames.includes(symbolName))
+        (!extract || extract.includes(symbolName))
       ) {
         const prop = parser.parse(symbol);
         if (prop) {

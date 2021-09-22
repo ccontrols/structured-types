@@ -9,6 +9,7 @@
         -   [4. The result](#4-the-result)
 -   [API](#api)
     -   [PropDiagnostic](#propdiagnostic)
+    -   [DiagnosticCategory](#diagnosticcategory)
 
 # Overview
 
@@ -114,7 +115,7 @@ const docs = parseFiles(['../src/sum.js']);
 
 # API
 
-<api-readme extract="PropDiagnostic" files="./src/types.ts"/>
+<api-readme extract="PropDiagnostic" files="./src/types.ts" collectInternals=true/>
 
 <!-- START-API-README -->
 
@@ -126,12 +127,25 @@ diagnostics row data
 
 
 
-| Name        | Type                  | Description                     |
-| ----------- | --------------------- | ------------------------------- |
-| `category*` | ts.DiagnosticCategory | error category                  |
-| `message*`  | string                | error text message              |
-| `row`       | number                | source code line of the error   |
-| `column`    | number                | source code column of the error |
-| `fileName`  | string                | source file name                |
+| Name        | Type                                         | Description                     |
+| ----------- | -------------------------------------------- | ------------------------------- |
+| `category*` | [ts.DiagnosticCategory](#diagnosticcategory) | error category                  |
+| `message*`  | string                                       | error text message              |
+| `row`       | number                                       | source code line of the error   |
+| `column`    | number                                       | source code column of the error |
+| `fileName`  | string                                       | source file name                |
+
+## DiagnosticCategory
+
+**`enum`**
+
+
+
+| Name          | Type   | Value | Description |
+| ------------- | ------ | ----- | ----------- |
+| `Warning*`    | number | 0     |             |
+| `Error*`      | number | 1     |             |
+| `Suggestion*` | number | 2     |             |
+| `Message*`    | number | 3     |             |
 
 <!-- END-API-README -->

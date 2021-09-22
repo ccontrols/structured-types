@@ -50,7 +50,7 @@ export const defaultOptions: OptionsTypes = {
           'TemplateStringsArray',
         ],
       },
-      extractNames: {
+      extract: {
         type: 'textarea',
         help: 'List of export names to be extracted during parsing. By default all exports will be extracted.',
       },

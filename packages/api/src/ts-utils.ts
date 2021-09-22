@@ -205,7 +205,7 @@ export interface ParseOptions {
    * list of export names to be extracted.
    * by default all exports are extracted
    */
-  extractNames?: string[];
+  extract?: string[];
 
   /**
    * filter properties function. By default filter out all props with ignore === true
@@ -254,7 +254,10 @@ export interface ParseOptions {
    * whether to collect errors/diagnostics
    */
   collectDiagnostics?: boolean;
-
+  /**
+   * whether to collect internal (typescript) symbols
+   */
+  collectInternals?: boolean;
   /**
    * installed plugins can modify default options and install type resolvers
    */
