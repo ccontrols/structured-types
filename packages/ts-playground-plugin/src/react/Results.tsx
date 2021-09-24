@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { anaylizeFiles, PropTypes } from '@structured-types/api';
+import { analyzeFiles, PropTypes } from '@structured-types/api';
 import reactPlugin from '@structured-types/react-plugin';
 import propTypesPlugin from '@structured-types/prop-types-plugin';
 import { Loader } from './Loader';
@@ -51,7 +51,7 @@ export const Results: FC<{ sandbox: Sandbox }> = ({ sandbox }) => {
       const file =
         files.find((f) => f.fileName.startsWith('/input')) ||
         files[files.length - 1];
-      const types = anaylizeFiles(
+      const types = analyzeFiles(
         [file.fileName],
         {
           scope: 'all',

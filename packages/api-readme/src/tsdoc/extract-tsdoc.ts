@@ -47,94 +47,107 @@ export class ExtractProps {
         ({
           name: prop.name || '',
           isOptional: prop.optional,
-          type: isFunctionProp(prop)
-            ? isFunctionProp(prop)
-            : this.extractPropType(prop, { extractProperties: true }),
+          type: this.extractPropType(prop, { extractProperties: true }),
           description: prop.description || '',
           value: hasValue(prop) ? prop.value : undefined,
         } as PropItem),
     );
     return createPropsTable(items, title);
   }
-  private extractFunction(node: FunctionProp, _extractTable = true): Node[] {
-    const result: Node[] = [];
-    if (node.name) {
-      const declaration: NodeChildren = {
-        type: 'paragraph',
-        children: [],
-      };
-      result.push(declaration);
-      declaration.children.push({
-        type: 'strong',
-        children: [
-          {
-            type: 'text',
-            value: 'function',
-          },
-        ],
-      });
-      declaration.children.push({
-        type: 'text',
-        value: ' ',
-      });
-
-      declaration.children.push({
-        type: 'text',
-        value: node.name,
-      });
-      declaration.children.push({
+  private extractFunctionName(prop: FunctionProp): Node[] {
+    if (prop.name) {
+      return [
+        {
+          type: 'paragraph',
+          children: [
+            {
+              type: 'strong',
+              children: [
+                {
+                  type: 'text',
+                  value: 'function',
+                },
+              ],
+            },
+            {
+              type: 'text',
+              value: ' ',
+            },
+            {
+              type: 'text',
+              value: prop.name,
+            },
+          ],
+        },
+      ];
+    }
+    return [];
+  }
+  private extractFunctionDeclaration(prop: FunctionProp): Node[] {
+    const result: Node[] = [
+      {
         type: 'text',
         value: '(',
-      });
-      if (node.parameters) {
-        for (let i = 0; i < node.parameters.length; i += 1) {
-          const p = node.parameters[i];
-          if (i > 0) {
-            declaration.children.push({
-              type: 'text',
-              value: ', ',
-            });
-          }
-          declaration.children.push({
-            type: 'inlineCode',
-            value: p.name,
-          });
-          if (!p.optional) {
-            declaration.children.push({
-              type: 'text',
-              value: '*',
-            });
-          }
-          declaration.children.push({
+      },
+    ];
+    if (prop.parameters) {
+      for (let i = 0; i < prop.parameters.length; i += 1) {
+        const p = prop.parameters[i];
+        if (i > 0) {
+          result.push({
             type: 'text',
-            value: ': ',
+            value: ', ',
           });
-          declaration.children.push(
-            ...this.extractPropType(p, {
-              extractProperties: false,
-            }),
-          );
         }
-      }
-      declaration.children.push({
-        type: 'text',
-        value: ')',
-      });
-      if (node.returns) {
-        declaration.children.push({
+        result.push({
+          type: 'inlineCode',
+          value: p.name || '',
+        });
+        if (!p.optional) {
+          result.push({
+            type: 'text',
+            value: '*',
+          });
+        }
+        result.push({
           type: 'text',
           value: ': ',
         });
-        declaration.children.push(
-          ...this.extractPropType(node.returns, {
+        result.push(
+          ...this.extractPropType(p, {
             extractProperties: false,
           }),
         );
       }
-      declaration.children.push({
+    }
+    result.push({
+      type: 'text',
+      value: ')',
+    });
+    if (prop.returns) {
+      result.push({
         type: 'text',
-        value: ';',
+        value: ': ',
       });
+      result.push(
+        ...this.extractPropType(prop.returns, {
+          extractProperties: false,
+        }),
+      );
+    }
+    result.push({
+      type: 'text',
+      value: ';',
+    });
+    return result;
+  }
+  private extractFunction(prop: FunctionProp, _extractTable = true): Node[] {
+    const result: Node[] = this.extractFunctionName(prop);
+    const declaration = this.extractFunctionDeclaration(prop);
+    if (result.length && result[0].children) {
+      result[0].children.push(...declaration);
+    } else {
+      result.push(...declaration);
     }
     return result;
   }
@@ -427,6 +440,8 @@ export class ExtractProps {
           ],
         },
       ];
+    } else if (isFunctionProp(prop)) {
+      return this.extractFunctionDeclaration(prop);
     } else {
       return this.typeNode(prop, showValue);
     }

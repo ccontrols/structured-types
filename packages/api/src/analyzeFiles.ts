@@ -33,7 +33,7 @@ const consolidateParentProps = (
   });
 };
 
-export const anaylizeFiles = (
+export const analyzeFiles = (
   fileNames: string[],
   options: DocsOptions = {},
   programOptions: ProgramOptions = {},

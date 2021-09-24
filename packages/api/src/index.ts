@@ -1,5 +1,5 @@
 import { getTypescriptConfig } from '@structured-types/typescript-config';
-import { anaylizeFiles } from './anaylizeFiles';
+import { analyzeFiles } from './analyzeFiles';
 import { PropTypes } from './types';
 import { tsDefaults, DocsOptions, ProgramOptions } from './ts-utils';
 export * from './jsdoc';
@@ -7,7 +7,7 @@ export * from './ts';
 export * from './types';
 export * from './ts-utils';
 
-export { anaylizeFiles };
+export { analyzeFiles };
 
 export const parseFiles = (
   filePaths: string[],
@@ -21,6 +21,6 @@ export const parseFiles = (
     ...tsDefaults,
     ...getTypescriptConfig(filePaths[0], options.tsOptions),
   };
-  const results = anaylizeFiles(filePaths, options, programOptions);
+  const results = analyzeFiles(filePaths, options, programOptions);
   return results;
 };
