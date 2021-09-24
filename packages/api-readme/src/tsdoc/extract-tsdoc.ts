@@ -49,7 +49,7 @@ export class ExtractProps {
           isOptional: prop.optional,
           type: isFunctionProp(prop)
             ? isFunctionProp(prop)
-            : this.extractPropType(prop),
+            : this.extractPropType(prop, { extractProperties: true }),
           description: prop.description || '',
           value: hasValue(prop) ? prop.value : undefined,
         } as PropItem),
@@ -231,7 +231,7 @@ export class ExtractProps {
         },
       ];
     }
-    if (prop.name) {
+    if (prop.name && prop.name !== prop.type) {
       return [
         {
           type: 'text',
@@ -431,14 +431,7 @@ export class ExtractProps {
       return this.typeNode(prop, showValue);
     }
   }
-
-  private extractTSType(prop: PropType): Node[] {
-    const result: Node[] = [];
-    result.push({
-      type: 'heading',
-      depth: 2,
-      children: [{ type: 'text', value: prop.name }],
-    });
+  private getSourceLocation(prop: PropType): Node[] {
     const { filePath } = prop;
     if (filePath) {
       if (!this.repoNames[filePath]) {
@@ -465,32 +458,44 @@ export class ExtractProps {
         const sourceLocation = filePath.includes('node_modules')
           ? repo
           : `${repo}/${relativePath}${line ? `#L${line}` : ''}`;
-        result.push({
-          type: 'paragraph',
-          children: [
-            {
-              type: 'emphasis',
-              children: [
-                {
-                  type: 'text',
-                  value: 'defined in ',
-                },
-                {
-                  type: 'link',
-                  url: sourceLocation,
-                  children: [
-                    {
-                      type: 'text',
-                      value: `${packageName}/${relativePath}`,
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        });
+        return [
+          {
+            type: 'paragraph',
+            children: [
+              {
+                type: 'emphasis',
+                children: [
+                  {
+                    type: 'text',
+                    value: 'defined in ',
+                  },
+                  {
+                    type: 'link',
+                    url: sourceLocation,
+                    children: [
+                      {
+                        type: 'text',
+                        value: `${packageName}/${relativePath}`,
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ];
       }
     }
+    return [];
+  }
+  private extractTSType(prop: PropType): Node[] {
+    const result: Node[] = [];
+    result.push({
+      type: 'heading',
+      depth: 2,
+      children: [{ type: 'text', value: prop.name }],
+    });
+    result.push(...this.getSourceLocation(prop));
     if (prop.kind) {
       result.push({
         type: 'strong',

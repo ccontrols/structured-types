@@ -188,10 +188,6 @@ export const tsDefaults: ts.CompilerOptions = {
   checkJs: true,
 };
 
-export type CompileOptions = {
-  tsOptions?: ts.CompilerOptions & { lang?: 'typescript' | 'javascript' };
-};
-
 /**
  * parsing options
  */
@@ -317,7 +313,7 @@ export const defaultParseOptions: ParseOptions = {
   },
 };
 
-export type DocsOptions = CompileOptions & ParseOptions;
+export type DocsOptions = { tsOptions?: ts.CompilerOptions } & ParseOptions;
 export type ProgramOptions = {
   host?: ts.CompilerHost;
   program?: ts.Program;

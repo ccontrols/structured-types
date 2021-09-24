@@ -1085,7 +1085,7 @@ export class SymbolParser implements ISymbolParser {
 
   private resolveRefTypes = () => {
     let i = 0;
-    const { maxDepth = 5 } = this.options;
+    const { maxDepth = 6 } = this.options;
     while (i < maxDepth) {
       const cachedSymbols = this.refSymbols.filter((r) => r.props.length);
       if (!cachedSymbols.length) {

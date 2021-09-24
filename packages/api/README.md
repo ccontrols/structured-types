@@ -8,8 +8,16 @@
         -   [3. Your documentation extraction](#3-your-documentation-extraction)
         -   [4. The result](#4-the-result)
 -   [API](#api)
-    -   [PropDiagnostic](#propdiagnostic)
-    -   [DiagnosticCategory](#diagnosticcategory)
+    -   [ParseOptions](#parseoptions)
+    -   [PropKind](#propkind)
+    -   [PropType](#proptype)
+    -   [DocsOptions](#docsoptions)
+    -   [ParsePlugin](#parseplugin)
+    -   [JSDocExample](#jsdocexample)
+    -   [JSDocPropTag](#jsdocproptag)
+    -   [props](#props)
+    -   [ResolverReturnType](#resolverreturntype)
+    -   [ISymbolParser](#isymbolparser)
 
 # Overview
 
@@ -115,41 +123,249 @@ const docs = parseFiles(['../src/sum.js']);
 
 # API
 
-<api-readme extract="PropDiagnostic" files="./src/types.ts" collectInternals=true/>
+<api-readme extract="ParseOptions" files="./src/ts-utils.ts" />
 
 <!-- START-API-README -->
 
-## PropDiagnostic
+## ParseOptions
 
-_defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L546)_
+_defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L194)_
 
-**`type`**
+**`interface`**
 
-diagnostics row data
+parsing options
 
 
 
-| Name        | Type                                         | Description                     |
-| ----------- | -------------------------------------------- | ------------------------------- |
-| `category*` | [ts.DiagnosticCategory](#diagnosticcategory) | error category                  |
-| `message*`  | string                                       | error text message              |
-| `row`       | number                                       | source code line of the error   |
-| `column`    | number                                       | source code column of the error |
-| `fileName`  | string                                       | source file name                |
+| Name                 | Type                                     | Description                                                                                                                                       |
+| -------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `internalTypes`      | Record&lt;string, [PropKind](#propkind)> | internal types - libs by default includes classes such as \`String\`, \`Function\`...                                                             |
+| `extract`            | string\[]                                | list of export names to be extracted. by default all exports are extracted                                                                        |
+| `filter`             |                                          | filter properties function. By default filter out all props with ignore === true                                                                  |
+| `isInternal`         |                                          | callback function to determine if a node is an internal (typescript) symbol return undefined if you need to use the default isInternal processing |
+| `maxDepth`           | number                                   | max depth for extracting child props. default is 5                                                                                                |
+| `collectHelpers`     | boolean                                  | whether to save "helper" props that are used by the main parsed props if set to false will result in a smaller result set                         |
+| `collectGenerics`    | boolean                                  | whether to collect generics parameters                                                                                                            |
+| `collectParameters`  | boolean                                  | whether to collect function parameters                                                                                                            |
+| `collectProperties`  | boolean                                  | whether to collect object/type properties                                                                                                         |
+| `collectInheritance` | boolean                                  | whether to collect the inheritance properties                                                                                                     |
+| `collectExtension`   | boolean                                  | whether to collect the plugin/extension name                                                                                                      |
+| `collectDiagnostics` | boolean                                  | whether to collect errors/diagnostics                                                                                                             |
+| `collectInternals`   | boolean                                  | whether to collect internal (typescript) symbols                                                                                                  |
+| `plugins`            | [ParsePlugin](#parseplugin)\[]           | installed plugins can modify default options and install type resolvers                                                                           |
+| `scope`              | exports \| all                           | by default collects only the exported symbols                                                                                                     |
+| `collectFilePath`    | boolean                                  | whether to collect the file path of objects                                                                                                       |
+| `collectLinesOfCode` | boolean                                  | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the \`loc\` prop             |
 
-## DiagnosticCategory
+## PropKind
 
-_defined in [typescript/lib/typescript.d.ts](https://github.com/Microsoft/TypeScript)_
+_defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L34)_
 
 **`enum`**
 
+The property type or kind
 
 
-| Name          | Type   | Value | Description |
-| ------------- | ------ | ----- | ----------- |
-| `Warning*`    | number | 0     |             |
-| `Error*`      | number | 1     |             |
-| `Suggestion*` | number | 2     |             |
-| `Message*`    | number | 3     |             |
+
+| Name           | Type   | Value | Description |
+| -------------- | ------ | ----- | ----------- |
+| `String*`      | number | 1     |             |
+| `Number*`      | number | 2     |             |
+| `Boolean*`     | number | 3     |             |
+| `Union*`       | number | 4     |             |
+| `Enum*`        | number | 5     |             |
+| `Tuple*`       | number | 6     |             |
+| `Rest*`        | number | 7     |             |
+| `Undefined*`   | number | 8     |             |
+| `Unknown*`     | number | 9     |             |
+| `Null*`        | number | 10    |             |
+| `Function*`    | number | 11    |             |
+| `Void*`        | number | 12    |             |
+| `Class*`       | number | 13    |             |
+| `Interface*`   | number | 14    |             |
+| `Type*`        | number | 15    |             |
+| `Array*`       | number | 16    |             |
+| `Any*`         | number | 17    |             |
+| `Index*`       | number | 20    |             |
+| `Constructor*` | number | 21    |             |
+| `Getter*`      | number | 22    |             |
+| `Setter*`      | number | 23    |             |
+| `BigInt*`      | number | 24    |             |
+| `Component*`   | number | 25    |             |
+| `Object*`      | number | 26    |             |
+| `Namespace*`   | number | 27    |             |
+
+## PropType
+
+_defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L65)_
+
+**`interface`**
+
+Base prop type interface
+
+
+
+| Name          | Type                              | Description                                                                                    |
+| ------------- | --------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `kind`        | [PropKind](#propkind)             | The property type or kind                                                                      |
+| `name`        | string                            | name of the property                                                                           |
+| `parent`      | string                            | the name of the parent property, if combined props                                             |
+| `optional`    | boolean                           | by default, properties are required                                                            |
+| `readonly`    | boolean                           | readonly property                                                                              |
+| `abstract`    | boolean                           | abstract property                                                                              |
+| `async`       | boolean                           | async function                                                                                 |
+| `visibility`  | private \| protected \| public    | property visibility                                                                            |
+| `static`      | boolean                           | true, of the class property is static                                                          |
+| `filePath`    | string                            | name of the file where the property is defined only if different from the default file path    |
+| `loc`         | loc&lt;line: number, col: number> | source code location for the symbol declaration available if collectLinesOfCode is set to true |
+| `type`        | [PropType](#proptype) \| string   | type name of the property                                                                      |
+| `extension`   | string                            | used plugin name ie 'react'...                                                                 |
+| `description` | string                            | jsdoc description                                                                              |
+| `fires`       | string\[]                         | jsdoc fires events list                                                                        |
+| `see`         | string\[]                         | jsdoc see links list                                                                           |
+| `examples`    | [JSDocExample](#jsdocexample)\[]  | jsdoc examples list                                                                            |
+| `tags`        | [JSDocPropTag](#jsdocproptag)\[]  | jsdoc generic tags, not covered by other props                                                 |
+| `summary`     | string                            | jsdoc summary                                                                                  |
+| `deprecated`  | string \| true                    | jsdoc deprecated tag                                                                           |
+| `ignore`      | boolean                           | jsdoc ignore tag, to be excluded from documentations                                           |
+
+## DocsOptions
+
+_defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L316)_
+
+**`type`**
+
+
+
+| Name                 | Type                                                                   | Description                                                                                                                                       |
+| -------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tsOptions`          | ts.CompilerOptions                                                     |                                                                                                                                                   |
+| `internalTypes`      | [ParseOptions](#parseoptions).Record&lt;string, [PropKind](#propkind)> | internal types - libs by default includes classes such as \`String\`, \`Function\`...                                                             |
+| `extract`            | string\[]                                                              | list of export names to be extracted. by default all exports are extracted                                                                        |
+| `filter`             |                                                                        | filter properties function. By default filter out all props with ignore === true                                                                  |
+| `isInternal`         |                                                                        | callback function to determine if a node is an internal (typescript) symbol return undefined if you need to use the default isInternal processing |
+| `maxDepth`           | number ([ParseOptions](#parseoptions))                                 | max depth for extracting child props. default is 5                                                                                                |
+| `collectHelpers`     | boolean ([ParseOptions](#parseoptions))                                | whether to save "helper" props that are used by the main parsed props if set to false will result in a smaller result set                         |
+| `collectGenerics`    | boolean ([ParseOptions](#parseoptions))                                | whether to collect generics parameters                                                                                                            |
+| `collectParameters`  | boolean ([ParseOptions](#parseoptions))                                | whether to collect function parameters                                                                                                            |
+| `collectProperties`  | boolean ([ParseOptions](#parseoptions))                                | whether to collect object/type properties                                                                                                         |
+| `collectInheritance` | boolean ([ParseOptions](#parseoptions))                                | whether to collect the inheritance properties                                                                                                     |
+| `collectExtension`   | boolean ([ParseOptions](#parseoptions))                                | whether to collect the plugin/extension name                                                                                                      |
+| `collectDiagnostics` | boolean ([ParseOptions](#parseoptions))                                | whether to collect errors/diagnostics                                                                                                             |
+| `collectInternals`   | boolean ([ParseOptions](#parseoptions))                                | whether to collect internal (typescript) symbols                                                                                                  |
+| `plugins`            | [ParsePlugin](#parseplugin)\[]                                         | installed plugins can modify default options and install type resolvers                                                                           |
+| `scope`              | exports \| all                                                         | by default collects only the exported symbols                                                                                                     |
+| `collectFilePath`    | boolean ([ParseOptions](#parseoptions))                                | whether to collect the file path of objects                                                                                                       |
+| `collectLinesOfCode` | boolean ([ParseOptions](#parseoptions))                                | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the \`loc\` prop             |
+
+## ParsePlugin
+
+_defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L278)_
+
+**`type`**
+
+
+
+| Name                 | Type                                                                   | Description                                                                                                                                            |
+| -------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `tsOptions`          | [DocsOptions](#docsoptions).ts.CompilerOptions                         |                                                                                                                                                        |
+| `internalTypes`      | [ParseOptions](#parseoptions).Record&lt;string, [PropKind](#propkind)> | internal types - libs by default includes classes such as \`String\`, \`Function\`...                                                                  |
+| `extract`            | string\[]                                                              | list of export names to be extracted. by default all exports are extracted                                                                             |
+| `filter`             |                                                                        | filter properties function. By default filter out all props with ignore === true                                                                       |
+| `maxDepth`           | number ([ParseOptions](#parseoptions))                                 | max depth for extracting child props. default is 5                                                                                                     |
+| `collectHelpers`     | boolean ([ParseOptions](#parseoptions))                                | whether to save "helper" props that are used by the main parsed props if set to false will result in a smaller result set                              |
+| `collectGenerics`    | boolean ([ParseOptions](#parseoptions))                                | whether to collect generics parameters                                                                                                                 |
+| `collectParameters`  | boolean ([ParseOptions](#parseoptions))                                | whether to collect function parameters                                                                                                                 |
+| `collectProperties`  | boolean ([ParseOptions](#parseoptions))                                | whether to collect object/type properties                                                                                                              |
+| `collectInheritance` | boolean ([ParseOptions](#parseoptions))                                | whether to collect the inheritance properties                                                                                                          |
+| `collectExtension`   | boolean ([ParseOptions](#parseoptions))                                | whether to collect the plugin/extension name                                                                                                           |
+| `collectDiagnostics` | boolean ([ParseOptions](#parseoptions))                                | whether to collect errors/diagnostics                                                                                                                  |
+| `collectInternals`   | boolean ([ParseOptions](#parseoptions))                                | whether to collect internal (typescript) symbols                                                                                                       |
+| `plugins`            | [ParsePlugin](#parseplugin)\[]                                         | installed plugins can modify default options and install type resolvers                                                                                |
+| `scope`              | exports \| all                                                         | by default collects only the exported symbols                                                                                                          |
+| `collectFilePath`    | boolean ([ParseOptions](#parseoptions))                                | whether to collect the file path of objects                                                                                                            |
+| `collectLinesOfCode` | boolean ([ParseOptions](#parseoptions))                                | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the \`loc\` prop                  |
+| `typesResolve*`      |                                                                        | type resolving custom function ie from a react component will return the props type if the plugin does not recognize the type, should return undefined |
+| `pluginName`         | string                                                                 | plugin name                                                                                                                                            |
+
+## JSDocExample
+
+_defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L6)_
+
+**`interface`**
+
+JSDoc example item
+
+
+
+| Name      | Type   | Description            |
+| --------- | ------ | ---------------------- |
+| `caption` | string | example caption/title  |
+| `content` | string | example source/content |
+
+## JSDocPropTag
+
+_defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L20)_
+
+**`interface`**
+
+JSDoc generic tag item
+
+
+
+| Name      | Type   | Description          |
+| --------- | ------ | -------------------- |
+| `tag*`    | string | tag name             |
+| `content` | string | optional tag content |
+
+## props
+
+_defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts)_
+
+**`type`**
+
+
+
+| Name          | Type                                                                                                                                    | Description |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `symbolType*` | ts.Type                                                                                                                                 |             |
+| `declaration` | ts.Declaration                                                                                                                          |             |
+| `parser*`     | [ISymbolParser](#isymbolparser)&lt;checker, options, parseProperties, updateSymbolName, parseType, parseTypeValueComments, parseSymbol> |             |
+
+## ResolverReturnType
+
+_defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L321)_
+
+**`type`**
+
+
+
+| Name                 | Type                                                                   | Description                                                                                                                                       |
+| -------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type*`              | ts.Type \| undefined                                                   |                                                                                                                                                   |
+| `initializer`        | ts.Node                                                                |                                                                                                                                                   |
+| `declaration`        | ts.Node                                                                |                                                                                                                                                   |
+| `prop`               | [PropType](#proptype)                                                  |                                                                                                                                                   |
+| `pluginName`         | string                                                                 |                                                                                                                                                   |
+| `isInternal`         |                                                                        | callback function to determine if a node is an internal (typescript) symbol return undefined if you need to use the default isInternal processing |
+| `tsOptions`          | [DocsOptions](#docsoptions).ts.CompilerOptions                         |                                                                                                                                                   |
+| `internalTypes`      | [ParseOptions](#parseoptions).Record&lt;string, [PropKind](#propkind)> | internal types - libs by default includes classes such as \`String\`, \`Function\`...                                                             |
+| `extract`            | string\[]                                                              | list of export names to be extracted. by default all exports are extracted                                                                        |
+| `filter`             |                                                                        | filter properties function. By default filter out all props with ignore === true                                                                  |
+| `maxDepth`           | number ([ParseOptions](#parseoptions))                                 | max depth for extracting child props. default is 5                                                                                                |
+| `collectHelpers`     | boolean ([ParseOptions](#parseoptions))                                | whether to save "helper" props that are used by the main parsed props if set to false will result in a smaller result set                         |
+| `collectGenerics`    | boolean ([ParseOptions](#parseoptions))                                | whether to collect generics parameters                                                                                                            |
+| `collectParameters`  | boolean ([ParseOptions](#parseoptions))                                | whether to collect function parameters                                                                                                            |
+| `collectProperties`  | boolean ([ParseOptions](#parseoptions))                                | whether to collect object/type properties                                                                                                         |
+| `collectInheritance` | boolean ([ParseOptions](#parseoptions))                                | whether to collect the inheritance properties                                                                                                     |
+| `collectExtension`   | boolean ([ParseOptions](#parseoptions))                                | whether to collect the plugin/extension name                                                                                                      |
+| `collectDiagnostics` | boolean ([ParseOptions](#parseoptions))                                | whether to collect errors/diagnostics                                                                                                             |
+| `collectInternals`   | boolean ([ParseOptions](#parseoptions))                                | whether to collect internal (typescript) symbols                                                                                                  |
+| `plugins`            | [ParsePlugin](#parseplugin)\[]                                         | installed plugins can modify default options and install type resolvers                                                                           |
+| `scope`              | exports \| all                                                         | by default collects only the exported symbols                                                                                                     |
+| `collectFilePath`    | boolean ([ParseOptions](#parseoptions))                                | whether to collect the file path of objects                                                                                                       |
+| `collectLinesOfCode` | boolean ([ParseOptions](#parseoptions))                                | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the \`loc\` prop             |
+
+## ISymbolParser
 
 <!-- END-API-README -->

@@ -38,11 +38,39 @@ Object {
                     "kind": 4,
                     "properties": Array [
                       Object {
+                        "generics": Array [
+                          Object {
+                            "name": "P",
+                          },
+                          Object {
+                            "name": "T",
+                          },
+                        ],
                         "kind": 14,
+                        "name": "ReactElement",
+                        "properties": Array [
+                          Object {
+                            "name": "type",
+                          },
+                          Object {
+                            "name": "props",
+                          },
+                          Object {
+                            "name": "key",
+                          },
+                        ],
                         "type": "ReactElement",
                       },
                       Object {
-                        "kind": 15,
+                        "kind": 4,
+                        "properties": Array [
+                          Object {
+                            "kind": 1,
+                          },
+                          Object {
+                            "kind": 2,
+                          },
+                        ],
                         "type": "ReactText",
                       },
                     ],
@@ -55,7 +83,23 @@ Object {
                         "kind": 15,
                       },
                       Object {
+                        "extends": Array [
+                          "Array",
+                        ],
                         "kind": 14,
+                        "name": "ReactNodeArray",
+                        "properties": Array [
+                          Object {
+                            "index": Object {
+                              "kind": 2,
+                              "name": "n",
+                            },
+                            "kind": 20,
+                            "type": Object {
+                              "type": "T",
+                            },
+                          },
+                        ],
                         "type": "ReactNodeArray",
                       },
                     ],
@@ -69,18 +113,32 @@ Object {
                     "name": "ReactPortal",
                     "properties": Array [
                       Object {
+                        "kind": 4,
                         "name": "key",
+                        "properties": Array [
+                          Object {
+                            "kind": 15,
+                            "type": "Key",
+                          },
+                          Object {
+                            "kind": 10,
+                          },
+                        ],
                       },
                       Object {
+                        "kind": 15,
                         "name": "children",
+                        "type": "ReactNode",
                       },
                       Object {
                         "name": "type",
                         "parent": "ReactElement",
+                        "type": "T",
                       },
                       Object {
                         "name": "props",
                         "parent": "ReactElement",
+                        "type": "P",
                       },
                     ],
                     "type": "ReactPortal",

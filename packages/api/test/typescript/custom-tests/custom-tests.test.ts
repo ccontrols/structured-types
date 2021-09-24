@@ -5,6 +5,6 @@ describe('custom-tests', () => {
   it('webpack-config', () => {
     const results = parseFiles([path.resolve(__dirname, 'webpack-config.ts')]);
 
-    expect(results).toMatchSnapshot({});
+    expect(results).toMatchSnapshot();
   });
 });
