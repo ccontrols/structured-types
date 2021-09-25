@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/playground-plugin",
-  "version": "3.23.0",
+  "version": "3.24.0",
   "description": "Extract structured types and documentation from the your source code.",
   "keywords": [
     "structured-types",
@@ -34,9 +34,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@structured-types/api": "^3.23.0",
-    "@structured-types/prop-types-plugin": "^3.23.0",
-    "@structured-types/react-plugin": "^3.23.0",
+    "@structured-types/api": "^3.24.0",
+    "@structured-types/prop-types-plugin": "^3.24.0",
+    "@structured-types/react-plugin": "^3.24.0",
     "lz-string": "^1.4.4",
     "node-fetch": "^2.6.0",
     "react": "^17.0.2",

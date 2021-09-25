@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.24.0](https://github.com/ccontrols/structured-types/compare/v3.23.0...v3.24.0) (2021-09-25)
+
+
+### Bug Fixes
+
+* **api:** skip parents without type name ([51d91c6](https://github.com/ccontrols/structured-types/commit/51d91c6dc9f465fe70b46fbb365dff9ae73a3ebe))
+* **site:** force js extension ([76f3c2b](https://github.com/ccontrols/structured-types/commit/76f3c2b2b97d09a2e230d3922112eaaf0049b673))
+
+
+### Features
+
+* add documentationjs to site ([50a1fa4](https://github.com/ccontrols/structured-types/commit/50a1fa4ec6620f1e4ec6670ff273cf066bd5b15d))
+* **api-readme:** function description in prop table ([9f4fc44](https://github.com/ccontrols/structured-types/commit/9f4fc44b049e3e1183a0fad21e3c7a1b92500744))
+
+
+
+
+
 # [3.23.0](https://github.com/ccontrols/structured-types/compare/v3.22.0...v3.23.0) (2021-09-22)
 
 
