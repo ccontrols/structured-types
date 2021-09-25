@@ -9,18 +9,25 @@ export * from './ts-utils';
 
 export { analyzeFiles };
 
+/**
+ * API to analyze the given files by also loading the local typescript options from tsconfig
+ * @param files list of files to be processed
+ * @param options parsing options
+ * @param programOptions typescript ts.program and ts.compilerHost
+ * @returns the parsed types
+ */
 export const parseFiles = (
-  filePaths: string[],
+  files: string[],
   options: DocsOptions = {},
   programOptions?: ProgramOptions,
 ): PropTypes => {
-  if (!filePaths.length) {
+  if (!files.length) {
     throw new Error('You need to supply at least one file');
   }
   options.tsOptions = {
     ...tsDefaults,
-    ...getTypescriptConfig(filePaths[0], options.tsOptions),
+    ...getTypescriptConfig(files[0], options.tsOptions),
   };
-  const results = analyzeFiles(filePaths, options, programOptions);
+  const results = analyzeFiles(files, options, programOptions);
   return results;
 };

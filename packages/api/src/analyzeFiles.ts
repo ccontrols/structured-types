@@ -33,8 +33,15 @@ const consolidateParentProps = (
   });
 };
 
+/**
+ * API to analyze the given files
+ * @param files list of files to be processed
+ * @param options parsing options
+ * @param programOptions typescript ts.program and ts.compilerHost
+ * @returns the parsed types
+ */
 export const analyzeFiles = (
-  fileNames: string[],
+  files: string[],
   options: DocsOptions = {},
   programOptions: ProgramOptions = {},
 ): PropTypes => {
@@ -48,7 +55,7 @@ export const analyzeFiles = (
     parseOptions || {};
   const { program: userProgram, host: userHost } = programOptions;
   const host = userHost || ts.createCompilerHost(tsOptions);
-  const program = userProgram || ts.createProgram(fileNames, tsOptions, host);
+  const program = userProgram || ts.createProgram(files, tsOptions, host);
   const defaultLibraryFileName = host.getDefaultLibFileName(tsOptions);
   const defaultLibraryPath = host.getDefaultLibLocation
     ? host.getDefaultLibLocation()
@@ -88,7 +95,7 @@ export const analyzeFiles = (
       }
     }
   };
-  for (const fileName of fileNames) {
+  for (const fileName of files) {
     const sourceFile = program.getSourceFile(fileName);
     if (sourceFile) {
       if (scope === 'all') {
@@ -137,7 +144,7 @@ export const analyzeFiles = (
   if (collectDiagnostics) {
     const allDiagnostics = ts
       .getPreEmitDiagnostics(program)
-      .filter(({ file }) => file && fileNames.includes(file.fileName));
+      .filter(({ file }) => file && files.includes(file.fileName));
     if (allDiagnostics.length) {
       parsed.__diagnostics = allDiagnostics.map(
         ({ category, messageText, file, start }) => {
