@@ -165,7 +165,13 @@ export const examples: Examples = {
       'static-members.ts':
         '/* eslint-disable @typescript-eslint/no-empty-function */\n/* eslint-disable @typescript-eslint/explicit-module-boundary-types */\nexport class ClassStatic {\n  static x = 0;\n  static printX() {}\n}\n',
     },
+    'custom-tests': {
+      'webpack-config.ts':
+        "import { Configuration } from 'webpack';\n\nexport interface FullAnimal {\n  webpackConfig?: () => Configuration;\n}\n\nexport type NameOnly = FullAnimal;\n",
+    },
     enum: {
+      'enum-namespace.ts':
+        '/* eslint-disable @typescript-eslint/no-namespace */\nnamespace ts {\n  export enum DiagnosticCategory {\n    Warning = 0,\n    Error = 1,\n    Suggestion = 2,\n    Message = 3,\n  }\n}\n/**\n * diagnostics row data\n */\nexport type PropDiagnostic = {\n  /**\n   * error category\n   */\n  category: ts.DiagnosticCategory;\n};\n',
       'initialized.ts':
         '/**\n * this is an enum with an initialized element\n */\nexport enum InitializedEnum {\n  /**\n   * enum starts at 1\n   */\n  Up = 1,\n  /**\n   * second element\n   */\n  Down,\n  Left,\n  Right,\n}\n',
       'string-enum.ts':
@@ -186,6 +192,8 @@ export const examples: Examples = {
         'interface GenericInterface<T> {\n  m: T;\n}\nexport function genericFunction<Type>(\n  box: GenericInterface<Type>,\n  newContents: Type,\n): GenericInterface<Type> {}\n',
       'infer-return.ts':
         'export const fn = (in1: number, in2: number) => {\n  return in1 * in2;\n};\n',
+      'inline-props.ts':
+        'export type inlineProps = (props: {\n  stringProp: string;\n  numProp: number;\n}) => void;\n',
       'jsdoc-parameter.ts':
         '/**\n * greeting function\n * @param name string type parameters\n */\nexport function greet(name: string) {}\n',
       'object-parameter.ts':
@@ -276,6 +284,10 @@ export const examples: Examples = {
     union: {
       'export-const.ts':
         "/**\n * strings union\n */\nexport type union = 'this' | 1 | false | null | undefined;\n",
+      'members-comments.ts':
+        "/** Left-aligns the text. */\ntype Left = 'left';\n\n/** Centers the text horizontally. */\ntype Center = 'center';\n\n/** Right-aligns the text. */\ntype Right = 'right';\n\n/** Controls the alignment of text when printed. */\n\nexport type TextAlignment = Left | Right | Center;\n",
+      'record.ts':
+        'export type UnionProp = Record<string, boolean> & {\n  numProp?: number;\n};\n',
     },
     unknown: {
       'export-const.ts':
@@ -412,6 +424,8 @@ export const examples: Examples = {
         "import React from 'react';\nimport PropTypes from 'prop-types';\n\n/**\n * MyComponent special component\n */\nexport const MyComponent = ({ optionalArray }) => (\n  <div>\n    {optionalArray.map((t) => (\n      <span key={t}>{t}</span>\n    ))}\n  </div>\n);\n\nMyComponent.propTypes = {\n  /** optional Array prop description */\n  optionalArray: PropTypes.array,\n};\n",
       'boolean.jsx':
         "import React from 'react';\nimport PropTypes from 'prop-types';\n\n/**\n * MyComponent special component\n */\nexport const MyComponent = ({ optionalBool = false }) => (\n  <div>{optionalBool.toString()}</div>\n);\n\nMyComponent.propTypes = {\n  /** optional bool prop description */\n  optionalBool: PropTypes.bool,\n};\n",
+      'default-props.tsx':
+        "import React, { FC } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nconst MyComponent: FC<OwnProps> = ({ stringProp }) => <div>{stringProp}</div>;\n\nMyComponent.defaultProps = {\n  stringProp: 'test',\n};\n\nexport default MyComponent;\n",
       'element-type.jsx':
         "import React from 'react';\nimport PropTypes from 'prop-types';\n\n/**\n * MyComponent special component\n */\nexport const MyComponent = ({ Component }) => <Component />;\n\nMyComponent.propTypes = {\n  /** elementType prop description */\n  Component: PropTypes.elementType.isRequired,\n};\n",
       'element.jsx':
