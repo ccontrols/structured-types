@@ -73,21 +73,6 @@ describe('interface', () => {
         description: 'interface extending another one',
       },
       __helpers: {
-        resident: {
-          kind: 15,
-          name: 'resident',
-          properties: [
-            {
-              kind: 1,
-              name: 'name',
-            },
-            {
-              kind: 2,
-              name: 'age',
-            },
-          ],
-        },
-
         Internal: {
           name: 'Internal',
           kind: 14,

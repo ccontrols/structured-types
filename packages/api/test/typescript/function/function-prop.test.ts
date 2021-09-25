@@ -2,57 +2,6 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('function', () => {
-  it('class-prop', () => {
-    const results = parseFiles([path.resolve(__dirname, 'class-prop.ts')]);
-    expect(results).toEqual({
-      Boz: {
-        name: 'Boz',
-        kind: 13,
-        properties: [
-          {
-            name: 'fn',
-            kind: 11,
-            parameters: [
-              {
-                name: 'foo',
-                kind: 13,
-                type: 'Foo',
-                properties: [
-                  {
-                    parent: 'Foo',
-                    static: true,
-                    readonly: true,
-                    name: 'dummy',
-                    kind: 3,
-                    value: false,
-                  },
-                ],
-              },
-            ],
-            returns: {
-              kind: 12,
-            },
-          },
-        ],
-      },
-    });
-  });
-  it('async-function', () => {
-    const results = parseFiles([path.resolve(__dirname, 'async-function.ts')]);
-    expect(results).toEqual({
-      genMyClass: {
-        async: true,
-        name: 'genMyClass',
-        kind: 11,
-        returns: {
-          description: 'Represents the completion of an asynchronous operation',
-          kind: 14,
-          name: 'Promise',
-          type: 'PromiseConstructor',
-        },
-      },
-    });
-  });
   it('extends-parameter', () => {
     const results = parseFiles(
       [path.resolve(__dirname, 'extends-parameter.ts')],
@@ -172,6 +121,89 @@ describe('function', () => {
       },
     });
   });
+  it('inline-props', () => {
+    const results = parseFiles([path.resolve(__dirname, 'inline-props.ts')], {
+      collectHelpers: true,
+    });
+
+    expect(results).toEqual({
+      inlineProps: {
+        name: 'inlineProps',
+        kind: 11,
+        parameters: [
+          {
+            name: 'props',
+            kind: 15,
+            properties: [
+              {
+                name: 'stringProp',
+                kind: 1,
+              },
+              {
+                name: 'numProp',
+                kind: 2,
+              },
+            ],
+          },
+        ],
+        returns: {
+          kind: 12,
+        },
+      },
+    });
+  });
+  it('class-prop', () => {
+    const results = parseFiles([path.resolve(__dirname, 'class-prop.ts')]);
+    expect(results).toEqual({
+      Boz: {
+        name: 'Boz',
+        kind: 13,
+        properties: [
+          {
+            name: 'fn',
+            kind: 11,
+            parameters: [
+              {
+                name: 'foo',
+                kind: 13,
+                type: 'Foo',
+                properties: [
+                  {
+                    parent: 'Foo',
+                    static: true,
+                    readonly: true,
+                    name: 'dummy',
+                    kind: 3,
+                    value: false,
+                  },
+                ],
+              },
+            ],
+            returns: {
+              kind: 12,
+            },
+          },
+        ],
+      },
+    });
+  });
+  it('async-function', () => {
+    const results = parseFiles([path.resolve(__dirname, 'async-function.ts')]);
+    expect(results).toEqual({
+      genMyClass: {
+        async: true,
+        name: 'genMyClass',
+        kind: 11,
+        returns: {
+          description: 'Represents the completion of an asynchronous operation',
+          kind: 14,
+          name: 'Promise',
+          type: 'PromiseConstructor',
+        },
+      },
+    });
+  });
+
   it('generic-parameter', () => {
     const results = parseFiles(
       [path.resolve(__dirname, 'generic-parameter.ts')],

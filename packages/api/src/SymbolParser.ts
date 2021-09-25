@@ -117,8 +117,13 @@ export class SymbolParser implements ISymbolParser {
       //find immediate parent
       while (parent) {
         const name = this.geDeclarationStats(parent as ts.Declaration);
-        if (name && propName !== name) {
-          break;
+        if (name) {
+          if (name === parentProp.name) {
+            return undefined;
+          }
+          if (propName !== name) {
+            break;
+          }
         }
         parent = parent.parent;
       }
