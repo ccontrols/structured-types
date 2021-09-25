@@ -103,6 +103,11 @@ export const InfoContainer: FC = () => {
         link: 'https://github.com/vega/ts-json-schema-generator',
         Panel: DataViewer,
       },
+      documentation: {
+        selected: false,
+        link: 'https://github.com/documentationjs/documentation',
+        Panel: DataViewer,
+      },
     };
     return Object.keys(items).map((key) => {
       const item = items[key as ParserNames];

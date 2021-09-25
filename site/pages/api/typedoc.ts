@@ -15,7 +15,7 @@ export default async (
   const options = {
     ...(tsoptions ? JSON.parse(tsoptions) : undefined),
   };
-  const { lang = 'typescript' } = options?.tsOptions || {};
+  const { lang = 'typescript' } = options || {};
   const extension = lang === 'javascript' ? 'jsx' : 'tsx';
 
   const app = new Application();

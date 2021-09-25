@@ -17,6 +17,7 @@ export const parserNames = [
   'jsdoc',
   'typedoc',
   'ts-json-schema-generator',
+  'documentation',
 ] as const;
 export type ParserNames = typeof parserNames[number];
 
@@ -38,6 +39,7 @@ const Contexts: Record<ParserNames, React.Context<DataContextProps>> = {
     {} as DataContextProps,
   ),
   typedoc: createContext<DataContextProps>({} as DataContextProps),
+  documentation: createContext<DataContextProps>({} as DataContextProps),
 };
 
 const ParserContextProvider: FC<{ name: ParserNames }> = ({

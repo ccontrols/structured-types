@@ -15,7 +15,7 @@ export default async (
   const options = {
     ...(tsoptions ? JSON.parse(tsoptions) : undefined),
   };
-  const { lang = 'typescript' } = options?.tsOptions || {};
+  const { lang = 'typescript' } = options || {};
   const extension = lang === 'javascript' ? 'jsx' : 'tsx';
 
   const __errors: any[] = [];
@@ -24,9 +24,12 @@ export default async (
   if (createHash) {
     const result = createTempFile(
       extension,
-      (fileNames) => {
+      async (fileNames) => {
         return fileNames.reduce((acc, fileName) => {
-          const tsOptions = getTypescriptConfig(fileName, options, true);
+          const tsOptions = getTypescriptConfig(fileName, options, true) || {};
+          if (lang === 'javascript') {
+            tsOptions.allowJs = true;
+          }
           const tsconfig = createHash(Math.random().toString()) + '.json';
           const config = {
             path: fileName,
