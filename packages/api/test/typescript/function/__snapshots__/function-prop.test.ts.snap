@@ -95,7 +95,7 @@ Object {
                               "name": "n",
                             },
                             "kind": 20,
-                            "type": Object {
+                            "prop": Object {
                               "type": "T",
                             },
                           },

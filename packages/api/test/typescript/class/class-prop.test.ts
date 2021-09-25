@@ -151,7 +151,7 @@ describe('class', () => {
               kind: 1,
               name: 's',
             },
-            type: {
+            prop: {
               kind: 4,
               properties: [
                 {

@@ -190,10 +190,12 @@ describe('prop-types-types', () => {
         properties: [
           {
             name: 'optionalObj',
-            type: {
-              kind: 2,
-              optional: true,
-            },
+            properties: [
+              {
+                kind: 2,
+                optional: true,
+              },
+            ],
             kind: 26,
             optional: true,
             description: 'optional object prop description',

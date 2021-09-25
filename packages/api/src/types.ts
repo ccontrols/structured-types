@@ -112,9 +112,9 @@ export interface PropType {
    */
   loc?: { line: number; col: number };
   /**
-   * type name of the property
+   * type name of the property or lookup into __helpers list of symbols
    */
-  type?: PropType | string;
+  type?: string;
   /**
    * used plugin name
    * ie 'react'...
@@ -254,6 +254,7 @@ export const isEnumProp = (prop: PropType): prop is EnumProp => {
 
 export interface RestProp extends PropType {
   kind: PropKind.Rest;
+  prop?: PropType;
 }
 
 /**
@@ -472,7 +473,8 @@ export const isAnyProp = (prop: PropType): prop is AnyProp => {
 
 export interface IndexProp extends PropType {
   index: PropType;
-  properties: PropType[];
+  prop?: PropType;
+  properties?: PropType[];
 }
 
 /**
@@ -567,12 +569,24 @@ export type PropDiagnostic = {
 };
 
 /**
- * Top-level prop type, with aded optional __helpers and __diagnostics fields
+ * Top-level prop type, with aded optional __helpers and __diagnostics fields.
  */
-export type PropTypes = Record<string, PropType> & {
-  __helpers?: Record<string, PropType>;
-  __diagnostics?: PropDiagnostic[];
-};
+export type PropTypes =
+  /**
+   * Object of parsed symbol properties. The key is the import name, while the prop.name is the actual symbol name.
+   */
+  Record<string, PropType> & {
+    /**
+     * Utility symbols such as parent types are stored here.
+     * Only available if option collectHelpers is set to true.
+     */
+    __helpers?: Record<string, PropType>;
+    /**
+     * Typescript program diagnostics / errors.
+     * Only available if option collectDiagnostics is set to true.
+     */
+    __diagnostics?: PropDiagnostic[];
+  };
 
 export const typeNameToPropKind = (type: string): PropKind | undefined => {
   const lookup: Record<string, PropKind> = {

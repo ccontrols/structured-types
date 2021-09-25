@@ -2,6 +2,32 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('union', () => {
+  it('record', () => {
+    const results = parseFiles([path.resolve(__dirname, 'record.ts')]);
+    expect(results).toEqual({
+      UnionProp: {
+        name: 'UnionProp',
+        kind: 15,
+        properties: [
+          {
+            kind: 20,
+            optional: true,
+            index: {
+              kind: 1,
+            },
+            prop: {
+              kind: 3,
+            },
+          },
+          {
+            name: 'numProp',
+            optional: true,
+            kind: 2,
+          },
+        ],
+      },
+    });
+  });
   it('members-comments', () => {
     const results = parseFiles([
       path.resolve(__dirname, 'members-comments.ts'),

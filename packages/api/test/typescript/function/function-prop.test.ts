@@ -388,7 +388,7 @@ describe('function', () => {
       },
     });
   });
-  it('spread tuple parameters', () => {
+  it('spread-tuple-parameter', () => {
     const results = parseFiles([
       path.resolve(__dirname, 'spread-tuple-parameter.ts'),
     ]);
@@ -409,7 +409,7 @@ describe('function', () => {
               },
               {
                 kind: 7,
-                type: {
+                prop: {
                   kind: 16,
                   properties: [
                     {

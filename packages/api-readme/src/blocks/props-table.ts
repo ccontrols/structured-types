@@ -15,9 +15,14 @@ export const createPropsRow = (
   const children: Node[] = [
     {
       type: 'tableCell',
-      children: [
-        { type: 'inlineCode', value: `${name}${isOptional ? '' : '*'}` },
-      ],
+      children: name
+        ? [
+            {
+              type: 'inlineCode',
+              value: `${name}${isOptional ? '' : '*'}`,
+            },
+          ]
+        : [],
     },
     {
       type: 'tableCell',

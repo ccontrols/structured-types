@@ -9,6 +9,7 @@ import {
   UnionProp,
   ParseOptions,
   ArrayProp,
+  ObjectProp,
 } from '@structured-types/api';
 import reactPlugin from '@structured-types/react-plugin';
 import ts from 'typescript';
@@ -103,8 +104,11 @@ const assignProp = (
       break;
     case 'objectOf':
       if (expression.id) {
-        prop.type = extractProp(parser, expression.id);
         prop.kind = PropKind.Object;
+        const p = extractProp(parser, expression.id);
+        if (p) {
+          (prop as ObjectProp).properties = [p];
+        }
       }
       break;
     case 'shape':

@@ -33,7 +33,7 @@ Object {
                         "name": "index",
                       },
                       "kind": 20,
-                      "type": Object {
+                      "prop": Object {
                         "kind": 17,
                       },
                     },
@@ -99,7 +99,7 @@ Object {
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 16,
                             "properties": Array [
                               Object {
@@ -296,7 +296,7 @@ Object {
                               "name": "index",
                             },
                             "kind": 20,
-                            "type": Object {
+                            "prop": Object {
                               "kind": 4,
                               "properties": Array [
                                 Object {
@@ -399,7 +399,7 @@ Object {
                         "name": "index",
                       },
                       "kind": 20,
-                      "type": Object {
+                      "prop": Object {
                         "kind": 4,
                         "properties": Array [
                           Object {
@@ -815,7 +815,7 @@ Object {
                                           "name": "index",
                                         },
                                         "kind": 20,
-                                        "type": Object {
+                                        "prop": Object {
                                           "kind": 17,
                                         },
                                       },
@@ -966,7 +966,7 @@ Object {
                                     "name": "index",
                                   },
                                   "kind": 20,
-                                  "type": Object {
+                                  "prop": Object {
                                     "kind": 17,
                                   },
                                 },
@@ -1105,7 +1105,7 @@ Object {
                                   "name": "index",
                                 },
                                 "kind": 20,
-                                "type": Object {
+                                "prop": Object {
                                   "kind": 17,
                                 },
                               },
@@ -6506,7 +6506,7 @@ Needed to detect build cycles.",
                                     "name": "index",
                                   },
                                   "kind": 20,
-                                  "type": Object {
+                                  "prop": Object {
                                     "kind": 13,
                                     "type": "Source",
                                   },
@@ -9800,7 +9800,7 @@ from parent (or top level compiler) and creates a child Compilation",
                     "name": "index",
                   },
                   "kind": 20,
-                  "type": Object {
+                  "prop": Object {
                     "kind": 17,
                   },
                 },
@@ -15564,7 +15564,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 17,
                           },
                         },
@@ -15680,7 +15680,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 4,
                             "properties": Array [
                               Object {
@@ -15743,7 +15743,7 @@ from parent (or top level compiler) and creates a child Compilation",
                         "name": "index",
                       },
                       "kind": 20,
-                      "type": Object {
+                      "prop": Object {
                         "kind": 14,
                         "type": "ResolveOptionsWebpackOptions",
                       },
@@ -15869,7 +15869,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 4,
                             "properties": Array [
                               Object {
@@ -16072,7 +16072,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 17,
                           },
                         },
@@ -16131,7 +16131,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 4,
                             "properties": Array [
                               Object {
@@ -16194,7 +16194,7 @@ from parent (or top level compiler) and creates a child Compilation",
                         "name": "index",
                       },
                       "kind": 20,
-                      "type": Object {
+                      "prop": Object {
                         "kind": 14,
                         "type": "ResolveOptionsWebpackOptions",
                       },
@@ -16320,7 +16320,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 4,
                             "properties": Array [
                               Object {
@@ -16523,7 +16523,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 17,
                           },
                         },
@@ -17520,7 +17520,7 @@ from parent (or top level compiler) and creates a child Compilation",
                         "name": "index",
                       },
                       "kind": 20,
-                      "type": Object {
+                      "prop": Object {
                         "kind": 17,
                       },
                     },
@@ -17586,7 +17586,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 16,
                             "properties": Array [
                               Object {
@@ -17783,7 +17783,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               "name": "index",
                             },
                             "kind": 20,
-                            "type": Object {
+                            "prop": Object {
                               "kind": 4,
                               "properties": Array [
                                 Object {
@@ -17886,7 +17886,7 @@ from parent (or top level compiler) and creates a child Compilation",
                         "name": "index",
                       },
                       "kind": 20,
-                      "type": Object {
+                      "prop": Object {
                         "kind": 4,
                         "properties": Array [
                           Object {
@@ -18302,7 +18302,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                           "name": "index",
                                         },
                                         "kind": 20,
-                                        "type": Object {
+                                        "prop": Object {
                                           "kind": 17,
                                         },
                                       },
@@ -18453,7 +18453,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     "name": "index",
                                   },
                                   "kind": 20,
-                                  "type": Object {
+                                  "prop": Object {
                                     "kind": 17,
                                   },
                                 },
@@ -18592,7 +18592,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   "name": "index",
                                 },
                                 "kind": 20,
-                                "type": Object {
+                                "prop": Object {
                                   "kind": 17,
                                 },
                               },
@@ -23993,7 +23993,7 @@ Needed to detect build cycles.",
                                     "name": "index",
                                   },
                                   "kind": 20,
-                                  "type": Object {
+                                  "prop": Object {
                                     "kind": 13,
                                     "type": "Source",
                                   },
@@ -25587,7 +25587,7 @@ from parent (or top level compiler) and creates a child Compilation",
                     "name": "index",
                   },
                   "kind": 20,
-                  "type": Object {
+                  "prop": Object {
                     "kind": 17,
                   },
                 },
@@ -31351,7 +31351,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 17,
                           },
                         },
@@ -31467,7 +31467,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 4,
                             "properties": Array [
                               Object {
@@ -31530,7 +31530,7 @@ from parent (or top level compiler) and creates a child Compilation",
                         "name": "index",
                       },
                       "kind": 20,
-                      "type": Object {
+                      "prop": Object {
                         "kind": 14,
                         "type": "ResolveOptionsWebpackOptions",
                       },
@@ -31656,7 +31656,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 4,
                             "properties": Array [
                               Object {
@@ -31859,7 +31859,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 17,
                           },
                         },
@@ -31918,7 +31918,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 4,
                             "properties": Array [
                               Object {
@@ -31981,7 +31981,7 @@ from parent (or top level compiler) and creates a child Compilation",
                         "name": "index",
                       },
                       "kind": 20,
-                      "type": Object {
+                      "prop": Object {
                         "kind": 14,
                         "type": "ResolveOptionsWebpackOptions",
                       },
@@ -32107,7 +32107,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 4,
                             "properties": Array [
                               Object {
@@ -32310,7 +32310,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             "name": "index",
                           },
                           "kind": 20,
-                          "type": Object {
+                          "prop": Object {
                             "kind": 17,
                           },
                         },

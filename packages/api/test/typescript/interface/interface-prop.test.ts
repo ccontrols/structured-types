@@ -245,7 +245,7 @@ describe('interface', () => {
               kind: 2,
               name: 'index',
             },
-            type: {
+            prop: {
               kind: 1,
             },
           },

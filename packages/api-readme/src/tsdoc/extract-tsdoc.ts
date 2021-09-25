@@ -17,6 +17,7 @@ import {
   hasValue,
   isArrayProp,
   ParseOptions,
+  isIndexProp,
 } from '@structured-types/api';
 import { getRepoPath } from '../common/package-info';
 import { createPropsTable, PropItem } from '../blocks/props-table';
@@ -101,7 +102,7 @@ export class ExtractProps {
         }
         result.push({
           type: 'inlineCode',
-          value: p.name || '',
+          value: p.name,
         });
         if (!p.optional) {
           result.push({
@@ -455,11 +456,25 @@ export class ExtractProps {
           ],
         },
       ];
+    } else if (isIndexProp(prop)) {
+      const results: Node[] = [
+        { type: 'text', value: '[' },
+        { type: 'paragraph', children: this.extractPropType(prop.index) },
+        { type: 'text', value: ']' },
+      ];
+      if (prop.prop) {
+        results.push({ type: 'text', value: ': ' });
+        results.push({
+          type: 'paragraph',
+          children: this.extractPropType(prop.prop),
+        });
+      }
+      return results;
+      //return this.extractFunctionDeclaration(prop);
     } else if (isFunctionProp(prop)) {
       return this.extractFunctionDeclaration(prop);
-    } else {
-      return this.typeNode(prop, showValue);
     }
+    return this.typeNode(prop, showValue);
   }
   private getSourceLocation(prop: PropType): Node[] {
     const { filePath } = prop;

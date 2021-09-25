@@ -33,7 +33,7 @@ describe('tuple', () => {
         properties: [
           {
             kind: 7,
-            type: {
+            prop: {
               kind: 16,
               properties: [
                 {

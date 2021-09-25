@@ -25,6 +25,9 @@ import {
   ClassProp,
   trimQuotes,
   hasProperties,
+  IndexProp,
+  RestProp,
+  isEnumProp,
 } from './types';
 import {
   getSymbolType,
@@ -540,7 +543,7 @@ export class SymbolParser implements ISymbolParser {
         }
         const type = this.parseTypeValueComments({}, options, node.type);
         if (type) {
-          prop.type = type;
+          (prop as IndexProp).prop = type;
         }
       } else if (
         ts.isIndexedAccessTypeNode(node) &&
@@ -677,7 +680,7 @@ export class SymbolParser implements ISymbolParser {
         prop.kind = PropKind.Rest;
         const type = this.parseTypeValueComments({}, options, node.type);
         if (type) {
-          prop.type = type;
+          (prop as RestProp).prop = type;
         }
       } else if (ts.isUnionTypeNode(node)) {
         prop.kind = PropKind.Union;
@@ -751,30 +754,42 @@ export class SymbolParser implements ISymbolParser {
       stringIndexInfo?: ts.IndexInfo;
       numberIndexInfo?: ts.IndexInfo;
     }
+    const extractIndex = (
+      index: ts.IndexInfo | undefined,
+      kind: PropKind,
+    ): PropType | null => {
+      if (index?.declaration) {
+        return this.parseTypeValueComments({}, options, index.declaration);
+      } else if (index?.type) {
+        const symbol = index.type.aliasSymbol || index.type.symbol;
+        const p: IndexProp = {
+          kind: PropKind.Index,
+          index: { kind },
+          optional: true,
+          prop: symbol
+            ? this.addRefSymbol({}, symbol, false)
+            : this.updatePropKind({}, index?.type),
+        };
+        return p;
+      }
+      return null;
+    };
     const result = [];
     if (type) {
-      if (type.flags & ts.TypeFlags.Object || type.isClassOrInterface()) {
-        const numberIndex = (type as InterfaceOrTypeWithIndex).numberIndexInfo;
-        if (numberIndex?.declaration) {
-          const index = this.parseTypeValueComments(
-            {},
-            options,
-            numberIndex.declaration,
-          );
-          if (index) {
-            result.push(index);
-          }
+      if (
+        type.flags & ts.TypeFlags.Object ||
+        type.isClassOrInterface() ||
+        type.isUnionOrIntersection()
+      ) {
+        const { numberIndexInfo, stringIndexInfo } =
+          type as InterfaceOrTypeWithIndex;
+        const numberIndex = extractIndex(numberIndexInfo, PropKind.Number);
+        if (numberIndex) {
+          result.push(numberIndex);
         }
-        const stringIndex = (type as InterfaceOrTypeWithIndex).stringIndexInfo;
-        if (stringIndex?.declaration) {
-          const index = this.parseTypeValueComments(
-            {},
-            options,
-            stringIndex.declaration,
-          );
-          if (index) {
-            result.push(index);
-          }
+        const stringIndex = extractIndex(stringIndexInfo, PropKind.String);
+        if (stringIndex) {
+          result.push(stringIndex);
         }
       }
     }
@@ -947,8 +962,10 @@ export class SymbolParser implements ISymbolParser {
               );
             }
           }
-          const indexes = this.getTypeIndexes(resolvedType, options);
-          properties.unshift(...indexes);
+          if (!isEnumProp(prop)) {
+            const indexes = this.getTypeIndexes(resolvedType, options);
+            properties.unshift(...indexes);
+          }
 
           if (properties.length) {
             (prop as TypeProp).properties = properties;

@@ -210,7 +210,7 @@ describe('type', () => {
               name: 'index',
               kind: 1,
             },
-            type: {
+            prop: {
               kind: 15,
               properties: [
                 {
