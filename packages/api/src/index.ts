@@ -41,6 +41,17 @@ const consolidateParentProps = (
 
 /**
  * API to analyze the given files
+ * @example
+ * import { analyzeFiles } from '@structured-types/api';
+ *
+ * const props = analyzeFiles(['index.ts'], {
+ *  collectHelpers: true,
+ *  collectFilePath: true,
+ *  collectLinesOfCode: true,
+ *  tsOptions: {
+ *    allowJs: true,
+ *  }
+ * })
  * @param files list of files to be processed
  * @param options parsing options
  * @param programOptions typescript ts.program and ts.compilerHost
@@ -182,6 +193,14 @@ export const analyzeFiles = (
 
 /**
  * API to analyze the given files by also loading the local typescript options from tsconfig
+ * @example
+ * import { parseFiles } from '@structured-types/api';
+ *
+ * const props = parseFiles(['index.ts'], {
+ *  collectHelpers: true,
+ *  collectFilePath: true,
+ *  collectLinesOfCode: true,
+ * })
  * @param files list of files to be processed
  * @param options parsing options
  * @param programOptions typescript ts.program and ts.compilerHost

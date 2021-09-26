@@ -581,6 +581,36 @@ export class ExtractProps {
     } else if (hasProperties(prop)) {
       result.push(...this.extractInterface(prop));
     }
+    if (prop.examples) {
+      const codeExamples = prop.examples.filter((e) => e.content);
+      const examples: Node = {
+        type: 'paragraph',
+        children: [
+          {
+            type: 'heading',
+            depth: 3,
+            children: [
+              {
+                type: 'text',
+                value: `example${codeExamples.length > 1 ? 's' : ''}`,
+              },
+            ],
+          },
+          {
+            type: 'text',
+            value: '\n',
+          },
+        ],
+      };
+
+      codeExamples.forEach((example) => {
+        examples.children?.push({
+          type: 'code',
+          value: example.content,
+        });
+      });
+      result.push(examples);
+    }
     return result;
   }
 
