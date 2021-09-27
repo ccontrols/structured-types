@@ -25,7 +25,7 @@ export default (): void => {
     })
     .option('t', {
       alias: 'toc',
-      describe: 'Table of content',
+      describe: 'Generate a table of content',
       type: 'boolean',
       default: true,
     })
