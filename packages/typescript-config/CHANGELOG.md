@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.24.2](https://github.com/ccontrols/component-controls/compare/v3.24.1...v3.24.2) (2021-09-27)
+
+**Note:** Version bump only for package @structured-types/typescript-config
+
+
+
+
+
 # [3.17.0](https://github.com/ccontrols/component-controls/compare/v3.16.5...v3.17.0) (2021-07-26)
 
 **Note:** Version bump only for package @structured-types/typescript-config
