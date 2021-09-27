@@ -1,13 +1,13 @@
 # Table of contents
 
-- [About](#about)
-- [Motivation](#motivation)
-- [Roadmap](#roadmap)
-- [Getting started](#getting-started)
-  - - [1. Installation](#1-installation)
-    - [2. Your API source file (sum.js):](#2-your-api-source-file-sumjs)
-    - [3. Your documentation extraction](#3-your-documentation-extraction)
-    - [4. The result](#4-the-result)
+-   [About](#about)
+-   [Motivation](#motivation)
+-   [Roadmap](#roadmap)
+-   [Getting started](#getting-started)
+    -   -   [1. Installation](#1-installation)
+        -   [2. Your API source file (sum.js):](#2-your-api-source-file-sumjs)
+        -   [3. Your documentation extraction](#3-your-documentation-extraction)
+        -   [4. The result](#4-the-result)
 
 # About
 
@@ -15,20 +15,20 @@
 
 # Motivation
 
-- Extract full types for your libraries, not just string representations of the type.
-- Plugin architecture, to extract custom types for frameworks such as `react`, `vue`, `angular` with the same package.
+-   Extract full types for your libraries, not just string representations of the type.
+-   Plugin architecture, to extract custom types for frameworks such as `react`, `vue`, `angular` with the same package.
 
 # Roadmap
 
-- [x] JSDoc types
-- [x] Typescript types
-- [x] React plugin
-- [x] React "prop-types" plugin
-- [x] Typescript playground plugin
-- [ ] component-controls integration
-- [x] Automatically generate README.md files (api-readme)
-- [ ] Vue plugin
-- [ ] Angular plugin
+-   [x] JSDoc types
+-   [x] Typescript types
+-   [x] React plugin
+-   [x] React "prop-types" plugin
+-   [x] Typescript playground plugin
+-   [ ] component-controls integration
+-   [x] Automatically generate README.md files (api-readme)
+-   [ ] Vue plugin
+-   [ ] Angular plugin
 
 # Getting started
 

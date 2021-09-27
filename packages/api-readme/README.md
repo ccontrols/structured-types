@@ -6,6 +6,7 @@
     -   [Configure](#configure)
         -   [Options](#options)
     -   [Launch](#launch)
+        -   [Command-line options](#command-line-options)
 
 # Overview
 
@@ -21,16 +22,25 @@ yarn add @structured-types/api-readme --dev
 
 ## Configure
 
-In your `README.md` file, you can insert a `<api-readme />` tag to generate the API section:
+In your `README.md` (or other markdown file) file, you will insert a `<api-readme />` tag to generate the API section:
 
 ```md
-<api-readme files="./src/index.ts"/>
+<api-readme />
 ```
 
 ### Options
 
 -   `files`: a comma-separated list of the files to include in the documentation
+
+```md
+<api-readme files="./src/index.ts"/>
+```
+
 -   `extract`: a comma-separated list of API names to extract, by default all exports
+
+```md
+<api-readme extract="parse, ParseOptions" files="./src/index.ts"/>
+```
 
 ## Launch
 
@@ -44,3 +54,11 @@ You can launch directly from the command-line or integrate in `package.json` by 
   },
 ...
 ```
+
+### Command-line options
+
+-   `-t` or `--toc`: boolean (default: `true`). Generate/or not a table of contents in your markdown file. You will need to create the section title such as `# Table of contents` and `api-markdown` will generate the content within this section.
+
+-   `-f` or `--file`: string (default: `MARKDOWN.md`). The markdown file that will be processed. Make sure you have inserted a `<api-readme />` tag within this file.
+
+-   `-l` or `--log`: boolean (default: `true`). Display/or not the running logs.

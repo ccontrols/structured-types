@@ -20,7 +20,11 @@ import {
   isIndexProp,
 } from '@structured-types/api';
 import { getRepoPath } from '../common/package-info';
-import { createPropsTable, PropItem } from '../blocks/props-table';
+import {
+  createPropsTable,
+  createPropsRow,
+  PropItem,
+} from '../blocks/props-table';
 import { Node, NodeChildren } from '../common/types';
 
 export class ExtractProps {
@@ -55,35 +59,7 @@ export class ExtractProps {
     );
     return createPropsTable(items, title);
   }
-  private extractFunctionName(prop: FunctionProp): Node[] {
-    if (prop.name) {
-      return [
-        {
-          type: 'paragraph',
-          children: [
-            {
-              type: 'strong',
-              children: [
-                {
-                  type: 'text',
-                  value: 'function',
-                },
-              ],
-            },
-            {
-              type: 'text',
-              value: ' ',
-            },
-            {
-              type: 'text',
-              value: prop.name,
-            },
-          ],
-        },
-      ];
-    }
-    return [];
-  }
+
   private extractFunctionDeclaration(prop: FunctionProp): Node[] {
     const result: Node[] = [
       {
@@ -136,14 +112,27 @@ export class ExtractProps {
     return result;
   }
   private extractFunction(prop: FunctionProp, _extractTable = true): Node[] {
-    const result: Node[] = this.extractFunctionName(prop);
-    const declaration = this.extractFunctionDeclaration(prop);
-    if (result.length && result[0].children) {
-      result[0].children.push(...declaration);
-    } else {
-      result.push(...declaration);
+    if (prop.parameters) {
+      const { propsTable, table, hasValues } = this.extractPropTable(
+        prop.parameters,
+        'parameters',
+      );
+      if (table && prop.returns && prop.returns.kind !== PropKind.Void) {
+        table.children.push(
+          createPropsRow(
+            {
+              name: 'returns',
+              isOptional: true,
+              type: this.extractPropType(prop.returns),
+              description: prop.returns.description || '',
+            },
+            hasValues,
+          ),
+        );
+      }
+      return propsTable;
     }
-    return result;
+    return [];
   }
   private getPropLink = (key: string) => {
     const nameParts = key.split('.');
@@ -197,7 +186,10 @@ export class ExtractProps {
       if (isUnionProp(prop)) {
         result.push(...this.extractPropType(prop));
       } else if (hasProperties(prop) && prop.properties) {
-        const { propsTable } = this.extractPropTable(prop.properties);
+        const { propsTable } = this.extractPropTable(
+          prop.properties,
+          'properties',
+        );
         result.push(...propsTable);
       }
     }
@@ -533,16 +525,13 @@ export class ExtractProps {
     }
     return [];
   }
-  private extractTSType(prop: PropType): Node[] {
-    const result: Node[] = [];
-    result.push({
-      type: 'heading',
-      depth: 2,
-      children: [{ type: 'text', value: prop.name }],
-    });
-    result.push(...this.getSourceLocation(prop));
+  private extractPropDefinition(prop: PropType): Node {
+    const definition: Omit<Node, 'children'> & { children: Node[] } = {
+      type: 'paragraph',
+      children: [],
+    };
     if (prop.kind) {
-      result.push({
+      definition.children.push({
         type: 'strong',
         children: [
           {
@@ -552,7 +541,7 @@ export class ExtractProps {
         ],
       });
     } else if (typeof prop.type === 'string') {
-      result.push({
+      definition.children.push({
         type: 'strong',
         children: [
           {
@@ -562,6 +551,25 @@ export class ExtractProps {
         ],
       });
     }
+    const loc = this.getSourceLocation(prop);
+    if (loc.length) {
+      definition.children.push({
+        type: 'text',
+        value: ' ',
+      });
+      definition.children.push(...loc);
+    }
+
+    return definition;
+  }
+  private extractTSType(prop: PropType): Node[] {
+    const result: Node[] = [];
+    result.push({
+      type: 'heading',
+      depth: 2,
+      children: [{ type: 'text', value: prop.name }],
+    });
+    result.push(this.extractPropDefinition(prop));
 
     if (prop.description) {
       result.push(

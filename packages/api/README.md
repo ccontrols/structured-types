@@ -133,13 +133,18 @@ const docs = parseFiles(['../src/sum.js']);
 
 ## parseFiles
 
-_defined in [@structured-types/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L209)_
-
-**`function`**
+**`function`** _defined in [@structured-types/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L209)_
 
 API to analyze the given files by also loading the local typescript options from tsconfig
 
-**function** parseFiles(`files`\*: string\[], `options`\*: [DocsOptions](#docsoptions), `programOptions`: [ProgramOptions](#programoptions)) => [PropTypes](#proptypes)
+### **parameters**
+
+| Name             | Type                              | Description                               |
+| ---------------- | --------------------------------- | ----------------------------------------- |
+| `files*`         | string\[]                         | list of files to be processed             |
+| `options*`       | [DocsOptions](#docsoptions)       | parsing options                           |
+| `programOptions` | [ProgramOptions](#programoptions) | typescript ts.program and ts.compilerHost |
+| `returns`        | [PropTypes](#proptypes)           | the parsed types                          |
 
 ### example
     import { parseFiles } from '@structured-types/api';
@@ -152,13 +157,18 @@ API to analyze the given files by also loading the local typescript options from
 
 ## analyzeFiles
 
-_defined in [@structured-types/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L60)_
-
-**`function`**
+**`function`** _defined in [@structured-types/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L60)_
 
 API to analyze the given files
 
-**function** analyzeFiles(`files`\*: string\[], `options`\*: [DocsOptions](#docsoptions), `programOptions`\*: [ProgramOptions](#programoptions)) => [PropTypes](#proptypes)
+### **parameters**
+
+| Name              | Type                              | Description                               |
+| ----------------- | --------------------------------- | ----------------------------------------- |
+| `files*`          | string\[]                         | list of files to be processed             |
+| `options*`        | [DocsOptions](#docsoptions)       | parsing options                           |
+| `programOptions*` | [ProgramOptions](#programoptions) | typescript ts.program and ts.compilerHost |
+| `returns`         | [PropTypes](#proptypes)           | the parsed types                          |
 
 ### example
     import { analyzeFiles } from '@structured-types/api';
@@ -174,11 +184,11 @@ API to analyze the given files
 
 ## DocsOptions
 
-_defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L316)_
-
-**`type`**
+**`type`** _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L316)_
 
 
+
+### **properties**
 
 | Name                 | Type                                                                 | Description                                                                                                                                       |
 | -------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -203,13 +213,13 @@ _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols
 
 ## ParseOptions
 
-_defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L194)_
-
-**`interface`**
+**`interface`** _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L194)_
 
 parsing options
 
 
+
+### **properties**
 
 | Name                 | Type                                                                 | Description                                                                                                                                       |
 | -------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -233,11 +243,11 @@ parsing options
 
 ## ProgramOptions
 
-_defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L317)_
-
-**`type`**
+**`type`** _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L317)_
 
 
+
+### **properties**
 
 | Name      | Type            | Description |
 | --------- | --------------- | ----------- |
@@ -246,13 +256,13 @@ _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols
 
 ## PropTypes
 
-_defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L574)_
-
-**`type`**
+**`type`** _defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L574)_
 
 Top-level prop type, with aded optional \_\_helpers and \_\_diagnostics fields.
 
 
+
+### **properties**
 
 | Name            | Type                                     | Description                                                                                                   |
 | --------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -262,13 +272,13 @@ Top-level prop type, with aded optional \_\_helpers and \_\_diagnostics fields.
 
 ## PropType
 
-_defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L65)_
-
-**`interface`**
+**`interface`** _defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L65)_
 
 Base prop type interface
 
 
+
+### **properties**
 
 | Name          | Type                             | Description                                                                                    |
 | ------------- | -------------------------------- | ---------------------------------------------------------------------------------------------- |
@@ -296,13 +306,13 @@ Base prop type interface
 
 ## PropKind
 
-_defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L34)_
-
-**`enum`**
+**`enum`** _defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L34)_
 
 The property type or kind
 
 
+
+### **properties**
 
 | Name           | Type   | Value | Description |
 | -------------- | ------ | ----- | ----------- |
@@ -334,11 +344,11 @@ The property type or kind
 
 ## ParsePlugin
 
-_defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L278)_
-
-**`type`**
+**`type`** _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L278)_
 
 
+
+### **properties**
 
 | Name                 | Type                                                                                                                                                                 | Description                                                                                                                                            |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -364,13 +374,13 @@ _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols
 
 ## PropDiagnostic
 
-_defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L548)_
-
-**`type`**
+**`type`** _defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L548)_
 
 diagnostics row data
 
 
+
+### **properties**
 
 | Name        | Type                  | Description                     |
 | ----------- | --------------------- | ------------------------------- |
@@ -382,13 +392,13 @@ diagnostics row data
 
 ## JSDocExample
 
-_defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L6)_
-
-**`interface`**
+**`interface`** _defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L6)_
 
 JSDoc example item
 
 
+
+### **properties**
 
 | Name      | Type   | Description            |
 | --------- | ------ | ---------------------- |
@@ -397,13 +407,13 @@ JSDoc example item
 
 ## JSDocPropTag
 
-_defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L20)_
-
-**`interface`**
+**`interface`** _defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L20)_
 
 JSDoc generic tag item
 
 
+
+### **properties**
 
 | Name      | Type   | Description          |
 | --------- | ------ | -------------------- |
@@ -412,11 +422,11 @@ JSDoc generic tag item
 
 ## ResolverReturnType
 
-_defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L321)_
-
-**`type`**
+**`type`** _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L321)_
 
 
+
+### **properties**
 
 | Name                 | Type                                                                 | Description                                                                                                                                       |
 | -------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -446,11 +456,11 @@ _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols
 
 ## ISymbolParser
 
-_defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L386)_
-
-**`interface`**
+**`interface`** _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L386)_
 
 
+
+### **properties**
 
 | Name                      | Type                                                                                                                                                           | Description |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |

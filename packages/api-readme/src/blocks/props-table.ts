@@ -67,8 +67,13 @@ export const createPropsTable = (
             depth: 3,
             children: [
               {
-                type: 'text',
-                value: title,
+                type: 'strong',
+                children: [
+                  {
+                    type: 'text',
+                    value: title,
+                  },
+                ],
               },
             ],
           },

@@ -35,12 +35,17 @@ $ npm install @structured-types/typescript-config --save-dev
 
 ## getTypescriptConfig
 
-_defined in [@structured-types/typescript-config/src/index.ts](https://github.com/ccontrols/component-controls/tree/master/misc/typescript-config/src/index.ts#L31)_
-
-**`function`**
+**`function`** _defined in [@structured-types/typescript-config/src/index.ts](https://github.com/ccontrols/component-controls/tree/master/misc/typescript-config/src/index.ts#L31)_
 
 reads any typescript configuration files for a given file, including the extends references
 
-**function** getTypescriptConfig(`filePath`\*: string, `defaultConfig`: ts.CompilerOptions, `keepJson`: boolean) => ts.CompilerOptions | undefined
+### **parameters**
+
+| Name            | Type                            | Description                                                                              |
+| --------------- | ------------------------------- | ---------------------------------------------------------------------------------------- |
+| `filePath*`     | string                          | the full file path to the file                                                           |
+| `defaultConfig` | ts.CompilerOptions              | optional default configuration                                                           |
+| `keepJson`      | boolean                         | set to tru to avoid converting options                                                   |
+| `returns`       | ts.CompilerOptions \| undefined | the typescript configuration for the file, or undefined if this is not a typescript file |
 
 <!-- END-API-README -->

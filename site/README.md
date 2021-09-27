@@ -17,19 +17,15 @@ Playground site for structured-types
 
 ## Playground
 
-_defined in [structured-types-site/src/components/Playground.tsx](https://github.com/ccontrols/structured-types/tree/master/site/src/components/Playground.tsx#L18)_
-
-**`function`**
-
-**function** Playground() => void
+**`function`** _defined in [structured-types-site/src/components/Playground.tsx](https://github.com/ccontrols/structured-types/tree/master/site/src/components/Playground.tsx#L18)_
 
 ## FunctionComponent
 
-_defined in [@types/react/index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react)_
-
-**`interface`**
+**`interface`** _defined in [@types/react/index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react)_
 
 
+
+### **properties**
 
 | Name           | Type                                 | Description |
 | -------------- | ------------------------------------ | ----------- |
