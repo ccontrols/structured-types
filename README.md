@@ -23,6 +23,7 @@
 - [x] JSDoc types
 - [x] Typescript types
 - [x] React plugin
+- [x] React "prop-types" plugin
 - [x] Typescript playground plugin
 - [ ] component-controls integration
 - [x] Automatically generate README.md files (api-readme)
