@@ -20,6 +20,7 @@
   "scripts": {
     "build": "NODE_ENV=production yarn rollup -c",
     "dev": "NODE_ENV=development yarn rollup -cw",
+    "docs": "api-readme",
     "prepare": "yarn build",
     "lint": "yarn eslint . --ext ts,tsx",
     "fix": "yarn lint --fix",
@@ -42,6 +43,7 @@
     "path-browserify": "^1.0.1"
   },
   "devDependencies": {
+    "@structured-types/api-readme": "^3.24.1",
     "typescript": "^4.2.4"
   },
   "peerDependencies": {

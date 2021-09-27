@@ -7,6 +7,7 @@
   "scripts": {
     "start": "yarn clean && next",
     "clean": "rimraf dist .next public",
+    "docs": "api-readme",
     "create-examples": "yarn node ./scripts/create-examples.js && yarn eslint ./src/api/examples.ts --fix",
     "lint": "yarn eslint . --ext ts,tsx",
     "fix": "yarn lint --fix",
@@ -49,6 +50,7 @@
     "typescript": "^4.2.4"
   },
   "devDependencies": {
+    "@structured-types/api-readme": "^3.24.1",
     "@types/file-saver": "^2.0.2",
     "@types/lz-string": "^1.3.34",
     "@types/node-fetch": "^2.5.12",

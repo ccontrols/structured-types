@@ -16,6 +16,7 @@
     "bootstrap": "lerna bootstrap",
     "clean": "lerna run --parallel clean",
     "start": "cd site && yarn start",
+    "docs": "lerna run docs && api-readme",
     "dev": "lerna run --parallel dev",
     "build": "lerna run build",
     "build:site": "lerna run --scope structured-types-site build",

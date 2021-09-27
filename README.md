@@ -4,19 +4,19 @@
 
 # Motivation
 
-- Extract full types for your libraries, not just string representations of the type.
-- Plugin architecture, to extract custom types for frameworks such as `react`, `vue`, `angular` with the same package.
+-   Extract full types for your libraries, not just string representations of the type.
+-   Plugin architecture, to extract custom types for frameworks such as `react`, `vue`, `angular` with the same package.
 
 # Roadmap
 
-- [x] JSDoc types
-- [x] Typescript types
-- [x] React plugin
-- [x] Typescript playground plugin
-- [ ] component-controls integration
-- [ ] Automatically generate README.md files (structured-md)
-- [ ] Vue plugin
-- [ ] Angular plugin
+-   [x] JSDoc types
+-   [x] Typescript types
+-   [x] React plugin
+-   [x] Typescript playground plugin
+-   [ ] component-controls integration
+-   [ ] Automatically generate README.md files (structured-md)
+-   [ ] Vue plugin
+-   [ ] Angular plugin
 
 # Getting started
 
