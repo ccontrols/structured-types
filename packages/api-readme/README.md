@@ -1,11 +1,11 @@
 # Table of contents
 
-- [Overview](#overview)
-- [Getting Started](#getting-started)
-  - [Install](#install)
-  - [Configure](#configure)
-    - [Options](#options)
-  - [Launch](#launch)
+-   [Overview](#overview)
+-   [Getting Started](#getting-started)
+    -   [Install](#install)
+    -   [Configure](#configure)
+        -   [Options](#options)
+    -   [Launch](#launch)
 
 # Overview
 
@@ -29,8 +29,8 @@ In your `README.md` file, you can insert a `<api-readme />` tag to generate the 
 
 ### Options
 
-- `files`: a comma-separated list of the files to include in the documentation
-- `extract`: a comma-separated list of API names to extract, by default all exports
+-   `files`: a comma-separated list of the files to include in the documentation
+-   `extract`: a comma-separated list of API names to extract, by default all exports
 
 ## Launch
 
