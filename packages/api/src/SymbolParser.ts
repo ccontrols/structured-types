@@ -549,18 +549,47 @@ export class SymbolParser implements ISymbolParser {
         if (type) {
           (prop as IndexProp).prop = type;
         }
-      } else if (
-        ts.isIndexedAccessTypeNode(node) &&
-        ts.isLiteralTypeNode(node.indexType) &&
-        ts.isTypeReferenceNode(node.objectType)
-      ) {
-        const propName = trimQuotes(node.indexType.literal.getText());
-        const refSymbol = this.checker.getSymbolAtLocation(
-          node.objectType.typeName,
-        );
-        const typeSymbol = refSymbol?.members?.get(propName as ts.__String);
-        if (typeSymbol) {
-          return this.addRefSymbol(prop, typeSymbol, false);
+      } else if (ts.isIndexedAccessTypeNode(node)) {
+        if (
+          ts.isLiteralTypeNode(node.indexType) &&
+          ts.isTypeReferenceNode(node.objectType)
+        ) {
+          const propName = trimQuotes(node.indexType.literal.getText());
+          const refSymbol = this.checker.getSymbolAtLocation(
+            node.objectType.typeName,
+          );
+          const typeSymbol = refSymbol?.members?.get(propName as ts.__String);
+          if (typeSymbol) {
+            return this.addRefSymbol(prop, typeSymbol, false);
+          }
+        } else {
+          prop.kind = PropKind.Index;
+          (prop as IndexProp).index = this.parseType(
+            {},
+            options,
+            node.indexType,
+          );
+          const propType: ts.Type | undefined = this.checker.getTypeAtLocation(
+            node.objectType,
+          );
+          if (propType) {
+            const typeArguments: ts.Type[] | undefined =
+              (propType as any).resolvedTypeArguments ||
+              (propType as any).typeArguments;
+            if (typeArguments) {
+              const propProp = {
+                kind: getTypeKind(propType) || PropKind.Object,
+                properties: typeArguments.map((arg) => {
+                  const p: PropType = {
+                    kind: getTypeKind(arg) || PropKind.String,
+                  };
+                  propValue(p, (arg as any).value as string);
+                  return p;
+                }),
+              } as ObjectProp;
+              (prop as IndexProp).prop = propProp;
+            }
+          }
         }
       } else if (isHasType(node) && node.type) {
         if (node.type?.kind && tsKindToPropKind[node.type.kind]) {

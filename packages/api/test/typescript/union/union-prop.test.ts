@@ -2,6 +2,51 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('union', () => {
+  it('typeof', () => {
+    const results = parseFiles([path.resolve(__dirname, 'typeof.ts')]);
+    expect(results).toEqual({
+      ParserNames: {
+        name: 'ParserNames',
+        kind: 20,
+        index: {
+          kind: 2,
+        },
+        prop: {
+          kind: 26,
+          properties: [
+            {
+              kind: 1,
+              value: 'structured-types',
+            },
+            {
+              kind: 1,
+              value: 'react-docgen-typescript',
+            },
+            {
+              kind: 1,
+              value: 'react-docgen',
+            },
+            {
+              kind: 1,
+              value: 'jsdoc',
+            },
+            {
+              kind: 1,
+              value: 'typedoc',
+            },
+            {
+              kind: 1,
+              value: 'ts-json-schema-generator',
+            },
+            {
+              kind: 1,
+              value: 'documentation',
+            },
+          ],
+        },
+      },
+    });
+  });
   it('record', () => {
     const results = parseFiles([path.resolve(__dirname, 'record.ts')]);
     expect(results).toEqual({
