@@ -4004,6 +4004,11 @@
     jest-diff "^26.0.0"
     pretty-format "^26.0.0"
 
+"@types/js-string-escape@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/js-string-escape/-/js-string-escape-1.0.1.tgz#662b8795ac2842981f6c46dc2289c0a81940f605"
+  integrity sha512-s3Tz/P+u4X78n0TdgNR0l9Yu1jyH2dRwofi/DqGLpbbjiuIs0n6W8W4XfUI6+9K0lPK1fF4KHA5HcqtOsy1V0Q==
+
 "@types/json-schema@*", "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.7", "@types/json-schema@^7.0.8":
   version "7.0.8"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.8.tgz#edf1bf1dbf4e04413ca8e5b17b3b7d7d54b59818"

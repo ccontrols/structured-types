@@ -273,6 +273,8 @@ export const examples: Examples = {
         '/** type A */\ntype A = {\n  a: string;\n};\n/**\n * type B\n */\n\ntype B = {\n  b: number;\n};\n/** intersect type */\nexport type Intersect = A & B;\n',
       'nested-generic.ts':
         "type UnionGenericType<Type> = Type | 'a string';\n\n/**\n * generic interface\n */\n\ntype GenericArrayType<Type> = {\n  /**\n   * member field\n   */\n\n  m: Type;\n};\nexport type NestedGenericType<Type> = GenericArrayType<UnionGenericType<Type>>;\n",
+      'partial.ts':
+        '/**\n * main type description\n */\ntype MainType = {\n  /**\n   * string prop description\n   */\n  stringProp: string;\n};\n\n/**\n * partial type description\n */\nexport type PartialType = Partial<MainType>;\n',
       'referenced-type.ts':
         "import * as ts from 'typescript';\n\nexport type JSDocInfoType = {\n  comment?: ts.JSDocTag['comment'];\n};\n",
       'self-reference.ts':
@@ -288,6 +290,8 @@ export const examples: Examples = {
         "/** Left-aligns the text. */\ntype Left = 'left';\n\n/** Centers the text horizontally. */\ntype Center = 'center';\n\n/** Right-aligns the text. */\ntype Right = 'right';\n\n/** Controls the alignment of text when printed. */\n\nexport type TextAlignment = Left | Right | Center;\n",
       'record.ts':
         'export type UnionProp = Record<string, boolean> & {\n  numProp?: number;\n};\n',
+      'typeof.ts':
+        "const parserNames = [\n  'structured-types',\n  'react-docgen-typescript',\n  'react-docgen',\n  'jsdoc',\n  'typedoc',\n  'ts-json-schema-generator',\n  'documentation',\n] as const;\n\nexport type ParserNames = typeof parserNames[number];\n",
     },
     unknown: {
       'export-const.ts':

@@ -1,6 +1,7 @@
 /* eslint-disable prefer-spread */
 import path from 'path';
 import fs from 'fs';
+import jsStringEscape from 'js-string-escape';
 import reactPlugin from '@structured-types/react-plugin';
 import propTypesPlugin from '@structured-types/prop-types-plugin';
 import {
@@ -18,6 +19,7 @@ import {
   isArrayProp,
   ParseOptions,
   isIndexProp,
+  isStringProp,
 } from '@structured-types/api';
 import { getRepoPath } from '../common/package-info';
 import {
@@ -255,10 +257,13 @@ export class ExtractProps {
       return this.propLink(prop.type);
     }
     if (showValue && hasValue(prop) && prop.value !== undefined) {
+      const value = isStringProp(prop)
+        ? `"${jsStringEscape(prop.value)}"`
+        : prop.value.toString();
       return [
         {
           type: 'text',
-          value: prop.value.toString(),
+          value,
         },
       ];
     }

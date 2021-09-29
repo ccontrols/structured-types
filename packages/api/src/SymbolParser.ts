@@ -236,7 +236,7 @@ export class SymbolParser implements ISymbolParser {
           (f) => (f as ts.TypeElement).name?.getText() === name,
         );
         if (numProps.length <= 1) {
-          const symbol = this.checker.getSymbolAtLocation(p.name);
+          const symbol = this.getSymbolAtLocation(p.name);
           if (symbol) {
             const prop = this.addRefSymbol(
               { name: symbol.escapedName as string },
@@ -273,7 +273,7 @@ export class SymbolParser implements ISymbolParser {
           node.type.type &&
           ts.isTypeReferenceNode(node.type.type)
         ) {
-          const returnSymbol = this.checker.getSymbolAtLocation(
+          const returnSymbol = this.getSymbolAtLocation(
             node.type.type?.typeName,
           );
           if (returnSymbol) {
@@ -336,7 +336,7 @@ export class SymbolParser implements ISymbolParser {
       const extendsProp: string[] = [];
       node.heritageClauses.forEach((h) => {
         h.types.forEach((t) => {
-          const symbol = this.checker.getSymbolAtLocation(t.expression);
+          const symbol = this.getSymbolAtLocation(t.expression);
           if (symbol) {
             const name = symbol.escapedName as string;
             extendsProp.push(name);
@@ -374,7 +374,7 @@ export class SymbolParser implements ISymbolParser {
             if (p) {
               this.parseValue(p, options, e.initializer);
             } else {
-              const childSymbol = this.checker.getSymbolAtLocation(e.name);
+              const childSymbol = this.getSymbolAtLocation(e.name);
 
               if (childSymbol) {
                 const childProp = this.parseSymbolProp(
@@ -555,20 +555,12 @@ export class SymbolParser implements ISymbolParser {
           ts.isTypeReferenceNode(node.objectType)
         ) {
           const propName = trimQuotes(node.indexType.literal.getText());
-          const refSymbol = this.checker.getSymbolAtLocation(
-            node.objectType.typeName,
-          );
+          const refSymbol = this.getSymbolAtLocation(node.objectType.typeName);
           const typeSymbol = refSymbol?.members?.get(propName as ts.__String);
           if (typeSymbol) {
             return this.addRefSymbol(prop, typeSymbol, false);
           }
         } else {
-          prop.kind = PropKind.Index;
-          (prop as IndexProp).index = this.parseType(
-            {},
-            options,
-            node.indexType,
-          );
           const propType: ts.Type | undefined = this.checker.getTypeAtLocation(
             node.objectType,
           );
@@ -577,17 +569,14 @@ export class SymbolParser implements ISymbolParser {
               (propType as any).resolvedTypeArguments ||
               (propType as any).typeArguments;
             if (typeArguments) {
-              const propProp = {
-                kind: getTypeKind(propType) || PropKind.Object,
-                properties: typeArguments.map((arg) => {
-                  const p: PropType = {
-                    kind: getTypeKind(arg) || PropKind.String,
-                  };
-                  propValue(p, (arg as any).value as string);
-                  return p;
-                }),
-              } as ObjectProp;
-              (prop as IndexProp).prop = propProp;
+              prop.kind = PropKind.Union;
+              (prop as UnionProp).properties = typeArguments.map((arg) => {
+                const p: PropType = {
+                  kind: getTypeKind(arg) || PropKind.String,
+                };
+                propValue(p, (arg as any).value as string);
+                return p;
+              });
             }
           }
         }
@@ -605,14 +594,14 @@ export class SymbolParser implements ISymbolParser {
         }
         this.parseTypeValueComments(prop, options, node.type);
       } else if (ts.isExportAssignment(node)) {
-        const symbol = this.checker.getSymbolAtLocation(node.expression);
+        const symbol = this.getSymbolAtLocation(node.expression);
         if (symbol) {
           return this.addRefSymbol(prop, symbol, false);
         }
       } else if (ts.isExportSpecifier(node)) {
         if (node.propertyName) {
           prop.name = node.propertyName.getText();
-          const symbol = this.checker.getSymbolAtLocation(node.propertyName);
+          const symbol = this.getSymbolAtLocation(node.propertyName);
           if (symbol) {
             return this.addRefSymbol(prop, symbol, false);
           }
@@ -644,7 +633,7 @@ export class SymbolParser implements ISymbolParser {
           prop.properties = properties;
         }
       } else if (ts.isTypeReferenceNode(node)) {
-        const symbol = this.checker.getSymbolAtLocation(node.typeName);
+        const symbol = this.getSymbolAtLocation(node.typeName);
         if (symbol) {
           const d = symbol.valueDeclaration || symbol.declarations?.[0];
           if (d && tsKindToPropKind[d.kind]) {
@@ -782,6 +771,14 @@ export class SymbolParser implements ISymbolParser {
     return prop;
   }
 
+  private getSymbolAtLocation(node: ts.Node): ts.Symbol | undefined {
+    const symbol = this.checker.getSymbolAtLocation(node);
+    if (symbol && symbol.flags & ts.SymbolFlags.Alias) {
+      return this.checker.getAliasedSymbol(symbol);
+    }
+    return symbol;
+  }
+
   private getTypeIndexes(type: ts.Type, options: ParseOptions): PropType[] {
     interface InterfaceOrTypeWithIndex extends ts.InterfaceType {
       stringIndexInfo?: ts.IndexInfo;
@@ -917,7 +914,7 @@ export class SymbolParser implements ISymbolParser {
                 m.modifiers?.find((f) => f.kind === ts.SyntaxKind.StaticKeyword)
               ) {
                 if (m.name) {
-                  const s = this.checker.getSymbolAtLocation(m.name);
+                  const s = this.getSymbolAtLocation(m.name);
                   if (s) {
                     staticProps.push(s);
                   }

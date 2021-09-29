@@ -11,6 +11,7 @@ Object {
         "name": "webpackConfig",
         "optional": true,
         "returns": Object {
+          "description": "Options object as provided by the user.",
           "kind": 14,
           "name": "Configuration",
           "properties": Array [
@@ -16861,6 +16862,7 @@ from parent (or top level compiler) and creates a child Compilation",
         "optional": true,
         "parent": "FullAnimal",
         "returns": Object {
+          "description": "Options object as provided by the user.",
           "kind": 14,
           "name": "Configuration",
           "properties": Array [

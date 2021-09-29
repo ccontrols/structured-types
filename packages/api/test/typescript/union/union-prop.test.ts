@@ -7,43 +7,37 @@ describe('union', () => {
     expect(results).toEqual({
       ParserNames: {
         name: 'ParserNames',
-        kind: 20,
-        index: {
-          kind: 2,
-        },
-        prop: {
-          kind: 26,
-          properties: [
-            {
-              kind: 1,
-              value: 'structured-types',
-            },
-            {
-              kind: 1,
-              value: 'react-docgen-typescript',
-            },
-            {
-              kind: 1,
-              value: 'react-docgen',
-            },
-            {
-              kind: 1,
-              value: 'jsdoc',
-            },
-            {
-              kind: 1,
-              value: 'typedoc',
-            },
-            {
-              kind: 1,
-              value: 'ts-json-schema-generator',
-            },
-            {
-              kind: 1,
-              value: 'documentation',
-            },
-          ],
-        },
+        kind: 4,
+        properties: [
+          {
+            kind: 1,
+            value: 'structured-types',
+          },
+          {
+            kind: 1,
+            value: 'react-docgen-typescript',
+          },
+          {
+            kind: 1,
+            value: 'react-docgen',
+          },
+          {
+            kind: 1,
+            value: 'jsdoc',
+          },
+          {
+            kind: 1,
+            value: 'typedoc',
+          },
+          {
+            kind: 1,
+            value: 'ts-json-schema-generator',
+          },
+          {
+            kind: 1,
+            value: 'documentation',
+          },
+        ],
       },
     });
   });
