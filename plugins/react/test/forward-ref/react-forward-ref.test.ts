@@ -11,7 +11,7 @@ describe('react-forward-ref', () => {
       FancyButton: {
         name: 'FancyButton',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -31,7 +31,7 @@ describe('react-forward-ref', () => {
     expect(result).toEqual({
       default: {
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -58,7 +58,7 @@ describe('react-forward-ref', () => {
       FancyButton: {
         name: 'FancyButton',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -79,7 +79,7 @@ describe('react-forward-ref', () => {
       FancyButton: {
         name: 'CustomComponentName',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -102,7 +102,7 @@ describe('react-forward-ref', () => {
       FancyButton: {
         name: 'FancyButton',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -124,7 +124,7 @@ describe('react-forward-ref', () => {
       FancyButton: {
         name: 'FancyButton',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -144,7 +144,7 @@ describe('react-forward-ref', () => {
     expect(result).toEqual({
       default: {
         extension: 'react',
-        kind: 11,
+        kind: 25,
         name: 'default',
       },
     });
@@ -158,7 +158,7 @@ describe('react-forward-ref', () => {
       FancyButton: {
         name: 'FancyButton',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',

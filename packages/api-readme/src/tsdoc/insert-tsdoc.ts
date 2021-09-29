@@ -56,7 +56,7 @@ export const insertTSDoc = (fileName: string) => (): ((node: Node) => void) => {
               if (strValue === 'true') {
                 value = true;
               } else if (strValue === 'false') {
-                value = true;
+                value = false;
               } else if (!isNaN(parseFloat(strValue))) {
                 value = parseFloat(strValue);
               } else if (typeof attr[1] === 'string') {

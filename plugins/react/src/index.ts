@@ -32,7 +32,11 @@ const getNodeResults = (
       symbolType: type,
     });
     if (symbol && results && !results.prop?.name) {
-      results.prop = { ...results.prop, name: symbol.getName() };
+      results.prop = {
+        ...results.prop,
+        kind: PropKind.Component,
+        name: symbol.getName(),
+      };
     }
 
     return results;
@@ -103,7 +107,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
         return {
           type,
           declaration,
-          prop: { kind: PropKind.Function, name },
+          prop: { kind: PropKind.Component, name },
           initializer: defaultProps || initializer,
           collectGenerics: false,
           collectParameters: false,
@@ -142,7 +146,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
             return {
               type: propsType,
               declaration,
-              prop: { kind: PropKind.Class, name },
+              prop: { kind: PropKind.Component, name },
               initializer: defaultProps,
             };
           }
@@ -182,6 +186,8 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
                       defaultProps = props.name;
                     }
                     propsType = checker.getTypeAtLocation(props);
+                  } else {
+                    propsType = checker.getTypeAtLocation(reactFunction);
                   }
                   const name =
                     typeof displayName === 'string'
@@ -193,7 +199,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
                     declaration: reactFunction.parent,
                     type: propsType,
                     initializer: defaultProps,
-                    prop: { kind: PropKind.Function, name },
+                    prop: { kind: PropKind.Component, name },
                     collectGenerics: false,
                     collectParameters: false,
                     collectInheritance: false,

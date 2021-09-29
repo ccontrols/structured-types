@@ -19,7 +19,7 @@ type APIItem = {
   selected: boolean;
   Panel: ComponentType<any>;
   link: string;
-  jsonTree?: ReactJSONProps;
+  jsonTree?: Partial<ReactJSONProps>;
 };
 
 const kindEntries = Object.entries(PropKind);

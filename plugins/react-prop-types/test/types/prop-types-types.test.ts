@@ -13,7 +13,7 @@ describe('prop-types-types', () => {
       default: {
         name: 'MyComponent',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'stringProp',
@@ -42,7 +42,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'Person',
@@ -71,7 +71,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'optionalBool',
@@ -94,7 +94,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'aPerson',
@@ -140,7 +140,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'aPerson',
@@ -186,7 +186,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'optionalObj',
@@ -214,7 +214,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'optionalArrayOf',
@@ -242,7 +242,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'optionalUnion',
@@ -287,7 +287,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'optionalUnion',
@@ -320,7 +320,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'Component',
@@ -343,7 +343,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'optionalElement',
@@ -367,7 +367,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'optionalNode',
@@ -390,7 +390,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'optionalSymbol',
@@ -413,7 +413,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'optionalString',
@@ -436,7 +436,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'optionalObj',
@@ -458,7 +458,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'optionalNumber',
@@ -481,7 +481,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'optionalfunc',
@@ -504,7 +504,7 @@ describe('prop-types-types', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react-prop-types',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'optionalArray',

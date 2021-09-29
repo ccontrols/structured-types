@@ -3,6 +3,23 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('function-component', () => {
+  it('Editor', () => {
+    const result = parseFiles(
+      [
+        path.resolve(
+          __dirname,
+          '../../../../site/src/components/viewers/JSONViewer.tsx',
+        ),
+      ],
+      {
+        plugins: [reactPlugin],
+        collectHelpers: true,
+        collectFilePath: true,
+        extract: ['JSONViewer'],
+      },
+    );
+    expect(result).toMatchSnapshot();
+  });
   it('record-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'record-props.tsx')], {
       plugins: [reactPlugin],
@@ -11,7 +28,7 @@ describe('function-component', () => {
       default: {
         name: 'MyComponent',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             name: 'first',
@@ -88,7 +105,7 @@ describe('function-component', () => {
       default: {
         name: 'MyComponent',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -118,7 +135,7 @@ describe('function-component', () => {
     expect(result).toEqual({
       MyComponent: {
         name: 'MyComponent',
-        kind: 11,
+        kind: 25,
         extension: 'react',
         properties: [
           {
@@ -165,7 +182,7 @@ describe('function-component', () => {
     expect(result).toEqual({
       MyComponent: {
         name: 'MyComponent',
-        kind: 11,
+        kind: 25,
         extension: 'react',
       },
     });
@@ -180,7 +197,7 @@ describe('function-component', () => {
       default: {
         name: 'CustomComponentName',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -215,7 +232,7 @@ describe('function-component', () => {
     expect(result).toEqual({
       MyComponent: {
         name: 'MyComponent',
-        kind: 11,
+        kind: 25,
         extension: 'react',
         properties: [
           {
@@ -251,7 +268,7 @@ describe('function-component', () => {
     expect(result).toEqual({
       MyComponent: {
         name: 'MyComponent',
-        kind: 11,
+        kind: 25,
         extension: 'react',
         properties: [
           {
@@ -279,7 +296,7 @@ describe('function-component', () => {
     expect(result).toEqual({
       MyComponent: {
         name: 'MyComponent',
-        kind: 11,
+        kind: 25,
         extension: 'react',
         properties: [
           {

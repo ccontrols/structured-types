@@ -303,7 +303,7 @@ export class ExtractProps {
   ): Node[] {
     if (prop.parent) {
       const parent = this.getPropLink(prop.parent);
-      if (isClassLikeProp(parent)) {
+      if (parent && isClassLikeProp(parent)) {
         const p = parent.properties?.find((p) => p.name === prop.name);
         if (p) {
           return this.extractType(p, options);
@@ -530,13 +530,16 @@ export class ExtractProps {
       type: 'paragraph',
       children: [],
     };
+
     if (prop.kind) {
       definition.children.push({
         type: 'strong',
         children: [
           {
             type: 'inlineCode',
-            value: `${PropKind[prop.kind].toLowerCase()}`,
+            value: `${prop.extension ? `${prop.extension} ` : ''}${PropKind[
+              prop.kind
+            ].toLowerCase()}`,
           },
         ],
       });

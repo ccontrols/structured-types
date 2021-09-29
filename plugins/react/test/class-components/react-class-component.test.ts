@@ -4,7 +4,7 @@ import reactPlugin from '../../src';
 
 const simpleResults = {
   MyComponent: {
-    kind: 13,
+    kind: 25,
     extension: 'react',
     properties: [
       {
@@ -28,7 +28,7 @@ describe('class-component', () => {
       default: {
         name: 'CustomComponentName',
         extension: 'react',
-        kind: 13,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -60,7 +60,7 @@ describe('class-component', () => {
     expect(result).toEqual({
       default: {
         name: 'MyComponent',
-        kind: 13,
+        kind: 25,
         extension: 'react',
         properties: [
           {
@@ -94,7 +94,7 @@ describe('class-component', () => {
       MyComponent: {
         extension: 'react',
         name: 'CustomComponentName',
-        kind: 13,
+        kind: 25,
         description: 'MyComponent special component',
       },
     });
@@ -112,7 +112,7 @@ describe('class-component', () => {
       MyComponent: {
         extension: 'react',
         name: 'MyComponent',
-        kind: 13,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -183,7 +183,7 @@ describe('class-component', () => {
     expect(result).toEqual({
       default: {
         name: 'MyComponent',
-        kind: 13,
+        kind: 25,
         extension: 'react',
         properties: [
           {
@@ -212,7 +212,7 @@ describe('class-component', () => {
     expect(result).toEqual({
       MyComponent: {
         name: 'MyComponent',
-        kind: 13,
+        kind: 25,
         extension: 'react',
         properties: [
           {

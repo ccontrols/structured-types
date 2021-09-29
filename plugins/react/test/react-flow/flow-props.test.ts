@@ -11,7 +11,7 @@ describe('react-flow', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react',
-        kind: 13,
+        kind: 25,
         properties: [
           {
             parent: 'Props',
@@ -38,7 +38,7 @@ describe('react-flow', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'Props',
@@ -66,7 +66,7 @@ describe('react-flow', () => {
       MyComponent: {
         name: 'MyComponent',
         extension: 'react',
-        kind: 13,
+        kind: 25,
         properties: [
           {
             parent: 'Props',

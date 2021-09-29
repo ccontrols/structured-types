@@ -140,20 +140,20 @@ export const analyzeFiles = (
   }
   if (collectHelpers) {
     // only return parents that are not already exported from the same file
-    const parents: Record<string, PropType> = Object.keys(parser.parents)
+    const helpers: Record<string, PropType> = Object.keys(parser.helpers)
       .filter((name) => parsed[name] === undefined)
-      .reduce((acc, name) => ({ ...acc, [name]: parser.parents[name] }), {});
-    if (Object.keys(parents).length) {
+      .reduce((acc, name) => ({ ...acc, [name]: parser.helpers[name] }), {});
+    if (Object.keys(helpers).length) {
       parsed = Object.keys(parsed).reduce((acc, key) => {
         return {
           ...acc,
-          [key]: consolidateParentProps([parsed[key]], parents)[0],
+          [key]: consolidateParentProps([parsed[key]], helpers)[0],
         };
       }, {});
-      parsed.__helpers = Object.keys(parents).reduce((acc, key) => {
+      parsed.__helpers = Object.keys(helpers).reduce((acc, key) => {
         return {
           ...acc,
-          [key]: consolidateParentProps([parents[key]], parents)[0],
+          [key]: consolidateParentProps([helpers[key]], helpers)[0],
         };
       }, {});
     }

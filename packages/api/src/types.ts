@@ -430,6 +430,7 @@ export type HasPropertiesProp =
   | FunctionProp
   | TypeProp
   | InterfaceProp
+  | ComponentProp
   | ClassProp;
 
 /**
@@ -444,6 +445,7 @@ export const hasProperties = (prop: PropType): prop is HasPropertiesProp => {
     prop.kind === PropKind.Function ||
     prop.kind === PropKind.Type ||
     prop.kind === PropKind.Class ||
+    prop.kind === PropKind.Component ||
     prop.kind === PropKind.Interface
   );
 };

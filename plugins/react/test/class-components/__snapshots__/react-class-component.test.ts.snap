@@ -5,7 +5,7 @@ Object {
   "MyComponent": Object {
     "description": "MyComponent special component",
     "extension": "react",
-    "kind": 13,
+    "kind": 25,
     "name": "MyComponent",
     "properties": Array [
       Object {

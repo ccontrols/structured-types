@@ -11,7 +11,7 @@ describe('react-memo', () => {
       MemoButton: {
         name: 'MemoButton',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -31,7 +31,7 @@ describe('react-memo', () => {
     expect(result).toEqual({
       default: {
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -52,7 +52,7 @@ describe('react-memo', () => {
       FancyButton: {
         name: 'FancyButton',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -72,7 +72,7 @@ describe('react-memo', () => {
       FancyButton: {
         name: 'FancyButton',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -94,7 +94,7 @@ describe('react-memo', () => {
       FancyButton: {
         name: 'CustomComponentName',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -123,7 +123,7 @@ describe('react-memo', () => {
       MemoButton: {
         name: 'MemoButton',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -144,7 +144,7 @@ describe('react-memo', () => {
     expect(result).toEqual({
       default: {
         extension: 'react',
-        kind: 11,
+        kind: 25,
         name: 'default',
       },
     });

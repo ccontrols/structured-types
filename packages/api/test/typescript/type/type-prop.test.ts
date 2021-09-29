@@ -2,6 +2,26 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('type', () => {
+  it('partial', () => {
+    const results = parseFiles([path.resolve(__dirname, 'partial.ts')]);
+    expect(results).toEqual({
+      PartialType: {
+        name: 'PartialType',
+        kind: 15,
+        type: 'Partial',
+
+        properties: [
+          {
+            name: 'stringProp',
+            parent: 'MainType',
+            kind: 1,
+            description: 'string prop description',
+          },
+        ],
+        description: 'partial type description',
+      },
+    });
+  });
   it('circular-reference', () => {
     const results = parseFiles([
       path.resolve(__dirname, 'circular-reference.ts'),

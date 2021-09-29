@@ -15,6 +15,9 @@ import { CodeContextProvider } from '../contexts/CodeContext';
 import { Editor } from './Editor';
 import { InfoContainer } from './viewers/InfoContainer';
 
+/**
+ * Top-level component that displays the editor, and the tabbed interface
+ */
 export const Playground: FC = () => {
   const [sizes, setSizes] = useState<number[]>([70, 30]);
   const [tabIndex, setTabIndex] = useURLParams<number>('tab', 0);

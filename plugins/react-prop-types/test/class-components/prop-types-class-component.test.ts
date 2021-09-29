@@ -10,7 +10,7 @@ describe('prop-types-class-component', () => {
     });
     expect(result).toEqual({
       NamedClassImport: {
-        kind: 13,
+        kind: 25,
         extension: 'react-prop-types',
         properties: [
           {
@@ -41,7 +41,7 @@ describe('prop-types-class-component', () => {
     );
     expect(result).toEqual({
       MyComponent: {
-        kind: 13,
+        kind: 25,
         extension: 'react-prop-types',
         properties: [
           {
@@ -69,7 +69,7 @@ describe('prop-types-class-component', () => {
     });
     expect(result).toEqual({
       MyComponent: {
-        kind: 13,
+        kind: 25,
         extension: 'react-prop-types',
         properties: [
           {
@@ -97,7 +97,7 @@ describe('prop-types-class-component', () => {
     });
     expect(result).toEqual({
       default: {
-        kind: 13,
+        kind: 25,
         extension: 'react-prop-types',
         properties: [
           {

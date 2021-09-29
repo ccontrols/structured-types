@@ -11,7 +11,7 @@ describe('react-hoc', () => {
       NamedClassImport: {
         name: 'ClassComponent',
         extension: 'react',
-        kind: 13,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -24,7 +24,7 @@ describe('react-hoc', () => {
       NamedFunctionImport: {
         name: 'FunctionComponent',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -47,7 +47,7 @@ describe('react-hoc', () => {
       NamedImport: {
         name: 'MyComponent',
         extension: 'react',
-        kind: 11,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -59,7 +59,7 @@ describe('react-hoc', () => {
       },
       default: {
         extension: 'react',
-        kind: 11,
+        kind: 25,
         name: 'MyComponent',
         properties: [
           {
@@ -83,7 +83,7 @@ describe('react-hoc', () => {
       NamedImport: {
         name: 'MyComponent',
         extension: 'react',
-        kind: 13,
+        kind: 25,
         properties: [
           {
             parent: 'OwnProps',
@@ -95,7 +95,7 @@ describe('react-hoc', () => {
       },
       default: {
         extension: 'react',
-        kind: 13,
+        kind: 25,
         name: 'MyComponent',
         properties: [
           {

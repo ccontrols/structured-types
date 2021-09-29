@@ -4,7 +4,7 @@ exports[`react-forward-ref composed-props 1`] = `
 Object {
   "FancyButton": Object {
     "extension": "react",
-    "kind": 11,
+    "kind": 25,
     "name": "FancyButton",
     "properties": Array [
       Object {

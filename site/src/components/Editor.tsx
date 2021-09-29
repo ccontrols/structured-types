@@ -4,6 +4,9 @@ import { Box, useColorMode } from 'theme-ui';
 import { useOptions } from '../contexts/OptionsContext';
 import { useCodeContext } from '../contexts/CodeContext';
 
+/**
+ * Monaco editor component. Uses CodeContext for data repository.
+ */
 export const Editor: React.FC = () => {
   const [colorMode] = useColorMode();
   const [tsOptions] = useOptions('tsOptions');

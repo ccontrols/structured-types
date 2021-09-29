@@ -22,7 +22,7 @@ export const JSONViewer: FC<ReactJSONProps> = (props) => {
         base0D: theme.colors?.text as string,
       }}
       invertTheme={false}
-      {...props}
+      {...(props as Partial<ReactJSONProps>)}
     />
   );
 };
