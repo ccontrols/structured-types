@@ -44,7 +44,7 @@ In your `README.md` (or other markdown file) file, you will insert a `<api-readm
 
 ## Launch
 
-You can launch directly from the command-line or integrate in `package.json` by add a script to launch the command line documentation tool.
+You can launch directly from the command-line or integrate in `package.json` by adding a script to launch the command line documentation tool.
 
 ```json
 ...
