@@ -274,7 +274,7 @@ export class ExtractProps {
           value: `${PropKind[prop.kind].toLowerCase()}`,
         },
       ];
-      if (typeof prop.parent === 'string') {
+      if (typeof prop.parent === 'string' && this.getPropLink(prop.parent)) {
         const link = this.propLink(prop.parent);
         if (link.length) {
           typeNode.push({
@@ -356,8 +356,9 @@ export class ExtractProps {
           [],
         );
 
-        result.push(
-          ...[
+        result.push({
+          type: 'paragraph',
+          children: [
             {
               type: 'text',
               value: '{ ',
@@ -368,7 +369,7 @@ export class ExtractProps {
               value: ' }',
             },
           ],
-        );
+        });
       } else if (prop.generics?.length) {
         const genericArguments: Node[] | undefined = prop.generics?.reduce(
           (acc: Node[], p: PropType, idx: number) => {
