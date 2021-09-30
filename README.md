@@ -9,8 +9,8 @@
     -   [4. The result](#4-the-result)
 -   [Using the CLI](#using-the-cli)
     -   [1. Installation](#1-installation-1)
-    -   [Configure](#configure)
-    -   [Launch](#launch)
+    -   [2. Configure](#2-configure)
+    -   [3. Launch](#3-launch)
 -   [Roadmap](#roadmap)
 
 # About
@@ -119,7 +119,7 @@ More information about the [@structured-types/api-readme](https://github.com/cco
 $ npm install @structured-types/api-readme --save-dev
 ```
 
-## Configure
+## 2. Configure
 
 In your `README.md` (or other markdown file) file, you will insert a `<api-readme />` tag to generate the API section:
 
@@ -127,7 +127,7 @@ In your `README.md` (or other markdown file) file, you will insert a `<api-readm
 <api-readme />
 ```
 
-## Launch
+## 3. Launch
 
 You can launch directly from the command-line or integrate in `package.json` by adding a script to launch the command line documentation tool.
 
@@ -147,7 +147,7 @@ You can launch directly from the command-line or integrate in `package.json` by 
 -   [x] React plugin
 -   [x] React "prop-types" plugin
 -   [x] Typescript playground plugin
--   [ ] component-controls integration
+-   [ ] [component-controls](https://github.com/ccontrols/component-controls) integration
 -   [x] Automatically generate README.md files (api-readme)
 -   [ ] Vue plugin
 -   [ ] Angular plugin
