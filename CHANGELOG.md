@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.24.4](https://github.com/ccontrols/structured-types/compare/v3.24.3...v3.24.4) (2021-09-30)
+
+
+### Bug Fixes
+
+* **api:** circular package reference ([5bc9853](https://github.com/ccontrols/structured-types/commit/5bc9853e25ed2cc0ec171c828f68b2083be5e350))
+* **api:** source code location declaration ([6ebe909](https://github.com/ccontrols/structured-types/commit/6ebe9098591826223dc979897c50d6113f00c326))
+* **api-readme:** parent names without link ([58ff1fa](https://github.com/ccontrols/structured-types/commit/58ff1fadade430047583cae77b5fe9db5ef7b23b))
+* **react-prop-types:** circular package reference ([80922cd](https://github.com/ccontrols/structured-types/commit/80922cd31fc2a363ba5abb2702d68c45297e8f7a))
+
+
+
+
+
 ## [3.24.3](https://github.com/ccontrols/structured-types/compare/v3.24.2...v3.24.3) (2021-09-29)
 
 

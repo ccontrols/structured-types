@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.24.4](https://github.com/ccontrols/structured-types/compare/v3.24.3...v3.24.4) (2021-09-30)
+
+
+### Bug Fixes
+
+* **api:** source code location declaration ([6ebe909](https://github.com/ccontrols/structured-types/commit/6ebe9098591826223dc979897c50d6113f00c326))
+
+
+
+
+
 ## [3.24.3](https://github.com/ccontrols/structured-types/compare/v3.24.2...v3.24.3) (2021-09-29)
 
 
