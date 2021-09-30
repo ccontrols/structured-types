@@ -12,16 +12,16 @@ export const getURL = (): URL | undefined => {
   return pageURL ? new URL(pageURL) : undefined;
 };
 export const getUpdatedUrlParams = (
-  paremName: string,
+  paramName: string,
   value?: string,
 ): string | undefined => {
   const url = getURL();
   if (url) {
     const parsedParams = queryString.parse(url.search);
     if (value) {
-      parsedParams[paremName] = value;
+      parsedParams[paramName] = value;
     } else {
-      delete parsedParams[paremName];
+      delete parsedParams[paramName];
     }
     const strValues = queryString.stringify(parsedParams);
     const newURL = `${url.protocol}//${url.host}${url.pathname}${
@@ -32,11 +32,11 @@ export const getUpdatedUrlParams = (
   return undefined;
 };
 
-export const getUrlParams = (paremName: string): any => {
+export const getUrlParams = (paramName: string): any => {
   const url = getURL();
   if (url) {
     const parsedParams = queryString.parse(url.search);
-    const params = parsedParams[paremName];
+    const params = parsedParams[paramName];
     if (params && typeof params === 'string') {
       try {
         return params;
