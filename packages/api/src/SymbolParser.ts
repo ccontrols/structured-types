@@ -872,12 +872,7 @@ export class SymbolParser implements ISymbolParser {
           ? resolvedSymbol.valueDeclaration || resolvedSymbol.declarations?.[0]
           : undefined;
         const internalKind = this.internalNode(resolvedDeclaration);
-        this.parseFilePath(
-          prop,
-          options,
-          topLevel,
-          resolvedDeclaration || declaration,
-        );
+        this.parseFilePath(prop, options, topLevel, declaration);
         const typeName = this.geDeclarationStats(resolvedDeclaration);
         if (!pluginName && !prop.type) {
           if (typeName && prop.name !== typeName) {

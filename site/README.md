@@ -51,7 +51,7 @@ Monaco editor component. Uses CodeContext for data repository.
 
 ## PanelContainer
 
-**`react component`** _defined in [@types/react/index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react)_
+**`react component`** _defined in [structured-types-site/src/components/panels/PanelContainer.tsx](https://github.com/ccontrols/structured-types/tree/master/site/src/components/panels/PanelContainer.tsx#L8)_
 
 
 
@@ -63,7 +63,7 @@ Monaco editor component. Uses CodeContext for data repository.
 
 ## ConfigPanel
 
-**`react component`** _defined in [@types/react/index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react)_
+**`react component`** _defined in [structured-types-site/src/components/panels/ConfigPanel.tsx](https://github.com/ccontrols/structured-types/tree/master/site/src/components/panels/ConfigPanel.tsx#L13)_
 
 
 
@@ -75,7 +75,7 @@ Monaco editor component. Uses CodeContext for data repository.
 
 ## ExamplesPanel
 
-**`react component`** _defined in [@types/react/index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react)_
+**`react component`** _defined in [structured-types-site/src/components/panels/ExamplesPanel.tsx](https://github.com/ccontrols/structured-types/tree/master/site/src/components/panels/ExamplesPanel.tsx#L13)_
 
 
 
@@ -87,7 +87,7 @@ Monaco editor component. Uses CodeContext for data repository.
 
 ## ParseConfigPanel
 
-**`react component`** _defined in [@types/react/index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react)_
+**`react component`** _defined in [structured-types-site/src/components/panels/ParseConfigPanel.tsx](https://github.com/ccontrols/structured-types/tree/master/site/src/components/panels/ParseConfigPanel.tsx#L12)_
 
 
 
@@ -127,7 +127,7 @@ Display a 'loading..' flex box
 
 ## JSONViewer
 
-**`react component`** _defined in [@types/react/index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react)_
+**`react component`** _defined in [structured-types-site/src/components/viewers/JSONViewer.tsx](https://github.com/ccontrols/structured-types/tree/master/site/src/components/viewers/JSONViewer.tsx#L6)_
 
 
 
@@ -151,7 +151,7 @@ Display a 'loading..' flex box
 
 ## DataViewer
 
-**`react component`** _defined in [@types/react/index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react)_
+**`react component`** _defined in [structured-types-site/src/components/viewers/DataViewer.tsx](https://github.com/ccontrols/structured-types/tree/master/site/src/components/viewers/DataViewer.tsx#L15)_
 
 
 

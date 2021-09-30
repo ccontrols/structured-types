@@ -4,7 +4,7 @@ exports[`function-component Editor 1`] = `
 Object {
   "JSONViewer": Object {
     "extension": "react",
-    "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
+    "filePath": "/Users/atanasster/structured-types/site/src/components/viewers/JSONViewer.tsx",
     "kind": 25,
     "name": "JSONViewer",
     "properties": Array [
