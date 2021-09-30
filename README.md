@@ -24,7 +24,7 @@ The library API extracts full types for your libraries, not just string represen
 
 You can use our [Playground site](https://tinyurl.com/abpkj845) to experiment with custom code
 
-![./react-playground.jpg](https://github.com/ccontrols/structured-types/raw/master/react-playground.jpg)
+![./img-playground.jpg](https://github.com/ccontrols/structured-types/raw/master/img-playground.jpg)
 
 # Using the API
 
