@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/api-readme",
-  "version": "3.24.4",
+  "version": "3.24.5",
   "description": "API documentation extractor for Readme.md files",
   "keywords": [
     "markdown",

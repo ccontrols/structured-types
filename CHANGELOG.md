@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.24.5](https://github.com/ccontrols/structured-types/compare/v3.24.4...v3.24.5) (2021-09-30)
+
+
+### Bug Fixes
+
+* **site:** spelling error ([894c456](https://github.com/ccontrols/structured-types/commit/894c4567c88a9e99ff5c8c421a4f24154c4dcb88))
+
+
+
+
+
 ## [3.24.4](https://github.com/ccontrols/structured-types/compare/v3.24.3...v3.24.4) (2021-09-30)
 
 
