@@ -1,17 +1,18 @@
 # Table of contents
 
--   [About](#about)
--   [Live example](#live-example)
--   [Using the API](#using-the-api)
-    -   [1. Installation](#1-installation)
-    -   [2. Your API source file (sum.js):](#2-your-api-source-file-sumjs)
-    -   [3. Your documentation extraction](#3-your-documentation-extraction)
-    -   [4. The result](#4-the-result)
--   [Using the CLI](#using-the-cli)
-    -   [1. Installation](#1-installation-1)
-    -   [2. Configure](#2-configure)
-    -   [3. Launch](#3-launch)
--   [Roadmap](#roadmap)
+- [About](#about)
+- [Live example](#live-example)
+- [Using the API](#using-the-api)
+  - [1. Installation](#1-installation)
+  - [2. Your API source file (sum.js):](#2-your-api-source-file-sumjs)
+  - [3. Your documentation extraction](#3-your-documentation-extraction)
+  - [4. The result](#4-the-result)
+- [Using the CLI](#using-the-cli)
+  - [1. Installation](#1-installation-1)
+  - [2. Configure](#2-configure)
+  - [3. Launch](#3-launch)
+- [Typescript playground plugin](#typescript-playground-plugin)
+- [Roadmap](#roadmap)
 
 # About
 
@@ -22,6 +23,8 @@ The library API extracts full types for your libraries, not just string represen
 # Live example
 
 You can use our [Playground site](https://tinyurl.com/abpkj845) to experiment with custom code
+
+![./react-playground.jpg](https://github.com/ccontrols/structured-types/raw/master/react-playground.jpg)
 
 # Using the API
 
@@ -140,14 +143,20 @@ You can launch directly from the command-line or integrate in `package.json` by 
 ...
 ```
 
+# Typescript playground plugin
+
+[Click to install](https://www.typescriptlang.org/play?install-plugin=@structured-types/playground-plugin) our TypeScript playground plugin which shows the type information for the current file: .
+
+More information about the [@structured-types/playground-plugin](https://github.com/ccontrols/structured-types/blob/master/packages/ts-playground-plugin/README.md) package.
+
 # Roadmap
 
--   [x] JSDoc types
--   [x] Typescript types
--   [x] React plugin
--   [x] React "prop-types" plugin
--   [x] Typescript playground plugin
--   [ ] [component-controls](https://github.com/ccontrols/component-controls) integration
--   [x] Automatically generate README.md files (api-readme)
--   [ ] Vue plugin
--   [ ] Angular plugin
+- [x] JSDoc types
+- [x] Typescript types
+- [x] React plugin
+- [x] React "prop-types" plugin
+- [x] Typescript playground plugin
+- [ ] [component-controls](https://github.com/ccontrols/component-controls) integration
+- [x] Automatically generate README.md files (api-readme)
+- [ ] Vue plugin
+- [ ] Angular plugin
