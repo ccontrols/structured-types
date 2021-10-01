@@ -1,6 +1,7 @@
 # Table of contents
 
 -   [Overview](#overview)
+-   [Comparable libraries](#comparable-libraries)
 -   [Motivation](#motivation)
 -   [Getting started](#getting-started)
     -   -   [1. Installation](#1-installation)
@@ -27,12 +28,14 @@
 
 Extract structured documentation from javascript and typescript files using a combination of typescript types and jsdoc comments.
 
-Libraries in the same space:
-[react-docgen-typescript](https://github.com/styleguidist/react-docgen-typescript)
-[react-docgen](https://github.com/reactjs/react-docgen)
+# Comparable libraries
+
 [jsdoc](https://github.com/jsdoc2md/jsdoc-api)
 [typedoc](https://github.com/TypeStrong/typedoc)
 [ts-json-schema-generator](https://github.com/vega/ts-json-schema-generator)
+[documentation.js](https://github.com/documentationjs/documentation)
+[react-docgen-typescript](https://github.com/styleguidist/react-docgen-typescript)
+[react-docgen](https://github.com/reactjs/react-docgen)
 
 # Motivation
 
