@@ -62,7 +62,11 @@ In your `README.md` (or other markdown file) file, you can insert a `# Table of 
 <api-readme extensions="react"/>
 ```
 
-="react"
+-   `generate`: a comma-separated list of the sections to generate `props` \| `description` \| `examples` \| `title` \| `location` \| `all`. By default all sections are generated.
+
+```md
+<api-readme generate="description,props"/>
+```
 
 -   `collectHelpers`: boolean, to specify whether to document also helper props (parents, inherited etc) or just the main extracted exports. By default the helper props will be documented and linked to from the main props.
 

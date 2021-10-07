@@ -29,9 +29,17 @@ import {
 } from '../blocks/props-table';
 import { Node, NodeChildren } from '../common/types';
 
+type GenerateKind =
+  | 'props'
+  | 'description'
+  | 'examples'
+  | 'title'
+  | 'location'
+  | 'all';
 export class ExtractProps {
   private files: string[];
   private collapsed: string[] = [];
+  private generate: GenerateKind[] = ['all'];
   private topLevelProps: Record<string, PropType> = {};
   private repoNames: {
     [key: string]: {
@@ -584,16 +592,23 @@ export class ExtractProps {
 
     return definition;
   }
+  private generateSection(section: GenerateKind): boolean {
+    return this.generate.includes(section) || this.generate.includes('all');
+  }
+
   private extractTSType(prop: PropType): Node[] {
     const result: Node[] = [];
-    result.push({
-      type: 'heading',
-      depth: 2,
-      children: [{ type: 'text', value: prop.name }],
-    });
-    result.push(this.extractPropDefinition(prop));
-
-    if (prop.description) {
+    if (this.generateSection('title')) {
+      result.push({
+        type: 'heading',
+        depth: 2,
+        children: [{ type: 'text', value: prop.name }],
+      });
+    }
+    if (this.generateSection('location')) {
+      result.push(this.extractPropDefinition(prop));
+    }
+    if (prop.description && this.generateSection('description')) {
       result.push(
         ...prop.description.split('\n').map((d) => ({
           type: 'paragraph',
@@ -606,12 +621,14 @@ export class ExtractProps {
         })),
       );
     }
-    if (isFunctionProp(prop)) {
-      result.push(...this.extractFunction(prop));
-    } else if (hasProperties(prop)) {
-      result.push(...this.extractInterface(prop));
+    if (this.generateSection('props')) {
+      if (isFunctionProp(prop)) {
+        result.push(...this.extractFunction(prop));
+      } else if (hasProperties(prop)) {
+        result.push(...this.extractInterface(prop));
+      }
     }
-    if (prop.examples) {
+    if (prop.examples && this.generateSection('examples')) {
       const codeExamples = prop.examples.filter((e) => e.content);
       const examples: Node = {
         type: 'paragraph',
@@ -645,11 +662,20 @@ export class ExtractProps {
   }
 
   public extract(
-    options: ParseOptions & { collapsed?: string[]; extensions?: string[] },
+    options: ParseOptions & {
+      collapsed?: string[];
+      extensions?: string[];
+      generate?: GenerateKind[];
+    },
   ): Node[] {
     const result: Node[] = [];
     if (this.files) {
-      const { collapsed = [], extensions, ...parseOptions } = options;
+      const {
+        collapsed = [],
+        extensions,
+        generate = ['all'],
+        ...parseOptions
+      } = options;
       const props = parseFiles(this.files, {
         collectFilePath: true,
         collectHelpers: true,
@@ -658,6 +684,7 @@ export class ExtractProps {
         ...parseOptions,
       });
       this.collapsed = collapsed;
+      this.generate = generate;
       let propKeys = Object.keys(props);
       if (options.extract?.length) {
         const names = options.extract;
