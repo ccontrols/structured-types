@@ -236,7 +236,7 @@ export class ExtractProps {
     } else if (prop.kind) {
       typeNode = [
         {
-          type: 'text',
+          type: 'inlineCode',
           value: `${PropKind[prop.kind].toLowerCase()}`,
         },
       ];
@@ -244,8 +244,12 @@ export class ExtractProps {
     if (prop.name && prop.name !== prop.type) {
       return [
         {
+          type: 'inlineCode',
+          value: `${prop.name}`,
+        },
+        {
           type: 'text',
-          value: `${prop.name}${typeNode ? ': ' : ''}`,
+          value: `${typeNode ? ': ' : ''}`,
         },
         ...(typeNode || []),
       ];
