@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.25.0](https://github.com/ccontrols/component-controls/compare/v3.24.7...v3.25.0) (2021-10-07)
+
+
+### Features
+
+* **api-readme:** add collapsed property ([21f65f1](https://github.com/ccontrols/component-controls/commit/21f65f13ca9d4553766cac3ff82f2e7368d1693b))
+
+
+
+
+
 ## [3.24.3](https://github.com/ccontrols/component-controls/compare/v3.24.2...v3.24.3) (2021-09-29)
 
 **Note:** Version bump only for package @structured-types/typescript-config
