@@ -53,8 +53,16 @@ In your `README.md` (or other markdown file) file, you can insert a `# Table of 
 -   `collapsed`: a comma-separated list of type names, that should not be expanded. For example some internal React object can be kept just as string, instead of listing their internal properties.
 
 ```md
-<api-readme extract="parse, ParseOptions" collapsed="React.ReactNode"/>
+<api-readme collapsed="React.ReactNode"/>
 ```
+
+-   `extensions`: a comma-separated list of plugins (or extensions). For example for a react library, you can specify to include only react components, but not any additional types or utilities.
+
+```md
+<api-readme extensions="react"/>
+```
+
+="react"
 
 -   `collectHelpers`: boolean, to specify whether to document also helper props (parents, inherited etc) or just the main extracted exports. By default the helper props will be documented and linked to from the main props.
 

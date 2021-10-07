@@ -644,10 +644,12 @@ export class ExtractProps {
     return result;
   }
 
-  public extract(options: ParseOptions & { collapsed?: string[] }): Node[] {
+  public extract(
+    options: ParseOptions & { collapsed?: string[]; extensions?: string[] },
+  ): Node[] {
     const result: Node[] = [];
     if (this.files) {
-      const { collapsed = [], ...parseOptions } = options;
+      const { collapsed = [], extensions, ...parseOptions } = options;
       const props = parseFiles(this.files, {
         collectFilePath: true,
         collectHelpers: true,
@@ -665,14 +667,26 @@ export class ExtractProps {
       }
 
       propKeys.forEach((key) => {
-        if (key !== '__helpers' && key !== '__diagnostics') {
-          this.topLevelProps[key] = props[key];
+        const prop = props[key];
+        if (
+          key !== '__helpers' &&
+          key !== '__diagnostics' &&
+          (!extensions ||
+            (prop.extension && extensions.includes(prop.extension)))
+        ) {
+          this.topLevelProps[key] = prop;
         }
       });
       const helpers = props.__helpers;
       if (helpers) {
         Object.keys(helpers).forEach((key) => {
-          this.topLevelProps[key] = helpers[key];
+          const prop = helpers[key];
+          if (
+            !extensions ||
+            (prop.extension && extensions.includes(prop.extension))
+          ) {
+            this.topLevelProps[key] = helpers[key];
+          }
         });
       }
       Object.values(this.topLevelProps).forEach((prop) => {
