@@ -5,12 +5,14 @@ export interface PropItem {
   isOptional: boolean;
   type: Node[];
   value?: any;
+  parent?: Node[];
   description: string;
 }
 
 export const createPropsRow = (
-  { name, isOptional, type, value, description }: PropItem,
+  { name, isOptional, type, value, parent, description }: PropItem,
   hasValues: boolean,
+  hasParents: boolean,
 ): NodeChildren => {
   const children: Node[] = [
     {
@@ -29,17 +31,24 @@ export const createPropsRow = (
       children: type,
     },
   ];
+  if (hasParents) {
+    children.push({
+      type: 'tableCell',
+      children: parent || [],
+    });
+  }
   if (hasValues) {
     children.push({
       type: 'tableCell',
       children: [
         {
-          type: 'text',
+          type: 'inlineCode',
           value: typeof value !== 'undefined' ? value.toString() : '',
         },
       ],
     });
   }
+
   if (description) {
     const parts = description.split('`');
     if (parts.length > 1) {
@@ -79,10 +88,16 @@ export const createPropsRow = (
 export const createPropsTable = (
   children: PropItem[],
   title?: string,
-): { propsTable: Node[]; table?: NodeChildren; hasValues: boolean } => {
+): {
+  propsTable: Node[];
+  table?: NodeChildren;
+  hasValues: boolean;
+  hasParents: boolean;
+} => {
   const propsTable: Node[] = [];
   let table: NodeChildren | undefined = undefined;
   let hasValues = false;
+  let hasParents = false;
   if (children) {
     if (title) {
       propsTable.push({
@@ -110,6 +125,13 @@ export const createPropsTable = (
       { type: 'tableCell', children: [{ type: 'text', value: 'Name' }] },
       { type: 'tableCell', children: [{ type: 'text', value: 'Type' }] },
     ];
+    hasParents = children.some((item) => item.parent !== undefined);
+    if (hasParents) {
+      columns.push({
+        type: 'tableCell',
+        children: [{ type: 'text', value: 'Parent' }],
+      });
+    }
     hasValues = children.some((item) => item.value !== undefined);
     if (hasValues) {
       columns.push({
@@ -117,6 +139,7 @@ export const createPropsTable = (
         children: [{ type: 'text', value: 'Value' }],
       });
     }
+
     columns.push({
       type: 'tableCell',
       children: [{ type: 'text', value: 'Description' }],
@@ -136,8 +159,10 @@ export const createPropsTable = (
     });
     // eslint-disable-next-line prefer-spread
     table.children.push(
-      ...children.map((child: PropItem) => createPropsRow(child, hasValues)),
+      ...children.map((child: PropItem) =>
+        createPropsRow(child, hasValues, hasParents),
+      ),
     );
   }
-  return { propsTable, table, hasValues };
+  return { propsTable, table, hasValues, hasParents };
 };

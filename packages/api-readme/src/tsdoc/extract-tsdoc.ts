@@ -92,6 +92,8 @@ export class ExtractProps {
               : ''
           }`,
           isOptional: prop.optional,
+          parent: prop.parent ? this.propLink(prop.parent) : undefined,
+
           type: this.extractPropType(prop, { extractProperties: true }),
           description: prop.description || '',
           value: hasValue(prop) ? prop.value : undefined,
@@ -162,20 +164,22 @@ export class ExtractProps {
   }
   private extractFunction(prop: FunctionProp, _extractTable = true): Node[] {
     if (prop.parameters) {
-      const { propsTable, table, hasValues } = this.extractPropTable(
-        prop.parameters,
-        'parameters',
-      );
+      const { propsTable, table, hasValues, hasParents } =
+        this.extractPropTable(prop.parameters, 'parameters');
       if (table && prop.returns && prop.returns.kind !== PropKind.Void) {
         table.children.push(
           createPropsRow(
             {
               name: 'returns',
               isOptional: true,
+              parent: prop.returns.parent
+                ? this.propLink(prop.returns.parent)
+                : undefined,
               type: this.extractPropType(prop.returns),
               description: prop.returns.description || '',
             },
             hasValues,
+            hasParents,
           ),
         );
       }
