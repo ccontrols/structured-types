@@ -41,11 +41,11 @@ reads any typescript configuration files for a given file, including the extends
 
 ### **parameters**
 
-| Name            | Type                            | Description                                                                              |
-| --------------- | ------------------------------- | ---------------------------------------------------------------------------------------- |
-| `filePath*`     | string                          | the full file path to the file                                                           |
-| `defaultConfig` | ts.CompilerOptions              | optional default configuration                                                           |
-| `keepJson`      | boolean                         | set to tru to avoid converting options                                                   |
-| `returns`       | ts.CompilerOptions \| undefined | the typescript configuration for the file, or undefined if this is not a typescript file |
+| Name            | Type                              | Description                                                                              |
+| --------------- | --------------------------------- | ---------------------------------------------------------------------------------------- |
+| `filePath*`     | `string`                          | the full file path to the file                                                           |
+| `defaultConfig` | ts.CompilerOptions                | optional default configuration                                                           |
+| `keepJson`      | `boolean`                         | set to tru to avoid converting options                                                   |
+| `returns`       | ts.CompilerOptions \| `undefined` | the typescript configuration for the file, or undefined if this is not a typescript file |
 
 <!-- END-API-README -->

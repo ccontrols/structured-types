@@ -35,7 +35,7 @@ Top-level component that displays the editor, and the tabbed interface
 
 ## Editor
 
-**`react component`** _defined in [structured-types-site/src/components/Editor.tsx](https://github.com/ccontrols/structured-types/tree/master/site/src/components/Editor.tsx#L10)_
+**`react component`** _defined in [structured-types-site/src/components/Editor.tsx](https://github.com/ccontrols/structured-types/tree/master/site/src/components/Editor.tsx#L11)_
 
 Monaco editor component. Uses CodeContext for data repository.
 
@@ -57,9 +57,9 @@ Monaco editor component. Uses CodeContext for data repository.
 
 ### **properties**
 
-| Name       | Type       | Description |
-| ---------- | ---------- | ----------- |
-| `onClose*` | () => void |             |
+| Name       | Type         | Description |
+| ---------- | ------------ | ----------- |
+| `onClose*` | () => `void` |             |
 
 ## ConfigPanel
 
@@ -69,9 +69,9 @@ Monaco editor component. Uses CodeContext for data repository.
 
 ### **properties**
 
-| Name       | Type       | Description |
-| ---------- | ---------- | ----------- |
-| `onClose*` | () => void |             |
+| Name       | Type         | Description |
+| ---------- | ------------ | ----------- |
+| `onClose*` | () => `void` |             |
 
 ## ExamplesPanel
 
@@ -81,9 +81,9 @@ Monaco editor component. Uses CodeContext for data repository.
 
 ### **properties**
 
-| Name       | Type       | Description |
-| ---------- | ---------- | ----------- |
-| `onClose*` | () => void |             |
+| Name       | Type         | Description |
+| ---------- | ------------ | ----------- |
+| `onClose*` | () => `void` |             |
 
 ## ParseConfigPanel
 
@@ -93,9 +93,9 @@ Monaco editor component. Uses CodeContext for data repository.
 
 ### **properties**
 
-| Name       | Type       | Description |
-| ---------- | ---------- | ----------- |
-| `onClose*` | () => void |             |
+| Name       | Type         | Description |
+| ---------- | ------------ | ----------- |
+| `onClose*` | () => `void` |             |
 
 ## PanelContainerProps
 
@@ -105,9 +105,9 @@ Monaco editor component. Uses CodeContext for data repository.
 
 ### **properties**
 
-| Name       | Type       | Description |
-| ---------- | ---------- | ----------- |
-| `onClose*` | () => void |             |
+| Name       | Type         | Description |
+| ---------- | ------------ | ----------- |
+| `onClose*` | () => `void` |             |
 
 <!-- END-API-README -->
 
@@ -133,21 +133,21 @@ Display a 'loading..' flex box
 
 ### **properties**
 
-| Name                | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Description |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `data*`             | any                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |             |
-| `theme`             | string \| { scheme: string, author: string, base00: string, base01: string, base02: string, base03: string, base04: string, base05: string, base06: string, base07: string, base08: string, base09: string, base0A: string, base0B: string, base0C: string, base0D: string, base0E: string, base0F: string } \| { index, extend: union }                                                                                                                              |             |
-| `invertTheme*`      | boolean                                                                                                                                                                                                                                                                                                                                                                                                                                                               |             |
-| `keyPath*`          | string \| number\[]                                                                                                                                                                                                                                                                                                                                                                                                                                                   |             |
-| `labelRenderer*`    | (`keyPath`\*: string \| number\[], `nodeType`\*: string, `expanded`\*: boolean, `expandable`\*: boolean) => { type: T, props: P, key: union } \| string \| number \| undefined \| { index } \| { key: union, children: ReactNode, type: T, props: P } \| boolean \| null \| undefined                                                                                                                                                                                 |             |
-| `valueRenderer*`    | (`valueAsString`\*: any, `value`\*: any, `keyPath`\*: string \| number\[]) => { type: T, props: P, key: union } \| string \| number \| undefined \| { index } \| { key: union, children: ReactNode, type: T, props: P } \| boolean \| null \| undefined                                                                                                                                                                                                               |             |
-| `shouldExpandNode*` | (`keyPath`\*: string \| number\[], `data`\*: any, `level`\*: number) => boolean                                                                                                                                                                                                                                                                                                                                                                                       |             |
-| `hideRoot*`         | boolean                                                                                                                                                                                                                                                                                                                                                                                                                                                               |             |
-| `getItemString*`    | (`nodeType`\*: string, `data`\*: any, `itemType`\*: { type: T, props: P, key: union } \| string \| number \| undefined \| { index } \| { key: union, children: ReactNode, type: T, props: P } \| boolean \| null \| undefined, `itemString`\*: string, `keyPath`\*: string \| number\[]) => { type: T, props: P, key: union } \| string \| number \| undefined \| { index } \| { key: union, children: ReactNode, type: T, props: P } \| boolean \| null \| undefined |             |
-| `postprocessValue*` | (`value`\*: any) => any                                                                                                                                                                                                                                                                                                                                                                                                                                               |             |
-| `isCustomNode*`     | (`value`\*: any) => boolean                                                                                                                                                                                                                                                                                                                                                                                                                                           |             |
-| `collectionLimit*`  | number                                                                                                                                                                                                                                                                                                                                                                                                                                                                |             |
-| `sortObjectKeys`    | (`a`\*: any, `b`\*: any) => number \| boolean                                                                                                                                                                                                                                                                                                                                                                                                                         |             |
+| Name                | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Description |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `data*`             | `any`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |             |
+| `theme`             | `string` \| { scheme: string, author: string, base00: string, base01: string, base02: string, base03: string, base04: string, base05: string, base06: string, base07: string, base08: string, base09: string, base0A: string, base0B: string, base0C: string, base0D: string, base0E: string, base0F: string } \| { index, extend: union }                                                                                                                                                                              |             |
+| `invertTheme*`      | `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |             |
+| `keyPath*`          | `string` \| `number`\[]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |             |
+| `labelRenderer*`    | (`keyPath`\*: `string` \| `number`\[], `nodeType`\*: `string`, `expanded`\*: `boolean`, `expandable`\*: `boolean`) => { type: `T`, props: `P`, key: union } \| `string` \| `number` \| undefined \| { index } \| { key: union, children: `ReactNode`, type: `T`, props: `P` } \| `boolean` \| `null` \| `undefined`                                                                                                                                                                                                     |             |
+| `valueRenderer*`    | (`valueAsString`\*: `any`, `value`\*: `any`, `keyPath`\*: `string` \| `number`\[]) => { type: `T`, props: `P`, key: union } \| `string` \| `number` \| undefined \| { index } \| { key: union, children: `ReactNode`, type: `T`, props: `P` } \| `boolean` \| `null` \| `undefined`                                                                                                                                                                                                                                     |             |
+| `shouldExpandNode*` | (`keyPath`\*: `string` \| `number`\[], `data`\*: `any`, `level`\*: `number`) => `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                               |             |
+| `hideRoot*`         | `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |             |
+| `getItemString*`    | (`nodeType`\*: `string`, `data`\*: `any`, `itemType`\*: { type: `T`, props: `P`, key: union } \| `string` \| `number` \| undefined \| { index } \| { key: union, children: `ReactNode`, type: `T`, props: `P` } \| `boolean` \| `null` \| `undefined`, `itemString`\*: `string`, `keyPath`\*: `string` \| `number`\[]) => { type: `T`, props: `P`, key: union } \| `string` \| `number` \| undefined \| { index } \| { key: union, children: `ReactNode`, type: `T`, props: `P` } \| `boolean` \| `null` \| `undefined` |             |
+| `postprocessValue*` | (`value`\*: `any`) => `any`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |             |
+| `isCustomNode*`     | (`value`\*: `any`) => `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |             |
+| `collectionLimit*`  | `number`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |             |
+| `sortObjectKeys`    | (`a`\*: `any`, `b`\*: `any`) => `number` \| `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |             |
 
 ## DataViewer
 
@@ -157,10 +157,10 @@ Display a 'loading..' flex box
 
 ### **properties**
 
-| Name        | Type                                                                                                                                                                                                                                                                                                             | Description |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `jsonTree*` | { data: any, theme: Theme, invertTheme: boolean, keyPath: array, labelRenderer: function, valueRenderer: function, shouldExpandNode: function, hideRoot: boolean, getItemString: function, postprocessValue: function, isCustomNode: function, collectionLimit: number, sortObjectKeys: union, children: union } |             |
-| `label*`    | "structured-types" \| "react-docgen-typescript" \| "react-docgen" \| "jsdoc" \| "typedoc" \| "ts-json-schema-generator" \| "documentation"                                                                                                                                                                       |             |
-| `link*`     | string                                                                                                                                                                                                                                                                                                           |             |
+| Name        | Type                                                                                                                                                                                                                                                                                                               | Description |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| `jsonTree*` | { data: any, theme: `Theme`, invertTheme: boolean, keyPath: array, labelRenderer: function, valueRenderer: function, shouldExpandNode: function, hideRoot: boolean, getItemString: function, postprocessValue: function, isCustomNode: function, collectionLimit: number, sortObjectKeys: union, children: union } |             |
+| `label*`    | `"structured-types"` \| `"react-docgen-typescript"` \| `"react-docgen"` \| `"jsdoc"` \| `"typedoc"` \| `"ts-json-schema-generator"` \| `"documentation"`                                                                                                                                                           |             |
+| `link*`     | `string`                                                                                                                                                                                                                                                                                                           |             |
 
 <!-- END-API-README -->

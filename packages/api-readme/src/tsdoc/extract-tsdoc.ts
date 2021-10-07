@@ -31,7 +31,7 @@ import { Node, NodeChildren } from '../common/types';
 
 export class ExtractProps {
   private files: string[];
-  private names?: string[];
+  private collapsed: string[] = [];
   private topLevelProps: Record<string, PropType> = {};
   private repoNames: {
     [key: string]: {
@@ -210,7 +210,7 @@ export class ExtractProps {
   private propLink(type?: string): Node[] {
     const typeText = [
       {
-        type: 'text',
+        type: 'inlineCode',
         value: type,
       },
     ];
@@ -331,8 +331,9 @@ export class ExtractProps {
     options?: { showValue?: boolean; extractProperties?: boolean },
   ): Node[] {
     const { showValue = false, extractProperties = false } = options || {};
-
-    if (isUnionProp(prop) && prop.properties) {
+    if (typeof prop.type === 'string' && this.collapsed?.includes(prop.type)) {
+      return this.typeNode(prop, showValue);
+    } else if (isUnionProp(prop) && prop.properties) {
       return [
         {
           type: 'paragraph',
@@ -639,16 +640,18 @@ export class ExtractProps {
     return result;
   }
 
-  public extract(options: ParseOptions): Node[] {
+  public extract(options: ParseOptions & { collapsed?: string[] }): Node[] {
     const result: Node[] = [];
     if (this.files) {
+      const { collapsed = [], ...parseOptions } = options;
       const props = parseFiles(this.files, {
         collectFilePath: true,
         collectHelpers: true,
         collectLinesOfCode: true,
         plugins: [propTypesPlugin, reactPlugin],
-        ...options,
+        ...parseOptions,
       });
+      this.collapsed = collapsed;
       let propKeys = Object.keys(props);
       if (options.extract?.length) {
         const names = options.extract;

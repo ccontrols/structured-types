@@ -50,6 +50,12 @@ In your `README.md` (or other markdown file) file, you can insert a `# Table of 
 <api-readme extract="parse, ParseOptions" files="./src/index.ts"/>
 ```
 
+-   `collapsed`: a comma-separated list of type names, that should not be expanded. For example some internal React object can be kept just as string, instead of listing their internal properties.
+
+```md
+<api-readme extract="parse, ParseOptions" collapsed="React.ReactNode"/>
+```
+
 -   `collectHelpers`: boolean, to specify whether to document also helper props (parents, inherited etc) or just the main extracted exports. By default the helper props will be documented and linked to from the main props.
 
 ```md
