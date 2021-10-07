@@ -23,15 +23,18 @@ export const getRepoPath = (
   const packageFileName = traverseFolder(initialPath);
   if (packageFileName) {
     const packageJSON = JSON.parse(fs.readFileSync(packageFileName, 'utf8'));
+
     const { repository } = packageJSON;
-    const url = typeof repository === 'string' ? repository : repository.url;
-    const { directory } = repository;
-    if (url) {
-      const baseName = url.split('.').slice(0, -1).join('.');
-      return {
-        repo: `${baseName}${directory ? `/tree/master/${directory}` : ''}`,
-        filePath: packageFileName,
-      };
+    if (repository) {
+      const url = typeof repository === 'string' ? repository : repository.url;
+      const { directory } = repository;
+      if (url) {
+        const baseName = url.split('.').slice(0, -1).join('.');
+        return {
+          repo: `${baseName}${directory ? `/tree/master/${directory}` : ''}`,
+          filePath: packageFileName,
+        };
+      }
     }
   }
   return {};
