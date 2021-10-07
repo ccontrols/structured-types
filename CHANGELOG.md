@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.25.1](https://github.com/ccontrols/structured-types/compare/v3.25.0...v3.25.1) (2021-10-07)
+
+
+### Bug Fixes
+
+* remove test file ([c5058c6](https://github.com/ccontrols/structured-types/commit/c5058c6ab8fbcb4b57b7b8ad67822cb3791a36e7))
+* **api-readme:** expanded properties name inlineCode ([83fe889](https://github.com/ccontrols/structured-types/commit/83fe889508ab1a26f5754d9b4c2506e72dffc2b5))
+
+
+
+
+
 # [3.25.0](https://github.com/ccontrols/structured-types/compare/v3.24.7...v3.25.0) (2021-10-07)
 
 

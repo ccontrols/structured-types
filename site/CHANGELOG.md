@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.25.1](https://github.com/ccontrols/structured-types/compare/v3.25.0...v3.25.1) (2021-10-07)
+
+**Note:** Version bump only for package structured-types-site
+
+
+
+
+
 # [3.25.0](https://github.com/ccontrols/structured-types/compare/v3.24.7...v3.25.0) (2021-10-07)
 
 
