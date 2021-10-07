@@ -78,10 +78,12 @@ export class ExtractProps {
             value: ', ',
           });
         }
-        result.push({
-          type: 'inlineCode',
-          value: p.name,
-        });
+        if (p.name) {
+          result.push({
+            type: 'inlineCode',
+            value: p.name,
+          });
+        }
         if (!p.optional) {
           result.push({
             type: 'text',
@@ -494,36 +496,38 @@ export class ExtractProps {
 
       if (this.repoNames[filePath]) {
         const { repo, relativePath, packageName } = this.repoNames[filePath];
-        const { line } = prop.loc || {};
-        const sourceLocation = filePath.includes('node_modules')
-          ? repo
-          : `${repo}/${relativePath}${line ? `#L${line}` : ''}`;
-        return [
-          {
-            type: 'paragraph',
-            children: [
-              {
-                type: 'emphasis',
-                children: [
-                  {
-                    type: 'text',
-                    value: 'defined in ',
-                  },
-                  {
-                    type: 'link',
-                    url: sourceLocation,
-                    children: [
-                      {
-                        type: 'text',
-                        value: `${packageName}/${relativePath}`,
-                      },
-                    ],
-                  },
-                ],
-              },
-            ],
-          },
-        ];
+        if (repo) {
+          const { line } = prop.loc || {};
+          const sourceLocation = filePath.includes('node_modules')
+            ? repo
+            : `${repo}/${relativePath}${line ? `#L${line}` : ''}`;
+          return [
+            {
+              type: 'paragraph',
+              children: [
+                {
+                  type: 'emphasis',
+                  children: [
+                    {
+                      type: 'text',
+                      value: 'defined in ',
+                    },
+                    {
+                      type: 'link',
+                      url: sourceLocation,
+                      children: [
+                        {
+                          type: 'text',
+                          value: `${packageName}/${relativePath}`,
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ];
+        }
       }
     }
     return [];
