@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.24.6](https://github.com/ccontrols/structured-types/compare/v3.24.5...v3.24.6) (2021-10-07)
+
+
+### Bug Fixes
+
+* **api-readme:** empty paramenter name ([cb0acb6](https://github.com/ccontrols/structured-types/commit/cb0acb6f869a5d4d8b4b602efff73f396c5b70aa))
+* **api-readme:** missing repository field in package.json ([926eccd](https://github.com/ccontrols/structured-types/commit/926eccd6b7c9d4f4f51290d46554edbeebca7e65))
+
+
+
+
+
 ## [3.24.5](https://github.com/ccontrols/structured-types/compare/v3.24.4...v3.24.5) (2021-09-30)
 
 
