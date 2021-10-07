@@ -50,7 +50,7 @@ In your `README.md` (or other markdown file) file, you can insert a `# Table of 
 <api-readme extract="parse, ParseOptions" files="./src/index.ts"/>
 ```
 
--   `collapsed`: a comma-separated list of type names, that should not be expanded. For example some internal React object can be kept just as string, instead of listing their internal properties.
+-   `collapsed`: a comma-separated list of type names, that should not be expanded. For example some internal React object can be kept just as string and will not be detailed in the documentation, instead of listing their internal properties.
 
 ```md
 <api-readme collapsed="React.ReactNode"/>

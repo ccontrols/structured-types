@@ -20,6 +20,8 @@ import {
   ParseOptions,
   isIndexProp,
   isStringProp,
+  EnumProp,
+  isEnumProp,
 } from '@structured-types/api';
 import { getRepoPath } from '../common/package-info';
 import {
@@ -58,21 +60,27 @@ export class ExtractProps {
     props: PropType[],
     title?: string,
   ): ReturnType<typeof createPropsTable> {
-    const parentProps: PropType[] = [];
+    let parentProp: EnumProp | undefined = undefined;
     const consolidatedProps = props.filter((prop) => {
       if (
         typeof prop.parent === 'string' &&
         (this.skipInherited || this.collapsed.includes(prop.parent))
       ) {
         if (!this.skipInherited) {
-          const parentProp = parentProps.find((p) => p.type === prop.parent);
           if (!parentProp) {
-            parentProps.push({
-              name: 'props',
-              kind: PropKind.Rest,
-              type: prop.parent,
+            parentProp = {
+              name: '...props',
+              kind: PropKind.Enum,
+              properties: [{ kind: PropKind.Type, type: prop.parent }],
               optional: true,
-            });
+            };
+          } else {
+            if (!parentProp.properties?.find((p) => p.type === prop.parent)) {
+              parentProp.properties?.push({
+                kind: PropKind.Type,
+                type: prop.parent,
+              });
+            }
           }
         }
         return false;
@@ -80,7 +88,9 @@ export class ExtractProps {
         return true;
       }
     });
-    const allProps = [...consolidatedProps, ...parentProps];
+    const allProps = parentProp
+      ? [...consolidatedProps, parentProp]
+      : consolidatedProps;
     const items: PropItem[] = allProps.map(
       (prop) =>
         ({
@@ -379,14 +389,15 @@ export class ExtractProps {
     const { showValue = false, extractProperties = false } = options || {};
     if (typeof prop.type === 'string' && this.collapsed?.includes(prop.type)) {
       return this.typeNode(prop, showValue);
-    } else if (isUnionProp(prop) && prop.properties) {
+    } else if ((isUnionProp(prop) || isEnumProp(prop)) && prop.properties) {
+      const separator = isUnionProp(prop) ? ' | ' : ' & ';
       return [
         {
           type: 'paragraph',
           children: prop.properties?.reduce((acc: Node[], t, idx) => {
             const r = [...acc, ...this.extractPropType(t, { showValue: true })];
             if (prop.properties && idx < prop.properties.length - 1) {
-              r.push({ type: 'text', value: ' | ' });
+              r.push({ type: 'text', value: separator });
             }
             return r;
           }, []),
