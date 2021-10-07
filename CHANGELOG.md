@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.28.0](https://github.com/ccontrols/structured-types/compare/v3.27.0...v3.28.0) (2021-10-07)
+
+
+### Bug Fixes
+
+* **api:** filter out uninitialized initializer (rest) ([09452ae](https://github.com/ccontrols/structured-types/commit/09452ae0e892e6657190f6c18c02c45a62f035c4))
+
+
+### Features
+
+* **api-readme:** add columns option ([14cacc6](https://github.com/ccontrols/structured-types/commit/14cacc671b455f0cb8e32858725140d8ead67534))
+* **api-readme:** add Parent column to props ([2f4990b](https://github.com/ccontrols/structured-types/commit/2f4990b2632ca573f1b0ef44a8535f18c305f96a))
+* **api-readme:** collapsed inherited properties ([502b95a](https://github.com/ccontrols/structured-types/commit/502b95adab40f1fa547fb2a96341e6d3a3b3ea50))
+
+
+
+
+
 # [3.27.0](https://github.com/ccontrols/structured-types/compare/v3.26.0...v3.27.0) (2021-10-07)
 
 
