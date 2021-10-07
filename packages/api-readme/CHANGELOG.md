@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.27.0](https://github.com/ccontrols/structured-types/compare/v3.26.0...v3.27.0) (2021-10-07)
+
+
+### Features
+
+* **api-readme:** add generate option ([ef01464](https://github.com/ccontrols/structured-types/commit/ef014641aeebe85374ac9c54641f1c6af85923a9))
+
+
+
+
+
 # [3.26.0](https://github.com/ccontrols/structured-types/compare/v3.25.1...v3.26.0) (2021-10-07)
 
 
