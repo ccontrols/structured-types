@@ -3,6 +3,51 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('function-component', () => {
+  it('event-handler', () => {
+    const result = parseFiles([path.resolve(__dirname, 'event-handler.tsx')], {
+      plugins: [reactPlugin],
+    });
+    expect(result).toEqual({
+      Clickable: {
+        name: 'Clickable',
+        extension: 'react',
+        kind: 25,
+        properties: [
+          {
+            name: 'onClick',
+            parent: 'ClickableProps',
+            optional: true,
+            kind: 4,
+            properties: [
+              {
+                kind: 11,
+                type: 'MouseEventHandler',
+                generics: [
+                  {
+                    name: 'T',
+                  },
+                ],
+                parameters: [
+                  {
+                    name: 'event',
+                    type: 'E',
+                  },
+                ],
+                returns: {
+                  kind: 12,
+                },
+                name: 'MouseEventHandler',
+              },
+              {
+                kind: 8,
+              },
+            ],
+          },
+        ],
+        description: 'Clickable special component',
+      },
+    });
+  });
   it('Editor', () => {
     const result = parseFiles(
       [
