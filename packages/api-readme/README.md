@@ -68,6 +68,12 @@ In your `README.md` (or other markdown file) file, you can insert a `# Table of 
 <api-readme generate="description,props"/>
 ```
 
+-   `columns`: a comma-separated list of the columns in the property tables `name` \| `type` \| `parents` \| `value` \| `description` \| `all`. By default all columns will be visible.
+
+```md
+<api-readme generate="description,props"/>
+```
+
 -   `collectHelpers`: boolean, to specify whether to document also helper props (parents, inherited etc) or just the main extracted exports. By default the helper props will be documented and linked to from the main props.
 
 ```md

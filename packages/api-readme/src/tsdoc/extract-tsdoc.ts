@@ -38,10 +38,19 @@ type GenerateKind =
   | 'title'
   | 'location'
   | 'all';
+
+type ColumnNames =
+  | 'name'
+  | 'type'
+  | 'parents'
+  | 'value'
+  | 'description'
+  | 'all';
 export class ExtractProps {
   private files: string[];
   private collapsed: string[] = [];
   private generate: GenerateKind[] = ['all'];
+  private columns: ColumnNames[] = ['all'];
   private skipInherited = false;
   private topLevelProps: Record<string, PropType> = {};
   private repoNames: {
@@ -91,23 +100,22 @@ export class ExtractProps {
     const allProps = parentProp
       ? [...consolidatedProps, parentProp]
       : consolidatedProps;
-    const items: PropItem[] = allProps.map(
-      (prop) =>
-        ({
-          name: `${
-            prop.name
-              ? prop.kind === PropKind.Rest
-                ? `...${prop.name}`
-                : prop.name
-              : ''
-          }`,
-          isOptional: prop.optional,
-          parent: prop.parent ? this.propLink(prop.parent) : undefined,
+    const items: PropItem[] = allProps.map((prop) =>
+      this.configurePropItem({
+        name: `${
+          prop.name
+            ? prop.kind === PropKind.Rest
+              ? `...${prop.name}`
+              : prop.name
+            : ''
+        }`,
+        isOptional: prop.optional,
+        parent: prop.parent ? this.propLink(prop.parent) : undefined,
 
-          type: this.extractPropType(prop, { extractProperties: true }),
-          description: prop.description || '',
-          value: hasValue(prop) ? prop.value : undefined,
-        } as PropItem),
+        type: this.extractPropType(prop, { extractProperties: true }),
+        description: prop.description,
+        value: hasValue(prop) ? prop.value : undefined,
+      } as PropItem),
     );
     return createPropsTable(items, title);
   }
@@ -172,24 +180,37 @@ export class ExtractProps {
     }
     return result;
   }
+  private configurePropItem(item: PropItem): PropItem {
+    const enabledColumn = (name: ColumnNames): boolean => {
+      return this.columns.includes(name) || this.columns.includes('all');
+    };
+    return {
+      name: enabledColumn('name') ? item.name : undefined,
+      isOptional: item.isOptional,
+      parent: enabledColumn('parents') ? item.parent : undefined,
+      type: enabledColumn('type') ? item.type : undefined,
+      description: enabledColumn('description') ? item.description : undefined,
+    };
+  }
   private extractFunction(prop: FunctionProp, _extractTable = true): Node[] {
     if (prop.parameters) {
-      const { propsTable, table, hasValues, hasParents } =
-        this.extractPropTable(prop.parameters, 'parameters');
+      const { propsTable, table, visibleColumns } = this.extractPropTable(
+        prop.parameters,
+        'parameters',
+      );
       if (table && prop.returns && prop.returns.kind !== PropKind.Void) {
         table.children.push(
           createPropsRow(
-            {
+            this.configurePropItem({
               name: 'returns',
               isOptional: true,
               parent: prop.returns.parent
                 ? this.propLink(prop.returns.parent)
                 : undefined,
               type: this.extractPropType(prop.returns),
-              description: prop.returns.description || '',
-            },
-            hasValues,
-            hasParents,
+              description: prop.returns.description,
+            }),
+            visibleColumns,
           ),
         );
       }
@@ -710,6 +731,7 @@ export class ExtractProps {
     options: ParseOptions & {
       collapsed?: string[];
       extensions?: string[];
+      columns?: ColumnNames[];
       generate?: GenerateKind[];
       skipInherited?: boolean;
     },
@@ -720,6 +742,7 @@ export class ExtractProps {
         collapsed = [],
         extensions,
         generate = ['all'],
+        columns = ['all'],
         skipInherited = false,
         ...parseOptions
       } = options;
@@ -732,6 +755,7 @@ export class ExtractProps {
       });
       this.collapsed = collapsed;
       this.generate = generate;
+      this.columns = columns;
       this.skipInherited = skipInherited;
       let propKeys = Object.keys(props);
       if (options.extract?.length) {
