@@ -271,7 +271,7 @@ export class ExtractProps {
         : prop.value.toString();
       return [
         {
-          type: 'text',
+          type: 'inlineCode',
           value,
         },
       ];
@@ -279,7 +279,7 @@ export class ExtractProps {
     if (prop.kind) {
       const typeNode: Node[] = [
         {
-          type: 'text',
+          type: 'inlineCode',
           value: `${PropKind[prop.kind].toLowerCase()}`,
         },
       ];
