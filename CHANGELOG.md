@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.26.0](https://github.com/ccontrols/structured-types/compare/v3.25.1...v3.26.0) (2021-10-07)
+
+
+### Bug Fixes
+
+* **api-readme:** fix inlineCode remark escape ([7cf7c94](https://github.com/ccontrols/structured-types/commit/7cf7c94415df57b3be340118eea431a59dc0db38))
+
+
+### Features
+
+* **api-readme:** add extensions option ([fb70061](https://github.com/ccontrols/structured-types/commit/fb700610af723e7a5e948592ccf773e2823035aa))
+
+
+
+
+
 ## [3.25.1](https://github.com/ccontrols/structured-types/compare/v3.25.0...v3.25.1) (2021-10-07)
 
 
