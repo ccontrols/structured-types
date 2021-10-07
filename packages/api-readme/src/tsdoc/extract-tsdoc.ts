@@ -40,6 +40,7 @@ export class ExtractProps {
   private files: string[];
   private collapsed: string[] = [];
   private generate: GenerateKind[] = ['all'];
+  private skipInherited = false;
   private topLevelProps: Record<string, PropType> = {};
   private repoNames: {
     [key: string]: {
@@ -57,10 +58,39 @@ export class ExtractProps {
     props: PropType[],
     title?: string,
   ): ReturnType<typeof createPropsTable> {
-    const items: PropItem[] = props.map(
+    const parentProps: PropType[] = [];
+    const consolidatedProps = props.filter((prop) => {
+      if (
+        typeof prop.parent === 'string' &&
+        (this.skipInherited || this.collapsed.includes(prop.parent))
+      ) {
+        if (!this.skipInherited) {
+          const parentProp = parentProps.find((p) => p.type === prop.parent);
+          if (!parentProp) {
+            parentProps.push({
+              name: 'props',
+              kind: PropKind.Rest,
+              type: prop.parent,
+              optional: true,
+            });
+          }
+        }
+        return false;
+      } else {
+        return true;
+      }
+    });
+    const allProps = [...consolidatedProps, ...parentProps];
+    const items: PropItem[] = allProps.map(
       (prop) =>
         ({
-          name: prop.name || '',
+          name: `${
+            prop.name
+              ? prop.kind === PropKind.Rest
+                ? `...${prop.name}`
+                : prop.name
+              : ''
+          }`,
           isOptional: prop.optional,
           type: this.extractPropType(prop, { extractProperties: true }),
           description: prop.description || '',
@@ -666,6 +696,7 @@ export class ExtractProps {
       collapsed?: string[];
       extensions?: string[];
       generate?: GenerateKind[];
+      skipInherited?: boolean;
     },
   ): Node[] {
     const result: Node[] = [];
@@ -674,6 +705,7 @@ export class ExtractProps {
         collapsed = [],
         extensions,
         generate = ['all'],
+        skipInherited = false,
         ...parseOptions
       } = options;
       const props = parseFiles(this.files, {
@@ -685,6 +717,7 @@ export class ExtractProps {
       });
       this.collapsed = collapsed;
       this.generate = generate;
+      this.skipInherited = skipInherited;
       let propKeys = Object.keys(props);
       if (options.extract?.length) {
         const names = options.extract;
