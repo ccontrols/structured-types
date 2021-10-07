@@ -1,3 +1,4 @@
+require('polyfill-localstorage-node');
 const nodeFetch = require('node-fetch').default;
 import { decompressFromUTF16, compressToUTF16 } from 'lz-string';
 
