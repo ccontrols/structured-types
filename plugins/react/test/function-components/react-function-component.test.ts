@@ -3,6 +3,30 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('function-component', () => {
+  it('rest-props', () => {
+    const result = parseFiles([path.resolve(__dirname, 'rest-props.tsx')], {
+      plugins: [reactPlugin],
+    });
+    expect(result).toEqual({
+      MyComponent: {
+        name: 'MyComponent',
+        extension: 'react',
+        kind: 25,
+        properties: [
+          {
+            name: 'stringProp',
+            parent: 'Props',
+            kind: 1,
+          },
+          {
+            name: 'boolProp',
+            parent: 'Props',
+            kind: 3,
+          },
+        ],
+      },
+    });
+  });
   it('event-handler', () => {
     const result = parseFiles([path.resolve(__dirname, 'event-handler.tsx')], {
       plugins: [reactPlugin],

@@ -369,7 +369,10 @@ export class SymbolParser implements ISymbolParser {
         }
         const properties = (prop as ClassProp).properties as PropType[];
         nodeProperties.forEach((e) => {
-          if (ts.isPropertyAssignment(e) || ts.isBindingElement(e)) {
+          if (
+            (ts.isPropertyAssignment(e) || ts.isBindingElement(e)) &&
+            e.initializer
+          ) {
             const p = properties.find((p) => p.name === e.name.getText());
             if (p) {
               this.parseValue(p, options, e.initializer);
@@ -383,7 +386,11 @@ export class SymbolParser implements ISymbolParser {
                   options,
                   false,
                 );
-                if (childProp && this.filterProperty(childProp, options)) {
+                if (
+                  childProp &&
+                  childProp.kind !== PropKind.Rest &&
+                  this.filterProperty(childProp, options)
+                ) {
                   properties.push(childProp);
                 }
               }
