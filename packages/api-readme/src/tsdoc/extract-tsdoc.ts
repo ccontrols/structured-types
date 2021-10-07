@@ -83,18 +83,25 @@ export class ExtractProps {
             type: 'inlineCode',
             value: p.name,
           });
+
+          if (!p.optional) {
+            result.push({
+              type: 'text',
+              value: '*',
+            });
+          }
+          result.push({
+            type: 'text',
+            value: ': ',
+          });
         }
-        if (!p.optional) {
+        result.push(...this.extractPropType(p));
+        if (!p.name && !p.optional) {
           result.push({
             type: 'text',
             value: '*',
           });
         }
-        result.push({
-          type: 'text',
-          value: ': ',
-        });
-        result.push(...this.extractPropType(p));
       }
     }
     result.push({
