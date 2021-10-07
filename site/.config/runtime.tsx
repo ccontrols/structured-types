@@ -6,7 +6,7 @@ import { OctofaceIcon } from '@primer/octicons-react';
 
 const config: RuntimeConfiguration = {
   title: 'structured-types',
-  description: `api to extract structured type information from typescript types and jsdoc comments.`,
+  description: `extract structured type information from typescript, jsdoc, react and prop-types.`,
   copyright: null,
   author: null,
   theme: {
