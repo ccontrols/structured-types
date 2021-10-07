@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.24.7](https://github.com/ccontrols/structured-types/compare/v3.24.6...v3.24.7) (2021-10-07)
+
+
+### Bug Fixes
+
+* **api-docs:** inline parameters without a name ([f45922e](https://github.com/ccontrols/structured-types/commit/f45922e16165dda9d9dacfeff2da00dd0aaff658))
+
+
+
+
+
 ## [3.24.6](https://github.com/ccontrols/structured-types/compare/v3.24.5...v3.24.6) (2021-10-07)
 
 
