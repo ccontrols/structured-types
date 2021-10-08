@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.28.1](https://github.com/ccontrols/structured-types/compare/v3.28.0...v3.28.1) (2021-10-08)
+
+
+### Bug Fixes
+
+* **api-readme:** array multiple props enclose in brackets ([f5e656d](https://github.com/ccontrols/structured-types/commit/f5e656dc89ad98522cc5659d12d8be0cbbcc0c3d))
+
+
+
+
+
 # [3.28.0](https://github.com/ccontrols/structured-types/compare/v3.27.0...v3.28.0) (2021-10-07)
 
 
