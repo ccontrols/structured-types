@@ -405,9 +405,9 @@ export class ExtractProps {
   }
   private extractType(
     prop: PropType,
-    options?: { showValue?: boolean; extractProperties?: boolean },
+    options?: { showValue?: boolean },
   ): Node[] {
-    const { showValue = false, extractProperties = false } = options || {};
+    const { showValue = false } = options || {};
     if (typeof prop.type === 'string' && this.collapsed?.includes(prop.type)) {
       return this.typeNode(prop, showValue);
     } else if ((isUnionProp(prop) || isEnumProp(prop)) && prop.properties) {
@@ -496,10 +496,40 @@ export class ExtractProps {
       }
       return result;
     } else if (isArrayProp(prop) && prop.properties) {
+      const elements = prop.properties.reduce(
+        (acc: Node[], p: PropType, idx: number) => {
+          const result = this.extractPropType(p);
+          if (prop.properties && idx < prop.properties.length - 1) {
+            result.push({
+              type: 'text',
+              value: ', ',
+            });
+          }
+          return [...acc, ...result];
+        },
+        [],
+      ) as Node[];
+      const multiProps =
+        elements.length &&
+        elements[0].children &&
+        elements[0].children.length > 1;
+      if (multiProps) {
+        elements.splice(0, 0, { type: 'text', value: '(' });
+        elements.push({ type: 'text', value: ')' });
+      }
+      elements.push({ type: 'text', value: '[]' });
+      return [
+        {
+          type: 'paragraph',
+          children: elements,
+        },
+      ];
+    } else if (isTupleProp(prop) && prop.properties) {
       return [
         {
           type: 'paragraph',
           children: [
+            { type: 'text', value: '[' },
             ...prop.properties.reduce(
               (acc: Node[], p: PropType, idx: number) => {
                 const result = this.extractPropType(p);
@@ -513,31 +543,6 @@ export class ExtractProps {
               },
               [],
             ),
-            { type: 'text', value: '[]' },
-          ],
-        },
-      ];
-    } else if (isTupleProp(prop) && prop.properties) {
-      return [
-        {
-          type: 'paragraph',
-          children: [
-            { type: 'text', value: '[' },
-            ...(extractProperties
-              ? prop.properties.reduce(
-                  (acc: Node[], p: PropType, idx: number) => {
-                    const result = this.extractPropType(p);
-                    if (prop.properties && idx < prop.properties.length - 1) {
-                      result.push({
-                        type: 'text',
-                        value: ', ',
-                      });
-                    }
-                    return [...acc, ...result];
-                  },
-                  [],
-                )
-              : []),
             { type: 'text', value: ']' },
           ],
         },
