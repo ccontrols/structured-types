@@ -30,6 +30,7 @@ Object {
             "kind": 4,
             "name": "children",
             "optional": true,
+            "parent": "PropsWithChildren",
             "properties": Array [
               Object {
                 "kind": 4,

@@ -1411,6 +1411,7 @@ Object {
                                 },
                                 Object {
                                   "name": "buildMeta",
+                                  "parent": "Module",
                                 },
                                 Object {
                                   "name": "buildInfo",
@@ -1702,6 +1703,7 @@ Object {
                             Object {
                               "kind": 15,
                               "name": "loc",
+                              "parent": "WebpackError",
                               "type": "DependencyLocation",
                             },
                             Object {
@@ -1742,6 +1744,7 @@ Object {
                                 },
                                 Object {
                                   "name": "runtime",
+                                  "parent": "Chunk",
                                 },
                                 Object {
                                   "name": "files",
@@ -2927,6 +2930,7 @@ e. g. creating an assets manifest of Service Workers.",
                                     Object {
                                       "kind": 15,
                                       "name": "intermediateFileSystem",
+                                      "parent": "Compiler",
                                       "properties": Array [
                                         Object {
                                           "name": "readFile",
@@ -3179,6 +3183,7 @@ e. g. creating an assets manifest of Service Workers.",
                                         },
                                         Object {
                                           "name": "cache",
+                                          "parent": "WebpackOptionsNormalized",
                                         },
                                         Object {
                                           "name": "context",
@@ -3198,12 +3203,14 @@ e. g. creating an assets manifest of Service Workers.",
                                         },
                                         Object {
                                           "name": "entry",
+                                          "parent": "WebpackOptionsNormalized",
                                         },
                                         Object {
                                           "name": "experiments",
                                         },
                                         Object {
                                           "name": "externals",
+                                          "parent": "WebpackOptionsNormalized",
                                         },
                                         Object {
                                           "name": "externalsPresets",
@@ -3236,6 +3243,7 @@ e. g. creating an assets manifest of Service Workers.",
                                         },
                                         Object {
                                           "name": "node",
+                                          "parent": "WebpackOptionsNormalized",
                                         },
                                         Object {
                                           "name": "optimization",
@@ -3278,6 +3286,7 @@ e. g. creating an assets manifest of Service Workers.",
                                         },
                                         Object {
                                           "name": "stats",
+                                          "parent": "WebpackOptionsNormalized",
                                         },
                                         Object {
                                           "name": "target",
@@ -3757,6 +3766,7 @@ e. g. creating an assets manifest of Service Workers.",
                                 Object {
                                   "kind": 15,
                                   "name": "intermediateFileSystem",
+                                  "parent": "Compiler",
                                   "properties": Array [
                                     Object {
                                       "name": "readFile",
@@ -4009,6 +4019,7 @@ e. g. creating an assets manifest of Service Workers.",
                                     },
                                     Object {
                                       "name": "cache",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "context",
@@ -4028,12 +4039,14 @@ e. g. creating an assets manifest of Service Workers.",
                                     },
                                     Object {
                                       "name": "entry",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "experiments",
                                     },
                                     Object {
                                       "name": "externals",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "externalsPresets",
@@ -4066,6 +4079,7 @@ e. g. creating an assets manifest of Service Workers.",
                                     },
                                     Object {
                                       "name": "node",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "optimization",
@@ -4108,6 +4122,7 @@ e. g. creating an assets manifest of Service Workers.",
                                     },
                                     Object {
                                       "name": "stats",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "target",
@@ -4756,6 +4771,7 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "cache",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "context",
@@ -4775,12 +4791,14 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "entry",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "experiments",
                                 },
                                 Object {
                                   "name": "externals",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "externalsPresets",
@@ -4813,6 +4831,7 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "node",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "optimization",
@@ -4855,6 +4874,7 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "stats",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "target",
@@ -6205,6 +6225,7 @@ Needed to detect build cycles.",
                                 },
                                 Object {
                                   "name": "options",
+                                  "parent": "EntryData",
                                 },
                               ],
                               "type": "EntryData",
@@ -7820,6 +7841,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                       Object {
                                         "kind": 15,
                                         "name": "intermediateFileSystem",
+                                        "parent": "Compiler",
                                         "properties": Array [
                                           Object {
                                             "name": "readFile",
@@ -8072,6 +8094,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                           },
                                           Object {
                                             "name": "cache",
+                                            "parent": "WebpackOptionsNormalized",
                                           },
                                           Object {
                                             "name": "context",
@@ -8091,12 +8114,14 @@ from parent (or top level compiler) and creates a child Compilation",
                                           },
                                           Object {
                                             "name": "entry",
+                                            "parent": "WebpackOptionsNormalized",
                                           },
                                           Object {
                                             "name": "experiments",
                                           },
                                           Object {
                                             "name": "externals",
+                                            "parent": "WebpackOptionsNormalized",
                                           },
                                           Object {
                                             "name": "externalsPresets",
@@ -8129,6 +8154,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                           },
                                           Object {
                                             "name": "node",
+                                            "parent": "WebpackOptionsNormalized",
                                           },
                                           Object {
                                             "name": "optimization",
@@ -8171,6 +8197,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                           },
                                           Object {
                                             "name": "stats",
+                                            "parent": "WebpackOptionsNormalized",
                                           },
                                           Object {
                                             "name": "target",
@@ -8868,6 +8895,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                       },
                                       Object {
                                         "name": "cache",
+                                        "parent": "WebpackOptionsNormalized",
                                       },
                                       Object {
                                         "name": "context",
@@ -8887,12 +8915,14 @@ from parent (or top level compiler) and creates a child Compilation",
                                       },
                                       Object {
                                         "name": "entry",
+                                        "parent": "WebpackOptionsNormalized",
                                       },
                                       Object {
                                         "name": "experiments",
                                       },
                                       Object {
                                         "name": "externals",
+                                        "parent": "WebpackOptionsNormalized",
                                       },
                                       Object {
                                         "name": "externalsPresets",
@@ -8925,6 +8955,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                       },
                                       Object {
                                         "name": "node",
+                                        "parent": "WebpackOptionsNormalized",
                                       },
                                       Object {
                                         "name": "optimization",
@@ -8967,6 +8998,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                       },
                                       Object {
                                         "name": "stats",
+                                        "parent": "WebpackOptionsNormalized",
                                       },
                                       Object {
                                         "name": "target",
@@ -11310,6 +11342,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 Object {
                                   "kind": 15,
                                   "name": "intermediateFileSystem",
+                                  "parent": "Compiler",
                                   "properties": Array [
                                     Object {
                                       "name": "readFile",
@@ -11562,6 +11595,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "cache",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "context",
@@ -11581,12 +11615,14 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "entry",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "experiments",
                                     },
                                     Object {
                                       "name": "externals",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "externalsPresets",
@@ -11619,6 +11655,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "node",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "optimization",
@@ -11661,6 +11698,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "stats",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "target",
@@ -12140,6 +12178,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             Object {
                               "kind": 15,
                               "name": "intermediateFileSystem",
+                              "parent": "Compiler",
                               "properties": Array [
                                 Object {
                                   "name": "readFile",
@@ -12392,6 +12431,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "cache",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "context",
@@ -12411,12 +12451,14 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "entry",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "experiments",
                                 },
                                 Object {
                                   "name": "externals",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "externalsPresets",
@@ -12449,6 +12491,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "node",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "optimization",
@@ -12491,6 +12534,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "stats",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "target",
@@ -13384,6 +13428,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 Object {
                                   "kind": 15,
                                   "name": "intermediateFileSystem",
+                                  "parent": "Compiler",
                                   "properties": Array [
                                     Object {
                                       "name": "readFile",
@@ -13636,6 +13681,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "cache",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "context",
@@ -13655,12 +13701,14 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "entry",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "experiments",
                                     },
                                     Object {
                                       "name": "externals",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "externalsPresets",
@@ -13693,6 +13741,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "node",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "optimization",
@@ -13735,6 +13784,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "stats",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "target",
@@ -14214,6 +14264,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             Object {
                               "kind": 15,
                               "name": "intermediateFileSystem",
+                              "parent": "Compiler",
                               "properties": Array [
                                 Object {
                                   "name": "readFile",
@@ -14466,6 +14517,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "cache",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "context",
@@ -14485,12 +14537,14 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "entry",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "experiments",
                                 },
                                 Object {
                                   "name": "externals",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "externalsPresets",
@@ -14523,6 +14577,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "node",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "optimization",
@@ -14565,6 +14620,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "stats",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "target",
@@ -18262,6 +18318,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "buildMeta",
+                                  "parent": "Module",
                                 },
                                 Object {
                                   "name": "buildInfo",
@@ -18553,6 +18610,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             Object {
                               "kind": 15,
                               "name": "loc",
+                              "parent": "WebpackError",
                               "type": "DependencyLocation",
                             },
                             Object {
@@ -18593,6 +18651,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "runtime",
+                                  "parent": "Chunk",
                                 },
                                 Object {
                                   "name": "files",
@@ -19778,6 +19837,7 @@ e. g. creating an assets manifest of Service Workers.",
                                     Object {
                                       "kind": 15,
                                       "name": "intermediateFileSystem",
+                                      "parent": "Compiler",
                                       "properties": Array [
                                         Object {
                                           "name": "readFile",
@@ -20030,6 +20090,7 @@ e. g. creating an assets manifest of Service Workers.",
                                         },
                                         Object {
                                           "name": "cache",
+                                          "parent": "WebpackOptionsNormalized",
                                         },
                                         Object {
                                           "name": "context",
@@ -20049,12 +20110,14 @@ e. g. creating an assets manifest of Service Workers.",
                                         },
                                         Object {
                                           "name": "entry",
+                                          "parent": "WebpackOptionsNormalized",
                                         },
                                         Object {
                                           "name": "experiments",
                                         },
                                         Object {
                                           "name": "externals",
+                                          "parent": "WebpackOptionsNormalized",
                                         },
                                         Object {
                                           "name": "externalsPresets",
@@ -20087,6 +20150,7 @@ e. g. creating an assets manifest of Service Workers.",
                                         },
                                         Object {
                                           "name": "node",
+                                          "parent": "WebpackOptionsNormalized",
                                         },
                                         Object {
                                           "name": "optimization",
@@ -20129,6 +20193,7 @@ e. g. creating an assets manifest of Service Workers.",
                                         },
                                         Object {
                                           "name": "stats",
+                                          "parent": "WebpackOptionsNormalized",
                                         },
                                         Object {
                                           "name": "target",
@@ -20608,6 +20673,7 @@ e. g. creating an assets manifest of Service Workers.",
                                 Object {
                                   "kind": 15,
                                   "name": "intermediateFileSystem",
+                                  "parent": "Compiler",
                                   "properties": Array [
                                     Object {
                                       "name": "readFile",
@@ -20860,6 +20926,7 @@ e. g. creating an assets manifest of Service Workers.",
                                     },
                                     Object {
                                       "name": "cache",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "context",
@@ -20879,12 +20946,14 @@ e. g. creating an assets manifest of Service Workers.",
                                     },
                                     Object {
                                       "name": "entry",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "experiments",
                                     },
                                     Object {
                                       "name": "externals",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "externalsPresets",
@@ -20917,6 +20986,7 @@ e. g. creating an assets manifest of Service Workers.",
                                     },
                                     Object {
                                       "name": "node",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "optimization",
@@ -20959,6 +21029,7 @@ e. g. creating an assets manifest of Service Workers.",
                                     },
                                     Object {
                                       "name": "stats",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "target",
@@ -21607,6 +21678,7 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "cache",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "context",
@@ -21626,12 +21698,14 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "entry",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "experiments",
                                 },
                                 Object {
                                   "name": "externals",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "externalsPresets",
@@ -21664,6 +21738,7 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "node",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "optimization",
@@ -21706,6 +21781,7 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "stats",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "target",
@@ -23056,6 +23132,7 @@ Needed to detect build cycles.",
                                 },
                                 Object {
                                   "name": "options",
+                                  "parent": "EntryData",
                                 },
                               ],
                               "type": "EntryData",
@@ -26543,6 +26620,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 Object {
                                   "kind": 15,
                                   "name": "intermediateFileSystem",
+                                  "parent": "Compiler",
                                   "properties": Array [
                                     Object {
                                       "name": "readFile",
@@ -26795,6 +26873,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "cache",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "context",
@@ -26814,12 +26893,14 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "entry",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "experiments",
                                     },
                                     Object {
                                       "name": "externals",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "externalsPresets",
@@ -26852,6 +26933,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "node",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "optimization",
@@ -26894,6 +26976,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "stats",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "target",
@@ -27373,6 +27456,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             Object {
                               "kind": 15,
                               "name": "intermediateFileSystem",
+                              "parent": "Compiler",
                               "properties": Array [
                                 Object {
                                   "name": "readFile",
@@ -27625,6 +27709,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "cache",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "context",
@@ -27644,12 +27729,14 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "entry",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "experiments",
                                 },
                                 Object {
                                   "name": "externals",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "externalsPresets",
@@ -27682,6 +27769,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "node",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "optimization",
@@ -27724,6 +27812,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "stats",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "target",
@@ -28617,6 +28706,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 Object {
                                   "kind": 15,
                                   "name": "intermediateFileSystem",
+                                  "parent": "Compiler",
                                   "properties": Array [
                                     Object {
                                       "name": "readFile",
@@ -28869,6 +28959,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "cache",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "context",
@@ -28888,12 +28979,14 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "entry",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "experiments",
                                     },
                                     Object {
                                       "name": "externals",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "externalsPresets",
@@ -28926,6 +29019,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "node",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "optimization",
@@ -28968,6 +29062,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "stats",
+                                      "parent": "WebpackOptionsNormalized",
                                     },
                                     Object {
                                       "name": "target",
@@ -29447,6 +29542,7 @@ from parent (or top level compiler) and creates a child Compilation",
                             Object {
                               "kind": 15,
                               "name": "intermediateFileSystem",
+                              "parent": "Compiler",
                               "properties": Array [
                                 Object {
                                   "name": "readFile",
@@ -29699,6 +29795,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "cache",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "context",
@@ -29718,12 +29815,14 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "entry",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "experiments",
                                 },
                                 Object {
                                   "name": "externals",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "externalsPresets",
@@ -29756,6 +29855,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "node",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "optimization",
@@ -29798,6 +29898,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "stats",
+                                  "parent": "WebpackOptionsNormalized",
                                 },
                                 Object {
                                   "name": "target",

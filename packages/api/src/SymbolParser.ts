@@ -154,7 +154,7 @@ export class SymbolParser implements ISymbolParser {
     const type = this.checker.getTypeAtLocation(node);
     if (type) {
       const symbol = type.aliasSymbol || type.symbol;
-      if (symbol) {
+      if (symbol && (symbol.flags & ts.SymbolFlags.TypeAlias) === 0) {
         const declaration = symbol.valueDeclaration || symbol.declarations?.[0];
         if (declaration && this.internalNode(declaration) === undefined) {
           return addParentRef(declaration);
