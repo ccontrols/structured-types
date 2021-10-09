@@ -9118,6 +9118,203 @@ Based on https://github.com/chriskempson/base16",
         },
       ],
     },
+    "PropsWithChildren": Object {
+      "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
+      "generics": Array [
+        Object {
+          "name": "P",
+        },
+      ],
+      "kind": 15,
+      "name": "PropsWithChildren",
+      "properties": Array [
+        Object {
+          "kind": 4,
+          "name": "children",
+          "optional": true,
+          "properties": Array [
+            Object {
+              "kind": 4,
+              "properties": Array [
+                Object {
+                  "kind": 4,
+                  "properties": Array [
+                    Object {
+                      "generics": Array [
+                        Object {
+                          "name": "P",
+                        },
+                        Object {
+                          "name": "T",
+                        },
+                      ],
+                      "kind": 14,
+                      "name": "ReactElement",
+                      "properties": Array [
+                        Object {
+                          "name": "type",
+                          "type": "T",
+                        },
+                        Object {
+                          "name": "props",
+                          "type": "P",
+                        },
+                        Object {
+                          "kind": 4,
+                          "name": "key",
+                          "properties": Array [
+                            Object {
+                              "kind": 4,
+                              "properties": Array [
+                                Object {
+                                  "kind": 1,
+                                },
+                                Object {
+                                  "kind": 2,
+                                },
+                              ],
+                              "type": "Key",
+                            },
+                            Object {
+                              "kind": 10,
+                            },
+                          ],
+                        },
+                      ],
+                      "type": "ReactElement",
+                    },
+                    Object {
+                      "kind": 4,
+                      "properties": Array [
+                        Object {
+                          "kind": 1,
+                        },
+                        Object {
+                          "kind": 2,
+                        },
+                      ],
+                      "type": "ReactText",
+                    },
+                  ],
+                  "type": "ReactChild",
+                },
+                Object {
+                  "kind": 4,
+                  "properties": Array [
+                    Object {
+                      "kind": 15,
+                    },
+                    Object {
+                      "extends": Array [
+                        "Array",
+                      ],
+                      "kind": 14,
+                      "name": "ReactNodeArray",
+                      "properties": Array [
+                        Object {
+                          "index": Object {
+                            "kind": 2,
+                            "name": "n",
+                          },
+                          "kind": 20,
+                          "prop": Object {
+                            "type": "T",
+                          },
+                        },
+                      ],
+                      "type": "ReactNodeArray",
+                    },
+                  ],
+                  "type": "ReactFragment",
+                },
+                Object {
+                  "extends": Array [
+                    "ReactElement",
+                  ],
+                  "kind": 14,
+                  "name": "ReactPortal",
+                  "properties": Array [
+                    Object {
+                      "kind": 4,
+                      "name": "key",
+                      "properties": Array [
+                        Object {
+                          "kind": 4,
+                          "properties": Array [
+                            Object {
+                              "kind": 1,
+                            },
+                            Object {
+                              "kind": 2,
+                            },
+                          ],
+                          "type": "Key",
+                        },
+                        Object {
+                          "kind": 10,
+                        },
+                      ],
+                    },
+                    Object {
+                      "kind": 4,
+                      "name": "children",
+                      "properties": Array [
+                        Object {
+                          "kind": 15,
+                          "type": "ReactChild",
+                        },
+                        Object {
+                          "kind": 15,
+                          "type": "ReactFragment",
+                        },
+                        Object {
+                          "kind": 14,
+                          "type": "ReactPortal",
+                        },
+                        Object {
+                          "kind": 3,
+                        },
+                        Object {
+                          "kind": 10,
+                        },
+                        Object {
+                          "kind": 8,
+                        },
+                      ],
+                      "type": "ReactNode",
+                    },
+                    Object {
+                      "name": "type",
+                      "parent": "ReactElement",
+                      "type": "T",
+                    },
+                    Object {
+                      "name": "props",
+                      "parent": "ReactElement",
+                      "type": "P",
+                    },
+                  ],
+                  "type": "ReactPortal",
+                },
+                Object {
+                  "kind": 3,
+                },
+                Object {
+                  "kind": 10,
+                },
+                Object {
+                  "kind": 8,
+                },
+              ],
+              "type": "ReactNode",
+            },
+            Object {
+              "kind": 8,
+            },
+          ],
+        },
+      ],
+    },
     "ReactElement": Object {
       "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
       "generics": Array [
