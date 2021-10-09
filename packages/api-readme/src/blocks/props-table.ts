@@ -55,7 +55,7 @@ export const createPropsRow = (
     });
   }
 
-  if (description) {
+  if (description && visColumns.descriptions) {
     const parts = description.split('`');
     if (parts.length > 1) {
       children.push({
@@ -79,11 +79,6 @@ export const createPropsRow = (
         children: [{ type: 'text', value: description }],
       });
     }
-  } else {
-    children.push({
-      type: 'tableCell',
-      children: [{ type: 'text', value: '' }],
-    });
   }
   return {
     type: 'tableRow',
@@ -155,9 +150,7 @@ export const createPropsTable = (
         children: [{ type: 'text', value: 'Value' }],
       });
     }
-    visibleColumns.descriptions = children.some(
-      (item) => item.description !== undefined,
-    );
+    visibleColumns.descriptions = children.some((item) => item.description);
     if (visibleColumns.descriptions) {
       columns.push({
         type: 'tableCell',
