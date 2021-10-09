@@ -748,6 +748,7 @@ export class ExtractProps {
     options: ParseOptions & {
       collapsed?: string[];
       extensions?: string[];
+      visible?: string[];
       columns?: ColumnNames[];
       sections?: SectionNames[];
       skipInherited?: boolean;
@@ -758,6 +759,7 @@ export class ExtractProps {
       const {
         collapsed = [],
         extensions,
+        visible,
         sections = ['all'],
         columns = ['all'],
         skipInherited = false,
@@ -781,14 +783,24 @@ export class ExtractProps {
           return names.indexOf(key1) - names.indexOf(key2);
         });
       }
-
+      const filterProps = (prop: PropType): boolean => {
+        if (Array.isArray(extensions)) {
+          return (
+            typeof prop.extension === 'string' &&
+            extensions.includes(prop.extension)
+          );
+        }
+        if (Array.isArray(visible)) {
+          return typeof prop.name === 'string' && visible.includes(prop.name);
+        }
+        return true;
+      };
       propKeys.forEach((key) => {
         const prop = props[key];
         if (
           key !== '__helpers' &&
           key !== '__diagnostics' &&
-          (!extensions ||
-            (prop.extension && extensions.includes(prop.extension)))
+          filterProps(prop)
         ) {
           this.topLevelProps[key] = prop;
         }
@@ -796,10 +808,7 @@ export class ExtractProps {
       this.helpers = props.__helpers || {};
       Object.keys(this.helpers).forEach((key) => {
         const prop = this.helpers[key];
-        if (
-          !extensions ||
-          (prop.extension && extensions.includes(prop.extension))
-        ) {
+        if (filterProps(prop)) {
           this.topLevelProps[key] = this.helpers[key];
         }
       });
