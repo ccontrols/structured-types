@@ -53,6 +53,7 @@ export class ExtractProps {
   private columns: ColumnNames[] = ['all'];
   private skipInherited = false;
   private topLevelProps: Record<string, PropType> = {};
+  private helpers: Record<string, PropType> = {};
   private repoNames: {
     [key: string]: {
       repo?: string;
@@ -70,32 +71,43 @@ export class ExtractProps {
     title?: string,
   ): ReturnType<typeof createPropsTable> {
     let parentProp: EnumProp | undefined = undefined;
+    const addParentProp = (prop: PropType) => {
+      if (!parentProp) {
+        parentProp = {
+          name: '...props',
+          kind: PropKind.Enum,
+          properties: [{ kind: PropKind.Type, type: prop.parent }],
+          optional: true,
+        };
+      } else {
+        if (!parentProp.properties?.find((p) => p.type === prop.parent)) {
+          parentProp.properties?.push({
+            kind: PropKind.Type,
+            type: prop.parent,
+          });
+        }
+      }
+    };
     const consolidatedProps = props.filter((prop) => {
-      if (
-        typeof prop.parent === 'string' &&
-        (this.skipInherited || this.collapsed.includes(prop.parent))
-      ) {
-        if (!this.skipInherited) {
-          if (!parentProp) {
-            parentProp = {
-              name: '...props',
-              kind: PropKind.Enum,
-              properties: [{ kind: PropKind.Type, type: prop.parent }],
-              optional: true,
-            };
-          } else {
-            if (!parentProp.properties?.find((p) => p.type === prop.parent)) {
-              parentProp.properties?.push({
-                kind: PropKind.Type,
-                type: prop.parent,
-              });
+      if (typeof prop.parent === 'string') {
+        if (this.skipInherited || this.collapsed.includes(prop.parent)) {
+          addParentProp(prop);
+          return false;
+        }
+        for (const collapsedProp of this.collapsed) {
+          const helperParent = this.helpers[collapsedProp];
+          if (helperParent && hasProperties(helperParent)) {
+            const helpProp = helperParent.properties?.find(
+              (p) => p.name === prop.name && p.parent === prop.parent,
+            );
+            if (helpProp) {
+              addParentProp({ ...prop, parent: collapsedProp });
+              return false;
             }
           }
         }
-        return false;
-      } else {
-        return true;
       }
+      return true;
     });
     const allProps = parentProp
       ? [...consolidatedProps, parentProp]
@@ -781,18 +793,16 @@ export class ExtractProps {
           this.topLevelProps[key] = prop;
         }
       });
-      const helpers = props.__helpers;
-      if (helpers) {
-        Object.keys(helpers).forEach((key) => {
-          const prop = helpers[key];
-          if (
-            !extensions ||
-            (prop.extension && extensions.includes(prop.extension))
-          ) {
-            this.topLevelProps[key] = helpers[key];
-          }
-        });
-      }
+      this.helpers = props.__helpers || {};
+      Object.keys(this.helpers).forEach((key) => {
+        const prop = this.helpers[key];
+        if (
+          !extensions ||
+          (prop.extension && extensions.includes(prop.extension))
+        ) {
+          this.topLevelProps[key] = this.helpers[key];
+        }
+      });
       Object.values(this.topLevelProps).forEach((prop) => {
         const nodes = this.extractTSType(prop);
         result.push(...nodes);
