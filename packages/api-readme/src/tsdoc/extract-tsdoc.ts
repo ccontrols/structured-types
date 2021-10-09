@@ -31,7 +31,7 @@ import {
 } from '../blocks/props-table';
 import { Node, NodeChildren } from '../common/types';
 
-type GenerateKind =
+type SectionNames =
   | 'props'
   | 'description'
   | 'examples'
@@ -49,7 +49,7 @@ type ColumnNames =
 export class ExtractProps {
   private files: string[];
   private collapsed: string[] = [];
-  private generate: GenerateKind[] = ['all'];
+  private sections: SectionNames[] = ['all'];
   private columns: ColumnNames[] = ['all'];
   private skipInherited = false;
   private topLevelProps: Record<string, PropType> = {};
@@ -675,8 +675,8 @@ export class ExtractProps {
 
     return definition;
   }
-  private generateSection(section: GenerateKind): boolean {
-    return this.generate.includes(section) || this.generate.includes('all');
+  private generateSection(section: SectionNames): boolean {
+    return this.sections.includes(section) || this.sections.includes('all');
   }
 
   private extractTSType(prop: PropType): Node[] {
@@ -749,7 +749,7 @@ export class ExtractProps {
       collapsed?: string[];
       extensions?: string[];
       columns?: ColumnNames[];
-      generate?: GenerateKind[];
+      sections?: SectionNames[];
       skipInherited?: boolean;
     },
   ): Node[] {
@@ -758,7 +758,7 @@ export class ExtractProps {
       const {
         collapsed = [],
         extensions,
-        generate = ['all'],
+        sections = ['all'],
         columns = ['all'],
         skipInherited = false,
         ...parseOptions
@@ -771,7 +771,7 @@ export class ExtractProps {
         ...parseOptions,
       });
       this.collapsed = collapsed;
-      this.generate = generate;
+      this.sections = sections;
       this.columns = columns;
       this.skipInherited = skipInherited;
       let propKeys = Object.keys(props);
