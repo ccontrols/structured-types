@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.30.0](https://github.com/ccontrols/structured-types/compare/v3.29.0...v3.30.0) (2021-10-10)
+
+
+### Features
+
+* **api-readme:** configuraton files ([488d3b7](https://github.com/ccontrols/structured-types/commit/488d3b7e8a7010bd06924950222496ec6b871e57))
+
+
+
+
+
 # [3.29.0](https://github.com/ccontrols/structured-types/compare/v3.28.1...v3.29.0) (2021-10-10)
 
 

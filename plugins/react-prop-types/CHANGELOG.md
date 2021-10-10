@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.30.0](https://github.com/ccontrols/structured-types/compare/v3.29.0...v3.30.0) (2021-10-10)
+
+**Note:** Version bump only for package @structured-types/prop-types-plugin
+
+
+
+
+
 # [3.29.0](https://github.com/ccontrols/structured-types/compare/v3.28.1...v3.29.0) (2021-10-10)
 
 **Note:** Version bump only for package @structured-types/prop-types-plugin
