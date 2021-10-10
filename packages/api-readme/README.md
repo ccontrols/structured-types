@@ -1,30 +1,32 @@
 # Table of contents
 
 -   [Overview](#overview)
--   [Getting Started](#getting-started)
-    -   [Install](#install)
-    -   [Configure](#configure)
-        -   [API docs section](#api-docs-section)
-        -   [Table of contents](#table-of-contents-1)
-        -   [Options](#options)
-    -   [Launch](#launch)
-        -   [Command-line options](#command-line-options)
+-   [Installation](#installation)
+-   [Markdown](#markdown)
+    -   [API docs section](#api-docs-section)
+    -   [Table of contents](#table-of-contents-1)
+-   [Configuration](#configuration)
+    -   [Inline configuration](#inline-configuration)
+    -   [Configuration file](#configuration-file)
+        -   [Configuration examples](#configuration-examples)
+        -   [Multiple elements](#multiple-elements)
+        -   [Override properties](#override-properties)
+-   [Launch](#launch)
+    -   [Command-line options](#command-line-options)
 
 # Overview
 
 Markdown documentation generator/enhancer for javascript, typescript and react typescript projects. Can be used to generate API sections in your README.md files.
 
-# Getting Started
-
-## Install
+# Installation
 
 ```sh
 yarn add @structured-types/api-readme --dev
 ```
 
-## Configure
+# Markdown
 
-### API docs section
+## API docs section
 
 In your `README.md` (or other markdown file) file, you will insert a `<api-readme />` tag to generate the API section:
 
@@ -32,16 +34,26 @@ In your `README.md` (or other markdown file) file, you will insert a `<api-readm
 <api-readme />
 ```
 
-### Table of contents
+## Table of contents
 
 In your `README.md` (or other markdown file) file, you can insert a `# Table of contents` header and it will be automatically filled with an extracted table of contents
 
-### Options
+# Configuration
+
+You can configure api-readme either directly in your markdown file with [inline configuration](#inline-configuration) or with an [external file](#configuration-file).
+
+## Inline configuration
 
 -   `files`: a comma-separated list of the files to include in the documentation
 
 ```md
 <api-readme files="./src/index.ts"/>
+```
+
+-   `id`: a string that should be linked to an element with options in the [configuration file](#configuration-file).
+
+```md
+<api-readme id="my-section"/>
 ```
 
 -   `extract`: a comma-separated list of API names to extract. By default all the exports will be documented.
@@ -98,11 +110,191 @@ In your `README.md` (or other markdown file) file, you can insert a `# Table of 
 <api-readme files="./src/index.ts" maxDepth=10/>
 ```
 
--   other options from the [@structured-types/api](https://github.com/ccontrols/structured-types/blob/master/packages/api/README.md) package.
+-   other options from the [@structured-types/api](https://github.com/ccontrols/structured-types/tree/master/packages/api#parseoptions) package.
 
-## Launch
+## Configuration file
 
-You can launch directly from the command-line or integrate in `package.json` by adding a script to launch the command line documentation tool.
+api-readme uses [cosmiconfig](https://github.com/davidtheclark/cosmiconfig) for external configurations in a file. The configuration is loaded by precedence:
+
+-   a `api-readme` key in your package.json file
+-   a `.api-readmerc` file for JSON or YAML configuration
+-   a `.api-readmerc.json`, \``.api-readmerc.yaml`, `.api-readmerc.yml` file for JSON or YAML configuration
+-   a `.api-readmerc.js`, `.api-readmerc.cjs`, `api-readmerc.config.js` or `api-readmerc.config.cjs` javascript file that exports a configuration object.
+
+### Configuration examples
+
+Javascript:
+
+    module.exports = {
+      files: ['../src/charts/line/Chart.tsx'],
+      visible: ['LineChart'],
+      sections: ['props'],
+      collapsed: ['ViewProps'],
+    };
+
+JSON:
+
+    {
+      "files": ["../src/charts/line/Chart.tsx"],
+      "visible": ["LineChart"],
+      "sections": ["props"],
+      "collapsed": ["ViewProps"],
+      "overrides": {
+        "LineChart": {
+          "yGutter": {
+            "value": 30
+            "type": "(x, y) => x + y",
+            "parent": null
+          }
+        }
+      }
+    }
+
+YAML:
+
+    files:
+      - ./src/charts/line/Chart.tsx
+    visible:
+      - LineChart
+    sections:
+      - props
+    collapsed:
+      - ViewProps
+    overrides:
+      LineChart:
+        yGutter:
+          value: 30
+
+### Multiple elements
+
+You can have multiple elements configured within the same configuration file. For example you have two components to document `LineChart` and `RadarChart`:
+
+in README.md
+
+    <api-readme id="linechart">
+
+    ...
+
+    <api-readme id="radarchart">
+
+and in your configuration file, you can specify distinct options for each element. The per-element options will be merged with the global options.
+
+Javascript
+
+    module.exports = {
+      sections: ['props'],
+      elements: {
+        linechart: {
+          files: ['../src/charts/line/Chart.tsx'],
+          visible: ['LineChart'],
+        },
+        radarchart: {
+          files: ['../src/charts/radar/Chart.tsx'],
+          visible: ['RadarChart'],
+
+        }
+      }
+    };
+
+JSON
+
+    module.exports = {
+      "sections": ["props"],
+      "elements": {
+        "linechart": {
+          "files": ["../src/charts/line/Chart.tsx"],
+          "visible": ["LineChart"],
+        },
+        "radarchart": {
+          "files": ["../src/charts/radar/Chart.tsx"],
+          "visible": ["RadarChart"],
+        }
+      }
+    };
+
+YAML:
+
+    sections:
+      - props
+    elements:
+      linechart:
+        files:
+          - ./src/charts/line/Chart.tsx
+        visible:
+          - LineChart
+      radarchart:
+        files:
+          - ./src/charts/radar/Chart.tsx
+        visible:
+          - RadarChart
+
+### Override properties
+
+You can override specific properties in cases where the actual parsed properties are not "optimal" and you would like to change their display. The format to override a [property](https://github.com/ccontrols/structured-types/tree/master/packages/api#proptype) is
+
+Javascript
+
+```
+overrides: {
+  [parent name]: {
+    [property name]: {
+      [propname]: {
+        xx: 10
+      }
+    }
+  }
+}
+
+```
+
+Javascript:
+
+    module.exports = {
+      files: ['../src/charts/line/Chart.tsx'],
+      visible: ['LineChart'],
+      overrides: {
+        LineChart: {
+          yGutter: {
+            value: 30,
+            type: '(x, y) => x + y',
+            parent: null,
+          },
+        },
+      },
+    };
+
+JSON
+
+    {
+      "files": ["../src/charts/line/Chart.tsx"],
+      "visible": ["LineChart"],
+      "overrides": {
+        "LineChart": {
+          "yGutter": {
+            "value": 30,
+            "type": "(x, y) => x + y",
+            "parent": null
+          }
+        }
+      }
+    };
+
+YAML
+
+    files:
+      - ../src/charts/line/Chart.tsx
+    visible:
+      - LineChart
+    overrides:
+      LineChart:
+        yGutter:
+          value: 30
+          type: '(x, y) => x + y'
+          parent: null
+
+# Launch
+
+You can launch directly from the command-line ie `yarn run api-readme` or integrate in `package.json` by adding a script to launch the command line documentation tool.
 
 ```json
 ...
@@ -113,7 +305,7 @@ You can launch directly from the command-line or integrate in `package.json` by 
 ...
 ```
 
-### Command-line options
+## Command-line options
 
 -   `-t` or `--toc`: boolean (default: `true`). Whether to generate a table of contents in your markdown file. You will need to create the section title such as `# Table of contents` and `api-readme` will generate the content within this section.
 
@@ -122,6 +314,12 @@ yarn(npm) run api-readme -t=false
 ```
 
 -   `-f` or `--file`: string (default: `MARKDOWN.md`). The markdown file that will be processed. Make sure you have inserted a `<api-readme />` tag within this file.
+
+```bash
+yarn(npm) run api-readme -f=./src/test.md
+```
+
+-   `-c` or `--config`: string. The api-readme [configuration file](#configuration-file) full path and name.
 
 ```bash
 yarn(npm) run api-readme -f=./src/test.md

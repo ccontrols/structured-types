@@ -317,33 +317,33 @@ The property type or kind
 
 ### **properties**
 
-| Name           | Type     |
-| -------------- | -------- |
-| `String*`      | `number` |
-| `Number*`      | `number` |
-| `Boolean*`     | `number` |
-| `Union*`       | `number` |
-| `Enum*`        | `number` |
-| `Tuple*`       | `number` |
-| `Rest*`        | `number` |
-| `Undefined*`   | `number` |
-| `Unknown*`     | `number` |
-| `Null*`        | `number` |
-| `Function*`    | `number` |
-| `Void*`        | `number` |
-| `Class*`       | `number` |
-| `Interface*`   | `number` |
-| `Type*`        | `number` |
-| `Array*`       | `number` |
-| `Any*`         | `number` |
-| `Index*`       | `number` |
-| `Constructor*` | `number` |
-| `Getter*`      | `number` |
-| `Setter*`      | `number` |
-| `BigInt*`      | `number` |
-| `Component*`   | `number` |
-| `Object*`      | `number` |
-| `Namespace*`   | `number` |
+| Name           | Type     | Value |
+| -------------- | -------- | ----- |
+| `String*`      | `number` | `1`   |
+| `Number*`      | `number` | `2`   |
+| `Boolean*`     | `number` | `3`   |
+| `Union*`       | `number` | `4`   |
+| `Enum*`        | `number` | `5`   |
+| `Tuple*`       | `number` | `6`   |
+| `Rest*`        | `number` | `7`   |
+| `Undefined*`   | `number` | `8`   |
+| `Unknown*`     | `number` | `9`   |
+| `Null*`        | `number` | `10`  |
+| `Function*`    | `number` | `11`  |
+| `Void*`        | `number` | `12`  |
+| `Class*`       | `number` | `13`  |
+| `Interface*`   | `number` | `14`  |
+| `Type*`        | `number` | `15`  |
+| `Array*`       | `number` | `16`  |
+| `Any*`         | `number` | `17`  |
+| `Index*`       | `number` | `20`  |
+| `Constructor*` | `number` | `21`  |
+| `Getter*`      | `number` | `22`  |
+| `Setter*`      | `number` | `23`  |
+| `BigInt*`      | `number` | `24`  |
+| `Component*`   | `number` | `25`  |
+| `Object*`      | `number` | `26`  |
+| `Namespace*`   | `number` | `27`  |
 
 ## ParsePlugin
 

@@ -15,13 +15,14 @@ import {
   isFunctionProp,
   FunctionProp,
   PropKind,
-  hasValue,
   isArrayProp,
   ParseOptions,
   isIndexProp,
   isStringProp,
   EnumProp,
   isEnumProp,
+  TypeProp,
+  HasValueProp,
 } from '@structured-types/api';
 import { getRepoPath } from '../common/package-info';
 import {
@@ -126,7 +127,7 @@ export class ExtractProps {
 
         type: this.extractPropType(prop, { extractProperties: true }),
         description: prop.description,
-        value: hasValue(prop) ? prop.value : undefined,
+        value: (prop as HasValueProp).value,
       } as PropItem),
     );
     return createPropsTable(items, title);
@@ -201,6 +202,7 @@ export class ExtractProps {
       isOptional: item.isOptional,
       parent: enabledColumn('parents') ? item.parent : undefined,
       type: enabledColumn('type') ? item.type : undefined,
+      value: enabledColumn('value') ? item.value : undefined,
       description: enabledColumn('description') ? item.description : undefined,
     };
   }
@@ -354,10 +356,10 @@ export class ExtractProps {
       }
       return this.propLink(prop.type);
     }
-    if (showValue && hasValue(prop) && prop.value !== undefined) {
+    if (showValue && (prop as HasValueProp).value !== undefined) {
       const value = isStringProp(prop)
         ? `"${jsStringEscape(prop.value)}"`
-        : prop.value.toString();
+        : (prop as HasValueProp).value.toString();
       return [
         {
           type: 'inlineCode',
@@ -752,6 +754,7 @@ export class ExtractProps {
       columns?: ColumnNames[];
       sections?: SectionNames[];
       skipInherited?: boolean;
+      overrides?: Record<string, Record<string, PropType>>;
     },
   ): Node[] {
     const result: Node[] = [];
@@ -763,6 +766,7 @@ export class ExtractProps {
         sections = ['all'],
         columns = ['all'],
         skipInherited = false,
+        overrides = {},
         ...parseOptions
       } = options;
       const props = parseFiles(this.files, {
@@ -783,33 +787,49 @@ export class ExtractProps {
           return names.indexOf(key1) - names.indexOf(key2);
         });
       }
-      const filterProps = (prop: PropType): boolean => {
+      const filterProps = (prop: PropType): PropType | undefined => {
+        const transform = (p: PropType): PropType => {
+          if (p.name && overrides[p.name] && hasProperties(p)) {
+            const o = overrides[p.name];
+            return {
+              ...p,
+              properties: p.properties?.map((pp) =>
+                pp.name && o[pp.name] ? { ...pp, ...o[pp.name] } : pp,
+              ),
+            } as TypeProp;
+          }
+          return p;
+        };
         if (Array.isArray(extensions)) {
-          return (
+          if (
             typeof prop.extension === 'string' &&
             extensions.includes(prop.extension)
-          );
+          ) {
+            return transform(prop);
+          }
+          return undefined;
         }
         if (Array.isArray(visible)) {
-          return typeof prop.name === 'string' && visible.includes(prop.name);
+          if (typeof prop.name === 'string' && visible.includes(prop.name)) {
+            return transform(prop);
+          }
+          return undefined;
         }
-        return true;
+        return transform(prop);
       };
       propKeys.forEach((key) => {
-        const prop = props[key];
-        if (
-          key !== '__helpers' &&
-          key !== '__diagnostics' &&
-          filterProps(prop)
-        ) {
-          this.topLevelProps[key] = prop;
+        if (key !== '__helpers' && key !== '__diagnostics') {
+          const prop = filterProps(props[key]);
+          if (prop) {
+            this.topLevelProps[key] = prop;
+          }
         }
       });
       this.helpers = props.__helpers || {};
       Object.keys(this.helpers).forEach((key) => {
-        const prop = this.helpers[key];
-        if (filterProps(prop)) {
-          this.topLevelProps[key] = this.helpers[key];
+        const prop = filterProps(this.helpers[key]);
+        if (prop) {
+          this.topLevelProps[key] = prop;
         }
       });
       Object.values(this.topLevelProps).forEach((prop) => {

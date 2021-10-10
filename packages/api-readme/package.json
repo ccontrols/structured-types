@@ -40,6 +40,8 @@
     "@structured-types/prop-types-plugin": "^3.29.0",
     "@structured-types/react-plugin": "^3.29.0",
     "chalk": "^4.1.0",
+    "cosmiconfig": "^7.0.1",
+    "deepmerge": "^4.2.2",
     "js-string-escape": "^1.0.1",
     "remark": "^11.0.2",
     "remark-toc": "^7.0.0",
