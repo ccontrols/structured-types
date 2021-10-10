@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.29.0](https://github.com/ccontrols/structured-types/compare/v3.28.1...v3.29.0) (2021-10-10)
+
+
+### Bug Fixes
+
+* **api:** correctly assign parent to aliased types ([e1e48ec](https://github.com/ccontrols/structured-types/commit/e1e48ec7cca8403f0e02863de80180002bb51a12))
+* **api-readme:** remove description column if not descriptions available ([20d14d7](https://github.com/ccontrols/structured-types/commit/20d14d7648677b330cb0bea351bf8244464b7f32))
+
+
+### Features
+
+* **api-readme:** add visible option toshow/hide props ([e9b9870](https://github.com/ccontrols/structured-types/commit/e9b987010b8c2ca4fd63ac19fa6c1565fd482f97))
+* **api-readme:** collapsed parents consolidate ([2a57758](https://github.com/ccontrols/structured-types/commit/2a57758c12cad4f6d271c540af9cf3fe4d75ff39))
+
+
+
+
+
 ## [3.28.1](https://github.com/ccontrols/structured-types/compare/v3.28.0...v3.28.1) (2021-10-08)
 
 

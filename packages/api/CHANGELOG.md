@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.29.0](https://github.com/ccontrols/structured-types/compare/v3.28.1...v3.29.0) (2021-10-10)
+
+
+### Bug Fixes
+
+* **api:** correctly assign parent to aliased types ([e1e48ec](https://github.com/ccontrols/structured-types/commit/e1e48ec7cca8403f0e02863de80180002bb51a12))
+
+
+
+
+
 ## [3.28.1](https://github.com/ccontrols/structured-types/compare/v3.28.0...v3.28.1) (2021-10-08)
 
 **Note:** Version bump only for package @structured-types/api
