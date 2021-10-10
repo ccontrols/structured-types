@@ -252,10 +252,10 @@ parsing options
 
 ### **properties**
 
-| Name      | Type            |     |
-| --------- | --------------- | --- |
-| `host`    | ts.CompilerHost |     |
-| `program` | ts.Program      |     |
+| Name      | Type            |
+| --------- | --------------- |
+| `host`    | ts.CompilerHost |
+| `program` | ts.Program      |
 
 ## PropTypes
 
@@ -317,33 +317,33 @@ The property type or kind
 
 ### **properties**
 
-| Name           | Type     |     |
-| -------------- | -------- | --- |
-| `String*`      | `number` |     |
-| `Number*`      | `number` |     |
-| `Boolean*`     | `number` |     |
-| `Union*`       | `number` |     |
-| `Enum*`        | `number` |     |
-| `Tuple*`       | `number` |     |
-| `Rest*`        | `number` |     |
-| `Undefined*`   | `number` |     |
-| `Unknown*`     | `number` |     |
-| `Null*`        | `number` |     |
-| `Function*`    | `number` |     |
-| `Void*`        | `number` |     |
-| `Class*`       | `number` |     |
-| `Interface*`   | `number` |     |
-| `Type*`        | `number` |     |
-| `Array*`       | `number` |     |
-| `Any*`         | `number` |     |
-| `Index*`       | `number` |     |
-| `Constructor*` | `number` |     |
-| `Getter*`      | `number` |     |
-| `Setter*`      | `number` |     |
-| `BigInt*`      | `number` |     |
-| `Component*`   | `number` |     |
-| `Object*`      | `number` |     |
-| `Namespace*`   | `number` |     |
+| Name           | Type     |
+| -------------- | -------- |
+| `String*`      | `number` |
+| `Number*`      | `number` |
+| `Boolean*`     | `number` |
+| `Union*`       | `number` |
+| `Enum*`        | `number` |
+| `Tuple*`       | `number` |
+| `Rest*`        | `number` |
+| `Undefined*`   | `number` |
+| `Unknown*`     | `number` |
+| `Null*`        | `number` |
+| `Function*`    | `number` |
+| `Void*`        | `number` |
+| `Class*`       | `number` |
+| `Interface*`   | `number` |
+| `Type*`        | `number` |
+| `Array*`       | `number` |
+| `Any*`         | `number` |
+| `Index*`       | `number` |
+| `Constructor*` | `number` |
+| `Getter*`      | `number` |
+| `Setter*`      | `number` |
+| `BigInt*`      | `number` |
+| `Component*`   | `number` |
+| `Object*`      | `number` |
+| `Namespace*`   | `number` |
 
 ## ParsePlugin
 
@@ -465,15 +465,15 @@ JSDoc generic tag item
 
 ### **properties**
 
-| Name                      | Type                                                                                                                                                                   |     |
-| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
-| `checker*`                | TypeChecker                                                                                                                                                            |     |
-| `options*`                | [`ParseOptions`](#parseoptions)                                                                                                                                        |     |
-| `parseProperties*`        | (`properties`\*: { `index` }, `options`\*: [`ParseOptions`](#parseoptions), `types`: [`PropType`](#proptype)\[]) => [`PropType`](#proptype)\[]                         |     |
-| `updateSymbolName*`       | (`prop`\*: [`PropType`](#proptype), `node`: ts.Declaration) => [`PropType`](#proptype)                                                                                 |     |
-| `parseType*`              | (`prop`\*: [`PropType`](#proptype), `options`\*: [`ParseOptions`](#parseoptions), `node`: ts.Node) => [`PropType`](#proptype)                                          |     |
-| `parseTypeValueComments*` | (`prop`\*: [`PropType`](#proptype), `options`\*: [`ParseOptions`](#parseoptions), `declaration`: ts.Node, `initializer`: ts.Node) => [`PropType`](#proptype) \| `null` |     |
-| `parseSymbol*`            | (`symbol`\*: Symbol, `options`\*: [`ParseOptions`](#parseoptions)) => [`PropType`](#proptype) \| `undefined`                                                           |     |
+| Name                      | Type                                                                                                                                                                   |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `checker*`                | TypeChecker                                                                                                                                                            |
+| `options*`                | [`ParseOptions`](#parseoptions)                                                                                                                                        |
+| `parseProperties*`        | (`properties`\*: { `index` }, `options`\*: [`ParseOptions`](#parseoptions), `types`: [`PropType`](#proptype)\[]) => [`PropType`](#proptype)\[]                         |
+| `updateSymbolName*`       | (`prop`\*: [`PropType`](#proptype), `node`: ts.Declaration) => [`PropType`](#proptype)                                                                                 |
+| `parseType*`              | (`prop`\*: [`PropType`](#proptype), `options`\*: [`ParseOptions`](#parseoptions), `node`: ts.Node) => [`PropType`](#proptype)                                          |
+| `parseTypeValueComments*` | (`prop`\*: [`PropType`](#proptype), `options`\*: [`ParseOptions`](#parseoptions), `declaration`: ts.Node, `initializer`: ts.Node) => [`PropType`](#proptype) \| `null` |
+| `parseSymbol*`            | (`symbol`\*: Symbol, `options`\*: [`ParseOptions`](#parseoptions)) => [`PropType`](#proptype) \| `undefined`                                                           |
 
 <!-- END-API-README -->
 
