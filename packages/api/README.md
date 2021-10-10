@@ -1,28 +1,28 @@
 # Table of contents
 
--   [Overview](#overview)
--   [Comparable libraries](#comparable-libraries)
--   [Motivation](#motivation)
--   [Getting started](#getting-started)
-    -   -   [1. Installation](#1-installation)
-        -   [2. Your API source file (sum.js):](#2-your-api-source-file-sumjs)
-        -   [3. Your documentation extraction](#3-your-documentation-extraction)
-        -   [4. The result](#4-the-result)
--   [API](#api)
-    -   [parseFiles](#parsefiles)
-    -   [analyzeFiles](#analyzefiles)
-    -   [DocsOptions](#docsoptions)
-    -   [ParseOptions](#parseoptions)
-    -   [ProgramOptions](#programoptions)
-    -   [PropTypes](#proptypes)
-    -   [PropType](#proptype)
-    -   [PropKind](#propkind)
-    -   [ParsePlugin](#parseplugin)
-    -   [PropDiagnostic](#propdiagnostic)
-    -   [JSDocExample](#jsdocexample)
-    -   [JSDocPropTag](#jsdocproptag)
-    -   [ResolverReturnType](#resolverreturntype)
-    -   [ISymbolParser](#isymbolparser)
+- [Overview](#overview)
+- [Comparable libraries](#comparable-libraries)
+- [Motivation](#motivation)
+- [Getting started](#getting-started)
+  - - [1. Installation](#1-installation)
+    - [2. Your API source file (sum.js):](#2-your-api-source-file-sumjs)
+    - [3. Your documentation extraction](#3-your-documentation-extraction)
+    - [4. The result](#4-the-result)
+- [API](#api)
+  - [parseFiles](#parsefiles)
+  - [analyzeFiles](#analyzefiles)
+  - [DocsOptions](#docsoptions)
+  - [ParseOptions](#parseoptions)
+  - [ProgramOptions](#programoptions)
+  - [PropTypes](#proptypes)
+  - [PropType](#proptype)
+  - [PropKind](#propkind)
+  - [ParsePlugin](#parseplugin)
+  - [PropDiagnostic](#propdiagnostic)
+  - [JSDocExample](#jsdocexample)
+  - [JSDocPropTag](#jsdocproptag)
+  - [ResolverReturnType](#resolverreturntype)
+  - [ISymbolParser](#isymbolparser)
 
 # Overview
 
@@ -39,12 +39,12 @@ Extract structured documentation from javascript and typescript files using a co
 
 # Motivation
 
-The creation of `structured-types` come from the need of a library that can be used to document as well as instrument typescript and javascript code. The currently existing libraries are mostly meant just for documenting code.
+The creation of `structured-types` comes from the need for a library that can be used to document as well as instrument typescript and javascript code. The currently existing libraries are mostly meant just for documenting code.
 
--   Extract fully structured types, that can be used to fully interact with the analyzed code - this can be used to automatically create tests, examples etc.
--   Use typescript types where available and supplement the type information with any jsdoc comments.
--   Extract documentation down to the member-level - for example for an enum extract comments for the enum type, as well as for the individual enum member fields.
--   Swiss-army extensible architecture using resolution plugins, where the library can be used to analyze typescript files, as well as extract react, angular and more framework-specific types.
+- Extract fully structured types, that can be used to fully interact with the analyzed code - this can be used to automatically create tests, examples, etc.
+- Use typescript types if available and supplement the type information with any jsdoc comments.
+- Extract documentation down to the member-level - for example for an enum extract comments for the enum type, as well as for the individual enum member fields.
+- Swiss-army extensible architecture using resolution plugins, where the library can be used to analyze typescript files, as well as extract react, angular, and more framework-specific types.
 
 # Getting started
 
@@ -150,6 +150,7 @@ API to analyze the given files by also loading the local typescript options from
 | `returns`        | [`PropTypes`](#proptypes)           | the parsed types                          |
 
 ### example
+
     import { parseFiles } from '@structured-types/api';
 
     const props = parseFiles(['index.ts'], {
@@ -174,6 +175,7 @@ API to analyze the given files
 | `returns`         | [`PropTypes`](#proptypes)           | the parsed types                          |
 
 ### example
+
     import { analyzeFiles } from '@structured-types/api';
 
     const props = analyzeFiles(['index.ts'], {
@@ -189,14 +191,12 @@ API to analyze the given files
 
 **`type`** _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L316)_
 
-
-
 ### **properties**
 
 | Name                 | Type                                                               | Parent                          | Description                                                                                                                                       |
 | -------------------- | ------------------------------------------------------------------ | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `tsOptions`          | ts.CompilerOptions                                                 |                                 |                                                                                                                                                   |
-| `internalTypes`      | `Record`&lt;`string`, [`PropKind`](#propkind)>                     | [`ParseOptions`](#parseoptions) | internal types - libs by default includes classes such as  `String` ,  `Function` ...                                                             |
+| `internalTypes`      | `Record`&lt;`string`, [`PropKind`](#propkind)>                     | [`ParseOptions`](#parseoptions) | internal types - libs by default includes classes such as `String` , `Function` ...                                                               |
 | `extract`            | `string`\[]                                                        | [`ParseOptions`](#parseoptions) | list of export names to be extracted. by default all exports are extracted                                                                        |
 | `filter`             | (`prop`\*: [`PropType`](#proptype)) => `boolean`                   | [`ParseOptions`](#parseoptions) | filter properties function. By default filter out all props with ignore === true                                                                  |
 | `isInternal`         | (`file`\*: SourceFile, `node`\*: Node) => `boolean` \| `undefined` | [`ParseOptions`](#parseoptions) | callback function to determine if a node is an internal (typescript) symbol return undefined if you need to use the default isInternal processing |
@@ -212,7 +212,7 @@ API to analyze the given files
 | `plugins`            | [`ParsePlugin`](#parseplugin)\[]                                   | [`ParseOptions`](#parseoptions) | installed plugins can modify default options and install type resolvers                                                                           |
 | `scope`              | `"exports"` \| `"all"`                                             | [`ParseOptions`](#parseoptions) | by default collects only the exported symbols                                                                                                     |
 | `collectFilePath`    | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect the file path of objects                                                                                                       |
-| `collectLinesOfCode` | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the  `loc`  prop             |
+| `collectLinesOfCode` | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the `loc` prop               |
 
 ## ParseOptions
 
@@ -220,13 +220,11 @@ API to analyze the given files
 
 parsing options
 
-
-
 ### **properties**
 
 | Name                 | Type                                                               | Description                                                                                                                                       |
 | -------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `internalTypes`      | `Record`&lt;`string`, [`PropKind`](#propkind)>                     | internal types - libs by default includes classes such as  `String` ,  `Function` ...                                                             |
+| `internalTypes`      | `Record`&lt;`string`, [`PropKind`](#propkind)>                     | internal types - libs by default includes classes such as `String` , `Function` ...                                                               |
 | `extract`            | `string`\[]                                                        | list of export names to be extracted. by default all exports are extracted                                                                        |
 | `filter`             | (`prop`\*: [`PropType`](#proptype)) => `boolean`                   | filter properties function. By default filter out all props with ignore === true                                                                  |
 | `isInternal`         | (`file`\*: SourceFile, `node`\*: Node) => `boolean` \| `undefined` | callback function to determine if a node is an internal (typescript) symbol return undefined if you need to use the default isInternal processing |
@@ -242,13 +240,11 @@ parsing options
 | `plugins`            | [`ParsePlugin`](#parseplugin)\[]                                   | installed plugins can modify default options and install type resolvers                                                                           |
 | `scope`              | `"exports"` \| `"all"`                                             | by default collects only the exported symbols                                                                                                     |
 | `collectFilePath`    | `boolean`                                                          | whether to collect the file path of objects                                                                                                       |
-| `collectLinesOfCode` | `boolean`                                                          | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the  `loc`  prop             |
+| `collectLinesOfCode` | `boolean`                                                          | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the `loc` prop               |
 
 ## ProgramOptions
 
 **`type`** _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L317)_
-
-
 
 ### **properties**
 
@@ -261,9 +257,7 @@ parsing options
 
 **`type`** _defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L576)_
 
-Top-level prop type, with aded optional \_\_helpers and \_\_diagnostics fields.
-
-
+Top-level prop type, with added optional \_\_helpers and \_\_diagnostics fields.
 
 ### **properties**
 
@@ -278,8 +272,6 @@ Top-level prop type, with aded optional \_\_helpers and \_\_diagnostics fields.
 **`interface`** _defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L65)_
 
 Base prop type interface
-
-
 
 ### **properties**
 
@@ -312,8 +304,6 @@ Base prop type interface
 **`enum`** _defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L34)_
 
 The property type or kind
-
-
 
 ### **properties**
 
@@ -349,14 +339,12 @@ The property type or kind
 
 **`type`** _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L278)_
 
-
-
 ### **properties**
 
 | Name                 | Type                                                                                                                                                                              | Parent                          | Description                                                                                                                                            |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `tsOptions`          | ts.CompilerOptions                                                                                                                                                                | [`DocsOptions`](#docsoptions)   |                                                                                                                                                        |
-| `internalTypes`      | `Record`&lt;`string`, [`PropKind`](#propkind)>                                                                                                                                    | [`ParseOptions`](#parseoptions) | internal types - libs by default includes classes such as  `String` ,  `Function` ...                                                                  |
+| `internalTypes`      | `Record`&lt;`string`, [`PropKind`](#propkind)>                                                                                                                                    | [`ParseOptions`](#parseoptions) | internal types - libs by default includes classes such as `String` , `Function` ...                                                                    |
 | `extract`            | `string`\[]                                                                                                                                                                       | [`ParseOptions`](#parseoptions) | list of export names to be extracted. by default all exports are extracted                                                                             |
 | `filter`             | (`prop`\*: [`PropType`](#proptype)) => `boolean`                                                                                                                                  | [`ParseOptions`](#parseoptions) | filter properties function. By default filter out all props with ignore === true                                                                       |
 | `maxDepth`           | `number`                                                                                                                                                                          | [`ParseOptions`](#parseoptions) | max depth for extracting child props. default is 5                                                                                                     |
@@ -371,7 +359,7 @@ The property type or kind
 | `plugins`            | [`ParsePlugin`](#parseplugin)\[]                                                                                                                                                  | [`ParseOptions`](#parseoptions) | installed plugins can modify default options and install type resolvers                                                                                |
 | `scope`              | `"exports"` \| `"all"`                                                                                                                                                            | [`ParseOptions`](#parseoptions) | by default collects only the exported symbols                                                                                                          |
 | `collectFilePath`    | `boolean`                                                                                                                                                                         | [`ParseOptions`](#parseoptions) | whether to collect the file path of objects                                                                                                            |
-| `collectLinesOfCode` | `boolean`                                                                                                                                                                         | [`ParseOptions`](#parseoptions) | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the  `loc`  prop                  |
+| `collectLinesOfCode` | `boolean`                                                                                                                                                                         | [`ParseOptions`](#parseoptions) | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the `loc` prop                    |
 | `typesResolve*`      | (`props`\*: { `symbolType`: `Type`, `declaration`: `ts.Declaration`, `parser`: [`ISymbolParser`](#isymbolparser) }) => [`ResolverReturnType`](#resolverreturntype) \| `undefined` |                                 | type resolving custom function ie from a react component will return the props type if the plugin does not recognize the type, should return undefined |
 | `pluginName`         | `string`                                                                                                                                                                          |                                 | plugin name                                                                                                                                            |
 
@@ -380,8 +368,6 @@ The property type or kind
 **`type`** _defined in [@structured-types/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L550)_
 
 diagnostics row data
-
-
 
 ### **properties**
 
@@ -399,8 +385,6 @@ diagnostics row data
 
 JSDoc example item
 
-
-
 ### **properties**
 
 | Name      | Type     | Description            |
@@ -414,8 +398,6 @@ JSDoc example item
 
 JSDoc generic tag item
 
-
-
 ### **properties**
 
 | Name      | Type     | Description          |
@@ -426,8 +408,6 @@ JSDoc generic tag item
 ## ResolverReturnType
 
 **`type`** _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L321)_
-
-
 
 ### **properties**
 
@@ -440,7 +420,7 @@ JSDoc generic tag item
 | `pluginName`         | `string`                                                           |                                 |                                                                                                                                                   |
 | `isInternal`         | (`file`\*: SourceFile, `node`\*: Node) => `boolean` \| `undefined` | [`ParseOptions`](#parseoptions) | callback function to determine if a node is an internal (typescript) symbol return undefined if you need to use the default isInternal processing |
 | `tsOptions`          | ts.CompilerOptions                                                 | [`DocsOptions`](#docsoptions)   |                                                                                                                                                   |
-| `internalTypes`      | `Record`&lt;`string`, [`PropKind`](#propkind)>                     | [`ParseOptions`](#parseoptions) | internal types - libs by default includes classes such as  `String` ,  `Function` ...                                                             |
+| `internalTypes`      | `Record`&lt;`string`, [`PropKind`](#propkind)>                     | [`ParseOptions`](#parseoptions) | internal types - libs by default includes classes such as `String` , `Function` ...                                                               |
 | `extract`            | `string`\[]                                                        | [`ParseOptions`](#parseoptions) | list of export names to be extracted. by default all exports are extracted                                                                        |
 | `filter`             | (`prop`\*: [`PropType`](#proptype)) => `boolean`                   | [`ParseOptions`](#parseoptions) | filter properties function. By default filter out all props with ignore === true                                                                  |
 | `maxDepth`           | `number`                                                           | [`ParseOptions`](#parseoptions) | max depth for extracting child props. default is 5                                                                                                |
@@ -455,13 +435,11 @@ JSDoc generic tag item
 | `plugins`            | [`ParsePlugin`](#parseplugin)\[]                                   | [`ParseOptions`](#parseoptions) | installed plugins can modify default options and install type resolvers                                                                           |
 | `scope`              | `"exports"` \| `"all"`                                             | [`ParseOptions`](#parseoptions) | by default collects only the exported symbols                                                                                                     |
 | `collectFilePath`    | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect the file path of objects                                                                                                       |
-| `collectLinesOfCode` | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the  `loc`  prop             |
+| `collectLinesOfCode` | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the `loc` prop               |
 
 ## ISymbolParser
 
 **`interface`** _defined in [@structured-types/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L386)_
-
-
 
 ### **properties**
 
