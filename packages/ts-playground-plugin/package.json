@@ -1,7 +1,7 @@
 {
   "name": "@structured-types/playground-plugin",
   "version": "3.30.0",
-  "description": "Extract structured types and documentation from the your source code.",
+  "description": "Typescript playground plugin to display the types from source code.",
   "keywords": [
     "structured-types",
     "playground-plugin",
