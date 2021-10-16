@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "declaration": true,
+    "jsx": "react",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "typeRoots": ["../../node_modules/@types", "node_modules/@types"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules/**", "extension/**", "test/**"]
+}

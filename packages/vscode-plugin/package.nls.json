@@ -1,0 +1,7 @@
+{
+  "displayName": "Markdown Preview Enhanced",
+  "description": "Structured types documentation vscode extension",
+  "structured-types.openPreview.title": "Open Documentation",
+  "structured-types.openPreviewSide.title": "Open Documentation to the side",
+  "structured-types.refresh.title": "Refresh Documentation"
+}
