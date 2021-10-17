@@ -39,7 +39,7 @@ const renderNode = ({
     case 'tableRow':
       return nodeContent({ node, as: 'vscode-data-grid-row', ...props });
     case 'table':
-      return node.children
+      const table = node.children
         ? `
         <vscode-data-grid>
           <vscode-data-grid-row row-type="header">
@@ -47,7 +47,7 @@ const renderNode = ({
               ?.map((cell, index) =>
                 nodeContent({
                   node: cell,
-                  'grid-column': (index + 1).toString(),
+                  'grid-column': index + 1,
                   'cell-type': 'columnheader',
                   as: 'vscode-data-grid-cell',
                 }),
@@ -63,7 +63,7 @@ const renderNode = ({
                 ?.map((cell, index) =>
                   nodeContent({
                     node: cell,
-                    'grid-column': (index + 1).toString(),
+                    'grid-column': index + 1,
                     as: 'vscode-data-grid-cell',
                   }),
                 )
@@ -75,6 +75,7 @@ const renderNode = ({
         </vscode-data-grid>
         `
         : '';
+      return table;
     default:
       debugger;
       return '';
@@ -86,9 +87,9 @@ const propToStr = (prop: string): string => {
     case 'string':
       return `"${prop}""`;
     case 'number':
-      return `{${prop}}`;
+      return `${prop}`;
     default:
-      return `{${prop}}`;
+      return `${prop}`;
   }
 };
 

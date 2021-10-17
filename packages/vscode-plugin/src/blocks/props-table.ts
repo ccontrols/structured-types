@@ -100,20 +100,15 @@ export const createPropsTable = (
   if (children) {
     if (title) {
       propsTable.push({
-        type: 'paragraph',
+        type: 'heading',
+        depth: 3,
         children: [
           {
-            type: 'heading',
-            depth: 3,
+            type: 'strong',
             children: [
               {
-                type: 'strong',
-                children: [
-                  {
-                    type: 'text',
-                    value: title,
-                  },
-                ],
+                type: 'text',
+                value: title,
               },
             ],
           },
@@ -166,10 +161,7 @@ export const createPropsTable = (
         },
       ],
     };
-    propsTable.push({
-      type: 'paragraph',
-      children: [table],
-    });
+    propsTable.push(table);
     // eslint-disable-next-line prefer-spread
     table.children.push(
       ...children.map((child: PropItem) =>

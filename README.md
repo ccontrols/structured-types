@@ -1,18 +1,18 @@
 # Table of contents
 
-- [About](#about)
-- [Live example](#live-example)
-- [Using the API](#using-the-api)
-  - [1. Installation](#1-installation)
-  - [2. Your API source file (sum.js):](#2-your-api-source-file-sumjs)
-  - [3. Your documentation extraction](#3-your-documentation-extraction)
-  - [4. The result](#4-the-result)
-- [Using the CLI](#using-the-cli)
-  - [1. Installation](#1-installation-1)
-  - [2. Configure](#2-configure)
-  - [3. Launch](#3-launch)
-- [Typescript playground plugin](#typescript-playground-plugin)
-- [Roadmap](#roadmap)
+-   [About](#about)
+-   [Live example](#live-example)
+-   [Using the API](#using-the-api)
+    -   [1. Installation](#1-installation)
+    -   [2. Your API source file (sum.js):](#2-your-api-source-file-sumjs)
+    -   [3. Your documentation extraction](#3-your-documentation-extraction)
+    -   [4. The result](#4-the-result)
+-   [Using the CLI](#using-the-cli)
+    -   [1. Installation](#1-installation-1)
+    -   [2. Configure](#2-configure)
+    -   [3. Launch](#3-launch)
+-   [Typescript playground plugin](#typescript-playground-plugin)
+-   [Roadmap](#roadmap)
 
 # About
 
@@ -151,12 +151,12 @@ More information about the [@structured-types/playground-plugin](https://github.
 
 # Roadmap
 
-- [x] JSDoc types
-- [x] Typescript types
-- [x] React plugin
-- [x] React "prop-types" plugin
-- [x] Typescript playground plugin
-- [ ] [component-controls](https://github.com/ccontrols/component-controls) integration
-- [x] Automatically generate README.md files (api-readme)
-- [ ] Vue plugin
-- [ ] Angular plugin
+-   [x] JSDoc types
+-   [x] Typescript types
+-   [x] React plugin
+-   [x] React "prop-types" plugin
+-   [x] Typescript playground plugin
+-   [ ] [component-controls](https://github.com/ccontrols/component-controls) integration
+-   [x] Automatically generate README.md files (api-readme)
+-   [ ] Vue plugin
+-   [ ] Angular plugin

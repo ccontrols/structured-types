@@ -17,6 +17,7 @@ export class ContentProvider {
     this.render = (fileName: string) => {
       const extractor = new ExtractProps([fileName]);
       const nodes = extractor.extract({ collectHelpers: false });
+      console.log(nodes);
       return renderNodes(nodes);
     };
 
