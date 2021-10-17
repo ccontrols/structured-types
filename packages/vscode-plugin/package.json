@@ -21,10 +21,8 @@
   "scripts": {
     "vscode:prepublish": "yarn build",
     "postinstall": "node ../../node_modules/vscode/bin/install",
-    "build": "rollup -c rollup.config.js && tsc -p tsconfig.extension.json",
-    "build:tsc": "tsc -b",
-    "dev": "NODE_ENV=development yarn rollup -cw",
-    "watch-extension": "tsc -w -p tsconfig.extension.json",
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -w -p tsconfig.json",
     "lint": "yarn eslint . --ext ts,tsx",
     "fix": "yarn lint --fix",
     "clean": "rimraf dist coverage"
@@ -40,17 +38,11 @@
   },
   "license": "MIT",
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
     "vscode": "^1.1.37"
   },
   "devDependencies": {
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-replace": "^3.0.0",
     "@types/node": "^16.3.3",
-    "@vscode/webview-ui-toolkit": "^0.8.2",
-    "@types/react": "^17.0.14",
-    "@types/react-dom": "^17.0.9"
+    "@vscode/webview-ui-toolkit": "^0.8.2"
   },
   "activationEvents": [
     "onCommand:structured-types.openPreview",

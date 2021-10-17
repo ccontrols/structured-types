@@ -1,6 +1,8 @@
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { ExtractProps } from './extract-tsdoc';
+import { renderNodes } from './renderNode';
+
 type PanelStore = {
   panel?: vscode.WebviewPanel;
 };
@@ -12,14 +14,10 @@ export class ContentProvider {
   private render: (fileName: string) => string;
   constructor(context: vscode.ExtensionContext) {
     this.context = context;
-    const scriptPathOnDisk = vscode.Uri.file(
-      path.join(this.context.extensionPath, 'dist', 'bundle.js'),
-    );
-    const { renderPage } = require(scriptPathOnDisk.fsPath);
     this.render = (fileName: string) => {
       const extractor = new ExtractProps([fileName]);
       const nodes = extractor.extract({ collectHelpers: false });
-      return renderPage(nodes);
+      return renderNodes(nodes);
     };
 
     context.subscriptions.push(
