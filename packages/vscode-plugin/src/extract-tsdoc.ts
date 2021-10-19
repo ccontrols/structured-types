@@ -550,11 +550,12 @@ export class ExtractProps {
 
       if (this.repoNames[filePath]) {
         const { repo, relativePath, packageName } = this.repoNames[filePath];
-        if (repo) {
+        const fileLocation = repo || filePath;
+        if (fileLocation) {
           const { line } = prop.loc || {};
           const sourceLocation = filePath.includes('node_modules')
-            ? repo
-            : `${repo}${line ? `#L${line}` : ''}`;
+            ? fileLocation
+            : `${fileLocation}${line ? `#L${line}` : ''}`;
           return [
             {
               type: 'paragraph',

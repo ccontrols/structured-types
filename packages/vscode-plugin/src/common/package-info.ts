@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import hostedGitInfo from 'hosted-git-info';
 import parseRepositoryURL from '@hutson/parse-repository-url';
+import { resolveModuleName } from 'typescript';
 
 const traverseFolder = (
   filePath: string,
@@ -27,6 +28,10 @@ export const getRepoPath = (
   if (packageFileName) {
     const packageJSON = JSON.parse(fs.readFileSync(packageFileName, 'utf8'));
     result.packageName = packageJSON.name;
+    result.relativePath = path.relative(
+      path.dirname(packageFileName),
+      filePath,
+    );
     const repositoryURL =
       typeof packageJSON.repository === 'string'
         ? packageJSON.repository
