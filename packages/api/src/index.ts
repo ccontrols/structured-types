@@ -138,6 +138,21 @@ export const analyzeFiles = (
       }
     }
   }
+  if (extract?.length) {
+    let propKeys = Object.keys(parsed);
+
+    propKeys = propKeys.sort((key1, key2) => {
+      return extract.indexOf(key1) - extract.indexOf(key2);
+    });
+    const sortedProps = propKeys.reduce(
+      (acc, key) => ({
+        ...acc,
+        [key]: parsed[key],
+      }),
+      {},
+    );
+    parsed = sortedProps;
+  }
   if (collectHelpers) {
     // only return parents that are not already exported from the same file
     const helpers: Record<string, PropType> = Object.keys(parser.helpers)

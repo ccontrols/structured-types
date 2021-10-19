@@ -1,27 +1,24 @@
 /* eslint-disable prefer-spread */
 import path from 'path';
 import jsStringEscape from 'js-string-escape';
-import reactPlugin from '@structured-types/react-plugin';
-import propTypesPlugin from '@structured-types/prop-types-plugin';
 import {
   InterfaceProp,
   isTupleProp,
   isClassLikeProp,
   isUnionProp,
-  parseFiles,
   PropType,
   hasProperties,
   isFunctionProp,
   FunctionProp,
   PropKind,
   isArrayProp,
-  ParseOptions,
   isIndexProp,
   isStringProp,
   EnumProp,
   isEnumProp,
   TypeProp,
   HasValueProp,
+  PropTypes,
 } from '@structured-types/api';
 import { getRepoPath } from './common/package-info';
 import {
@@ -47,7 +44,6 @@ type ColumnNames =
   | 'description'
   | 'all';
 export class ExtractProps {
-  private files: string[];
   private collapsed: string[] = [];
   private sections: SectionNames[] = ['all'];
   private columns: ColumnNames[] = ['all'];
@@ -62,9 +58,6 @@ export class ExtractProps {
       relativePath?: string;
     };
   } = {};
-  constructor(files: string[]) {
-    this.files = files;
-  }
 
   private extractPropTable(
     props: PropType[],
@@ -425,18 +418,13 @@ export class ExtractProps {
       return this.typeNode(prop, showValue);
     } else if ((isUnionProp(prop) || isEnumProp(prop)) && prop.properties) {
       const separator = isUnionProp(prop) ? ' | ' : ' & ';
-      return [
-        {
-          type: 'paragraph',
-          children: prop.properties?.reduce((acc: Node[], t, idx) => {
-            const r = [...acc, ...this.extractPropType(t, { showValue: true })];
-            if (prop.properties && idx < prop.properties.length - 1) {
-              r.push({ type: 'text', value: separator });
-            }
-            return r;
-          }, []),
-        },
-      ];
+      return prop.properties?.reduce((acc: Node[], t, idx) => {
+        const r = [...acc, ...this.extractPropType(t, { showValue: true })];
+        if (prop.properties && idx < prop.properties.length - 1) {
+          r.push({ type: 'text', value: separator });
+        }
+        return r;
+      }, []);
     } else if (isClassLikeProp(prop)) {
       const propName = typeof prop.type === 'string' ? prop.type : prop.name;
       const result: Node[] = [];
@@ -457,20 +445,9 @@ export class ExtractProps {
           [],
         );
 
-        result.push({
-          type: 'paragraph',
-          children: [
-            {
-              type: 'text',
-              value: '{ ',
-            },
-            ...typeArguments,
-            {
-              type: 'text',
-              value: ' }',
-            },
-          ],
-        });
+        result.push({ type: 'text', value: '{ ' });
+        result.push(...typeArguments);
+        result.push({ type: 'text', value: ' }' });
       } else if (prop.generics?.length) {
         const genericArguments: Node[] | undefined = prop.generics?.reduce(
           (acc: Node[], p: PropType, idx: number) => {
@@ -531,47 +508,31 @@ export class ExtractProps {
         elements.push({ type: 'text', value: ')' });
       }
       elements.push({ type: 'text', value: '[]' });
-      return [
-        {
-          type: 'paragraph',
-          children: elements,
-        },
-      ];
+      return elements;
     } else if (isTupleProp(prop) && prop.properties) {
       return [
-        {
-          type: 'paragraph',
-          children: [
-            { type: 'text', value: '[' },
-            ...prop.properties.reduce(
-              (acc: Node[], p: PropType, idx: number) => {
-                const result = this.extractPropType(p);
-                if (prop.properties && idx < prop.properties.length - 1) {
-                  result.push({
-                    type: 'text',
-                    value: ', ',
-                  });
-                }
-                return [...acc, ...result];
-              },
-              [],
-            ),
-            { type: 'text', value: ']' },
-          ],
-        },
+        { type: 'text', value: '[' },
+        ...prop.properties.reduce((acc: Node[], p: PropType, idx: number) => {
+          const result = this.extractPropType(p);
+          if (prop.properties && idx < prop.properties.length - 1) {
+            result.push({
+              type: 'text',
+              value: ', ',
+            });
+          }
+          return [...acc, ...result];
+        }, []),
+        { type: 'text', value: ']' },
       ];
     } else if (isIndexProp(prop)) {
       const results: Node[] = [
         { type: 'text', value: '[' },
-        { type: 'paragraph', children: this.extractPropType(prop.index) },
+        ...this.extractPropType(prop.index),
         { type: 'text', value: ']' },
       ];
       if (prop.prop) {
         results.push({ type: 'text', value: ': ' });
-        results.push({
-          type: 'paragraph',
-          children: this.extractPropType(prop.prop),
-        });
+        results.push(...this.extractPropType(prop.prop));
       }
       return results;
       //return this.extractFunctionDeclaration(prop);
@@ -735,7 +696,8 @@ export class ExtractProps {
   }
 
   public extract(
-    options: ParseOptions & {
+    props: PropTypes,
+    options?: {
       collapsed?: string[];
       extensions?: string[];
       visible?: string[];
@@ -746,85 +708,70 @@ export class ExtractProps {
     },
   ): Node[] {
     const result: Node[] = [];
-    if (this.files) {
-      const {
-        collapsed = [],
-        extensions,
-        visible,
-        sections = ['all'],
-        columns = ['all'],
-        skipInherited = false,
-        overrides = {},
-        ...parseOptions
-      } = options;
-      const props = parseFiles(this.files, {
-        collectFilePath: true,
-        collectHelpers: true,
-        collectLinesOfCode: true,
-        plugins: [propTypesPlugin, reactPlugin],
-        ...parseOptions,
-      });
-      this.collapsed = collapsed;
-      this.sections = sections;
-      this.columns = columns;
-      this.skipInherited = skipInherited;
-      let propKeys = Object.keys(props);
-      if (options.extract?.length) {
-        const names = options.extract;
-        propKeys = propKeys.sort((key1, key2) => {
-          return names.indexOf(key1) - names.indexOf(key2);
-        });
-      }
-      const filterProps = (prop: PropType): PropType | undefined => {
-        const transform = (p: PropType): PropType => {
-          if (p.name && overrides[p.name] && hasProperties(p)) {
-            const o = overrides[p.name];
-            return {
-              ...p,
-              properties: p.properties?.map((pp) =>
-                pp.name && o[pp.name] ? { ...pp, ...o[pp.name] } : pp,
-              ),
-            } as TypeProp;
-          }
-          return p;
-        };
-        if (Array.isArray(extensions)) {
-          if (
-            typeof prop.extension === 'string' &&
-            extensions.includes(prop.extension)
-          ) {
-            return transform(prop);
-          }
-          return undefined;
+    const {
+      collapsed = [],
+      extensions,
+      visible,
+      sections = ['all'],
+      columns = ['all'],
+      skipInherited = false,
+      overrides = {},
+    } = options;
+
+    this.collapsed = collapsed;
+    this.sections = sections;
+    this.columns = columns;
+    this.skipInherited = skipInherited;
+
+    const filterProps = (prop: PropType): PropType | undefined => {
+      const transform = (p: PropType): PropType => {
+        if (p.name && overrides[p.name] && hasProperties(p)) {
+          const o = overrides[p.name];
+          return {
+            ...p,
+            properties: p.properties?.map((pp) =>
+              pp.name && o[pp.name] ? { ...pp, ...o[pp.name] } : pp,
+            ),
+          } as TypeProp;
         }
-        if (Array.isArray(visible)) {
-          if (typeof prop.name === 'string' && visible.includes(prop.name)) {
-            return transform(prop);
-          }
-          return undefined;
-        }
-        return transform(prop);
+        return p;
       };
-      propKeys.forEach((key) => {
-        if (key !== '__helpers' && key !== '__diagnostics') {
-          const prop = filterProps(props[key]);
-          if (prop) {
-            this.topLevelProps[key] = prop;
-          }
+      if (Array.isArray(extensions)) {
+        if (
+          typeof prop.extension === 'string' &&
+          extensions.includes(prop.extension)
+        ) {
+          return transform(prop);
         }
-      });
-      this.helpers = props.__helpers || {};
-      Object.keys(this.helpers).forEach((key) => {
-        const prop = filterProps(this.helpers[key]);
+        return undefined;
+      }
+      if (Array.isArray(visible)) {
+        if (typeof prop.name === 'string' && visible.includes(prop.name)) {
+          return transform(prop);
+        }
+        return undefined;
+      }
+      return transform(prop);
+    };
+    Object.keys(props).forEach((key) => {
+      if (key !== '__helpers' && key !== '__diagnostics') {
+        const prop = filterProps(props[key]);
         if (prop) {
           this.topLevelProps[key] = prop;
         }
-      });
-      Object.values(this.topLevelProps).forEach((prop) => {
-        const nodes = this.extractTSType(prop);
-        result.push(...nodes);
-      });
-    }
+      }
+    });
+    this.helpers = props.__helpers || {};
+    Object.keys(this.helpers).forEach((key) => {
+      const prop = filterProps(this.helpers[key]);
+      if (prop) {
+        this.topLevelProps[key] = prop;
+      }
+    });
+    Object.values(this.topLevelProps).forEach((prop) => {
+      const nodes = this.extractTSType(prop);
+      result.push(...nodes);
+    });
     return result;
   }
 }

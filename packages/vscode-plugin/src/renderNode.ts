@@ -47,12 +47,12 @@ const renderNode = ({
               ?.map((cell, index) =>
                 nodeContent({
                   node: cell,
-                  'grid-column': index + 1,
+                  'grid-column': (index + 1).toString(),
                   'cell-type': 'columnheader',
                   as: 'vscode-data-grid-cell',
                 }),
               )
-              .join('')}
+              .join('\n')}
           </vscode-data-grid-row>
           ${node.children
             .slice(1)
@@ -63,15 +63,15 @@ const renderNode = ({
                 ?.map((cell, index) =>
                   nodeContent({
                     node: cell,
-                    'grid-column': index + 1,
+                    'grid-column': (index + 1).toString(),
                     as: 'vscode-data-grid-cell',
                   }),
                 )
-                .join('')}
+                .join('\n')}
             </vscode-data-grid-row>
             `,
             )
-            .join('')}
+            .join('\n')}
         </vscode-data-grid>
         `
         : '';
@@ -82,20 +82,20 @@ const renderNode = ({
   }
 };
 
-const propToStr = (prop: string): string => {
-  switch (typeof prop) {
+const valueToStr = (value: any): string => {
+  switch (typeof value) {
     case 'string':
-      return `"${prop}""`;
+      return `"${value}""`;
     case 'number':
-      return `${prop}`;
+      return `${value}`;
     default:
-      return `${prop}`;
+      return `${value}`;
   }
 };
 
 const propsToAttrs = (props: Record<string, any>): string => {
   return Object.keys(props)
-    .map((key) => `${key}=${propToStr(props[key])}`)
+    .map((key) => `${key}=${valueToStr(props[key])}`)
     .join(' ');
 };
 const nodeContent = ({
@@ -107,11 +107,9 @@ const nodeContent = ({
   as: string;
   [props: string]: any;
 }): string => {
-  const value = node.value
-    ? `<${as} ${propsToAttrs(rest)}>${node.value}</${as}>`
-    : node.children
+  const value = node.children
     ? nodeComponents({ nodes: node.children, as, ...rest })
-    : '';
+    : `<${as} ${propsToAttrs(rest)}>${node.value}</${as}>`;
   return value;
 };
 const nodeComponents = ({
@@ -125,7 +123,7 @@ const nodeComponents = ({
 }): string => {
   return nodes
     ? `<${as} ${propsToAttrs(rest)}>
-      ${nodes.map((node) => renderNode({ node })).join('')}
+      ${nodes.map((node) => renderNode({ node })).join('\n')}
     </${as}>`
     : '';
 };
@@ -138,7 +136,7 @@ export const renderNodes = (nodes: Node[]): string => {
         const rendered = renderNode({ node });
         return rendered;
       })
-      .join('')}
+      .join('\n')}
   </main>
 `;
   return rendered;

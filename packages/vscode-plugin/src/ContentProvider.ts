@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as vscode from 'vscode';
-import { ExtractProps } from './extract-tsdoc';
+import { extractProps } from './extract-props';
 import { renderNodes } from './renderNode';
 
 type PanelStore = {
@@ -15,8 +15,7 @@ export class ContentProvider {
   constructor(context: vscode.ExtensionContext) {
     this.context = context;
     this.render = (fileName: string) => {
-      const extractor = new ExtractProps([fileName]);
-      const nodes = extractor.extract({ collectHelpers: false });
+      const nodes = extractProps(fileName);
       console.log(nodes);
       return renderNodes(nodes);
     };

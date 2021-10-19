@@ -55,28 +55,35 @@ export const createPropsRow = (
     });
   }
 
-  if (description && visColumns.descriptions) {
-    const parts = description.split('`');
-    if (parts.length > 1) {
-      children.push({
-        type: 'tableCell',
-        children: parts.reduce((acc: Node[], text, idx) => {
-          if (idx % 2 === 0) {
-            return [...acc, { type: 'text', value: text }];
-          } else {
-            return [
-              ...acc,
-              { type: 'text', value: ' ' },
-              { type: 'inlineCode', value: text },
-              { type: 'text', value: ' ' },
-            ];
-          }
-        }, []),
-      });
+  if (visColumns.descriptions) {
+    if (description) {
+      const parts = description.split('`');
+      if (parts.length > 1) {
+        children.push({
+          type: 'tableCell',
+          children: parts.reduce((acc: Node[], text, idx) => {
+            if (idx % 2 === 0) {
+              return [...acc, { type: 'text', value: text }];
+            } else {
+              return [
+                ...acc,
+                { type: 'text', value: ' ' },
+                { type: 'inlineCode', value: text },
+                { type: 'text', value: ' ' },
+              ];
+            }
+          }, []),
+        });
+      } else {
+        children.push({
+          type: 'tableCell',
+          children: [{ type: 'text', value: description }],
+        });
+      }
     } else {
       children.push({
         type: 'tableCell',
-        children: [{ type: 'text', value: description }],
+        children: [{ type: 'text', value: '' }],
       });
     }
   }
