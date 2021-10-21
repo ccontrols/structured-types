@@ -1,23 +1,26 @@
-import { Node, AttrsArg, SectionArg } from './types';
+import fs from 'fs';
+import path from 'path';
+import { getRepoPath } from '@structured-types/doc-page';
+import { RemarkNode, AttrsArg, SectionArg, TraverseCallback } from './types';
 
 const trimQuotes = (txt: string): string =>
   txt ? txt.replace(/['"]+/g, '') : txt;
 
 export const extractCustomTag = (
-  node: Node,
+  node: RemarkNode,
   tagName: string,
 ): SectionArg[] | undefined => {
   const nodes =
     node.children &&
     node.children.filter(
-      (child: Node) =>
+      (child: RemarkNode) =>
         child.type === 'html' &&
         child.value &&
         child.value.startsWith(`<${tagName}`),
     );
   return nodes
     ? nodes
-        .map((section: Node) => ({
+        .map((section: RemarkNode) => ({
           section,
           match: section.value
             ? section.value.match(
@@ -26,7 +29,13 @@ export const extractCustomTag = (
             : undefined,
         }))
         .map(
-          ({ section, match }: { section: Node; match?: string[] | null }) => ({
+          ({
+            section,
+            match,
+          }: {
+            section: RemarkNode;
+            match?: string[] | null;
+          }) => ({
             attrs: { section, tagName, node },
             attributes: match
               ? match.map((m: string) =>
@@ -40,7 +49,7 @@ export const extractCustomTag = (
 
 export const inlineNewContent = (
   { section, tagName, node }: AttrsArg,
-  newContent: Node[],
+  newContent: RemarkNode[],
 ): void => {
   const startTag = `<!-- START-${tagName.toUpperCase()} -->`;
   const endTag = `<!-- END-${tagName.toUpperCase()} -->`;
@@ -83,6 +92,58 @@ export const inlineNewContent = (
           value: endTag,
         },
       ],
+    );
+  }
+};
+
+export const traverseDirs = (
+  attributes: string[][] | undefined,
+  callback: TraverseCallback,
+): void => {
+  const getDirectories = (
+    folder: string,
+    excludeFiles: string[],
+    repoDir: string,
+    newNodes: RemarkNode[],
+  ) => {
+    const items = fs
+      .readdirSync(folder, { withFileTypes: true })
+      .filter(
+        (entry) =>
+          !excludeFiles.some((excluded) =>
+            entry.name.match(new RegExp(excluded)),
+          ),
+      );
+    const files = items.filter((entry) => !entry.isDirectory());
+    for (const entry of files) {
+      callback(entry.name, path.join(folder, entry.name), repoDir);
+    }
+    items
+      .filter((entry) => entry.isDirectory())
+      .forEach((entry) =>
+        getDirectories(
+          path.join(folder, entry.name),
+          excludeFiles,
+          `${repoDir}/${entry.name}`,
+          newNodes,
+        ),
+      );
+  };
+  if (attributes) {
+    const file = attributes.find((attribute) => attribute[0] === 'path');
+    const sourcePath = file ? file[1] : './src';
+    const { repo = '' } = getRepoPath(sourcePath) || {};
+
+    const excludeFiles = attributes.find(
+      (attribute) => attribute[0] === 'exclude',
+    );
+    const newNodes: RemarkNode[] = [];
+    const url = new URL(repo);
+    getDirectories(
+      path.resolve(sourcePath),
+      excludeFiles ? excludeFiles[1].split(',') : ['index.ts'],
+      `${url.origin}${path.join(url.pathname, sourcePath)}`,
+      newNodes,
     );
   }
 };

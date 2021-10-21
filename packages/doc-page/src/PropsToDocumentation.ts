@@ -20,30 +20,26 @@ import {
   HasValueProp,
   PropTypes,
 } from '@structured-types/api';
-import { getRepoPath } from './common/package-info';
+import { getRepoPath } from './package-info/package-info';
+import { createPropsTable, createPropsRow, PropItem } from './blocks/table';
 import {
-  createPropsTable,
-  createPropsRow,
-  PropItem,
-} from './blocks/props-table';
-import { Node, NodeChildren } from './common/types';
+  DocumentationNode,
+  SectionNames,
+  ColumnNames,
+  DocumentationOptions,
+  NodeKind,
+  textNode,
+  inlineCodeNode,
+  codeNode,
+  HeadingNode,
+  paragraphNode,
+  LinkNode,
+  DocumentationNodeWithChildren,
+  italicNode,
+  boldNode,
+} from './types';
 
-type SectionNames =
-  | 'props'
-  | 'description'
-  | 'examples'
-  | 'title'
-  | 'location'
-  | 'all';
-
-type ColumnNames =
-  | 'name'
-  | 'type'
-  | 'parents'
-  | 'value'
-  | 'description'
-  | 'all';
-export class ExtractProps {
+export class PropsToDocumentation {
   private collapsed: string[] = [];
   private sections: SectionNames[] = ['all'];
   private columns: ColumnNames[] = ['all'];
@@ -125,63 +121,34 @@ export class ExtractProps {
     return createPropsTable(items, title);
   }
 
-  private extractFunctionDeclaration(prop: FunctionProp): Node[] {
-    const result: Node[] = [
-      {
-        type: 'text',
-        value: '(',
-      },
-    ];
+  private extractFunctionDeclaration(prop: FunctionProp): DocumentationNode[] {
+    const result: DocumentationNode[] = [textNode('(')];
     if (prop.parameters) {
       for (let i = 0; i < prop.parameters.length; i += 1) {
         const p = prop.parameters[i];
         if (i > 0) {
-          result.push({
-            type: 'text',
-            value: ', ',
-          });
+          result.push(textNode(', '));
         }
         if (p.name) {
-          result.push({
-            type: 'inlineCode',
-            value: p.name,
-          });
+          result.push(inlineCodeNode(p.name));
 
           if (!p.optional) {
-            result.push({
-              type: 'text',
-              value: '*',
-            });
+            result.push(textNode('*'));
           }
-          result.push({
-            type: 'text',
-            value: ': ',
-          });
+          result.push(textNode(': '));
         }
         result.push(...this.extractPropType(p));
         if (!p.name && !p.optional) {
-          result.push({
-            type: 'text',
-            value: '*',
-          });
+          result.push(textNode('*'));
         }
       }
     }
-    result.push({
-      type: 'text',
-      value: ')',
-    });
-    result.push({
-      type: 'text',
-      value: ' => ',
-    });
+    result.push(textNode(')'));
+    result.push(textNode(' => '));
     if (prop.returns) {
       result.push(...this.extractPropType(prop.returns));
     } else {
-      result.push({
-        type: 'text',
-        value: 'void',
-      });
+      result.push(textNode('void'));
     }
     return result;
   }
@@ -198,13 +165,21 @@ export class ExtractProps {
       description: enabledColumn('description') ? item.description : undefined,
     };
   }
-  private extractFunction(prop: FunctionProp, _extractTable = true): Node[] {
+  private extractFunction(
+    prop: FunctionProp,
+    _extractTable = true,
+  ): DocumentationNode[] {
     if (prop.parameters) {
       const { propsTable, table, visibleColumns } = this.extractPropTable(
         prop.parameters,
         'parameters',
       );
-      if (table && prop.returns && prop.returns.kind !== PropKind.Void) {
+      if (
+        table &&
+        table.children &&
+        prop.returns &&
+        prop.returns.kind !== PropKind.Void
+      ) {
         table.children.push(
           createPropsRow(
             this.configurePropItem({
@@ -228,50 +203,27 @@ export class ExtractProps {
     const nameParts = key.split('.');
     return this.topLevelProps[nameParts[nameParts.length - 1]];
   };
-  private extractInterface(prop: InterfaceProp): Node[] {
-    const result: Node[] = [];
+  private extractInterface(prop: InterfaceProp): DocumentationNode[] {
+    const result: DocumentationNode[] = [];
     if (prop.name) {
-      const declaration: NodeChildren = {
-        type: 'paragraph',
-        children: [],
-      };
-      result.push(declaration);
-
       if (prop.extends?.length) {
         const extendsList = prop.extends.reduce(
-          (acc: Node[], key: string, idx: number) => {
+          (acc: DocumentationNode[], key: string, idx: number) => {
             const p = this.getPropLink(key);
-            let result: Node[];
+            let result: DocumentationNode[];
             if (p) {
               result = this.extractPropType(p);
             } else {
-              result = [
-                {
-                  type: 'text',
-                  value: key,
-                },
-              ];
+              result = [textNode(key)];
             }
             if (prop.extends && idx < prop.extends.length - 1) {
-              result.push({
-                type: 'text',
-                value: ', ',
-              });
+              result.push(textNode(', '));
             }
             return [...acc, ...result];
           },
           [],
         );
-        declaration.children.push({
-          type: 'strong',
-          children: [
-            {
-              type: 'text',
-              value: 'extends ',
-            },
-            ...extendsList,
-          ],
-        });
+        result.push(paragraphNode([textNode('extends '), ...extendsList]));
       }
       if (isUnionProp(prop)) {
         result.push(...this.extractPropType(prop));
@@ -286,10 +238,10 @@ export class ExtractProps {
     return result;
   }
 
-  private propLink(type?: string): Node[] {
+  private propLink(type?: string): DocumentationNode[] {
     const typeText = [
       {
-        type: 'inlineCode',
+        kind: NodeKind.InlineCode,
         value: type,
       },
     ];
@@ -298,53 +250,36 @@ export class ExtractProps {
       if (link) {
         return [
           {
-            type: 'link',
+            kind: NodeKind.Link,
             url: `#${link.name?.toLowerCase()}`,
             children: typeText,
-          },
+          } as LinkNode,
         ];
       }
     }
     return typeText;
   }
 
-  private inlineType(prop: PropType): Node[] {
-    let typeNode: Node[] | undefined = undefined;
+  private inlineType(prop: PropType): DocumentationNode[] {
+    let typeNode: DocumentationNode[] | undefined = undefined;
     if (typeof prop.type === 'string') {
       typeNode = this.propLink(prop.type);
     } else if (prop.kind) {
-      typeNode = [
-        {
-          type: 'inlineCode',
-          value: `${PropKind[prop.kind].toLowerCase()}`,
-        },
-      ];
+      typeNode = [inlineCodeNode(`${PropKind[prop.kind].toLowerCase()}`)];
     }
     if (prop.name && prop.name !== prop.type) {
       return [
-        {
-          type: 'inlineCode',
-          value: `${prop.name}`,
-        },
-        {
-          type: 'text',
-          value: `${typeNode ? ': ' : ''}`,
-        },
+        inlineCodeNode(`${prop.name}`),
+        textNode(`${typeNode ? ': ' : ''}`),
         ...(typeNode || []),
       ];
     }
     return typeNode || [];
   }
-  private typeNode(prop: PropType, showValue = true): Node[] {
+  private typeNode(prop: PropType, showValue = true): DocumentationNode[] {
     if (typeof prop.type === 'string') {
       if (typeof prop.parent === 'string') {
-        return [
-          ...this.propLink(prop.parent),
-          {
-            type: 'text',
-            value: `.${prop.type}`,
-          },
-        ];
+        return [...this.propLink(prop.parent), textNode(`.${prop.type}`)];
       }
       return this.propLink(prop.type);
     }
@@ -352,43 +287,24 @@ export class ExtractProps {
       const value = isStringProp(prop)
         ? `"${jsStringEscape(prop.value)}"`
         : (prop as HasValueProp).value.toString();
-      return [
-        {
-          type: 'inlineCode',
-          value,
-        },
-      ];
+      return [textNode(value)];
     }
     if (prop.kind) {
-      const typeNode: Node[] = [
-        {
-          type: 'inlineCode',
-          value: `${PropKind[prop.kind].toLowerCase()}`,
-        },
+      const typeNode: DocumentationNode[] = [
+        inlineCodeNode(`${PropKind[prop.kind].toLowerCase()}`),
       ];
       if (typeof prop.parent === 'string' && this.getPropLink(prop.parent)) {
         const link = this.propLink(prop.parent);
         if (link.length) {
-          typeNode.push({
-            type: 'text',
-            value: ` (`,
-          });
+          typeNode.push(textNode(` (`));
           typeNode.push(...link);
-          typeNode.push({
-            type: 'text',
-            value: `)`,
-          });
+          typeNode.push(textNode(`)`));
         }
       }
       return typeNode;
     }
     if (prop.name) {
-      return [
-        {
-          type: 'text',
-          value: prop.name,
-        },
-      ];
+      return [textNode(prop.name)];
     }
 
     return [];
@@ -397,7 +313,7 @@ export class ExtractProps {
   private extractPropType(
     prop: PropType,
     options?: { showValue?: boolean; extractProperties?: boolean },
-  ): Node[] {
+  ): DocumentationNode[] {
     if (prop.parent) {
       const parent = this.getPropLink(prop.parent);
       if (parent && isClassLikeProp(parent)) {
@@ -412,126 +328,103 @@ export class ExtractProps {
   private extractType(
     prop: PropType,
     options?: { showValue?: boolean },
-  ): Node[] {
+  ): DocumentationNode[] {
     const { showValue = false } = options || {};
     if (typeof prop.type === 'string' && this.collapsed?.includes(prop.type)) {
       return this.typeNode(prop, showValue);
     } else if ((isUnionProp(prop) || isEnumProp(prop)) && prop.properties) {
       const separator = isUnionProp(prop) ? ' | ' : ' & ';
-      return prop.properties?.reduce((acc: Node[], t, idx) => {
+      return prop.properties?.reduce((acc: DocumentationNode[], t, idx) => {
         const r = [...acc, ...this.extractPropType(t, { showValue: true })];
         if (prop.properties && idx < prop.properties.length - 1) {
-          r.push({ type: 'text', value: separator });
+          r.push(textNode(separator));
         }
         return r;
       }, []);
     } else if (isClassLikeProp(prop)) {
       const propName = typeof prop.type === 'string' ? prop.type : prop.name;
-      const result: Node[] = [];
+      const result: DocumentationNode[] = [];
       if (typeof propName === 'string' && this.getPropLink(propName)) {
         result.push(...this.propLink(propName));
       } else if (prop.properties?.length) {
-        const typeArguments: Node[] = prop.properties.reduce(
-          (acc: Node[], p: PropType, idx: number) => {
+        const typeArguments: DocumentationNode[] = prop.properties.reduce(
+          (acc: DocumentationNode[], p: PropType, idx: number) => {
             const result = [...acc, ...this.inlineType(p)];
             if (prop.properties && idx < prop.properties.length - 1) {
-              result.push({
-                type: 'text',
-                value: ', ',
-              });
+              result.push(textNode(', '));
             }
             return result;
           },
           [],
         );
 
-        result.push({ type: 'text', value: '{ ' });
+        result.push(textNode('{ '));
         result.push(...typeArguments);
-        result.push({ type: 'text', value: ' }' });
+        result.push(textNode(' }'));
       } else if (prop.generics?.length) {
-        const genericArguments: Node[] | undefined = prop.generics?.reduce(
-          (acc: Node[], p: PropType, idx: number) => {
-            const result = [...acc, ...this.inlineType(p)];
-            if (prop.generics && idx < prop.generics.length - 1) {
-              result.push({
-                type: 'text',
-                value: ', ',
-              });
-            }
-            return result;
-          },
-          [],
-        );
+        const genericArguments: DocumentationNode[] | undefined =
+          prop.generics?.reduce(
+            (acc: DocumentationNode[], p: PropType, idx: number) => {
+              const result = [...acc, ...this.inlineType(p)];
+              if (prop.generics && idx < prop.generics.length - 1) {
+                result.push(textNode(', '));
+              }
+              return result;
+            },
+            [],
+          );
         result.push(...this.typeNode(prop));
         if (genericArguments?.length) {
-          result.push(
-            ...[
-              {
-                type: 'text',
-                value: '<',
-              },
-              ...genericArguments,
-              {
-                type: 'text',
-                value: '>',
-              },
-            ],
-          );
+          result.push(...[textNode('<'), ...genericArguments, textNode('>')]);
         }
-      } else {
-        result.push({
-          type: 'text',
-          value: propName,
-        });
+      } else if (propName) {
+        result.push(textNode(propName));
       }
       return result;
     } else if (isArrayProp(prop) && prop.properties) {
       const elements = prop.properties.reduce(
-        (acc: Node[], p: PropType, idx: number) => {
+        (acc: DocumentationNode[], p: PropType, idx: number) => {
           const result = this.extractPropType(p);
           if (prop.properties && idx < prop.properties.length - 1) {
-            result.push({
-              type: 'text',
-              value: ', ',
-            });
+            result.push(textNode(', '));
           }
           return [...acc, ...result];
         },
         [],
-      ) as Node[];
+      ) as DocumentationNodeWithChildren[];
       const multiProps =
         elements.length &&
         elements[0].children &&
         elements[0].children.length > 1;
       if (multiProps) {
-        elements.splice(0, 0, { type: 'text', value: '(' });
-        elements.push({ type: 'text', value: ')' });
+        elements.splice(0, 0, textNode('('));
+        elements.push(textNode(')'));
       }
-      elements.push({ type: 'text', value: '[]' });
+      elements.push(textNode('[]'));
       return elements;
     } else if (isTupleProp(prop) && prop.properties) {
       return [
-        { type: 'text', value: '[' },
-        ...prop.properties.reduce((acc: Node[], p: PropType, idx: number) => {
-          const result = this.extractPropType(p);
-          if (prop.properties && idx < prop.properties.length - 1) {
-            result.push({
-              type: 'text',
-              value: ', ',
-            });
-          }
-          return [...acc, ...result];
-        }, []),
-        { type: 'text', value: ']' },
+        textNode('['),
+        ...prop.properties.reduce(
+          (acc: DocumentationNode[], p: PropType, idx: number) => {
+            const result = this.extractPropType(p);
+            if (prop.properties && idx < prop.properties.length - 1) {
+              result.push(textNode(', '));
+            }
+            return [...acc, ...result];
+          },
+          [],
+        ),
+        { kind: NodeKind.Text, value: ']' },
       ];
     } else if (isIndexProp(prop)) {
-      const results: Node[] = [
-        { type: 'text', value: '[' },
+      const results: DocumentationNode[] = [
+        textNode('['),
         ...this.extractPropType(prop.index),
-        { type: 'text', value: ']' },
+        textNode(']'),
       ];
       if (prop.prop) {
-        results.push({ type: 'text', value: ': ' });
+        results.push(textNode(': '));
         results.push(...this.extractPropType(prop.prop));
       }
       return results;
@@ -541,7 +434,7 @@ export class ExtractProps {
     }
     return this.typeNode(prop, showValue);
   }
-  private getSourceLocation(prop: PropType): Node[] {
+  private getSourceLocation(prop: PropType): DocumentationNode[] {
     const { filePath } = prop;
     if (filePath) {
       if (!this.repoNames[filePath]) {
@@ -557,71 +450,46 @@ export class ExtractProps {
             ? fileLocation
             : `${fileLocation}${line ? `#L${line}` : ''}`;
           return [
-            {
-              type: 'paragraph',
-              children: [
+            paragraphNode([
+              italicNode([
+                textNode('defined in '),
                 {
-                  type: 'emphasis',
-                  children: [
-                    {
-                      type: 'text',
-                      value: 'defined in ',
-                    },
-                    {
-                      type: 'link',
-                      url: sourceLocation,
-                      children: [
-                        {
-                          type: 'text',
-                          value: `${packageName}/${relativePath}`,
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            },
+                  kind: NodeKind.Link,
+                  url: sourceLocation,
+                  children: [textNode(`${packageName}/${relativePath}`)],
+                } as LinkNode,
+              ]),
+            ]),
           ];
         }
       }
     }
     return [];
   }
-  private extractPropDefinition(prop: PropType): Node {
-    const definition: Omit<Node, 'children'> & { children: Node[] } = {
-      type: 'paragraph',
+  private extractPropDefinition(prop: PropType): DocumentationNode {
+    const definition: Omit<DocumentationNode, 'children'> & {
+      children: DocumentationNode[];
+    } = {
+      kind: NodeKind.Paragraph,
       children: [],
     };
 
     if (prop.kind) {
-      definition.children.push({
-        type: 'strong',
-        children: [
-          {
-            type: 'inlineCode',
-            value: `${prop.extension ? `${prop.extension} ` : ''}${PropKind[
+      definition.children.push(
+        boldNode([
+          inlineCodeNode(
+            `${prop.extension ? `${prop.extension} ` : ''}${PropKind[
               prop.kind
             ].toLowerCase()}`,
-          },
-        ],
-      });
+          ),
+        ]),
+      );
     } else if (typeof prop.type === 'string') {
-      definition.children.push({
-        type: 'strong',
-        children: [
-          {
-            type: 'inlineCode',
-            children: this.propLink(prop.type),
-          },
-        ],
-      });
+      definition.children.push(boldNode(this.propLink(prop.type)));
     }
     const loc = this.getSourceLocation(prop);
     if (loc.length) {
-      definition.children.push({
-        type: 'text',
-        value: ' ',
-      });
+      definition.children.push(textNode(' '));
       definition.children.push(...loc);
     }
 
@@ -631,14 +499,14 @@ export class ExtractProps {
     return this.sections.includes(section) || this.sections.includes('all');
   }
 
-  private extractTSType(prop: PropType): Node[] {
-    const result: Node[] = [];
-    if (this.generateSection('title')) {
+  private extractTSType(prop: PropType): DocumentationNode[] {
+    const result: DocumentationNode[] = [];
+    if (this.generateSection('title') && prop.name) {
       result.push({
-        type: 'heading',
+        kind: NodeKind.Heading,
         depth: 2,
-        children: [{ type: 'text', value: prop.name }],
-      });
+        children: [textNode(prop.name)],
+      } as HeadingNode);
     }
     if (this.generateSection('location')) {
       result.push(this.extractPropDefinition(prop));
@@ -646,10 +514,10 @@ export class ExtractProps {
     if (prop.description && this.generateSection('description')) {
       result.push(
         ...prop.description.split('\n').map((d) => ({
-          type: 'paragraph',
+          kind: NodeKind.Paragraph,
           children: [
             {
-              type: 'text',
+              kind: NodeKind.Text,
               value: d,
             },
           ],
@@ -665,50 +533,26 @@ export class ExtractProps {
     }
     if (prop.examples && this.generateSection('examples')) {
       const codeExamples = prop.examples.filter((e) => e.content);
-      const examples: Node = {
-        type: 'paragraph',
-        children: [
-          {
-            type: 'heading',
-            depth: 3,
-            children: [
-              {
-                type: 'text',
-                value: `example${codeExamples.length > 1 ? 's' : ''}`,
-              },
-            ],
-          },
-          {
-            type: 'text',
-            value: '\n',
-          },
-        ],
-      };
+      result.push(
+        paragraphNode([
+          boldNode(`example${codeExamples.length > 1 ? 's' : ''}`),
+        ]),
+      );
 
       codeExamples.forEach((example) => {
-        examples.children?.push({
-          type: 'code',
-          value: example.content,
-        });
+        if (example.content) {
+          result.push(codeNode(example.content));
+        }
       });
-      result.push(examples);
     }
     return result;
   }
 
   public extract(
     props: PropTypes,
-    options?: {
-      collapsed?: string[];
-      extensions?: string[];
-      visible?: string[];
-      columns?: ColumnNames[];
-      sections?: SectionNames[];
-      skipInherited?: boolean;
-      overrides?: Record<string, Record<string, PropType>>;
-    },
-  ): Node[] {
-    const result: Node[] = [];
+    options: DocumentationOptions = {},
+  ): DocumentationNode[] {
+    const result: DocumentationNode[] = [];
     const {
       collapsed = [],
       extensions,

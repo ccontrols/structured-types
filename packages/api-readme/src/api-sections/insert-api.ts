@@ -2,14 +2,14 @@
 import path from 'path';
 import fs from 'fs';
 import deepmerge from 'deepmerge';
-import { TransformSync } from 'cosmiconfig';
-import { Node } from '../common/types';
-import { extractCustomTag, inlineNewContent } from '../common/utils';
-import { ExtractProps } from './extract-tsdoc';
+import { apiDocsConfig } from '@structured-types/doc-page';
+import { RemarkNode } from '../types';
+import { extractCustomTag, inlineNewContent } from '../utils';
+import { extractProps } from './extract-props';
 
-export const insertTSDoc =
-  (fileName: string, onDiskConfig?: ReturnType<TransformSync>) =>
-  (): ((node: Node) => void) => {
+export const insertAPISection =
+  (fileName: string, configFileName?: string) =>
+  (): ((node: RemarkNode) => void) => {
     const resolve = (file: string, filePath: string): string => {
       if (file.startsWith('.')) {
         return path.resolve(path.dirname(path.resolve(filePath)), file);
@@ -32,13 +32,14 @@ export const insertTSDoc =
       }
       return undefined;
     };
-    return (node: Node): void => {
-      const { config = {}, filepath: configFilePath } = onDiskConfig || {};
+    return (node: RemarkNode): void => {
+      const { config = {}, filepath: configFilePath } =
+        apiDocsConfig(fileName, configFileName) || {};
       const sections = extractCustomTag(node, 'api-readme');
       if (sections) {
         sections.forEach(({ attrs, attributes = [] }) => {
           if (attributes) {
-            const newNodes: Node[] = [];
+            const newNodes: RemarkNode[] = [];
 
             let elementId: string | undefined = undefined;
             const inlineOptions = attributes.reduce(
@@ -92,7 +93,7 @@ export const insertTSDoc =
                 }
               }
             }
-            const tsNodes = new ExtractProps(files).extract(mergedConfig);
+            const tsNodes = extractProps(files, mergedConfig);
             newNodes.push(...tsNodes);
             inlineNewContent(attrs, newNodes);
           }

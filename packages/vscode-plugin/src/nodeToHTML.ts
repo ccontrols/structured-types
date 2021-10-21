@@ -1,46 +1,59 @@
-import { Node } from './types';
+import {
+  DocumentationNode,
+  isBoldNode,
+  isCodeNode,
+  isHeadingNode,
+  isInlineCodeNode,
+  isItalicNode,
+  isLinkNode,
+  isParagraphNode,
+  isTableCellNode,
+  isTableNode,
+  isTableRowNode,
+  isTextNode,
+  isNodeWithChildren,
+  isNodeWithValue,
+} from '@structured-types/doc-page';
 
 const renderNode = ({
   node,
   ...props
 }: {
-  node: Node;
+  node: DocumentationNode;
   [props: string]: any;
 }): string => {
-  switch (node.type) {
-    case 'heading':
-      switch (node.depth) {
-        case 1:
-          return nodeContent({ node, as: 'h1', ...props });
-        case 2:
-          return nodeContent({ node, as: 'h2', ...props });
-        case 3:
-          return nodeContent({ node, as: 'h3', ...props });
-        case 4:
-          return nodeContent({ node: node, as: 'h4', ...props });
-      }
-    case 'paragraph':
-      return nodeContent({ node: node, as: 'p', ...props });
-    case 'strong':
-      return nodeContent({ node, as: 'b', ...props });
-    case 'emphasis':
-      return nodeContent({ node, as: 'em', ...props });
-    case 'link':
-      return nodeContent({ node, as: 'a', href: node.url, ...props });
-    case 'inlineCode':
-      return nodeContent({ node: node, as: 'code', ...props });
-    case 'code':
-      return nodeContent({ node, as: 'pre', ...props });
-
-    case 'text':
-      return node.value || '';
-    case 'tableCell':
-      return nodeContent({ node, as: 'vscode-data-grid-cell', ...props });
-    case 'tableRow':
-      return nodeContent({ node, as: 'vscode-data-grid-row', ...props });
-    case 'table':
-      const table = node.children
-        ? `
+  if (isHeadingNode(node)) {
+    switch (node.depth) {
+      case 1:
+        return nodeContent({ node, as: 'h1', ...props });
+      case 2:
+        return nodeContent({ node, as: 'h2', ...props });
+      case 3:
+        return nodeContent({ node, as: 'h3', ...props });
+      case 4:
+        return nodeContent({ node, as: 'h4', ...props });
+    }
+  } else if (isParagraphNode(node)) {
+    return nodeContent({ node, as: 'p', ...props });
+  } else if (isBoldNode(node)) {
+    return nodeContent({ node, as: 'b', ...props });
+  } else if (isItalicNode(node)) {
+    return nodeContent({ node, as: 'em', ...props });
+  } else if (isLinkNode(node)) {
+    return nodeContent({ node, as: 'a', href: node.url, ...props });
+  } else if (isInlineCodeNode(node)) {
+    return nodeContent({ node, as: 'code', ...props });
+  } else if (isCodeNode(node)) {
+    return nodeContent({ node, as: 'pre', ...props });
+  } else if (isTextNode(node)) {
+    return node.value || '';
+  } else if (isTableCellNode(node)) {
+    return nodeContent({ node, as: 'vscode-data-grid-cell', ...props });
+  } else if (isTableRowNode(node)) {
+    return nodeContent({ node, as: 'vscode-data-grid-row', ...props });
+  } else if (isTableNode(node)) {
+    const table = node.children
+      ? `
         <vscode-data-grid>
           <vscode-data-grid-row row-type="header">
             ${node.children[0].children
@@ -74,12 +87,11 @@ const renderNode = ({
             .join('\n')}
         </vscode-data-grid>
         `
-        : '';
-      return table;
-    default:
-      debugger;
-      return '';
+      : '';
+    return table;
   }
+  debugger;
+  return '';
 };
 
 const valueToStr = (value: any): string => {
@@ -103,13 +115,15 @@ const nodeContent = ({
   as,
   ...rest
 }: {
-  node: Node;
+  node: DocumentationNode;
   as: string;
   [props: string]: any;
 }): string => {
-  const value = node.children
+  const value = isNodeWithChildren(node)
     ? nodeComponents({ nodes: node.children, as, ...rest })
-    : `<${as} ${propsToAttrs(rest)}>${node.value}</${as}>`;
+    : isNodeWithValue(node)
+    ? `<${as} ${propsToAttrs(rest)}>${node.value}</${as}>`
+    : '';
   return value;
 };
 const nodeComponents = ({
@@ -117,7 +131,7 @@ const nodeComponents = ({
   as,
   ...rest
 }: {
-  nodes?: Node[];
+  nodes?: DocumentationNode[];
   as: string;
   [props: string]: any;
 }): string => {
@@ -128,7 +142,7 @@ const nodeComponents = ({
     : '';
 };
 
-export const renderNodes = (nodes: Node[]): string => {
+export const nodesToHTML = (nodes: DocumentationNode[]): string => {
   const rendered = `
   <main>
     ${nodes

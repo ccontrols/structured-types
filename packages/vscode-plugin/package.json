@@ -38,11 +38,13 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@structured-types/api": "^3.30.0",
+    "@structured-types/doc-page": "^3.30.0",
+    "@vscode/webview-ui-toolkit": "^0.8.2",
     "vscode": "^1.1.37"
   },
   "devDependencies": {
-    "@types/node": "^16.3.3",
-    "@vscode/webview-ui-toolkit": "^0.8.2"
+    "@types/node": "^16.3.3"
   },
   "activationEvents": [
     "onCommand:structured-types.openPreview",

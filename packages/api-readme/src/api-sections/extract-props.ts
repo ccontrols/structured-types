@@ -3,22 +3,23 @@ import propTypesPlugin from '@structured-types/prop-types-plugin';
 import { DocsOptions, parseFiles } from '@structured-types/api';
 import {
   propsToDocumentation,
-  apiDocsConfig,
+  DocumentationOptions,
 } from '@structured-types/doc-page';
+import { nodesToRemark } from './nodeToRemark';
+import { RemarkNode } from '../types';
 
 export const extractProps = (
-  fileName: string,
-  options?: DocsOptions,
-): ReturnType<typeof propsToDocumentation> => {
-  const props = parseFiles([fileName], {
+  filesPath: string[],
+  config?: DocsOptions & DocumentationOptions,
+): RemarkNode[] => {
+  const props = parseFiles(filesPath, {
     collectFilePath: true,
-    collectHelpers: false,
+    collectHelpers: true,
     collectLinesOfCode: true,
     plugins: [propTypesPlugin, reactPlugin],
-    ...options,
+    ...config,
   });
-  const { config = {} } = apiDocsConfig(fileName) || {};
   const nodes = propsToDocumentation(props, config);
 
-  return nodes;
+  return nodesToRemark(nodes);
 };

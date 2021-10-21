@@ -1,14 +1,16 @@
-import fs from 'fs';
+import * as fs from 'fs';
 import path from 'path';
 import hostedGitInfo from 'hosted-git-info';
 import parseRepositoryURL from '@hutson/parse-repository-url';
-import { resolveModuleName } from 'typescript';
 
 const traverseFolder = (
   filePath: string,
   levels = 10,
   fileName = 'package.json',
 ): string | null => {
+  if (!fs.existsSync(filePath)) {
+    return null;
+  }
   const files = fs.readdirSync(filePath);
   if (levels === 0) {
     return null;
@@ -52,7 +54,7 @@ export const getRepoPath = (
           .replace('{user}', templates.user || '')
           .replace('{project}', templates.project || '')
           .replace('{#fragment}', '')
-          .replace('{path}', result.relativePath)
+          .replace('{path}', result.relativePath as string)
           .replace('{treepath}', templates.treepath || '')
           .replace(
             '{/tree/committish}',

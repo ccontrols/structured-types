@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { extractProps } from './extract-props';
-import { renderNodes } from './renderNode';
+import { nodesToHTML } from './nodeToHTML';
 
 type PanelStore = {
   panel?: vscode.WebviewPanel;
@@ -16,8 +16,7 @@ export class ContentProvider {
     this.context = context;
     this.render = (fileName: string) => {
       const nodes = extractProps(fileName);
-      console.log(nodes);
-      return renderNodes(nodes);
+      return nodesToHTML(nodes);
     };
 
     context.subscriptions.push(
