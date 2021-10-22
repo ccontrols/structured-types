@@ -13,7 +13,7 @@ import {
   isTextNode,
   isNodeWithChildren,
   isNodeWithValue,
-} from '@structured-types/doc-page';
+} from '@structured-types/api-docs';
 import { RemarkNode } from '../types';
 
 const renderNode = ({

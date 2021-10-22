@@ -4,7 +4,7 @@ import { DocsOptions, parseFiles } from '@structured-types/api';
 import {
   propsToDocumentation,
   DocumentationOptions,
-} from '@structured-types/doc-page';
+} from '@structured-types/api-docs';
 import { nodesToRemark } from './nodeToRemark';
 import { RemarkNode } from '../types';
 

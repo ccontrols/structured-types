@@ -2,7 +2,7 @@
 import path from 'path';
 import fs from 'fs';
 import deepmerge from 'deepmerge';
-import { apiDocsConfig } from '@structured-types/doc-page';
+import { apiDocsConfig } from '@structured-types/api-docs';
 import { RemarkNode } from '../types';
 import { extractCustomTag, inlineNewContent } from '../utils';
 import { extractProps } from './extract-props';

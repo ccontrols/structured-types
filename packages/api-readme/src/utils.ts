@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { getRepoPath } from '@structured-types/doc-page';
+import { getRepoPath } from '@structured-types/api-docs';
 import { RemarkNode, AttrsArg, SectionArg, TraverseCallback } from './types';
 
 const trimQuotes = (txt: string): string =>

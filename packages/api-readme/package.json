@@ -37,9 +37,9 @@
   "license": "MIT",
   "dependencies": {
     "@structured-types/api": "^3.30.0",
+    "@structured-types/api-docs": "^3.30.0",
     "@structured-types/prop-types-plugin": "^3.30.0",
     "@structured-types/react-plugin": "^3.30.0",
-    "@structured-types/doc-page": "^3.30.0",
     "chalk": "^4.1.0",
     "deepmerge": "^4.2.2",
     "js-string-escape": "^1.0.1",

@@ -1,7 +1,7 @@
 {
-  "name": "@structured-types/doc-page",
+  "name": "@structured-types/api-docs",
   "version": "3.30.0",
-  "description": "create documentation page using structured-types/api",
+  "description": "create api documentation nodes using structured-types/api",
   "keywords": [
     "jsdoc",
     "javascript",
@@ -32,7 +32,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ccontrols/structured-types.git",
-    "directory": "packages/doc-page"
+    "directory": "packages/api-docs"
   },
   "license": "MIT",
   "dependencies": {

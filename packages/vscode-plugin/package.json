@@ -39,8 +39,9 @@
   "license": "MIT",
   "dependencies": {
     "@structured-types/api": "^3.30.0",
-    "@structured-types/doc-page": "^3.30.0",
+    "@structured-types/api-docs": "^3.30.0",
     "@vscode/webview-ui-toolkit": "^0.8.2",
+    "deepmerge": "^4.2.2",
     "vscode": "^1.1.37"
   },
   "devDependencies": {
