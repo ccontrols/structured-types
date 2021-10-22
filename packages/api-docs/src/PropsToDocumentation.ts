@@ -20,24 +20,24 @@ import {
   HasValueProp,
   PropTypes,
 } from '@structured-types/api';
-import { getRepoPath } from './package-info/package-info';
-import { createPropsTable, createPropsRow, PropItem } from './blocks/table';
 import {
   DocumentationNode,
   SectionNames,
   ColumnNames,
   DocumentationOptions,
   NodeKind,
-  textNode,
-  inlineCodeNode,
-  codeNode,
   HeadingNode,
-  paragraphNode,
   LinkNode,
   DocumentationNodeWithChildren,
-  italicNode,
-  boldNode,
 } from './types';
+import { getRepoPath } from './package-info/package-info';
+import { createPropsTable, createPropsRow, PropItem } from './blocks/table';
+import { textNode } from './blocks/text';
+import { paragraphNode } from './blocks/paragraph';
+import { boldNode } from './blocks/bold';
+import { emphasisNode } from './blocks/emphasis';
+import { codeNode } from './blocks/code';
+import { inlineCodeNode } from './blocks/inline-code';
 
 export class PropsToDocumentation {
   private collapsed: string[] = [];
@@ -451,7 +451,7 @@ export class PropsToDocumentation {
             : `${fileLocation}${line ? `#L${line}` : ''}`;
           return [
             paragraphNode([
-              italicNode([
+              emphasisNode([
                 textNode('defined in '),
                 {
                   kind: NodeKind.Link,

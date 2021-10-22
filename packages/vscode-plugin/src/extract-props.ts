@@ -9,7 +9,7 @@ import {
 
 export const extractProps = (
   fileName: string,
-  options?: DocsOptions,
+  options: DocsOptions = {},
 ): ReturnType<typeof propsToDocumentation> => {
   const { config = {} } = apiDocsConfig(fileName) || {};
   const mergedConfig = deepmerge(config, options);
@@ -17,6 +17,7 @@ export const extractProps = (
     collectFilePath: true,
     collectHelpers: false,
     collectLinesOfCode: true,
+    collectExtension: true,
     plugins: [propTypesPlugin, reactPlugin],
     ...mergedConfig,
   });

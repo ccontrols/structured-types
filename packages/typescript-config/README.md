@@ -35,11 +35,11 @@ $ npm install @structured-types/typescript-config --save-dev
 
 ## getTypescriptConfig
 
-**`function`** _defined in [@structured-types/typescript-config/src/index.ts](https://github.com/ccontrols/component-controls/tree/master/misc/typescript-config/src/index.ts#L31)_
+**`function`** _defined in [@structured-types/typescript-config/misc/typescript-config/src/index.ts](https://github.com/ccontrols/component-controls/tree/master/misc/typescript-config/src/index.ts#L31)_
 
 reads any typescript configuration files for a given file, including the extends references
 
-### **parameters**
+**parameters**
 
 | Name            | Type                              | Description                                                                              |
 | --------------- | --------------------------------- | ---------------------------------------------------------------------------------------- |

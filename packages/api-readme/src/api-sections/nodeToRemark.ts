@@ -4,7 +4,7 @@ import {
   isCodeNode,
   isHeadingNode,
   isInlineCodeNode,
-  isItalicNode,
+  isEmphasisNode,
   isLinkNode,
   isParagraphNode,
   isTableCellNode,
@@ -29,7 +29,7 @@ const renderNode = ({
     return nodeContent({ node, as: 'paragraph', ...props });
   } else if (isBoldNode(node)) {
     return nodeContent({ node, as: 'strong', ...props });
-  } else if (isItalicNode(node)) {
+  } else if (isEmphasisNode(node)) {
     return nodeContent({ node, as: 'emphasis', ...props });
   } else if (isLinkNode(node)) {
     return nodeContent({ node, as: 'link', url: node.url, ...props });

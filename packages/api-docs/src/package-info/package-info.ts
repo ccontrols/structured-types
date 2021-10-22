@@ -22,9 +22,25 @@ const traverseFolder = (
   return traverseFolder(path.resolve(filePath, '..'), levels - 1, fileName);
 };
 
-export const getRepoPath = (
-  filePath: string,
-): { repo?: string; packageName?: string; relativePath?: string } => {
+interface RepoPathReturnValue {
+  /**
+   * repository url
+   */
+  repo?: string;
+  /**
+   * name field from the project's package.json
+   */
+  packageName?: string;
+  /**
+   * file's relative path to the project's package.json
+   */
+  relativePath?: string;
+}
+/**
+ * Retrieves the repo path from the project's package.json file.
+ * @param filePath file path to start the search for a package.json
+ */
+export const getRepoPath = (filePath: string): RepoPathReturnValue => {
   const packageFileName = traverseFolder(path.dirname(filePath));
   const result: ReturnType<typeof getRepoPath> = {};
   if (packageFileName) {

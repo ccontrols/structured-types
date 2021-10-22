@@ -9,10 +9,10 @@ import { nodesToRemark } from './nodeToRemark';
 import { RemarkNode } from '../types';
 
 export const extractProps = (
-  filesPath: string[],
+  files: string[],
   config?: DocsOptions & DocumentationOptions,
 ): RemarkNode[] => {
-  const props = parseFiles(filesPath, {
+  const props = parseFiles(files, {
     collectFilePath: true,
     collectHelpers: true,
     collectLinesOfCode: true,

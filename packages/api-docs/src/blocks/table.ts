@@ -1,14 +1,8 @@
-import {
-  boldNode,
-  DocumentationNode,
-  inlineCodeNode,
-  NodeKind,
-  tableCellNode,
-  TableNode,
-  TableRowNode,
-  textNode,
-} from '../types';
-
+import { DocumentationNode, NodeKind, TableNode, TableRowNode } from '../types';
+import { boldNode } from './bold';
+import { textNode } from './text';
+import { tableCellNode } from './table-cell';
+import { inlineCodeNode } from './inline-code';
 export interface PropItem {
   name?: string;
   isOptional: boolean;
