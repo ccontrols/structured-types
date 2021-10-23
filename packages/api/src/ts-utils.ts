@@ -273,6 +273,12 @@ export interface ParseOptions {
    * if set to true, the data will be collected in the `loc` prop
    */
   collectLinesOfCode?: boolean;
+
+  /**
+   * whether to collect the source code location for inner symbol declaration
+   * if set to true, the data will be collected in the `loc` prop
+   */
+  collectInnerLocations?: boolean;
 }
 
 export type ParsePlugin = Omit<DocsOptions, 'resolvers' | 'isInternal'> & {
@@ -295,6 +301,7 @@ export const defaultParseOptions: ParseOptions = {
   collectProperties: true,
   collectInheritance: true,
   collectExtension: true,
+
   filter: (prop) => !prop.ignore,
   internalTypes: {
     Function: PropKind.Function,

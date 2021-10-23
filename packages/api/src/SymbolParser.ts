@@ -171,7 +171,7 @@ export class SymbolParser implements ISymbolParser {
     isTopLevel: boolean,
     node?: ts.Node,
   ): PropType => {
-    if (node && isTopLevel) {
+    if (node && (isTopLevel || options.collectInnerLocations)) {
       const source = node.getSourceFile();
       if (options.collectFilePath) {
         prop.filePath = source.fileName;
@@ -179,10 +179,17 @@ export class SymbolParser implements ISymbolParser {
       if (options.collectLinesOfCode) {
         const name = ts.getNameOfDeclaration(node as ts.Declaration);
         if (name) {
-          const lc = source.getLineAndCharacterOfPosition(name.pos);
+          const start = source.getLineAndCharacterOfPosition(name.pos);
+          const end = source.getLineAndCharacterOfPosition(name.end);
           prop.loc = {
-            line: lc.line + 1,
-            col: lc.character + 1,
+            start: {
+              line: start.line + 1,
+              col: start.character + 1,
+            },
+            end: {
+              line: end.line + 1,
+              col: end.character + 1,
+            },
           };
         }
       }

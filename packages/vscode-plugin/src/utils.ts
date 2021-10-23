@@ -59,8 +59,8 @@ const goToLocation = (loc: PropType['loc']): void => {
   const activeTextEditor = vscode.window.activeTextEditor;
   if (activeTextEditor) {
     const range = new vscode.Range(
-      new vscode.Position(loc.line, loc.col),
-      new vscode.Position(loc.line, loc.col),
+      new vscode.Position(loc.start.line, loc.start.col),
+      new vscode.Position(loc.end.line, loc.end.col),
     );
     activeTextEditor.selection = new vscode.Selection(range.start, range.start);
     activeTextEditor.revealRange(range, vscode.TextEditorRevealType.AtTop);

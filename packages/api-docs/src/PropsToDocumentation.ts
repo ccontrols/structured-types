@@ -445,7 +445,7 @@ export class PropsToDocumentation {
         const { repo, relativePath, packageName } = this.repoNames[filePath];
         const fileLocation = repo || filePath;
         if (fileLocation) {
-          const { line } = prop.loc || {};
+          const { line } = prop.loc?.start || {};
           const sourceLocation = filePath.includes('node_modules')
             ? fileLocation
             : `${fileLocation}${line ? `#L${line}` : ''}`;

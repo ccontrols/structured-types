@@ -59,6 +59,11 @@ export enum PropKind {
   Namespace = 27,
 }
 
+export interface SourcePosition {
+  line: number;
+  col: number;
+}
+
 /**
  * Base prop type interface
  */
@@ -110,7 +115,7 @@ export interface PropType {
    * source code location for the symbol declaration
    * available if collectLinesOfCode is set to true
    */
-  loc?: { line: number; col: number };
+  loc?: { start: SourcePosition; end: SourcePosition };
   /**
    * type name of the property or lookup into __helpers list of symbols
    */

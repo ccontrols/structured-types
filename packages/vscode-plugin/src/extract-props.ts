@@ -17,6 +17,7 @@ export const extractProps = (
     collectFilePath: true,
     collectHelpers: false,
     collectLinesOfCode: true,
+    collectInnerLocations: true,
     collectExtension: true,
     plugins: [propTypesPlugin, reactPlugin],
     ...mergedConfig,
