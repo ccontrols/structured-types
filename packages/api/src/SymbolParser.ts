@@ -109,7 +109,7 @@ export class SymbolParser implements ISymbolParser {
     parentProp: PropType,
     options: ParseOptions,
   ): string | undefined | '__internal' {
-    const propName = this.geDeclarationStats(node as ts.Declaration);
+    const propName = this.geDeclarationName(node as ts.Declaration);
     const addParentRef = (
       declaration: ts.Node,
     ): string | undefined | '__internal' => {
@@ -119,7 +119,7 @@ export class SymbolParser implements ISymbolParser {
       let parent = declaration.parent;
       //find immediate parent
       while (parent) {
-        const name = this.geDeclarationStats(parent as ts.Declaration);
+        const name = this.geDeclarationName(parent as ts.Declaration);
         if (name) {
           if (name === parentProp.name) {
             return undefined;
@@ -131,7 +131,7 @@ export class SymbolParser implements ISymbolParser {
         parent = parent.parent;
       }
       if (parent) {
-        const name = this.geDeclarationStats(parent as ts.Declaration);
+        const name = this.geDeclarationName(parent as ts.Declaration);
         if (name) {
           if (this.internalNode(node) === undefined) {
             const parentName =
@@ -497,7 +497,7 @@ export class SymbolParser implements ISymbolParser {
     }
     return prop;
   }
-  private geDeclarationStats(declaration?: ts.Declaration): string | undefined {
+  private geDeclarationName(declaration?: ts.Declaration): string | undefined {
     if (!declaration || ts.isModuleDeclaration(declaration)) {
       return undefined;
     }
@@ -510,7 +510,7 @@ export class SymbolParser implements ISymbolParser {
 
   public updateSymbolName(prop: PropType, node?: ts.Declaration): PropType {
     if (node && prop.name === undefined) {
-      const name = this.geDeclarationStats(node);
+      const name = this.geDeclarationName(node);
       if (name && name !== prop.type) {
         prop.name = name;
       }
@@ -668,7 +668,7 @@ export class SymbolParser implements ISymbolParser {
           );
         }
       } else if (ts.isTypeParameterDeclaration(node)) {
-        const typeName = this.geDeclarationStats(node);
+        const typeName = this.geDeclarationName(node);
         if (typeName && prop.name !== typeName) {
           prop.type = typeName;
         }
@@ -880,7 +880,7 @@ export class SymbolParser implements ISymbolParser {
           : undefined;
         const internalKind = this.internalNode(resolvedDeclaration);
         this.parseFilePath(prop, options, topLevel, declaration);
-        const typeName = this.geDeclarationStats(resolvedDeclaration);
+        const typeName = this.geDeclarationName(resolvedDeclaration);
         if (!pluginName && !prop.type) {
           if (typeName && prop.name !== typeName) {
             prop.type = typeName;
@@ -1043,7 +1043,7 @@ export class SymbolParser implements ISymbolParser {
           const type = this.checker.getTypeAtLocation(node);
           const kind = getTypeKind(type);
           if (!kind) {
-            const name = this.geDeclarationStats(node as ts.Declaration);
+            const name = this.geDeclarationName(node as ts.Declaration);
             if (name) {
               return this.options.internalTypes[name] || PropKind.Any;
             }
