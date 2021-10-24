@@ -14,9 +14,8 @@ export const extractProps = (
   const { config = {} } = apiDocsConfig(fileName) || {};
   const mergedConfig = deepmerge(config, options);
   const props = parseFiles([fileName], {
-    collectFilePath: true,
+    collectSourceInfo: true,
     collectHelpers: false,
-    collectLinesOfCode: true,
     collectInnerLocations: true,
     collectExtension: true,
     plugins: [propTypesPlugin, reactPlugin],

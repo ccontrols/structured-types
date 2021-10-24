@@ -78,7 +78,6 @@ export interface SourceLocation {
   filePath?: string;
   /**
    * source code location for the symbol declaration
-   * available if collectLinesOfCode is set to true
    */
   loc?: { start: SourcePosition; end: SourcePosition };
 }

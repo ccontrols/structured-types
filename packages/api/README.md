@@ -138,7 +138,7 @@ const docs = parseFiles(['../src/sum.js']);
 
 ## parseFiles
 
-**`function`** _defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L224)_
+**`function`** _defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L222)_
 
 API to analyze the given files by also loading the local typescript options from tsconfig
 
@@ -157,13 +157,12 @@ API to analyze the given files by also loading the local typescript options from
 
     const props = parseFiles(['index.ts'], {
      collectHelpers: true,
-     collectFilePath: true,
-     collectLinesOfCode: true,
+     collectSourceInfo: true,
     })
 
 ## analyzeFiles
 
-**`function`** _defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L60)_
+**`function`** _defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L59)_
 
 API to analyze the given files
 
@@ -182,8 +181,7 @@ API to analyze the given files
 
     const props = analyzeFiles(['index.ts'], {
      collectHelpers: true,
-     collectFilePath: true,
-     collectLinesOfCode: true,
+     collectSourceInfo: true,
      tsOptions: {
        allowJs: true,
      }
@@ -191,7 +189,7 @@ API to analyze the given files
 
 ## DocsOptions
 
-**`type`** _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L323)_
+**`type`** _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L318)_
 
 **properties**
 
@@ -213,8 +211,7 @@ API to analyze the given files
 | `collectInternals`      | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect internal (typescript) symbols                                                                                                  |
 | `plugins`               | [`ParsePlugin`](#parseplugin)\[]                                   | [`ParseOptions`](#parseoptions) | installed plugins can modify default options and install type resolvers                                                                           |
 | `scope`                 | "exports" \| "all"                                                 | [`ParseOptions`](#parseoptions) | by default collects only the exported symbols                                                                                                     |
-| `collectFilePath`       | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect the file path of objects                                                                                                       |
-| `collectLinesOfCode`    | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the  `loc`  prop             |
+| `collectSourceInfo`     | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect the file path and the source code location for the symbol declarations                                                         |
 | `collectInnerLocations` | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect the source code location for inner symbol declaration if set to true, the data will be collected in the  `loc`  prop           |
 
 ## ParseOptions
@@ -242,13 +239,12 @@ parsing options
 | `collectInternals`      | `boolean`                                                          | whether to collect internal (typescript) symbols                                                                                                  |
 | `plugins`               | [`ParsePlugin`](#parseplugin)\[]                                   | installed plugins can modify default options and install type resolvers                                                                           |
 | `scope`                 | "exports" \| "all"                                                 | by default collects only the exported symbols                                                                                                     |
-| `collectFilePath`       | `boolean`                                                          | whether to collect the file path of objects                                                                                                       |
-| `collectLinesOfCode`    | `boolean`                                                          | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the  `loc`  prop             |
+| `collectSourceInfo`     | `boolean`                                                          | whether to collect the file path and the source code location for the symbol declarations                                                         |
 | `collectInnerLocations` | `boolean`                                                          | whether to collect the source code location for inner symbol declaration if set to true, the data will be collected in the  `loc`  prop           |
 
 ## ProgramOptions
 
-**`type`** _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L324)_
+**`type`** _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L319)_
 
 **properties**
 
@@ -259,7 +255,7 @@ parsing options
 
 ## PropTypes
 
-**`type`** _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L594)_
+**`type`** _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L593)_
 
 Top-level prop type, with aded optional \_\_helpers and \_\_diagnostics fields.
 
@@ -273,7 +269,7 @@ Top-level prop type, with aded optional \_\_helpers and \_\_diagnostics fields.
 
 ## PropType
 
-**`interface`** _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L88)_
+**`interface`** _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L87)_
 
 Base prop type interface
 
@@ -340,7 +336,7 @@ The property type or kind
 
 ## ParsePlugin
 
-**`type`** _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L284)_
+**`type`** _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L279)_
 
 **properties**
 
@@ -361,15 +357,14 @@ The property type or kind
 | `collectInternals`      | `boolean`                                                                                                                                                                         | [`ParseOptions`](#parseoptions) | whether to collect internal (typescript) symbols                                                                                                       |
 | `plugins`               | [`ParsePlugin`](#parseplugin)\[]                                                                                                                                                  | [`ParseOptions`](#parseoptions) | installed plugins can modify default options and install type resolvers                                                                                |
 | `scope`                 | "exports" \| "all"                                                                                                                                                                | [`ParseOptions`](#parseoptions) | by default collects only the exported symbols                                                                                                          |
-| `collectFilePath`       | `boolean`                                                                                                                                                                         | [`ParseOptions`](#parseoptions) | whether to collect the file path of objects                                                                                                            |
-| `collectLinesOfCode`    | `boolean`                                                                                                                                                                         | [`ParseOptions`](#parseoptions) | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the  `loc`  prop                  |
+| `collectSourceInfo`     | `boolean`                                                                                                                                                                         | [`ParseOptions`](#parseoptions) | whether to collect the file path and the source code location for the symbol declarations                                                              |
 | `collectInnerLocations` | `boolean`                                                                                                                                                                         | [`ParseOptions`](#parseoptions) | whether to collect the source code location for inner symbol declaration if set to true, the data will be collected in the  `loc`  prop                |
 | `typesResolve*`         | (`props`\*: { `symbolType`: `Type`, `declaration`: `ts.Declaration`, `parser`: [`ISymbolParser`](#isymbolparser) }) => [`ResolverReturnType`](#resolverreturntype) \| `undefined` |                                 | type resolving custom function ie from a react component will return the props type if the plugin does not recognize the type, should return undefined |
 | `pluginName`            | `string`                                                                                                                                                                          |                                 | plugin name                                                                                                                                            |
 
 ## PropDiagnostic
 
-**`type`** _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L568)_
+**`type`** _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L567)_
 
 diagnostics row data
 
@@ -389,10 +384,10 @@ diagnostics row data
 
 **properties**
 
-| Name       | Type                                                                                         | Description                                                                                    |
-| ---------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `filePath` | `string`                                                                                     | name of the file where the symbol is defined only if different from the default file path      |
-| `loc`      | { `start`: [`SourcePosition`](#sourceposition), `end`: [`SourcePosition`](#sourceposition) } | source code location for the symbol declaration available if collectLinesOfCode is set to true |
+| Name       | Type                                                                                         | Description                                                                               |
+| ---------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `filePath` | `string`                                                                                     | name of the file where the symbol is defined only if different from the default file path |
+| `loc`      | { `start`: [`SourcePosition`](#sourceposition), `end`: [`SourcePosition`](#sourceposition) } | source code location for the symbol declaration                                           |
 
 ## JSDocExample
 
@@ -422,7 +417,7 @@ JSDoc generic tag item
 
 ## ResolverReturnType
 
-**`type`** _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L328)_
+**`type`** _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L323)_
 
 **properties**
 
@@ -449,13 +444,12 @@ JSDoc generic tag item
 | `collectInternals`      | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect internal (typescript) symbols                                                                                                  |
 | `plugins`               | [`ParsePlugin`](#parseplugin)\[]                                   | [`ParseOptions`](#parseoptions) | installed plugins can modify default options and install type resolvers                                                                           |
 | `scope`                 | "exports" \| "all"                                                 | [`ParseOptions`](#parseoptions) | by default collects only the exported symbols                                                                                                     |
-| `collectFilePath`       | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect the file path of objects                                                                                                       |
-| `collectLinesOfCode`    | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect the source code location for the symbol declaration if set to true, the data will be collected in the  `loc`  prop             |
+| `collectSourceInfo`     | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect the file path and the source code location for the symbol declarations                                                         |
 | `collectInnerLocations` | `boolean`                                                          | [`ParseOptions`](#parseoptions) | whether to collect the source code location for inner symbol declaration if set to true, the data will be collected in the  `loc`  prop           |
 
 ## ISymbolParser
 
-**`interface`** _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L393)_
+**`interface`** _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L388)_
 
 **properties**
 

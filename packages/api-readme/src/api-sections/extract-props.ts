@@ -13,9 +13,8 @@ export const extractProps = (
   config?: DocsOptions & DocumentationOptions,
 ): RemarkNode[] => {
   const props = parseFiles(files, {
-    collectFilePath: true,
+    collectSourceInfo: true,
     collectHelpers: true,
-    collectLinesOfCode: true,
     plugins: [propTypesPlugin, reactPlugin],
     ...config,
   });

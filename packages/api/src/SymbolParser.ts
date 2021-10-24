@@ -172,34 +172,30 @@ export class SymbolParser implements ISymbolParser {
     node?: ts.Node,
   ): SourceLocation | undefined => {
     let location: SourceLocation | undefined = undefined;
-    if (node && (isTopLevel || options.collectInnerLocations)) {
+    if (
+      options.collectSourceInfo &&
+      node &&
+      (isTopLevel || options.collectInnerLocations)
+    ) {
       const source = node.getSourceFile();
-      if (options.collectFilePath) {
-        if (!location) {
-          location = {};
-        }
-        location.filePath = source.fileName;
+      if (!location) {
+        location = {};
       }
-      if (options.collectLinesOfCode) {
-        const name = ts.getNameOfDeclaration(node as ts.Declaration);
-        if (name) {
-          if (!location) {
-            location = {};
-          }
-
-          const start = source.getLineAndCharacterOfPosition(name.pos);
-          const end = source.getLineAndCharacterOfPosition(name.end);
-          location.loc = {
-            start: {
-              line: start.line + 1,
-              col: start.character + 1,
-            },
-            end: {
-              line: end.line + 1,
-              col: end.character + 1,
-            },
-          };
-        }
+      location.filePath = source.fileName;
+      const name = ts.getNameOfDeclaration(node as ts.Declaration);
+      if (name) {
+        const start = source.getLineAndCharacterOfPosition(name.pos);
+        const end = source.getLineAndCharacterOfPosition(name.end);
+        location.loc = {
+          start: {
+            line: start.line + 1,
+            col: start.character + 1,
+          },
+          end: {
+            line: end.line + 1,
+            col: end.character + 1,
+          },
+        };
       }
     }
     return location;

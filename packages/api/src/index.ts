@@ -46,8 +46,7 @@ const consolidateParentProps = (
  *
  * const props = analyzeFiles(['index.ts'], {
  *  collectHelpers: true,
- *  collectFilePath: true,
- *  collectLinesOfCode: true,
+ *  collectSourceInfo: true,
  *  tsOptions: {
  *    allowJs: true,
  *  }
@@ -213,8 +212,7 @@ export const analyzeFiles = (
  *
  * const props = parseFiles(['index.ts'], {
  *  collectHelpers: true,
- *  collectFilePath: true,
- *  collectLinesOfCode: true,
+ *  collectSourceInfo: true,
  * })
  * @param files list of files to be processed
  * @param options parsing options

@@ -57,9 +57,8 @@ export const extractProps = (
    * parse props using @structured-types/api
    */
   const props = parseFiles(files, {
-    collectFilePath: true,
+    collectSourceInfo: true,
     collectHelpers: true,
-    collectLinesOfCode: true,
     // use react typescript and react prop-types extensions
     plugins: [propTypesPlugin, reactPlugin],
     ...config,

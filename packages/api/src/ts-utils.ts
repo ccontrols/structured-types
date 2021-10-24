@@ -265,14 +265,9 @@ export interface ParseOptions {
   scope?: 'exports' | 'all';
 
   /**
-   * whether to collect the file path of objects
+   * whether to collect the file path and the source code location for the symbol declarations
    */
-  collectFilePath?: boolean;
-  /**
-   * whether to collect the source code location for the symbol declaration
-   * if set to true, the data will be collected in the `loc` prop
-   */
-  collectLinesOfCode?: boolean;
+  collectSourceInfo?: boolean;
 
   /**
    * whether to collect the source code location for inner symbol declaration
