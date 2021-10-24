@@ -63,6 +63,12 @@ Object {
                   "name": "MemoryCacheOptions",
                   "properties": Array [
                     Object {
+                      "description": "Additionally cache computation of modules that are unchanged and reference only unchanged modules.",
+                      "kind": 3,
+                      "name": "cacheUnaffected",
+                      "optional": true,
+                    },
+                    Object {
                       "description": "Number of generations unused cache entries stay in memory cache at minimum (1 = may be removed after unused for a single compilation, ..., Infinity: kept forever).",
                       "kind": 2,
                       "name": "maxGenerations",
@@ -199,6 +205,12 @@ Object {
                       "description": "Number of generations unused cache entries stay in memory cache at minimum (0 = no memory cache used, 1 = may be removed after unused for a single compilation, ..., Infinity: kept forever). Cache entries will be deserialized from disk when removed from memory cache.",
                       "kind": 2,
                       "name": "maxMemoryGenerations",
+                      "optional": true,
+                    },
+                    Object {
+                      "description": "Additionally cache computation of modules that are unchanged and reference only unchanged modules in memory.",
+                      "kind": 3,
+                      "name": "memoryCacheUnaffected",
                       "optional": true,
                     },
                     Object {
@@ -486,9 +498,32 @@ Object {
                   "parent": "Experiments",
                 },
                 Object {
-                  "description": "Enable build-time execution of modules from the module graph for plugins and loaders.",
+                  "description": "Build http(s): urls using a lockfile and resource content cache.",
+                  "kind": 4,
+                  "name": "buildHttp",
+                  "optional": true,
+                  "parent": "Experiments",
+                  "properties": Array [
+                    Object {
+                      "kind": 3,
+                    },
+                    Object {
+                      "kind": 14,
+                      "type": "HttpUriOptions",
+                    },
+                  ],
+                },
+                Object {
+                  "description": "Enable additional in memory caching of modules that are unchanged and reference only unchanged modules.",
                   "kind": 3,
-                  "name": "executeModule",
+                  "name": "cacheUnaffected",
+                  "optional": true,
+                  "parent": "Experiments",
+                },
+                Object {
+                  "description": "Apply defaults of next major version.",
+                  "kind": 3,
+                  "name": "futureDefaults",
                   "optional": true,
                   "parent": "Experiments",
                 },
@@ -1622,6 +1657,10 @@ Object {
                                   "parent": "Module",
                                 },
                                 Object {
+                                  "name": "hasChunkCondition",
+                                  "parent": "Module",
+                                },
+                                Object {
                                   "name": "updateCacheModule",
                                   "parent": "Module",
                                 },
@@ -1667,6 +1706,13 @@ Object {
                                 },
                                 Object {
                                   "name": "blocks",
+                                  "parent": "DependenciesBlock",
+                                },
+                                Object {
+                                  "name": "parent",
+                                },
+                                Object {
+                                  "name": "getRootBlock",
                                   "parent": "DependenciesBlock",
                                 },
                                 Object {
@@ -2953,6 +2999,10 @@ e. g. creating an assets manifest of Service Workers.",
                                           "parent": "InputFileSystem",
                                         },
                                         Object {
+                                          "name": "lstat",
+                                          "parent": "InputFileSystem",
+                                        },
+                                        Object {
                                           "name": "realpath",
                                           "parent": "InputFileSystem",
                                         },
@@ -3037,6 +3087,10 @@ e. g. creating an assets manifest of Service Workers.",
                                         },
                                         Object {
                                           "name": "stat",
+                                          "parent": "InputFileSystem",
+                                        },
+                                        Object {
+                                          "name": "lstat",
                                           "parent": "InputFileSystem",
                                         },
                                         Object {
@@ -3374,6 +3428,32 @@ e. g. creating an assets manifest of Service Workers.",
                                       "type": "Cache",
                                     },
                                     Object {
+                                      "generics": Array [
+                                        Object {
+                                          "kind": 13,
+                                          "type": "Module",
+                                        },
+                                        Object {
+                                          "kind": 15,
+                                          "properties": Array [
+                                            Object {
+                                              "name": "buildInfo",
+                                            },
+                                            Object {
+                                              "name": "references",
+                                            },
+                                            Object {
+                                              "name": "memCache",
+                                            },
+                                          ],
+                                        },
+                                      ],
+                                      "name": "moduleMemCaches",
+                                      "optional": true,
+                                      "parent": "Compiler",
+                                      "type": "Map",
+                                    },
+                                    Object {
                                       "kind": 1,
                                       "name": "compilerPath",
                                       "parent": "Compiler",
@@ -3551,6 +3631,11 @@ e. g. creating an assets manifest of Service Workers.",
                                     Object {
                                       "kind": 11,
                                       "name": "createCompilation",
+                                      "parameters": Array [
+                                        Object {
+                                          "name": "params",
+                                        },
+                                      ],
                                       "parent": "Compiler",
                                       "returns": Object {
                                         "kind": 13,
@@ -3789,6 +3874,10 @@ e. g. creating an assets manifest of Service Workers.",
                                       "parent": "InputFileSystem",
                                     },
                                     Object {
+                                      "name": "lstat",
+                                      "parent": "InputFileSystem",
+                                    },
+                                    Object {
                                       "name": "realpath",
                                       "parent": "InputFileSystem",
                                     },
@@ -3873,6 +3962,10 @@ e. g. creating an assets manifest of Service Workers.",
                                     },
                                     Object {
                                       "name": "stat",
+                                      "parent": "InputFileSystem",
+                                    },
+                                    Object {
+                                      "name": "lstat",
                                       "parent": "InputFileSystem",
                                     },
                                     Object {
@@ -4210,6 +4303,32 @@ e. g. creating an assets manifest of Service Workers.",
                                   "type": "Cache",
                                 },
                                 Object {
+                                  "generics": Array [
+                                    Object {
+                                      "kind": 13,
+                                      "type": "Module",
+                                    },
+                                    Object {
+                                      "kind": 15,
+                                      "properties": Array [
+                                        Object {
+                                          "name": "buildInfo",
+                                        },
+                                        Object {
+                                          "name": "references",
+                                        },
+                                        Object {
+                                          "name": "memCache",
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                  "name": "moduleMemCaches",
+                                  "optional": true,
+                                  "parent": "Compiler",
+                                  "type": "Map",
+                                },
+                                Object {
                                   "kind": 1,
                                   "name": "compilerPath",
                                   "parent": "Compiler",
@@ -4387,6 +4506,11 @@ e. g. creating an assets manifest of Service Workers.",
                                 Object {
                                   "kind": 11,
                                   "name": "createCompilation",
+                                  "parameters": Array [
+                                    Object {
+                                      "name": "params",
+                                    },
+                                  ],
                                   "parent": "Compiler",
                                   "returns": Object {
                                     "kind": 13,
@@ -4514,6 +4638,10 @@ e. g. creating an assets manifest of Service Workers.",
                                   "parent": "InputFileSystem",
                                 },
                                 Object {
+                                  "name": "lstat",
+                                  "parent": "InputFileSystem",
+                                },
+                                Object {
                                   "name": "realpath",
                                   "parent": "InputFileSystem",
                                 },
@@ -4558,6 +4686,9 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "contextHashQueue",
+                                },
+                                Object {
+                                  "name": "contextTshQueue",
                                 },
                                 Object {
                                   "name": "managedItemQueue",
@@ -4611,6 +4742,10 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "getContextHash",
+                                  "parent": "FileSystemInfo",
+                                },
+                                Object {
+                                  "name": "getContextTsh",
                                   "parent": "FileSystemInfo",
                                 },
                                 Object {
@@ -5088,6 +5223,19 @@ e. g. creating an assets manifest of Service Workers.",
                               "parent": "Compilation",
                             },
                             Object {
+                              "kind": 14,
+                              "name": "params",
+                              "properties": Array [
+                                Object {
+                                  "name": "normalModuleFactory",
+                                },
+                                Object {
+                                  "name": "contextModuleFactory",
+                                },
+                              ],
+                              "type": "CompilationParams",
+                            },
+                            Object {
                               "kind": 13,
                               "name": "mainTemplate",
                               "properties": Array [
@@ -5310,6 +5458,54 @@ e. g. creating an assets manifest of Service Workers.",
                               ],
                             },
                             Object {
+                              "generics": Array [
+                                Object {
+                                  "kind": 13,
+                                  "type": "Module",
+                                },
+                                Object {
+                                  "generics": Array [
+                                    Object {
+                                      "kind": 17,
+                                    },
+                                    Object {
+                                      "kind": 17,
+                                    },
+                                  ],
+                                  "kind": 13,
+                                  "type": "WeakTupleMap",
+                                },
+                              ],
+                              "name": "moduleMemCaches",
+                              "optional": true,
+                              "parent": "Compilation",
+                              "type": "Map",
+                            },
+                            Object {
+                              "generics": Array [
+                                Object {
+                                  "kind": 13,
+                                  "type": "Module",
+                                },
+                                Object {
+                                  "generics": Array [
+                                    Object {
+                                      "kind": 17,
+                                    },
+                                    Object {
+                                      "kind": 17,
+                                    },
+                                  ],
+                                  "kind": 13,
+                                  "type": "WeakTupleMap",
+                                },
+                              ],
+                              "name": "moduleMemCaches2",
+                              "optional": true,
+                              "parent": "Compilation",
+                              "type": "Map",
+                            },
+                            Object {
                               "kind": 13,
                               "name": "moduleGraph",
                               "properties": Array [
@@ -5338,6 +5534,10 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "getParentBlock",
+                                  "parent": "ModuleGraph",
+                                },
+                                Object {
+                                  "name": "getParentBlockIndex",
                                   "parent": "ModuleGraph",
                                 },
                                 Object {
@@ -5410,6 +5610,10 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "getIncomingConnectionsByOriginModule",
+                                  "parent": "ModuleGraph",
+                                },
+                                Object {
+                                  "name": "getOutgoingConnectionsByModule",
                                   "parent": "ModuleGraph",
                                 },
                                 Object {
@@ -5524,6 +5728,14 @@ e. g. creating an assets manifest of Service Workers.",
                                   "name": "cached",
                                   "parent": "ModuleGraph",
                                 },
+                                Object {
+                                  "name": "setModuleMemCaches",
+                                  "parent": "ModuleGraph",
+                                },
+                                Object {
+                                  "name": "dependencyCacheProvide",
+                                  "parent": "ModuleGraph",
+                                },
                               ],
                               "type": "ModuleGraph",
                             },
@@ -5583,6 +5795,10 @@ e. g. creating an assets manifest of Service Workers.",
                                   "parent": "ChunkGraph",
                                 },
                                 Object {
+                                  "name": "attachDependentHashModules",
+                                  "parent": "ChunkGraph",
+                                },
+                                Object {
                                   "name": "replaceModule",
                                   "parent": "ChunkGraph",
                                 },
@@ -5620,6 +5836,10 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "getNumberOfChunkModules",
+                                  "parent": "ChunkGraph",
+                                },
+                                Object {
+                                  "name": "getNumberOfChunkFullHashModules",
                                   "parent": "ChunkGraph",
                                 },
                                 Object {
@@ -5695,6 +5915,10 @@ e. g. creating an assets manifest of Service Workers.",
                                   "parent": "ChunkGraph",
                                 },
                                 Object {
+                                  "name": "upgradeDependentToFullHashModules",
+                                  "parent": "ChunkGraph",
+                                },
+                                Object {
                                   "name": "isEntryModuleInChunk",
                                   "parent": "ChunkGraph",
                                 },
@@ -5708,6 +5932,10 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "addFullHashModuleToChunk",
+                                  "parent": "ChunkGraph",
+                                },
+                                Object {
+                                  "name": "addDependentHashModuleToChunk",
                                   "parent": "ChunkGraph",
                                 },
                                 Object {
@@ -5760,6 +5988,10 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "getChunkFullHashModulesSet",
+                                  "parent": "ChunkGraph",
+                                },
+                                Object {
+                                  "name": "getChunkDependentHashModulesIterable",
                                   "parent": "ChunkGraph",
                                 },
                                 Object {
@@ -6018,9 +6250,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   "kind": 1,
                                   "name": "string",
                                 },
-                                Object {
-                                  "name": "Module",
-                                },
+                                Object {},
                               ],
                               "kind": 13,
                               "name": "factorizeQueue",
@@ -6510,11 +6740,11 @@ Needed to detect build cycles.",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@iterator@1245",
+                                  "name": "__@iterator@1274",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1247",
+                                  "name": "__@toStringTag@1276",
                                   "parent": "LazySet",
                                 },
                               ],
@@ -6579,11 +6809,11 @@ Needed to detect build cycles.",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@iterator@1245",
+                                  "name": "__@iterator@1274",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1247",
+                                  "name": "__@toStringTag@1276",
                                   "parent": "LazySet",
                                 },
                               ],
@@ -6648,11 +6878,11 @@ Needed to detect build cycles.",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@iterator@1245",
+                                  "name": "__@iterator@1274",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1247",
+                                  "name": "__@toStringTag@1276",
                                   "parent": "LazySet",
                                 },
                               ],
@@ -6717,11 +6947,11 @@ Needed to detect build cycles.",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@iterator@1245",
+                                  "name": "__@iterator@1274",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1247",
+                                  "name": "__@toStringTag@1276",
                                   "parent": "LazySet",
                                 },
                               ],
@@ -6937,22 +7167,6 @@ Needed to detect build cycles.",
                             },
                             Object {
                               "kind": 11,
-                              "name": "factorizeModule",
-                              "parameters": Array [
-                                Object {
-                                  "name": "options",
-                                },
-                                Object {
-                                  "name": "callback",
-                                },
-                              ],
-                              "parent": "Compilation",
-                              "returns": Object {
-                                "kind": 12,
-                              },
-                            },
-                            Object {
-                              "kind": 11,
                               "name": "addModuleChain",
                               "parameters": Array [
                                 Object {
@@ -7093,7 +7307,7 @@ Needed to detect build cycles.",
                               ],
                               "parent": "Compilation",
                               "returns": Object {
-                                "kind": 12,
+                                "kind": 3,
                               },
                             },
                             Object {
@@ -7209,6 +7423,19 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               "parameters": Array [
                                 Object {
                                   "name": "module",
+                                },
+                              ],
+                              "parent": "Compilation",
+                              "returns": Object {
+                                "kind": 12,
+                              },
+                            },
+                            Object {
+                              "kind": 11,
+                              "name": "assignDepths",
+                              "parameters": Array [
+                                Object {
+                                  "name": "modules",
                                 },
                               ],
                               "parent": "Compilation",
@@ -7864,6 +8091,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                             "parent": "InputFileSystem",
                                           },
                                           Object {
+                                            "name": "lstat",
+                                            "parent": "InputFileSystem",
+                                          },
+                                          Object {
                                             "name": "realpath",
                                             "parent": "InputFileSystem",
                                           },
@@ -7948,6 +8179,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                           },
                                           Object {
                                             "name": "stat",
+                                            "parent": "InputFileSystem",
+                                          },
+                                          Object {
+                                            "name": "lstat",
                                             "parent": "InputFileSystem",
                                           },
                                           Object {
@@ -8285,6 +8520,32 @@ from parent (or top level compiler) and creates a child Compilation",
                                         "type": "Cache",
                                       },
                                       Object {
+                                        "generics": Array [
+                                          Object {
+                                            "kind": 13,
+                                            "type": "Module",
+                                          },
+                                          Object {
+                                            "kind": 15,
+                                            "properties": Array [
+                                              Object {
+                                                "name": "buildInfo",
+                                              },
+                                              Object {
+                                                "name": "references",
+                                              },
+                                              Object {
+                                                "name": "memCache",
+                                              },
+                                            ],
+                                          },
+                                        ],
+                                        "name": "moduleMemCaches",
+                                        "optional": true,
+                                        "parent": "Compiler",
+                                        "type": "Map",
+                                      },
+                                      Object {
                                         "kind": 1,
                                         "name": "compilerPath",
                                         "parent": "Compiler",
@@ -8462,6 +8723,11 @@ from parent (or top level compiler) and creates a child Compilation",
                                       Object {
                                         "kind": 11,
                                         "name": "createCompilation",
+                                        "parameters": Array [
+                                          Object {
+                                            "name": "params",
+                                          },
+                                        ],
                                         "parent": "Compiler",
                                         "returns": Object {
                                           "kind": 13,
@@ -8698,6 +8964,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                         "parent": "InputFileSystem",
                                       },
                                       Object {
+                                        "name": "lstat",
+                                        "parent": "InputFileSystem",
+                                      },
+                                      Object {
                                         "name": "realpath",
                                         "parent": "InputFileSystem",
                                       },
@@ -8782,6 +9052,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                       },
                                       Object {
                                         "name": "stat",
+                                        "parent": "InputFileSystem",
+                                      },
+                                      Object {
+                                        "name": "lstat",
                                         "parent": "InputFileSystem",
                                       },
                                       Object {
@@ -9085,6 +9359,9 @@ from parent (or top level compiler) and creates a child Compilation",
                                     "type": "Cache",
                                   },
                                   Object {
+                                    "name": "moduleMemCaches",
+                                  },
+                                  Object {
                                     "kind": 1,
                                     "name": "compilerPath",
                                   },
@@ -9228,6 +9505,11 @@ from parent (or top level compiler) and creates a child Compilation",
                                   Object {
                                     "kind": 11,
                                     "name": "createCompilation",
+                                    "parameters": Array [
+                                      Object {
+                                        "name": "params",
+                                      },
+                                    ],
                                     "returns": Object {
                                       "kind": 13,
                                       "type": "Compilation",
@@ -9319,6 +9601,11 @@ from parent (or top level compiler) and creates a child Compilation",
                               "returns": Object {
                                 "kind": 12,
                               },
+                            },
+                            Object {
+                              "kind": 15,
+                              "name": "factorizeModule",
+                              "parent": "Compilation",
                             },
                           ],
                           "type": "Compilation",
@@ -9744,6 +10031,10 @@ from parent (or top level compiler) and creates a child Compilation",
                         },
                         Object {
                           "kind": 1,
+                          "value": "warn-mock",
+                        },
+                        Object {
+                          "kind": 1,
                           "value": "mock",
                         },
                         Object {
@@ -9763,6 +10054,10 @@ from parent (or top level compiler) and creates a child Compilation",
                         },
                         Object {
                           "kind": 1,
+                          "value": "warn-mock",
+                        },
+                        Object {
+                          "kind": 1,
                           "value": "mock",
                         },
                         Object {
@@ -9773,9 +10068,18 @@ from parent (or top level compiler) and creates a child Compilation",
                     },
                     Object {
                       "description": "Include a polyfill for the 'global' variable.",
-                      "kind": 3,
+                      "kind": 4,
                       "name": "global",
                       "optional": true,
+                      "properties": Array [
+                        Object {
+                          "kind": 3,
+                        },
+                        Object {
+                          "kind": 1,
+                          "value": "warn",
+                        },
+                      ],
                     },
                   ],
                   "type": "NodeOptions",
@@ -11365,6 +11669,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                       "parent": "InputFileSystem",
                                     },
                                     Object {
+                                      "name": "lstat",
+                                      "parent": "InputFileSystem",
+                                    },
+                                    Object {
                                       "name": "realpath",
                                       "parent": "InputFileSystem",
                                     },
@@ -11449,6 +11757,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "stat",
+                                      "parent": "InputFileSystem",
+                                    },
+                                    Object {
+                                      "name": "lstat",
                                       "parent": "InputFileSystem",
                                     },
                                     Object {
@@ -11786,6 +12098,32 @@ from parent (or top level compiler) and creates a child Compilation",
                                   "type": "Cache",
                                 },
                                 Object {
+                                  "generics": Array [
+                                    Object {
+                                      "kind": 13,
+                                      "type": "Module",
+                                    },
+                                    Object {
+                                      "kind": 15,
+                                      "properties": Array [
+                                        Object {
+                                          "name": "buildInfo",
+                                        },
+                                        Object {
+                                          "name": "references",
+                                        },
+                                        Object {
+                                          "name": "memCache",
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                  "name": "moduleMemCaches",
+                                  "optional": true,
+                                  "parent": "Compiler",
+                                  "type": "Map",
+                                },
+                                Object {
                                   "kind": 1,
                                   "name": "compilerPath",
                                   "parent": "Compiler",
@@ -11963,6 +12301,11 @@ from parent (or top level compiler) and creates a child Compilation",
                                 Object {
                                   "kind": 11,
                                   "name": "createCompilation",
+                                  "parameters": Array [
+                                    Object {
+                                      "name": "params",
+                                    },
+                                  ],
                                   "parent": "Compiler",
                                   "returns": Object {
                                     "kind": 13,
@@ -12201,6 +12544,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                   "parent": "InputFileSystem",
                                 },
                                 Object {
+                                  "name": "lstat",
+                                  "parent": "InputFileSystem",
+                                },
+                                Object {
                                   "name": "realpath",
                                   "parent": "InputFileSystem",
                                 },
@@ -12285,6 +12632,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "stat",
+                                  "parent": "InputFileSystem",
+                                },
+                                Object {
+                                  "name": "lstat",
                                   "parent": "InputFileSystem",
                                 },
                                 Object {
@@ -12622,6 +12973,32 @@ from parent (or top level compiler) and creates a child Compilation",
                               "type": "Cache",
                             },
                             Object {
+                              "generics": Array [
+                                Object {
+                                  "kind": 13,
+                                  "type": "Module",
+                                },
+                                Object {
+                                  "kind": 15,
+                                  "properties": Array [
+                                    Object {
+                                      "name": "buildInfo",
+                                    },
+                                    Object {
+                                      "name": "references",
+                                    },
+                                    Object {
+                                      "name": "memCache",
+                                    },
+                                  ],
+                                },
+                              ],
+                              "name": "moduleMemCaches",
+                              "optional": true,
+                              "parent": "Compiler",
+                              "type": "Map",
+                            },
+                            Object {
                               "kind": 1,
                               "name": "compilerPath",
                               "parent": "Compiler",
@@ -12799,6 +13176,11 @@ from parent (or top level compiler) and creates a child Compilation",
                             Object {
                               "kind": 11,
                               "name": "createCompilation",
+                              "parameters": Array [
+                                Object {
+                                  "name": "params",
+                                },
+                              ],
                               "parent": "Compiler",
                               "returns": Object {
                                 "kind": 13,
@@ -13451,6 +13833,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                       "parent": "InputFileSystem",
                                     },
                                     Object {
+                                      "name": "lstat",
+                                      "parent": "InputFileSystem",
+                                    },
+                                    Object {
                                       "name": "realpath",
                                       "parent": "InputFileSystem",
                                     },
@@ -13535,6 +13921,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "stat",
+                                      "parent": "InputFileSystem",
+                                    },
+                                    Object {
+                                      "name": "lstat",
                                       "parent": "InputFileSystem",
                                     },
                                     Object {
@@ -13872,6 +14262,32 @@ from parent (or top level compiler) and creates a child Compilation",
                                   "type": "Cache",
                                 },
                                 Object {
+                                  "generics": Array [
+                                    Object {
+                                      "kind": 13,
+                                      "type": "Module",
+                                    },
+                                    Object {
+                                      "kind": 15,
+                                      "properties": Array [
+                                        Object {
+                                          "name": "buildInfo",
+                                        },
+                                        Object {
+                                          "name": "references",
+                                        },
+                                        Object {
+                                          "name": "memCache",
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                  "name": "moduleMemCaches",
+                                  "optional": true,
+                                  "parent": "Compiler",
+                                  "type": "Map",
+                                },
+                                Object {
                                   "kind": 1,
                                   "name": "compilerPath",
                                   "parent": "Compiler",
@@ -14049,6 +14465,11 @@ from parent (or top level compiler) and creates a child Compilation",
                                 Object {
                                   "kind": 11,
                                   "name": "createCompilation",
+                                  "parameters": Array [
+                                    Object {
+                                      "name": "params",
+                                    },
+                                  ],
                                   "parent": "Compiler",
                                   "returns": Object {
                                     "kind": 13,
@@ -14287,6 +14708,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                   "parent": "InputFileSystem",
                                 },
                                 Object {
+                                  "name": "lstat",
+                                  "parent": "InputFileSystem",
+                                },
+                                Object {
                                   "name": "realpath",
                                   "parent": "InputFileSystem",
                                 },
@@ -14371,6 +14796,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "stat",
+                                  "parent": "InputFileSystem",
+                                },
+                                Object {
+                                  "name": "lstat",
                                   "parent": "InputFileSystem",
                                 },
                                 Object {
@@ -14708,6 +15137,32 @@ from parent (or top level compiler) and creates a child Compilation",
                               "type": "Cache",
                             },
                             Object {
+                              "generics": Array [
+                                Object {
+                                  "kind": 13,
+                                  "type": "Module",
+                                },
+                                Object {
+                                  "kind": 15,
+                                  "properties": Array [
+                                    Object {
+                                      "name": "buildInfo",
+                                    },
+                                    Object {
+                                      "name": "references",
+                                    },
+                                    Object {
+                                      "name": "memCache",
+                                    },
+                                  ],
+                                },
+                              ],
+                              "name": "moduleMemCaches",
+                              "optional": true,
+                              "parent": "Compiler",
+                              "type": "Map",
+                            },
+                            Object {
                               "kind": 1,
                               "name": "compilerPath",
                               "parent": "Compiler",
@@ -14885,6 +15340,11 @@ from parent (or top level compiler) and creates a child Compilation",
                             Object {
                               "kind": 11,
                               "name": "createCompilation",
+                              "parameters": Array [
+                                Object {
+                                  "name": "params",
+                                },
+                              ],
                               "parent": "Compiler",
                               "returns": Object {
                                 "kind": 13,
@@ -16970,6 +17430,12 @@ from parent (or top level compiler) and creates a child Compilation",
                   "name": "MemoryCacheOptions",
                   "properties": Array [
                     Object {
+                      "description": "Additionally cache computation of modules that are unchanged and reference only unchanged modules.",
+                      "kind": 3,
+                      "name": "cacheUnaffected",
+                      "optional": true,
+                    },
+                    Object {
                       "description": "Number of generations unused cache entries stay in memory cache at minimum (1 = may be removed after unused for a single compilation, ..., Infinity: kept forever).",
                       "kind": 2,
                       "name": "maxGenerations",
@@ -17106,6 +17572,12 @@ from parent (or top level compiler) and creates a child Compilation",
                       "description": "Number of generations unused cache entries stay in memory cache at minimum (0 = no memory cache used, 1 = may be removed after unused for a single compilation, ..., Infinity: kept forever). Cache entries will be deserialized from disk when removed from memory cache.",
                       "kind": 2,
                       "name": "maxMemoryGenerations",
+                      "optional": true,
+                    },
+                    Object {
+                      "description": "Additionally cache computation of modules that are unchanged and reference only unchanged modules in memory.",
+                      "kind": 3,
+                      "name": "memoryCacheUnaffected",
                       "optional": true,
                     },
                     Object {
@@ -17393,9 +17865,32 @@ from parent (or top level compiler) and creates a child Compilation",
                   "parent": "Experiments",
                 },
                 Object {
-                  "description": "Enable build-time execution of modules from the module graph for plugins and loaders.",
+                  "description": "Build http(s): urls using a lockfile and resource content cache.",
+                  "kind": 4,
+                  "name": "buildHttp",
+                  "optional": true,
+                  "parent": "Experiments",
+                  "properties": Array [
+                    Object {
+                      "kind": 3,
+                    },
+                    Object {
+                      "kind": 14,
+                      "type": "HttpUriOptions",
+                    },
+                  ],
+                },
+                Object {
+                  "description": "Enable additional in memory caching of modules that are unchanged and reference only unchanged modules.",
                   "kind": 3,
-                  "name": "executeModule",
+                  "name": "cacheUnaffected",
+                  "optional": true,
+                  "parent": "Experiments",
+                },
+                Object {
+                  "description": "Apply defaults of next major version.",
+                  "kind": 3,
+                  "name": "futureDefaults",
                   "optional": true,
                   "parent": "Experiments",
                 },
@@ -18529,6 +19024,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                   "parent": "Module",
                                 },
                                 Object {
+                                  "name": "hasChunkCondition",
+                                  "parent": "Module",
+                                },
+                                Object {
                                   "name": "updateCacheModule",
                                   "parent": "Module",
                                 },
@@ -18574,6 +19073,13 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "blocks",
+                                  "parent": "DependenciesBlock",
+                                },
+                                Object {
+                                  "name": "parent",
+                                },
+                                Object {
+                                  "name": "getRootBlock",
                                   "parent": "DependenciesBlock",
                                 },
                                 Object {
@@ -19860,6 +20366,10 @@ e. g. creating an assets manifest of Service Workers.",
                                           "parent": "InputFileSystem",
                                         },
                                         Object {
+                                          "name": "lstat",
+                                          "parent": "InputFileSystem",
+                                        },
+                                        Object {
                                           "name": "realpath",
                                           "parent": "InputFileSystem",
                                         },
@@ -19944,6 +20454,10 @@ e. g. creating an assets manifest of Service Workers.",
                                         },
                                         Object {
                                           "name": "stat",
+                                          "parent": "InputFileSystem",
+                                        },
+                                        Object {
+                                          "name": "lstat",
                                           "parent": "InputFileSystem",
                                         },
                                         Object {
@@ -20281,6 +20795,32 @@ e. g. creating an assets manifest of Service Workers.",
                                       "type": "Cache",
                                     },
                                     Object {
+                                      "generics": Array [
+                                        Object {
+                                          "kind": 13,
+                                          "type": "Module",
+                                        },
+                                        Object {
+                                          "kind": 15,
+                                          "properties": Array [
+                                            Object {
+                                              "name": "buildInfo",
+                                            },
+                                            Object {
+                                              "name": "references",
+                                            },
+                                            Object {
+                                              "name": "memCache",
+                                            },
+                                          ],
+                                        },
+                                      ],
+                                      "name": "moduleMemCaches",
+                                      "optional": true,
+                                      "parent": "Compiler",
+                                      "type": "Map",
+                                    },
+                                    Object {
                                       "kind": 1,
                                       "name": "compilerPath",
                                       "parent": "Compiler",
@@ -20458,6 +20998,11 @@ e. g. creating an assets manifest of Service Workers.",
                                     Object {
                                       "kind": 11,
                                       "name": "createCompilation",
+                                      "parameters": Array [
+                                        Object {
+                                          "name": "params",
+                                        },
+                                      ],
                                       "parent": "Compiler",
                                       "returns": Object {
                                         "kind": 13,
@@ -20696,6 +21241,10 @@ e. g. creating an assets manifest of Service Workers.",
                                       "parent": "InputFileSystem",
                                     },
                                     Object {
+                                      "name": "lstat",
+                                      "parent": "InputFileSystem",
+                                    },
+                                    Object {
                                       "name": "realpath",
                                       "parent": "InputFileSystem",
                                     },
@@ -20780,6 +21329,10 @@ e. g. creating an assets manifest of Service Workers.",
                                     },
                                     Object {
                                       "name": "stat",
+                                      "parent": "InputFileSystem",
+                                    },
+                                    Object {
+                                      "name": "lstat",
                                       "parent": "InputFileSystem",
                                     },
                                     Object {
@@ -21117,6 +21670,32 @@ e. g. creating an assets manifest of Service Workers.",
                                   "type": "Cache",
                                 },
                                 Object {
+                                  "generics": Array [
+                                    Object {
+                                      "kind": 13,
+                                      "type": "Module",
+                                    },
+                                    Object {
+                                      "kind": 15,
+                                      "properties": Array [
+                                        Object {
+                                          "name": "buildInfo",
+                                        },
+                                        Object {
+                                          "name": "references",
+                                        },
+                                        Object {
+                                          "name": "memCache",
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                  "name": "moduleMemCaches",
+                                  "optional": true,
+                                  "parent": "Compiler",
+                                  "type": "Map",
+                                },
+                                Object {
                                   "kind": 1,
                                   "name": "compilerPath",
                                   "parent": "Compiler",
@@ -21294,6 +21873,11 @@ e. g. creating an assets manifest of Service Workers.",
                                 Object {
                                   "kind": 11,
                                   "name": "createCompilation",
+                                  "parameters": Array [
+                                    Object {
+                                      "name": "params",
+                                    },
+                                  ],
                                   "parent": "Compiler",
                                   "returns": Object {
                                     "kind": 13,
@@ -21421,6 +22005,10 @@ e. g. creating an assets manifest of Service Workers.",
                                   "parent": "InputFileSystem",
                                 },
                                 Object {
+                                  "name": "lstat",
+                                  "parent": "InputFileSystem",
+                                },
+                                Object {
                                   "name": "realpath",
                                   "parent": "InputFileSystem",
                                 },
@@ -21465,6 +22053,9 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "contextHashQueue",
+                                },
+                                Object {
+                                  "name": "contextTshQueue",
                                 },
                                 Object {
                                   "name": "managedItemQueue",
@@ -21518,6 +22109,10 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "getContextHash",
+                                  "parent": "FileSystemInfo",
+                                },
+                                Object {
+                                  "name": "getContextTsh",
                                   "parent": "FileSystemInfo",
                                 },
                                 Object {
@@ -21995,6 +22590,19 @@ e. g. creating an assets manifest of Service Workers.",
                               "parent": "Compilation",
                             },
                             Object {
+                              "kind": 14,
+                              "name": "params",
+                              "properties": Array [
+                                Object {
+                                  "name": "normalModuleFactory",
+                                },
+                                Object {
+                                  "name": "contextModuleFactory",
+                                },
+                              ],
+                              "type": "CompilationParams",
+                            },
+                            Object {
                               "kind": 13,
                               "name": "mainTemplate",
                               "properties": Array [
@@ -22217,6 +22825,54 @@ e. g. creating an assets manifest of Service Workers.",
                               ],
                             },
                             Object {
+                              "generics": Array [
+                                Object {
+                                  "kind": 13,
+                                  "type": "Module",
+                                },
+                                Object {
+                                  "generics": Array [
+                                    Object {
+                                      "kind": 17,
+                                    },
+                                    Object {
+                                      "kind": 17,
+                                    },
+                                  ],
+                                  "kind": 13,
+                                  "type": "WeakTupleMap",
+                                },
+                              ],
+                              "name": "moduleMemCaches",
+                              "optional": true,
+                              "parent": "Compilation",
+                              "type": "Map",
+                            },
+                            Object {
+                              "generics": Array [
+                                Object {
+                                  "kind": 13,
+                                  "type": "Module",
+                                },
+                                Object {
+                                  "generics": Array [
+                                    Object {
+                                      "kind": 17,
+                                    },
+                                    Object {
+                                      "kind": 17,
+                                    },
+                                  ],
+                                  "kind": 13,
+                                  "type": "WeakTupleMap",
+                                },
+                              ],
+                              "name": "moduleMemCaches2",
+                              "optional": true,
+                              "parent": "Compilation",
+                              "type": "Map",
+                            },
+                            Object {
                               "kind": 13,
                               "name": "moduleGraph",
                               "properties": Array [
@@ -22245,6 +22901,10 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "getParentBlock",
+                                  "parent": "ModuleGraph",
+                                },
+                                Object {
+                                  "name": "getParentBlockIndex",
                                   "parent": "ModuleGraph",
                                 },
                                 Object {
@@ -22317,6 +22977,10 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "getIncomingConnectionsByOriginModule",
+                                  "parent": "ModuleGraph",
+                                },
+                                Object {
+                                  "name": "getOutgoingConnectionsByModule",
                                   "parent": "ModuleGraph",
                                 },
                                 Object {
@@ -22431,6 +23095,14 @@ e. g. creating an assets manifest of Service Workers.",
                                   "name": "cached",
                                   "parent": "ModuleGraph",
                                 },
+                                Object {
+                                  "name": "setModuleMemCaches",
+                                  "parent": "ModuleGraph",
+                                },
+                                Object {
+                                  "name": "dependencyCacheProvide",
+                                  "parent": "ModuleGraph",
+                                },
                               ],
                               "type": "ModuleGraph",
                             },
@@ -22490,6 +23162,10 @@ e. g. creating an assets manifest of Service Workers.",
                                   "parent": "ChunkGraph",
                                 },
                                 Object {
+                                  "name": "attachDependentHashModules",
+                                  "parent": "ChunkGraph",
+                                },
+                                Object {
                                   "name": "replaceModule",
                                   "parent": "ChunkGraph",
                                 },
@@ -22527,6 +23203,10 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "getNumberOfChunkModules",
+                                  "parent": "ChunkGraph",
+                                },
+                                Object {
+                                  "name": "getNumberOfChunkFullHashModules",
                                   "parent": "ChunkGraph",
                                 },
                                 Object {
@@ -22602,6 +23282,10 @@ e. g. creating an assets manifest of Service Workers.",
                                   "parent": "ChunkGraph",
                                 },
                                 Object {
+                                  "name": "upgradeDependentToFullHashModules",
+                                  "parent": "ChunkGraph",
+                                },
+                                Object {
                                   "name": "isEntryModuleInChunk",
                                   "parent": "ChunkGraph",
                                 },
@@ -22615,6 +23299,10 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "addFullHashModuleToChunk",
+                                  "parent": "ChunkGraph",
+                                },
+                                Object {
+                                  "name": "addDependentHashModuleToChunk",
                                   "parent": "ChunkGraph",
                                 },
                                 Object {
@@ -22667,6 +23355,10 @@ e. g. creating an assets manifest of Service Workers.",
                                 },
                                 Object {
                                   "name": "getChunkFullHashModulesSet",
+                                  "parent": "ChunkGraph",
+                                },
+                                Object {
+                                  "name": "getChunkDependentHashModulesIterable",
                                   "parent": "ChunkGraph",
                                 },
                                 Object {
@@ -22925,9 +23617,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   "kind": 1,
                                   "name": "string",
                                 },
-                                Object {
-                                  "name": "Module",
-                                },
+                                Object {},
                               ],
                               "kind": 13,
                               "name": "factorizeQueue",
@@ -23417,11 +24107,11 @@ Needed to detect build cycles.",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@iterator@1245",
+                                  "name": "__@iterator@1274",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1247",
+                                  "name": "__@toStringTag@1276",
                                   "parent": "LazySet",
                                 },
                               ],
@@ -23486,11 +24176,11 @@ Needed to detect build cycles.",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@iterator@1245",
+                                  "name": "__@iterator@1274",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1247",
+                                  "name": "__@toStringTag@1276",
                                   "parent": "LazySet",
                                 },
                               ],
@@ -23555,11 +24245,11 @@ Needed to detect build cycles.",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@iterator@1245",
+                                  "name": "__@iterator@1274",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1247",
+                                  "name": "__@toStringTag@1276",
                                   "parent": "LazySet",
                                 },
                               ],
@@ -23624,11 +24314,11 @@ Needed to detect build cycles.",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@iterator@1245",
+                                  "name": "__@iterator@1274",
                                   "parent": "LazySet",
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1247",
+                                  "name": "__@toStringTag@1276",
                                   "parent": "LazySet",
                                 },
                               ],
@@ -23844,22 +24534,6 @@ Needed to detect build cycles.",
                             },
                             Object {
                               "kind": 11,
-                              "name": "factorizeModule",
-                              "parameters": Array [
-                                Object {
-                                  "name": "options",
-                                },
-                                Object {
-                                  "name": "callback",
-                                },
-                              ],
-                              "parent": "Compilation",
-                              "returns": Object {
-                                "kind": 12,
-                              },
-                            },
-                            Object {
-                              "kind": 11,
                               "name": "addModuleChain",
                               "parameters": Array [
                                 Object {
@@ -24000,7 +24674,7 @@ Needed to detect build cycles.",
                               ],
                               "parent": "Compilation",
                               "returns": Object {
-                                "kind": 12,
+                                "kind": 3,
                               },
                             },
                             Object {
@@ -24116,6 +24790,19 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               "parameters": Array [
                                 Object {
                                   "name": "module",
+                                },
+                              ],
+                              "parent": "Compilation",
+                              "returns": Object {
+                                "kind": 12,
+                              },
+                            },
+                            Object {
+                              "kind": 11,
+                              "name": "assignDepths",
+                              "parameters": Array [
+                                Object {
+                                  "name": "modules",
                                 },
                               ],
                               "parent": "Compilation",
@@ -24598,6 +25285,11 @@ from parent (or top level compiler) and creates a child Compilation",
                                 "kind": 12,
                               },
                             },
+                            Object {
+                              "kind": 15,
+                              "name": "factorizeModule",
+                              "parent": "Compilation",
+                            },
                           ],
                           "type": "Compilation",
                         },
@@ -25022,6 +25714,10 @@ from parent (or top level compiler) and creates a child Compilation",
                         },
                         Object {
                           "kind": 1,
+                          "value": "warn-mock",
+                        },
+                        Object {
+                          "kind": 1,
                           "value": "mock",
                         },
                         Object {
@@ -25041,6 +25737,10 @@ from parent (or top level compiler) and creates a child Compilation",
                         },
                         Object {
                           "kind": 1,
+                          "value": "warn-mock",
+                        },
+                        Object {
+                          "kind": 1,
                           "value": "mock",
                         },
                         Object {
@@ -25051,9 +25751,18 @@ from parent (or top level compiler) and creates a child Compilation",
                     },
                     Object {
                       "description": "Include a polyfill for the 'global' variable.",
-                      "kind": 3,
+                      "kind": 4,
                       "name": "global",
                       "optional": true,
+                      "properties": Array [
+                        Object {
+                          "kind": 3,
+                        },
+                        Object {
+                          "kind": 1,
+                          "value": "warn",
+                        },
+                      ],
                     },
                   ],
                   "type": "NodeOptions",
@@ -26643,6 +27352,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                       "parent": "InputFileSystem",
                                     },
                                     Object {
+                                      "name": "lstat",
+                                      "parent": "InputFileSystem",
+                                    },
+                                    Object {
                                       "name": "realpath",
                                       "parent": "InputFileSystem",
                                     },
@@ -26727,6 +27440,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "stat",
+                                      "parent": "InputFileSystem",
+                                    },
+                                    Object {
+                                      "name": "lstat",
                                       "parent": "InputFileSystem",
                                     },
                                     Object {
@@ -27064,6 +27781,32 @@ from parent (or top level compiler) and creates a child Compilation",
                                   "type": "Cache",
                                 },
                                 Object {
+                                  "generics": Array [
+                                    Object {
+                                      "kind": 13,
+                                      "type": "Module",
+                                    },
+                                    Object {
+                                      "kind": 15,
+                                      "properties": Array [
+                                        Object {
+                                          "name": "buildInfo",
+                                        },
+                                        Object {
+                                          "name": "references",
+                                        },
+                                        Object {
+                                          "name": "memCache",
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                  "name": "moduleMemCaches",
+                                  "optional": true,
+                                  "parent": "Compiler",
+                                  "type": "Map",
+                                },
+                                Object {
                                   "kind": 1,
                                   "name": "compilerPath",
                                   "parent": "Compiler",
@@ -27241,6 +27984,11 @@ from parent (or top level compiler) and creates a child Compilation",
                                 Object {
                                   "kind": 11,
                                   "name": "createCompilation",
+                                  "parameters": Array [
+                                    Object {
+                                      "name": "params",
+                                    },
+                                  ],
                                   "parent": "Compiler",
                                   "returns": Object {
                                     "kind": 13,
@@ -27479,6 +28227,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                   "parent": "InputFileSystem",
                                 },
                                 Object {
+                                  "name": "lstat",
+                                  "parent": "InputFileSystem",
+                                },
+                                Object {
                                   "name": "realpath",
                                   "parent": "InputFileSystem",
                                 },
@@ -27563,6 +28315,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "stat",
+                                  "parent": "InputFileSystem",
+                                },
+                                Object {
+                                  "name": "lstat",
                                   "parent": "InputFileSystem",
                                 },
                                 Object {
@@ -27900,6 +28656,32 @@ from parent (or top level compiler) and creates a child Compilation",
                               "type": "Cache",
                             },
                             Object {
+                              "generics": Array [
+                                Object {
+                                  "kind": 13,
+                                  "type": "Module",
+                                },
+                                Object {
+                                  "kind": 15,
+                                  "properties": Array [
+                                    Object {
+                                      "name": "buildInfo",
+                                    },
+                                    Object {
+                                      "name": "references",
+                                    },
+                                    Object {
+                                      "name": "memCache",
+                                    },
+                                  ],
+                                },
+                              ],
+                              "name": "moduleMemCaches",
+                              "optional": true,
+                              "parent": "Compiler",
+                              "type": "Map",
+                            },
+                            Object {
                               "kind": 1,
                               "name": "compilerPath",
                               "parent": "Compiler",
@@ -28077,6 +28859,11 @@ from parent (or top level compiler) and creates a child Compilation",
                             Object {
                               "kind": 11,
                               "name": "createCompilation",
+                              "parameters": Array [
+                                Object {
+                                  "name": "params",
+                                },
+                              ],
                               "parent": "Compiler",
                               "returns": Object {
                                 "kind": 13,
@@ -28729,6 +29516,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                       "parent": "InputFileSystem",
                                     },
                                     Object {
+                                      "name": "lstat",
+                                      "parent": "InputFileSystem",
+                                    },
+                                    Object {
                                       "name": "realpath",
                                       "parent": "InputFileSystem",
                                     },
@@ -28813,6 +29604,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                     },
                                     Object {
                                       "name": "stat",
+                                      "parent": "InputFileSystem",
+                                    },
+                                    Object {
+                                      "name": "lstat",
                                       "parent": "InputFileSystem",
                                     },
                                     Object {
@@ -29150,6 +29945,32 @@ from parent (or top level compiler) and creates a child Compilation",
                                   "type": "Cache",
                                 },
                                 Object {
+                                  "generics": Array [
+                                    Object {
+                                      "kind": 13,
+                                      "type": "Module",
+                                    },
+                                    Object {
+                                      "kind": 15,
+                                      "properties": Array [
+                                        Object {
+                                          "name": "buildInfo",
+                                        },
+                                        Object {
+                                          "name": "references",
+                                        },
+                                        Object {
+                                          "name": "memCache",
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                  "name": "moduleMemCaches",
+                                  "optional": true,
+                                  "parent": "Compiler",
+                                  "type": "Map",
+                                },
+                                Object {
                                   "kind": 1,
                                   "name": "compilerPath",
                                   "parent": "Compiler",
@@ -29327,6 +30148,11 @@ from parent (or top level compiler) and creates a child Compilation",
                                 Object {
                                   "kind": 11,
                                   "name": "createCompilation",
+                                  "parameters": Array [
+                                    Object {
+                                      "name": "params",
+                                    },
+                                  ],
                                   "parent": "Compiler",
                                   "returns": Object {
                                     "kind": 13,
@@ -29565,6 +30391,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                   "parent": "InputFileSystem",
                                 },
                                 Object {
+                                  "name": "lstat",
+                                  "parent": "InputFileSystem",
+                                },
+                                Object {
                                   "name": "realpath",
                                   "parent": "InputFileSystem",
                                 },
@@ -29649,6 +30479,10 @@ from parent (or top level compiler) and creates a child Compilation",
                                 },
                                 Object {
                                   "name": "stat",
+                                  "parent": "InputFileSystem",
+                                },
+                                Object {
+                                  "name": "lstat",
                                   "parent": "InputFileSystem",
                                 },
                                 Object {
@@ -29986,6 +30820,32 @@ from parent (or top level compiler) and creates a child Compilation",
                               "type": "Cache",
                             },
                             Object {
+                              "generics": Array [
+                                Object {
+                                  "kind": 13,
+                                  "type": "Module",
+                                },
+                                Object {
+                                  "kind": 15,
+                                  "properties": Array [
+                                    Object {
+                                      "name": "buildInfo",
+                                    },
+                                    Object {
+                                      "name": "references",
+                                    },
+                                    Object {
+                                      "name": "memCache",
+                                    },
+                                  ],
+                                },
+                              ],
+                              "name": "moduleMemCaches",
+                              "optional": true,
+                              "parent": "Compiler",
+                              "type": "Map",
+                            },
+                            Object {
                               "kind": 1,
                               "name": "compilerPath",
                               "parent": "Compiler",
@@ -30163,6 +31023,11 @@ from parent (or top level compiler) and creates a child Compilation",
                             Object {
                               "kind": 11,
                               "name": "createCompilation",
+                              "parameters": Array [
+                                Object {
+                                  "name": "params",
+                                },
+                              ],
                               "parent": "Compiler",
                               "returns": Object {
                                 "kind": 13,

@@ -2,6 +2,28 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('interface', () => {
+  it('index-prop', () => {
+    const results = parseFiles([path.resolve(__dirname, 'index-prop.ts')]);
+
+    expect(results).toEqual({
+      IndexInterface: {
+        name: 'IndexInterface',
+        kind: 14,
+        properties: [
+          {
+            kind: 20,
+            index: {
+              kind: 2,
+              name: 'index',
+            },
+            prop: {
+              kind: 1,
+            },
+          },
+        ],
+      },
+    });
+  });
   it('record-props', () => {
     const results = parseFiles(
       [path.resolve(__dirname, 'record-props.ts')],
@@ -231,28 +253,6 @@ describe('interface', () => {
     });
   });
 
-  it('index-prop', () => {
-    const results = parseFiles([path.resolve(__dirname, 'index-prop.ts')]);
-
-    expect(results).toEqual({
-      IndexInterface: {
-        name: 'IndexInterface',
-        kind: 14,
-        properties: [
-          {
-            kind: 20,
-            index: {
-              kind: 2,
-              name: 'index',
-            },
-            prop: {
-              kind: 1,
-            },
-          },
-        ],
-      },
-    });
-  });
   it('jsdoc-default', () => {
     const results = parseFiles([path.resolve(__dirname, 'jsdoc-default.ts')]);
     expect(results).toEqual({

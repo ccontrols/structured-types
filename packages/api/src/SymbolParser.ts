@@ -49,6 +49,7 @@ import { resolveType } from './ts/resolveType';
 import { getInitializer } from './ts/getInitializer';
 import { mergeNodeComments } from './jsdoc/mergeJSDoc';
 import { parseJSDocTag } from './jsdoc/parseJSDocTags';
+import { SourceLocation } from '.';
 export class SymbolParser implements ISymbolParser {
   public checker: ts.TypeChecker;
   public readonly options: Required<ParseOptions>;
@@ -166,22 +167,29 @@ export class SymbolParser implements ISymbolParser {
   }
 
   private parseFilePath = (
-    prop: PropType,
     options: ParseOptions,
     isTopLevel: boolean,
     node?: ts.Node,
-  ): PropType => {
+  ): SourceLocation | undefined => {
+    let location: SourceLocation | undefined = undefined;
     if (node && (isTopLevel || options.collectInnerLocations)) {
       const source = node.getSourceFile();
       if (options.collectFilePath) {
-        prop.filePath = source.fileName;
+        if (!location) {
+          location = {};
+        }
+        location.filePath = source.fileName;
       }
       if (options.collectLinesOfCode) {
         const name = ts.getNameOfDeclaration(node as ts.Declaration);
         if (name) {
+          if (!location) {
+            location = {};
+          }
+
           const start = source.getLineAndCharacterOfPosition(name.pos);
           const end = source.getLineAndCharacterOfPosition(name.end);
-          prop.loc = {
+          location.loc = {
             start: {
               line: start.line + 1,
               col: start.character + 1,
@@ -194,7 +202,7 @@ export class SymbolParser implements ISymbolParser {
         }
       }
     }
-    return prop;
+    return location;
   };
   public parseProperties(
     properties: ts.NodeArray<
@@ -827,11 +835,19 @@ export class SymbolParser implements ISymbolParser {
       ) {
         const { numberIndexInfo, stringIndexInfo } =
           type as InterfaceOrTypeWithIndex;
-        const numberIndex = extractIndex(numberIndexInfo, PropKind.Number);
+        const numberIndex = extractIndex(
+          numberIndexInfo ||
+            this.checker.getIndexInfoOfType(type, ts.IndexKind.Number),
+          PropKind.Number,
+        );
         if (numberIndex) {
           result.push(numberIndex);
         }
-        const stringIndex = extractIndex(stringIndexInfo, PropKind.String);
+        const stringIndex = extractIndex(
+          stringIndexInfo ||
+            this.checker.getIndexInfoOfType(type, ts.IndexKind.String),
+          PropKind.String,
+        );
         if (stringIndex) {
           result.push(stringIndex);
         }
@@ -886,7 +902,10 @@ export class SymbolParser implements ISymbolParser {
           ? resolvedSymbol.valueDeclaration || resolvedSymbol.declarations?.[0]
           : undefined;
         const internalKind = this.internalNode(resolvedDeclaration);
-        this.parseFilePath(prop, options, topLevel, declaration);
+        const loc = this.parseFilePath(options, topLevel, declaration);
+        if (loc) {
+          prop.loc = loc;
+        }
         const typeName = this.geDeclarationName(resolvedDeclaration);
         if (!pluginName && !prop.type) {
           if (typeName && prop.name !== typeName) {
@@ -1029,7 +1048,10 @@ export class SymbolParser implements ISymbolParser {
         }
       }
     }
-    this.parseFilePath(prop, defaultOptions, topLevel, declaration);
+    const loc = this.parseFilePath(defaultOptions, topLevel, declaration);
+    if (loc) {
+      prop.loc = loc;
+    }
 
     return this.filterProperty(
       this.parseTypeValueComments(

@@ -85,7 +85,7 @@ Object {
                       },
                       Object {
                         "extends": Array [
-                          "Array",
+                          "ReadonlyArray",
                         ],
                         "kind": 14,
                         "name": "ReactNodeArray",

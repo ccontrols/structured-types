@@ -82,11 +82,11 @@ Creates a list of api documentation nodes
 
 **parameters**
 
-| Name      | Type                                                | Description                                     |
-| --------- | --------------------------------------------------- | ----------------------------------------------- |
-| `props*`  | { `__helpers`: `Record`, `__diagnostics`: `array` } | properties parsed from  `structured-types/api`  |
-| `options` | [`DocumentationOptions`](#documentationoptions)     | Document page generation options                |
-| `returns` | { `kind`: [`NodeKind`](#nodekind) }\[]              | a list of documentation nodes                   |
+| Name      | Type                                                         | Description                                     |
+| --------- | ------------------------------------------------------------ | ----------------------------------------------- |
+| `props*`  | { `index`, `__helpers`: `Record`, `__diagnostics`: `array` } | properties parsed from  `structured-types/api`  |
+| `options` | [`DocumentationOptions`](#documentationoptions)              | Document page generation options                |
+| `returns` | { `kind`: [`NodeKind`](#nodekind) }\[]                       | a list of documentation nodes                   |
 
 ## apiDocsConfig
 

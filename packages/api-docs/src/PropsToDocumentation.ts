@@ -435,7 +435,7 @@ export class PropsToDocumentation {
     return this.typeNode(prop, showValue);
   }
   private getSourceLocation(prop: PropType): DocumentationNode[] {
-    const { filePath } = prop;
+    const { filePath, loc } = prop.loc || {};
     if (filePath) {
       if (!this.repoNames[filePath]) {
         this.repoNames[filePath] = getRepoPath(path.resolve(filePath));
@@ -445,7 +445,7 @@ export class PropsToDocumentation {
         const { repo, relativePath, packageName } = this.repoNames[filePath];
         const fileLocation = repo || filePath;
         if (fileLocation) {
-          const { line } = prop.loc?.start || {};
+          const { line } = loc?.start || {};
           const sourceLocation = filePath.includes('node_modules')
             ? fileLocation
             : `${fileLocation}${line ? `#L${line}` : ''}`;

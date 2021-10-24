@@ -83,7 +83,6 @@ describe('function-component', () => {
       {
         plugins: [reactPlugin],
         collectHelpers: true,
-        collectFilePath: true,
         extract: ['JSONViewer'],
       },
     );

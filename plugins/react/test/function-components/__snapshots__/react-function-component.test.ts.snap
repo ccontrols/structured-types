@@ -4,7 +4,6 @@ exports[`function-component Editor 1`] = `
 Object {
   "JSONViewer": Object {
     "extension": "react",
-    "filePath": "/Users/atanasster/structured-types/site/src/components/viewers/JSONViewer.tsx",
     "kind": 25,
     "name": "JSONViewer",
     "properties": Array [
@@ -108,7 +107,7 @@ Object {
                 },
                 Object {
                   "extends": Array [
-                    "Array",
+                    "ReadonlyArray",
                   ],
                   "kind": 14,
                   "name": "ReactNodeArray",
@@ -289,7 +288,7 @@ Object {
                 },
                 Object {
                   "extends": Array [
-                    "Array",
+                    "ReadonlyArray",
                   ],
                   "kind": 14,
                   "name": "ReactNodeArray",
@@ -483,7 +482,7 @@ Object {
                 },
                 Object {
                   "extends": Array [
-                    "Array",
+                    "ReadonlyArray",
                   ],
                   "kind": 14,
                   "name": "ReactNodeArray",
@@ -619,7 +618,6 @@ Object {
     "Base16Theme": Object {
       "description": "Type describing a syntax highlighting scheme as a JS object, as used in redux dev tools
 Based on https://github.com/chriskempson/base16",
-      "filePath": "/Users/atanasster/structured-types/node_modules/@types/base16/index.d.ts",
       "kind": 14,
       "name": "Base16Theme",
       "properties": Array [
@@ -698,7 +696,6 @@ Based on https://github.com/chriskempson/base16",
       ],
     },
     "CircularPropsPassedThroughJSONTree": Object {
-      "filePath": "/Users/atanasster/structured-types/node_modules/react-json-tree/lib/types.d.ts",
       "kind": 15,
       "name": "CircularPropsPassedThroughJSONTree",
       "properties": Array [
@@ -786,7 +783,7 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "Array",
+                      "ReadonlyArray",
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -967,7 +964,7 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "Array",
+                      "ReadonlyArray",
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -1161,7 +1158,7 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "Array",
+                      "ReadonlyArray",
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -1294,7 +1291,6 @@ Based on https://github.com/chriskempson/base16",
       ],
     },
     "JSONNestedNodeCircularPropsPassedThroughJSONTree": Object {
-      "filePath": "/Users/atanasster/structured-types/node_modules/react-json-tree/lib/types.d.ts",
       "kind": 14,
       "name": "JSONNestedNodeCircularPropsPassedThroughJSONTree",
       "properties": Array [
@@ -1423,7 +1419,7 @@ Based on https://github.com/chriskempson/base16",
                     },
                     Object {
                       "extends": Array [
-                        "Array",
+                        "ReadonlyArray",
                       ],
                       "kind": 14,
                       "name": "ReactNodeArray",
@@ -1622,7 +1618,7 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "Array",
+                      "ReadonlyArray",
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -1784,7 +1780,6 @@ Based on https://github.com/chriskempson/base16",
       ],
     },
     "JSONValueNodeCircularPropsPassedThroughJSONTree": Object {
-      "filePath": "/Users/atanasster/structured-types/node_modules/react-json-tree/lib/types.d.ts",
       "kind": 14,
       "name": "JSONValueNodeCircularPropsPassedThroughJSONTree",
       "properties": Array [
@@ -1893,7 +1888,7 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "Array",
+                      "ReadonlyArray",
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -2005,7 +2000,6 @@ Based on https://github.com/chriskempson/base16",
       "extends": Array [
         "CircularPropsPassedThroughJSONTree",
       ],
-      "filePath": "/Users/atanasster/structured-types/node_modules/react-json-tree/lib/index.d.ts",
       "kind": 14,
       "name": "Props",
       "properties": Array [
@@ -2139,6 +2133,10 @@ Based on https://github.com/chriskempson/base16",
                             "kind": 14,
                             "name": "Properties",
                             "properties": Array [
+                              Object {
+                                "name": "accentColor",
+                                "parent": "StandardLonghandProperties",
+                              },
                               Object {
                                 "name": "alignContent",
                                 "parent": "StandardLonghandProperties",
@@ -5350,6 +5348,10 @@ Based on https://github.com/chriskempson/base16",
                           "kind": 14,
                           "name": "Properties",
                           "properties": Array [
+                            Object {
+                              "name": "accentColor",
+                              "parent": "StandardLonghandProperties",
+                            },
                             Object {
                               "name": "alignContent",
                               "parent": "StandardLonghandProperties",
@@ -8611,7 +8613,7 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "Array",
+                      "ReadonlyArray",
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -8792,7 +8794,7 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "Array",
+                      "ReadonlyArray",
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -8986,7 +8988,7 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "Array",
+                      "ReadonlyArray",
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -9119,7 +9121,6 @@ Based on https://github.com/chriskempson/base16",
       ],
     },
     "PropsWithChildren": Object {
-      "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
       "generics": Array [
         Object {
           "name": "P",
@@ -9206,7 +9207,7 @@ Based on https://github.com/chriskempson/base16",
                     },
                     Object {
                       "extends": Array [
-                        "Array",
+                        "ReadonlyArray",
                       ],
                       "kind": 14,
                       "name": "ReactNodeArray",
@@ -9316,7 +9317,6 @@ Based on https://github.com/chriskempson/base16",
       ],
     },
     "ReactElement": Object {
-      "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
       "generics": Array [
         Object {
           "name": "P",
@@ -9363,7 +9363,6 @@ Based on https://github.com/chriskempson/base16",
       "extends": Array [
         "ReactElement",
       ],
-      "filePath": "/Users/atanasster/structured-types/node_modules/@types/react/index.d.ts",
       "kind": 14,
       "name": "ReactPortal",
       "properties": Array [
@@ -9429,7 +9428,6 @@ Based on https://github.com/chriskempson/base16",
       ],
     },
     "SharedCircularPropsPassedThroughJSONTree": Object {
-      "filePath": "/Users/atanasster/structured-types/node_modules/react-json-tree/lib/types.d.ts",
       "kind": 14,
       "name": "SharedCircularPropsPassedThroughJSONTree",
       "properties": Array [
@@ -9560,7 +9558,7 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "Array",
+                      "ReadonlyArray",
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -9675,7 +9673,6 @@ Based on https://github.com/chriskempson/base16",
       "name": "StandardShorthandProperties",
     },
     "StylingConfig": Object {
-      "filePath": "/Users/atanasster/structured-types/node_modules/react-base16-styling/lib/types.d.ts",
       "kind": 15,
       "name": "StylingConfig",
       "properties": Array [
@@ -9712,6 +9709,10 @@ Based on https://github.com/chriskempson/base16",
                     "kind": 14,
                     "name": "Properties",
                     "properties": Array [
+                      Object {
+                        "name": "accentColor",
+                        "parent": "StandardLonghandProperties",
+                      },
                       Object {
                         "name": "alignContent",
                         "parent": "StandardLonghandProperties",
@@ -12924,6 +12925,10 @@ Based on https://github.com/chriskempson/base16",
                   "name": "Properties",
                   "properties": Array [
                     Object {
+                      "name": "accentColor",
+                      "parent": "StandardLonghandProperties",
+                    },
+                    Object {
                       "name": "alignContent",
                       "parent": "StandardLonghandProperties",
                     },
@@ -16130,6 +16135,79 @@ Object {
             "name": "CSSProperties",
             "properties": Array [
               Object {
+                "description": "The **\`accent-color\`** CSS property sets the color of the elements accent. An accent appears in elements such as \`<input>\` of \`type=\\"checkbox\\"\`, or \`type=\\"radio\\"\`.
+
+**Syntax**: \`auto | <color>\`
+
+**Initial value**: \`auto\`
+
+| Chrome | Firefox | Safari |  Edge  | IE  |
+| :----: | :-----: | :----: | :----: | :-: |
+| **93** | **92**  |   No   | **93** | No  |",
+                "kind": 4,
+                "name": "accentColor",
+                "optional": true,
+                "parent": "StandardLonghandProperties",
+                "properties": Array [
+                  Object {
+                    "kind": 4,
+                    "properties": Array [
+                      Object {
+                        "kind": 1,
+                        "value": "-moz-initial",
+                      },
+                      Object {
+                        "kind": 1,
+                        "value": "inherit",
+                      },
+                      Object {
+                        "kind": 1,
+                        "value": "initial",
+                      },
+                      Object {
+                        "kind": 1,
+                        "value": "revert",
+                      },
+                      Object {
+                        "kind": 1,
+                        "value": "unset",
+                      },
+                    ],
+                    "type": "Globals",
+                  },
+                  Object {
+                    "kind": 4,
+                    "name": "Color",
+                    "properties": Array [
+                      Object {
+                        "kind": 15,
+                        "type": "NamedColor",
+                      },
+                      Object {
+                        "kind": 15,
+                        "type": "DeprecatedSystemColor",
+                      },
+                      Object {
+                        "kind": 1,
+                        "value": "currentcolor",
+                      },
+                      Object {
+                        "kind": 15,
+                      },
+                    ],
+                    "type": "DataType.Color",
+                  },
+                  Object {
+                    "kind": 1,
+                    "value": "auto",
+                  },
+                ],
+                "see": Array [
+                  "https://developer.mozilla.org/docs/Web/CSS/accent-color",
+                ],
+                "type": "Property.AccentColor",
+              },
+              Object {
                 "description": "The CSS **\`align-content\`** property sets the distribution of space between and around content items along a flexbox's cross-axis or a grid's block axis.
 
 **Syntax**: \`normal | <baseline-position> | <content-distribution> | <overflow-position>? <content-position>\`
@@ -16140,10 +16218,10 @@ Object {
 
 _Supported in Flex Layout_
 
-|  Chrome  | Firefox |  Safari   |  Edge  |   IE   |
-| :------: | :-----: | :-------: | :----: | :----: |
-|  **29**  | **28**  |   **9**   | **12** | **11** |
-| 21 _-x-_ |         | 6.1 _-x-_ |        |        |
+|  Chrome  | Firefox | Safari  |  Edge  |   IE   |
+| :------: | :-----: | :-----: | :----: | :----: |
+|  **29**  | **28**  |  **9**  | **12** | **11** |
+| 21 _-x-_ |         | 7 _-x-_ |        |        |
 
 ---
 
@@ -17224,7 +17302,7 @@ _Supported in Grid Layout_
 
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **88** |   n/a   |   No   | **88** | No  |",
+| **88** | **89**  | **15** | **88** | No  |",
                 "kind": 4,
                 "name": "aspectRatio",
                 "optional": true,
@@ -18302,9 +18380,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`currentcolor\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **66**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **66**  | **14.1** | **87** | No  |",
                 "kind": 4,
                 "name": "borderBlockColor",
                 "optional": true,
@@ -18858,9 +18936,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`none\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **66**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **66**  | **14.1** | **87** | No  |",
                 "kind": 4,
                 "name": "borderBlockStyle",
                 "optional": true,
@@ -18952,9 +19030,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`medium\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **66**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **66**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -19448,7 +19526,7 @@ _Supported in Grid Layout_
 
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **89** | **66**  |   No   | **89** | No  |",
+| **89** | **66**  | **15** | **89** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -19506,7 +19584,7 @@ _Supported in Grid Layout_
 
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **89** | **66**  |   No   | **89** | No  |",
+| **89** | **66**  | **15** | **89** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -19861,9 +19939,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`currentcolor\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **66**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **66**  | **14.1** | **87** | No  |",
                 "kind": 4,
                 "name": "borderInlineColor",
                 "optional": true,
@@ -20422,9 +20500,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`none\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **66**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **66**  | **14.1** | **87** | No  |",
                 "kind": 4,
                 "name": "borderInlineStyle",
                 "optional": true,
@@ -20516,9 +20594,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`medium\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **66**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **66**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -21139,7 +21217,7 @@ _Supported in Grid Layout_
 
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **89** | **66**  |   No   | **89** | No  |",
+| **89** | **66**  | **15** | **89** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -21197,7 +21275,7 @@ _Supported in Grid Layout_
 
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **89** | **66**  |   No   | **89** | No  |",
+| **89** | **66**  | **15** | **89** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -21675,9 +21753,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`slice\`
 
-|    Chrome    | Firefox |    Safari     |     Edge     | IE  |
-| :----------: | :-----: | :-----------: | :----------: | :-: |
-| **22** _-x-_ | **32**  | **6.1** _-x-_ | **79** _-x-_ | No  |",
+|    Chrome    | Firefox |   Safari    |     Edge     | IE  |
+| :----------: | :-----: | :---------: | :----------: | :-: |
+| **22** _-x-_ | **32**  | **7** _-x-_ | **79** _-x-_ | No  |",
                 "kind": 4,
                 "name": "boxDecorationBreak",
                 "optional": true,
@@ -22754,9 +22832,9 @@ _Supported in Paged Media_
 
 _Supported in Flex Layout_
 
-| Chrome | Firefox | Safari |  Edge  | IE  |
-| :----: | :-----: | :----: | :----: | :-: |
-| **84** | **63**  |   No   | **84** | No  |
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **84** | **63**  | **14.1** | **84** | No  |
 
 ---
 
@@ -22764,7 +22842,7 @@ _Supported in Grid Layout_
 
 |         Chrome         |        Firefox         |          Safari          |  Edge  | IE  |
 | :--------------------: | :--------------------: | :----------------------: | :----: | :-: |
-|         **66**         |         **61**         |         **12.1**         | **16** | No  |
+|         **66**         |         **61**         |          **12**          | **16** | No  |
 | 57 _(grid-column-gap)_ | 52 _(grid-column-gap)_ | 10.1 _(grid-column-gap)_ |        |     |
 
 ---
@@ -24318,10 +24396,10 @@ _Supported in Multi-column Layout_
 
 **Initial value**: \`0\`
 
-|  Chrome  | Firefox |  Safari   |  Edge  |            IE            |
-| :------: | :-----: | :-------: | :----: | :----------------------: |
-|  **29**  | **20**  |   **9**   | **12** |          **11**          |
-| 22 _-x-_ |         | 6.1 _-x-_ |        | 10 _(-ms-flex-positive)_ |",
+|  Chrome  | Firefox | Safari  |  Edge  |            IE            |
+| :------: | :-----: | :-----: | :----: | :----------------------: |
+|  **29**  | **20**  |  **9**  | **12** |          **11**          |
+| 22 _-x-_ |         | 7 _-x-_ |        | 10 _(-ms-flex-positive)_ |",
                 "kind": 4,
                 "name": "flexGrow",
                 "optional": true,
@@ -24950,7 +25028,7 @@ _Supported in Multi-column Layout_
               Object {
                 "description": "The **\`font-size-adjust\`** CSS property sets the size of lower-case letters relative to the current font size (which defines the size of upper-case letters).
 
-**Syntax**: \`none | <number>\`
+**Syntax**: \`none | [ ex-height | cap-height | ch-width | ic-width | ic-height ]? [ from-font | <number> ]\`
 
 **Initial value**: \`none\`
 
@@ -24990,7 +25068,14 @@ _Supported in Multi-column Layout_
                   },
                   Object {
                     "kind": 1,
+                    "value": "from-font",
+                  },
+                  Object {
+                    "kind": 1,
                     "value": "none",
+                  },
+                  Object {
+                    "kind": 15,
                   },
                   Object {
                     "kind": 15,
@@ -25265,7 +25350,7 @@ _Supported in Multi-column Layout_
               Object {
                 "description": "The **\`font-synthesis\`** CSS property controls which missing typefaces, bold or italic, may be synthesized by the browser.
 
-**Syntax**: \`none | [ weight || style ]\`
+**Syntax**: \`none | [ weight || style || small-caps ]\`
 
 **Initial value**: \`weight style\`
 
@@ -25306,6 +25391,10 @@ _Supported in Multi-column Layout_
                   Object {
                     "kind": 1,
                     "value": "none",
+                  },
+                  Object {
+                    "kind": 1,
+                    "value": "small-caps",
                   },
                   Object {
                     "kind": 1,
@@ -25599,9 +25688,9 @@ _Supported in Multi-column Layout_
 
 **Initial value**: \`normal\`
 
-| Chrome | Firefox | Safari |  Edge  | IE  |
-| :----: | :-----: | :----: | :----: | :-: |
-| **63** | **34**  |   No   | **79** | No  |",
+| Chrome | Firefox | Safari  |  Edge  | IE  |
+| :----: | :-----: | :-----: | :----: | :-: |
+| **63** | **34**  | **9.1** | **79** | No  |",
                 "kind": 4,
                 "name": "fontVariantEastAsian",
                 "optional": true,
@@ -25873,9 +25962,9 @@ _Supported in Multi-column Layout_
 
 **Initial value**: \`normal\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-|   No   | **34**  |   No   |  No  | No  |",
+| Chrome | Firefox | Safari  | Edge | IE  |
+| :----: | :-----: | :-----: | :--: | :-: |
+|   No   | **34**  | **9.1** |  No  | No  |",
                 "kind": 4,
                 "name": "fontVariantPosition",
                 "optional": true,
@@ -26999,10 +27088,10 @@ _Supported in Multi-column Layout_
 
 **Initial value**: \`manual\`
 
-|  Chrome  | Firefox |    Safari     |     Edge     |      IE      |
-| :------: | :-----: | :-----------: | :----------: | :----------: |
-|  **55**  | **43**  | **5.1** _-x-_ | **12** _-x-_ | **10** _-x-_ |
-| 13 _-x-_ | 6 _-x-_ |               |              |              |",
+|  Chrome  | Firefox |    Safari     |  Edge  |      IE      |
+| :------: | :-----: | :-----------: | :----: | :----------: |
+|  **55**  | **43**  | **5.1** _-x-_ | **79** | **10** _-x-_ |
+| 13 _-x-_ | 6 _-x-_ |               |        |              |",
                 "kind": 4,
                 "name": "hyphens",
                 "optional": true,
@@ -27376,9 +27465,9 @@ _Supported in Multi-column Layout_
 
 **Initial value**: \`auto\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **66**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **66**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -27438,9 +27527,9 @@ _Supported in Multi-column Layout_
 
 **Initial value**: \`auto\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **63**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **63**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -27500,9 +27589,9 @@ _Supported in Multi-column Layout_
 
 **Initial value**: \`auto\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **63**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **63**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -27562,9 +27651,9 @@ _Supported in Multi-column Layout_
 
 **Initial value**: \`auto\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **63**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **63**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -27624,9 +27713,9 @@ _Supported in Multi-column Layout_
 
 **Initial value**: \`auto\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **63**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **63**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -27686,9 +27775,9 @@ _Supported in Multi-column Layout_
 
 **Initial value**: \`auto\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **63**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **63**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -27748,9 +27837,9 @@ _Supported in Multi-column Layout_
 
 **Initial value**: \`auto\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **63**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **63**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -28822,9 +28911,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **66**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **66**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -29070,9 +29159,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **66**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **66**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -29945,9 +30034,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`none\`
 
-|   Chrome    | Firefox |   Safari    |  Edge  | IE  |
-| :---------: | :-----: | :---------: | :----: | :-: |
-| **1** _-x-_ | **53**  | **4** _-x-_ | **16** | No  |",
+|   Chrome    | Firefox |   Safari    | Edge  | IE  |
+| :---------: | :-----: | :---------: | :---: | :-: |
+| **1** _-x-_ | **53**  | **4** _-x-_ | 16-79 | No  |",
                 "kind": 4,
                 "name": "maskImage",
                 "optional": true,
@@ -30141,9 +30230,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`center\`
 
-|   Chrome    | Firefox |    Safari     |  Edge  | IE  |
-| :---------: | :-----: | :-----------: | :----: | :-: |
-| **1** _-x-_ | **53**  | **3.2** _-x-_ | **18** | No  |",
+|   Chrome    | Firefox |    Safari     | Edge  | IE  |
+| :---------: | :-----: | :-----------: | :---: | :-: |
+| **1** _-x-_ | **53**  | **3.1** _-x-_ | 18-79 | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -30234,9 +30323,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`no-repeat\`
 
-|   Chrome    | Firefox |    Safari     |  Edge  | IE  |
-| :---------: | :-----: | :-----------: | :----: | :-: |
-| **1** _-x-_ | **53**  | **3.2** _-x-_ | **18** | No  |",
+|   Chrome    | Firefox |    Safari     | Edge  | IE  |
+| :---------: | :-----: | :-----------: | :---: | :-: |
+| **1** _-x-_ | **53**  | **3.1** _-x-_ | 18-79 | No  |",
                 "kind": 4,
                 "name": "maskRepeat",
                 "optional": true,
@@ -30318,9 +30407,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`auto\`
 
-|   Chrome    | Firefox |   Safari    |  Edge  | IE  |
-| :---------: | :-----: | :---------: | :----: | :-: |
-| **4** _-x-_ | **53**  | **4** _-x-_ | **18** | No  |",
+|   Chrome    | Firefox |   Safari    | Edge  | IE  |
+| :---------: | :-----: | :---------: | :---: | :-: |
+| **4** _-x-_ | **53**  | **4** _-x-_ | 18-79 | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -30403,9 +30492,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`luminance\`
 
-| Chrome | Firefox | Safari  |  Edge  | IE  |
-| :----: | :-----: | :-----: | :----: | :-: |
-| **24** | **35**  | **6.1** | **79** | No  |",
+| Chrome | Firefox | Safari |  Edge  | IE  |
+| :----: | :-----: | :----: | :----: | :-: |
+| **24** | **35**  | **7**  | **79** | No  |",
                 "kind": 4,
                 "name": "maskType",
                 "optional": true,
@@ -30458,9 +30547,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`normal\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-|  n/a   |   n/a   |   No   |  No  | No  |",
+| Chrome | Firefox |  Safari  | Edge | IE  |
+| :----: | :-----: | :------: | :--: | :-: |
+|  n/a   |   n/a   | **14.1** |  No  | No  |",
                 "kind": 4,
                 "name": "mathStyle",
                 "optional": true,
@@ -32930,7 +33019,7 @@ _Supported in Grid Layout_
 
 |     Chrome      |      Firefox      |     Safari      |       Edge       |          IE           |
 | :-------------: | :---------------: | :-------------: | :--------------: | :-------------------: |
-|     **23**      |      **49**       |     **6.1**     |      **18**      | **5.5** _(word-wrap)_ |
+|     **23**      |      **49**       |      **7**      |      **18**      | **5.5** _(word-wrap)_ |
 | 1 _(word-wrap)_ | 3.5 _(word-wrap)_ | 1 _(word-wrap)_ | 12 _(word-wrap)_ |                       |",
                 "kind": 4,
                 "name": "overflowWrap",
@@ -33366,9 +33455,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **66**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **66**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -33598,9 +33687,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **66**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **66**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -34370,23 +34459,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`normal\`
 
----
-
-_Supported in Flex Layout_
-
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **59** | **45**  | **9**  | **79** | No  |
-
----
-
-_Supported in Grid Layout_
-
-| Chrome | Firefox | Safari |  Edge  | IE  |
-| :----: | :-----: | :----: | :----: | :-: |
-| **59** | **53**  | **11** | **79** | No  |
-
----",
+| **59** | **45**  | **9**  | **79** | No  |",
                 "kind": 4,
                 "name": "placeContent",
                 "optional": true,
@@ -34845,9 +34920,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`none\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-|   No   | **72**  |   No   |  No  | No  |",
+| Chrome | Firefox |  Safari  | Edge | IE  |
+| :----: | :-----: | :------: | :--: | :-: |
+|   No   | **72**  | **14.1** |  No  | No  |",
                 "kind": 4,
                 "name": "rotate",
                 "optional": true,
@@ -34903,9 +34978,9 @@ _Supported in Grid Layout_
 
 _Supported in Flex Layout_
 
-| Chrome | Firefox | Safari |  Edge  | IE  |
-| :----: | :-----: | :----: | :----: | :-: |
-| **84** | **63**  |   No   | **84** | No  |
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **84** | **63**  | **14.1** | **84** | No  |
 
 ---
 
@@ -34913,7 +34988,7 @@ _Supported in Grid Layout_
 
 |       Chrome        |       Firefox       |        Safari         |  Edge  | IE  |
 | :-----------------: | :-----------------: | :-------------------: | :----: | :-: |
-|       **66**        |       **61**        |       **12.1**        | **16** | No  |
+|       **66**        |       **61**        |        **12**         | **16** | No  |
 | 57 _(grid-row-gap)_ | 52 _(grid-row-gap)_ | 10.1 _(grid-row-gap)_ |        |     |
 
 ---",
@@ -35152,9 +35227,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`none\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-|   No   | **72**  |   No   |  No  | No  |",
+| Chrome | Firefox |  Safari  | Edge | IE  |
+| :----: | :-----: | :------: | :--: | :-: |
+|   No   | **72**  | **14.1** |  No  | No  |",
                 "kind": 4,
                 "name": "scale",
                 "optional": true,
@@ -35264,9 +35339,10 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox |            Safari             |  Edge  | IE  |
-| :----: | :-----: | :---------------------------: | :----: | :-: |
-| **69** | **68**  | **11** _(scroll-snap-margin)_ | **79** | No  |",
+| Chrome | Firefox |          Safari           |  Edge  | IE  |
+| :----: | :-----: | :-----------------------: | :----: | :-: |
+| **69** | **90**  |         **14.1**          | **79** | No  |
+|        |         | 11 _(scroll-snap-margin)_ |        |     |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -35322,9 +35398,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox | Safari |  Edge  | IE  |
-| :----: | :-----: | :----: | :----: | :-: |
-| **69** | **68**  |   No   | **79** | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **69** | **68**  | **14.1** | **79** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -35380,9 +35456,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox | Safari |  Edge  | IE  |
-| :----: | :-----: | :----: | :----: | :-: |
-| **69** | **68**  |   No   | **79** | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **69** | **68**  | **14.1** | **79** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -35435,9 +35511,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox | Safari |  Edge  | IE  |
-| :----: | :-----: | :----: | :----: | :-: |
-| **69** | **68**  |   No   | **79** | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **69** | **68**  | **14.1** | **79** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -35490,9 +35566,10 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox |                Safari                |  Edge  | IE  |
-| :----: | :-----: | :----------------------------------: | :----: | :-: |
-| **69** | **68**  | **11** _(scroll-snap-margin-bottom)_ | **79** | No  |",
+| Chrome | Firefox |              Safari              |  Edge  | IE  |
+| :----: | :-----: | :------------------------------: | :----: | :-: |
+| **69** | **68**  |             **14.1**             | **79** | No  |
+|        |         | 11 _(scroll-snap-margin-bottom)_ |        |     |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -35545,9 +35622,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-|   No   | **68**  |   No   |  No  | No  |",
+| Chrome | Firefox |  Safari  | Edge | IE  |
+| :----: | :-----: | :------: | :--: | :-: |
+|   No   | **68**  | **14.1** |  No  | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -35603,9 +35680,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox | Safari |  Edge  | IE  |
-| :----: | :-----: | :----: | :----: | :-: |
-| **69** | **68**  |   No   | **79** | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **69** | **68**  | **14.1** | **79** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -35658,9 +35735,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox | Safari |  Edge  | IE  |
-| :----: | :-----: | :----: | :----: | :-: |
-| **69** | **68**  |   No   | **79** | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **69** | **68**  | **14.1** | **79** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -35713,9 +35790,10 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox |               Safari               |  Edge  | IE  |
-| :----: | :-----: | :--------------------------------: | :----: | :-: |
-| **69** | **68**  | **11** _(scroll-snap-margin-left)_ | **79** | No  |",
+| Chrome | Firefox |             Safari             |  Edge  | IE  |
+| :----: | :-----: | :----------------------------: | :----: | :-: |
+| **69** | **68**  |            **14.1**            | **79** | No  |
+|        |         | 11 _(scroll-snap-margin-left)_ |        |     |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -35768,9 +35846,10 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox |               Safari                |  Edge  | IE  |
-| :----: | :-----: | :---------------------------------: | :----: | :-: |
-| **69** | **68**  | **11** _(scroll-snap-margin-right)_ | **79** | No  |",
+| Chrome | Firefox |             Safari              |  Edge  | IE  |
+| :----: | :-----: | :-----------------------------: | :----: | :-: |
+| **69** | **68**  |            **14.1**             | **79** | No  |
+|        |         | 11 _(scroll-snap-margin-right)_ |        |     |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -35823,9 +35902,10 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox |              Safari               |  Edge  | IE  |
-| :----: | :-----: | :-------------------------------: | :----: | :-: |
-| **69** | **68**  | **11** _(scroll-snap-margin-top)_ | **79** | No  |",
+| Chrome | Firefox |            Safari             |  Edge  | IE  |
+| :----: | :-----: | :---------------------------: | :----: | :-: |
+| **69** | **68**  |           **14.1**            | **79** | No  |
+|        |         | 11 _(scroll-snap-margin-top)_ |        |     |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -35942,7 +36022,7 @@ _Supported in Grid Layout_
 
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **69** | **68**  |   No   | **79** | No  |",
+| **69** | **68**  | **15** | **79** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -36004,7 +36084,7 @@ _Supported in Grid Layout_
 
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **69** | **68**  |   No   | **79** | No  |",
+| **69** | **68**  | **15** | **79** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -36066,7 +36146,7 @@ _Supported in Grid Layout_
 
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **69** | **68**  |   No   | **79** | No  |",
+| **69** | **68**  | **15** | **79** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -36190,7 +36270,7 @@ _Supported in Grid Layout_
 
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **69** | **68**  |   No   | **79** | No  |",
+| **69** | **68**  | **15** | **79** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -36252,7 +36332,7 @@ _Supported in Grid Layout_
 
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **69** | **68**  |   No   | **79** | No  |",
+| **69** | **68**  | **15** | **79** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -36314,7 +36394,7 @@ _Supported in Grid Layout_
 
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **69** | **68**  |   No   | **79** | No  |",
+| **69** | **68**  | **15** | **79** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -36626,9 +36706,10 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox |            Safari             |  Edge  | IE  |
-| :----: | :-----: | :---------------------------: | :----: | :-: |
-| **69** | **68**  | **11** _(scroll-snap-margin)_ | **79** | No  |",
+| Chrome | Firefox |          Safari           |  Edge  | IE  |
+| :----: | :-----: | :-----------------------: | :----: | :-: |
+| **69** |  68-90  |         **14.1**          | **79** | No  |
+|        |         | 11 _(scroll-snap-margin)_ |        |     |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -36684,9 +36765,10 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox |                Safari                |  Edge  | IE  |
-| :----: | :-----: | :----------------------------------: | :----: | :-: |
-| **69** | **68**  | **11** _(scroll-snap-margin-bottom)_ | **79** | No  |",
+| Chrome | Firefox |              Safari              |  Edge  | IE  |
+| :----: | :-----: | :------------------------------: | :----: | :-: |
+| **69** | **68**  |             **14.1**             | **79** | No  |
+|        |         | 11 _(scroll-snap-margin-bottom)_ |        |     |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -36739,9 +36821,10 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox |               Safari               |  Edge  | IE  |
-| :----: | :-----: | :--------------------------------: | :----: | :-: |
-| **69** | **68**  | **11** _(scroll-snap-margin-left)_ | **79** | No  |",
+| Chrome | Firefox |             Safari             |  Edge  | IE  |
+| :----: | :-----: | :----------------------------: | :----: | :-: |
+| **69** | **68**  |            **14.1**            | **79** | No  |
+|        |         | 11 _(scroll-snap-margin-left)_ |        |     |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -36794,9 +36877,10 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox |               Safari                |  Edge  | IE  |
-| :----: | :-----: | :---------------------------------: | :----: | :-: |
-| **69** | **68**  | **11** _(scroll-snap-margin-right)_ | **79** | No  |",
+| Chrome | Firefox |             Safari              |  Edge  | IE  |
+| :----: | :-----: | :-----------------------------: | :----: | :-: |
+| **69** | **68**  |            **14.1**             | **79** | No  |
+|        |         | 11 _(scroll-snap-margin-right)_ |        |     |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -36849,9 +36933,10 @@ _Supported in Grid Layout_
 
 **Initial value**: \`0\`
 
-| Chrome | Firefox |              Safari               |  Edge  | IE  |
-| :----: | :-----: | :-------------------------------: | :----: | :-: |
-| **69** | **68**  | **11** _(scroll-snap-margin-top)_ | **79** | No  |",
+| Chrome | Firefox |            Safari             |  Edge  | IE  |
+| :----: | :-----: | :---------------------------: | :----: | :-: |
+| **69** | **68**  |           **14.1**            | **79** | No  |
+|        |         | 11 _(scroll-snap-margin-top)_ |        |     |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -36906,7 +36991,7 @@ _Supported in Grid Layout_
 
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **75** |   No    |   No   | **79** | No  |",
+| **75** |   No    | **15** | **79** | No  |",
                 "kind": 4,
                 "name": "scrollSnapStop",
                 "optional": true,
@@ -36959,10 +37044,10 @@ _Supported in Grid Layout_
 
 **Initial value**: \`none\`
 
-| Chrome | Firefox | Safari  |     Edge     |      IE      |
-| :----: | :-----: | :-----: | :----------: | :----------: |
-| **69** |  39-68  | **11**  | **12** _-x-_ | **10** _-x-_ |
-|        |         | 9 _-x-_ |              |              |",
+| Chrome | Firefox | Safari  |  Edge  |      IE      |
+| :----: | :-----: | :-----: | :----: | :----------: |
+| **69** |  39-68  | **11**  | **79** | **10** _-x-_ |
+|        |         | 9 _-x-_ |        |              |",
                 "kind": 4,
                 "name": "scrollSnapType",
                 "optional": true,
@@ -37030,7 +37115,7 @@ _Supported in Grid Layout_
               Object {
                 "description": "The **\`scrollbar-color\`** CSS property sets the color of the scrollbar track and thumb.
 
-**Syntax**: \`auto | dark | light | <color>{2}\`
+**Syntax**: \`auto | <color>{2}\`
 
 **Initial value**: \`auto\`
 
@@ -37094,14 +37179,6 @@ _Supported in Grid Layout_
                     "kind": 1,
                     "value": "auto",
                   },
-                  Object {
-                    "kind": 1,
-                    "value": "dark",
-                  },
-                  Object {
-                    "kind": 1,
-                    "value": "light",
-                  },
                 ],
                 "see": Array [
                   "https://developer.mozilla.org/docs/Web/CSS/scrollbar-color",
@@ -37111,7 +37188,7 @@ _Supported in Grid Layout_
               Object {
                 "description": "The **\`scrollbar-gutter\`** CSS property allows authors to reserve space for the scrollbar, preventing unwanted layout changes as the content grows while also avoiding unnecessary visuals when scrolling isn't needed.
 
-**Syntax**: \`auto | [ stable | always ] && both? && force?\`
+**Syntax**: \`auto | stable && both-edges?\`
 
 **Initial value**: \`auto\`
 
@@ -37148,10 +37225,6 @@ _Supported in Grid Layout_
                       },
                     ],
                     "type": "Globals",
-                  },
-                  Object {
-                    "kind": 1,
-                    "value": "always",
                   },
                   Object {
                     "kind": 1,
@@ -37424,9 +37497,10 @@ _Supported in Grid Layout_
 
 **Initial value**: \`8\`
 
-| Chrome |   Firefox   | Safari  |  Edge  | IE  |
-| :----: | :---------: | :-----: | :----: | :-: |
-| **21** | **4** _-x-_ | **6.1** | **79** | No  |",
+| Chrome | Firefox | Safari |  Edge  | IE  |
+| :----: | :-----: | :----: | :----: | :-: |
+| **21** | **91**  | **7**  | **79** | No  |
+|        | 4 _-x-_ |        |        |     |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -37906,7 +37980,7 @@ _Supported in Grid Layout_
 | Chrome | Firefox |  Safari  | Edge | IE  |
 | :----: | :-----: | :------: | :--: | :-: |
 | 57-64  |   No    | **12.1** |  No  | No  |
-|        |         | 8 _-x-_  |      |     |",
+|        |         | 7 _-x-_  |      |     |",
                 "kind": 4,
                 "name": "textDecorationSkip",
                 "optional": true,
@@ -38241,9 +38315,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`currentcolor\`
 
-|    Chrome    | Firefox | Safari  |     Edge     | IE  |
-| :----------: | :-----: | :-----: | :----------: | :-: |
-| **25** _-x-_ | **46**  | **6.1** | **79** _-x-_ | No  |",
+|    Chrome    | Firefox | Safari |     Edge     | IE  |
+| :----------: | :-----: | :----: | :----------: | :-: |
+| **25** _-x-_ | **46**  | **7**  | **79** _-x-_ | No  |",
                 "kind": 4,
                 "name": "textEmphasisColor",
                 "optional": true,
@@ -38310,9 +38384,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`over right\`
 
-|    Chrome    | Firefox | Safari  |     Edge     | IE  |
-| :----------: | :-----: | :-----: | :----------: | :-: |
-| **25** _-x-_ | **46**  | **6.1** | **79** _-x-_ | No  |",
+|    Chrome    | Firefox | Safari |     Edge     | IE  |
+| :----------: | :-----: | :----: | :----------: | :-: |
+| **25** _-x-_ | **46**  | **7**  | **79** _-x-_ | No  |",
                 "kind": 4,
                 "name": "textEmphasisPosition",
                 "optional": true,
@@ -38360,9 +38434,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`none\`
 
-|    Chrome    | Firefox | Safari  |     Edge     | IE  |
-| :----------: | :-----: | :-----: | :----------: | :-: |
-| **25** _-x-_ | **46**  | **6.1** | **79** _-x-_ | No  |",
+|    Chrome    | Firefox | Safari |     Edge     | IE  |
+| :----------: | :-----: | :----: | :----------: | :-: |
+| **25** _-x-_ | **46**  | **7**  | **79** _-x-_ | No  |",
                 "kind": 4,
                 "name": "textEmphasisStyle",
                 "optional": true,
@@ -39729,9 +39803,9 @@ _Supported in Grid Layout_
 
 **Initial value**: \`none\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-|   No   | **72**  |   No   |  No  | No  |",
+| Chrome | Firefox |  Safari  | Edge | IE  |
+| :----: | :-----: | :------: | :--: | :-: |
+|   No   | **72**  | **14.1** |  No  | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -39886,10 +39960,10 @@ _Supported in Grid Layout_
 
 **Initial value**: \`auto\`
 
-| Chrome  | Firefox |   Safari    |     Edge     |      IE      |
-| :-----: | :-----: | :---------: | :----------: | :----------: |
-| **54**  | **69**  | **3** _-x-_ | **12** _-x-_ | **10** _-x-_ |
-| 1 _-x-_ | 1 _-x-_ |             |              |              |",
+| Chrome  | Firefox |   Safari    |   Edge   |      IE      |
+| :-----: | :-----: | :---------: | :------: | :----------: |
+| **54**  | **69**  | **3** _-x-_ |  **79**  | **10** _-x-_ |
+| 1 _-x-_ | 1 _-x-_ |             | 12 _-x-_ |              |",
                 "kind": 4,
                 "name": "userSelect",
                 "optional": true,
@@ -40469,7 +40543,7 @@ _Supported in Grid Layout_
               Object {
                 "description": "The **\`word-spacing\`** CSS property sets the length of space between words and between tags.
 
-**Syntax**: \`normal | <length-percentage>\`
+**Syntax**: \`normal | <length>\`
 
 **Initial value**: \`normal\`
 
@@ -40518,9 +40592,6 @@ _Supported in Grid Layout_
                   Object {
                     "kind": 1,
                     "value": "normal",
-                  },
-                  Object {
-                    "kind": 15,
                   },
                 ],
                 "see": Array [
@@ -41275,9 +41346,9 @@ _Supported in Grid Layout_
 
 **Syntax**: \`<'border-top-width'> || <'border-top-style'> || <color>\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **66**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **66**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -42013,9 +42084,9 @@ _Supported in Grid Layout_
 
 **Syntax**: \`<'border-top-width'> || <'border-top-style'> || <color>\`
 
-| Chrome | Firefox | Safari | Edge | IE  |
-| :----: | :-----: | :----: | :--: | :-: |
-| **87** | **66**  |   No   | n/a  | No  |",
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **87** | **66**  | **14.1** | **87** | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -43353,10 +43424,10 @@ _Supported in Grid Layout_
 
 **Syntax**: \`none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]\`
 
-|  Chrome  | Firefox |  Safari   |  Edge  |    IE    |
-| :------: | :-----: | :-------: | :----: | :------: |
-|  **29**  | **20**  |   **9**   | **12** |  **11**  |
-| 21 _-x-_ |         | 6.1 _-x-_ |        | 10 _-x-_ |",
+|  Chrome  | Firefox | Safari  |  Edge  |    IE    |
+| :------: | :-----: | :-----: | :----: | :------: |
+|  **29**  | **20**  |  **9**  | **12** |  **11**  |
+| 21 _-x-_ |         | 7 _-x-_ |        | 10 _-x-_ |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -43437,10 +43508,10 @@ _Supported in Grid Layout_
 
 **Syntax**: \`<'flex-direction'> || <'flex-wrap'>\`
 
-|  Chrome  | Firefox |  Safari   |  Edge  |   IE   |
-| :------: | :-----: | :-------: | :----: | :----: |
-|  **29**  | **28**  |   **9**   | **12** | **11** |
-| 21 _-x-_ |         | 6.1 _-x-_ |        |        |",
+|  Chrome  | Firefox | Safari  |  Edge  |   IE   |
+| :------: | :-----: | :-----: | :----: | :----: |
+|  **29**  | **28**  |  **9**  | **12** | **11** |
+| 21 _-x-_ |         | 7 _-x-_ |        |        |",
                 "kind": 4,
                 "name": "flexFlow",
                 "optional": true,
@@ -43590,9 +43661,9 @@ _Supported in Grid Layout_
 
 _Supported in Flex Layout_
 
-| Chrome | Firefox | Safari |  Edge  | IE  |
-| :----: | :-----: | :----: | :----: | :-: |
-| **84** | **63**  |   No   | **84** | No  |
+| Chrome | Firefox |  Safari  |  Edge  | IE  |
+| :----: | :-----: | :------: | :----: | :-: |
+| **84** | **63**  | **14.1** | **84** | No  |
 
 ---
 
@@ -44133,9 +44204,9 @@ _Supported in Multi-column Layout_
 
 **Syntax**: \`<mask-layer>#\`
 
-| Chrome | Firefox | Safari  |  Edge  | IE  |
-| :----: | :-----: | :-----: | :----: | :-: |
-| **1**  |  **2**  | **3.2** | **12** | No  |",
+| Chrome | Firefox | Safari  | Edge  | IE  |
+| :----: | :-----: | :-----: | :---: | :-: |
+| **1**  |  **2**  | **3.1** | 12-79 | No  |",
                 "generics": Array [
                   Object {
                     "type": "TLength",
@@ -44916,23 +44987,9 @@ _Supported in Multi-column Layout_
 
 **Syntax**: \`<'align-items'> <'justify-items'>?\`
 
----
-
-_Supported in Flex Layout_
-
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **59** | **45**  | **11** | **79** | No  |
-
----
-
-_Supported in Grid Layout_
-
-| Chrome | Firefox | Safari |  Edge  | IE  |
-| :----: | :-----: | :----: | :----: | :-: |
-| **59** | **45**  | **11** | **79** | No  |
-
----",
+| **59** | **45**  | **11** | **79** | No  |",
                 "kind": 4,
                 "name": "placeItems",
                 "optional": true,
@@ -45025,23 +45082,9 @@ _Supported in Grid Layout_
 
 **Syntax**: \`<'align-self'> <'justify-self'>?\`
 
----
-
-_Supported in Flex Layout_
-
 | Chrome | Firefox | Safari |  Edge  | IE  |
 | :----: | :-----: | :----: | :----: | :-: |
-| **59** | **45**  | **11** | **79** | No  |
-
----
-
-_Supported in Grid Layout_
-
-| Chrome | Firefox | Safari |  Edge  | IE  |
-| :----: | :-----: | :----: | :----: | :-: |
-| **59** | **45**  | **11** | **79** | No  |
-
----",
+| **59** | **45**  | **11** | **79** | No  |",
                 "kind": 4,
                 "name": "placeSelf",
                 "optional": true,
@@ -45272,9 +45315,9 @@ _Supported in Grid Layout_
 
 **Syntax**: \`<'text-emphasis-style'> || <'text-emphasis-color'>\`
 
-|    Chrome    | Firefox | Safari  |     Edge     | IE  |
-| :----------: | :-----: | :-----: | :----------: | :-: |
-| **25** _-x-_ | **46**  | **6.1** | **79** _-x-_ | No  |",
+|    Chrome    | Firefox | Safari |     Edge     | IE  |
+| :----------: | :-----: | :----: | :----------: | :-: |
+| **25** _-x-_ | **46**  | **7**  | **79** _-x-_ | No  |",
                 "kind": 4,
                 "name": "textEmphasis",
                 "optional": true,
@@ -64442,7 +64485,7 @@ _Supported in Grid Layout_
                 "deprecated": true,
                 "description": "The **\`-moz-force-broken-image-icon\`** extended CSS property can be used to force the broken image icon to be shown even when a broken image has an \`alt\` attribute.
 
-**Syntax**: \`<integer [0,1]>\`
+**Syntax**: \`0 | 1\`
 
 **Initial value**: \`0\`",
                 "kind": 4,
@@ -64477,7 +64520,12 @@ _Supported in Grid Layout_
                     "type": "Globals",
                   },
                   Object {
-                    "kind": 15,
+                    "kind": 2,
+                    "value": 0,
+                  },
+                  Object {
+                    "kind": 2,
+                    "value": 1,
                   },
                 ],
                 "type": "Property.MozForceBrokenImageIcon",

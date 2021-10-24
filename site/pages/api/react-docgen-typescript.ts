@@ -32,9 +32,12 @@ export default async (
     result = parser.parseWithProgramProvider(fileName, () =>
       ts.createProgram([fileName], compilerOptions, host.compilerHost),
     );
-  } catch (e) {
-    __errors.push(e.toString());
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      __errors.push(e.toString());
+    }
   }
+
   if (__errors.length) {
     result.__errors = __errors;
   }

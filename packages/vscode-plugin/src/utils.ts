@@ -55,26 +55,33 @@ export const openSymbol = (filePath: string, symbolName: string): void => {
     });
 };
 
-const goToLocation = (loc: PropType['loc']): void => {
-  const activeTextEditor = vscode.window.activeTextEditor;
-  if (activeTextEditor) {
-    const range = new vscode.Range(
-      new vscode.Position(loc.start.line, loc.start.col),
-      new vscode.Position(loc.end.line, loc.end.col),
-    );
-    activeTextEditor.selection = new vscode.Selection(range.start, range.start);
-    activeTextEditor.revealRange(range, vscode.TextEditorRevealType.AtTop);
+const goToLocation = (location: PropType['loc']): void => {
+  const { loc } = location;
+  if (loc) {
+    const activeTextEditor = vscode.window.activeTextEditor;
+    if (activeTextEditor) {
+      const range = new vscode.Range(
+        new vscode.Position(loc.start.line, loc.start.col),
+        new vscode.Position(loc.end.line, loc.end.col),
+      );
+      activeTextEditor.selection = new vscode.Selection(
+        range.start,
+        range.start,
+      );
+      activeTextEditor.revealRange(range, vscode.TextEditorRevealType.AtTop);
+    }
   }
 };
 
-export const openLocation = (filePath: string, loc: PropType['loc']): void => {
-  vscode.workspace
-    .openTextDocument(vscode.Uri.file(filePath))
-    .then((document) => {
-      vscode.window.showTextDocument(document).then(() => {
-        goToLocation(loc);
+export const openLocation = (location: PropType['loc']): void => {
+  if (location?.filePath)
+    vscode.workspace
+      .openTextDocument(vscode.Uri.file(location.filePath))
+      .then((document) => {
+        vscode.window.showTextDocument(document).then(() => {
+          goToLocation(location);
+        });
       });
-    });
 };
 export function getUri(
   webview: vscode.Webview,

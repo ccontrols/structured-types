@@ -60,10 +60,28 @@ export enum PropKind {
 }
 
 export interface SourcePosition {
+  /**
+   * source line of the symbol
+   */
   line: number;
+  /**
+   * source column of the symbol
+   */
   col: number;
 }
 
+export interface SourceLocation {
+  /**
+   * name of the file where the symbol is defined
+   * only if different from the default file path
+   */
+  filePath?: string;
+  /**
+   * source code location for the symbol declaration
+   * available if collectLinesOfCode is set to true
+   */
+  loc?: { start: SourcePosition; end: SourcePosition };
+}
 /**
  * Base prop type interface
  */
@@ -81,6 +99,11 @@ export interface PropType {
    * the name of the parent property, if combined props
    */
   parent?: string;
+  /**
+   * source location of the symbol
+   * filepath and position
+   */
+  loc?: SourceLocation;
   /**
    * by default, properties are required
    */
@@ -105,17 +128,7 @@ export interface PropType {
    * true, of the class property is static
    */
   static?: boolean;
-  /**
-   * name of the file where the property is defined
-   * only if different from the default file path
-   */
-  filePath?: string;
 
-  /**
-   * source code location for the symbol declaration
-   * available if collectLinesOfCode is set to true
-   */
-  loc?: { start: SourcePosition; end: SourcePosition };
   /**
    * type name of the property or lookup into __helpers list of symbols
    */

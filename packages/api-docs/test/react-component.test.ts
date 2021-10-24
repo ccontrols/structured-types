@@ -5,8 +5,16 @@ describe('react-component', () => {
       NumArray: {
         name: 'NumArray',
         loc: {
-          line: 10,
-          col: 12,
+          loc: {
+            start: {
+              line: 10,
+              col: 12,
+            },
+            end: {
+              line: 10,
+              col: 20,
+            },
+          },
         },
         kind: 4,
         properties: [
@@ -56,12 +64,7 @@ describe('react-component', () => {
             children: [
               {
                 kind: 11,
-                children: [
-                  {
-                    kind: 6,
-                    value: 'union',
-                  },
-                ],
+                value: 'union',
               },
             ],
           },
@@ -82,12 +85,7 @@ describe('react-component', () => {
       },
       {
         kind: 11,
-        children: [
-          {
-            kind: 6,
-            value: 'string',
-          },
-        ],
+        value: 'string',
       },
       {
         kind: 6,
@@ -95,12 +93,7 @@ describe('react-component', () => {
       },
       {
         kind: 11,
-        children: [
-          {
-            kind: 6,
-            value: 'number',
-          },
-        ],
+        value: 'number',
       },
       {
         kind: 6,
@@ -112,12 +105,7 @@ describe('react-component', () => {
       },
       {
         kind: 11,
-        children: [
-          {
-            kind: 6,
-            value: 'string',
-          },
-        ],
+        value: 'string',
       },
       {
         kind: 6,
@@ -125,12 +113,7 @@ describe('react-component', () => {
       },
       {
         kind: 11,
-        children: [
-          {
-            kind: 6,
-            value: 'number',
-          },
-        ],
+        value: 'number',
       },
     ]);
   });
@@ -184,29 +167,18 @@ describe('react-component', () => {
             children: [
               {
                 kind: 11,
-                children: [
-                  {
-                    kind: 6,
-                    value: 'function',
-                  },
-                ],
+                value: 'function',
               },
             ],
           },
         ],
       },
       {
-        kind: 4,
-        depth: 3,
+        kind: 7,
         children: [
           {
-            kind: 7,
-            children: [
-              {
-                kind: 6,
-                value: 'parameters',
-              },
-            ],
+            kind: 6,
+            value: 'parameters',
           },
         ],
       },
@@ -244,12 +216,7 @@ describe('react-component', () => {
                 children: [
                   {
                     kind: 11,
-                    children: [
-                      {
-                        kind: 6,
-                        value: 'CandlestickChartLineProps*',
-                      },
-                    ],
+                    value: 'CandlestickChartLineProps*',
                   },
                 ],
               },
@@ -262,12 +229,7 @@ describe('react-component', () => {
                   },
                   {
                     kind: 11,
-                    children: [
-                      {
-                        kind: 6,
-                        value: 'color',
-                      },
-                    ],
+                    value: 'color',
                   },
                   {
                     kind: 6,
@@ -275,12 +237,7 @@ describe('react-component', () => {
                   },
                   {
                     kind: 11,
-                    children: [
-                      {
-                        kind: 6,
-                        value: 'string',
-                      },
-                    ],
+                    value: 'string',
                   },
                   {
                     kind: 6,
@@ -288,12 +245,7 @@ describe('react-component', () => {
                   },
                   {
                     kind: 11,
-                    children: [
-                      {
-                        kind: 6,
-                        value: 'x',
-                      },
-                    ],
+                    value: 'x',
                   },
                   {
                     kind: 6,
@@ -301,12 +253,7 @@ describe('react-component', () => {
                   },
                   {
                     kind: 11,
-                    children: [
-                      {
-                        kind: 6,
-                        value: 'number',
-                      },
-                    ],
+                    value: 'number',
                   },
                   {
                     kind: 6,
@@ -314,12 +261,7 @@ describe('react-component', () => {
                   },
                   {
                     kind: 11,
-                    children: [
-                      {
-                        kind: 6,
-                        value: 'y',
-                      },
-                    ],
+                    value: 'y',
                   },
                   {
                     kind: 6,
@@ -327,12 +269,7 @@ describe('react-component', () => {
                   },
                   {
                     kind: 11,
-                    children: [
-                      {
-                        kind: 6,
-                        value: 'number',
-                      },
-                    ],
+                    value: 'number',
                   },
                   {
                     kind: 6,

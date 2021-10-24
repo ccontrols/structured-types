@@ -53,8 +53,10 @@ export default async (
               const reflection = app.convert();
               const serialized = app.serializer.toObject(reflection, program);
               return { ...acc, ...serialized };
-            } catch (e) {
-              __errors.push(e.toString());
+            } catch (e: unknown) {
+              if (e instanceof Error) {
+                __errors.push(e.toString());
+              }
               return acc;
             }
           } finally {
