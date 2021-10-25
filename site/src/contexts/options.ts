@@ -72,7 +72,7 @@ export const defaultOptions: OptionsTypes = {
       collectSourceInfo: {
         defaultValue: false,
         skipLink: true,
-        help: 'Whether to collect the file path of objects.',
+        help: 'Whether to collect the file path and source location of symbols.',
       },
 
       scope: {
