@@ -180,7 +180,6 @@ export const nodesToHTML = (nodes: DocumentationNode[]): string => {
 `;
     return rendered;
   } catch (e) {
-    console.log(e);
     return `error ${e.toString()}`;
   }
 };
