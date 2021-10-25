@@ -48,7 +48,9 @@ describe('type', () => {
         properties: [
           {
             name: 'stringProp',
-            parent: 'MainType',
+            parent: {
+              name: 'MainType',
+            },
             kind: 1,
             description: 'string prop description',
           },
@@ -81,7 +83,9 @@ describe('type', () => {
                     properties: [
                       {
                         name: 'children',
-                        parent: 'Parent',
+                        parent: {
+                          name: 'Parent',
+                        },
                       },
                     ],
                     type: 'Parent',
@@ -165,7 +169,9 @@ describe('type', () => {
             description: 'base type member property',
             name: 'm',
             kind: 1,
-            parent: 'T',
+            parent: {
+              name: 'T',
+            },
           },
           {
             description: 'own member',
@@ -316,7 +322,9 @@ describe('type', () => {
             name: 'm',
             kind: 1,
             type: 'Type',
-            parent: 'GenericInterface',
+            parent: {
+              name: 'GenericInterface',
+            },
           },
         ],
         name: 'GenericConsumer',
@@ -355,12 +363,16 @@ describe('type', () => {
           {
             name: 'a',
             kind: 1,
-            parent: 'A',
+            parent: {
+              name: 'A',
+            },
           },
           {
             name: 'b',
             kind: 2,
-            parent: 'B',
+            parent: {
+              name: 'B',
+            },
           },
         ],
         name: 'Intersect',
@@ -404,7 +416,9 @@ describe('type', () => {
             description: 'member field',
             name: 'm',
             type: 'Type',
-            parent: 'GenericArrayType',
+            parent: {
+              name: 'GenericArrayType',
+            },
           },
         ],
         name: 'NestedGenericType',

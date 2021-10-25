@@ -32,7 +32,9 @@ const renderNode = ({
   } else if (isEmphasisNode(node)) {
     return nodeContent({ node, as: 'emphasis', ...props });
   } else if (isLinkNode(node)) {
-    return nodeContent({ node, as: 'link', url: node.url, ...props });
+    return node.url
+      ? nodeContent({ node, as: 'link', url: node.url, ...props })
+      : nodeContent({ node, as: 'paragraph', ...props });
   } else if (isInlineCodeNode(node)) {
     return nodeContent({ node, as: 'inlineCode', ...props });
   } else if (isCodeNode(node)) {

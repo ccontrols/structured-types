@@ -24,13 +24,17 @@ Object {
             "kind": 1,
             "name": "m",
             "optional": true,
-            "parent": "Props",
+            "parent": Object {
+              "name": "Props",
+            },
           },
           Object {
             "kind": 4,
             "name": "children",
             "optional": true,
-            "parent": "PropsWithChildren",
+            "parent": Object {
+              "name": "PropsWithChildren",
+            },
             "properties": Array [
               Object {
                 "kind": 4,
@@ -133,12 +137,16 @@ Object {
                       },
                       Object {
                         "name": "type",
-                        "parent": "ReactElement",
+                        "parent": Object {
+                          "name": "ReactElement",
+                        },
                         "type": "T",
                       },
                       Object {
                         "name": "props",
-                        "parent": "ReactElement",
+                        "parent": Object {
+                          "name": "ReactElement",
+                        },
                         "type": "P",
                       },
                     ],
@@ -170,7 +178,9 @@ Object {
         "kind": 4,
         "name": "propTypes",
         "optional": true,
-        "parent": "FunctionComponent",
+        "parent": Object {
+          "name": "FunctionComponent",
+        },
         "properties": Array [
           Object {
             "generics": Array [
@@ -191,7 +201,9 @@ Object {
         "kind": 4,
         "name": "contextTypes",
         "optional": true,
-        "parent": "FunctionComponent",
+        "parent": Object {
+          "name": "FunctionComponent",
+        },
         "properties": Array [
           Object {
             "generics": Array [
@@ -212,7 +224,9 @@ Object {
         "kind": 4,
         "name": "defaultProps",
         "optional": true,
-        "parent": "FunctionComponent",
+        "parent": Object {
+          "name": "FunctionComponent",
+        },
         "properties": Array [
           Object {
             "generics": Array [
@@ -232,7 +246,9 @@ Object {
         "kind": 4,
         "name": "displayName",
         "optional": true,
-        "parent": "FunctionComponent",
+        "parent": Object {
+          "name": "FunctionComponent",
+        },
         "properties": Array [
           Object {
             "kind": 1,

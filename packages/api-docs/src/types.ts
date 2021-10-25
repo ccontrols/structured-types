@@ -1,4 +1,4 @@
-import { PropType } from '@structured-types/api';
+import { PropType, SourceLocation } from '@structured-types/api';
 
 /**
  * Documentation node kinds
@@ -6,7 +6,6 @@ import { PropType } from '@structured-types/api';
 export enum NodeKind {
   Table = 1,
   TableRow = 2,
-
   TableCell = 3,
   Heading = 4,
   Paragraph = 5,
@@ -202,6 +201,7 @@ export const isEmphasisNode = (
 export interface LinkNode extends DocumentationNodeWithChildren {
   kind: NodeKind.Link;
   url?: string;
+  loc?: SourceLocation;
 }
 
 /**

@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import { extractProps } from './extract-props';
 import { nodesToHTML } from './nodeToHTML';
-import { getUri } from './utils';
+import { getUri, getNonce, openLocation } from './utils';
 
 type PanelStore = {
   panel?: vscode.WebviewPanel;
@@ -30,6 +30,12 @@ export class ContentProvider {
     const { panel } = this.getPreview(uri);
     if (panel) {
       panel.webview.html = this.getHtml(panel, uri);
+      panel.webview.onDidReceiveMessage((data) => {
+        switch (data.type) {
+          case 'open_loc':
+            openLocation(data.value);
+        }
+      });
     }
   }
   private getTitle(uri: vscode.Uri): string {
@@ -117,7 +123,10 @@ export class ContentProvider {
       'dist',
       'toolkit.js',
     ]);
-
+    const scriptUri = panel.webview.asWebviewUri(
+      vscode.Uri.joinPath(this.context.extensionUri, 'dist', 'script.js'),
+    );
+    const nonce = getNonce();
     return `<!DOCTYPE html>
 			<html lang="en">
 			<head>
@@ -135,6 +144,7 @@ export class ContentProvider {
 			<body>
 				<noscript>You need to enable JavaScript to run this app.</noscript>
         ${rendered}
+        <script nonce="${nonce}" src="${scriptUri}"></script>
 			</body>
 			</html>`;
   }

@@ -19,6 +19,7 @@ import {
   TypeProp,
   HasValueProp,
   PropTypes,
+  PropParent,
 } from '@structured-types/api';
 import {
   DocumentationNode,
@@ -27,7 +28,6 @@ import {
   DocumentationOptions,
   NodeKind,
   HeadingNode,
-  LinkNode,
   DocumentationNodeWithChildren,
 } from './types';
 import { getRepoPath } from './package-info/package-info';
@@ -38,6 +38,7 @@ import { boldNode } from './blocks/bold';
 import { emphasisNode } from './blocks/emphasis';
 import { codeNode } from './blocks/code';
 import { inlineCodeNode } from './blocks/inline-code';
+import { linkNode } from './blocks/link';
 
 export class PropsToDocumentation {
   private collapsed: string[] = [];
@@ -61,25 +62,29 @@ export class PropsToDocumentation {
   ): ReturnType<typeof createPropsTable> {
     let parentProp: EnumProp | undefined = undefined;
     const addParentProp = (prop: PropType) => {
-      if (!parentProp) {
-        parentProp = {
-          name: '...props',
-          kind: PropKind.Enum,
-          properties: [{ kind: PropKind.Type, type: prop.parent }],
-          optional: true,
-        };
-      } else {
-        if (!parentProp.properties?.find((p) => p.type === prop.parent)) {
-          parentProp.properties?.push({
-            kind: PropKind.Type,
-            type: prop.parent,
-          });
+      if (prop.parent) {
+        if (!parentProp) {
+          parentProp = {
+            name: '...props',
+            kind: PropKind.Enum,
+            properties: [{ kind: PropKind.Type, type: prop.parent.name }],
+            optional: true,
+          };
+        } else {
+          if (
+            !parentProp.properties?.find((p) => p.type === prop.parent?.name)
+          ) {
+            parentProp.properties?.push({
+              kind: PropKind.Type,
+              type: prop.parent.name,
+            });
+          }
         }
       }
     };
     const consolidatedProps = props.filter((prop) => {
-      if (typeof prop.parent === 'string') {
-        if (this.skipInherited || this.collapsed.includes(prop.parent)) {
+      if (prop.parent) {
+        if (this.skipInherited || this.collapsed.includes(prop.parent.name)) {
           addParentProp(prop);
           return false;
         }
@@ -87,10 +92,14 @@ export class PropsToDocumentation {
           const helperParent = this.helpers[collapsedProp];
           if (helperParent && hasProperties(helperParent)) {
             const helpProp = helperParent.properties?.find(
-              (p) => p.name === prop.name && p.parent === prop.parent,
+              (p) =>
+                p.name === prop.name && p.parent?.name === prop.parent?.name,
             );
             if (helpProp) {
-              addParentProp({ ...prop, parent: collapsedProp });
+              addParentProp({
+                ...prop,
+                parent: { name: collapsedProp, loc: helperParent.loc },
+              });
               return false;
             }
           }
@@ -101,23 +110,24 @@ export class PropsToDocumentation {
     const allProps = parentProp
       ? [...consolidatedProps, parentProp]
       : consolidatedProps;
-    const items: PropItem[] = allProps.map((prop) =>
-      this.configurePropItem({
-        name: `${
-          prop.name
-            ? prop.kind === PropKind.Rest
-              ? `...${prop.name}`
-              : prop.name
-            : ''
-        }`,
-        isOptional: prop.optional,
+    const items: PropItem[] = allProps.map((prop) => {
+      let name = prop.name
+        ? prop.kind === PropKind.Rest
+          ? `...${prop.name}`
+          : prop.name
+        : '';
+      name = `${name}${prop.optional ? '' : '*'}`;
+      return this.configurePropItem({
+        name: prop.loc
+          ? this.propLink({ name, loc: prop.loc })
+          : [inlineCodeNode(name)],
         parent: prop.parent ? this.propLink(prop.parent) : undefined,
 
         type: this.extractPropType(prop, { extractProperties: true }),
         description: prop.description,
         value: (prop as HasValueProp).value,
-      } as PropItem),
-    );
+      } as PropItem);
+    });
     return createPropsTable(items, title);
   }
 
@@ -158,7 +168,6 @@ export class PropsToDocumentation {
     };
     return {
       name: enabledColumn('name') ? item.name : undefined,
-      isOptional: item.isOptional,
       parent: enabledColumn('parents') ? item.parent : undefined,
       type: enabledColumn('type') ? item.type : undefined,
       value: enabledColumn('value') ? item.value : undefined,
@@ -183,8 +192,7 @@ export class PropsToDocumentation {
         table.children.push(
           createPropsRow(
             this.configurePropItem({
-              name: 'returns',
-              isOptional: true,
+              name: [inlineCodeNode('returns')],
               parent: prop.returns.parent
                 ? this.propLink(prop.returns.parent)
                 : undefined,
@@ -199,7 +207,7 @@ export class PropsToDocumentation {
     }
     return [];
   }
-  private getPropLink = (key: string) => {
+  private getPropLink = (key: string): PropType | undefined => {
     const nameParts = key.split('.');
     return this.topLevelProps[nameParts[nameParts.length - 1]];
   };
@@ -238,24 +246,17 @@ export class PropsToDocumentation {
     return result;
   }
 
-  private propLink(type?: string): DocumentationNode[] {
-    const typeText = [
-      {
-        kind: NodeKind.InlineCode,
-        value: type,
-      },
-    ];
-    if (typeof type === 'string') {
-      const link = this.getPropLink(type);
-      if (link) {
-        return [
-          {
-            kind: NodeKind.Link,
-            url: `#${link.name?.toLowerCase()}`,
-            children: typeText,
-          } as LinkNode,
-        ];
-      }
+  private propLink(prop: PropParent): DocumentationNode[] {
+    const typeText = [inlineCodeNode(prop.name)];
+    if (typeof prop.name === 'string') {
+      const link = this.getPropLink(prop.name);
+      return [
+        linkNode(
+          typeText,
+          link ? `#${link.name?.toLowerCase()}` : undefined,
+          prop.loc,
+        ),
+      ];
     }
     return typeText;
   }
@@ -263,7 +264,7 @@ export class PropsToDocumentation {
   private inlineType(prop: PropType): DocumentationNode[] {
     let typeNode: DocumentationNode[] | undefined = undefined;
     if (typeof prop.type === 'string') {
-      typeNode = this.propLink(prop.type);
+      typeNode = this.propLink({ name: prop.type, loc: prop.loc });
     } else if (prop.kind) {
       typeNode = [inlineCodeNode(`${PropKind[prop.kind].toLowerCase()}`)];
     }
@@ -281,7 +282,7 @@ export class PropsToDocumentation {
       if (typeof prop.parent === 'string') {
         return [...this.propLink(prop.parent), textNode(`.${prop.type}`)];
       }
-      return this.propLink(prop.type);
+      return this.propLink({ name: prop.type, loc: prop.loc });
     }
     if (showValue && (prop as HasValueProp).value !== undefined) {
       const value = isStringProp(prop)
@@ -315,7 +316,7 @@ export class PropsToDocumentation {
     options?: { showValue?: boolean; extractProperties?: boolean },
   ): DocumentationNode[] {
     if (prop.parent) {
-      const parent = this.getPropLink(prop.parent);
+      const parent = this.getPropLink(prop.parent.name);
       if (parent && isClassLikeProp(parent)) {
         const p = parent.properties?.find((p) => p.name === prop.name);
         if (p) {
@@ -345,7 +346,7 @@ export class PropsToDocumentation {
       const propName = typeof prop.type === 'string' ? prop.type : prop.name;
       const result: DocumentationNode[] = [];
       if (typeof propName === 'string' && this.getPropLink(propName)) {
-        result.push(...this.propLink(propName));
+        result.push(...this.propLink({ name: propName, loc: prop.loc }));
       } else if (prop.properties?.length) {
         const typeArguments: DocumentationNode[] = prop.properties.reduce(
           (acc: DocumentationNode[], p: PropType, idx: number) => {
@@ -453,11 +454,17 @@ export class PropsToDocumentation {
             paragraphNode([
               emphasisNode([
                 textNode('defined in '),
-                {
-                  kind: NodeKind.Link,
-                  url: sourceLocation,
-                  children: [textNode(`${packageName}/${relativePath}`)],
-                } as LinkNode,
+                linkNode(
+                  [
+                    textNode(
+                      packageName
+                        ? `${packageName}/${relativePath}`
+                        : sourceLocation,
+                    ),
+                  ],
+                  sourceLocation,
+                  prop.loc,
+                ),
               ]),
             ]),
           ];
@@ -485,7 +492,9 @@ export class PropsToDocumentation {
         ]),
       );
     } else if (typeof prop.type === 'string') {
-      definition.children.push(boldNode(this.propLink(prop.type)));
+      definition.children.push(
+        boldNode(this.propLink({ name: prop.type, loc: prop.loc })),
+      );
     }
     const loc = this.getSourceLocation(prop);
     if (loc.length) {

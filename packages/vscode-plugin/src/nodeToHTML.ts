@@ -40,7 +40,24 @@ const renderNode = ({
   } else if (isEmphasisNode(node)) {
     return nodeContent({ node, as: 'em', ...props });
   } else if (isLinkNode(node)) {
-    return nodeContent({ node, as: 'a', href: node.url, ...props });
+    const link = nodeContent({
+      node,
+      as: 'a',
+      href: node.loc
+        ? '#'
+        : node.url
+        ? encodeURIComponent(node.url)
+        : undefined,
+      'data-filepath': node.loc?.filePath
+        ? encodeURIComponent(node.loc.filePath)
+        : undefined,
+      'data-loc': node.loc?.loc
+        ? encodeURIComponent(JSON.stringify(node.loc.loc))
+        : undefined,
+      ...props,
+    });
+    console.log(link);
+    return link;
   } else if (isInlineCodeNode(node)) {
     return nodeContent({ node, as: 'code', ...props });
   } else if (isCodeNode(node)) {
@@ -97,7 +114,7 @@ const renderNode = ({
 const valueToStr = (value: any): string => {
   switch (typeof value) {
     case 'string':
-      return `"${value}""`;
+      return `"${value}"`;
     case 'number':
       return `${value}`;
     default:
@@ -107,7 +124,10 @@ const valueToStr = (value: any): string => {
 
 const propsToAttrs = (props: Record<string, any>): string => {
   return Object.keys(props)
-    .map((key) => `${key}=${valueToStr(props[key])}`)
+    .map((key) =>
+      props[key] !== undefined ? `${key}=${valueToStr(props[key])}` : undefined,
+    )
+    .filter((k) => k)
     .join(' ');
 };
 const nodeContent = ({
@@ -135,6 +155,9 @@ const nodeComponents = ({
   as: string;
   [props: string]: any;
 }): string => {
+  if (!Array.isArray(nodes)) {
+    debugger;
+  }
   return nodes
     ? `<${as} ${propsToAttrs(rest)}>
       ${nodes.map((node) => renderNode({ node })).join('\n')}
@@ -143,7 +166,8 @@ const nodeComponents = ({
 };
 
 export const nodesToHTML = (nodes: DocumentationNode[]): string => {
-  const rendered = `
+  try {
+    const rendered = `
   <main>
     ${nodes
       .map((node) => {
@@ -153,5 +177,9 @@ export const nodesToHTML = (nodes: DocumentationNode[]): string => {
       .join('\n')}
   </main>
 `;
-  return rendered;
+    return rendered;
+  } catch (e) {
+    console.log(e);
+    return `error ${e.toString()}`;
+  }
 };

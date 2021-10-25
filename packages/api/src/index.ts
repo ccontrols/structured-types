@@ -16,7 +16,7 @@ const cleanPropParents = (
   parents: Record<string, PropType>,
 ) => {
   if (prop[propsName]) {
-    if (prop.parent && parents[prop.parent]) {
+    if (prop.parent && parents[prop.parent.name]) {
       delete prop[propsName];
     } else {
       prop[propsName] = consolidateParentProps(

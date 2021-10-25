@@ -49,7 +49,7 @@ import { resolveType } from './ts/resolveType';
 import { getInitializer } from './ts/getInitializer';
 import { mergeNodeComments } from './jsdoc/mergeJSDoc';
 import { parseJSDocTag } from './jsdoc/parseJSDocTags';
-import { SourceLocation } from '.';
+import { PropParent, SourceLocation } from '.';
 export class SymbolParser implements ISymbolParser {
   public checker: ts.TypeChecker;
   public readonly options: Required<ParseOptions>;
@@ -109,11 +109,11 @@ export class SymbolParser implements ISymbolParser {
     node: ts.Node,
     parentProp: PropType,
     options: ParseOptions,
-  ): string | undefined | '__internal' {
+  ): PropParent | undefined | '__internal' {
     const propName = this.geDeclarationName(node as ts.Declaration);
     const addParentRef = (
       declaration: ts.Node,
-    ): string | undefined | '__internal' => {
+    ): ReturnType<typeof this.getParent> => {
       if (this.internalNode(declaration)) {
         return '__internal';
       }
@@ -140,9 +140,14 @@ export class SymbolParser implements ISymbolParser {
               (typeof parentProp.type === 'string'
                 ? parentProp.type
                 : undefined);
+            const propParent: PropParent = { name };
             this.addParentSymbol(name, (parent as any).symbol, options);
             if (parentName !== name) {
-              return name;
+              const loc = this.parseFilePath(options, false, parent);
+              if (loc) {
+                propParent.loc = loc;
+              }
+              return propParent;
             }
             return undefined;
           }

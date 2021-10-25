@@ -19,6 +19,7 @@
     -   [PropKind](#propkind)
     -   [ParsePlugin](#parseplugin)
     -   [PropDiagnostic](#propdiagnostic)
+    -   [PropParent](#propparent)
     -   [SourceLocation](#sourcelocation)
     -   [JSDocExample](#jsdocexample)
     -   [JSDocPropTag](#jsdocproptag)
@@ -255,7 +256,7 @@ parsing options
 
 ## PropTypes
 
-**`type`** _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L593)_
+**`type`** _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L608)_
 
 Top-level prop type, with aded optional \_\_helpers and \_\_diagnostics fields.
 
@@ -263,40 +264,40 @@ Top-level prop type, with aded optional \_\_helpers and \_\_diagnostics fields.
 
 | Name            | Type                                           | Description                                                                                                   |
 | --------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-|                 | \[`string`]: [`PropType`](#proptype)           |                                                                                                               |
+| ``              | \[`string`]: [`PropType`](#proptype)           |                                                                                                               |
 | `__helpers`     | `Record`&lt;`string`, [`PropType`](#proptype)> | Utility symbols such as parent types are stored here. Only available if option collectHelpers is set to true. |
 | `__diagnostics` | [`PropDiagnostic`](#propdiagnostic)\[]         | Typescript program diagnostics / errors. Only available if option collectDiagnostics is set to true.          |
 
 ## PropType
 
-**`interface`** _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L87)_
+**`interface`** _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L102)_
 
 Base prop type interface
 
 **properties**
 
-| Name          | Type                                                                                                              | Description                                                          |
-| ------------- | ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `kind`        | 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 20 & 21 & 22 & 23 & 24 & 25 & 26 & 27 | The property type or kind                                            |
-| `name`        | `string`                                                                                                          | name of the property                                                 |
-| `parent`      | `string`                                                                                                          | the name of the parent property, if combined props                   |
-| `loc`         | [`SourceLocation`](#sourcelocation)                                                                               | source location of the symbol filepath and position                  |
-| `optional`    | `boolean`                                                                                                         | by default, properties are required                                  |
-| `readonly`    | `boolean`                                                                                                         | readonly property                                                    |
-| `abstract`    | `boolean`                                                                                                         | abstract property                                                    |
-| `async`       | `boolean`                                                                                                         | async function                                                       |
-| `visibility`  | "private" \| "protected" \| "public"                                                                              | property visibility                                                  |
-| `static`      | `boolean`                                                                                                         | true, of the class property is static                                |
-| `type`        | `string`                                                                                                          | type name of the property or lookup into \_\_helpers list of symbols |
-| `extension`   | `string`                                                                                                          | used plugin name ie 'react'...                                       |
-| `description` | `string`                                                                                                          | jsdoc description                                                    |
-| `fires`       | `string`\[]                                                                                                       | jsdoc fires events list                                              |
-| `see`         | `string`\[]                                                                                                       | jsdoc see links list                                                 |
-| `examples`    | [`JSDocExample`](#jsdocexample)\[]                                                                                | jsdoc examples list                                                  |
-| `tags`        | [`JSDocPropTag`](#jsdocproptag)\[]                                                                                | jsdoc generic tags, not covered by other props                       |
-| `summary`     | `string`                                                                                                          | jsdoc summary                                                        |
-| `deprecated`  | `string` \| true                                                                                                  | jsdoc deprecated tag                                                 |
-| `ignore`      | `boolean`                                                                                                         | jsdoc ignore tag, to be excluded from documentations                 |
+| Name          | Type                                                                                                              | Description                                                                                                           |
+| ------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `kind`        | 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 20 & 21 & 22 & 23 & 24 & 25 & 26 & 27 | The property type or kind                                                                                             |
+| `name`        | `string`                                                                                                          | name of the property                                                                                                  |
+| `parent`      | [`PropParent`](#propparent)                                                                                       | Parent of a property field                                                                                            |
+| `loc`         | [`SourceLocation`](#sourcelocation)                                                                               | source location of the symbol and source file position will be available when collectSourceInfo option is set to true |
+| `optional`    | `boolean`                                                                                                         | by default, properties are required                                                                                   |
+| `readonly`    | `boolean`                                                                                                         | readonly property                                                                                                     |
+| `abstract`    | `boolean`                                                                                                         | abstract property                                                                                                     |
+| `async`       | `boolean`                                                                                                         | async function                                                                                                        |
+| `visibility`  | "private" \| "protected" \| "public"                                                                              | property visibility                                                                                                   |
+| `static`      | `boolean`                                                                                                         | true, of the class property is static                                                                                 |
+| `type`        | `string`                                                                                                          | type name of the property or lookup into \_\_helpers list of symbols                                                  |
+| `extension`   | `string`                                                                                                          | used plugin name ie 'react'...                                                                                        |
+| `description` | `string`                                                                                                          | jsdoc description                                                                                                     |
+| `fires`       | `string`\[]                                                                                                       | jsdoc fires events list                                                                                               |
+| `see`         | `string`\[]                                                                                                       | jsdoc see links list                                                                                                  |
+| `examples`    | [`JSDocExample`](#jsdocexample)\[]                                                                                | jsdoc examples list                                                                                                   |
+| `tags`        | [`JSDocPropTag`](#jsdocproptag)\[]                                                                                | jsdoc generic tags, not covered by other props                                                                        |
+| `summary`     | `string`                                                                                                          | jsdoc summary                                                                                                         |
+| `deprecated`  | `string` \| true                                                                                                  | jsdoc deprecated tag                                                                                                  |
+| `ignore`      | `boolean`                                                                                                         | jsdoc ignore tag, to be excluded from documentations                                                                  |
 
 ## PropKind
 
@@ -364,7 +365,7 @@ The property type or kind
 
 ## PropDiagnostic
 
-**`type`** _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L567)_
+**`type`** _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L582)_
 
 diagnostics row data
 
@@ -377,6 +378,19 @@ diagnostics row data
 | `row`       | `number`                | source code line of the error   |
 | `column`    | `number`                | source code column of the error |
 | `fileName`  | `string`                | source file name                |
+
+## PropParent
+
+**`interface`** _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L88)_
+
+Parent of a property field
+
+**properties**
+
+| Name    | Type                                | Description                                                                              |
+| ------- | ----------------------------------- | ---------------------------------------------------------------------------------------- |
+| `name*` | `string`                            | the parent type name                                                                     |
+| `loc`   | [`SourceLocation`](#sourcelocation) | optional source location. will be available when collectSourceInfo option is set to true |
 
 ## SourceLocation
 

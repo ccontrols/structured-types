@@ -4,8 +4,7 @@ import { textNode } from './text';
 import { tableCellNode } from './table-cell';
 import { inlineCodeNode } from './inline-code';
 export interface PropItem {
-  name?: string;
-  isOptional: boolean;
+  name?: DocumentationNode[];
   type?: DocumentationNode[];
   value?: any;
   parent?: DocumentationNode[];
@@ -20,13 +19,11 @@ export type VisibleColumns = {
   descriptions?: boolean;
 };
 export const createPropsRow = (
-  { name, isOptional, type, value, parent, description }: PropItem,
+  { name, type, value, parent, description }: PropItem,
   visColumns: VisibleColumns,
 ): TableRowNode => {
   const children: DocumentationNode[] = [
-    tableCellNode(
-      name ? [inlineCodeNode(`${name}${isOptional ? '' : '*'}`)] : [],
-    ),
+    tableCellNode(name || []),
     tableCellNode(type || []),
   ];
   if (visColumns.parents) {

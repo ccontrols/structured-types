@@ -14,7 +14,9 @@ describe('react-forward-ref', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -34,7 +36,9 @@ describe('react-forward-ref', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -61,7 +65,9 @@ describe('react-forward-ref', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -82,7 +88,9 @@ describe('react-forward-ref', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -105,7 +113,9 @@ describe('react-forward-ref', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -127,7 +137,9 @@ describe('react-forward-ref', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -161,7 +173,9 @@ describe('react-forward-ref', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,

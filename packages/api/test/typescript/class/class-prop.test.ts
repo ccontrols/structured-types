@@ -84,7 +84,9 @@ describe('class', () => {
                 ],
                 properties: [
                   {
-                    parent: 'Generic',
+                    parent: {
+                      name: 'Generic',
+                    },
                     name: 'value',
                     kind: 3,
                     type: 'T',

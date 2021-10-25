@@ -14,11 +14,15 @@ describe('react-flow', () => {
         kind: 25,
         properties: [
           {
-            parent: 'Props',
+            parent: {
+              name: 'Props',
+            },
             name: 'DefaultProps',
           },
           {
-            parent: 'Props',
+            parent: {
+              name: 'Props',
+            },
             optional: true,
             name: 'bar',
             kind: 1,
@@ -41,12 +45,16 @@ describe('react-flow', () => {
         kind: 25,
         properties: [
           {
-            parent: 'Props',
+            parent: {
+              name: 'Props',
+            },
             name: 'foo',
             kind: 2,
           },
           {
-            parent: 'Props',
+            parent: {
+              name: 'Props',
+            },
             optional: true,
             name: 'bar',
             kind: 1,
@@ -69,12 +77,16 @@ describe('react-flow', () => {
         kind: 25,
         properties: [
           {
-            parent: 'Props',
+            parent: {
+              name: 'Props',
+            },
             name: 'foo',
             kind: 2,
           },
           {
-            parent: 'Props',
+            parent: {
+              name: 'Props',
+            },
             optional: true,
             name: 'bar',
             kind: 1,

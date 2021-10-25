@@ -17,25 +17,33 @@ describe('enum-prop', () => {
             properties: [
               {
                 name: 'Warning',
-                parent: 'DiagnosticCategory',
+                parent: {
+                  name: 'DiagnosticCategory',
+                },
                 kind: 2,
                 value: 0,
               },
               {
                 name: 'Error',
-                parent: 'DiagnosticCategory',
+                parent: {
+                  name: 'DiagnosticCategory',
+                },
                 kind: 2,
                 value: 1,
               },
               {
                 name: 'Suggestion',
-                parent: 'DiagnosticCategory',
+                parent: {
+                  name: 'DiagnosticCategory',
+                },
                 kind: 2,
                 value: 2,
               },
               {
                 name: 'Message',
-                parent: 'DiagnosticCategory',
+                parent: {
+                  name: 'DiagnosticCategory',
+                },
                 kind: 2,
                 value: 3,
               },

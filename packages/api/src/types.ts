@@ -81,6 +81,21 @@ export interface SourceLocation {
    */
   loc?: { start: SourcePosition; end: SourcePosition };
 }
+
+/**
+ * Parent of a property field
+ */
+export interface PropParent {
+  /**
+   * the parent type name
+   */
+  name: string;
+  /**
+   * optional source location.
+   * will be available when collectSourceInfo option is set to true
+   */
+  loc?: SourceLocation;
+}
 /**
  * Base prop type interface
  */
@@ -97,10 +112,10 @@ export interface PropType {
   /**
    * the name of the parent property, if combined props
    */
-  parent?: string;
+  parent?: PropParent;
   /**
-   * source location of the symbol
-   * filepath and position
+   * source location of the symbol and source file position
+   * will be available when collectSourceInfo option is set to true
    */
   loc?: SourceLocation;
   /**

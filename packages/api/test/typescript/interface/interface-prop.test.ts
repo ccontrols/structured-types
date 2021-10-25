@@ -81,13 +81,17 @@ describe('interface', () => {
             description: 'boolean type member',
           },
           {
-            parent: 'Internal',
+            parent: {
+              name: 'Internal',
+            },
             kind: 1,
             name: 'm',
             description: 'string type member',
           },
           {
-            parent: 'Home',
+            parent: {
+              name: 'Home',
+            },
             name: 'resident',
             kind: 15,
           },
@@ -143,7 +147,9 @@ describe('interface', () => {
             name: 'kind',
             kind: 1,
             description: 'kind is an enum constant',
-            parent: 'StringEnums',
+            parent: {
+              name: 'StringEnums',
+            },
             value: 'UP',
             type: 'Up',
           },
