@@ -59,6 +59,43 @@ export enum PropKind {
   Namespace = 27,
 }
 
+export interface SourcePosition {
+  /**
+   * source line of the symbol
+   */
+  line: number;
+  /**
+   * source column of the symbol
+   */
+  col: number;
+}
+
+export interface SourceLocation {
+  /**
+   * name of the file where the symbol is defined
+   * only if different from the default file path
+   */
+  filePath?: string;
+  /**
+   * source code location for the symbol declaration
+   */
+  loc?: { start: SourcePosition; end: SourcePosition };
+}
+
+/**
+ * Parent of a property field
+ */
+export interface PropParent {
+  /**
+   * the parent type name
+   */
+  name: string;
+  /**
+   * optional source location.
+   * will be available when collectSourceInfo option is set to true
+   */
+  loc?: SourceLocation;
+}
 /**
  * Base prop type interface
  */
@@ -75,7 +112,12 @@ export interface PropType {
   /**
    * the name of the parent property, if combined props
    */
-  parent?: string;
+  parent?: PropParent;
+  /**
+   * source location of the symbol and source file position
+   * will be available when collectSourceInfo option is set to true
+   */
+  loc?: SourceLocation;
   /**
    * by default, properties are required
    */
@@ -100,17 +142,7 @@ export interface PropType {
    * true, of the class property is static
    */
   static?: boolean;
-  /**
-   * name of the file where the property is defined
-   * only if different from the default file path
-   */
-  filePath?: string;
 
-  /**
-   * source code location for the symbol declaration
-   * available if collectLinesOfCode is set to true
-   */
-  loc?: { line: number; col: number };
   /**
    * type name of the property or lookup into __helpers list of symbols
    */

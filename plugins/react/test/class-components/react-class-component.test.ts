@@ -31,7 +31,9 @@ describe('class-component', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -39,7 +41,9 @@ describe('class-component', () => {
             value: 'test',
           },
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             kind: 2,
             name: 'numberProp',
             description: 'numberProp description',
@@ -64,7 +68,9 @@ describe('class-component', () => {
         extension: 'react',
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -72,7 +78,9 @@ describe('class-component', () => {
             value: 'test',
           },
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             kind: 2,
             name: 'numberProp',
             description: 'numberProp description',
@@ -115,7 +123,9 @@ describe('class-component', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -123,7 +133,9 @@ describe('class-component', () => {
             value: 'test',
           },
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             kind: 2,
             name: 'numberProp',
             description: 'numberProp description',
@@ -187,14 +199,18 @@ describe('class-component', () => {
         extension: 'react',
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
             description: 'stringProp description',
           },
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             kind: 2,
             name: 'numberProp',
             description: 'numberProp description',
@@ -216,14 +232,18 @@ describe('class-component', () => {
         extension: 'react',
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
             description: 'stringProp description',
           },
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             kind: 2,
             name: 'numberProp',
             description: 'numberProp description',

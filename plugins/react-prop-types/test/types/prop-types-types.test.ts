@@ -17,7 +17,9 @@ describe('prop-types-types', () => {
         properties: [
           {
             name: 'stringProp',
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             kind: 1,
             value: 'test',
             optional: true,
@@ -25,7 +27,9 @@ describe('prop-types-types', () => {
           },
           {
             name: 'numberProp',
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             kind: 2,
             description: 'numberProp description',
           },

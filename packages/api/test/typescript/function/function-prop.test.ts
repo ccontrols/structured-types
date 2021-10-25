@@ -18,7 +18,9 @@ describe('function', () => {
             properties: [
               {
                 name: 'm',
-                parent: 'T',
+                parent: {
+                  name: 'T',
+                },
                 kind: 1,
                 description: 'base type member property',
               },
@@ -44,7 +46,9 @@ describe('function', () => {
             },
             {
               name: 'm',
-              parent: 'Internal',
+              parent: {
+                name: 'Internal',
+              },
               kind: 1,
               description: 'string type member',
             },
@@ -70,7 +74,9 @@ describe('function', () => {
               description: 'string type member',
               kind: 1,
               name: 'm',
-              parent: 'Internal',
+              parent: {
+                name: 'Internal',
+              },
             },
           ],
         },
@@ -83,7 +89,9 @@ describe('function', () => {
               description: 'base type member property',
               kind: 1,
               name: 'm',
-              parent: 'T',
+              parent: {
+                name: 'T',
+              },
             },
             {
               description: 'own member',
@@ -169,7 +177,9 @@ describe('function', () => {
                 type: 'Foo',
                 properties: [
                   {
-                    parent: 'Foo',
+                    parent: {
+                      name: 'Foo',
+                    },
                     static: true,
                     readonly: true,
                     name: 'dummy',
@@ -225,7 +235,9 @@ describe('function', () => {
             type: 'GenericInterface',
             properties: [
               {
-                parent: 'GenericInterface',
+                parent: {
+                  name: 'GenericInterface',
+                },
                 name: 'm',
                 type: 'T',
               },

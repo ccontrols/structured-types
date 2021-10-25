@@ -9,7 +9,9 @@ export default async (
   try {
     const result = parse(code);
     res.status(200).json(result);
-  } catch (e) {
-    res.status(200).json({ __error: e.toString() });
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      res.status(200).json({ __error: e.toString() });
+    }
   }
 };

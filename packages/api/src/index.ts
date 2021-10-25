@@ -16,7 +16,7 @@ const cleanPropParents = (
   parents: Record<string, PropType>,
 ) => {
   if (prop[propsName]) {
-    if (prop.parent && parents[prop.parent]) {
+    if (prop.parent && parents[prop.parent.name]) {
       delete prop[propsName];
     } else {
       prop[propsName] = consolidateParentProps(
@@ -46,8 +46,7 @@ const consolidateParentProps = (
  *
  * const props = analyzeFiles(['index.ts'], {
  *  collectHelpers: true,
- *  collectFilePath: true,
- *  collectLinesOfCode: true,
+ *  collectSourceInfo: true,
  *  tsOptions: {
  *    allowJs: true,
  *  }
@@ -138,6 +137,21 @@ export const analyzeFiles = (
       }
     }
   }
+  if (extract?.length) {
+    let propKeys = Object.keys(parsed);
+
+    propKeys = propKeys.sort((key1, key2) => {
+      return extract.indexOf(key1) - extract.indexOf(key2);
+    });
+    const sortedProps = propKeys.reduce(
+      (acc, key) => ({
+        ...acc,
+        [key]: parsed[key],
+      }),
+      {},
+    );
+    parsed = sortedProps;
+  }
   if (collectHelpers) {
     // only return parents that are not already exported from the same file
     const helpers: Record<string, PropType> = Object.keys(parser.helpers)
@@ -198,8 +212,7 @@ export const analyzeFiles = (
  *
  * const props = parseFiles(['index.ts'], {
  *  collectHelpers: true,
- *  collectFilePath: true,
- *  collectLinesOfCode: true,
+ *  collectSourceInfo: true,
  * })
  * @param files list of files to be processed
  * @param options parsing options

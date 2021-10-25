@@ -15,12 +15,16 @@ describe('function-component', () => {
         properties: [
           {
             name: 'stringProp',
-            parent: 'Props',
+            parent: {
+              name: 'Props',
+            },
             kind: 1,
           },
           {
             name: 'boolProp',
-            parent: 'Props',
+            parent: {
+              name: 'Props',
+            },
             kind: 3,
           },
         ],
@@ -39,7 +43,9 @@ describe('function-component', () => {
         properties: [
           {
             name: 'onClick',
-            parent: 'ClickableProps',
+            parent: {
+              name: 'ClickableProps',
+            },
             optional: true,
             kind: 4,
             properties: [
@@ -83,7 +89,6 @@ describe('function-component', () => {
       {
         plugins: [reactPlugin],
         collectHelpers: true,
-        collectFilePath: true,
         extract: ['JSONViewer'],
       },
     );
@@ -101,7 +106,9 @@ describe('function-component', () => {
         properties: [
           {
             name: 'first',
-            parent: 'MyProps',
+            parent: {
+              name: 'MyProps',
+            },
             kind: 15,
             type: 'Record',
             generics: [
@@ -115,7 +122,9 @@ describe('function-component', () => {
           },
           {
             name: 'second',
-            parent: 'MyProps',
+            parent: {
+              name: 'MyProps',
+            },
             optional: true,
             kind: 15,
             type: 'Record',
@@ -177,7 +186,9 @@ describe('function-component', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -185,7 +196,9 @@ describe('function-component', () => {
             value: 'test',
           },
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             name: 'numberProp',
             kind: 2,
             description: 'numberProp description',
@@ -269,14 +282,18 @@ describe('function-component', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
             description: 'stringProp description',
           },
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             name: 'numberProp',
             kind: 2,
             description: 'numberProp description',
@@ -305,12 +322,16 @@ describe('function-component', () => {
         extension: 'react',
         properties: [
           {
-            parent: 'PrimitmiveProps',
+            parent: {
+              name: 'PrimitmiveProps',
+            },
             name: 'stringProp',
             kind: 1,
           },
           {
-            parent: 'ComponentProps',
+            parent: {
+              name: 'ComponentProps',
+            },
             optional: true,
             name: 'prop1',
             kind: 4,

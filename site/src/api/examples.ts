@@ -350,6 +350,8 @@ export const examples: Examples = {
         "import React, { FC } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nconst MyComponent: FC<OwnProps> = ({ stringProp }) => <div>{stringProp}</div>;\n\nMyComponent.defaultProps = {\n  stringProp: 'test',\n};\n\nexport default MyComponent;\n",
       'display-name.tsx':
         "import React, { FC } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nconst MyComponent: FC<OwnProps> = ({ stringProp }) => <div>{stringProp}</div>;\n\nMyComponent.displayName = 'CustomComponentName';\n\nexport default MyComponent;\n",
+      'event-handler.tsx':
+        "import React, { DOMAttributes } from 'react';\n\n/**\n * Clickable properties.\n */\ntype ClickableProps = {\n  onClick?: DOMAttributes<HTMLDivElement>['onClick'];\n};\n\n/**\n * Clickable special component\n */\nexport const Clickable: React.FC<ClickableProps> = ({ onClick }) => (\n  <div onClick={onClick}>Hello</div>\n);\n",
       'function-inline-props.tsx':
         "import React from 'react';\n\nexport function MyComponent({\n  name = 'hello',\n}: {\n  name?: string;\n}): React.ReactNode {\n  return <span>Hello, {name}!</span>;\n}\n",
       'inline-props.tsx':
@@ -364,6 +366,8 @@ export const examples: Examples = {
         "import React, { BaseHTMLAttributes } from 'react';\n/**\n * MyComponent special component\n */\n\nexport const MyComponent = (\n  props: Pick<BaseHTMLAttributes<HTMLDivElement>, 'style'>,\n) => <div {...props}>Hello</div>;\n",
       'record-props.tsx':
         "import React from 'react';\n\nexport interface MyProps {\n  first: Record<string, string>;\n  second?: Record<string, string>;\n}\n\nexport default function MyComponent({ first = {}, second = {} }: MyProps) {\n  return <div {...first} {...second} />;\n}\n",
+      'rest-props.tsx':
+        "import React from 'react';\n\ninterface Props {\n  stringProp: string;\n  boolProp: boolean;\n}\n\nexport const MyComponent: React.FC<Props> = ({ stringProp, ...props }) => {\n  return <span {...props}>Hello, {stringProp}!</span>;\n};\n",
       'typed-props.tsx':
         "import React from 'react';\n\n/**\n * special react component\n */\nexport const MyComponent: React.FC<{\n  /**\n   * optional string prop\n   */\n  name?: string;\n  /**\n   * a required number prop\n   */\n  numProp: number;\n}> = ({ name = 'hello' }) => <span>Hello, {name}!</span>;\n",
     },

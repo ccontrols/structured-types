@@ -2,6 +2,39 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('@property', () => {
+  it('optional', () => {
+    const results = parseFiles([path.resolve(__dirname, 'optional.js')]);
+    expect(results).toEqual({
+      user: {
+        name: 'user',
+        kind: 26,
+        properties: [
+          {
+            kind: 1,
+            name: 'email',
+            value: 's',
+          },
+        ],
+        type: 'User',
+      },
+      User: {
+        name: 'User',
+        kind: 15,
+        properties: [
+          {
+            kind: 1,
+            name: 'email',
+          },
+          {
+            name: 'nickName',
+            kind: 1,
+            optional: true,
+          },
+        ],
+        description: 'User type definition',
+      },
+    });
+  });
   it('enum', () => {
     const results = parseFiles([path.resolve(__dirname, 'enum.js')]);
     expect(results).toEqual({
@@ -125,40 +158,6 @@ describe('@property', () => {
             description: 'The default values for parties.',
           },
         ],
-      },
-    });
-  });
-  it('optional', () => {
-    const results = parseFiles([path.resolve(__dirname, 'optional.js')]);
-    expect(results).toEqual({
-      user: {
-        name: 'user',
-        kind: 26,
-        properties: [
-          {
-            kind: 1,
-            name: 'email',
-            value: 's',
-          },
-        ],
-        description: 'User type definition',
-        type: 'User',
-      },
-      User: {
-        name: 'User',
-        kind: 15,
-        properties: [
-          {
-            kind: 1,
-            name: 'email',
-          },
-          {
-            name: 'nickName',
-            kind: 1,
-            optional: true,
-          },
-        ],
-        description: 'User type definition',
       },
     });
   });

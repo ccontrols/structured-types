@@ -2,6 +2,41 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('type', () => {
+  it('referenced-type', () => {
+    const results = parseFiles(
+      [path.resolve(__dirname, 'referenced-type.ts')],
+      { collectHelpers: true },
+    );
+    expect(results).toEqual({
+      JSDocInfoType: {
+        name: 'JSDocInfoType',
+        kind: 15,
+        properties: [
+          {
+            name: 'comment',
+            optional: true,
+            readonly: true,
+            kind: 4,
+            properties: [
+              {
+                kind: 1,
+              },
+              {
+                kind: 14,
+                type: 'NodeArray',
+                generics: [
+                  {
+                    kind: 15,
+                    type: 'JSDocComment',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    });
+  });
   it('partial', () => {
     const results = parseFiles([path.resolve(__dirname, 'partial.ts')]);
     expect(results).toEqual({
@@ -13,7 +48,9 @@ describe('type', () => {
         properties: [
           {
             name: 'stringProp',
-            parent: 'MainType',
+            parent: {
+              name: 'MainType',
+            },
             kind: 1,
             description: 'string prop description',
           },
@@ -46,7 +83,9 @@ describe('type', () => {
                     properties: [
                       {
                         name: 'children',
-                        parent: 'Parent',
+                        parent: {
+                          name: 'Parent',
+                        },
                       },
                     ],
                     type: 'Parent',
@@ -75,47 +114,7 @@ describe('type', () => {
       },
     });
   });
-  it('referenced-type', () => {
-    const results = parseFiles([path.resolve(__dirname, 'referenced-type.ts')]);
-    expect(results).toEqual({
-      JSDocInfoType: {
-        name: 'JSDocInfoType',
-        kind: 15,
-        properties: [
-          {
-            name: 'comment',
-            optional: true,
-            readonly: true,
-            kind: 4,
-            properties: [
-              {
-                kind: 1,
-              },
-              {
-                kind: 14,
-                type: 'NodeArray',
-                generics: [
-                  {
-                    kind: 4,
-                    properties: [
-                      {
-                        kind: 14,
-                        type: 'JSDocText',
-                      },
-                      {
-                        kind: 14,
-                        type: 'JSDocLink',
-                      },
-                    ],
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    });
-  });
+
   it('union-generic', () => {
     const results = parseFiles([path.resolve(__dirname, 'union-generic.ts')]);
     expect(results).toEqual({
@@ -170,7 +169,9 @@ describe('type', () => {
             description: 'base type member property',
             name: 'm',
             kind: 1,
-            parent: 'T',
+            parent: {
+              name: 'T',
+            },
           },
           {
             description: 'own member',
@@ -321,7 +322,9 @@ describe('type', () => {
             name: 'm',
             kind: 1,
             type: 'Type',
-            parent: 'GenericInterface',
+            parent: {
+              name: 'GenericInterface',
+            },
           },
         ],
         name: 'GenericConsumer',
@@ -360,12 +363,16 @@ describe('type', () => {
           {
             name: 'a',
             kind: 1,
-            parent: 'A',
+            parent: {
+              name: 'A',
+            },
           },
           {
             name: 'b',
             kind: 2,
-            parent: 'B',
+            parent: {
+              name: 'B',
+            },
           },
         ],
         name: 'Intersect',
@@ -409,7 +416,9 @@ describe('type', () => {
             description: 'member field',
             name: 'm',
             type: 'Type',
-            parent: 'GenericArrayType',
+            parent: {
+              name: 'GenericArrayType',
+            },
           },
         ],
         name: 'NestedGenericType',

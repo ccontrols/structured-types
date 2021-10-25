@@ -1,26 +1,26 @@
 import fs from 'fs';
 import path from 'path';
-import { Node, AttrsArg, SectionArg, TraverseCallback } from './types';
-import { getRepoPath } from './package-info';
+import { getRepoPath } from '@structured-types/api-docs';
+import { RemarkNode, AttrsArg, SectionArg, TraverseCallback } from './types';
 
 const trimQuotes = (txt: string): string =>
   txt ? txt.replace(/['"]+/g, '') : txt;
 
 export const extractCustomTag = (
-  node: Node,
+  node: RemarkNode,
   tagName: string,
 ): SectionArg[] | undefined => {
   const nodes =
     node.children &&
     node.children.filter(
-      (child: Node) =>
+      (child: RemarkNode) =>
         child.type === 'html' &&
         child.value &&
         child.value.startsWith(`<${tagName}`),
     );
   return nodes
     ? nodes
-        .map((section: Node) => ({
+        .map((section: RemarkNode) => ({
           section,
           match: section.value
             ? section.value.match(
@@ -29,7 +29,13 @@ export const extractCustomTag = (
             : undefined,
         }))
         .map(
-          ({ section, match }: { section: Node; match?: string[] | null }) => ({
+          ({
+            section,
+            match,
+          }: {
+            section: RemarkNode;
+            match?: string[] | null;
+          }) => ({
             attrs: { section, tagName, node },
             attributes: match
               ? match.map((m: string) =>
@@ -43,7 +49,7 @@ export const extractCustomTag = (
 
 export const inlineNewContent = (
   { section, tagName, node }: AttrsArg,
-  newContent: Node[],
+  newContent: RemarkNode[],
 ): void => {
   const startTag = `<!-- START-${tagName.toUpperCase()} -->`;
   const endTag = `<!-- END-${tagName.toUpperCase()} -->`;
@@ -98,7 +104,7 @@ export const traverseDirs = (
     folder: string,
     excludeFiles: string[],
     repoDir: string,
-    newNodes: Node[],
+    newNodes: RemarkNode[],
   ) => {
     const items = fs
       .readdirSync(folder, { withFileTypes: true })
@@ -131,7 +137,7 @@ export const traverseDirs = (
     const excludeFiles = attributes.find(
       (attribute) => attribute[0] === 'exclude',
     );
-    const newNodes: Node[] = [];
+    const newNodes: RemarkNode[] = [];
     const url = new URL(repo);
     getDirectories(
       path.resolve(sourcePath),

@@ -69,15 +69,10 @@ export const defaultOptions: OptionsTypes = {
         skipLink: true,
         help: 'Whether to collect generics parameters.',
       },
-      collectFilePath: {
+      collectSourceInfo: {
         defaultValue: false,
         skipLink: true,
-        help: 'Whether to collect the file path of objects.',
-      },
-      collectLinesOfCode: {
-        defaultValue: false,
-        skipLink: true,
-        help: 'Whether to collect the source code locations of symbols.',
+        help: 'Whether to collect the file path and source location of symbols.',
       },
 
       scope: {

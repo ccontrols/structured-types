@@ -49,8 +49,10 @@ export default async (
               );
 
               return { ...acc, ...generated };
-            } catch (e) {
-              __errors.push(e.toString());
+            } catch (e: unknown) {
+              if (e instanceof Error) {
+                __errors.push(e.toString());
+              }
               return acc;
             }
           } finally {

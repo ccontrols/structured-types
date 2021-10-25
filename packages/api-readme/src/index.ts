@@ -4,9 +4,8 @@ import chalk from 'chalk';
 import * as yargs from 'yargs';
 import remark from 'remark';
 import toc from 'remark-toc';
-import { cosmiconfigSync } from 'cosmiconfig';
 import { insertOverview } from './overview-sections/insert-overview';
-import { insertTSDoc } from './tsdoc/insert-tsdoc';
+import { insertAPISection } from './api-sections/insert-api';
 /**
  * create markdown pages from README.md type files
  * command-line arguments
@@ -44,21 +43,12 @@ export default (): void => {
   const options = args.parse(process.argv);
   const fileName = options.f;
   const configFileName = options.c;
-  const configExplorer = cosmiconfigSync('apireadme');
-  const configResult = configFileName
-    ? configExplorer.load(configFileName)
-    : configExplorer.search(path.dirname(fileName));
-
   if (options.log) {
     console.log('processing file:', chalk.red(path.resolve(fileName)));
-    if (configResult) {
-      console.log(
-        'with custom configuration:',
-        chalk.red(configResult.filepath),
-      );
-    }
   }
-  let r = remark().use(insertTSDoc(fileName, configResult)).use(insertOverview);
+  let r = remark()
+    .use(insertAPISection(fileName, configFileName))
+    .use(insertOverview);
   if (options.toc) {
     r = r.use(toc, { tight: true });
   }

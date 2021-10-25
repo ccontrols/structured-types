@@ -14,7 +14,9 @@ describe('react-hoc', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -27,7 +29,9 @@ describe('react-hoc', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -50,7 +54,9 @@ describe('react-hoc', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -63,7 +69,9 @@ describe('react-hoc', () => {
         name: 'MyComponent',
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -86,7 +94,9 @@ describe('react-hoc', () => {
         kind: 25,
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,
@@ -99,7 +109,9 @@ describe('react-hoc', () => {
         name: 'MyComponent',
         properties: [
           {
-            parent: 'OwnProps',
+            parent: {
+              name: 'OwnProps',
+            },
             optional: true,
             name: 'stringProp',
             kind: 1,

@@ -2,6 +2,28 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('interface', () => {
+  it('index-prop', () => {
+    const results = parseFiles([path.resolve(__dirname, 'index-prop.ts')]);
+
+    expect(results).toEqual({
+      IndexInterface: {
+        name: 'IndexInterface',
+        kind: 14,
+        properties: [
+          {
+            kind: 20,
+            index: {
+              kind: 2,
+              name: 'index',
+            },
+            prop: {
+              kind: 1,
+            },
+          },
+        ],
+      },
+    });
+  });
   it('record-props', () => {
     const results = parseFiles(
       [path.resolve(__dirname, 'record-props.ts')],
@@ -59,13 +81,17 @@ describe('interface', () => {
             description: 'boolean type member',
           },
           {
-            parent: 'Internal',
+            parent: {
+              name: 'Internal',
+            },
             kind: 1,
             name: 'm',
             description: 'string type member',
           },
           {
-            parent: 'Home',
+            parent: {
+              name: 'Home',
+            },
             name: 'resident',
             kind: 15,
           },
@@ -121,7 +147,9 @@ describe('interface', () => {
             name: 'kind',
             kind: 1,
             description: 'kind is an enum constant',
-            parent: 'StringEnums',
+            parent: {
+              name: 'StringEnums',
+            },
             value: 'UP',
             type: 'Up',
           },
@@ -231,28 +259,6 @@ describe('interface', () => {
     });
   });
 
-  it('index-prop', () => {
-    const results = parseFiles([path.resolve(__dirname, 'index-prop.ts')]);
-
-    expect(results).toEqual({
-      IndexInterface: {
-        name: 'IndexInterface',
-        kind: 14,
-        properties: [
-          {
-            kind: 20,
-            index: {
-              kind: 2,
-              name: 'index',
-            },
-            prop: {
-              kind: 1,
-            },
-          },
-        ],
-      },
-    });
-  });
   it('jsdoc-default', () => {
     const results = parseFiles([path.resolve(__dirname, 'jsdoc-default.ts')]);
     expect(results).toEqual({

@@ -1,0 +1,70 @@
+{
+  "name": "@structured-types/api-docs",
+  "version": "3.30.0",
+  "description": "Create api documentation nodes using structured-types/api",
+  "keywords": [
+    "jsdoc",
+    "javascript",
+    "documentation"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "NODE_ENV=production yarn rollup -c",
+    "dev": "NODE_ENV=development yarn rollup -cw",
+    "docs": "api-readme",
+    "prepare": "yarn build",
+    "lint": "yarn eslint . --ext ts,tsx",
+    "fix": "yarn lint --fix",
+    "clean": "rimraf dist coverage tsconfig.tsbuildinfo",
+    "test": "yarn jest"
+  },
+  "homepage": "https://github.com/ccontrols/structured-types",
+  "bugs": {
+    "url": "https://github.com/ccontrols/structured-types/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccontrols/structured-types.git",
+    "directory": "packages/api-docs"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@hutson/parse-repository-url": "^5.0.0",
+    "cosmiconfig": "^7.0.1",
+    "hosted-git-info": "^3.0.4",
+    "js-string-escape": "^1.0.1"
+  },
+  "devDependencies": {
+    "@structured-types/api": "^3.30.0",
+    "@types/hosted-git-info": "^3.0.0",
+    "@types/js-string-escape": "^1.0.1"
+  },
+  "peerDependencies": {
+    "typescript": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "moduleNameMapper": {
+      "@structured-types/typescript-config": "<rootDir>../typescript-config/src"
+    },
+    "roots": [
+      "./test"
+    ]
+  },
+  "author": {
+    "name": "Atanas Stoyanov",
+    "email": "atanasster@gmail.com",
+    "url": "https://github.com/ccontrols"
+  },
+  "gitHead": "6b63180832adf499bd1ec0808161c3bfc7ab6c1b"
+}

@@ -1,11 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import remark from 'remark';
-import { Node } from '../common/types';
-import { extractCustomTag, inlineNewContent } from '../common/utils';
+import { RemarkNode } from '../types';
+import { extractCustomTag, inlineNewContent } from '../utils';
 
 export const insertOverview = () => {
-  return (node: Node): void => {
+  return (node: RemarkNode): void => {
     const sections = extractCustomTag(node, 'package-section');
     if (sections) {
       sections.forEach(({ attrs, attributes }) => {
@@ -50,7 +50,7 @@ export const insertOverview = () => {
               });
             }
             remark()
-              .use(() => (sectionNode: Node) => {
+              .use(() => (sectionNode: RemarkNode) => {
                 let foundDepth = 0;
                 if (sectionNode.children) {
                   for (const section of sectionNode.children) {
