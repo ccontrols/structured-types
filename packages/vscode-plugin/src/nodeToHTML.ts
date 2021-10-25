@@ -71,7 +71,9 @@ const renderNode = ({
   } else if (isTableNode(node)) {
     const table = node.children
       ? `
-        <vscode-data-grid>
+        <vscode-data-grid grid-template-columns="${node.children[0].children
+          .map(() => '1fr')
+          .join(' ')}">
           <vscode-data-grid-row row-type="header">
             ${node.children[0].children
               ?.map((cell, index) =>
