@@ -56,7 +56,6 @@ const renderNode = ({
         : undefined,
       ...props,
     });
-    console.log(link);
     return link;
   } else if (isInlineCodeNode(node)) {
     return nodeContent({ node, as: 'code', ...props });
