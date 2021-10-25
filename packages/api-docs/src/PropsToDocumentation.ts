@@ -67,7 +67,13 @@ export class PropsToDocumentation {
           parentProp = {
             name: '...props',
             kind: PropKind.Enum,
-            properties: [{ kind: PropKind.Type, type: prop.parent.name }],
+            properties: [
+              {
+                kind: PropKind.Type,
+                type: prop.parent.name,
+                loc: prop.parent.loc,
+              },
+            ],
             optional: true,
           };
         } else {
@@ -77,6 +83,7 @@ export class PropsToDocumentation {
             parentProp.properties?.push({
               kind: PropKind.Type,
               type: prop.parent.name,
+              loc: prop.parent.loc,
             });
           }
         }
