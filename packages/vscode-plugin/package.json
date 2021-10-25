@@ -20,8 +20,9 @@
   ],
   "scripts": {
     "vscode:prepublish": "yarn build",
+    "copy-toolkit": "copyfiles -f \"../../node_modules/@vscode/webview-ui-toolkit/dist/toolkit.js\" ./dist/",
     "postinstall": "node ../../node_modules/vscode/bin/install",
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && yarn copy-toolkit",
     "dev": "tsc -w -p tsconfig.json",
     "lint": "yarn eslint . --ext ts,tsx",
     "fix": "yarn lint --fix",
@@ -47,7 +48,8 @@
     "vscode": "^1.1.37"
   },
   "devDependencies": {
-    "@types/node": "^16.3.3"
+    "@types/node": "^16.3.3",
+    "copyfiles": "^2.4.1"
   },
   "activationEvents": [
     "onCommand:structured-types.openPreview",
