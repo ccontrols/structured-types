@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.31.0](https://github.com/ccontrols/structured-types/compare/v3.30.0...v3.31.0) (2021-10-25)
+
+
+### Bug Fixes
+
+* **site:** docs for collect source info ([e0b459b](https://github.com/ccontrols/structured-types/commit/e0b459b85e324d67508bb449faf37b989c951bb1))
+* **site:** examples props ([f095f08](https://github.com/ccontrols/structured-types/commit/f095f086913f6ee52093671378add868f9b3e9bd))
+* clean table node generation ([3961c83](https://github.com/ccontrols/structured-types/commit/3961c83d01e066adc9de0691a0dab6608a64dd22))
+
+
+
+
+
 # [3.30.0](https://github.com/ccontrols/structured-types/compare/v3.29.0...v3.30.0) (2021-10-10)
 
 **Note:** Version bump only for package structured-types-site
