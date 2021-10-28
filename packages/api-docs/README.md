@@ -5,23 +5,41 @@
 -   [Usage](#usage)
 -   [API](#api)
     -   [propsToDocumentation](#propstodocumentation)
+        -   [`function`](#function)
     -   [apiDocsConfig](#apidocsconfig)
+        -   [`function`](#function-1)
     -   [getRepoPath](#getrepopath)
+        -   [`function`](#function-2)
     -   [NodeKind](#nodekind)
+        -   [`enum`](#enum)
     -   [DocumentationNodeWithChildren](#documentationnodewithchildren)
+        -   [`interface`](#interface)
     -   [DocumentationNodeWithValue](#documentationnodewithvalue)
+        -   [`interface`](#interface-1)
     -   [TableNode](#tablenode)
+        -   [`interface`](#interface-2)
     -   [TableRowNode](#tablerownode)
+        -   [`interface`](#interface-3)
     -   [TableCellNode](#tablecellnode)
+        -   [`interface`](#interface-4)
     -   [HeadingNode](#headingnode)
+        -   [`interface`](#interface-5)
     -   [ParagraphNode](#paragraphnode)
+        -   [`interface`](#interface-6)
     -   [TextNode](#textnode)
+        -   [`interface`](#interface-7)
     -   [BoldNode](#boldnode)
+        -   [`interface`](#interface-8)
     -   [EmphasisNode](#emphasisnode)
+        -   [`interface`](#interface-9)
     -   [LinkNode](#linknode)
+        -   [`interface`](#interface-10)
     -   [CodeNode](#codenode)
+        -   [`interface`](#interface-11)
     -   [InlineCodeNode](#inlinecodenode)
+        -   [`interface`](#interface-12)
     -   [DocumentationOptions](#documentationoptions)
+        -   [`type`](#type)
 -   [Configuration](#configuration)
     -   -   [Configuration examples](#configuration-examples)
         -   [Override properties](#override-properties)
@@ -75,13 +93,13 @@ export const extractProps = (
 
 ## propsToDocumentation
 
-**`function`** _defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/index.ts#L16)_
+### `function`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/index.ts#L16)_
 
 Creates a list of api documentation nodes
 
-**parameters**
-
-| Name      | Type                                                         | Description                                     |
+**parameters**| Name      | Type                                                         | Description                                     |
 | --------- | ------------------------------------------------------------ | ----------------------------------------------- |
 | `props*`  | { `index`, `__helpers`: `Record`, `__diagnostics`: `array` } | properties parsed from  `structured-types/api`  |
 | `options` | [`DocumentationOptions`](#documentationoptions)              | Document page generation options                |
@@ -89,13 +107,13 @@ Creates a list of api documentation nodes
 
 ## apiDocsConfig
 
-**`function`** _defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/index.ts#L30)_
+### `function`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/index.ts#L30)_
 
 Read the api-docs configuration file
 
-**parameters**
-
-| Name             | Type              | Description                                                                                          |
+**parameters**| Name             | Type              | Description                                                                                          |
 | ---------------- | ----------------- | ---------------------------------------------------------------------------------------------------- |
 | `fileName*`      | `string`          | the file that is being analyzed, will be used the starting folder to search for configuration files. |
 | `configFileName` | `string`          | pass directly the configuration file name                                                            |
@@ -103,252 +121,252 @@ Read the api-docs configuration file
 
 ## getRepoPath
 
-**`function`** _defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/index.ts#L42)_
+### `function`
 
-**parameters**
+_defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/index.ts#L42)_
 
-| Name        | Type                                                                    | Description                                      |
+**parameters**| Name        | Type                                                                    | Description                                      |
 | ----------- | ----------------------------------------------------------------------- | ------------------------------------------------ |
 | `filePath*` | `string`                                                                | file path to start the search for a package.json |
 | `returns`   | { `repo`: `string`, `packageName`: `string`, `relativePath`: `string` } |                                                  |
 
 ## NodeKind
 
-**`enum`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L6)_
+### `enum`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L6)_
 
 Documentation node kinds
 
-**properties**
-
-| Name          | Type     | Value |
-| ------------- | -------- | ----- |
-| `Table*`      | `number` | `1`   |
-| `TableRow*`   | `number` | `2`   |
-| `TableCell*`  | `number` | `3`   |
-| `Heading*`    | `number` | `4`   |
-| `Paragraph*`  | `number` | `5`   |
-| `Text*`       | `number` | `6`   |
-| `Bold*`       | `number` | `7`   |
-| `Emphasis*`   | `number` | `8`   |
-| `Link*`       | `number` | `9`   |
-| `Code*`       | `number` | `10`  |
-| `InlineCode*` | `number` | `11`  |
+**properties**| Name          | Type     | Default |
+| ------------- | -------- | ------- |
+| `Table*`      | `number` | `1`     |
+| `TableRow*`   | `number` | `2`     |
+| `TableCell*`  | `number` | `3`     |
+| `Heading*`    | `number` | `4`     |
+| `Paragraph*`  | `number` | `5`     |
+| `Text*`       | `number` | `6`     |
+| `Bold*`       | `number` | `7`     |
+| `Emphasis*`   | `number` | `8`     |
+| `Link*`       | `number` | `9`     |
+| `Code*`       | `number` | `10`    |
+| `InlineCode*` | `number` | `11`    |
 
 ## DocumentationNodeWithChildren
 
-**`interface`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L30)_
+### `interface`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L30)_
 
 Documentation node with children
 
 extends DocumentationNode
 
-**properties**
-
-| Name       | Type                                        | Description              |
+**properties**| Name       | Type                                        | Description              |
 | ---------- | ------------------------------------------- | ------------------------ |
 | `children` | { `kind`: [`NodeKind`](#nodekind) }\[]      |                          |
 | `kind*`    | 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 | Documentation node kinds |
 
 ## DocumentationNodeWithValue
 
-**`interface`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L55)_
+### `interface`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L55)_
 
 Documentation node with a value
 
 extends DocumentationNode
 
-**properties**
-
-| Name     | Type                                        | Description              |
+**properties**| Name     | Type                                        | Description              |
 | -------- | ------------------------------------------- | ------------------------ |
 | `value*` | `string`                                    |                          |
 | `kind*`  | 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 | Documentation node kinds |
 
 ## TableNode
 
-**`interface`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L75)_
+### `interface`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L75)_
 
 Table node, where the first row is a table header row
 
 extends DocumentationNode
 
-**properties**
-
-| Name        | Type                               | Parent                  | Value |
-| ----------- | ---------------------------------- | ----------------------- | ----- |
-| `kind*`     | `Table`                            | [`NodeKind`](#nodekind) | `1`   |
-| `children*` | [`TableRowNode`](#tablerownode)\[] |                         | ``    |
+**properties**| Name        | Type                               | Parent                  | Default |
+| ----------- | ---------------------------------- | ----------------------- | ------- |
+| `kind*`     | `Table`                            | [`NodeKind`](#nodekind) | `1`     |
+| `children*` | [`TableRowNode`](#tablerownode)\[] |                         | ``      |
 
 ## TableRowNode
 
-**`interface`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L91)_
+### `interface`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L91)_
 
 Table row node - can be a header or data row
 
 extends DocumentationNode
 
-**properties**
-
-| Name        | Type                                 | Parent                  | Value |
-| ----------- | ------------------------------------ | ----------------------- | ----- |
-| `kind*`     | `TableRow`                           | [`NodeKind`](#nodekind) | `2`   |
-| `children*` | [`TableCellNode`](#tablecellnode)\[] |                         | ``    |
+**properties**| Name        | Type                                 | Parent                  | Default |
+| ----------- | ------------------------------------ | ----------------------- | ------- |
+| `kind*`     | `TableRow`                           | [`NodeKind`](#nodekind) | `2`     |
+| `children*` | [`TableCellNode`](#tablecellnode)\[] |                         | ``      |
 
 ## TableCellNode
 
-**`interface`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L108)_
+### `interface`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L108)_
 
 Table cell node, the content is a list of child nodes
 
 extends [`DocumentationNodeWithChildren`](#documentationnodewithchildren)
 
-**properties**
-
-| Name       | Type                                   | Parent                                                            | Value |
-| ---------- | -------------------------------------- | ----------------------------------------------------------------- | ----- |
-| `kind*`    | `TableCell`                            | [`NodeKind`](#nodekind)                                           | `3`   |
-| `children` | { `kind`: [`NodeKind`](#nodekind) }\[] | [`DocumentationNodeWithChildren`](#documentationnodewithchildren) | ``    |
+**properties**| Name       | Type                                   | Parent                                                            | Default |
+| ---------- | -------------------------------------- | ----------------------------------------------------------------- | ------- |
+| `kind*`    | `TableCell`                            | [`NodeKind`](#nodekind)                                           | `3`     |
+| `children` | { `kind`: [`NodeKind`](#nodekind) }\[] | [`DocumentationNodeWithChildren`](#documentationnodewithchildren) | ``      |
 
 ## HeadingNode
 
-**`interface`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L124)_
+### `interface`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L124)_
 
 Heading node with a depth parameter, the content is a list of child nodes
 
 extends [`DocumentationNodeWithChildren`](#documentationnodewithchildren)
 
-**properties**
-
-| Name       | Type                                   | Parent                                                            | Value |
-| ---------- | -------------------------------------- | ----------------------------------------------------------------- | ----- |
-| `kind*`    | `Heading`                              | [`NodeKind`](#nodekind)                                           | `4`   |
-| `depth*`   | `number`                               |                                                                   | ``    |
-| `children` | { `kind`: [`NodeKind`](#nodekind) }\[] | [`DocumentationNodeWithChildren`](#documentationnodewithchildren) | ``    |
+**properties**| Name       | Type                                   | Parent                                                            | Default |
+| ---------- | -------------------------------------- | ----------------------------------------------------------------- | ------- |
+| `kind*`    | `Heading`                              | [`NodeKind`](#nodekind)                                           | `4`     |
+| `depth*`   | `number`                               |                                                                   | ``      |
+| `children` | { `kind`: [`NodeKind`](#nodekind) }\[] | [`DocumentationNodeWithChildren`](#documentationnodewithchildren) | ``      |
 
 ## ParagraphNode
 
-**`interface`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L140)_
+### `interface`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L140)_
 
 Paragraph node, the content is a list of child nodes
 
 extends [`DocumentationNodeWithChildren`](#documentationnodewithchildren)
 
-**properties**
-
-| Name       | Type                                   | Parent                                                            | Value |
-| ---------- | -------------------------------------- | ----------------------------------------------------------------- | ----- |
-| `kind*`    | `Paragraph`                            | [`NodeKind`](#nodekind)                                           | `5`   |
-| `children` | { `kind`: [`NodeKind`](#nodekind) }\[] | [`DocumentationNodeWithChildren`](#documentationnodewithchildren) | ``    |
+**properties**| Name       | Type                                   | Parent                                                            | Default |
+| ---------- | -------------------------------------- | ----------------------------------------------------------------- | ------- |
+| `kind*`    | `Paragraph`                            | [`NodeKind`](#nodekind)                                           | `5`     |
+| `children` | { `kind`: [`NodeKind`](#nodekind) }\[] | [`DocumentationNodeWithChildren`](#documentationnodewithchildren) | ``      |
 
 ## TextNode
 
-**`interface`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L156)_
+### `interface`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L156)_
 
 Text node, the content string is in the value field
 
 extends [`DocumentationNodeWithValue`](#documentationnodewithvalue)
 
-**properties**
-
-| Name     | Type     | Parent                                                      | Value |
-| -------- | -------- | ----------------------------------------------------------- | ----- |
-| `kind*`  | `Text`   | [`NodeKind`](#nodekind)                                     | `6`   |
-| `value*` | `string` | [`DocumentationNodeWithValue`](#documentationnodewithvalue) | ``    |
+**properties**| Name     | Type     | Parent                                                      | Default |
+| -------- | -------- | ----------------------------------------------------------- | ------- |
+| `kind*`  | `Text`   | [`NodeKind`](#nodekind)                                     | `6`     |
+| `value*` | `string` | [`DocumentationNodeWithValue`](#documentationnodewithvalue) | ``      |
 
 ## BoldNode
 
-**`interface`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L170)_
+### `interface`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L170)_
 
 Bold/Strong node, the content is a list of child nodes
 
 extends [`DocumentationNodeWithChildren`](#documentationnodewithchildren)
 
-**properties**
-
-| Name       | Type                                   | Parent                                                            | Value |
-| ---------- | -------------------------------------- | ----------------------------------------------------------------- | ----- |
-| `kind*`    | `Bold`                                 | [`NodeKind`](#nodekind)                                           | `7`   |
-| `children` | { `kind`: [`NodeKind`](#nodekind) }\[] | [`DocumentationNodeWithChildren`](#documentationnodewithchildren) | ``    |
+**properties**| Name       | Type                                   | Parent                                                            | Default |
+| ---------- | -------------------------------------- | ----------------------------------------------------------------- | ------- |
+| `kind*`    | `Bold`                                 | [`NodeKind`](#nodekind)                                           | `7`     |
+| `children` | { `kind`: [`NodeKind`](#nodekind) }\[] | [`DocumentationNodeWithChildren`](#documentationnodewithchildren) | ``      |
 
 ## EmphasisNode
 
-**`interface`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L184)_
+### `interface`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L184)_
 
 Emphasis/Italic node, the content is a list of child nodes
 
 extends [`DocumentationNodeWithChildren`](#documentationnodewithchildren)
 
-**properties**
-
-| Name       | Type                                   | Parent                                                            | Value |
-| ---------- | -------------------------------------- | ----------------------------------------------------------------- | ----- |
-| `kind*`    | `Emphasis`                             | [`NodeKind`](#nodekind)                                           | `8`   |
-| `children` | { `kind`: [`NodeKind`](#nodekind) }\[] | [`DocumentationNodeWithChildren`](#documentationnodewithchildren) | ``    |
+**properties**| Name       | Type                                   | Parent                                                            | Default |
+| ---------- | -------------------------------------- | ----------------------------------------------------------------- | ------- |
+| `kind*`    | `Emphasis`                             | [`NodeKind`](#nodekind)                                           | `8`     |
+| `children` | { `kind`: [`NodeKind`](#nodekind) }\[] | [`DocumentationNodeWithChildren`](#documentationnodewithchildren) | ``      |
 
 ## LinkNode
 
-**`interface`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L201)_
+### `interface`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L201)_
 
 Link node with url property, the content is a list of child nodes
 
 extends [`DocumentationNodeWithChildren`](#documentationnodewithchildren)
 
-**properties**
-
-| Name       | Type                                    | Parent                                                            | Value |
-| ---------- | --------------------------------------- | ----------------------------------------------------------------- | ----- |
-| `kind*`    | `Link`                                  | [`NodeKind`](#nodekind)                                           | `9`   |
-| `url`      | `string`                                |                                                                   | ``    |
-| `loc`      | { `filePath`: `string`, `loc`: `type` } |                                                                   | ``    |
-| `children` | { `kind`: [`NodeKind`](#nodekind) }\[]  | [`DocumentationNodeWithChildren`](#documentationnodewithchildren) | ``    |
+**properties**| Name       | Type                                    | Parent                                                            | Default |
+| ---------- | --------------------------------------- | ----------------------------------------------------------------- | ------- |
+| `kind*`    | `Link`                                  | [`NodeKind`](#nodekind)                                           | `9`     |
+| `url`      | `string`                                |                                                                   | ``      |
+| `loc`      | { `filePath`: `string`, `loc`: `type` } |                                                                   | ``      |
+| `children` | { `kind`: [`NodeKind`](#nodekind) }\[]  | [`DocumentationNodeWithChildren`](#documentationnodewithchildren) | ``      |
 
 ## CodeNode
 
-**`interface`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L217)_
+### `interface`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L217)_
 
 Code node, the content string is in the value field
 
 extends [`DocumentationNodeWithValue`](#documentationnodewithvalue)
 
-**properties**
-
-| Name     | Type     | Parent                                                      | Value |
-| -------- | -------- | ----------------------------------------------------------- | ----- |
-| `kind*`  | `Code`   | [`NodeKind`](#nodekind)                                     | `10`  |
-| `value*` | `string` | [`DocumentationNodeWithValue`](#documentationnodewithvalue) | ``    |
+**properties**| Name     | Type     | Parent                                                      | Default |
+| -------- | -------- | ----------------------------------------------------------- | ------- |
+| `kind*`  | `Code`   | [`NodeKind`](#nodekind)                                     | `10`    |
+| `value*` | `string` | [`DocumentationNodeWithValue`](#documentationnodewithvalue) | ``      |
 
 ## InlineCodeNode
 
-**`interface`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L231)_
+### `interface`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L231)_
 
 Inline code node, the content string is in the value field
 
 extends [`DocumentationNodeWithValue`](#documentationnodewithvalue)
 
-**properties**
-
-| Name     | Type         | Parent                                                      | Value |
-| -------- | ------------ | ----------------------------------------------------------- | ----- |
-| `kind*`  | `InlineCode` | [`NodeKind`](#nodekind)                                     | `11`  |
-| `value*` | `string`     | [`DocumentationNodeWithValue`](#documentationnodewithvalue) | ``    |
+**properties**| Name     | Type         | Parent                                                      | Default |
+| -------- | ------------ | ----------------------------------------------------------- | ------- |
+| `kind*`  | `InlineCode` | [`NodeKind`](#nodekind)                                     | `11`    |
+| `value*` | `string`     | [`DocumentationNodeWithValue`](#documentationnodewithvalue) | ``      |
 
 ## DocumentationOptions
 
-**`type`** _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L270)_
+### `type`
+
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L271)_
 
 Document page generation options
 
-**properties**
-
-| Name            | Type                                                                        | Description                                                                                                                                                                                                           |
-| --------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `collapsed`     | `string`\[]                                                                 | List of type names, that should not be expanded. For example, some internal React objects can be kept just as a string and will not be detailed in the documentation, instead of listing their internal properties.   |
-| `extensions`    | `string`\[]                                                                 | List of plugins (or extensions). For example, for a react library, you can specify to include only react components, but not any additional types or utilities.                                                       |
-| `visible`       | `string`\[]                                                                 | List of type names, that should be "visible". This will limit which of the parsed props to be documented.                                                                                                             |
-| `columns`       | "name" \| "type" \| "parents" \| "value" \| "description" \| "all"\[]       | List of the columns in the property tables  `name`  \|  `type`  \|  `parents`  \|  `value`  \|  `description`  \|  `all` . By default, all columns will be visible.                                                   |
-| `sections`      | "props" \| "description" \| "examples" \| "title" \| "location" \| "all"\[] | List of the sections to generate  `props`  \|  `description`  \|  `examples`  \|  `title`  \|  `location`  \|  `all` . By default, all sections are generated.                                                        |
-| `skipInherited` | `boolean`                                                                   | Whether to skip properties that are "inherited", or "composed". For example,  `type OwnProps = { x: number } & React.LineProps`  will only output the  `x`  property and skip the inherited React library properties. |
-| `overrides`     | `Record`&lt;`string`, `Record`>                                             | Sections with custom properties                                                                                                                                                                                       |
+**properties**| Name            | Type                                                                                  | Description                                                                                                                                                                                                           |
+| --------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `collapsed`     | `string`\[]                                                                           | List of type names, that should not be expanded. For example, some internal React objects can be kept just as a string and will not be detailed in the documentation, instead of listing their internal properties.   |
+| `extensions`    | `string`\[]                                                                           | List of plugins (or extensions). For example, for a react library, you can specify to include only react components, but not any additional types or utilities.                                                       |
+| `visible`       | `string`\[]                                                                           | List of type names, that should be "visible". This will limit which of the parsed props to be documented.                                                                                                             |
+| `columns`       | "name" \| "type" \| "parents" \| "default" \| "description" \| "all"\[]               | List of the columns in the property tables  `name`  \|  `type`  \|  `parents`  \|  `value`  \|  `description`  \|  `all` . By default, all columns will be visible.                                                   |
+| `sections`      | "props" \| "description" \| "examples" \| "title" \| "type" \| "location" \| "all"\[] | List of the sections to generate  `props`  \|  `description`  \|  `examples`  \|  `title`  \|  `location`  \|  `all` . By default, all sections are generated.                                                        |
+| `skipInherited` | `boolean`                                                                             | Whether to skip properties that are "inherited", or "composed". For example,  `type OwnProps = { x: number } & React.LineProps`  will only output the  `x`  property and skip the inherited React library properties. |
+| `overrides`     | `Record`&lt;`string`, `Record`>                                                       | Sections with custom properties                                                                                                                                                                                       |
 
 <!-- END-API-README -->
 

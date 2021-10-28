@@ -1,4 +1,15 @@
-# Structured Documentation VSCode Extension
+# Table of contents
+
+- [Structured Documentation VSCode Extension](#structured-documentation-vscode-extension)
+  - [Installation in VS Code](#installation-in-vs-code)
+    - [Install from VS Code (Recommended)](#install-from-vs-code-recommended)
+    - [Install from GitHub](#install-from-github)
+  - [VSCode Settings](#vscode-settings)
+  - [Configuration file](#configuration-file)
+    - [Options](#options)
+  - [Keybindings](#keybindings)
+
+<h1 align="center"> Markdown Preview Enhanced </h1>
 
 A VSCode extension that will show the structured type information documentation for typescript and javascript files
 
@@ -9,8 +20,6 @@ A VSCode extension that will show the structured type information documentation 
 ### Install from VS Code (Recommended)
 
 Open VSCode, search for `@structured-types/vscode-plugin` in Extensions and then click the Install button.
-
-![./vscode-extension.gif](https://github.com/ccontrols/structured-types/raw/master/packages/vscode-plugin/vscode-extension.gif)
 
 ### Install from GitHub
 
