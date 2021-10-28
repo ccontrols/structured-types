@@ -152,6 +152,74 @@
           "description": "Automatically show preview of the code being edited.",
           "default": false,
           "type": "boolean"
+        },
+        "structured-types.collapsed": {
+          "description": "List of type names, that should not be expanded. or example, some internal React objects can be kept just as a string and will not be detailed in the documentation, instead of listing their internal properties.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "structured-types.visible": {
+          "description": "List of type names, that should be \"visible\". This will limit which of the parsed props to be documented.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "structured-types.extensions": {
+          "description": "List of plugins (or extensions). For example, for a react library, you can specify to include only react components, but not any additional types or utilities.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "react",
+              "react-prop-types"
+            ]
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "structured-types.columns": {
+          "markdownDescription": "List of the columns in the property tables `name` | `type` | `parents` | `value` | `description` | `all`. By default, all columns will be visible.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "name",
+              "type",
+              "parents",
+              "value",
+              "description"
+            ]
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "structured-types.sections": {
+          "markdownDescription": "List of the sections to generate `props` | `description` | `examples` | `title` | `location` | `all`. By default, all sections are generated.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "props",
+              "description",
+              "examples",
+              "title",
+              "location"
+            ]
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "structured-types.skipInherited": {
+          "description": "Whether to skip properties that are \"inherited\", or \"composed\"",
+          "default": false,
+          "type": "boolean"
         }
       }
     }

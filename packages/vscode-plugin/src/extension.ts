@@ -1,10 +1,12 @@
 import * as vscode from 'vscode';
 import { ContentProvider } from './ContentProvider';
 import { isDocumentableFile } from './utils';
-import { useSinglePreview } from './config';
+import { ConfigStore } from './config';
 
 export function activate(context: vscode.ExtensionContext): void {
-  const contentProvider = new ContentProvider(context);
+  const config = new ConfigStore();
+  const contentProvider = new ContentProvider(context, config.config);
+
   const openPreview = (column: vscode.ViewColumn) => (uri?: vscode.Uri) => {
     let resource = uri;
     if (!(resource instanceof vscode.Uri)) {
@@ -22,11 +24,8 @@ export function activate(context: vscode.ExtensionContext): void {
       if (textEditor && textEditor.document && textEditor.document.uri) {
         if (isDocumentableFile(textEditor.document)) {
           const sourceUri = textEditor.document.uri;
-          const config = vscode.workspace.getConfiguration('structured-types');
-          const automaticallyShowPreview = config.get<boolean>(
-            'automaticallyShowPreview',
-          );
-          const isUsingSinglePreview = useSinglePreview();
+
+          const isUsingSinglePreview = config.config.singlePreview;
           const {
             panel: previewPanel,
             viewColumn,
@@ -43,7 +42,7 @@ export function activate(context: vscode.ExtensionContext): void {
             } else if (!isUsingSinglePreview && previewPanel) {
               previewPanel.reveal(vscode.ViewColumn.Two, true);
             }
-          } else if (automaticallyShowPreview) {
+          } else if (config.config.automaticallyShowPreview) {
             openPreview(vscode.ViewColumn.Two)(sourceUri);
           }
         }
@@ -67,5 +66,11 @@ export function activate(context: vscode.ExtensionContext): void {
       'structured-types.refresh',
       (uri?: vscode.Uri) => uri && contentProvider.refreshPreview(uri),
     ),
+  );
+  context.subscriptions.push(
+    vscode.workspace.onDidChangeConfiguration(() => {
+      config.readConfig();
+      contentProvider.updateConfiguration(config.config);
+    }),
   );
 }

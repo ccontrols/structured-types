@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 import { extractProps } from './extract-props';
 import { nodesToHTML } from './nodeToHTML';
 import { getUri, getNonce, openLocation } from './utils';
-import { useSinglePreview } from './config';
+import { VSCodeConfig } from './config';
 
 type PanelStore = {
   panel: vscode.WebviewPanel;
@@ -12,14 +12,16 @@ type PanelStore = {
 };
 export class ContentProvider {
   private readonly context: vscode.ExtensionContext;
+  private config: VSCodeConfig;
   private previewPanels: Record<string, PanelStore> = {};
   private singlePreviewPanel: PanelStore | undefined;
   private static readonly viewType = 'documentation';
   private render: (fileName: string) => string;
-  constructor(context: vscode.ExtensionContext) {
+  constructor(context: vscode.ExtensionContext, config: VSCodeConfig) {
     this.context = context;
+    this.config = { ...config };
     this.render = (fileName: string) => {
-      const nodes = extractProps(fileName);
+      const nodes = extractProps(fileName, this.config);
       return nodesToHTML(nodes);
     };
 
@@ -98,7 +100,7 @@ export class ContentProvider {
       viewColumn: previewColumn,
       uri: sourceUri,
     };
-    if (useSinglePreview()) {
+    if (this.config.singlePreview) {
       this.singlePreviewPanel = preview;
     } else {
       this.previewPanels[sourceUri.fsPath] = preview;
@@ -113,7 +115,7 @@ export class ContentProvider {
   }
 
   public getPreview(sourceUri: vscode.Uri): PanelStore | undefined {
-    if (useSinglePreview()) {
+    if (this.config.singlePreview) {
       return this.singlePreviewPanel;
     } else {
       return this.previewPanels[sourceUri.fsPath];
@@ -126,10 +128,42 @@ export class ContentProvider {
     const { panel } = this.getPreview(sourceUri) || {};
     if (panel) {
       panel.dispose();
-      if (useSinglePreview()) {
+      if (this.config.singlePreview) {
         this.singlePreviewPanel = undefined;
       } else {
         delete this.previewPanels[sourceUri.fsPath];
+      }
+    }
+  }
+
+  public refreshAll(): void {
+    if (this.config.singlePreview) {
+      this.refreshPreview(this.singlePreviewPanel.uri);
+    } else {
+      Object.keys(this.previewPanels).forEach((key) =>
+        this.refreshPreview(this.previewPanels[key].uri),
+      );
+    }
+  }
+  public destroyAll(): void {
+    if (this.config.singlePreview) {
+      this.destroyPreview(this.singlePreviewPanel.uri);
+    } else {
+      const keys = Object.keys(this.previewPanels);
+      for (const key in keys) {
+        this.destroyPreview(this.previewPanels[key].uri);
+      }
+    }
+  }
+  public updateConfiguration(config: VSCodeConfig): void {
+    if (JSON.stringify(config) !== JSON.stringify(this.config)) {
+      const singleStateChange =
+        this.config.singlePreview !== config.singlePreview;
+      this.config = { ...config };
+      if (singleStateChange) {
+        this.destroyAll();
+      } else {
+        this.refreshAll();
       }
     }
   }

@@ -5,11 +5,12 @@ import { DocsOptions, parseFiles } from '@structured-types/api';
 import {
   propsToDocumentation,
   apiDocsConfig,
+  DocumentationOptions,
 } from '@structured-types/api-docs';
 
 export const extractProps = (
   fileName: string,
-  options: DocsOptions = {},
+  options: DocsOptions & DocumentationOptions = {},
 ): ReturnType<typeof propsToDocumentation> => {
   const { config = {} } = apiDocsConfig(fileName) || {};
   const mergedConfig = deepmerge(config, options);
@@ -22,7 +23,7 @@ export const extractProps = (
     ...mergedConfig,
   });
 
-  const nodes = propsToDocumentation(props, config);
+  const nodes = propsToDocumentation(props, mergedConfig);
 
   return nodes;
 };
