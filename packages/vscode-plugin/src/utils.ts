@@ -47,3 +47,13 @@ export const getNonce = (): string => {
   }
   return text;
 };
+
+export function isDocumentableFile(document: vscode.TextDocument): boolean {
+  return (
+    (document.languageId === 'typescript' ||
+      document.languageId === 'typescriptreact' ||
+      document.languageId === 'javascript' ||
+      document.languageId === 'javascriptreact') &&
+    document.uri.scheme !== 'structured-types'
+  );
+}

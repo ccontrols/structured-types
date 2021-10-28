@@ -1,5 +1,7 @@
 import * as vscode from 'vscode';
 import { ContentProvider } from './ContentProvider';
+import { isDocumentableFile } from './utils';
+import { useSinglePreview } from './config';
 
 export function activate(context: vscode.ExtensionContext): void {
   const contentProvider = new ContentProvider(context);
@@ -15,6 +17,39 @@ export function activate(context: vscode.ExtensionContext): void {
       contentProvider.createPreview(resource, column);
     }
   };
+  context.subscriptions.push(
+    vscode.window.onDidChangeActiveTextEditor((textEditor) => {
+      if (textEditor && textEditor.document && textEditor.document.uri) {
+        if (isDocumentableFile(textEditor.document)) {
+          const sourceUri = textEditor.document.uri;
+          const config = vscode.workspace.getConfiguration('structured-types');
+          const automaticallyShowPreview = config.get<boolean>(
+            'automaticallyShowPreview',
+          );
+          const isUsingSinglePreview = useSinglePreview();
+          const {
+            panel: previewPanel,
+            viewColumn,
+            uri,
+          } = contentProvider.getPreview(sourceUri) || {};
+
+          if (contentProvider.isPreviewOn(sourceUri)) {
+            if (
+              isUsingSinglePreview &&
+              previewPanel &&
+              sourceUri.fsPath !== uri.fsPath
+            ) {
+              contentProvider.createPreview(sourceUri, viewColumn);
+            } else if (!isUsingSinglePreview && previewPanel) {
+              previewPanel.reveal(vscode.ViewColumn.Two, true);
+            }
+          } else if (automaticallyShowPreview) {
+            openPreview(vscode.ViewColumn.Two)(sourceUri);
+          }
+        }
+      }
+    }),
+  );
   context.subscriptions.push(
     vscode.commands.registerCommand(
       'structured-types.openPreview',

@@ -3,14 +3,17 @@ import * as vscode from 'vscode';
 import { extractProps } from './extract-props';
 import { nodesToHTML } from './nodeToHTML';
 import { getUri, getNonce, openLocation } from './utils';
+import { useSinglePreview } from './config';
 
 type PanelStore = {
-  panel?: vscode.WebviewPanel;
+  panel: vscode.WebviewPanel;
+  viewColumn: vscode.ViewColumn;
+  uri: vscode.Uri;
 };
 export class ContentProvider {
   private readonly context: vscode.ExtensionContext;
   private previewPanels: Record<string, PanelStore> = {};
-  public static currentPanel: ContentProvider | undefined;
+  private singlePreviewPanel: PanelStore | undefined;
   private static readonly viewType = 'documentation';
   private render: (fileName: string) => string;
   constructor(context: vscode.ExtensionContext) {
@@ -27,7 +30,7 @@ export class ContentProvider {
     );
   }
   private updateProps(uri: vscode.Uri): void {
-    const { panel } = this.getPreview(uri);
+    const { panel } = this.getPreview(uri) || {};
     if (panel) {
       panel.webview.html = this.getHtml(panel, uri);
       panel.webview.onDidReceiveMessage((data) => {
@@ -48,7 +51,7 @@ export class ContentProvider {
         ? vscode.window.activeTextEditor.viewColumn
         : undefined) ||
       vscode.ViewColumn.One;
-    const { panel: existingPanel } = this.getPreview(sourceUri);
+    const { panel: existingPanel } = this.getPreview(sourceUri) || {};
     let panel = existingPanel;
     if (!panel || panel.viewColumn !== previewColumn) {
       if (panel) {
@@ -90,7 +93,17 @@ export class ContentProvider {
         this.setPreviewActiveContext(webviewPanel.active);
       });
     }
-    this.previewPanels[sourceUri.fsPath] = { panel };
+    const preview: PanelStore = {
+      panel,
+      viewColumn: previewColumn,
+      uri: sourceUri,
+    };
+    if (useSinglePreview()) {
+      this.singlePreviewPanel = preview;
+    } else {
+      this.previewPanels[sourceUri.fsPath] = preview;
+    }
+
     panel.title = this.getTitle(sourceUri);
     this.updateProps(sourceUri);
   }
@@ -99,14 +112,25 @@ export class ContentProvider {
     this.updateProps(sourceUri);
   }
 
-  private getPreview(sourceUri: vscode.Uri): PanelStore {
-    return this.previewPanels[sourceUri.fsPath] || {};
+  public getPreview(sourceUri: vscode.Uri): PanelStore | undefined {
+    if (useSinglePreview()) {
+      return this.singlePreviewPanel;
+    } else {
+      return this.previewPanels[sourceUri.fsPath];
+    }
+  }
+  public isPreviewOn(sourceUri: vscode.Uri): boolean {
+    return !!this.getPreview(sourceUri);
   }
   public destroyPreview(sourceUri: vscode.Uri): void {
-    const { panel } = this.getPreview(sourceUri);
+    const { panel } = this.getPreview(sourceUri) || {};
     if (panel) {
       panel.dispose();
-      delete this.previewPanels[sourceUri.fsPath];
+      if (useSinglePreview()) {
+        this.singlePreviewPanel = undefined;
+      } else {
+        delete this.previewPanels[sourceUri.fsPath];
+      }
     }
   }
 

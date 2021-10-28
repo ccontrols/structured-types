@@ -138,6 +138,22 @@
           "when": "documentation_view_active"
         }
       ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Structured Documentation",
+      "properties": {
+        "structured-types.singlePreview": {
+          "description": "Open Only One Preview.",
+          "default": true,
+          "type": "boolean"
+        },
+        "structured-types.automaticallyShowPreview": {
+          "description": "Automatically show preview of the code being edited.",
+          "default": false,
+          "type": "boolean"
+        }
+      }
     }
   },
   "author": {
