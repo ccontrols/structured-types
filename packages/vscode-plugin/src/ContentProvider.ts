@@ -100,7 +100,7 @@ export class ContentProvider {
       viewColumn: previewColumn,
       uri: sourceUri,
     };
-    if (this.config.singlePreview) {
+    if (this.config.singlePage) {
       this.singlePreviewPanel = preview;
     } else {
       this.previewPanels[sourceUri.fsPath] = preview;
@@ -115,7 +115,7 @@ export class ContentProvider {
   }
 
   public getPreview(sourceUri: vscode.Uri): PanelStore | undefined {
-    if (this.config.singlePreview) {
+    if (this.config.singlePage) {
       return this.singlePreviewPanel;
     } else {
       return this.previewPanels[sourceUri.fsPath];
@@ -128,7 +128,7 @@ export class ContentProvider {
     const { panel } = this.getPreview(sourceUri) || {};
     if (panel) {
       panel.dispose();
-      if (this.config.singlePreview) {
+      if (this.config.singlePage) {
         this.singlePreviewPanel = undefined;
       } else {
         delete this.previewPanels[sourceUri.fsPath];
@@ -137,7 +137,7 @@ export class ContentProvider {
   }
 
   public refreshAll(): void {
-    if (this.config.singlePreview) {
+    if (this.config.singlePage) {
       this.refreshPreview(this.singlePreviewPanel.uri);
     } else {
       Object.keys(this.previewPanels).forEach((key) =>
@@ -146,7 +146,7 @@ export class ContentProvider {
     }
   }
   public destroyAll(): void {
-    if (this.config.singlePreview) {
+    if (this.config.singlePage) {
       this.destroyPreview(this.singlePreviewPanel.uri);
     } else {
       const keys = Object.keys(this.previewPanels);
@@ -157,8 +157,7 @@ export class ContentProvider {
   }
   public updateConfiguration(config: VSCodeConfig): void {
     if (JSON.stringify(config) !== JSON.stringify(this.config)) {
-      const singleStateChange =
-        this.config.singlePreview !== config.singlePreview;
+      const singleStateChange = this.config.singlePage !== config.singlePage;
       this.config = { ...config };
       if (singleStateChange) {
         this.destroyAll();

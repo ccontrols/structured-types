@@ -1,14 +1,14 @@
 import * as vscode from 'vscode';
 import { DocumentationOptions } from '@structured-types/api-docs';
 export interface VSCodeConfig extends DocumentationOptions {
-  singlePreview: boolean;
-  automaticallyShowPreview: boolean;
+  singlePage: boolean;
+  autoShowDocumentation: boolean;
 }
 
 export class ConfigStore {
   private _config: VSCodeConfig = {
-    singlePreview: true,
-    automaticallyShowPreview: false,
+    singlePage: true,
+    autoShowDocumentation: false,
   };
   constructor() {
     this.readConfig();
@@ -30,13 +30,10 @@ export class ConfigStore {
   };
   public readConfig(): VSCodeConfig {
     const config = vscode.workspace.getConfiguration('structured-types');
-    this._config.singlePreview = this.readValue<boolean>(
+    this._config.singlePage = this.readValue<boolean>(config, 'singlePage');
+    this._config.autoShowDocumentation = this.readValue<boolean>(
       config,
-      'singlePreview',
-    );
-    this._config.automaticallyShowPreview = this.readValue<boolean>(
-      config,
-      'singlePreview',
+      'singlePage',
     );
     this._config.collapsed = this.readValue<DocumentationOptions['collapsed']>(
       config,

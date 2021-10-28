@@ -27,8 +27,8 @@ import {
   ColumnNames,
   DocumentationOptions,
   NodeKind,
-  HeadingNode,
   DocumentationNodeWithChildren,
+  ParagraphNode,
 } from './types';
 import { getRepoPath } from './package-info/package-info';
 import { createPropsTable, createPropsRow, PropItem } from './blocks/table';
@@ -39,6 +39,7 @@ import { emphasisNode } from './blocks/emphasis';
 import { codeNode } from './blocks/code';
 import { inlineCodeNode } from './blocks/inline-code';
 import { linkNode } from './blocks/link';
+import { headingNode } from './blocks/heading';
 
 export class PropsToDocumentation {
   private collapsed: string[] = [];
@@ -177,14 +178,14 @@ export class PropsToDocumentation {
       name: enabledColumn('name') ? item.name : undefined,
       parent: enabledColumn('parents') ? item.parent : undefined,
       type: enabledColumn('type') ? item.type : undefined,
-      value: enabledColumn('value') ? item.value : undefined,
+      value: enabledColumn('default') ? item.value : undefined,
       description: enabledColumn('description') ? item.description : undefined,
     };
   }
   private extractFunction(
     prop: FunctionProp,
     _extractTable = true,
-  ): DocumentationNode[] {
+  ): DocumentationNode | undefined {
     if (prop.parameters) {
       const { propsTable, table, visibleColumns } = this.extractPropTable(
         prop.parameters,
@@ -212,7 +213,7 @@ export class PropsToDocumentation {
       }
       return propsTable;
     }
-    return [];
+    return undefined;
   }
   private getPropLink = (key: string): PropType | undefined => {
     const nameParts = key.split('.');
@@ -247,7 +248,7 @@ export class PropsToDocumentation {
           prop.properties,
           'properties',
         );
-        result.push(...propsTable);
+        result.push(propsTable);
       }
     }
     return result;
@@ -480,36 +481,40 @@ export class PropsToDocumentation {
     }
     return [];
   }
-  private extractPropDefinition(prop: PropType): DocumentationNode {
-    const definition: Omit<DocumentationNode, 'children'> & {
-      children: DocumentationNode[];
-    } = {
-      kind: NodeKind.Paragraph,
-      children: [],
-    };
-
-    if (prop.kind) {
-      definition.children.push(
-        boldNode([
-          inlineCodeNode(
-            `${prop.extension ? `${prop.extension} ` : ''}${PropKind[
-              prop.kind
-            ].toLowerCase()}`,
-          ),
-        ]),
-      );
-    } else if (typeof prop.type === 'string') {
-      definition.children.push(
-        boldNode(this.propLink({ name: prop.type, loc: prop.loc })),
-      );
+  private extractPropDefinition(prop: PropType): DocumentationNode | undefined {
+    if (this.generateSection('type')) {
+      if (prop.kind) {
+        return headingNode(
+          [
+            inlineCodeNode(
+              `${prop.extension ? `${prop.extension} ` : ''}${PropKind[
+                prop.kind
+              ].toLowerCase()}`,
+            ),
+          ],
+          3,
+        );
+      } else if (typeof prop.type === 'string') {
+        return headingNode(
+          this.propLink({ name: prop.type, loc: prop.loc }),
+          3,
+        );
+      }
     }
-    const loc = this.getSourceLocation(prop);
-    if (loc.length) {
-      definition.children.push(textNode(' '));
-      definition.children.push(...loc);
-    }
+    return undefined;
+  }
 
-    return definition;
+  private extractPropLocation(prop: PropType): DocumentationNode | undefined {
+    if (this.generateSection('location')) {
+      const loc = this.getSourceLocation(prop);
+      if (loc.length) {
+        return {
+          kind: NodeKind.Paragraph,
+          children: loc,
+        } as ParagraphNode;
+      }
+    }
+    return undefined;
   }
   private generateSection(section: SectionNames): boolean {
     return this.sections.includes(section) || this.sections.includes('all');
@@ -518,14 +523,15 @@ export class PropsToDocumentation {
   private extractTSType(prop: PropType): DocumentationNode[] {
     const result: DocumentationNode[] = [];
     if (this.generateSection('title') && prop.name) {
-      result.push({
-        kind: NodeKind.Heading,
-        depth: 2,
-        children: [textNode(prop.name)],
-      } as HeadingNode);
+      result.push(headingNode(prop.name, 2));
     }
-    if (this.generateSection('location')) {
-      result.push(this.extractPropDefinition(prop));
+    const definition = this.extractPropDefinition(prop);
+    if (definition) {
+      result.push(definition);
+    }
+    const loc = this.extractPropLocation(prop);
+    if (loc) {
+      result.push(loc);
     }
     if (prop.description && this.generateSection('description')) {
       result.push(
@@ -542,7 +548,10 @@ export class PropsToDocumentation {
     }
     if (this.generateSection('props')) {
       if (isFunctionProp(prop)) {
-        result.push(...this.extractFunction(prop));
+        const fn = this.extractFunction(prop);
+        if (fn) {
+          result.push(fn);
+        }
       } else if (hasProperties(prop)) {
         result.push(...this.extractInterface(prop));
       }

@@ -249,6 +249,7 @@ export type SectionNames =
   | 'description'
   | 'examples'
   | 'title'
+  | 'type'
   | 'location'
   | 'all';
 
@@ -260,7 +261,7 @@ export type ColumnNames =
   | 'name'
   | 'type'
   | 'parents'
-  | 'value'
+  | 'default'
   | 'description'
   | 'all';
 

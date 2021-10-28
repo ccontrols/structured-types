@@ -1,18 +1,18 @@
 # Table of contents
 
--   [Overview](#overview)
--   [Installation](#installation)
--   [Markdown](#markdown)
-    -   [API docs section](#api-docs-section)
-    -   [Table of contents](#table-of-contents-1)
--   [Configuration](#configuration)
-    -   [Inline configuration](#inline-configuration)
-    -   [Configuration file](#configuration-file)
-        -   [Configuration examples](#configuration-examples)
-        -   [Multiple elements](#multiple-elements)
-        -   [Override properties](#override-properties)
--   [Launch](#launch)
-    -   [Command-line options](#command-line-options)
+- [Overview](#overview)
+- [Installation](#installation)
+- [Markdown](#markdown)
+  - [API docs section](#api-docs-section)
+  - [Table of contents](#table-of-contents-1)
+- [Configuration](#configuration)
+  - [Inline configuration](#inline-configuration)
+  - [Configuration file](#configuration-file)
+    - [Configuration examples](#configuration-examples)
+    - [Multiple elements](#multiple-elements)
+    - [Override properties](#override-properties)
+- [Launch](#launch)
+  - [Command-line options](#command-line-options)
 
 # Overview
 
@@ -40,130 +40,83 @@ In your `README.md` (or another markdown file) file, you can insert a `# Table o
 
 # Configuration
 
+The configuration file options are documented in `@structured-types/api-docs` [DocumentOptions](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs#documentationoptions)
+
 You can configure api-readme either directly in your markdown file with [inline configuration](#inline-configuration) or with an [external file](#configuration-file).
 
 ## Inline configuration
 
--   `files`: a comma-separated list of the files to include in the documentation
+- `files`: a comma-separated list of the files to include in the documentation
 
 ```md
 <api-readme files="./src/index.ts"/>
 ```
 
--   `id`: a string that should be linked to an element with options in the [configuration file](#configuration-file).
+- `id`: a string that should be linked to an element with options in the [configuration file](#configuration-file).
 
 ```md
 <api-readme id="my-section"/>
 ```
 
--   `extract`: a comma-separated list of API names to extract. By default, all the exports will be documented.
+- `extract`: a comma-separated list of API names to extract. By default, all the exports will be documented.
 
 ```md
 <api-readme extract="parse, ParseOptions" files="./src/index.ts"/>
 ```
 
--   `visible`: a comma-separated list of the properties to be visible. By default, all the extracted properties will be visible.
+- `visible`: a comma-separated list of the properties to be visible. By default, all the extracted properties will be visible.
 
 ```md
 <api-readme visible="ParseOptions" files="./src/index.ts"/>
 ```
 
--   `collapsed`: a comma-separated list of type names, that should not be expanded. For example, some internal React objects can be kept just as a string and will not be detailed in the documentation, instead of listing their internal properties.
+- `collapsed`: a comma-separated list of type names, that should not be expanded. For example, some internal React objects can be kept just as a string and will not be detailed in the documentation, instead of listing their internal properties.
 
 ```md
 <api-readme collapsed="React.ReactNode"/>
 ```
 
--   `extensions`: a comma-separated list of plugins (or extensions). For example, for a react library, you can specify to include only react components, but not any additional types or utilities.
+- `extensions`: a comma-separated list of plugins (or extensions). For example, for a react library, you can specify to include only react components, but not any additional types or utilities.
 
 ```md
 <api-readme extensions="react"/>
 ```
 
--   `sections`: a comma-separated list of the sections to generate `props` \| `description` \| `examples` \| `title` \| `location` \| `all`. By default, all sections are generated.
+- `sections`: a comma-separated list of the sections to generate `props` \| `description` \| `examples` \| `title` \| `location` \| `all`. By default, all sections are generated.
 
 ```md
 <api-readme sections="description,props"/>
 ```
 
--   `columns`: a comma-separated list of the columns in the property tables `name` \| `type` \| `parents` \| `value` \| `description` \| `all`. By default, all columns will be visible.
+- `columns`: a comma-separated list of the columns in the property tables `name` \| `type` \| `parents` \| `value` \| `description` \| `all`. By default, all columns will be visible.
 
 ```md
 <api-readme columns="name,type,value,description"/>
 ```
 
--   `collectHelpers`: boolean, to specify whether to document also helper props (parents, inherited, etc) or just the main extracted exports. By default, the helper props will be documented and linked from the main props.
+- `collectHelpers`: boolean, to specify whether to document also helper props (parents, inherited, etc) or just the main extracted exports. By default, the helper props will be documented and linked from the main props.
 
 ```md
 <api-readme files="./src/index.ts" collectHelpers=false/>
 ```
 
--   `skipInherited`: boolean, to specify whether to skip properties that are "inherited", or "composed". For example, `type OwnProps = { x: number } & React.LineProps` will only output the `x` property and skip the inherited React library properties.
+- `skipInherited`: boolean, to specify whether to skip properties that are "inherited", or "composed". For example, `type OwnProps = { x: number } & React.LineProps` will only output the `x` property and skip the inherited React library properties.
 
 ```md
 <api-readme files="./src/index.ts" skipInherited=true/>
 ```
 
--   `maxDepth`: number, how deep to parse child props. By default, this is set to 6.
+- `maxDepth`: number, how deep to parse child props. By default, this is set to 6.
 
 ```md
 <api-readme files="./src/index.ts" maxDepth=10/>
 ```
 
--   other options from the [@structured-types/api](https://github.com/ccontrols/structured-types/tree/master/packages/api#parseoptions) package.
+- other options from the [@structured-types/api](https://github.com/ccontrols/structured-types/tree/master/packages/api#parseoptions) package.
 
 ## Configuration file
 
-api-readme uses [cosmiconfig](https://github.com/davidtheclark/cosmiconfig) for external configurations in a file. The configuration is loaded by precedence:
-
--   a `api-docs` key in your package.json file
--   a `.api-docsrc` file for JSON or YAML configuration
--   a `.api-docsrc.json`, `.api-docsrc.yaml`, `.api-docsrc.yml` file for JSON or YAML configuration
--   a `.api-docsrc.js`, `.api-docsrc.cjs`, `api-docs.config.js` or `api-docs.config.cjs` javascript file that exports a configuration object using `module.exports`.
-
-### Configuration examples
-
-Javascript:
-
-    module.exports = {
-      files: ['../src/charts/line/Chart.tsx'],
-      visible: ['LineChart'],
-      sections: ['props'],
-      collapsed: ['ViewProps'],
-    };
-
-JSON:
-
-    {
-      "files": ["../src/charts/line/Chart.tsx"],
-      "visible": ["LineChart"],
-      "sections": ["props"],
-      "collapsed": ["ViewProps"],
-      "overrides": {
-        "LineChart": {
-          "yGutter": {
-            "value": 30
-            "type": "(x, y) => x + y",
-            "parent": null
-          }
-        }
-      }
-    }
-
-YAML:
-
-    files:
-      - ./src/charts/line/Chart.tsx
-    visible:
-      - LineChart
-    sections:
-      - props
-    collapsed:
-      - ViewProps
-    overrides:
-      LineChart:
-        yGutter:
-          value: 30
+The configuration file options are documented in [@structured-types/api-docs](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs#configuration)
 
 ### Multiple elements
 
@@ -307,25 +260,25 @@ You can launch directly from the command-line ie `yarn run api-readme` or from y
 
 ## Command-line options
 
--   `-t` or `--toc`: boolean (default: `true`). Whether to generate a table of contents in your markdown file. You will need to create the section title such as `# Table of contents` and `api-readme` will generate the content within this section.
+- `-t` or `--toc`: boolean (default: `true`). Whether to generate a table of contents in your markdown file. You will need to create the section title such as `# Table of contents` and `api-readme` will generate the content within this section.
 
 ```bash
 yarn(npm) run api-readme -t=false
 ```
 
--   `-f` or `--file`: string (default: `MARKDOWN.md`). The name of the markdown file to be processed. Make sure you have inserted a `<api-readme />` tag within this file.
+- `-f` or `--file`: string (default: `MARKDOWN.md`). The name of the markdown file to be processed. Make sure you have inserted a `<api-readme />` tag within this file.
 
 ```bash
 yarn(npm) run api-readme -f=./src/test.md
 ```
 
--   `-c` or `--config`: string. The api-docs [configuration file](#configuration-file) full path and name.
+- `-c` or `--config`: string. The api-docs [configuration file](#configuration-file) full path and name.
 
 ```bash
 yarn(npm) run api-readme -f=./src/test.md
 ```
 
--   `-l` or `--log`: boolean (default: `true`). Display/or not the running logs.
+- `-l` or `--log`: boolean (default: `true`). Display/or not the running logs.
 
 ```bash
 yarn(npm) run api-readme -l=false

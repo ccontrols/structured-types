@@ -25,7 +25,7 @@ export function activate(context: vscode.ExtensionContext): void {
         if (isDocumentableFile(textEditor.document)) {
           const sourceUri = textEditor.document.uri;
 
-          const isUsingSinglePreview = config.config.singlePreview;
+          const isUsingSinglePreview = config.config.singlePage;
           const {
             panel: previewPanel,
             viewColumn,
@@ -42,7 +42,7 @@ export function activate(context: vscode.ExtensionContext): void {
             } else if (!isUsingSinglePreview && previewPanel) {
               previewPanel.reveal(vscode.ViewColumn.Two, true);
             }
-          } else if (config.config.automaticallyShowPreview) {
+          } else if (config.config.autoShowDocumentation) {
             openPreview(vscode.ViewColumn.Two)(sourceUri);
           }
         }

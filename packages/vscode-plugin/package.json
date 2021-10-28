@@ -2,7 +2,7 @@
   "name": "@structured-types/vscode-plugin",
   "publisher": "atanasster",
   "version": "3.31.0",
-  "description": "VSCode plugin to display type documentation for a file",
+  "description": "VSCode plugin to display structured type documentation",
   "keywords": [
     "structured-types",
     "vscode",
@@ -24,6 +24,7 @@
     "postinstall": "node ../../node_modules/vscode/bin/install",
     "build": "tsc -p tsconfig.json && yarn copy-toolkit",
     "dev": "tsc -w -p tsconfig.json",
+    "docs": "api-readme",
     "lint": "yarn eslint . --ext ts,tsx",
     "fix": "yarn lint --fix",
     "clean": "rimraf dist coverage"
@@ -143,13 +144,13 @@
       "type": "object",
       "title": "Structured Documentation",
       "properties": {
-        "structured-types.singlePreview": {
-          "description": "Open Only One Preview.",
+        "structured-types.singlePage": {
+          "description": "Open only one documentation page, instead a new one for every file.",
           "default": true,
           "type": "boolean"
         },
-        "structured-types.automaticallyShowPreview": {
-          "description": "Automatically show preview of the code being edited.",
+        "structured-types.autoShowDocumentation": {
+          "description": "Automatically show a documentation page of the code being edited.",
           "default": false,
           "type": "boolean"
         },
@@ -185,7 +186,7 @@
           "default": []
         },
         "structured-types.columns": {
-          "markdownDescription": "List of the columns in the property tables `name` | `type` | `parents` | `value` | `description` | `all`. By default, all columns will be visible.",
+          "markdownDescription": "List of the columns in the property tables `name` | `type` | `parents` | `default` | `description`. By default, all columns will be visible.",
           "type": "array",
           "items": {
             "type": "string",
@@ -193,7 +194,7 @@
               "name",
               "type",
               "parents",
-              "value",
+              "default",
               "description"
             ]
           },
@@ -201,16 +202,17 @@
           "default": []
         },
         "structured-types.sections": {
-          "markdownDescription": "List of the sections to generate `props` | `description` | `examples` | `title` | `location` | `all`. By default, all sections are generated.",
+          "markdownDescription": "List of the sections to generate  `title` |`description`  | `type` | `location`| `props` | `examples`. By default, all sections are generated.",
           "type": "array",
           "items": {
             "type": "string",
             "enum": [
-              "props",
-              "description",
-              "examples",
               "title",
-              "location"
+              "description",
+              "type",
+              "location",
+              "props",
+              "examples"
             ]
           },
           "uniqueItems": true,

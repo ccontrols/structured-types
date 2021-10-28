@@ -3,6 +3,7 @@ import { boldNode } from './bold';
 import { textNode } from './text';
 import { tableCellNode } from './table-cell';
 import { inlineCodeNode } from './inline-code';
+import { paragraphNode } from './paragraph';
 export interface PropItem {
   name?: DocumentationNode[];
   type?: DocumentationNode[];
@@ -74,7 +75,7 @@ export const createPropsTable = (
   children: PropItem[],
   title?: string,
 ): {
-  propsTable: DocumentationNode[];
+  propsTable: DocumentationNode;
   table?: TableNode;
   visibleColumns: VisibleColumns;
 } => {
@@ -101,7 +102,7 @@ export const createPropsTable = (
     }
     visibleColumns.values = children.some((item) => item.value !== undefined);
     if (visibleColumns.values) {
-      columns.push(tableCellNode([textNode('Value')]));
+      columns.push(tableCellNode([textNode('Default')]));
     }
     visibleColumns.descriptions = children.some((item) => item.description);
     if (visibleColumns.descriptions) {
@@ -124,5 +125,5 @@ export const createPropsTable = (
       ),
     );
   }
-  return { propsTable, table, visibleColumns };
+  return { propsTable: paragraphNode(propsTable), table, visibleColumns };
 };
