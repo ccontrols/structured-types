@@ -169,14 +169,14 @@ const nodeComponents = ({
 export const nodesToHTML = (nodes: DocumentationNode[]): string => {
   try {
     const rendered = `
-  <main>
+  <section>
     ${nodes
       .map((node) => {
         const rendered = renderNode({ node });
         return rendered;
       })
       .join('\n')}
-  </main>
+  </section>
 `;
     return rendered;
   } catch (e) {

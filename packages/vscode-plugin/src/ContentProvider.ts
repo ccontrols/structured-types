@@ -74,7 +74,7 @@ export class ContentProvider {
       panel.webview.onDidReceiveMessage(
         (message) => {
           vscode.commands.executeCommand(
-            `_structured_types.${message.command}`,
+            `_instant-documentation.${message.command}`,
             ...message.args,
           );
         },

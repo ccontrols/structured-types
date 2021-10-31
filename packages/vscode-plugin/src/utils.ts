@@ -54,6 +54,6 @@ export function isDocumentableFile(document: vscode.TextDocument): boolean {
       document.languageId === 'typescriptreact' ||
       document.languageId === 'javascript' ||
       document.languageId === 'javascriptreact') &&
-    document.uri.scheme !== 'structured-types'
+    document.uri.scheme !== 'instant-documentation'
   );
 }

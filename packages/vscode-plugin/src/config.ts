@@ -29,7 +29,7 @@ export class ConfigStore {
     return value;
   };
   public readConfig(): VSCodeConfig {
-    const config = vscode.workspace.getConfiguration('structured-types');
+    const config = vscode.workspace.getConfiguration('instant-documentation');
     this._config.singlePage = this.readValue<boolean>(config, 'singlePage');
     this._config.autoShowDocumentation = this.readValue<boolean>(
       config,

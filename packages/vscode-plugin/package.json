@@ -1,10 +1,12 @@
 {
-  "name": "@structured-types/vscode-plugin",
+  "name": "@structured-types/instant-documentation",
   "publisher": "atanasster",
+  "private": true,
   "version": "3.32.0",
   "description": "VSCode plugin to display structured type documentation",
   "keywords": [
-    "structured-types",
+    "instant documentation",
+    "structured types",
     "vscode",
     "typescript"
   ],
@@ -53,33 +55,33 @@
     "copyfiles": "^2.4.1"
   },
   "activationEvents": [
-    "onCommand:structured-types.openPreview",
-    "onCommand:structured-types.refresh",
-    "onCommand:structured-types.openPreviewSide"
+    "onCommand:instant-documentation.openPreview",
+    "onCommand:instant-documentation.refresh",
+    "onCommand:instant-documentation.openPreviewSide"
   ],
   "contributes": {
     "commands": [
       {
-        "command": "structured-types.openPreview",
-        "title": "%structured-types.openPreview.title%",
+        "command": "instant-documentation.openPreview",
+        "title": "%instant-documentation.openPreview.title%",
         "category": "Documentation"
       },
       {
-        "command": "structured-types.openPreviewSide",
-        "title": "%structured-types.openPreviewSide.title%",
+        "command": "instant-documentation.openPreviewSide",
+        "title": "%instant-documentation.openPreviewSide.title%",
         "category": "Documentation",
         "icon": "$(open-preview)"
       },
       {
-        "command": "structured-types.refresh",
-        "title": "%structured-types.refresh.title%",
+        "command": "instant-documentation.refresh",
+        "title": "%instant-documentation.refresh.title%",
         "category": "Documentation",
         "icon": "$(open-preview)"
       }
     ],
     "keybindings": [
       {
-        "command": "structured-types.openPreview",
+        "command": "instant-documentation.openPreview",
         "key": "ctrl+shift+v",
         "mac": "cmd+shift+v",
         "when": "(editorLangId == typescript || resourceLangId == typescriptreact || resourceLangId == javascript || resourceLangId == javascriptreact) && !notebookEditorFocused"
@@ -88,73 +90,73 @@
     "menus": {
       "explorer/context": [
         {
-          "command": "structured-types.openPreview",
+          "command": "instant-documentation.openPreview",
           "when": "resourceLangId == typescript || resourceLangId == typescriptreact || resourceLangId == javascript || resourceLangId == javascriptreact",
           "group": "navigation"
         }
       ],
       "editor/title": [
         {
-          "command": "structured-types.openPreviewSide",
+          "command": "instant-documentation.openPreviewSide",
           "when": "(editorLangId == typescript || resourceLangId == typescriptreact || resourceLangId == javascript || resourceLangId == javascriptreact) && !notebookEditorFocused",
-          "alt": "structured-types.openPreview",
+          "alt": "instant-documentation.openPreview",
           "group": "navigation"
         },
         {
-          "command": "structured-types.refresh",
+          "command": "instant-documentation.refresh",
           "when": "documentation_view_active",
           "group": "1_documentation"
         }
       ],
       "editor/title/context": [
         {
-          "command": "structured-types.openPreview",
+          "command": "instant-documentation.openPreview",
           "when": "resourceLangId == typescript || resourceLangId == typescriptreact || resourceLangId == javascript || resourceLangId == javascriptreact",
           "group": "1_open"
         },
         {
-          "command": "structured-types.openPreviewSide",
+          "command": "instant-documentation.openPreviewSide",
           "when": "resourceLangId == typescript || resourceLangId == typescriptreact || resourceLangId == javascript || resourceLangId == javascriptreact",
           "group": "1_open"
         },
         {
-          "command": "structured-types.refresh",
+          "command": "instant-documentation.refresh",
           "when": "documentation_view_active",
           "group": "1_open"
         }
       ],
       "commandPalette": [
         {
-          "command": "structured-types.openPreview",
+          "command": "instant-documentation.openPreview",
           "when": "(resourceLangId == typescript || resourceLangId == typescriptreact || resourceLangId == javascript || resourceLangId == javascriptreact) && !notebookEditorFocused",
           "group": "navigation"
         },
         {
-          "command": "structured-types.openPreviewSide",
+          "command": "instant-documentation.openPreviewSide",
           "when": "(resourceLangId == typescript || resourceLangId == typescriptreact || resourceLangId == javascript || resourceLangId == javascriptreact) && !notebookEditorFocused",
           "group": "navigation"
         },
         {
-          "command": "structured-types.refresh",
+          "command": "instant-documentation.refresh",
           "when": "documentation_view_active"
         }
       ]
     },
     "configuration": {
       "type": "object",
-      "title": "Structured Documentation",
+      "title": "Instant Documentation",
       "properties": {
-        "structured-types.singlePage": {
+        "instant-documentation.singlePage": {
           "description": "Open only one documentation page, instead a new one for every file.",
           "default": true,
           "type": "boolean"
         },
-        "structured-types.autoShowDocumentation": {
+        "instant-documentation.autoShowDocumentation": {
           "description": "Automatically show a documentation page of the code being edited.",
           "default": false,
           "type": "boolean"
         },
-        "structured-types.collapsed": {
+        "instant-documentation.collapsed": {
           "description": "List of type names, that should not be expanded. or example, some internal React objects can be kept just as a string and will not be detailed in the documentation, instead of listing their internal properties.",
           "type": "array",
           "items": {
@@ -163,7 +165,7 @@
           "uniqueItems": true,
           "default": []
         },
-        "structured-types.visible": {
+        "instant-documentation.visible": {
           "description": "List of type names, that should be \"visible\". This will limit which of the parsed props to be documented.",
           "type": "array",
           "items": {
@@ -172,7 +174,7 @@
           "uniqueItems": true,
           "default": []
         },
-        "structured-types.extensions": {
+        "instant-documentation.extensions": {
           "description": "List of plugins (or extensions). For example, for a react library, you can specify to include only react components, but not any additional types or utilities.",
           "type": "array",
           "items": {
@@ -185,7 +187,7 @@
           "uniqueItems": true,
           "default": []
         },
-        "structured-types.columns": {
+        "instant-documentation.columns": {
           "markdownDescription": "List of the columns in the property tables `name` | `type` | `parents` | `default` | `description`. By default, all columns will be visible.",
           "type": "array",
           "items": {
@@ -201,8 +203,8 @@
           "uniqueItems": true,
           "default": []
         },
-        "structured-types.sections": {
-          "markdownDescription": "List of the sections to generate  `title` | `type` |`description` | `location` | `extends` | `props` | `examples`. By default, all sections are generated.",
+        "instant-documentation.sections": {
+          "markdownDescription": "Configuration of the documentation sections. You can change the title or the hidden properties of each section.",
           "type": "object",
           "properties": {
             "title": {
@@ -321,7 +323,7 @@
           "uniqueItems": true,
           "default": []
         },
-        "structured-types.skipInherited": {
+        "instant-documentation.skipInherited": {
           "description": "Whether to skip properties that are \"inherited\", or \"composed\"",
           "default": false,
           "type": "boolean"

@@ -51,19 +51,19 @@ export function activate(context: vscode.ExtensionContext): void {
   );
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      'structured-types.openPreview',
+      'instant-documentation.openPreview',
       openPreview(vscode.ViewColumn.One),
     ),
   );
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      'structured-types.openPreviewSide',
+      'instant-documentation.openPreviewSide',
       openPreview(vscode.ViewColumn.Two),
     ),
   );
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      'structured-types.refresh',
+      'instant-documentation.refresh',
       (uri?: vscode.Uri) => uri && contentProvider.refreshPreview(uri),
     ),
   );
