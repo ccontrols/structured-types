@@ -202,18 +202,121 @@
           "default": []
         },
         "structured-types.sections": {
-          "markdownDescription": "List of the sections to generate  `title` |`description`  | `type` | `location`| `props` | `examples`. By default, all sections are generated.",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "title",
-              "description",
-              "type",
-              "location",
-              "props",
-              "examples"
-            ]
+          "markdownDescription": "List of the sections to generate  `title` | `type` |`description` | `location` | `extends` | `props` | `examples`. By default, all sections are generated.",
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "object",
+              "properties": {
+                "hidden": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "title": {
+                  "type": [
+                    "string",
+                    null
+                  ],
+                  "default": null
+                }
+              }
+            },
+            "type": {
+              "type": "object",
+              "properties": {
+                "hidden": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "title": {
+                  "type": [
+                    "string",
+                    null
+                  ],
+                  "default": null
+                }
+              }
+            },
+            "description": {
+              "type": "object",
+              "properties": {
+                "hidden": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "title": {
+                  "type": [
+                    "string",
+                    null
+                  ],
+                  "default": null
+                }
+              }
+            },
+            "location": {
+              "type": "object",
+              "properties": {
+                "hidden": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "title": {
+                  "type": [
+                    "string",
+                    null
+                  ],
+                  "default": null
+                }
+              }
+            },
+            "extends": {
+              "type": "object",
+              "properties": {
+                "hidden": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "title": {
+                  "type": [
+                    "string",
+                    null
+                  ],
+                  "default": "extends"
+                }
+              }
+            },
+            "props": {
+              "type": "object",
+              "properties": {
+                "hidden": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "title": {
+                  "type": [
+                    "string",
+                    null
+                  ],
+                  "default": "properties"
+                }
+              }
+            },
+            "examples": {
+              "type": "object",
+              "properties": {
+                "hidden": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "title": {
+                  "type": [
+                    "string",
+                    null
+                  ],
+                  "default": "examples"
+                }
+              }
+            }
           },
           "uniqueItems": true,
           "default": []
