@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create own api docs api-readme 1`] = `
+"# Table of contents
+
+-   [API](#api)
+
+# API
+
+<api-readme files=\\"./component.tsx\\"/>
+
+<!-- START-API-README -->
+
+## MyComponent
+
+### \`react component\`
+
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L22)_
+
+**properties**
+
+| Name          | Type     | Parent                  | Default | Description            |
+| ------------- | -------- | ----------------------- | ------- | ---------------------- |
+| \`stringProp\`  | \`string\` | [\`OwnProps\`](#ownprops) | \`test\`  | stringProp description |
+| \`numberProp*\` | \`number\` | [\`OwnProps\`](#ownprops) | \`\`      | numberProp description |
+
+## OwnProps
+
+### \`type\`
+
+MyComponent properties.
+
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L5)_
+
+**properties**
+
+| Name          | Type     | Description            |
+| ------------- | -------- | ---------------------- |
+| \`stringProp\`  | \`string\` | stringProp description |
+| \`numberProp*\` | \`number\` | numberProp description |
+
+## PropsWithChildren
+
+### \`type\`
+
+_defined in [@types/react/types/react/index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react/index.d.ts)_
+
+**properties**
+
+| Name       | Type                                                                                                                                                             |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \`children\` | [\`ReactElement\`](#reactelement) \\\\| \`string\` \\\\| \`number\` \\\\|  \\\\| { \`index\` } \\\\| [\`ReactPortal\`](#reactportal) \\\\| \`boolean\` \\\\| \`null\` \\\\| \`undefined\` \\\\| \`undefined\` |
+
+## ReactPortal
+
+### \`interface\`
+
+_defined in [@types/react/types/react/index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react/index.d.ts)_
+
+**properties**
+
+| Name        | Type          | Parent                          |
+| ----------- | ------------- | ------------------------------- |
+| \`key*\`      | Key \\\\| \`null\` |                                 |
+| \`children*\` | ReactNode     |                                 |
+| \`type*\`     | type          | [\`ReactElement\`](#reactelement) |
+| \`props*\`    | props         | [\`ReactElement\`](#reactelement) |
+
+## ReactElement
+
+### \`interface\`
+
+_defined in [@types/react/types/react/index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react/index.d.ts)_
+
+**properties**
+
+| Name     | Type  |
+| -------- | ----- |
+| \`type*\`  | type  |
+| \`props*\` | props |
+| \`key*\`   | key   |
+
+<!-- END-API-README -->
+"
+`;

@@ -7,13 +7,18 @@ export const runCliTests = (
   testName: string,
   fileName: string,
   args: string[] = [],
+  callback?: () => void,
 ): void => {
   it(
     testName,
     async () => {
       await mockArgv([...args, '-f', fileName, '-l', 'false'], async () => {
         await run();
-        expect(true).toBe(true);
+        if (callback) {
+          callback();
+        } else {
+          expect(true).toBe(true);
+        }
         // const content = fs.readFileSync(fileName, 'utf8');
         // expect(content).toMatchSnapshot();
       });
