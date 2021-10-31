@@ -89,13 +89,8 @@ const jsResults = [
     kind: 5,
     children: [
       {
-        kind: 5,
-        children: [
-          {
-            kind: 6,
-            value: 'The Name is: TestProp',
-          },
-        ],
+        kind: 6,
+        value: 'The Name is: TestProp',
       },
     ],
   },
@@ -140,40 +135,35 @@ const jsResults = [
     kind: 5,
     children: [
       {
-        kind: 5,
+        kind: 8,
         children: [
           {
-            kind: 8,
+            kind: 6,
+            value: 'defined in ',
+          },
+          {
+            kind: 9,
             children: [
               {
                 kind: 6,
-                value: 'defined in ',
-              },
-              {
-                kind: 9,
-                children: [
-                  {
-                    kind: 6,
-                    value:
-                      '@structured-types/api-docs/packages/api-docs/testfile.tsx',
-                  },
-                ],
-                url: 'https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/testfile.tsx#L10',
-                loc: {
-                  filePath: 'testfile.tsx',
-                  loc: {
-                    start: {
-                      line: 10,
-                      col: 12,
-                    },
-                    end: {
-                      line: 10,
-                      col: 20,
-                    },
-                  },
-                },
+                value:
+                  '@structured-types/api-docs/packages/api-docs/testfile.tsx',
               },
             ],
+            url: 'https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/testfile.tsx#L10',
+            loc: {
+              filePath: 'testfile.tsx',
+              loc: {
+                start: {
+                  line: 10,
+                  col: 12,
+                },
+                end: {
+                  line: 10,
+                  col: 20,
+                },
+              },
+            },
           },
         ],
       },
@@ -194,45 +184,40 @@ const jsResults = [
     ],
   },
   {
-    kind: 5,
-    children: [
-      {
-        kind: 6,
-        value: '[',
-      },
-      {
-        kind: 11,
-        value: 'string',
-      },
-      {
-        kind: 6,
-        value: ', ',
-      },
-      {
-        kind: 11,
-        value: 'number',
-      },
-      {
-        kind: 6,
-        value: ']',
-      },
-      {
-        kind: 6,
-        value: ' | ',
-      },
-      {
-        kind: 11,
-        value: 'string',
-      },
-      {
-        kind: 6,
-        value: ' | ',
-      },
-      {
-        kind: 11,
-        value: 'number',
-      },
-    ],
+    kind: 6,
+    value: '[',
+  },
+  {
+    kind: 11,
+    value: 'string',
+  },
+  {
+    kind: 6,
+    value: ', ',
+  },
+  {
+    kind: 11,
+    value: 'number',
+  },
+  {
+    kind: 6,
+    value: ']',
+  },
+  {
+    kind: 6,
+    value: ' | ',
+  },
+  {
+    kind: 11,
+    value: 'string',
+  },
+  {
+    kind: 6,
+    value: ' | ',
+  },
+  {
+    kind: 11,
+    value: 'number',
   },
   {
     kind: 5,
@@ -252,24 +237,19 @@ const jsResults = [
     kind: 5,
     children: [
       {
-        kind: 5,
-        children: [
-          {
-            kind: 10,
-            value:
-              "\nimport React from 'react';\n\nexport const Example1 = () => 'test';\n",
-          },
-        ],
+        kind: 10,
+        value:
+          "\nimport React from 'react';\n\nexport const Example1 = () => 'test';\n",
       },
+    ],
+  },
+  {
+    kind: 5,
+    children: [
       {
-        kind: 5,
-        children: [
-          {
-            kind: 10,
-            value:
-              "\nimport React from 'react';\n\nexport const Example2 = () => 'test';\n",
-          },
-        ],
+        kind: 10,
+        value:
+          "\nimport React from 'react';\n\nexport const Example2 = () => 'test';\n",
       },
     ],
   },
@@ -291,13 +271,8 @@ const jsResults = [
     kind: 5,
     children: [
       {
-        kind: 5,
-        children: [
-          {
-            kind: 6,
-            value: 'The Name is: TestProp',
-          },
-        ],
+        kind: 6,
+        value: 'The Name is: TestProp',
       },
     ],
   },
@@ -318,17 +293,12 @@ const jsonResult = [
     ],
   },
   {
-    kind: 5,
+    kind: 4,
+    depth: 2,
     children: [
       {
-        kind: 4,
-        depth: 2,
-        children: [
-          {
-            kind: 6,
-            value: 'TestProp',
-          },
-        ],
+        kind: 6,
+        value: 'TestProp',
       },
     ],
   },
@@ -373,40 +343,35 @@ const jsonResult = [
     kind: 5,
     children: [
       {
-        kind: 5,
+        kind: 8,
         children: [
           {
-            kind: 8,
+            kind: 6,
+            value: 'defined in ',
+          },
+          {
+            kind: 9,
             children: [
               {
                 kind: 6,
-                value: 'defined in ',
-              },
-              {
-                kind: 9,
-                children: [
-                  {
-                    kind: 6,
-                    value:
-                      '@structured-types/api-docs/packages/api-docs/testfile.tsx',
-                  },
-                ],
-                url: 'https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/testfile.tsx#L10',
-                loc: {
-                  filePath: 'testfile.tsx',
-                  loc: {
-                    start: {
-                      line: 10,
-                      col: 12,
-                    },
-                    end: {
-                      line: 10,
-                      col: 20,
-                    },
-                  },
-                },
+                value:
+                  '@structured-types/api-docs/packages/api-docs/testfile.tsx',
               },
             ],
+            url: 'https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/testfile.tsx#L10',
+            loc: {
+              filePath: 'testfile.tsx',
+              loc: {
+                start: {
+                  line: 10,
+                  col: 12,
+                },
+                end: {
+                  line: 10,
+                  col: 20,
+                },
+              },
+            },
           },
         ],
       },
@@ -427,45 +392,40 @@ const jsonResult = [
     ],
   },
   {
-    kind: 5,
-    children: [
-      {
-        kind: 6,
-        value: '[',
-      },
-      {
-        kind: 11,
-        value: 'string',
-      },
-      {
-        kind: 6,
-        value: ', ',
-      },
-      {
-        kind: 11,
-        value: 'number',
-      },
-      {
-        kind: 6,
-        value: ']',
-      },
-      {
-        kind: 6,
-        value: ' | ',
-      },
-      {
-        kind: 11,
-        value: 'string',
-      },
-      {
-        kind: 6,
-        value: ' | ',
-      },
-      {
-        kind: 11,
-        value: 'number',
-      },
-    ],
+    kind: 6,
+    value: '[',
+  },
+  {
+    kind: 11,
+    value: 'string',
+  },
+  {
+    kind: 6,
+    value: ', ',
+  },
+  {
+    kind: 11,
+    value: 'number',
+  },
+  {
+    kind: 6,
+    value: ']',
+  },
+  {
+    kind: 6,
+    value: ' | ',
+  },
+  {
+    kind: 11,
+    value: 'string',
+  },
+  {
+    kind: 6,
+    value: ' | ',
+  },
+  {
+    kind: 11,
+    value: 'number',
   },
   {
     kind: 5,
@@ -485,24 +445,19 @@ const jsonResult = [
     kind: 5,
     children: [
       {
-        kind: 5,
-        children: [
-          {
-            kind: 10,
-            value:
-              "\nimport React from 'react';\n\nexport const Example1 = () => 'test';\n",
-          },
-        ],
+        kind: 10,
+        value:
+          "\nimport React from 'react';\n\nexport const Example1 = () => 'test';\n",
       },
+    ],
+  },
+  {
+    kind: 5,
+    children: [
       {
-        kind: 5,
-        children: [
-          {
-            kind: 10,
-            value:
-              "\nimport React from 'react';\n\nexport const Example2 = () => 'test';\n",
-          },
-        ],
+        kind: 10,
+        value:
+          "\nimport React from 'react';\n\nexport const Example2 = () => 'test';\n",
       },
     ],
   },
