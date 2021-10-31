@@ -241,18 +241,33 @@ export const isInlineCodeNode = (
   return node.kind === NodeKind.InlineCode;
 };
 
+export type TitleCallback = (prop: PropType) => string | undefined;
+export type RenderCallback = (
+  prop: PropType,
+) => DocumentationNode[] | undefined;
+export interface SectionConfig {
+  hidden?: boolean;
+  title?: string | TitleCallback;
+  render?: RenderCallback;
+}
 /**
  * Section names to be displayed
  */
-export type SectionNames =
-  | 'props'
-  | 'description'
-  | 'examples'
+export type SectionName =
   | 'title'
   | 'type'
+  | 'extends'
+  | 'description'
   | 'location'
-  | 'all';
+  | 'props'
+  | 'examples';
 
+/**
+ * Section object kind configuration
+ */
+export type SectionObject = Partial<Record<SectionName, SectionConfig>>;
+
+export type Sections = SectionName[] | SectionObject;
 /**
  * Properties table column names to be displayed
  */
@@ -288,10 +303,10 @@ export type DocumentationOptions = {
    */
   columns?: ColumnNames[];
   /**
-   * List of the sections to generate `props` | `description` | `examples` | `title` | `location` | `all`.
+   * List of the `sections` to generate `props` | `description` | `examples` | `title` | `location` | `all`.
    * By default, all sections are generated.
    */
-  sections?: SectionNames[];
+  sections?: Sections;
   /**
    * Whether to skip properties that are "inherited", or "composed".
    * For example, `type OwnProps = { x: number } & React.LineProps` will only output the `x` property and skip the inherited

@@ -156,7 +156,8 @@ More information about the [@structured-types/playground-plugin](https://github.
 -   [x] React plugin
 -   [x] React "prop-types" plugin
 -   [x] Typescript playground plugin
--   [ ] [component-controls](https://github.com/ccontrols/component-controls) integration
 -   [x] Automatically generate README.md files (api-readme)
+-   [x] VSCode plugin for instant documentation
+-   [ ] [component-controls](https://github.com/ccontrols/component-controls) integration
 -   [ ] Vue plugin
 -   [ ] Angular plugin

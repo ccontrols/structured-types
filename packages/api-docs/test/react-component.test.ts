@@ -47,12 +47,17 @@ describe('react-component', () => {
     });
     expect(results).toEqual([
       {
-        kind: 4,
-        depth: 2,
+        kind: 5,
         children: [
           {
-            kind: 6,
-            value: 'NumArray',
+            kind: 4,
+            depth: 2,
+            children: [
+              {
+                kind: 6,
+                value: 'NumArray',
+              },
+            ],
           },
         ],
       },
@@ -60,7 +65,8 @@ describe('react-component', () => {
         kind: 5,
         children: [
           {
-            kind: 7,
+            kind: 4,
+            depth: 3,
             children: [
               {
                 kind: 11,
@@ -80,40 +86,59 @@ describe('react-component', () => {
         ],
       },
       {
-        kind: 6,
-        value: '[',
+        kind: 5,
+        children: [
+          {
+            kind: 7,
+            children: [
+              {
+                kind: 6,
+                value: 'properties',
+              },
+            ],
+          },
+        ],
       },
       {
-        kind: 11,
-        value: 'string',
-      },
-      {
-        kind: 6,
-        value: ', ',
-      },
-      {
-        kind: 11,
-        value: 'number',
-      },
-      {
-        kind: 6,
-        value: ']',
-      },
-      {
-        kind: 6,
-        value: ' | ',
-      },
-      {
-        kind: 11,
-        value: 'string',
-      },
-      {
-        kind: 6,
-        value: ' | ',
-      },
-      {
-        kind: 11,
-        value: 'number',
+        kind: 5,
+        children: [
+          {
+            kind: 6,
+            value: '[',
+          },
+          {
+            kind: 11,
+            value: 'string',
+          },
+          {
+            kind: 6,
+            value: ', ',
+          },
+          {
+            kind: 11,
+            value: 'number',
+          },
+          {
+            kind: 6,
+            value: ']',
+          },
+          {
+            kind: 6,
+            value: ' | ',
+          },
+          {
+            kind: 11,
+            value: 'string',
+          },
+          {
+            kind: 6,
+            value: ' | ',
+          },
+          {
+            kind: 11,
+            value: 'number',
+          },
+        ],
       },
     ]);
   });
@@ -150,12 +175,17 @@ describe('react-component', () => {
 
     expect(results).toEqual([
       {
-        kind: 4,
-        depth: 2,
+        kind: 5,
         children: [
           {
-            kind: 6,
-            value: 'CandlestickChartLine',
+            kind: 4,
+            depth: 2,
+            children: [
+              {
+                kind: 6,
+                value: 'CandlestickChartLine',
+              },
+            ],
           },
         ],
       },
@@ -163,7 +193,8 @@ describe('react-component', () => {
         kind: 5,
         children: [
           {
-            kind: 7,
+            kind: 4,
+            depth: 3,
             children: [
               {
                 kind: 11,
@@ -174,106 +205,116 @@ describe('react-component', () => {
         ],
       },
       {
-        kind: 7,
+        kind: 5,
         children: [
           {
-            kind: 6,
-            value: 'parameters',
+            kind: 7,
+            children: [
+              {
+                kind: 6,
+                value: 'properties',
+              },
+            ],
           },
         ],
       },
       {
-        kind: 1,
+        kind: 5,
         children: [
           {
-            kind: 2,
+            kind: 1,
             children: [
               {
-                kind: 3,
+                kind: 2,
                 children: [
                   {
-                    kind: 6,
-                    value: 'Name',
+                    kind: 3,
+                    children: [
+                      {
+                        kind: 6,
+                        value: 'Name',
+                      },
+                    ],
+                  },
+                  {
+                    kind: 3,
+                    children: [
+                      {
+                        kind: 6,
+                        value: 'Type',
+                      },
+                    ],
                   },
                 ],
               },
               {
-                kind: 3,
+                kind: 2,
                 children: [
                   {
-                    kind: 6,
-                    value: 'Type',
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            kind: 2,
-            children: [
-              {
-                kind: 3,
-                children: [
-                  {
-                    kind: 11,
-                    value: 'CandlestickChartLineProps*',
-                  },
-                ],
-              },
-              {
-                kind: 3,
-                children: [
-                  {
-                    kind: 6,
-                    value: '{ ',
+                    kind: 3,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'CandlestickChartLineProps*',
+                      },
+                    ],
                   },
                   {
-                    kind: 11,
-                    value: 'color',
-                  },
-                  {
-                    kind: 6,
-                    value: ': ',
-                  },
-                  {
-                    kind: 11,
-                    value: 'string',
-                  },
-                  {
-                    kind: 6,
-                    value: ', ',
-                  },
-                  {
-                    kind: 11,
-                    value: 'x',
-                  },
-                  {
-                    kind: 6,
-                    value: ': ',
-                  },
-                  {
-                    kind: 11,
-                    value: 'number',
-                  },
-                  {
-                    kind: 6,
-                    value: ', ',
-                  },
-                  {
-                    kind: 11,
-                    value: 'y',
-                  },
-                  {
-                    kind: 6,
-                    value: ': ',
-                  },
-                  {
-                    kind: 11,
-                    value: 'number',
-                  },
-                  {
-                    kind: 6,
-                    value: ' }',
+                    kind: 3,
+                    children: [
+                      {
+                        kind: 6,
+                        value: '{ ',
+                      },
+                      {
+                        kind: 11,
+                        value: 'color',
+                      },
+                      {
+                        kind: 6,
+                        value: ': ',
+                      },
+                      {
+                        kind: 11,
+                        value: 'string',
+                      },
+                      {
+                        kind: 6,
+                        value: ', ',
+                      },
+                      {
+                        kind: 11,
+                        value: 'x',
+                      },
+                      {
+                        kind: 6,
+                        value: ': ',
+                      },
+                      {
+                        kind: 11,
+                        value: 'number',
+                      },
+                      {
+                        kind: 6,
+                        value: ', ',
+                      },
+                      {
+                        kind: 11,
+                        value: 'y',
+                      },
+                      {
+                        kind: 6,
+                        value: ': ',
+                      },
+                      {
+                        kind: 11,
+                        value: 'number',
+                      },
+                      {
+                        kind: 6,
+                        value: ' }',
+                      },
+                    ],
                   },
                 ],
               },

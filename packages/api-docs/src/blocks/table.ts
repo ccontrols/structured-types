@@ -1,9 +1,8 @@
 import { DocumentationNode, NodeKind, TableNode, TableRowNode } from '../types';
-import { boldNode } from './bold';
 import { textNode } from './text';
 import { tableCellNode } from './table-cell';
 import { inlineCodeNode } from './inline-code';
-import { paragraphNode } from './paragraph';
+
 export interface PropItem {
   name?: DocumentationNode[];
   type?: DocumentationNode[];
@@ -73,9 +72,8 @@ export const createPropsRow = (
 
 export const createPropsTable = (
   children: PropItem[],
-  title?: string,
 ): {
-  propsTable: DocumentationNode;
+  propsTable: DocumentationNode[];
   table?: TableNode;
   visibleColumns: VisibleColumns;
 } => {
@@ -83,9 +81,6 @@ export const createPropsTable = (
   let table: TableNode | undefined = undefined;
   const visibleColumns: VisibleColumns = {};
   if (children) {
-    if (title) {
-      propsTable.push(boldNode([textNode(title)]));
-    }
     const columns: DocumentationNode[] = [];
     visibleColumns.names = children.some((item) => item.name !== undefined);
     if (visibleColumns.names) {
@@ -125,5 +120,5 @@ export const createPropsTable = (
       ),
     );
   }
-  return { propsTable: paragraphNode(propsTable), table, visibleColumns };
+  return { propsTable: propsTable, table, visibleColumns };
 };

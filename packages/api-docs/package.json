@@ -38,6 +38,7 @@
   "dependencies": {
     "@hutson/parse-repository-url": "^5.0.0",
     "cosmiconfig": "^7.0.1",
+    "deepmerge": "^4.2.2",
     "hosted-git-info": "^3.0.4",
     "js-string-escape": "^1.0.1"
   },

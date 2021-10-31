@@ -956,20 +956,20 @@ export class SymbolParser implements ISymbolParser {
           const allSymbols = [...staticProps, ...childProps];
           if (internalKind === undefined || allSymbols.length) {
             for (const childSymbol of allSymbols) {
-              const d =
-                childSymbol.valueDeclaration || childSymbol.declarations?.[0];
-              if (!d) {
-                //tuple members do not carry type information
-                return this.parseTypeValueComments(
-                  prop,
-                  options,
-                  declaration,
-                  initializer,
-                );
-              }
-              const parent = this.getParent(d, prop, options);
-              if (parent !== '__internal') {
-                if (this.filterProperty({ name: childSymbol.name }, options)) {
+              if (this.filterProperty({ name: childSymbol.name }, options)) {
+                const d =
+                  childSymbol.valueDeclaration || childSymbol.declarations?.[0];
+                if (!d) {
+                  //tuple members do not carry type information
+                  return this.parseTypeValueComments(
+                    prop,
+                    options,
+                    declaration,
+                    initializer,
+                  );
+                }
+                const parent = this.getParent(d, prop, options);
+                if (parent !== '__internal') {
                   const childProp = this.addRefSymbol(
                     { name: childSymbol.name },
                     childSymbol,

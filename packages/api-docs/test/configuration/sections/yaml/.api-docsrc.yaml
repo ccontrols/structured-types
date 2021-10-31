@@ -1,0 +1,14 @@
+sections:
+  title:
+    title: 'Component'
+  type:
+    hidden: true
+    title: 'Types'
+  location:
+    title: 'location'
+  props:
+    title: 'Custom Properties'
+  description:
+    title: 'description'
+  examples:
+    title: 'Samples'

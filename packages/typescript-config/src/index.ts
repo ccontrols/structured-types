@@ -22,7 +22,7 @@ const readConfigFile = (configPath: string): any => {
 };
 
 /**
- * reads any typescript configuration files for a given file, including the extends references
+ * Reads any typescript configuration files for a given file, including the extends references
  * @param filePath the full file path to the file
  * @param defaultConfig optional default configuration
  * @param keepJson set to tru to avoid converting options

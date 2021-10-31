@@ -5,7 +5,6 @@
 -   [Getting started](#getting-started)
 -   [API](#api)
     -   [getTypescriptConfig](#gettypescriptconfig)
-        -   [`function`](#function)
 
 # Overview
 
@@ -36,13 +35,15 @@ $ npm install @structured-types/typescript-config --save-dev
 
 ## getTypescriptConfig
 
-### `function`
+**`function`**
+
+Reads any typescript configuration files for a given file, including the extends references
 
 _defined in [@structured-types/typescript-config/misc/typescript-config/src/index.ts](https://github.com/ccontrols/component-controls/tree/master/misc/typescript-config/src/index.ts#L31)_
 
-reads any typescript configuration files for a given file, including the extends references
+**properties**
 
-**parameters**| Name            | Type                              | Description                                                                              |
+| Name            | Type                              | Description                                                                              |
 | --------------- | --------------------------------- | ---------------------------------------------------------------------------------------- |
 | `filePath*`     | `string`                          | the full file path to the file                                                           |
 | `defaultConfig` | ts.CompilerOptions                | optional default configuration                                                           |

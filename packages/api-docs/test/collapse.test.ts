@@ -414,12 +414,17 @@ describe('collapse', () => {
     );
     expect(results).toEqual([
       {
-        kind: 4,
-        depth: 2,
+        kind: 5,
         children: [
           {
-            kind: 6,
-            value: 'CandlestickChartLine',
+            kind: 4,
+            depth: 2,
+            children: [
+              {
+                kind: 6,
+                value: 'CandlestickChartLine',
+              },
+            ],
           },
         ],
       },
@@ -427,7 +432,8 @@ describe('collapse', () => {
         kind: 5,
         children: [
           {
-            kind: 7,
+            kind: 4,
+            depth: 3,
             children: [
               {
                 kind: 11,
@@ -435,10 +441,11 @@ describe('collapse', () => {
               },
             ],
           },
-          {
-            kind: 6,
-            value: ' ',
-          },
+        ],
+      },
+      {
+        kind: 5,
+        children: [
           {
             kind: 5,
             children: [
@@ -481,190 +488,200 @@ describe('collapse', () => {
         ],
       },
       {
-        kind: 7,
+        kind: 5,
         children: [
           {
-            kind: 6,
-            value: 'properties',
+            kind: 7,
+            children: [
+              {
+                kind: 6,
+                value: 'properties',
+              },
+            ],
           },
         ],
       },
       {
-        kind: 1,
+        kind: 5,
         children: [
           {
-            kind: 2,
+            kind: 1,
             children: [
               {
-                kind: 3,
+                kind: 2,
                 children: [
                   {
-                    kind: 6,
-                    value: 'Name',
-                  },
-                ],
-              },
-              {
-                kind: 3,
-                children: [
-                  {
-                    kind: 6,
-                    value: 'Type',
-                  },
-                ],
-              },
-              {
-                kind: 3,
-                children: [
-                  {
-                    kind: 6,
-                    value: 'Parent',
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            kind: 2,
-            children: [
-              {
-                kind: 3,
-                children: [
-                  {
-                    kind: 9,
+                    kind: 3,
                     children: [
                       {
-                        kind: 11,
-                        value: 'x*',
+                        kind: 6,
+                        value: 'Name',
                       },
                     ],
-                    loc: {
-                      filePath:
-                        'react-native-wagmi-charts/src/charts/candle/Line.tsx',
-                      loc: {
-                        start: {
-                          line: 16,
-                          col: 18,
-                        },
-                        end: {
-                          line: 17,
-                          col: 4,
-                        },
-                      },
-                    },
                   },
-                ],
-              },
-              {
-                kind: 3,
-                children: [
                   {
-                    kind: 11,
-                    value: 'number',
-                  },
-                ],
-              },
-              {
-                kind: 3,
-                children: [
-                  {
-                    kind: 9,
+                    kind: 3,
                     children: [
                       {
-                        kind: 11,
-                        value: 'CandlestickChartLineProps',
+                        kind: 6,
+                        value: 'Type',
+                      },
+                    ],
+                  },
+                  {
+                    kind: 3,
+                    children: [
+                      {
+                        kind: 6,
+                        value: 'Parent',
                       },
                     ],
                   },
                 ],
               },
-            ],
-          },
-          {
-            kind: 2,
-            children: [
               {
-                kind: 3,
+                kind: 2,
                 children: [
                   {
-                    kind: 9,
+                    kind: 3,
                     children: [
                       {
-                        kind: 11,
-                        value: 'y*',
-                      },
-                    ],
-                    loc: {
-                      filePath:
-                        'react-native-wagmi-charts/src/charts/candle/Line.tsx',
-                      loc: {
-                        start: {
-                          line: 17,
-                          col: 13,
-                        },
-                        end: {
-                          line: 18,
-                          col: 4,
+                        kind: 9,
+                        children: [
+                          {
+                            kind: 11,
+                            value: 'x*',
+                          },
+                        ],
+                        loc: {
+                          filePath:
+                            'react-native-wagmi-charts/src/charts/candle/Line.tsx',
+                          loc: {
+                            start: {
+                              line: 16,
+                              col: 18,
+                            },
+                            end: {
+                              line: 17,
+                              col: 4,
+                            },
+                          },
                         },
                       },
-                    },
+                    ],
                   },
-                ],
-              },
-              {
-                kind: 3,
-                children: [
                   {
-                    kind: 11,
-                    value: 'number',
-                  },
-                ],
-              },
-              {
-                kind: 3,
-                children: [
-                  {
-                    kind: 9,
+                    kind: 3,
                     children: [
                       {
                         kind: 11,
-                        value: 'CandlestickChartLineProps',
+                        value: 'number',
                       },
                     ],
                   },
-                ],
-              },
-            ],
-          },
-          {
-            kind: 2,
-            children: [
-              {
-                kind: 3,
-                children: [
                   {
-                    kind: 11,
-                    value: '...props',
-                  },
-                ],
-              },
-              {
-                kind: 3,
-                children: [
-                  {
-                    kind: 9,
+                    kind: 3,
                     children: [
                       {
-                        kind: 11,
-                        value: 'LineProps',
+                        kind: 9,
+                        children: [
+                          {
+                            kind: 11,
+                            value: 'CandlestickChartLineProps',
+                          },
+                        ],
                       },
                     ],
                   },
                 ],
               },
               {
-                kind: 3,
-                children: [],
+                kind: 2,
+                children: [
+                  {
+                    kind: 3,
+                    children: [
+                      {
+                        kind: 9,
+                        children: [
+                          {
+                            kind: 11,
+                            value: 'y*',
+                          },
+                        ],
+                        loc: {
+                          filePath:
+                            'react-native-wagmi-charts/src/charts/candle/Line.tsx',
+                          loc: {
+                            start: {
+                              line: 17,
+                              col: 13,
+                            },
+                            end: {
+                              line: 18,
+                              col: 4,
+                            },
+                          },
+                        },
+                      },
+                    ],
+                  },
+                  {
+                    kind: 3,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'number',
+                      },
+                    ],
+                  },
+                  {
+                    kind: 3,
+                    children: [
+                      {
+                        kind: 9,
+                        children: [
+                          {
+                            kind: 11,
+                            value: 'CandlestickChartLineProps',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                kind: 2,
+                children: [
+                  {
+                    kind: 3,
+                    children: [
+                      {
+                        kind: 11,
+                        value: '...props',
+                      },
+                    ],
+                  },
+                  {
+                    kind: 3,
+                    children: [
+                      {
+                        kind: 9,
+                        children: [
+                          {
+                            kind: 11,
+                            value: 'LineProps',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    kind: 3,
+                    children: [],
+                  },
+                ],
               },
             ],
           },

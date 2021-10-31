@@ -57,6 +57,11 @@ export class ConfigStore {
     this._config.skipInherited = this.readValue<
       DocumentationOptions['skipInherited']
     >(config, 'skipInherited');
+    Object.keys(this._config).forEach((key) => {
+      if (this._config[key] === undefined) {
+        delete this._config[key];
+      }
+    });
     return this._config;
   }
 }
