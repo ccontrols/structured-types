@@ -81,6 +81,12 @@
     ],
     "keybindings": [
       {
+        "command": "instant-documentation.openPreviewSide",
+        "key": "ctrl+k v",
+        "mac": "cmd+k v",
+        "when": "(editorLangId == typescript || resourceLangId == typescriptreact || resourceLangId == javascript || resourceLangId == javascriptreact) && !notebookEditorFocused"
+      },
+      {
         "command": "instant-documentation.openPreview",
         "key": "ctrl+shift+v",
         "mac": "cmd+shift+v",
