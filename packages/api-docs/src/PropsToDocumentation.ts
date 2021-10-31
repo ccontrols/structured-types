@@ -42,6 +42,7 @@ import { linkNode } from './blocks/link';
 import { headingNode } from './blocks/heading';
 import { boldNode } from './blocks/bold';
 import { defaultSections } from './sections';
+import { isNodeWithValue } from '.';
 
 export class PropsToDocumentation {
   private collapsed: string[] = [];
@@ -250,7 +251,11 @@ export class PropsToDocumentation {
   private inlineType(prop: PropType): DocumentationNode[] {
     let typeNode: DocumentationNode[] | undefined = undefined;
     if (typeof prop.type === 'string') {
-      typeNode = this.propLink({ name: prop.type, loc: prop.loc });
+      if (this.getPropLink(prop.type)) {
+        typeNode = this.propLink({ name: prop.type, loc: prop.loc });
+      } else {
+        typeNode = this.extractPropType(prop);
+      }
     } else if (prop.kind) {
       typeNode = [inlineCodeNode(`${PropKind[prop.kind].toLowerCase()}`)];
     }
@@ -316,11 +321,13 @@ export class PropsToDocumentation {
     prop: PropType,
     options?: { showValue?: boolean },
   ): DocumentationNode[] {
+    const unionSeparator = ' | ';
+    const enumSeparator = ' | ';
     const { showValue = false } = options || {};
     if (typeof prop.type === 'string' && this.collapsed?.includes(prop.type)) {
       return this.typeNode(prop, showValue);
     } else if ((isUnionProp(prop) || isEnumProp(prop)) && prop.properties) {
-      const separator = isUnionProp(prop) ? ' | ' : ' & ';
+      const separator = isUnionProp(prop) ? unionSeparator : enumSeparator;
       return prop.properties?.reduce((acc: DocumentationNode[], t, idx) => {
         const r = [...acc, ...this.extractPropType(t, { showValue: true })];
         if (prop.properties && idx < prop.properties.length - 1) {
@@ -381,8 +388,11 @@ export class PropsToDocumentation {
       ) as DocumentationNodeWithChildren[];
       const multiProps =
         elements.length &&
-        elements[0].children &&
-        elements[0].children.length > 1;
+        ((elements[0].children && elements[0].children.length > 1) ||
+          (elements.length > 2 &&
+            isNodeWithValue(elements[1]) &&
+            (elements[1].value === unionSeparator ||
+              elements[1].value === enumSeparator)));
       if (multiProps) {
         elements.splice(0, 0, textNode('('));
         elements.push(textNode(')'));
@@ -530,33 +540,49 @@ export class PropsToDocumentation {
     }
     return undefined;
   }
-  generateSection(
+  private getSection(
     prop: PropType,
     name: SectionName,
   ): DocumentationNode[] | undefined {
-    const sections: Record<SectionName, DocumentationNode[] | undefined> = {
-      title: prop.name ? [headingNode(prop.name, 2)] : undefined,
-      description: prop.description
-        ? [
-            paragraphNode(
-              prop.description.split('\n').map((d) => ({
-                kind: NodeKind.Text,
-                value: d,
-              })),
-            ),
-          ]
-        : undefined,
-      type: this.getType(prop),
-      location: this.getLocation(prop),
-      props: this.getPropsTable(prop),
-      extends: this.getExtends(prop),
-      examples: this.getExamples(prop),
-    };
+    switch (name) {
+      case 'title':
+        return prop.name ? [headingNode(prop.name, 2)] : undefined;
+      case 'description':
+        return prop.description
+          ? [
+              paragraphNode(
+                prop.description.split('\n').map((d) => ({
+                  kind: NodeKind.Text,
+                  value: d,
+                })),
+              ),
+            ]
+          : undefined;
+      case 'type':
+        return this.getType(prop);
+      case 'location':
+        return this.getLocation(prop);
+      case 'props':
+        return this.getPropsTable(prop);
+      case 'extends':
+        return this.getExtends(prop);
+      case 'examples':
+        return this.getExamples(prop);
+      default:
+        return undefined;
+    }
+  }
+  private generateSection(
+    prop: PropType,
+    name: SectionName,
+  ): DocumentationNode[] | undefined {
     const config = this.sections[name];
     if (config) {
       const { title, render } = config;
       const children =
-        typeof render === 'function' ? render(prop) : sections[name];
+        typeof render === 'function'
+          ? render(prop)
+          : this.getSection(prop, name);
       if (children) {
         const result: DocumentationNode[] = [];
 

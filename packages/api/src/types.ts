@@ -455,6 +455,7 @@ export const hasGenerics = (prop: PropType): prop is HasGenericsProp => {
 };
 
 export type HasPropertiesProp =
+  | ArrayProp
   | UnionProp
   | ObjectProp
   | EnumProp
@@ -470,6 +471,7 @@ export type HasPropertiesProp =
  */
 export const hasProperties = (prop: PropType): prop is HasPropertiesProp => {
   return (
+    prop.kind === PropKind.Array ||
     prop.kind === PropKind.Union ||
     prop.kind === PropKind.Object ||
     prop.kind === PropKind.Enum ||

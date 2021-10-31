@@ -1,7 +1,12 @@
-import { InlineCodeNode, NodeKind } from '../types';
+import { InlineCodeNode, TextNode, NodeKind } from '../types';
 
-export const inlineCodeNode = (value: string): InlineCodeNode =>
-  ({
-    kind: NodeKind.InlineCode,
-    value,
-  } as InlineCodeNode);
+export const inlineCodeNode = (value: string): InlineCodeNode | TextNode =>
+  value
+    ? ({
+        kind: NodeKind.InlineCode,
+        value,
+      } as InlineCodeNode)
+    : ({
+        kind: NodeKind.Text,
+        value,
+      } as TextNode);
