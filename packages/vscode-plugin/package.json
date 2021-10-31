@@ -1,7 +1,7 @@
 {
   "name": "@structured-types/vscode-plugin",
   "publisher": "atanasster",
-  "version": "3.31.0",
+  "version": "3.32.0",
   "description": "VSCode plugin to display structured type documentation",
   "keywords": [
     "structured-types",
@@ -40,10 +40,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@structured-types/api": "^3.31.0",
-    "@structured-types/api-docs": "^3.31.0",
-    "@structured-types/prop-types-plugin": "^3.31.0",
-    "@structured-types/react-plugin": "^3.31.0",
+    "@structured-types/api": "^3.32.0",
+    "@structured-types/api-docs": "^3.32.0",
+    "@structured-types/prop-types-plugin": "^3.32.0",
+    "@structured-types/react-plugin": "^3.32.0",
     "@vscode/webview-ui-toolkit": "^0.8.2",
     "deepmerge": "^4.2.2",
     "vscode": "^1.1.37"

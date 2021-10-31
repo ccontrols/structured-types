@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.32.0](https://github.com/ccontrols/structured-types/compare/v3.31.0...v3.32.0) (2021-10-31)
+
+
+### Bug Fixes
+
+* **vscode-plugin:** grid layout misalignment ([deb3754](https://github.com/ccontrols/structured-types/commit/deb37541336b25d6661c837495c3520dddda8a73))
+* **vscode-plugin:** remove console.log ([44e4ff0](https://github.com/ccontrols/structured-types/commit/44e4ff0bfc3d06a138c39bd47b635627bffd17ea))
+* **vscode-plugin:** remove console.log ([b6f1ad5](https://github.com/ccontrols/structured-types/commit/b6f1ad5b7878034aa51a81ab447d1905242de5de))
+
+
+### Features
+
+* **api-docs:** sections configuration ([b5b4cb2](https://github.com/ccontrols/structured-types/commit/b5b4cb20b17fe7ad6d6b8268447ecbb35ee973f3))
+* **vscode-plugin:** add configuration settings ([2d2e3ed](https://github.com/ccontrols/structured-types/commit/2d2e3eda05d5e8ffcbd37948a3552331fa2b365d))
+* **vscode-plugin:** sections configuration ([8ec3246](https://github.com/ccontrols/structured-types/commit/8ec3246a2d69521814fdad360943d4ab000c3b1b))
+* add single preview config ([b1b7a35](https://github.com/ccontrols/structured-types/commit/b1b7a35b55b25d321d5a323e487be81ab0259c1c))
+
+
+
+
+
 # [3.31.0](https://github.com/ccontrols/structured-types/compare/v3.30.0...v3.31.0) (2021-10-25)
 
 
