@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/api-docs",
-  "version": "3.32.0",
+  "version": "3.32.1",
   "description": "Create api documentation nodes using structured-types/api",
   "keywords": [
     "jsdoc",
@@ -43,7 +43,7 @@
     "js-string-escape": "^1.0.1"
   },
   "devDependencies": {
-    "@structured-types/api": "^3.32.0",
+    "@structured-types/api": "^3.32.1",
     "@types/hosted-git-info": "^3.0.0",
     "@types/js-string-escape": "^1.0.1"
   },

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.32.1](https://github.com/ccontrols/structured-types/compare/v3.32.0...v3.32.1) (2021-11-01)
+
+
+### Bug Fixes
+
+* **api-docs:** array union and records ([d431a6b](https://github.com/ccontrols/structured-types/commit/d431a6b63903a360b3aebd75445076d480d1facc))
+* **vscode-plugin:** add keybinding open side ([e9f7bce](https://github.com/ccontrols/structured-types/commit/e9f7bceb4d39d70d3b486e16bd82e2a2788149ca))
+
+
+
+
+
 # [3.32.0](https://github.com/ccontrols/structured-types/compare/v3.31.0...v3.32.0) (2021-10-31)
 
 
