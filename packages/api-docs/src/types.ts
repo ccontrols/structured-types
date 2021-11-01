@@ -242,13 +242,17 @@ export const isInlineCodeNode = (
 };
 
 export type TitleCallback = (prop: PropType) => string | undefined;
-export type RenderCallback = (
+export type SectionRenderCallback = (
   prop: PropType,
 ) => DocumentationNode[] | undefined;
+
+/**
+ * Section configuration item
+ */
 export interface SectionConfig {
   hidden?: boolean;
   title?: string | TitleCallback;
-  render?: RenderCallback;
+  render?: SectionRenderCallback;
 }
 /**
  * Section names to be displayed
@@ -267,18 +271,49 @@ export type SectionName =
  */
 export type SectionObject = Partial<Record<SectionName, SectionConfig>>;
 
+/**
+ * Sections can be configured as an array of the visible sections, or an object
+ * with keys the section name, and values a configuration object
+ *
+ */
 export type Sections = SectionName[] | SectionObject;
+
 /**
  * Properties table column names to be displayed
  */
 
-export type ColumnNames =
+export type ColumnName =
   | 'name'
   | 'type'
   | 'parents'
   | 'default'
-  | 'description'
-  | 'all';
+  | 'description';
+
+export type PropRenderCallback = (
+  name: ColumnName,
+  prop: PropType,
+) => DocumentationNode[] | undefined;
+
+/**
+ * Column configuration item
+ */
+export interface ColumnConfig {
+  hidden?: boolean;
+  title?: string | TitleCallback;
+  render?: PropRenderCallback;
+}
+
+/**
+ * Column object kind configuration
+ */
+export type ColumnObject = Partial<Record<ColumnName, ColumnConfig>>;
+
+/**
+ * Sections can be configured as an array of the visible sections, or an object
+ * with keys the section name, and values a configuration object
+ *
+ */
+export type Columns = ColumnName[] | ColumnObject;
 
 /**
  * Document page generation options
@@ -301,7 +336,7 @@ export type DocumentationOptions = {
    * List of the columns in the property tables `name` | `type` | `parents` | `value` | `description` | `all`.
    * By default, all columns will be visible.
    */
-  columns?: ColumnNames[];
+  columns?: Columns;
   /**
    * List of the `sections` to generate `props` | `description` | `examples` | `title` | `location` | `all`.
    * By default, all sections are generated.

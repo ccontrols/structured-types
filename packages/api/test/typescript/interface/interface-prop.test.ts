@@ -2,6 +2,49 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('interface', () => {
+  it('extends-record', () => {
+    const results = parseFiles([path.resolve(__dirname, 'extends-record.ts')]);
+
+    expect(results).toEqual({
+      Props: {
+        name: 'Props',
+        kind: 14,
+        extends: ['Base'],
+        properties: [
+          {
+            name: 'm',
+            kind: 1,
+            description: 'interface member property',
+            value: "'hello'",
+          },
+          {
+            name: 'n',
+            parent: {
+              name: 'Base',
+            },
+            optional: true,
+            kind: 15,
+            type: 'Record',
+            generics: [
+              {
+                kind: 1,
+              },
+              {
+                kind: 15,
+                properties: [
+                  {
+                    name: 'a',
+                    kind: 3,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    });
+  });
+
   it('index-prop', () => {
     const results = parseFiles([path.resolve(__dirname, 'index-prop.ts')]);
 

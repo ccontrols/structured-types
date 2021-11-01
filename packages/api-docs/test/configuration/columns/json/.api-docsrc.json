@@ -1,0 +1,10 @@
+{
+  "columns": {
+    "name": {
+      "title": "Property"
+    },
+    "parents": {
+      "hidden": true
+    }
+  }
+}

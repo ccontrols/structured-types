@@ -503,7 +503,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `checker*`                | TypeChecker                                                                                                                                                            |
 | `options*`                | [`ParseOptions`](#parseoptions)                                                                                                                                        |
-| `parseProperties*`        | (`properties`\*: { `index` }, `options`\*: [`ParseOptions`](#parseoptions), `types`: [`PropType`](#proptype)\[]) => [`PropType`](#proptype)\[]                         |
+| `parseProperties*`        | (`properties`\*: { \[`number`]: `T` }, `options`\*: [`ParseOptions`](#parseoptions), `types`: [`PropType`](#proptype)\[]) => [`PropType`](#proptype)\[]                |
 | `updateSymbolName*`       | (`prop`\*: [`PropType`](#proptype), `node`: ts.Declaration) => [`PropType`](#proptype)                                                                                 |
 | `parseType*`              | (`prop`\*: [`PropType`](#proptype), `options`\*: [`ParseOptions`](#parseoptions), `node`: ts.Node) => [`PropType`](#proptype)                                          |
 | `parseTypeValueComments*` | (`prop`\*: [`PropType`](#proptype), `options`\*: [`ParseOptions`](#parseoptions), `declaration`: ts.Node, `initializer`: ts.Node) => [`PropType`](#proptype) \| `null` |

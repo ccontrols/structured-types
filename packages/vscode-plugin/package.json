@@ -194,20 +194,90 @@
           "default": []
         },
         "instant-documentation.columns": {
-          "markdownDescription": "List of the columns in the property tables `name` | `type` | `parents` | `default` | `description`. By default, all columns will be visible.",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "name",
-              "type",
-              "parents",
-              "default",
-              "description"
-            ]
-          },
-          "uniqueItems": true,
-          "default": []
+          "markdownDescription": "Configuration of the columns in the property tables.ou can change the title or the hidden properties of each column.",
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "object",
+              "properties": {
+                "hidden": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "title": {
+                  "type": [
+                    "string",
+                    null
+                  ],
+                  "default": null
+                }
+              }
+            },
+            "type": {
+              "type": "object",
+              "properties": {
+                "hidden": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "title": {
+                  "type": [
+                    "string",
+                    null
+                  ],
+                  "default": null
+                }
+              }
+            },
+            "default": {
+              "type": "object",
+              "properties": {
+                "hidden": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "title": {
+                  "type": [
+                    "string",
+                    null
+                  ],
+                  "default": null
+                }
+              }
+            },
+            "parents": {
+              "type": "object",
+              "properties": {
+                "hidden": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "title": {
+                  "type": [
+                    "string",
+                    null
+                  ],
+                  "default": null
+                }
+              }
+            },
+            "description": {
+              "type": "object",
+              "properties": {
+                "hidden": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "title": {
+                  "type": [
+                    "string",
+                    null
+                  ],
+                  "default": null
+                }
+              }
+            }
+          }
         },
         "instant-documentation.sections": {
           "markdownDescription": "Configuration of the documentation sections. You can change the title or the hidden properties of each section.",
@@ -325,9 +395,7 @@
                 }
               }
             }
-          },
-          "uniqueItems": true,
-          "default": []
+          }
         },
         "instant-documentation.skipInherited": {
           "description": "Whether to skip properties that are \"inherited\", or \"composed\"",

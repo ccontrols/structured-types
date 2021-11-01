@@ -25,11 +25,13 @@ import {
 import {
   DocumentationNode,
   SectionName,
-  ColumnNames,
+  ColumnName,
   DocumentationOptions,
   NodeKind,
   DocumentationNodeWithChildren,
   SectionObject,
+  ColumnObject,
+  isNodeWithValue,
 } from './types';
 import { getRepoPath } from './package-info/package-info';
 import { createPropsTable, createPropsRow, PropItem } from './blocks/table';
@@ -42,12 +44,12 @@ import { linkNode } from './blocks/link';
 import { headingNode } from './blocks/heading';
 import { boldNode } from './blocks/bold';
 import { defaultSections } from './sections';
-import { isNodeWithValue } from '.';
+import { defaultColumns } from './columns';
 
 export class PropsToDocumentation {
   private collapsed: string[] = [];
   private sections: SectionObject = defaultSections;
-  private columns: ColumnNames[] = ['all'];
+  private columns: ColumnObject = defaultColumns;
   private skipInherited = false;
   private topLevelProps: Record<string, PropType> = {};
   private helpers: Record<string, PropType> = {};
@@ -61,7 +63,8 @@ export class PropsToDocumentation {
   } = {};
 
   private extractPropTable(
-    props: PropType[],
+    prop: PropType,
+    rows: PropType[],
   ): ReturnType<typeof createPropsTable> {
     let parentProp: EnumProp | undefined = undefined;
     const addParentProp = (prop: PropType) => {
@@ -92,7 +95,7 @@ export class PropsToDocumentation {
         }
       }
     };
-    const consolidatedProps = props.filter((prop) => {
+    const consolidatedProps = rows.filter((prop) => {
       if (prop.parent) {
         if (this.skipInherited || this.collapsed.includes(prop.parent.name)) {
           addParentProp(prop);
@@ -131,14 +134,15 @@ export class PropsToDocumentation {
         name: prop.loc
           ? this.propLink({ name, loc: prop.loc })
           : [inlineCodeNode(name)],
-        parent: prop.parent ? this.propLink(prop.parent) : undefined,
+        parents: prop.parent ? this.propLink(prop.parent) : undefined,
 
         type: this.extractPropType(prop, { extractProperties: true }),
         description: prop.description,
-        value: (prop as HasValueProp).value,
+        default: (prop as HasValueProp).value,
+        prop,
       } as PropItem);
     });
-    return createPropsTable(items);
+    return createPropsTable(items, this.columns, prop);
   }
 
   private extractFunctionDeclaration(prop: FunctionProp): DocumentationNode[] {
@@ -173,15 +177,16 @@ export class PropsToDocumentation {
     return result;
   }
   private configurePropItem(item: PropItem): PropItem {
-    const enabledColumn = (name: ColumnNames): boolean => {
-      return this.columns.includes(name) || this.columns.includes('all');
+    const enabledColumn = (name: ColumnName): boolean | undefined => {
+      return this.columns[name] && !this.columns[name]?.hidden;
     };
     return {
       name: enabledColumn('name') ? item.name : undefined,
-      parent: enabledColumn('parents') ? item.parent : undefined,
+      parents: enabledColumn('parents') ? item.parents : undefined,
       type: enabledColumn('type') ? item.type : undefined,
-      value: enabledColumn('default') ? item.value : undefined,
+      default: enabledColumn('default') ? item.default : undefined,
       description: enabledColumn('description') ? item.description : undefined,
+      prop: item.prop,
     };
   }
   private extractFunction(
@@ -190,6 +195,7 @@ export class PropsToDocumentation {
   ): DocumentationNode[] | undefined {
     if (prop.parameters) {
       const { propsTable, table, visibleColumns } = this.extractPropTable(
+        prop,
         prop.parameters,
       );
       if (
@@ -202,12 +208,15 @@ export class PropsToDocumentation {
           createPropsRow(
             this.configurePropItem({
               name: [inlineCodeNode('returns')],
-              parent: prop.returns.parent
+              parents: prop.returns.parent
                 ? this.propLink(prop.returns.parent)
                 : undefined,
               type: this.extractPropType(prop.returns),
               description: prop.returns.description,
+              default: undefined,
+              prop,
             }),
+            this.columns,
             visibleColumns,
           ),
         );
@@ -226,7 +235,7 @@ export class PropsToDocumentation {
       if (isUnionProp(prop)) {
         result.push(...this.extractPropType(prop));
       } else if (hasProperties(prop) && prop.properties) {
-        const { propsTable } = this.extractPropTable(prop.properties);
+        const { propsTable } = this.extractPropTable(prop, prop.properties);
         result.push(...propsTable);
       }
     }
@@ -257,7 +266,7 @@ export class PropsToDocumentation {
         typeNode = this.extractPropType(prop);
       }
     } else if (prop.kind) {
-      typeNode = [inlineCodeNode(`${PropKind[prop.kind].toLowerCase()}`)];
+      typeNode = this.extractPropType(prop);
     }
     if (prop.name && prop.name !== prop.type) {
       return [
@@ -536,7 +545,7 @@ export class PropsToDocumentation {
         },
         [],
       );
-      return [textNode('extends '), ...extendsList];
+      return extendsList;
     }
     return undefined;
   }
@@ -622,7 +631,7 @@ export class PropsToDocumentation {
       extensions,
       visible,
       sections = {},
-      columns = ['all'],
+      columns = {},
       skipInherited = false,
       overrides = {},
     } = options;
@@ -635,7 +644,14 @@ export class PropsToDocumentation {
           }, {})
         : deepmerge(defaultSections, sections);
     }
-    this.columns = columns;
+    if (columns) {
+      this.columns = Array.isArray(columns)
+        ? columns.reduce((acc, name) => {
+            return { ...acc, [name]: defaultColumns[name] };
+          }, {})
+        : deepmerge(defaultColumns, columns);
+    }
+
     this.skipInherited = skipInherited;
 
     const filterProps = (prop: PropType): PropType | undefined => {

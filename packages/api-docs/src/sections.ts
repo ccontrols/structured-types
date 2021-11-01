@@ -6,6 +6,7 @@ export const defaultSections: SectionObject = {
   type: {},
   description: {},
   location: {},
+  extends: { title: 'extends' },
   props: { title: 'properties' },
   examples: {
     title: (prop: PropType) =>

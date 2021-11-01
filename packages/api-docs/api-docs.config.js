@@ -17,6 +17,7 @@ module.exports = {
     'LinkNode',
     'CodeNode',
     'InlineCodeNode',
+    'DocumentationNode',
     'DocumentationNodeWithChildren',
     'DocumentationNodeWithValue',
   ],
