@@ -11,7 +11,7 @@
     -   [Columns](#columns)
         -   [1. List configuration](#1-list-configuration-1)
         -   [2. Object configuration](#2-object-configuration-1)
-    -   [Override properties](#override-properties)
+    -   [Sub-configuration](#sub-configuration)
 -   [API](#api)
     -   [propsToDocumentation](#propstodocumentation)
     -   [apiDocsConfig](#apidocsconfig)
@@ -271,65 +271,7 @@ YAML
           parents:
             hidden: true
 
-## Override properties
-
-You can override specific properties in cases where the actual parsed properties are not "optimal" and you would like to change their display. The format to override a [property](https://github.com/ccontrols/structured-types/tree/master/packages/api#proptype) is
-
-Pseudocode
-
-```
-overrides: {
-  [parent name]: {
-    [property name]: {
-      [propname]: {
-        xx: 10
-      }
-    }
-  }
-}
-
-```
-
-Javascript:
-
-        module.exports = {
-          visible: ['LineChart'],
-          overrides: {
-            LineChart: {
-              yGutter: {
-                value: 30,
-                type: '(x, y) => x + y',
-                parent: null,
-              },
-            },
-          },
-        };
-
-JSON
-
-        {
-          "visible": ["LineChart"],
-          "overrides": {
-            "LineChart": {
-              "yGutter": {
-                "value": 30,
-                "type": "(x, y) => x + y",
-                "parent": null
-              }
-            }
-          }
-        };
-
-YAML
-
-        visible:
-          - LineChart
-        overrides:
-          LineChart:
-            yGutter:
-              value: 30
-              type: '(x, y) => x + y'
-              parent: null
+## Sub-configuration
 
 # API
 
@@ -680,14 +622,13 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 **properties**
 
-| Name            | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Description                                                                                                                                                                                                           |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `collapsed`     | `string`\[]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | List of type names, that should not be expanded. For example, some internal React objects can be kept just as a string and will not be detailed in the documentation, instead of listing their internal properties.   |
-| `extensions`    | `string`\[]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | List of plugins (or extensions). For example, for a react library, you can specify to include only react components, but not any additional types or utilities.                                                       |
-| `visible`       | `string`\[]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | List of type names, that should be "visible". This will limit which of the parsed props to be documented.                                                                                                             |
-| `columns`       | ("name" \| "type" \| "parents" \| "default" \| "description")\[] \| `Partial`&lt;`Record`&lt;"name" \| "type" \| "parents" \| "default" \| "description", { `hidden`: `boolean`, `title`: `string` \| TitleCallback, `render`: PropRenderCallback }>>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Sections can be configured as an array of the visible sections, or an object with keys the section name, and values a configuration object                                                                            |
-| `sections`      | ("title" \| "type" \| "extends" \| "description" \| "location" \| "props" \| "examples")\[] \| `Partial`&lt;`Record`&lt;"title" \| "type" \| "extends" \| "description" \| "location" \| "props" \| "examples", { `hidden`: `boolean`, `title`: `string` \| TitleCallback, `render`: SectionRenderCallback }>>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Sections can be configured as an array of the visible sections, or an object with keys the section name, and values a configuration object                                                                            |
-| `skipInherited` | `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Whether to skip properties that are "inherited", or "composed". For example,  `type OwnProps = { x: number } & React.LineProps`  will only output the  `x`  property and skip the inherited React library properties. |
-| `overrides`     | `Record`&lt;`string`, `Record`&lt;`string`, { `kind`: 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| 7 \| 8 \| 9 \| 10 \| 11 \| 12 \| 13 \| 14 \| 15 \| 16 \| 17 \| 20 \| 21 \| 22 \| 23 \| 24 \| 25 \| 26 \| 27, `name`: `string`, `parent`: { `name`: `string`, `loc`: SourceLocation }, `loc`: { `filePath`: `string`, `loc`: { `start`, `end` } }, `optional`: `boolean`, `readonly`: `boolean`, `abstract`: `boolean`, `async`: `boolean`, `visibility`: "private" \| "protected" \| "public", `static`: `boolean`, `type`: `string`, `extension`: `string`, `description`: `string`, `fires`: `string`\[], `see`: `string`\[], `examples`: { `caption`: `string`, `content`: `string` }\[], `tags`: { `tag`: `string`, `content`: `string` }\[], `summary`: `string`, `deprecated`: `string` \| true, `ignore`: `boolean` }>> | Sections with custom properties                                                                                                                                                                                       |
+| Name            | Type                                                                                                                                                                                                                                                                                                           | Description                                                                                                                                                                                                           |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `collapsed`     | `string`\[]                                                                                                                                                                                                                                                                                                    | List of type names, that should not be expanded. For example, some internal React objects can be kept just as a string and will not be detailed in the documentation, instead of listing their internal properties.   |
+| `extensions`    | `string`\[]                                                                                                                                                                                                                                                                                                    | List of plugins (or extensions). For example, for a react library, you can specify to include only react components, but not any additional types or utilities.                                                       |
+| `visible`       | `string`\[]                                                                                                                                                                                                                                                                                                    | List of type names, that should be "visible". This will limit which of the parsed props to be documented.                                                                                                             |
+| `columns`       | ("name" \| "type" \| "parents" \| "default" \| "description")\[] \| `Partial`&lt;`Record`&lt;"name" \| "type" \| "parents" \| "default" \| "description", { `hidden`: `boolean`, `title`: `string` \| TitleCallback, `render`: PropRenderCallback }>>                                                          | Sections can be configured as an array of the visible sections, or an object with keys the section name, and values a configuration object                                                                            |
+| `sections`      | ("title" \| "type" \| "extends" \| "description" \| "location" \| "props" \| "examples")\[] \| `Partial`&lt;`Record`&lt;"title" \| "type" \| "extends" \| "description" \| "location" \| "props" \| "examples", { `hidden`: `boolean`, `title`: `string` \| TitleCallback, `render`: SectionRenderCallback }>> | Sections can be configured as an array of the visible sections, or an object with keys the section name, and values a configuration object                                                                            |
+| `skipInherited` | `boolean`                                                                                                                                                                                                                                                                                                      | Whether to skip properties that are "inherited", or "composed". For example,  `type OwnProps = { x: number } & React.LineProps`  will only output the  `x`  property and skip the inherited React library properties. |
 
 <!-- END-API-README -->

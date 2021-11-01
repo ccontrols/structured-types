@@ -348,8 +348,4 @@ export type DocumentationOptions = {
    * React library properties.
    */
   skipInherited?: boolean;
-  /**
-   * Sections with custom properties
-   */
-  overrides?: Record<string, Record<string, PropType>>;
 };

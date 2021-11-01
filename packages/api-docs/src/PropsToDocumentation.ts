@@ -17,7 +17,6 @@ import {
   isStringProp,
   EnumProp,
   isEnumProp,
-  TypeProp,
   HasValueProp,
   PropTypes,
   PropParent,
@@ -633,7 +632,6 @@ export class PropsToDocumentation {
       sections = {},
       columns = {},
       skipInherited = false,
-      overrides = {},
     } = options;
 
     this.collapsed = collapsed;
@@ -655,34 +653,22 @@ export class PropsToDocumentation {
     this.skipInherited = skipInherited;
 
     const filterProps = (prop: PropType): PropType | undefined => {
-      const transform = (p: PropType): PropType => {
-        if (p.name && overrides[p.name] && hasProperties(p)) {
-          const o = overrides[p.name];
-          return {
-            ...p,
-            properties: p.properties?.map((pp) =>
-              pp.name && o[pp.name] ? { ...pp, ...o[pp.name] } : pp,
-            ),
-          } as TypeProp;
-        }
-        return p;
-      };
       if (Array.isArray(extensions)) {
         if (
           typeof prop.extension === 'string' &&
           extensions.includes(prop.extension)
         ) {
-          return transform(prop);
+          return prop;
         }
         return undefined;
       }
       if (Array.isArray(visible)) {
         if (typeof prop.name === 'string' && visible.includes(prop.name)) {
-          return transform(prop);
+          return prop;
         }
         return undefined;
       }
-      return transform(prop);
+      return prop;
     };
     Object.keys(props).forEach((key) => {
       if (key !== '__helpers' && key !== '__diagnostics') {
