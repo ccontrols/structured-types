@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/playground-plugin",
-  "version": "3.32.1",
+  "version": "3.33.0",
   "description": "Typescript playground plugin to display the types from source code.",
   "keywords": [
     "structured-types",
@@ -34,9 +34,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@structured-types/api": "^3.32.1",
-    "@structured-types/prop-types-plugin": "^3.32.1",
-    "@structured-types/react-plugin": "^3.32.1",
+    "@structured-types/api": "^3.33.0",
+    "@structured-types/prop-types-plugin": "^3.33.0",
+    "@structured-types/react-plugin": "^3.33.0",
     "lz-string": "^1.4.4",
     "node-fetch": "^2.6.0",
     "react": "^17.0.2",
