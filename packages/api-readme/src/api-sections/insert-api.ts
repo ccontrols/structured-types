@@ -43,24 +43,27 @@ export const insertAPISection =
             const newNodes: RemarkNode[] = [];
 
             let elementId: string | undefined = undefined;
-            const inlineOptions = attributes.reduce((acc, attr) => {
-              let value;
-              const strValue = attr[1];
-              if (strValue === 'true') {
-                value = true;
-              } else if (strValue === 'false') {
-                value = false;
-              } else if (!isNaN(parseFloat(strValue))) {
-                value = parseFloat(strValue);
-              } else if (typeof attr[1] === 'string') {
-                if (attr[0] === 'id') {
-                  elementId = attr[1];
-                  return acc;
+            const inlineOptions = attributes.reduce(
+              (acc, attr) => {
+                let value;
+                const strValue = attr[1];
+                if (strValue === 'true') {
+                  value = true;
+                } else if (strValue === 'false') {
+                  value = false;
+                } else if (!isNaN(parseFloat(strValue))) {
+                  value = parseFloat(strValue);
+                } else if (typeof attr[1] === 'string') {
+                  if (attr[0] === 'id') {
+                    elementId = attr[1];
+                    return acc;
+                  }
+                  value = splitCommaAttribute(attributes, attr[0]);
                 }
-                value = splitCommaAttribute(attributes, attr[0]);
-              }
-              return { ...acc, [attr[0]]: value };
-            }, {}) as DocumentationOptions & { files?: string[] };
+                return { ...acc, [attr[0]]: value };
+              },
+              { files: [] },
+            ) as DocumentationOptions & { files: string[] };
             const { config = {}, filepath: configFilePath } =
               apiDocsConfig(fileName, configFileName, elementId) || {};
 
