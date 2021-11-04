@@ -28,6 +28,8 @@ import {
   IndexProp,
   RestProp,
   isEnumProp,
+  PropParent,
+  SourceLocation,
 } from './types';
 import {
   getSymbolType,
@@ -49,7 +51,7 @@ import { resolveType } from './ts/resolveType';
 import { getInitializer } from './ts/getInitializer';
 import { mergeNodeComments } from './jsdoc/mergeJSDoc';
 import { parseJSDocTag } from './jsdoc/parseJSDocTags';
-import { PropParent, SourceLocation } from '.';
+
 export class SymbolParser implements ISymbolParser {
   public checker: ts.TypeChecker;
   public readonly options: Required<ParseOptions>;
@@ -896,7 +898,8 @@ export class SymbolParser implements ISymbolParser {
       }
       if (
         resolvedType &&
-        resolvedType.flags & (ts.TypeFlags.Object | ts.TypeFlags.Intersection)
+        (resolvedType.isIntersection() ||
+          resolvedType.flags & ts.TypeFlags.Object)
       ) {
         const resolvedSymbol = resolvedType.aliasSymbol || resolvedType.symbol;
         const resolvedDeclaration = resolvedSymbol
@@ -1052,6 +1055,33 @@ export class SymbolParser implements ISymbolParser {
     const loc = this.parseFilePath(defaultOptions, topLevel, declaration);
     if (loc) {
       prop.loc = loc;
+    }
+    if (
+      symbolType?.isUnion() &&
+      !(symbolType.flags & (ts.TypeFlags as any).Primitive) &&
+      !prop.optional
+    ) {
+      const properties: PropType[] = [];
+      (this.checker as any)
+        .getAllPossiblePropertiesOfTypes(
+          symbolType.types.filter(
+            (t) => !(t.flags & (ts.TypeFlags as any).Primitive),
+          ),
+        )
+        .forEach((s: ts.Symbol) => {
+          const p = {};
+          properties.push(p);
+          this.addRefSymbol(p, s, false);
+        });
+
+      if (properties.length) {
+        prop.kind = PropKind.Union;
+        (prop as UnionProp).properties = properties;
+        return this.filterProperty(
+          mergeNodeComments(this, prop, defaultOptions, declaration),
+          defaultOptions,
+        );
+      }
     }
 
     return this.filterProperty(

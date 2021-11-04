@@ -2,6 +2,102 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('type', () => {
+  it('union-generic', () => {
+    const results = parseFiles([path.resolve(__dirname, 'union-generic.tsx')]);
+    expect(results).toEqual({
+      FullProps: {
+        name: 'FullProps',
+        kind: 4,
+        properties: [
+          {
+            name: 'id',
+            kind: 1,
+          },
+          {
+            name: 'bool',
+            kind: 3,
+          },
+          {
+            optional: true,
+            name: 'children',
+            kind: 1,
+          },
+        ],
+      },
+    });
+  });
+  it('nested-generic', () => {
+    const results = parseFiles([path.resolve(__dirname, 'nested-generic.ts')], {
+      collectHelpers: true,
+    });
+    expect(results).toEqual({
+      NestedGenericType: {
+        kind: 15,
+        properties: [
+          {
+            description: 'member field',
+            name: 'm',
+            type: 'Type',
+            parent: {
+              name: 'GenericArrayType',
+            },
+          },
+        ],
+        name: 'NestedGenericType',
+
+        generics: [
+          {
+            name: 'Type',
+          },
+        ],
+      },
+      __helpers: {
+        GenericArrayType: {
+          description: 'generic interface',
+          name: 'GenericArrayType',
+          kind: 15,
+          generics: [
+            {
+              name: 'Type',
+            },
+          ],
+          properties: [
+            {
+              description: 'member field',
+              name: 'm',
+              type: 'Type',
+            },
+          ],
+        },
+      },
+    });
+  });
+
+  it('initialized', () => {
+    const results = parseFiles([path.resolve(__dirname, 'initialized.ts')]);
+    expect(results).toEqual({
+      obj: {
+        description: 'this is an object',
+        kind: 15,
+        properties: [
+          {
+            description: 'field a',
+            name: 'a',
+            kind: 1,
+            value: 'field a',
+          },
+          {
+            description: 'field b',
+            optional: true,
+            name: 'b',
+            kind: 2,
+          },
+        ],
+        name: 'obj',
+      },
+    });
+  });
+
   it('referenced-type', () => {
     const results = parseFiles(
       [path.resolve(__dirname, 'referenced-type.ts')],
@@ -257,31 +353,6 @@ describe('type', () => {
     });
   });
 
-  it('initialized', () => {
-    const results = parseFiles([path.resolve(__dirname, 'initialized.ts')]);
-    expect(results).toEqual({
-      obj: {
-        description: 'this is an object',
-        kind: 15,
-        properties: [
-          {
-            description: 'field a',
-            name: 'a',
-            kind: 1,
-            value: 'field a',
-          },
-          {
-            description: 'field b',
-            optional: true,
-            name: 'b',
-            kind: 2,
-          },
-        ],
-        name: 'obj',
-      },
-    });
-  });
-
   it('generic-array', () => {
     const results = parseFiles([path.resolve(__dirname, 'generic-array.ts')]);
     expect(results).toEqual({
@@ -397,53 +468,6 @@ describe('type', () => {
             {
               name: 'b',
               kind: 2,
-            },
-          ],
-        },
-      },
-    });
-  });
-
-  it('nested-generic', () => {
-    const results = parseFiles([path.resolve(__dirname, 'nested-generic.ts')], {
-      collectHelpers: true,
-    });
-    expect(results).toEqual({
-      NestedGenericType: {
-        kind: 15,
-        properties: [
-          {
-            description: 'member field',
-            name: 'm',
-            type: 'Type',
-            parent: {
-              name: 'GenericArrayType',
-            },
-          },
-        ],
-        name: 'NestedGenericType',
-
-        generics: [
-          {
-            name: 'Type',
-          },
-        ],
-      },
-      __helpers: {
-        GenericArrayType: {
-          description: 'generic interface',
-          name: 'GenericArrayType',
-          kind: 15,
-          generics: [
-            {
-              name: 'Type',
-            },
-          ],
-          properties: [
-            {
-              description: 'member field',
-              name: 'm',
-              type: 'Type',
             },
           ],
         },

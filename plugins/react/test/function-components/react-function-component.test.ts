@@ -3,6 +3,15 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('function-component', () => {
+  it('props-with-children', () => {
+    const result = parseFiles(
+      [path.resolve(__dirname, 'props-with-children.tsx')],
+      {
+        plugins: [reactPlugin],
+      },
+    );
+    expect(result).toEqual({});
+  });
   it('rest-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'rest-props.tsx')], {
       plugins: [reactPlugin],
