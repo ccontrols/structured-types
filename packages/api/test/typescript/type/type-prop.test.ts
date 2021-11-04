@@ -2,8 +2,10 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('type', () => {
-  it('union-generic', () => {
-    const results = parseFiles([path.resolve(__dirname, 'union-generic.tsx')]);
+  it('union-generic-param', () => {
+    const results = parseFiles([
+      path.resolve(__dirname, 'union-generic-param.ts'),
+    ]);
     expect(results).toEqual({
       FullProps: {
         name: 'FullProps',
