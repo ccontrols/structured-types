@@ -6,7 +6,6 @@ import {
   PropKind,
   BooleanProp,
   isNumberProp,
-  isAnyProp,
   isUnknownProp,
   isObjectLikeProp,
   isIndexProp,
@@ -16,9 +15,7 @@ import {
   hasGenerics,
   HasGenericsProp,
   isArrayProp,
-  EnumProp,
   TupleProp,
-  ObjectProp,
   isFunctionBaseType,
   isClassLikeProp,
   propValue,
@@ -225,18 +222,7 @@ export class SymbolParser implements ISymbolParser {
     const results: PropType[] = [...types];
     const addProp = (prop: PropType) => {
       if (this.filterProperty(prop, options)) {
-        const existingIdx = results.findIndex(
-          (p) =>
-            p.name &&
-            p.name === prop.name &&
-            p.kind === prop.kind &&
-            p.type === prop.type,
-        );
-        if (existingIdx >= 0) {
-          results[existingIdx] = { ...results[existingIdx], ...prop };
-        } else {
-          results.push(prop);
-        }
+        results.push(prop);
       }
     };
     for (const p of properties) {
@@ -286,19 +272,6 @@ export class SymbolParser implements ISymbolParser {
         prop.parameters = this.parseProperties(node.parameters, options);
       }
       if (node.type && !prop.returns) {
-        if (
-          ts.isTypePredicateNode(node.type) &&
-          node.type.type &&
-          ts.isTypeReferenceNode(node.type.type)
-        ) {
-          const returnSymbol = this.getSymbolAtLocation(
-            node.type.type?.typeName,
-          );
-          if (returnSymbol) {
-            prop.returns = this.addRefSymbol({}, returnSymbol, false);
-          }
-        }
-
         if (!prop.returns) {
           const returns = this.parseTypeValueComments({}, options, node.type);
           if (returns) {
@@ -435,14 +408,6 @@ export class SymbolParser implements ISymbolParser {
             options,
           );
         }
-      } else if (ts.isNewExpression(node)) {
-        prop.kind = PropKind.Object;
-        if (node.arguments) {
-          (prop as ObjectProp).properties = this.parseProperties(
-            node.arguments as ts.NodeArray<ts.ArrayBindingElement>,
-            options,
-          );
-        }
       } else if (ts.isNumericLiteral(node)) {
         if (!prop.kind) {
           prop.kind = PropKind.Number;
@@ -463,16 +428,6 @@ export class SymbolParser implements ISymbolParser {
           prop.kind = PropKind.Boolean;
         }
         (prop as BooleanProp).value = true;
-      } else if (node.kind === ts.SyntaxKind.BooleanKeyword) {
-        if (!prop.kind) {
-          prop.kind = PropKind.Boolean;
-        }
-        propValue(prop, (node as ts.LiteralLikeNode).text);
-      } else if (isAnyProp(prop)) {
-        if (typeof (node as ts.LiteralLikeNode)?.text !== 'undefined') {
-          prop.kind = PropKind.Undefined;
-          prop.value = (node as ts.LiteralLikeNode).text;
-        }
       } else if (isUnknownProp(prop)) {
         prop.kind = PropKind.Unknown;
         if (typeof (node as ts.LiteralLikeNode)?.text !== 'undefined') {
@@ -493,14 +448,6 @@ export class SymbolParser implements ISymbolParser {
             default:
               prop.value = value;
           }
-        }
-      } else if (isObjectLikeProp(prop)) {
-        if (ts.isObjectLiteralExpression(node)) {
-          prop.properties = this.parseProperties(
-            node.properties,
-            options,
-            prop.properties,
-          );
         }
       } else if (ts.isPrefixUnaryExpression(node)) {
         this.parseValue(prop, options, node.operand);
@@ -632,10 +579,6 @@ export class SymbolParser implements ISymbolParser {
           }
         }
       } else if (isObjectTypeDeclaration(node)) {
-        if (!prop.kind) {
-          prop.kind = tsKindToPropKind[node.kind];
-        }
-
         if (isObjectLikeProp(prop)) {
           if (
             options.collectGenerics &&
@@ -694,24 +637,18 @@ export class SymbolParser implements ISymbolParser {
         prop.kind = PropKind.Type;
         const properties: PropType[] = [];
         node.types.forEach((t) => {
-          if (ts.isTypeLiteralNode(t)) {
-            const childProp: PropType = {};
-
-            if (tsKindToPropKind[t.kind]) {
-              childProp.kind = tsKindToPropKind[t.kind];
-            }
-
-            this.parseTypeValueComments(childProp, options, t);
-            if (isClassLikeProp(childProp) && childProp.properties) {
-              properties.push(...childProp.properties);
+          if (ts.isTypeReferenceNode(t)) {
+            const symbol = this.getSymbolAtLocation(t.typeName);
+            if (symbol) {
+              const childProp: PropType = {};
+              this.addRefSymbol(prop, symbol, false);
+              properties.push(childProp);
             }
           }
         });
         (prop as TypeProp).properties = properties;
       } else if (ts.isLiteralTypeNode(node)) {
         this.parseTypeValueComments(prop, options, node.literal);
-      } else if (ts.isParenthesizedTypeNode(node)) {
-        this.parseTypeValueComments(prop, options, node.type);
       } else if (ts.isTypeLiteralNode(node)) {
         prop.kind = PropKind.Type;
         if (node.members.length) {
@@ -733,12 +670,6 @@ export class SymbolParser implements ISymbolParser {
         prop.kind = PropKind.Union;
         (prop as UnionProp).properties = this.parseProperties(
           node.types,
-          options,
-        );
-      } else if (ts.isEnumDeclaration(node)) {
-        prop.kind = PropKind.Enum;
-        (prop as EnumProp).properties = this.parseProperties(
-          node.members,
           options,
         );
       } else if (ts.isEnumMember(node)) {
@@ -782,9 +713,6 @@ export class SymbolParser implements ISymbolParser {
             break;
           case ts.SyntaxKind.UndefinedKeyword:
             prop.kind = PropKind.Undefined;
-            break;
-          case ts.SyntaxKind.JSDocTypeLiteral:
-            prop.kind = PropKind.Type;
             break;
           case ts.SyntaxKind.JSDocPropertyTag:
           case ts.SyntaxKind.JSDocParameterTag:
@@ -1232,9 +1160,6 @@ export class SymbolParser implements ISymbolParser {
     return this._helpers;
   }
 
-  public resetHelpers(): void {
-    this._helpers = {};
-  }
   public parseSymbol(symbol: ts.Symbol): PropType | undefined {
     this.refSymbols = [];
     const prop = this.addRefSymbol({}, symbol, true);

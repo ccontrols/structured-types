@@ -533,25 +533,6 @@ export type ValueProp =
   | StringProp
   | ObjectProp;
 
-/**
- * ValueProp predicate to determine if a prop has a value field
- */
-export const isValueProp = (prop: PropType): prop is ValueProp => {
-  return (
-    prop.kind === PropKind.Any ||
-    prop.kind === PropKind.Array ||
-    prop.kind === PropKind.Void ||
-    prop.kind === PropKind.Union ||
-    prop.kind === PropKind.Null ||
-    prop.kind === PropKind.Unknown ||
-    prop.kind === PropKind.Undefined ||
-    prop.kind === PropKind.Boolean ||
-    prop.kind === PropKind.Number ||
-    prop.kind === PropKind.String ||
-    prop.kind === PropKind.Object
-  );
-};
-
 export type ClassLikeProp = ClassProp | InterfaceProp | TypeProp;
 
 /**
@@ -623,23 +604,6 @@ export type PropTypes =
      */
     __diagnostics?: PropDiagnostic[];
   };
-
-export const typeNameToPropKind = (type: string): PropKind | undefined => {
-  const lookup: Record<string, PropKind> = {
-    object: PropKind.Object,
-    string: PropKind.String,
-    number: PropKind.Number,
-    boolean: PropKind.Boolean,
-    union: PropKind.Union,
-    Enum: PropKind.Enum,
-    Tuple: PropKind.Tuple,
-    function: PropKind.Function,
-    class: PropKind.Function,
-    type: PropKind.Function,
-    array: PropKind.Array,
-  };
-  return lookup[type];
-};
 
 /**
  * Helper class to extract jsdoc comments from typescript compiler

@@ -641,8 +641,54 @@ Object {
                                 "type": "RegExp",
                               },
                               Object {
+                                "description": "If an dependency matches exactly a property of the object, the property value is used as dependency.",
                                 "kind": 15,
-                                "properties": Array [],
+                                "name": "ExternalItemObjectKnown",
+                                "properties": Array [
+                                  Object {
+                                    "index": Object {
+                                      "kind": 1,
+                                      "name": "index",
+                                    },
+                                    "kind": 20,
+                                    "prop": Object {
+                                      "kind": 4,
+                                      "properties": Array [
+                                        Object {
+                                          "kind": 1,
+                                        },
+                                        Object {
+                                          "kind": 3,
+                                        },
+                                        Object {
+                                          "kind": 16,
+                                          "properties": Array [
+                                            Object {
+                                              "kind": 1,
+                                            },
+                                          ],
+                                        },
+                                        Object {
+                                          "kind": 15,
+                                          "properties": Array [
+                                            Object {
+                                              "index": Object {
+                                                "kind": 1,
+                                                "name": "index",
+                                              },
+                                              "kind": 20,
+                                              "prop": Object {
+                                                "kind": 17,
+                                              },
+                                            },
+                                          ],
+                                        },
+                                      ],
+                                      "type": "ExternalItemValue",
+                                    },
+                                  },
+                                ],
+                                "type": "ExternalItemObjectUnknown",
                               },
                               Object {
                                 "kind": 11,
@@ -942,8 +988,54 @@ Object {
                             "type": "RegExp",
                           },
                           Object {
+                            "description": "If an dependency matches exactly a property of the object, the property value is used as dependency.",
                             "kind": 15,
-                            "properties": Array [],
+                            "name": "ExternalItemObjectKnown",
+                            "properties": Array [
+                              Object {
+                                "index": Object {
+                                  "kind": 1,
+                                  "name": "index",
+                                },
+                                "kind": 20,
+                                "prop": Object {
+                                  "kind": 4,
+                                  "properties": Array [
+                                    Object {
+                                      "kind": 1,
+                                    },
+                                    Object {
+                                      "kind": 3,
+                                    },
+                                    Object {
+                                      "kind": 16,
+                                      "properties": Array [
+                                        Object {
+                                          "kind": 1,
+                                        },
+                                      ],
+                                    },
+                                    Object {
+                                      "kind": 15,
+                                      "properties": Array [
+                                        Object {
+                                          "index": Object {
+                                            "kind": 1,
+                                            "name": "index",
+                                          },
+                                          "kind": 20,
+                                          "prop": Object {
+                                            "kind": 17,
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                  "type": "ExternalItemValue",
+                                },
+                              },
+                            ],
+                            "type": "ExternalItemObjectUnknown",
                           },
                           Object {
                             "kind": 11,
@@ -22020,8 +22112,54 @@ from parent (or top level compiler) and creates a child Compilation",
                           "type": "RegExp",
                         },
                         Object {
+                          "description": "If an dependency matches exactly a property of the object, the property value is used as dependency.",
                           "kind": 15,
-                          "properties": Array [],
+                          "name": "ExternalItemObjectKnown",
+                          "properties": Array [
+                            Object {
+                              "index": Object {
+                                "kind": 1,
+                                "name": "index",
+                              },
+                              "kind": 20,
+                              "prop": Object {
+                                "kind": 4,
+                                "properties": Array [
+                                  Object {
+                                    "kind": 1,
+                                  },
+                                  Object {
+                                    "kind": 3,
+                                  },
+                                  Object {
+                                    "kind": 16,
+                                    "properties": Array [
+                                      Object {
+                                        "kind": 1,
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "kind": 15,
+                                    "properties": Array [
+                                      Object {
+                                        "index": Object {
+                                          "kind": 1,
+                                          "name": "index",
+                                        },
+                                        "kind": 20,
+                                        "prop": Object {
+                                          "kind": 17,
+                                        },
+                                      },
+                                    ],
+                                  },
+                                ],
+                                "type": "ExternalItemValue",
+                              },
+                            },
+                          ],
+                          "type": "ExternalItemObjectUnknown",
                         },
                         Object {
                           "kind": 11,
@@ -22295,8 +22433,54 @@ from parent (or top level compiler) and creates a child Compilation",
                   ],
                 },
                 Object {
+                  "description": "If an dependency matches exactly a property of the object, the property value is used as dependency.",
                   "kind": 15,
-                  "properties": Array [],
+                  "name": "ExternalItemObjectKnown",
+                  "properties": Array [
+                    Object {
+                      "index": Object {
+                        "kind": 1,
+                        "name": "index",
+                      },
+                      "kind": 20,
+                      "prop": Object {
+                        "kind": 4,
+                        "properties": Array [
+                          Object {
+                            "kind": 1,
+                          },
+                          Object {
+                            "kind": 3,
+                          },
+                          Object {
+                            "kind": 16,
+                            "properties": Array [
+                              Object {
+                                "kind": 1,
+                              },
+                            ],
+                          },
+                          Object {
+                            "kind": 15,
+                            "properties": Array [
+                              Object {
+                                "index": Object {
+                                  "kind": 1,
+                                  "name": "index",
+                                },
+                                "kind": 20,
+                                "prop": Object {
+                                  "kind": 17,
+                                },
+                              },
+                            ],
+                          },
+                        ],
+                        "type": "ExternalItemValue",
+                      },
+                    },
+                  ],
+                  "type": "ExternalItemObjectUnknown",
                 },
                 Object {
                   "kind": 11,
