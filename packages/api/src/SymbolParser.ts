@@ -1058,14 +1058,15 @@ export class SymbolParser implements ISymbolParser {
     }
     if (
       symbolType?.isUnion() &&
-      !(symbolType.flags & (ts.TypeFlags as any).Primitive) &&
-      !prop.optional
+      !(symbolType.flags & (ts.TypeFlags as any).Primitive)
     ) {
       const properties: PropType[] = [];
       (this.checker as any)
         .getAllPossiblePropertiesOfTypes(
           symbolType.types.filter(
-            (t) => !(t.flags & (ts.TypeFlags as any).Primitive),
+            (t) =>
+              !(t.flags & (ts.TypeFlags as any).Primitive) &&
+              !((t as any).objectFlags && ts.ObjectFlags.Reference),
           ),
         )
         .forEach((s: ts.Symbol) => {
