@@ -2,6 +2,42 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('function', () => {
+  it('object-parameter', () => {
+    const results = parseFiles([
+      path.resolve(__dirname, 'object-parameter.ts'),
+    ]);
+
+    expect(results).toEqual({
+      printCoord: {
+        parameters: [
+          {
+            name: 'pt',
+            description: 'object parameter',
+            kind: 15,
+            properties: [
+              {
+                description: 'x coordinate',
+                kind: 2,
+                name: 'x',
+              },
+              {
+                description: 'optional y coordinate',
+                kind: 2,
+                optional: true,
+                name: 'y',
+              },
+            ],
+          },
+        ],
+        description: 'print coordinates',
+        name: 'printCoord',
+        kind: 11,
+        returns: {
+          kind: 12,
+        },
+      },
+    });
+  });
   it('extends-parameter', () => {
     const results = parseFiles(
       [path.resolve(__dirname, 'extends-parameter.ts')],
@@ -316,7 +352,7 @@ describe('function', () => {
     const results = parseFiles([path.resolve(__dirname, 'react-fc.ts')]);
     expect(results).toMatchSnapshot();
   });
-  it('function properties', () => {
+  it('function-props', () => {
     const results = parseFiles([path.resolve(__dirname, 'function-props.ts')]);
 
     expect(results).toEqual({
@@ -331,43 +367,6 @@ describe('function', () => {
             value: 'my custom prop',
           },
         ],
-        returns: {
-          kind: 12,
-        },
-      },
-    });
-  });
-
-  it('object parameter', () => {
-    const results = parseFiles([
-      path.resolve(__dirname, 'object-parameter.ts'),
-    ]);
-
-    expect(results).toEqual({
-      printCoord: {
-        parameters: [
-          {
-            name: 'pt',
-            description: 'object parameter',
-            kind: 15,
-            properties: [
-              {
-                description: 'x coordinate',
-                kind: 2,
-                name: 'x',
-              },
-              {
-                description: 'optional y coordinate',
-                kind: 2,
-                optional: true,
-                name: 'y',
-              },
-            ],
-          },
-        ],
-        description: 'print coordinates',
-        name: 'printCoord',
-        kind: 11,
         returns: {
           kind: 12,
         },

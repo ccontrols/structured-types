@@ -617,364 +617,195 @@ Object {
               "optional": true,
               "properties": Array [
                 Object {
-                  "kind": 1,
-                },
-                Object {
-                  "type": "RegExp",
-                },
-                Object {
-                  "kind": 16,
+                  "description": "Specify externals depending on the layer.",
+                  "kind": 4,
+                  "name": "byLayer",
+                  "optional": true,
                   "properties": Array [
                     Object {
-                      "kind": 4,
+                      "kind": 15,
                       "properties": Array [
                         Object {
-                          "kind": 1,
-                        },
-                        Object {
-                          "type": "RegExp",
-                        },
-                        Object {
-                          "kind": 15,
-                          "properties": Array [],
-                        },
-                        Object {
-                          "kind": 11,
-                          "parameters": Array [
-                            Object {
-                              "kind": 14,
-                              "name": "data",
-                              "properties": Array [
-                                Object {
-                                  "description": "The directory in which the request is placed.",
-                                  "kind": 1,
-                                  "name": "context",
-                                  "optional": true,
-                                  "parent": Object {
-                                    "name": "ExternalItemFunctionData",
-                                  },
-                                },
-                                Object {
-                                  "description": "Contextual information.",
-                                  "kind": 14,
-                                  "name": "contextInfo",
-                                  "optional": true,
-                                  "parent": Object {
-                                    "name": "ExternalItemFunctionData",
-                                  },
-                                  "type": "ModuleFactoryCreateDataContextInfo",
-                                },
-                                Object {
-                                  "description": "The category of the referencing dependencies.",
-                                  "kind": 1,
-                                  "name": "dependencyType",
-                                  "optional": true,
-                                  "parent": Object {
-                                    "name": "ExternalItemFunctionData",
-                                  },
-                                },
-                                Object {
-                                  "description": "Get a resolve function with the current resolver options.",
-                                  "kind": 11,
-                                  "name": "getResolve",
-                                  "optional": true,
-                                  "parameters": Array [
-                                    Object {
-                                      "name": "options",
-                                    },
-                                  ],
-                                  "parent": Object {
-                                    "name": "ExternalItemFunctionData",
-                                  },
-                                  "returns": Object {
-                                    "kind": 4,
-                                    "properties": Array [
-                                      Object {
-                                        "kind": 11,
-                                        "parameters": Array [
-                                          Object {
-                                            "name": "context",
-                                          },
-                                          Object {
-                                            "name": "request",
-                                          },
-                                          Object {
-                                            "name": "callback",
-                                          },
-                                        ],
-                                        "returns": Object {
-                                          "kind": 12,
-                                        },
-                                      },
-                                      Object {
-                                        "kind": 11,
-                                        "parameters": Array [
-                                          Object {
-                                            "name": "context",
-                                          },
-                                          Object {
-                                            "name": "request",
-                                          },
-                                        ],
-                                        "returns": Object {
-                                          "generics": Array [
-                                            Object {
-                                              "kind": 1,
-                                            },
-                                          ],
-                                          "type": "Promise",
-                                        },
-                                      },
-                                    ],
-                                  },
-                                },
-                                Object {
-                                  "description": "The request as written by the user in the require/import expression/statement.",
-                                  "kind": 1,
-                                  "name": "request",
-                                  "optional": true,
-                                  "parent": Object {
-                                    "name": "ExternalItemFunctionData",
-                                  },
-                                },
-                              ],
-                              "type": "ExternalItemFunctionData",
-                            },
-                            Object {
-                              "kind": 11,
-                              "name": "callback",
-                              "parameters": Array [
-                                Object {
-                                  "name": "err",
-                                },
-                                Object {
-                                  "name": "result",
-                                },
-                              ],
-                              "returns": Object {
-                                "kind": 12,
-                              },
-                            },
-                          ],
-                          "returns": Object {
-                            "kind": 12,
+                          "index": Object {
+                            "kind": 1,
+                            "name": "index",
                           },
-                        },
-                        Object {
-                          "kind": 11,
-                          "parameters": Array [
-                            Object {
-                              "kind": 14,
-                              "name": "data",
-                              "properties": Array [
-                                Object {
-                                  "description": "The directory in which the request is placed.",
-                                  "kind": 1,
-                                  "name": "context",
-                                  "optional": true,
-                                  "parent": Object {
-                                    "name": "ExternalItemFunctionData",
-                                  },
-                                },
-                                Object {
-                                  "description": "Contextual information.",
-                                  "kind": 14,
-                                  "name": "contextInfo",
-                                  "optional": true,
-                                  "parent": Object {
-                                    "name": "ExternalItemFunctionData",
-                                  },
-                                  "type": "ModuleFactoryCreateDataContextInfo",
-                                },
-                                Object {
-                                  "description": "The category of the referencing dependencies.",
-                                  "kind": 1,
-                                  "name": "dependencyType",
-                                  "optional": true,
-                                  "parent": Object {
-                                    "name": "ExternalItemFunctionData",
-                                  },
-                                },
-                                Object {
-                                  "description": "Get a resolve function with the current resolver options.",
-                                  "kind": 11,
-                                  "name": "getResolve",
-                                  "optional": true,
-                                  "parameters": Array [
-                                    Object {
-                                      "name": "options",
-                                    },
-                                  ],
-                                  "parent": Object {
-                                    "name": "ExternalItemFunctionData",
-                                  },
-                                  "returns": Object {
-                                    "kind": 4,
-                                    "properties": Array [
-                                      Object {
-                                        "kind": 11,
-                                        "parameters": Array [
-                                          Object {
-                                            "name": "context",
-                                          },
-                                          Object {
-                                            "name": "request",
-                                          },
-                                          Object {
-                                            "name": "callback",
-                                          },
-                                        ],
-                                        "returns": Object {
-                                          "kind": 12,
-                                        },
-                                      },
-                                      Object {
-                                        "kind": 11,
-                                        "parameters": Array [
-                                          Object {
-                                            "name": "context",
-                                          },
-                                          Object {
-                                            "name": "request",
-                                          },
-                                        ],
-                                        "returns": Object {
-                                          "generics": Array [
-                                            Object {
-                                              "kind": 1,
-                                            },
-                                          ],
-                                          "type": "Promise",
-                                        },
-                                      },
-                                    ],
-                                  },
-                                },
-                                Object {
-                                  "description": "The request as written by the user in the require/import expression/statement.",
-                                  "kind": 1,
-                                  "name": "request",
-                                  "optional": true,
-                                  "parent": Object {
-                                    "name": "ExternalItemFunctionData",
-                                  },
-                                },
-                              ],
-                              "type": "ExternalItemFunctionData",
-                            },
-                          ],
-                          "returns": Object {
-                            "generics": Array [
-                              Object {
-                                "kind": 4,
-                                "properties": Array [
-                                  Object {
-                                    "kind": 1,
-                                  },
-                                  Object {
-                                    "kind": 3,
-                                  },
-                                  Object {
-                                    "kind": 16,
-                                    "properties": Array [
-                                      Object {
-                                        "kind": 1,
-                                      },
-                                    ],
-                                  },
-                                  Object {
-                                    "kind": 15,
-                                    "properties": Array [
-                                      Object {
-                                        "index": Object {
-                                          "kind": 1,
-                                          "name": "index",
-                                        },
-                                        "kind": 20,
-                                        "prop": Object {
-                                          "kind": 17,
-                                        },
-                                      },
-                                    ],
-                                  },
-                                ],
-                                "type": "ExternalItemValue",
-                              },
-                            ],
-                            "type": "Promise",
-                          },
-                        },
-                      ],
-                      "type": "ExternalItem",
-                    },
-                  ],
-                },
-                Object {
-                  "kind": 15,
-                  "properties": Array [],
-                },
-                Object {
-                  "kind": 11,
-                  "parameters": Array [
-                    Object {
-                      "kind": 14,
-                      "name": "data",
-                      "properties": Array [
-                        Object {
-                          "description": "The directory in which the request is placed.",
-                          "kind": 1,
-                          "name": "context",
-                          "optional": true,
-                          "parent": Object {
-                            "name": "ExternalItemFunctionData",
-                          },
-                        },
-                        Object {
-                          "description": "Contextual information.",
-                          "kind": 14,
-                          "name": "contextInfo",
-                          "optional": true,
-                          "parent": Object {
-                            "name": "ExternalItemFunctionData",
-                          },
-                          "type": "ModuleFactoryCreateDataContextInfo",
-                        },
-                        Object {
-                          "description": "The category of the referencing dependencies.",
-                          "kind": 1,
-                          "name": "dependencyType",
-                          "optional": true,
-                          "parent": Object {
-                            "name": "ExternalItemFunctionData",
-                          },
-                        },
-                        Object {
-                          "description": "Get a resolve function with the current resolver options.",
-                          "kind": 11,
-                          "name": "getResolve",
-                          "optional": true,
-                          "parameters": Array [
-                            Object {
-                              "name": "options",
-                            },
-                          ],
-                          "parent": Object {
-                            "name": "ExternalItemFunctionData",
-                          },
-                          "returns": Object {
+                          "kind": 20,
+                          "prop": Object {
                             "kind": 4,
                             "properties": Array [
+                              Object {
+                                "kind": 1,
+                              },
+                              Object {
+                                "type": "RegExp",
+                              },
+                              Object {
+                                "description": "If an dependency matches exactly a property of the object, the property value is used as dependency.",
+                                "kind": 15,
+                                "name": "ExternalItemObjectKnown",
+                                "properties": Array [
+                                  Object {
+                                    "index": Object {
+                                      "kind": 1,
+                                      "name": "index",
+                                    },
+                                    "kind": 20,
+                                    "prop": Object {
+                                      "kind": 4,
+                                      "properties": Array [
+                                        Object {
+                                          "kind": 1,
+                                        },
+                                        Object {
+                                          "kind": 3,
+                                        },
+                                        Object {
+                                          "kind": 16,
+                                          "properties": Array [
+                                            Object {
+                                              "kind": 1,
+                                            },
+                                          ],
+                                        },
+                                        Object {
+                                          "kind": 15,
+                                          "properties": Array [
+                                            Object {
+                                              "index": Object {
+                                                "kind": 1,
+                                                "name": "index",
+                                              },
+                                              "kind": 20,
+                                              "prop": Object {
+                                                "kind": 17,
+                                              },
+                                            },
+                                          ],
+                                        },
+                                      ],
+                                      "type": "ExternalItemValue",
+                                    },
+                                  },
+                                ],
+                                "type": "ExternalItemObjectUnknown",
+                              },
                               Object {
                                 "kind": 11,
                                 "parameters": Array [
                                   Object {
-                                    "name": "context",
+                                    "kind": 14,
+                                    "name": "data",
+                                    "properties": Array [
+                                      Object {
+                                        "description": "The directory in which the request is placed.",
+                                        "kind": 1,
+                                        "name": "context",
+                                        "optional": true,
+                                        "parent": Object {
+                                          "name": "ExternalItemFunctionData",
+                                        },
+                                      },
+                                      Object {
+                                        "description": "Contextual information.",
+                                        "kind": 14,
+                                        "name": "contextInfo",
+                                        "optional": true,
+                                        "parent": Object {
+                                          "name": "ExternalItemFunctionData",
+                                        },
+                                        "type": "ModuleFactoryCreateDataContextInfo",
+                                      },
+                                      Object {
+                                        "description": "The category of the referencing dependencies.",
+                                        "kind": 1,
+                                        "name": "dependencyType",
+                                        "optional": true,
+                                        "parent": Object {
+                                          "name": "ExternalItemFunctionData",
+                                        },
+                                      },
+                                      Object {
+                                        "description": "Get a resolve function with the current resolver options.",
+                                        "kind": 11,
+                                        "name": "getResolve",
+                                        "optional": true,
+                                        "parameters": Array [
+                                          Object {
+                                            "name": "options",
+                                          },
+                                        ],
+                                        "parent": Object {
+                                          "name": "ExternalItemFunctionData",
+                                        },
+                                        "returns": Object {
+                                          "kind": 4,
+                                          "properties": Array [
+                                            Object {
+                                              "kind": 11,
+                                              "parameters": Array [
+                                                Object {
+                                                  "name": "context",
+                                                },
+                                                Object {
+                                                  "name": "request",
+                                                },
+                                                Object {
+                                                  "name": "callback",
+                                                },
+                                              ],
+                                              "returns": Object {
+                                                "kind": 12,
+                                              },
+                                            },
+                                            Object {
+                                              "kind": 11,
+                                              "parameters": Array [
+                                                Object {
+                                                  "name": "context",
+                                                },
+                                                Object {
+                                                  "name": "request",
+                                                },
+                                              ],
+                                              "returns": Object {
+                                                "generics": Array [
+                                                  Object {
+                                                    "kind": 1,
+                                                  },
+                                                ],
+                                                "type": "Promise",
+                                              },
+                                            },
+                                          ],
+                                        },
+                                      },
+                                      Object {
+                                        "description": "The request as written by the user in the require/import expression/statement.",
+                                        "kind": 1,
+                                        "name": "request",
+                                        "optional": true,
+                                        "parent": Object {
+                                          "name": "ExternalItemFunctionData",
+                                        },
+                                      },
+                                    ],
+                                    "type": "ExternalItemFunctionData",
                                   },
                                   Object {
-                                    "name": "request",
-                                  },
-                                  Object {
+                                    "kind": 11,
                                     "name": "callback",
+                                    "parameters": Array [
+                                      Object {
+                                        "name": "err",
+                                      },
+                                      Object {
+                                        "name": "result",
+                                      },
+                                    ],
+                                    "returns": Object {
+                                      "kind": 12,
+                                    },
                                   },
                                 ],
                                 "returns": Object {
@@ -985,215 +816,181 @@ Object {
                                 "kind": 11,
                                 "parameters": Array [
                                   Object {
-                                    "name": "context",
-                                  },
-                                  Object {
-                                    "name": "request",
+                                    "kind": 14,
+                                    "name": "data",
+                                    "properties": Array [
+                                      Object {
+                                        "description": "The directory in which the request is placed.",
+                                        "kind": 1,
+                                        "name": "context",
+                                        "optional": true,
+                                        "parent": Object {
+                                          "name": "ExternalItemFunctionData",
+                                        },
+                                      },
+                                      Object {
+                                        "description": "Contextual information.",
+                                        "kind": 14,
+                                        "name": "contextInfo",
+                                        "optional": true,
+                                        "parent": Object {
+                                          "name": "ExternalItemFunctionData",
+                                        },
+                                        "type": "ModuleFactoryCreateDataContextInfo",
+                                      },
+                                      Object {
+                                        "description": "The category of the referencing dependencies.",
+                                        "kind": 1,
+                                        "name": "dependencyType",
+                                        "optional": true,
+                                        "parent": Object {
+                                          "name": "ExternalItemFunctionData",
+                                        },
+                                      },
+                                      Object {
+                                        "description": "Get a resolve function with the current resolver options.",
+                                        "kind": 11,
+                                        "name": "getResolve",
+                                        "optional": true,
+                                        "parameters": Array [
+                                          Object {
+                                            "name": "options",
+                                          },
+                                        ],
+                                        "parent": Object {
+                                          "name": "ExternalItemFunctionData",
+                                        },
+                                        "returns": Object {
+                                          "kind": 4,
+                                          "properties": Array [
+                                            Object {
+                                              "kind": 11,
+                                              "parameters": Array [
+                                                Object {
+                                                  "name": "context",
+                                                },
+                                                Object {
+                                                  "name": "request",
+                                                },
+                                                Object {
+                                                  "name": "callback",
+                                                },
+                                              ],
+                                              "returns": Object {
+                                                "kind": 12,
+                                              },
+                                            },
+                                            Object {
+                                              "kind": 11,
+                                              "parameters": Array [
+                                                Object {
+                                                  "name": "context",
+                                                },
+                                                Object {
+                                                  "name": "request",
+                                                },
+                                              ],
+                                              "returns": Object {
+                                                "generics": Array [
+                                                  Object {
+                                                    "kind": 1,
+                                                  },
+                                                ],
+                                                "type": "Promise",
+                                              },
+                                            },
+                                          ],
+                                        },
+                                      },
+                                      Object {
+                                        "description": "The request as written by the user in the require/import expression/statement.",
+                                        "kind": 1,
+                                        "name": "request",
+                                        "optional": true,
+                                        "parent": Object {
+                                          "name": "ExternalItemFunctionData",
+                                        },
+                                      },
+                                    ],
+                                    "type": "ExternalItemFunctionData",
                                   },
                                 ],
                                 "returns": Object {
                                   "generics": Array [
                                     Object {
-                                      "kind": 1,
+                                      "kind": 4,
+                                      "properties": Array [
+                                        Object {
+                                          "kind": 1,
+                                        },
+                                        Object {
+                                          "kind": 3,
+                                        },
+                                        Object {
+                                          "kind": 16,
+                                          "properties": Array [
+                                            Object {
+                                              "kind": 1,
+                                            },
+                                          ],
+                                        },
+                                        Object {
+                                          "kind": 15,
+                                          "properties": Array [
+                                            Object {
+                                              "index": Object {
+                                                "kind": 1,
+                                                "name": "index",
+                                              },
+                                              "kind": 20,
+                                              "prop": Object {
+                                                "kind": 17,
+                                              },
+                                            },
+                                          ],
+                                        },
+                                      ],
+                                      "type": "ExternalItemValue",
                                     },
                                   ],
                                   "type": "Promise",
                                 },
                               },
                             ],
-                          },
-                        },
-                        Object {
-                          "description": "The request as written by the user in the require/import expression/statement.",
-                          "kind": 1,
-                          "name": "request",
-                          "optional": true,
-                          "parent": Object {
-                            "name": "ExternalItemFunctionData",
+                            "type": "ExternalItem",
                           },
                         },
                       ],
-                      "type": "ExternalItemFunctionData",
                     },
                     Object {
                       "kind": 11,
-                      "name": "callback",
                       "parameters": Array [
                         Object {
-                          "name": "err",
-                          "optional": true,
-                          "type": "Error",
-                        },
-                        Object {
                           "kind": 4,
-                          "name": "result",
-                          "optional": true,
+                          "name": "layer",
                           "properties": Array [
                             Object {
+                              "kind": 10,
+                            },
+                            Object {
                               "kind": 1,
-                            },
-                            Object {
-                              "kind": 3,
-                            },
-                            Object {
-                              "kind": 16,
-                              "properties": Array [
-                                Object {
-                                  "kind": 1,
-                                },
-                              ],
-                            },
-                            Object {
-                              "kind": 15,
-                              "properties": Array [
-                                Object {
-                                  "index": Object {
-                                    "kind": 1,
-                                    "name": "index",
-                                  },
-                                  "kind": 20,
-                                  "prop": Object {
-                                    "kind": 17,
-                                  },
-                                },
-                              ],
                             },
                           ],
                         },
                       ],
                       "returns": Object {
-                        "kind": 12,
-                      },
-                    },
-                  ],
-                  "returns": Object {
-                    "kind": 12,
-                  },
-                },
-                Object {
-                  "kind": 11,
-                  "parameters": Array [
-                    Object {
-                      "kind": 14,
-                      "name": "data",
-                      "properties": Array [
-                        Object {
-                          "description": "The directory in which the request is placed.",
-                          "kind": 1,
-                          "name": "context",
-                          "optional": true,
-                          "parent": Object {
-                            "name": "ExternalItemFunctionData",
-                          },
-                        },
-                        Object {
-                          "description": "Contextual information.",
-                          "kind": 14,
-                          "name": "contextInfo",
-                          "optional": true,
-                          "parent": Object {
-                            "name": "ExternalItemFunctionData",
-                          },
-                          "type": "ModuleFactoryCreateDataContextInfo",
-                        },
-                        Object {
-                          "description": "The category of the referencing dependencies.",
-                          "kind": 1,
-                          "name": "dependencyType",
-                          "optional": true,
-                          "parent": Object {
-                            "name": "ExternalItemFunctionData",
-                          },
-                        },
-                        Object {
-                          "description": "Get a resolve function with the current resolver options.",
-                          "kind": 11,
-                          "name": "getResolve",
-                          "optional": true,
-                          "parameters": Array [
-                            Object {
-                              "name": "options",
-                            },
-                          ],
-                          "parent": Object {
-                            "name": "ExternalItemFunctionData",
-                          },
-                          "returns": Object {
-                            "kind": 4,
-                            "properties": Array [
-                              Object {
-                                "kind": 11,
-                                "parameters": Array [
-                                  Object {
-                                    "name": "context",
-                                  },
-                                  Object {
-                                    "name": "request",
-                                  },
-                                  Object {
-                                    "name": "callback",
-                                  },
-                                ],
-                                "returns": Object {
-                                  "kind": 12,
-                                },
-                              },
-                              Object {
-                                "kind": 11,
-                                "parameters": Array [
-                                  Object {
-                                    "name": "context",
-                                  },
-                                  Object {
-                                    "name": "request",
-                                  },
-                                ],
-                                "returns": Object {
-                                  "generics": Array [
-                                    Object {
-                                      "kind": 1,
-                                    },
-                                  ],
-                                  "type": "Promise",
-                                },
-                              },
-                            ],
-                          },
-                        },
-                        Object {
-                          "description": "The request as written by the user in the require/import expression/statement.",
-                          "kind": 1,
-                          "name": "request",
-                          "optional": true,
-                          "parent": Object {
-                            "name": "ExternalItemFunctionData",
-                          },
-                        },
-                      ],
-                      "type": "ExternalItemFunctionData",
-                    },
-                  ],
-                  "returns": Object {
-                    "generics": Array [
-                      Object {
                         "kind": 4,
                         "properties": Array [
                           Object {
                             "kind": 1,
                           },
                           Object {
-                            "kind": 3,
+                            "type": "RegExp",
                           },
                           Object {
-                            "kind": 16,
-                            "properties": Array [
-                              Object {
-                                "kind": 1,
-                              },
-                            ],
-                          },
-                          Object {
+                            "description": "If an dependency matches exactly a property of the object, the property value is used as dependency.",
                             "kind": 15,
+                            "name": "ExternalItemObjectKnown",
                             "properties": Array [
                               Object {
                                 "index": Object {
@@ -1202,17 +999,315 @@ Object {
                                 },
                                 "kind": 20,
                                 "prop": Object {
-                                  "kind": 17,
+                                  "kind": 4,
+                                  "properties": Array [
+                                    Object {
+                                      "kind": 1,
+                                    },
+                                    Object {
+                                      "kind": 3,
+                                    },
+                                    Object {
+                                      "kind": 16,
+                                      "properties": Array [
+                                        Object {
+                                          "kind": 1,
+                                        },
+                                      ],
+                                    },
+                                    Object {
+                                      "kind": 15,
+                                      "properties": Array [
+                                        Object {
+                                          "index": Object {
+                                            "kind": 1,
+                                            "name": "index",
+                                          },
+                                          "kind": 20,
+                                          "prop": Object {
+                                            "kind": 17,
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                  "type": "ExternalItemValue",
                                 },
                               },
                             ],
+                            "type": "ExternalItemObjectUnknown",
+                          },
+                          Object {
+                            "kind": 11,
+                            "parameters": Array [
+                              Object {
+                                "kind": 14,
+                                "name": "data",
+                                "properties": Array [
+                                  Object {
+                                    "description": "The directory in which the request is placed.",
+                                    "kind": 1,
+                                    "name": "context",
+                                    "optional": true,
+                                    "parent": Object {
+                                      "name": "ExternalItemFunctionData",
+                                    },
+                                  },
+                                  Object {
+                                    "description": "Contextual information.",
+                                    "kind": 14,
+                                    "name": "contextInfo",
+                                    "optional": true,
+                                    "parent": Object {
+                                      "name": "ExternalItemFunctionData",
+                                    },
+                                    "type": "ModuleFactoryCreateDataContextInfo",
+                                  },
+                                  Object {
+                                    "description": "The category of the referencing dependencies.",
+                                    "kind": 1,
+                                    "name": "dependencyType",
+                                    "optional": true,
+                                    "parent": Object {
+                                      "name": "ExternalItemFunctionData",
+                                    },
+                                  },
+                                  Object {
+                                    "description": "Get a resolve function with the current resolver options.",
+                                    "kind": 11,
+                                    "name": "getResolve",
+                                    "optional": true,
+                                    "parameters": Array [
+                                      Object {
+                                        "name": "options",
+                                      },
+                                    ],
+                                    "parent": Object {
+                                      "name": "ExternalItemFunctionData",
+                                    },
+                                    "returns": Object {
+                                      "kind": 4,
+                                      "properties": Array [
+                                        Object {
+                                          "kind": 11,
+                                          "parameters": Array [
+                                            Object {
+                                              "name": "context",
+                                            },
+                                            Object {
+                                              "name": "request",
+                                            },
+                                            Object {
+                                              "name": "callback",
+                                            },
+                                          ],
+                                          "returns": Object {
+                                            "kind": 12,
+                                          },
+                                        },
+                                        Object {
+                                          "kind": 11,
+                                          "parameters": Array [
+                                            Object {
+                                              "name": "context",
+                                            },
+                                            Object {
+                                              "name": "request",
+                                            },
+                                          ],
+                                          "returns": Object {
+                                            "generics": Array [
+                                              Object {
+                                                "kind": 1,
+                                              },
+                                            ],
+                                            "type": "Promise",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                  Object {
+                                    "description": "The request as written by the user in the require/import expression/statement.",
+                                    "kind": 1,
+                                    "name": "request",
+                                    "optional": true,
+                                    "parent": Object {
+                                      "name": "ExternalItemFunctionData",
+                                    },
+                                  },
+                                ],
+                                "type": "ExternalItemFunctionData",
+                              },
+                              Object {
+                                "kind": 11,
+                                "name": "callback",
+                                "parameters": Array [
+                                  Object {
+                                    "name": "err",
+                                  },
+                                  Object {
+                                    "name": "result",
+                                  },
+                                ],
+                                "returns": Object {
+                                  "kind": 12,
+                                },
+                              },
+                            ],
+                            "returns": Object {
+                              "kind": 12,
+                            },
+                          },
+                          Object {
+                            "kind": 11,
+                            "parameters": Array [
+                              Object {
+                                "kind": 14,
+                                "name": "data",
+                                "properties": Array [
+                                  Object {
+                                    "description": "The directory in which the request is placed.",
+                                    "kind": 1,
+                                    "name": "context",
+                                    "optional": true,
+                                    "parent": Object {
+                                      "name": "ExternalItemFunctionData",
+                                    },
+                                  },
+                                  Object {
+                                    "description": "Contextual information.",
+                                    "kind": 14,
+                                    "name": "contextInfo",
+                                    "optional": true,
+                                    "parent": Object {
+                                      "name": "ExternalItemFunctionData",
+                                    },
+                                    "type": "ModuleFactoryCreateDataContextInfo",
+                                  },
+                                  Object {
+                                    "description": "The category of the referencing dependencies.",
+                                    "kind": 1,
+                                    "name": "dependencyType",
+                                    "optional": true,
+                                    "parent": Object {
+                                      "name": "ExternalItemFunctionData",
+                                    },
+                                  },
+                                  Object {
+                                    "description": "Get a resolve function with the current resolver options.",
+                                    "kind": 11,
+                                    "name": "getResolve",
+                                    "optional": true,
+                                    "parameters": Array [
+                                      Object {
+                                        "name": "options",
+                                      },
+                                    ],
+                                    "parent": Object {
+                                      "name": "ExternalItemFunctionData",
+                                    },
+                                    "returns": Object {
+                                      "kind": 4,
+                                      "properties": Array [
+                                        Object {
+                                          "kind": 11,
+                                          "parameters": Array [
+                                            Object {
+                                              "name": "context",
+                                            },
+                                            Object {
+                                              "name": "request",
+                                            },
+                                            Object {
+                                              "name": "callback",
+                                            },
+                                          ],
+                                          "returns": Object {
+                                            "kind": 12,
+                                          },
+                                        },
+                                        Object {
+                                          "kind": 11,
+                                          "parameters": Array [
+                                            Object {
+                                              "name": "context",
+                                            },
+                                            Object {
+                                              "name": "request",
+                                            },
+                                          ],
+                                          "returns": Object {
+                                            "generics": Array [
+                                              Object {
+                                                "kind": 1,
+                                              },
+                                            ],
+                                            "type": "Promise",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                  Object {
+                                    "description": "The request as written by the user in the require/import expression/statement.",
+                                    "kind": 1,
+                                    "name": "request",
+                                    "optional": true,
+                                    "parent": Object {
+                                      "name": "ExternalItemFunctionData",
+                                    },
+                                  },
+                                ],
+                                "type": "ExternalItemFunctionData",
+                              },
+                            ],
+                            "returns": Object {
+                              "generics": Array [
+                                Object {
+                                  "kind": 4,
+                                  "properties": Array [
+                                    Object {
+                                      "kind": 1,
+                                    },
+                                    Object {
+                                      "kind": 3,
+                                    },
+                                    Object {
+                                      "kind": 16,
+                                      "properties": Array [
+                                        Object {
+                                          "kind": 1,
+                                        },
+                                      ],
+                                    },
+                                    Object {
+                                      "kind": 15,
+                                      "properties": Array [
+                                        Object {
+                                          "index": Object {
+                                            "kind": 1,
+                                            "name": "index",
+                                          },
+                                          "kind": 20,
+                                          "prop": Object {
+                                            "kind": 17,
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                  "type": "ExternalItemValue",
+                                },
+                              ],
+                              "type": "Promise",
+                            },
                           },
                         ],
-                        "type": "ExternalItemValue",
+                        "type": "ExternalItem",
                       },
-                    ],
-                    "type": "Promise",
-                  },
+                    },
+                  ],
                 },
               ],
             },
@@ -8550,13 +8645,13 @@ Needed to detect build cycles.",
                                   },
                                 },
                                 Object {
-                                  "name": "__@iterator@1274",
+                                  "name": "__@iterator@1278",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1276",
+                                  "name": "__@toStringTag@1280",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
@@ -8647,13 +8742,13 @@ Needed to detect build cycles.",
                                   },
                                 },
                                 Object {
-                                  "name": "__@iterator@1274",
+                                  "name": "__@iterator@1278",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1276",
+                                  "name": "__@toStringTag@1280",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
@@ -8744,13 +8839,13 @@ Needed to detect build cycles.",
                                   },
                                 },
                                 Object {
-                                  "name": "__@iterator@1274",
+                                  "name": "__@iterator@1278",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1276",
+                                  "name": "__@toStringTag@1280",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
@@ -8841,13 +8936,13 @@ Needed to detect build cycles.",
                                   },
                                 },
                                 Object {
-                                  "name": "__@iterator@1274",
+                                  "name": "__@iterator@1278",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1276",
+                                  "name": "__@toStringTag@1280",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
@@ -12354,13 +12449,21 @@ from parent (or top level compiler) and creates a child Compilation",
                 },
                 Object {
                   "description": "Specify options for each generator.",
-                  "kind": 15,
+                  "kind": 4,
                   "name": "generator",
                   "optional": true,
                   "parent": Object {
                     "name": "ModuleOptions",
                   },
-                  "type": "GeneratorOptionsByModuleType",
+                  "properties": Array [
+                    Object {},
+                    Object {},
+                    Object {},
+                    Object {},
+                    Object {},
+                    Object {},
+                    Object {},
+                  ],
                 },
                 Object {
                   "description": "Don't parse files matching. It's matched against the full resolved request.",
@@ -12405,13 +12508,22 @@ from parent (or top level compiler) and creates a child Compilation",
                 },
                 Object {
                   "description": "Specify options for each parser.",
-                  "kind": 15,
+                  "kind": 4,
                   "name": "parser",
                   "optional": true,
                   "parent": Object {
                     "name": "ModuleOptions",
                   },
-                  "type": "ParserOptionsByModuleType",
+                  "properties": Array [
+                    Object {},
+                    Object {},
+                    Object {},
+                    Object {},
+                    Object {},
+                    Object {},
+                    Object {},
+                    Object {},
+                  ],
                 },
                 Object {
                   "description": "An array of rules applied for modules.",
@@ -22000,8 +22112,54 @@ from parent (or top level compiler) and creates a child Compilation",
                           "type": "RegExp",
                         },
                         Object {
+                          "description": "If an dependency matches exactly a property of the object, the property value is used as dependency.",
                           "kind": 15,
-                          "properties": Array [],
+                          "name": "ExternalItemObjectKnown",
+                          "properties": Array [
+                            Object {
+                              "index": Object {
+                                "kind": 1,
+                                "name": "index",
+                              },
+                              "kind": 20,
+                              "prop": Object {
+                                "kind": 4,
+                                "properties": Array [
+                                  Object {
+                                    "kind": 1,
+                                  },
+                                  Object {
+                                    "kind": 3,
+                                  },
+                                  Object {
+                                    "kind": 16,
+                                    "properties": Array [
+                                      Object {
+                                        "kind": 1,
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "kind": 15,
+                                    "properties": Array [
+                                      Object {
+                                        "index": Object {
+                                          "kind": 1,
+                                          "name": "index",
+                                        },
+                                        "kind": 20,
+                                        "prop": Object {
+                                          "kind": 17,
+                                        },
+                                      },
+                                    ],
+                                  },
+                                ],
+                                "type": "ExternalItemValue",
+                              },
+                            },
+                          ],
+                          "type": "ExternalItemObjectUnknown",
                         },
                         Object {
                           "kind": 11,
@@ -22275,8 +22433,54 @@ from parent (or top level compiler) and creates a child Compilation",
                   ],
                 },
                 Object {
+                  "description": "If an dependency matches exactly a property of the object, the property value is used as dependency.",
                   "kind": 15,
-                  "properties": Array [],
+                  "name": "ExternalItemObjectKnown",
+                  "properties": Array [
+                    Object {
+                      "index": Object {
+                        "kind": 1,
+                        "name": "index",
+                      },
+                      "kind": 20,
+                      "prop": Object {
+                        "kind": 4,
+                        "properties": Array [
+                          Object {
+                            "kind": 1,
+                          },
+                          Object {
+                            "kind": 3,
+                          },
+                          Object {
+                            "kind": 16,
+                            "properties": Array [
+                              Object {
+                                "kind": 1,
+                              },
+                            ],
+                          },
+                          Object {
+                            "kind": 15,
+                            "properties": Array [
+                              Object {
+                                "index": Object {
+                                  "kind": 1,
+                                  "name": "index",
+                                },
+                                "kind": 20,
+                                "prop": Object {
+                                  "kind": 17,
+                                },
+                              },
+                            ],
+                          },
+                        ],
+                        "type": "ExternalItemValue",
+                      },
+                    },
+                  ],
+                  "type": "ExternalItemObjectUnknown",
                 },
                 Object {
                   "kind": 11,
@@ -29915,13 +30119,13 @@ Needed to detect build cycles.",
                                   },
                                 },
                                 Object {
-                                  "name": "__@iterator@1274",
+                                  "name": "__@iterator@1278",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1276",
+                                  "name": "__@toStringTag@1280",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
@@ -30012,13 +30216,13 @@ Needed to detect build cycles.",
                                   },
                                 },
                                 Object {
-                                  "name": "__@iterator@1274",
+                                  "name": "__@iterator@1278",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1276",
+                                  "name": "__@toStringTag@1280",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
@@ -30109,13 +30313,13 @@ Needed to detect build cycles.",
                                   },
                                 },
                                 Object {
-                                  "name": "__@iterator@1274",
+                                  "name": "__@iterator@1278",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1276",
+                                  "name": "__@toStringTag@1280",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
@@ -30206,13 +30410,13 @@ Needed to detect build cycles.",
                                   },
                                 },
                                 Object {
-                                  "name": "__@iterator@1274",
+                                  "name": "__@iterator@1278",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },
                                 },
                                 Object {
-                                  "name": "__@toStringTag@1276",
+                                  "name": "__@toStringTag@1280",
                                   "parent": Object {
                                     "name": "LazySet",
                                   },

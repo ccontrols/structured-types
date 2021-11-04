@@ -3,6 +3,38 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('function-component', () => {
+  it('props-with-children', () => {
+    const result = parseFiles(
+      [path.resolve(__dirname, 'props-with-children.tsx')],
+      {
+        plugins: [reactPlugin],
+      },
+    );
+    expect(result).toEqual({
+      default: {
+        name: 'Component',
+        extension: 'react',
+        kind: 25,
+        properties: [
+          {
+            name: 'id',
+            parent: {
+              name: 'Props',
+            },
+            kind: 1,
+          },
+          {
+            name: 'linkable',
+            parent: {
+              name: 'Props',
+            },
+            kind: 3,
+            value: true,
+          },
+        ],
+      },
+    });
+  });
   it('rest-props', () => {
     const result = parseFiles([path.resolve(__dirname, 'rest-props.tsx')], {
       plugins: [reactPlugin],
