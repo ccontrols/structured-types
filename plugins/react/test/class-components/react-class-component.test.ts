@@ -25,18 +25,20 @@ describe('class-component', () => {
       },
     );
     expect(result).toEqual({
-      name: 'CustomComponent',
-      extension: 'react',
-      kind: 25,
-      properties: [
-        {
-          name: 'name',
-          parent: {
-            name: 'CustomComponentProps',
+      MyComponent: {
+        name: 'CustomComponent',
+        extension: 'react',
+        kind: 25,
+        properties: [
+          {
+            name: 'name',
+            parent: {
+              name: 'CustomComponentProps',
+            },
+            kind: 1,
           },
-          kind: 1,
-        },
-      ],
+        ],
+      },
     });
   });
   it('display-name-field', () => {
