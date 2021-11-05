@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.34.2](https://github.com/ccontrols/structured-types/compare/v3.34.1...v3.34.2) (2021-11-05)
+
+
+### Bug Fixes
+
+* **api-docs:** redundant table cell node ([a9859d1](https://github.com/ccontrols/structured-types/commit/a9859d12e281fd699f7a4a7e114d69b25e612df7))
+
+
+
+
+
 ## [3.34.1](https://github.com/ccontrols/structured-types/compare/v3.34.0...v3.34.1) (2021-11-05)
 
 

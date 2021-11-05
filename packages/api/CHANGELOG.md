@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.34.2](https://github.com/ccontrols/structured-types/compare/v3.34.1...v3.34.2) (2021-11-05)
+
+
+### Bug Fixes
+
+* **react-plugin:** react exports by name ([72221fe](https://github.com/ccontrols/structured-types/commit/72221fea06bbd04195f4333f27c38024e311673c))
+
+
+
+
+
 ## [3.34.1](https://github.com/ccontrols/structured-types/compare/v3.34.0...v3.34.1) (2021-11-05)
 
 
