@@ -76,6 +76,7 @@ export const tsKindToPropKind: { [key in ts.SyntaxKind]?: PropKind } = {
   [ts.SyntaxKind.ObjectLiteralExpression]: PropKind.Object,
   [ts.SyntaxKind.StringKeyword]: PropKind.String,
   [ts.SyntaxKind.StringLiteral]: PropKind.String,
+  [ts.SyntaxKind.RegularExpressionLiteral]: PropKind.RegEx,
   [ts.SyntaxKind.NumberKeyword]: PropKind.Number,
   [ts.SyntaxKind.NumericLiteral]: PropKind.Number,
   [ts.SyntaxKind.BooleanKeyword]: PropKind.Boolean,
@@ -360,26 +361,25 @@ export const getTypeKind = (typeNode?: ts.Type): PropKind | undefined => {
   return undefined;
 };
 
+export const isValidType = (type: ts.Type): boolean => {
+  return (
+    !('intrinsicName' in type) ||
+    (type as unknown as { intrinsicName: string }).intrinsicName !== 'error'
+  );
+};
 export const getSymbolType = (
   checker: ts.TypeChecker,
   symbol: ts.Symbol,
 ): ts.Type | undefined => {
-  const declaration = symbol.valueDeclaration || symbol.declarations?.[0];
+  const declaration = getSymbolDeclaration(symbol);
   if (declaration) {
     const type = checker.getTypeOfSymbolAtLocation(symbol, declaration);
-    if (
-      !('intrinsicName' in type) ||
-      (type as unknown as { intrinsicName: string }).intrinsicName !== 'error'
-    ) {
+    if (isValidType(type)) {
       return type;
     }
   }
   const symbolType = checker.getDeclaredTypeOfSymbol(symbol);
-  if (
-    !('intrinsicName' in symbolType) ||
-    (symbolType as unknown as { intrinsicName: string }).intrinsicName !==
-      'error'
-  ) {
+  if (isValidType(symbolType)) {
     return symbolType;
   }
   return undefined;

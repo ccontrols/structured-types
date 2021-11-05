@@ -57,6 +57,7 @@ export enum PropKind {
   Component = 25,
   Object = 26,
   Namespace = 27,
+  RegEx = 28,
 }
 
 export interface SourcePosition {

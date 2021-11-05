@@ -419,6 +419,9 @@ export class SymbolParser implements ISymbolParser {
           prop.kind = PropKind.String;
         }
         propValue(prop, node.text);
+      } else if (ts.isRegularExpressionLiteral(node)) {
+        prop.kind = PropKind.RegEx;
+        propValue(prop, node.text);
       } else if (node.kind === ts.SyntaxKind.FalseKeyword) {
         if (!prop.kind) {
           prop.kind = PropKind.Boolean;
@@ -672,14 +675,6 @@ export class SymbolParser implements ISymbolParser {
         (prop as UnionProp).properties = this.parseProperties(
           node.types,
           options,
-        );
-      } else if (ts.isMappedTypeNode(node)) {
-        debugger;
-        this.parseTypeValueComments(
-          prop,
-          options,
-          node.type,
-          (node as any).initializer,
         );
       } else if (ts.isEnumMember(node)) {
         const enumType = node.name.getText();
