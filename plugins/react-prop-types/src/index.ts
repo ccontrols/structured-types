@@ -10,6 +10,7 @@ import {
   ParseOptions,
   ArrayProp,
   ObjectProp,
+  getSymbolDeclaration,
 } from '@structured-types/api';
 import reactPlugin from '@structured-types/react-plugin';
 import ts from 'typescript';
@@ -168,8 +169,7 @@ const extractExpressionMembers = (
         } else {
           const symbol = checker.getSymbolAtLocation(node.expression);
           if (symbol) {
-            const declaration =
-              symbol.valueDeclaration || symbol.declarations?.[0];
+            const declaration = getSymbolDeclaration(symbol);
             if (declaration && ts.isImportClause(declaration)) {
               if (
                 declaration.parent.moduleSpecifier

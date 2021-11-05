@@ -16,6 +16,29 @@ const simpleResults = {
   },
 };
 describe('class-component', () => {
+  it('exports-by-name', () => {
+    const result = parseFiles(
+      [path.resolve(__dirname, 'exports-by-name.tsx')],
+      {
+        plugins: [reactPlugin],
+        collectHelpers: false,
+      },
+    );
+    expect(result).toEqual({
+      name: 'CustomComponent',
+      extension: 'react',
+      kind: 25,
+      properties: [
+        {
+          name: 'name',
+          parent: {
+            name: 'CustomComponentProps',
+          },
+          kind: 1,
+        },
+      ],
+    });
+  });
   it('display-name-field', () => {
     const result = parseFiles(
       [path.resolve(__dirname, 'display-name-field.tsx')],

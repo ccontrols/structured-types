@@ -9,6 +9,7 @@ import {
   ParsePlugin,
   PropKind,
   ISymbolParser,
+  getSymbolDeclaration,
 } from '@structured-types/api';
 
 const getNodeResults = (
@@ -24,8 +25,8 @@ const getNodeResults = (
     const typeSymbol = type.aliasSymbol || type.symbol;
 
     const typeDeclaration = ts.isIdentifier(node)
-      ? symbol?.valueDeclaration || typeSymbol?.declarations?.[0]
-      : typeSymbol?.valueDeclaration || typeSymbol?.declarations?.[0];
+      ? getSymbolDeclaration(symbol)
+      : getSymbolDeclaration(typeSymbol);
     const results = typesResolve({
       parser,
       declaration: typeDeclaration,
@@ -44,13 +45,24 @@ const getNodeResults = (
   return undefined;
 };
 const typesResolve: ParsePlugin['typesResolve'] = ({
-  symbolType,
-  declaration,
+  symbolType: initialType,
+  declaration: initialDeclaration,
   parser,
 }) => {
-  const { checker } = parser;
-  if (symbolType.flags & (ts.TypeFlags.Object | ts.TypeFlags.StructuredType)) {
-    if (declaration) {
+  if (initialDeclaration) {
+    if (ts.isExportSpecifier(initialDeclaration)) {
+    }
+    const declaration = ts.isExportSpecifier(initialDeclaration)
+      ? getSymbolDeclaration(initialType.aliasSymbol || initialType.symbol) ||
+        initialDeclaration
+      : initialDeclaration;
+    const symbolType = initialType;
+
+    if (
+      initialType.flags &
+      (ts.TypeFlags.Object | ts.TypeFlags.StructuredType)
+    ) {
+      const { checker } = parser;
       const functionCall =
         ts.isExportAssignment(declaration) &&
         declaration.expression &&

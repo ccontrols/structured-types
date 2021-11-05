@@ -43,6 +43,7 @@ import {
   ISymbolParser,
   getTypeKind,
   updateModifiers,
+  getSymbolDeclaration,
 } from './ts-utils';
 import { resolveType } from './ts/resolveType';
 import { getInitializer } from './ts/getInitializer';
@@ -160,7 +161,7 @@ export class SymbolParser implements ISymbolParser {
     if (type) {
       const symbol = type.aliasSymbol || type.symbol;
       if (symbol && (symbol.flags & ts.SymbolFlags.TypeAlias) === 0) {
-        const declaration = this.getSymbolDeclaration(symbol);
+        const declaration = getSymbolDeclaration(symbol);
         if (declaration && this.internalNode(declaration) === undefined) {
           return addParentRef(declaration);
         }
@@ -603,7 +604,7 @@ export class SymbolParser implements ISymbolParser {
       } else if (ts.isTypeReferenceNode(node)) {
         const symbol = this.getSymbolAtLocation(node.typeName);
         if (symbol) {
-          const d = this.getSymbolDeclaration(symbol);
+          const d = getSymbolDeclaration(symbol);
           if (d && tsKindToPropKind[d.kind]) {
             prop.kind = tsKindToPropKind[d.kind];
           }
@@ -794,17 +795,13 @@ export class SymbolParser implements ISymbolParser {
     }
     return result;
   }
-  private getSymbolDeclaration(symbol?: ts.Symbol): ts.Declaration | undefined {
-    return symbol
-      ? symbol.valueDeclaration || symbol.declarations?.[0]
-      : undefined;
-  }
+
   private parseChildSymbol(
     prop: PropType,
     symbol: ts.Symbol,
     options: ParseOptions,
   ): PropType | undefined {
-    const declaration = this.getSymbolDeclaration(symbol);
+    const declaration = getSymbolDeclaration(symbol);
     if (declaration) {
       const parent = this.getParent(declaration, prop, options);
       if (parent !== '__internal') {
@@ -829,7 +826,7 @@ export class SymbolParser implements ISymbolParser {
     defaultOptions: ParseOptions,
     topLevel: boolean,
   ): PropType | null {
-    const symbolDeclaration = this.getSymbolDeclaration(symbol);
+    const symbolDeclaration = getSymbolDeclaration(symbol);
 
     const symbolType = getSymbolType(this.checker, symbol);
     const declaration = symbolDeclaration;
@@ -874,7 +871,7 @@ export class SymbolParser implements ISymbolParser {
           const resolvedSymbol =
             resolvedType.aliasSymbol || resolvedType.symbol;
           const resolvedDeclaration = resolvedSymbol
-            ? this.getSymbolDeclaration(resolvedSymbol)
+            ? getSymbolDeclaration(resolvedSymbol)
             : undefined;
 
           const internalKind = this.internalNode(resolvedDeclaration);
@@ -931,7 +928,7 @@ export class SymbolParser implements ISymbolParser {
             if (internalKind === undefined || allSymbols.length) {
               for (const childSymbol of allSymbols) {
                 if (this.filterProperty({ name: childSymbol.name }, options)) {
-                  const d = this.getSymbolDeclaration(childSymbol);
+                  const d = getSymbolDeclaration(childSymbol);
                   if (!d) {
                     //tuple members do not carry type information
                     return this.parseTypeValueComments(
@@ -1028,7 +1025,7 @@ export class SymbolParser implements ISymbolParser {
               ),
             )
             .forEach((s: ts.Symbol) => {
-              if (this.getSymbolDeclaration(s)) {
+              if (getSymbolDeclaration(s)) {
                 const childProp = this.parseChildSymbol(prop, s, options);
                 if (
                   childProp &&
@@ -1087,7 +1084,7 @@ export class SymbolParser implements ISymbolParser {
   }
   private internalSymbol(symbol?: ts.Symbol): PropKind | undefined {
     if (symbol) {
-      const declaration = this.getSymbolDeclaration(symbol);
+      const declaration = getSymbolDeclaration(symbol);
       return this.internalNode(declaration);
     }
     return undefined;

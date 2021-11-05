@@ -520,3 +520,11 @@ export const getObjectStaticProp = (
   }
   return undefined;
 };
+
+export const getSymbolDeclaration = (
+  symbol?: ts.Symbol,
+): ts.Declaration | undefined => {
+  return symbol
+    ? symbol.valueDeclaration || symbol.declarations?.[0]
+    : undefined;
+};
