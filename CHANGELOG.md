@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.34.1](https://github.com/ccontrols/structured-types/compare/v3.34.0...v3.34.1) (2021-11-05)
+
+
+### Bug Fixes
+
+* **api:** initial generic union ([f1abb2b](https://github.com/ccontrols/structured-types/commit/f1abb2b8949f5bc140e0a12ae5dc92f2645dbfad))
+* **api:** union types children with parents ([e96e918](https://github.com/ccontrols/structured-types/commit/e96e9180273085016f3a1d642be9bc0421a09da8))
+* **test:** rename test ([079b034](https://github.com/ccontrols/structured-types/commit/079b034943bb51c3970025652e0c99cc3649362b))
+
+
+
+
+
 # [3.34.0](https://github.com/ccontrols/structured-types/compare/v3.33.0...v3.34.0) (2021-11-02)
 
 
