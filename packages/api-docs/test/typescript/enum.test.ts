@@ -82,13 +82,8 @@ describe('enum', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 3,
-                    children: [
-                      {
-                        kind: 11,
-                        value: 'String*',
-                      },
-                    ],
+                    kind: 11,
+                    value: 'String*',
                   },
                 ],
               },
@@ -96,13 +91,8 @@ describe('enum', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 3,
-                    children: [
-                      {
-                        kind: 11,
-                        value: 'number',
-                      },
-                    ],
+                    kind: 11,
+                    value: 'number',
                   },
                 ],
               },
@@ -110,13 +100,8 @@ describe('enum', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 3,
-                    children: [
-                      {
-                        kind: 11,
-                        value: '1',
-                      },
-                    ],
+                    kind: 11,
+                    value: '1',
                   },
                 ],
               },
@@ -129,13 +114,8 @@ describe('enum', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 3,
-                    children: [
-                      {
-                        kind: 11,
-                        value: 'Number*',
-                      },
-                    ],
+                    kind: 11,
+                    value: 'Number*',
                   },
                 ],
               },
@@ -143,13 +123,8 @@ describe('enum', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 3,
-                    children: [
-                      {
-                        kind: 11,
-                        value: 'number',
-                      },
-                    ],
+                    kind: 11,
+                    value: 'number',
                   },
                 ],
               },
@@ -157,13 +132,8 @@ describe('enum', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 3,
-                    children: [
-                      {
-                        kind: 11,
-                        value: '2',
-                      },
-                    ],
+                    kind: 11,
+                    value: '2',
                   },
                 ],
               },
@@ -176,13 +146,8 @@ describe('enum', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 3,
-                    children: [
-                      {
-                        kind: 11,
-                        value: 'Boolean*',
-                      },
-                    ],
+                    kind: 11,
+                    value: 'Boolean*',
                   },
                 ],
               },
@@ -190,13 +155,8 @@ describe('enum', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 3,
-                    children: [
-                      {
-                        kind: 11,
-                        value: 'number',
-                      },
-                    ],
+                    kind: 11,
+                    value: 'number',
                   },
                 ],
               },
@@ -204,13 +164,8 @@ describe('enum', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 3,
-                    children: [
-                      {
-                        kind: 11,
-                        value: '3',
-                      },
-                    ],
+                    kind: 11,
+                    value: '3',
                   },
                 ],
               },

@@ -54,13 +54,8 @@ describe('columns', () => {
             kind: 3,
             children: [
               {
-                kind: 3,
-                children: [
-                  {
-                    kind: 11,
-                    value: 'm*',
-                  },
-                ],
+                kind: 11,
+                value: 'm*',
               },
             ],
           },
@@ -68,13 +63,8 @@ describe('columns', () => {
             kind: 3,
             children: [
               {
-                kind: 3,
-                children: [
-                  {
-                    kind: 11,
-                    value: 'string',
-                  },
-                ],
+                kind: 11,
+                value: 'string',
               },
             ],
           },
@@ -82,13 +72,8 @@ describe('columns', () => {
             kind: 3,
             children: [
               {
-                kind: 3,
-                children: [
-                  {
-                    kind: 11,
-                    value: "'hello'",
-                  },
-                ],
+                kind: 11,
+                value: "'hello'",
               },
             ],
           },
@@ -96,13 +81,8 @@ describe('columns', () => {
             kind: 3,
             children: [
               {
-                kind: 3,
-                children: [
-                  {
-                    kind: 6,
-                    value: 'interface member property',
-                  },
-                ],
+                kind: 6,
+                value: 'interface member property',
               },
             ],
           },
@@ -115,13 +95,8 @@ describe('columns', () => {
             kind: 3,
             children: [
               {
-                kind: 3,
-                children: [
-                  {
-                    kind: 11,
-                    value: 'n',
-                  },
-                ],
+                kind: 11,
+                value: 'n',
               },
             ],
           },
@@ -129,54 +104,49 @@ describe('columns', () => {
             kind: 3,
             children: [
               {
-                kind: 3,
+                kind: 9,
                 children: [
                   {
-                    kind: 9,
-                    children: [
-                      {
-                        kind: 11,
-                        value: 'Record',
-                      },
-                    ],
-                  },
-                  {
-                    kind: 6,
-                    value: '<',
-                  },
-                  {
                     kind: 11,
-                    value: 'string',
-                  },
-                  {
-                    kind: 6,
-                    value: ', ',
-                  },
-                  {
-                    kind: 6,
-                    value: '{ ',
-                  },
-                  {
-                    kind: 11,
-                    value: 'a',
-                  },
-                  {
-                    kind: 6,
-                    value: ': ',
-                  },
-                  {
-                    kind: 11,
-                    value: 'boolean',
-                  },
-                  {
-                    kind: 6,
-                    value: ' }',
-                  },
-                  {
-                    kind: 6,
-                    value: '>',
+                    value: 'Record',
                   },
                 ],
+              },
+              {
+                kind: 6,
+                value: '<',
+              },
+              {
+                kind: 11,
+                value: 'string',
+              },
+              {
+                kind: 6,
+                value: ', ',
+              },
+              {
+                kind: 6,
+                value: '{ ',
+              },
+              {
+                kind: 11,
+                value: 'a',
+              },
+              {
+                kind: 6,
+                value: ': ',
+              },
+              {
+                kind: 11,
+                value: 'boolean',
+              },
+              {
+                kind: 6,
+                value: ' }',
+              },
+              {
+                kind: 6,
+                value: '>',
               },
             ],
           },
@@ -184,13 +154,8 @@ describe('columns', () => {
             kind: 3,
             children: [
               {
-                kind: 3,
-                children: [
-                  {
-                    kind: 6,
-                    value: '',
-                  },
-                ],
+                kind: 6,
+                value: '',
               },
             ],
           },
@@ -198,13 +163,8 @@ describe('columns', () => {
             kind: 3,
             children: [
               {
-                kind: 3,
-                children: [
-                  {
-                    kind: 6,
-                    value: '',
-                  },
-                ],
+                kind: 6,
+                value: '',
               },
             ],
           },
@@ -306,13 +266,8 @@ describe('columns', () => {
               kind: 3,
               children: [
                 {
-                  kind: 3,
-                  children: [
-                    {
-                      kind: 11,
-                      value: 'string',
-                    },
-                  ],
+                  kind: 11,
+                  value: 'string',
                 },
               ],
             },
@@ -320,13 +275,8 @@ describe('columns', () => {
               kind: 3,
               children: [
                 {
-                  kind: 3,
-                  children: [
-                    {
-                      kind: 11,
-                      value: "'hello'",
-                    },
-                  ],
+                  kind: 11,
+                  value: "'hello'",
                 },
               ],
             },
@@ -334,13 +284,8 @@ describe('columns', () => {
               kind: 3,
               children: [
                 {
-                  kind: 3,
-                  children: [
-                    {
-                      kind: 6,
-                      value: 'interface member property',
-                    },
-                  ],
+                  kind: 6,
+                  value: 'interface member property',
                 },
               ],
             },
@@ -367,54 +312,49 @@ describe('columns', () => {
               kind: 3,
               children: [
                 {
-                  kind: 3,
+                  kind: 9,
                   children: [
                     {
-                      kind: 9,
-                      children: [
-                        {
-                          kind: 11,
-                          value: 'Record',
-                        },
-                      ],
-                    },
-                    {
-                      kind: 6,
-                      value: '<',
-                    },
-                    {
                       kind: 11,
-                      value: 'string',
-                    },
-                    {
-                      kind: 6,
-                      value: ', ',
-                    },
-                    {
-                      kind: 6,
-                      value: '{ ',
-                    },
-                    {
-                      kind: 11,
-                      value: 'a',
-                    },
-                    {
-                      kind: 6,
-                      value: ': ',
-                    },
-                    {
-                      kind: 11,
-                      value: 'boolean',
-                    },
-                    {
-                      kind: 6,
-                      value: ' }',
-                    },
-                    {
-                      kind: 6,
-                      value: '>',
+                      value: 'Record',
                     },
                   ],
+                },
+                {
+                  kind: 6,
+                  value: '<',
+                },
+                {
+                  kind: 11,
+                  value: 'string',
+                },
+                {
+                  kind: 6,
+                  value: ', ',
+                },
+                {
+                  kind: 6,
+                  value: '{ ',
+                },
+                {
+                  kind: 11,
+                  value: 'a',
+                },
+                {
+                  kind: 6,
+                  value: ': ',
+                },
+                {
+                  kind: 11,
+                  value: 'boolean',
+                },
+                {
+                  kind: 6,
+                  value: ' }',
+                },
+                {
+                  kind: 6,
+                  value: '>',
                 },
               ],
             },
@@ -422,13 +362,8 @@ describe('columns', () => {
               kind: 3,
               children: [
                 {
-                  kind: 3,
-                  children: [
-                    {
-                      kind: 6,
-                      value: '',
-                    },
-                  ],
+                  kind: 6,
+                  value: '',
                 },
               ],
             },
@@ -436,13 +371,8 @@ describe('columns', () => {
               kind: 3,
               children: [
                 {
-                  kind: 3,
-                  children: [
-                    {
-                      kind: 6,
-                      value: '',
-                    },
-                  ],
+                  kind: 6,
+                  value: '',
                 },
               ],
             },

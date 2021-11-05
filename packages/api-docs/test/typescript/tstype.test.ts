@@ -73,13 +73,8 @@ describe('ts-type', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 3,
-                    children: [
-                      {
-                        kind: 11,
-                        value: 'sections',
-                      },
-                    ],
+                    kind: 11,
+                    value: 'sections',
                   },
                 ],
               },
@@ -87,63 +82,58 @@ describe('ts-type', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 3,
+                    kind: 9,
                     children: [
                       {
-                        kind: 9,
-                        children: [
-                          {
-                            kind: 11,
-                            value: 'Partial',
-                          },
-                        ],
-                      },
-                      {
-                        kind: 6,
-                        value: '<',
-                      },
-                      {
-                        kind: 9,
-                        children: [
-                          {
-                            kind: 11,
-                            value: 'Record',
-                          },
-                        ],
-                      },
-                      {
-                        kind: 6,
-                        value: '<',
-                      },
-                      {
-                        kind: 6,
-                        value: '"title"',
-                      },
-                      {
-                        kind: 6,
-                        value: ' | ',
-                      },
-                      {
-                        kind: 6,
-                        value: '"type"',
-                      },
-                      {
-                        kind: 6,
-                        value: ', ',
-                      },
-                      {
                         kind: 11,
-                        value: 'string',
-                      },
-                      {
-                        kind: 6,
-                        value: '>',
-                      },
-                      {
-                        kind: 6,
-                        value: '>',
+                        value: 'Partial',
                       },
                     ],
+                  },
+                  {
+                    kind: 6,
+                    value: '<',
+                  },
+                  {
+                    kind: 9,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'Record',
+                      },
+                    ],
+                  },
+                  {
+                    kind: 6,
+                    value: '<',
+                  },
+                  {
+                    kind: 6,
+                    value: '"title"',
+                  },
+                  {
+                    kind: 6,
+                    value: ' | ',
+                  },
+                  {
+                    kind: 6,
+                    value: '"type"',
+                  },
+                  {
+                    kind: 6,
+                    value: ', ',
+                  },
+                  {
+                    kind: 11,
+                    value: 'string',
+                  },
+                  {
+                    kind: 6,
+                    value: '>',
+                  },
+                  {
+                    kind: 6,
+                    value: '>',
                   },
                 ],
               },

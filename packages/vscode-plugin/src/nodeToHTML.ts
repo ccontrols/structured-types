@@ -76,11 +76,10 @@ const renderNode = ({
           <vscode-data-grid-row row-type="header">
             ${node.children[0].children
               ?.map((cell, index) =>
-                nodeContent({
+                renderNode({
                   node: cell,
                   'grid-column': (index + 1).toString(),
                   'cell-type': 'columnheader',
-                  as: 'vscode-data-grid-cell',
                 }),
               )
               .join('\n')}
@@ -92,10 +91,9 @@ const renderNode = ({
             <vscode-data-grid-row >
               ${row.children
                 ?.map((cell, index) =>
-                  nodeContent({
+                  renderNode({
                     node: cell,
                     'grid-column': (index + 1).toString(),
-                    as: 'vscode-data-grid-cell',
                   }),
                 )
                 .join('\n')}

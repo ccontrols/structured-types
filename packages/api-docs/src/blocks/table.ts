@@ -1,10 +1,4 @@
-import {
-  DocumentationNode,
-  NodeKind,
-  TableNode,
-  TableRowNode,
-  TableCellNode,
-} from '../types';
+import { DocumentationNode, NodeKind, TableNode, TableRowNode } from '../types';
 import { textNode } from './text';
 import { tableCellNode } from './table-cell';
 import { inlineCodeNode } from './inline-code';
@@ -23,45 +17,45 @@ export const createPropsRow = (
   columnOptions: ColumnObject,
   visColumns: VisibleColumns,
 ): TableRowNode => {
-  const getCell = (column: ColumnName): TableCellNode | undefined => {
+  const getCell = (
+    column: ColumnName,
+  ): DocumentationNode[] | string | undefined => {
     switch (column) {
       case 'name':
-        return tableCellNode(name || []);
+        return name;
       case 'type':
-        return tableCellNode(type || []);
+        return type;
       case 'default':
-        return tableCellNode([
+        return [
           inlineCodeNode(
             typeof defaultValue !== 'undefined' ? defaultValue.toString() : '',
           ),
-        ]);
+        ];
       case 'description':
         if (typeof description === 'string') {
           const parts = description.split('`');
           if (parts.length > 1) {
-            return tableCellNode(
-              parts.reduce((acc: DocumentationNode[], text, idx) => {
-                if (idx % 2 === 0) {
-                  return [...acc, textNode(text)];
-                } else {
-                  return [
-                    ...acc,
-                    textNode(' '),
-                    inlineCodeNode(text),
-                    textNode(' '),
-                  ];
-                }
-              }, []),
-            );
+            return parts.reduce((acc: DocumentationNode[], text, idx) => {
+              if (idx % 2 === 0) {
+                return [...acc, textNode(text)];
+              } else {
+                return [
+                  ...acc,
+                  textNode(' '),
+                  inlineCodeNode(text),
+                  textNode(' '),
+                ];
+              }
+            }, []);
           } else {
-            return tableCellNode([textNode(description)]);
+            return [textNode(description)];
           }
         } else {
-          return tableCellNode([textNode('')]);
+          return [textNode('')];
         }
 
       case 'parents':
-        return tableCellNode(parents || []);
+        return parents;
       default:
         return undefined;
     }
@@ -76,7 +70,8 @@ export const createPropsRow = (
         cell = column.render(name, prop);
       }
       if (!cell) {
-        cell = getCell(name);
+        const content = getCell(name);
+        cell = typeof content === 'string' ? textNode(content) : content;
       }
       if (cell) {
         if (Array.isArray(cell)) {
