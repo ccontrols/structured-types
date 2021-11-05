@@ -122,7 +122,11 @@ export class ContentProvider {
     }
   }
   public isPreviewOn(sourceUri: vscode.Uri): boolean {
-    return !!this.getPreview(sourceUri);
+    if (this.config.singlePage) {
+      return this.singlePreviewPanel?.uri.fsPath === sourceUri.fsPath;
+    } else {
+      return !!this.previewPanels[sourceUri.fsPath];
+    }
   }
   public destroyPreview(sourceUri: vscode.Uri): void {
     const { panel } = this.getPreview(sourceUri) || {};

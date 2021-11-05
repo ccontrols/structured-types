@@ -143,7 +143,7 @@ const nodeContent = ({
   const value = isNodeWithChildren(node)
     ? nodeComponents({ nodes: node.children, as, ...rest })
     : isNodeWithValue(node)
-    ? `<${as} ${propsToAttrs(rest)}>${node.value}</${as}>`
+    ? `<${as} ${propsToAttrs(rest)}>${encodeURIComponent(node.value)}</${as}>`
     : '';
   return value;
 };
@@ -160,9 +160,9 @@ const nodeComponents = ({
     debugger;
   }
   return nodes
-    ? `<${as} ${propsToAttrs(rest)}>
-      ${nodes.map((node) => renderNode({ node })).join('\n')}
-    </${as}>`
+    ? `<${as} ${propsToAttrs(rest)}>${nodes
+        .map((node) => renderNode({ node }))
+        .join('\n')}</${as}>`
     : '';
 };
 

@@ -3178,26 +3178,26 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@microsoft/fast-element@^1.2.0", "@microsoft/fast-element@^1.4.0":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.6.1.tgz#53cf476fc4cf3ea5ac90a51c1032b782f4ee9611"
-  integrity sha512-6wCL1yj5SSfqEq/GAkWeKdcE50NTx3VLINpSYG9cpxckgNGXHErsjDwbqwX3399e/O04BVwyIjILip11DFJP9w==
+"@microsoft/fast-element@^1.6.0", "@microsoft/fast-element@^1.6.2":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.6.2.tgz#414abc9f49fde85e12002e01025c5cc3dddc16ac"
+  integrity sha512-TrFOpe9k9xIK2iLfIG5T2+bavUAWBvAC/KQ/3ecFsK65l9PAZ/j3zlkyLxNrpIksFtUBkfVdV03kwFurZjqzKQ==
 
-"@microsoft/fast-foundation@^1.24.7":
-  version "1.24.8"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.24.8.tgz#79507ef18167f72b486058d6a42fb0cf4271056b"
-  integrity sha512-n4O9jPh8BBliF/Yl9FAVhrSoopsRCnva2L432s/fHwLelY9WUeswjO3DidVBFbzXD5u/gzC4LGWJScNe/ZGU4Q==
+"@microsoft/fast-foundation@^2.21.0":
+  version "2.25.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.25.1.tgz#b7ca4cc3f5a48dc9e2a042e86016dc577f7e4aba"
+  integrity sha512-7RuHTsgXFu7irhGicb4MUcgFOqrmW3dLynZTBO5FJPOVXZhWqnsAL4Vp8ZtPXb5mXfbN9co9xmnI2og3SrLQ+Q==
   dependencies:
-    "@microsoft/fast-element" "^1.4.0"
-    "@microsoft/fast-web-utilities" "^4.8.0"
+    "@microsoft/fast-element" "^1.6.2"
+    "@microsoft/fast-web-utilities" "^5.0.2"
     "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^5.2.0"
     tslib "^1.13.0"
 
-"@microsoft/fast-web-utilities@^4.8.0":
-  version "4.8.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-4.8.1.tgz#c10906711dfaf885b1d9d3d206fb102cf721c84d"
-  integrity sha512-P3xeyUwQ9nPkFrgAdmkOzaXxIq8YqMU5K+LXcoHgJddJCBCKfGWW9OZQOTigLddItTyVyfO8qsJpDQb1TskKHA==
+"@microsoft/fast-web-utilities@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-5.0.2.tgz#666631e38108893e4ec63cd8f52025f5f35a34a1"
+  integrity sha512-J8Wy64V1NWF/UjFJ1mvmJNNPChbWobsNkJ8xNaV5/M+VKOQEOheojrOS+RmOUG7DKTBlCLIbUvyXsj1YiCfwkA==
   dependencies:
     exenv-es6 "^1.0.0"
 
@@ -4317,14 +4317,13 @@
   dependencies:
     debug "^4.1.1"
 
-"@vscode/webview-ui-toolkit@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@vscode/webview-ui-toolkit/-/webview-ui-toolkit-0.8.2.tgz#b4591217955c4a114ebbdb01ef7ac219647b8e4e"
-  integrity sha512-2X3nRgrUxCELucsUg9Kd4tKgJX6JKK63uDhwn9+3wTHl49VaErBWeNv1tkGlFzG8+Mr/43y/sccQ+42WsIazIg==
+"@vscode/webview-ui-toolkit@^0.8.4":
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/@vscode/webview-ui-toolkit/-/webview-ui-toolkit-0.8.4.tgz#89e157ace8048a64b34a30a86a97727cd3d3de4b"
+  integrity sha512-hIbC/awoqCA+dPDGcFGxPH6OGVF/vsgrol9tv5P+eAdc7YMGvZmtezBgRmdGesJmI6Hvv+Buw8qtXwxSj215Jg==
   dependencies:
-    "@microsoft/fast-element" "^1.2.0"
-    "@microsoft/fast-foundation" "^1.24.7"
-    lodash-es "^4.17.21"
+    "@microsoft/fast-element" "^1.6.0"
+    "@microsoft/fast-foundation" "^2.21.0"
 
 "@vue/compiler-core@3.2.20":
   version "3.2.20"
@@ -11604,11 +11603,6 @@ locate-path@^6.0.0:
   integrity sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==
   dependencies:
     p-locate "^5.0.0"
-
-lodash-es@^4.17.21:
-  version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
-  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
 
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"

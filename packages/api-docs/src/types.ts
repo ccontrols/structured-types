@@ -348,4 +348,10 @@ export type DocumentationOptions = {
    * React library properties.
    */
   skipInherited?: boolean;
+
+  /**
+   * Maximum number of properties to list in the props table rows, this is to avoid huge property sets
+   * @default 30
+   */
+  maxProps?: number;
 };

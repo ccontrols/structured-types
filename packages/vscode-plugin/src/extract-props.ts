@@ -12,7 +12,11 @@ export const extractProps = (
   fileName: string,
   options: DocsOptions & DocumentationOptions = {},
 ): ReturnType<typeof propsToDocumentation> => {
-  const { config = {} } = apiDocsConfig(fileName) || {};
+  const {
+    config = {
+      maxProps: 10,
+    },
+  } = apiDocsConfig(fileName) || {};
   const mergedConfig = deepmerge(config, options);
   const props = parseFiles([fileName], {
     collectSourceInfo: true,

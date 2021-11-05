@@ -9,19 +9,28 @@ describe('type', () => {
     expect(results).toEqual({
       FullProps: {
         name: 'FullProps',
-        kind: 4,
+        kind: 15,
         properties: [
           {
             name: 'id',
+            parent: {
+              name: 'Props',
+            },
             kind: 1,
           },
           {
             name: 'bool',
+            parent: {
+              name: 'Props',
+            },
             kind: 3,
           },
           {
-            optional: true,
             name: 'children',
+            parent: {
+              name: 'PropsWithChildren',
+            },
+            optional: true,
             kind: 1,
           },
         ],

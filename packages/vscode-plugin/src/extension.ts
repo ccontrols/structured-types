@@ -42,7 +42,10 @@ export function activate(context: vscode.ExtensionContext): void {
             } else if (!isUsingSinglePreview && previewPanel) {
               previewPanel.reveal(vscode.ViewColumn.Two, true);
             }
-          } else if (config.config.autoShowDocumentation) {
+          } else if (
+            config.config.autoShowDocumentation &&
+            textEditor.viewColumn !== viewColumn
+          ) {
             openPreview(vscode.ViewColumn.Two)(sourceUri);
           }
         }

@@ -391,13 +391,13 @@ _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com
 
 **properties**
 
-| Name        | Type                    | Description                     |
-| ----------- | ----------------------- | ------------------------------- |
-| `category*` | `ts.DiagnosticCategory` | error category                  |
-| `message*`  | `string`                | error text message              |
-| `row`       | `number`                | source code line of the error   |
-| `column`    | `number`                | source code column of the error |
-| `fileName`  | `string`                | source file name                |
+| Name        | Type     | Description                     |
+| ----------- | -------- | ------------------------------- |
+| `category*` |          | error category                  |
+| `message*`  | `string` | error text message              |
+| `row`       | `number` | source code line of the error   |
+| `column`    | `number` | source code column of the error |
+| `fileName`  | `string` | source file name                |
 
 ## PropParent
 

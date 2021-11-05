@@ -612,7 +612,7 @@ Object {
             },
             Object {
               "description": "Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on \`output.libraryTarget\`.",
-              "kind": 4,
+              "kind": 15,
               "name": "externals",
               "optional": true,
               "properties": Array [
@@ -621,6 +621,9 @@ Object {
                   "kind": 4,
                   "name": "byLayer",
                   "optional": true,
+                  "parent": Object {
+                    "name": "ExternalItemObjectKnown",
+                  },
                   "properties": Array [
                     Object {
                       "kind": 15,
@@ -643,52 +646,16 @@ Object {
                               Object {
                                 "description": "If an dependency matches exactly a property of the object, the property value is used as dependency.",
                                 "kind": 15,
-                                "name": "ExternalItemObjectKnown",
+                                "name": "ExternalItemObjectUnknown",
                                 "properties": Array [
                                   Object {
-                                    "index": Object {
-                                      "kind": 1,
-                                      "name": "index",
-                                    },
-                                    "kind": 20,
-                                    "prop": Object {
-                                      "kind": 4,
-                                      "properties": Array [
-                                        Object {
-                                          "kind": 1,
-                                        },
-                                        Object {
-                                          "kind": 3,
-                                        },
-                                        Object {
-                                          "kind": 16,
-                                          "properties": Array [
-                                            Object {
-                                              "kind": 1,
-                                            },
-                                          ],
-                                        },
-                                        Object {
-                                          "kind": 15,
-                                          "properties": Array [
-                                            Object {
-                                              "index": Object {
-                                                "kind": 1,
-                                                "name": "index",
-                                              },
-                                              "kind": 20,
-                                              "prop": Object {
-                                                "kind": 17,
-                                              },
-                                            },
-                                          ],
-                                        },
-                                      ],
-                                      "type": "ExternalItemValue",
+                                    "name": "byLayer",
+                                    "parent": Object {
+                                      "name": "ExternalItemObjectKnown",
                                     },
                                   },
                                 ],
-                                "type": "ExternalItemObjectUnknown",
+                                "type": "ExternalItemObjectKnown",
                               },
                               Object {
                                 "kind": 11,
@@ -990,52 +957,16 @@ Object {
                           Object {
                             "description": "If an dependency matches exactly a property of the object, the property value is used as dependency.",
                             "kind": 15,
-                            "name": "ExternalItemObjectKnown",
+                            "name": "ExternalItemObjectUnknown",
                             "properties": Array [
                               Object {
-                                "index": Object {
-                                  "kind": 1,
-                                  "name": "index",
-                                },
-                                "kind": 20,
-                                "prop": Object {
-                                  "kind": 4,
-                                  "properties": Array [
-                                    Object {
-                                      "kind": 1,
-                                    },
-                                    Object {
-                                      "kind": 3,
-                                    },
-                                    Object {
-                                      "kind": 16,
-                                      "properties": Array [
-                                        Object {
-                                          "kind": 1,
-                                        },
-                                      ],
-                                    },
-                                    Object {
-                                      "kind": 15,
-                                      "properties": Array [
-                                        Object {
-                                          "index": Object {
-                                            "kind": 1,
-                                            "name": "index",
-                                          },
-                                          "kind": 20,
-                                          "prop": Object {
-                                            "kind": 17,
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  ],
-                                  "type": "ExternalItemValue",
+                                "name": "byLayer",
+                                "parent": Object {
+                                  "name": "ExternalItemObjectKnown",
                                 },
                               },
                             ],
-                            "type": "ExternalItemObjectUnknown",
+                            "type": "ExternalItemObjectKnown",
                           },
                           Object {
                             "kind": 11,
@@ -12449,20 +12380,55 @@ from parent (or top level compiler) and creates a child Compilation",
                 },
                 Object {
                   "description": "Specify options for each generator.",
-                  "kind": 4,
+                  "kind": 15,
                   "name": "generator",
                   "optional": true,
                   "parent": Object {
                     "name": "ModuleOptions",
                   },
                   "properties": Array [
-                    Object {},
-                    Object {},
-                    Object {},
-                    Object {},
-                    Object {},
-                    Object {},
-                    Object {},
+                    Object {
+                      "name": "asset",
+                      "parent": Object {
+                        "name": "GeneratorOptionsByModuleTypeKnown",
+                      },
+                    },
+                    Object {
+                      "name": "asset/inline",
+                      "parent": Object {
+                        "name": "GeneratorOptionsByModuleTypeKnown",
+                      },
+                    },
+                    Object {
+                      "name": "asset/resource",
+                      "parent": Object {
+                        "name": "GeneratorOptionsByModuleTypeKnown",
+                      },
+                    },
+                    Object {
+                      "name": "javascript",
+                      "parent": Object {
+                        "name": "GeneratorOptionsByModuleTypeKnown",
+                      },
+                    },
+                    Object {
+                      "name": "javascript/auto",
+                      "parent": Object {
+                        "name": "GeneratorOptionsByModuleTypeKnown",
+                      },
+                    },
+                    Object {
+                      "name": "javascript/dynamic",
+                      "parent": Object {
+                        "name": "GeneratorOptionsByModuleTypeKnown",
+                      },
+                    },
+                    Object {
+                      "name": "javascript/esm",
+                      "parent": Object {
+                        "name": "GeneratorOptionsByModuleTypeKnown",
+                      },
+                    },
                   ],
                 },
                 Object {
@@ -12508,21 +12474,61 @@ from parent (or top level compiler) and creates a child Compilation",
                 },
                 Object {
                   "description": "Specify options for each parser.",
-                  "kind": 4,
+                  "kind": 15,
                   "name": "parser",
                   "optional": true,
                   "parent": Object {
                     "name": "ModuleOptions",
                   },
                   "properties": Array [
-                    Object {},
-                    Object {},
-                    Object {},
-                    Object {},
-                    Object {},
-                    Object {},
-                    Object {},
-                    Object {},
+                    Object {
+                      "name": "asset",
+                      "parent": Object {
+                        "name": "ParserOptionsByModuleTypeKnown",
+                      },
+                    },
+                    Object {
+                      "name": "asset/inline",
+                      "parent": Object {
+                        "name": "ParserOptionsByModuleTypeKnown",
+                      },
+                    },
+                    Object {
+                      "name": "asset/resource",
+                      "parent": Object {
+                        "name": "ParserOptionsByModuleTypeKnown",
+                      },
+                    },
+                    Object {
+                      "name": "asset/source",
+                      "parent": Object {
+                        "name": "ParserOptionsByModuleTypeKnown",
+                      },
+                    },
+                    Object {
+                      "name": "javascript",
+                      "parent": Object {
+                        "name": "ParserOptionsByModuleTypeKnown",
+                      },
+                    },
+                    Object {
+                      "name": "javascript/auto",
+                      "parent": Object {
+                        "name": "ParserOptionsByModuleTypeKnown",
+                      },
+                    },
+                    Object {
+                      "name": "javascript/dynamic",
+                      "parent": Object {
+                        "name": "ParserOptionsByModuleTypeKnown",
+                      },
+                    },
+                    Object {
+                      "name": "javascript/esm",
+                      "parent": Object {
+                        "name": "ParserOptionsByModuleTypeKnown",
+                      },
+                    },
                   ],
                 },
                 Object {

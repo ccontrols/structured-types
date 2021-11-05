@@ -39,6 +39,7 @@ export class ConfigStore {
       config,
       'collapsed',
     );
+
     this._config.visible = this.readValue<DocumentationOptions['visible']>(
       config,
       'visible',
@@ -46,6 +47,10 @@ export class ConfigStore {
     this._config.extensions = this.readValue<
       DocumentationOptions['extensions']
     >(config, 'extensions');
+    this._config.maxProps = this.readValue<DocumentationOptions['maxProps']>(
+      config,
+      'maxProps',
+    );
     this._config.columns = this.readValue<DocumentationOptions['columns']>(
       config,
       'columns',

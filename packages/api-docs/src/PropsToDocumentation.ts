@@ -20,6 +20,7 @@ import {
   HasValueProp,
   PropTypes,
   PropParent,
+  HasPropertiesProp,
 } from '@structured-types/api';
 import {
   DocumentationNode,
@@ -46,12 +47,11 @@ import { defaultSections } from './sections';
 import { defaultColumns } from './columns';
 
 export class PropsToDocumentation {
-  private collapsed: string[] = [];
   private sections: SectionObject = defaultSections;
   private columns: ColumnObject = defaultColumns;
-  private skipInherited = false;
   private topLevelProps: Record<string, PropType> = {};
   private helpers: Record<string, PropType> = {};
+  private options: DocumentationOptions = {};
   private repoNames: {
     [key: string]: {
       repo?: string;
@@ -96,23 +96,28 @@ export class PropsToDocumentation {
     };
     const consolidatedProps = rows.filter((prop) => {
       if (prop.parent) {
-        if (this.skipInherited || this.collapsed.includes(prop.parent.name)) {
+        if (
+          this.options.skipInherited ||
+          this.options.collapsed?.includes(prop.parent.name)
+        ) {
           addParentProp(prop);
           return false;
         }
-        for (const collapsedProp of this.collapsed) {
-          const helperParent = this.helpers[collapsedProp];
-          if (helperParent && hasProperties(helperParent)) {
-            const helpProp = helperParent.properties?.find(
-              (p) =>
-                p.name === prop.name && p.parent?.name === prop.parent?.name,
-            );
-            if (helpProp) {
-              addParentProp({
-                ...prop,
-                parent: { name: collapsedProp, loc: helperParent.loc },
-              });
-              return false;
+        if (this.options.collapsed) {
+          for (const collapsedProp of this.options.collapsed) {
+            const helperParent = this.helpers[collapsedProp];
+            if (helperParent && hasProperties(helperParent)) {
+              const helpProp = helperParent.properties?.find(
+                (p) =>
+                  p.name === prop.name && p.parent?.name === prop.parent?.name,
+              );
+              if (helpProp) {
+                addParentProp({
+                  ...prop,
+                  parent: { name: collapsedProp, loc: helperParent.loc },
+                });
+                return false;
+              }
             }
           }
         }
@@ -325,6 +330,25 @@ export class PropsToDocumentation {
     }
     return this.extractType(prop, options);
   }
+  private getPropProperties(prop: HasPropertiesProp): {
+    properties: PropType[];
+    more: DocumentationNode | undefined;
+  } {
+    const { maxProps = 30 } = this.options;
+    if (prop.properties) {
+      return {
+        properties: maxProps ? prop.properties.slice(0, maxProps) : [],
+        more:
+          maxProps && prop.properties.length > maxProps
+            ? textNode(` ,...${prop.properties.length - maxProps} more`)
+            : undefined,
+      };
+    }
+    return {
+      properties: [],
+      more: undefined,
+    };
+  }
   private extractType(
     prop: PropType,
     options?: { showValue?: boolean },
@@ -332,36 +356,48 @@ export class PropsToDocumentation {
     const unionSeparator = ' | ';
     const enumSeparator = ' | ';
     const { showValue = false } = options || {};
-    if (typeof prop.type === 'string' && this.collapsed?.includes(prop.type)) {
+    if (
+      typeof prop.type === 'string' &&
+      this.options.collapsed?.includes(prop.type)
+    ) {
       return this.typeNode(prop, showValue);
-    } else if ((isUnionProp(prop) || isEnumProp(prop)) && prop.properties) {
+    } else if (isUnionProp(prop) || isEnumProp(prop)) {
       const separator = isUnionProp(prop) ? unionSeparator : enumSeparator;
-      return prop.properties?.reduce((acc: DocumentationNode[], t, idx) => {
+      const { properties, more } = this.getPropProperties(prop);
+      const nodes = properties.reduce((acc: DocumentationNode[], t, idx) => {
         const r = [...acc, ...this.extractPropType(t, { showValue: true })];
-        if (prop.properties && idx < prop.properties.length - 1) {
+        if (idx < properties.length - 1) {
           r.push(textNode(separator));
         }
         return r;
       }, []);
+      if (more) {
+        nodes.push(more);
+      }
+      return nodes;
     } else if (isClassLikeProp(prop)) {
       const propName = typeof prop.type === 'string' ? prop.type : prop.name;
       const result: DocumentationNode[] = [];
+      const { properties, more } = this.getPropProperties(prop);
       if (typeof propName === 'string' && this.getPropLink(propName)) {
         result.push(...this.propLink({ name: propName, loc: prop.loc }));
-      } else if (prop.properties?.length) {
-        const typeArguments: DocumentationNode[] = prop.properties.reduce(
+      } else if (properties.length) {
+        const typeArguments: DocumentationNode[] = properties.reduce(
           (acc: DocumentationNode[], p: PropType, idx: number) => {
             const result = [...acc, ...this.inlineType(p)];
-            if (prop.properties && idx < prop.properties.length - 1) {
+            if (properties && idx < properties.length - 1) {
               result.push(textNode(', '));
             }
             return result;
           },
           [],
         );
-
+        if (more) {
+          typeArguments.push(more);
+        }
         result.push(textNode('{ '));
         result.push(...typeArguments);
+
         result.push(textNode(' }'));
       } else if (prop.generics?.length) {
         const genericArguments: DocumentationNode[] | undefined =
@@ -383,17 +419,21 @@ export class PropsToDocumentation {
         result.push(textNode(propName));
       }
       return result;
-    } else if (isArrayProp(prop) && prop.properties) {
-      const elements = prop.properties.reduce(
+    } else if (isArrayProp(prop)) {
+      const { properties, more } = this.getPropProperties(prop);
+      const elements = properties.reduce(
         (acc: DocumentationNode[], p: PropType, idx: number) => {
           const result = this.extractPropType(p);
-          if (prop.properties && idx < prop.properties.length - 1) {
+          if (idx < properties.length - 1) {
             result.push(textNode(', '));
           }
           return [...acc, ...result];
         },
         [],
       ) as DocumentationNodeWithChildren[];
+      if (more) {
+        elements.push(more);
+      }
       const multiProps =
         elements.length &&
         ((elements[0].children && elements[0].children.length > 1) ||
@@ -407,21 +447,26 @@ export class PropsToDocumentation {
       }
       elements.push(textNode('[]'));
       return elements;
-    } else if (isTupleProp(prop) && prop.properties) {
-      return [
+    } else if (isTupleProp(prop)) {
+      const { properties, more } = this.getPropProperties(prop);
+      const nodes = [
         textNode('['),
-        ...prop.properties.reduce(
+        ...properties.reduce(
           (acc: DocumentationNode[], p: PropType, idx: number) => {
             const result = this.extractPropType(p);
-            if (prop.properties && idx < prop.properties.length - 1) {
+            if (idx < properties.length - 1) {
               result.push(textNode(', '));
             }
             return [...acc, ...result];
           },
           [],
         ),
-        { kind: NodeKind.Text, value: ']' },
       ];
+      if (more) {
+        nodes.push(more);
+      }
+      nodes.push(textNode(']'));
+      return nodes;
     } else if (isIndexProp(prop)) {
       const results: DocumentationNode[] = [
         textNode('['),
@@ -625,16 +670,8 @@ export class PropsToDocumentation {
     options: DocumentationOptions = {},
   ): DocumentationNode[] {
     const result: DocumentationNode[] = [];
-    const {
-      collapsed = [],
-      extensions,
-      visible,
-      sections = {},
-      columns = {},
-      skipInherited = false,
-    } = options;
-
-    this.collapsed = collapsed;
+    const { extensions, visible, sections = {}, columns = {} } = options;
+    this.options = options;
     if (sections) {
       this.sections = Array.isArray(sections)
         ? sections.reduce((acc, name) => {
@@ -649,8 +686,6 @@ export class PropsToDocumentation {
           }, {})
         : deepmerge(defaultColumns, columns);
     }
-
-    this.skipInherited = skipInherited;
 
     const filterProps = (prop: PropType): PropType | undefined => {
       if (Array.isArray(extensions)) {
