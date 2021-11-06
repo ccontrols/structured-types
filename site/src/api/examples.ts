@@ -119,6 +119,7 @@ export const examples: Examples = {
     any: {
       'export-const.ts':
         "/**\n * this is any type\n */\nexport const a: any = 'as';\n",
+      'regex.ts': 'export const phoneRegex = /^\\+?(\\d+\\s)*\\d+$/;\n',
     },
     array: {
       'array-keyword.ts':
@@ -214,6 +215,8 @@ export const examples: Examples = {
         "export interface StringNumberPair {\n  /**\n   *  specialized properties\n   */\n  length: 2;\n  0: string;\n  1: number;\n  /**\n   *  Other 'Array<string | number>' members...\n   */\n  slice(start?: number, end?: number): Array<string | number>;\n}\n",
       'enum-prop.ts':
         "enum StringEnums {\n  Up = 'UP',\n}\nexport interface InterfaceWithEnumConstant {\n  /**\n   * kind is an enum constant\n   */\n  kind: StringEnums.Up;\n  /**\n   * radius property\n   */\n  radius: number;\n}\n",
+      'extends-record.ts':
+        "interface Base {\n  n?: Record<string, { a: boolean }>;\n}\nexport interface Props extends Base {\n  /**\n   * interface member property\n   * @default 'hello'\n   */\n  m: string;\n}\n",
       'extends.ts':
         'interface Home {\n  resident: { name: string; age: number };\n}\n/**\n * internal interface with one member\n */\n\ninterface Internal {\n  /**\n   * string type member\n   */\n\n  m: string;\n}\n/**\n * interface extending another one\n */\n\nexport interface Bear extends Internal, Home {\n  /**\n   * boolean type member\n   */\n\n  honey: boolean;\n}\n',
       'generics.ts':
@@ -281,6 +284,8 @@ export const examples: Examples = {
         '/**\n * this is type\n */\nexport type Node = {\n  /**\n   * self-referencing items\n   */\n  items?: Node[];\n};\n',
       'simple.ts':
         '/**\n * this is type\n */\nexport type T = {\n  /**\n   * type member property\n   */\n  m: string;\n};\n',
+      'union-generic-param.ts':
+        'type PropsWithChildren<P> = P & { children?: string };\n\ntype Props =\n  | {\n      id: string;\n      bool: boolean;\n    }\n  | { bool: boolean };\n\nexport type FullProps = PropsWithChildren<Props>;\n',
       'union-generic.ts': 'export type UnionGenericType<Type> = Type | null;\n',
     },
     union: {
@@ -314,6 +319,8 @@ export const examples: Examples = {
         "import React, { Component } from 'react';\n/**\n * MyComponent properties.\n */\ntype OwnProps = {\n  /** stringProp description */\n  stringProp?: string;\n\n  /** numberProp description */\n  numberProp: number;\n};\n\n/**\n * MyComponent special component\n */\nclass MyComponent extends Component<OwnProps> {\n  render(): React.ReactNode {\n    const { stringProp } = this.props;\n    return <div>{stringProp}</div>;\n  }\n}\n\nMyComponent.defaultProps = {\n  stringProp: 'test',\n};\n\nMyComponent.displayName = 'CustomComponentName';\n\nexport default MyComponent;\n",
       'display-name-static.tsx':
         "import React, { Component } from 'react';\n/**\n * MyComponent special component\n */\nexport class MyComponent extends Component {\n  static displayName = 'CustomComponentName';\n  render(): React.ReactNode {\n    return null;\n  }\n}\n",
+      'exports-by-name.tsx':
+        "import React, { Component } from 'react';\n\ninterface CustomComponentProps {\n  name: string;\n}\n\nclass CustomComponent extends Component<CustomComponentProps> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n\nexport { CustomComponent as MyComponent };\n",
       'inline-props.tsx':
         "import React from 'react';\n\nexport class MyComponent extends React.Component<{ name: string }> {\n  render() {\n    return <span>Hello, {this.props.name}!</span>;\n  }\n}\n",
       'named-component.tsx':
@@ -364,6 +371,8 @@ export const examples: Examples = {
         "import React from 'react';\n\ninterface PrimitmiveProps {\n  stringProp: string;\n  boolProp: boolean;\n}\ntype OmitProps = Omit<PrimitmiveProps, 'boolProp'>;\ntype ComponentProps = OmitProps & {\n  prop1?: 'this' | 'that';\n};\n\nexport const MyComponent: React.FC<ComponentProps> = props => {\n  return <span>Hello, {props.stringProp}!</span>;\n};\n",
       'pick-props.tsx':
         "import React, { BaseHTMLAttributes } from 'react';\n/**\n * MyComponent special component\n */\n\nexport const MyComponent = (\n  props: Pick<BaseHTMLAttributes<HTMLDivElement>, 'style'>,\n) => <div {...props}>Hello</div>;\n",
+      'props-with-children.tsx':
+        "import React, { PropsWithChildren } from 'react';\n\ntype Props = {\n  id: string;\n  linkable: true;\n};\n\ntype FullProps = PropsWithChildren<Props>;\n\nexport default function Component({\n  children,\n  id,\n  linkable,\n  ...props\n}: FullProps) {\n  return (\n    <div>\n      {linkable && <div id={id} {...props} />}\n      {children}\n    </div>\n  );\n}\n",
       'record-props.tsx':
         "import React from 'react';\n\nexport interface MyProps {\n  first: Record<string, string>;\n  second?: Record<string, string>;\n}\n\nexport default function MyComponent({ first = {}, second = {} }: MyProps) {\n  return <div {...first} {...second} />;\n}\n",
       'rest-props.tsx':
