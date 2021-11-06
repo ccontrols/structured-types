@@ -32,7 +32,16 @@ class VSCodeWrapper {
     window.addEventListener('message', callback);
     return () => window.removeEventListener('message', callback);
   }
+  setState = ({ key, value }: { key: string; value: any }) => {
+    const previousState = this.vscodeApi.getState();
+    const state = previousState ? { ...previousState } : {};
+    this.vscodeApi.setState({ ...state, [key]: value });
+  };
+
+  getState = (key: string) => {
+    const previousState = this.vscodeApi.getState();
+    return previousState ? previousState[key] : null;
+  };
 }
 
-// Singleton to prevent multiple fetches of VsCodeAPI.
 export const VSCodeAPI: VSCodeWrapper = new VSCodeWrapper();
