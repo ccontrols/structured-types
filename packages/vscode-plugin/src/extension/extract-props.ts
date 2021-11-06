@@ -17,7 +17,10 @@ export const extractProps = (
       maxProps: 10,
     },
   } = apiDocsConfig(fileName) || {};
-  const mergedConfig = deepmerge(config, options);
+  const mergedConfig = deepmerge<DocsOptions & DocumentationOptions>(
+    config,
+    options,
+  );
   const props = parseFiles([fileName], {
     collectSourceInfo: true,
     collectHelpers: false,

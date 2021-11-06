@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2019",
+    "lib": ["ES2019"],
+    "outDir": "dist",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "rootDir": "src/extension",
+    "types": ["node"],
+    "typeRoots": ["../../node_modules/@types", "node_modules/@types"]
+  },
+  "include": ["src/extension/**/*"],
+  "exclude": ["node_modules/**", "test/**"]
+}

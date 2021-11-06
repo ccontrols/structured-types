@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
 import { DocumentationOptions } from '@structured-types/api-docs';
 export interface VSCodeConfig extends DocumentationOptions {
-  singlePage: boolean;
-  autoShowDocumentation: boolean;
+  singlePage: boolean | undefined;
+  autoShowDocumentation: boolean | undefined;
 }
 
 export class ConfigStore {
@@ -19,7 +19,7 @@ export class ConfigStore {
   private readValue = <P extends unknown>(
     config: vscode.WorkspaceConfiguration,
     key: string,
-  ): P => {
+  ): P | undefined => {
     const value = config.get<P>(key);
     if (typeof value === 'string' && value === '') {
       return undefined;
@@ -63,8 +63,9 @@ export class ConfigStore {
       DocumentationOptions['skipInherited']
     >(config, 'skipInherited');
     Object.keys(this._config).forEach((key) => {
-      if (this._config[key] === undefined) {
-        delete this._config[key];
+      const name = key as keyof VSCodeConfig;
+      if (this._config[name] === undefined) {
+        delete this._config[name];
       }
     });
     return this._config;
