@@ -28,8 +28,8 @@ export function activate(context: vscode.ExtensionContext): void {
           const isUsingSinglePreview = config.config.singlePage;
           const {
             panel: previewPanel,
-            viewColumn,
-            uri,
+            viewColumn = vscode.ViewColumn.One,
+            uri = { fsPath: '' },
           } = contentProvider.getPreview(sourceUri) || {};
 
           if (contentProvider.isPreviewOn(sourceUri)) {

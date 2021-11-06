@@ -23,3 +23,5 @@ declare const acquireVsCodeApi: () => VSCode;
     });
   });
 })();
+
+export {};

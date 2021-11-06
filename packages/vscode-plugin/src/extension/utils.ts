@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 import { PropType } from '@structured-types/api';
 
 const goToLocation = (location: PropType['loc']): void => {
-  const { loc } = location;
+  const { loc } = location || {};
   if (loc) {
     const activeTextEditor = vscode.window.activeTextEditor;
     if (activeTextEditor) {

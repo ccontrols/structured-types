@@ -177,7 +177,10 @@ export const nodesToHTML = (nodes: DocumentationNode[]): string => {
   </section>
 `;
     return rendered;
-  } catch (e) {
-    return `error ${e.toString()}`;
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      return `error ${e.toString()}`;
+    }
+    return 'error';
   }
 };

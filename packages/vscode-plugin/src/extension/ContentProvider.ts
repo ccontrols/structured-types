@@ -141,7 +141,7 @@ export class ContentProvider {
   }
 
   public refreshAll(): void {
-    if (this.config.singlePage) {
+    if (this.config.singlePage && this.singlePreviewPanel) {
       this.refreshPreview(this.singlePreviewPanel.uri);
     } else {
       Object.keys(this.previewPanels).forEach((key) =>
@@ -150,7 +150,7 @@ export class ContentProvider {
     }
   }
   public destroyAll(): void {
-    if (this.config.singlePage) {
+    if (this.config.singlePage && this.singlePreviewPanel) {
       this.destroyPreview(this.singlePreviewPanel.uri);
     } else {
       const keys = Object.keys(this.previewPanels);

@@ -1,14 +1,16 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
-    "lib": ["es5", "es6", "dom"],
     "outDir": "dist",
-    "sourceMap": true,
-    "esModuleInterop": true,
     "rootDir": "src",
-    "types": ["node"],
+    "declaration": true,
+    "jsx": "react",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
     "typeRoots": ["../../node_modules/@types", "node_modules/@types"]
   },
-  "exclude": ["node_modules"]
+  "include": ["src/webview/**/*"],
+  "exclude": ["node_modules/**", "test/**"]
 }
