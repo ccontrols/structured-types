@@ -1,7 +1,6 @@
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { extractProps } from './extract-props';
-import { nodesToHTML } from './nodeToHTML';
 import { getUri, getNonce, openLocation } from './utils';
 import { VSCodeConfig } from './config';
 
@@ -16,14 +15,9 @@ export class ContentProvider {
   private previewPanels: Record<string, PanelStore> = {};
   private singlePreviewPanel: PanelStore | undefined;
   private static readonly viewType = 'instant_documentation';
-  private render: (fileName: string) => string;
   constructor(context: vscode.ExtensionContext, config: VSCodeConfig) {
     this.context = context;
     this.config = { ...config };
-    this.render = (fileName: string) => {
-      const nodes = extractProps(fileName, this.config);
-      return nodesToHTML(nodes);
-    };
 
     context.subscriptions.push(
       vscode.workspace.onDidSaveTextDocument((document) => {
@@ -31,10 +25,16 @@ export class ContentProvider {
       }, null),
     );
   }
+  render(fileName: string, panel: vscode.WebviewPanel): void {
+    const nodes = extractProps(fileName, this.config);
+    panel.webview.postMessage(nodes);
+  }
+
   private updateProps(uri: vscode.Uri): void {
     const { panel } = this.getPreview(uri) || {};
     if (panel) {
       panel.webview.html = this.getHtml(panel, uri);
+      this.render(uri.fsPath, panel);
       panel.webview.onDidReceiveMessage((data) => {
         switch (data.type) {
           case 'open_loc':
@@ -179,13 +179,12 @@ export class ContentProvider {
     );
   }
   private getHtml(panel: vscode.WebviewPanel, sourceUri: vscode.Uri) {
-    const rendered = this.render(sourceUri.fsPath);
     const toolkitUri = getUri(panel.webview, this.context.extensionUri, [
       'dist',
       'toolkit.js',
     ]);
     const scriptUri = panel.webview.asWebviewUri(
-      vscode.Uri.joinPath(this.context.extensionUri, 'dist', 'script.js'),
+      vscode.Uri.joinPath(this.context.extensionUri, 'dist', 'webview.js'),
     );
     const nonce = getNonce();
     return `<!DOCTYPE html>
@@ -204,7 +203,7 @@ export class ContentProvider {
 			</head>
 			<body>
 				<noscript>You need to enable JavaScript to run this app.</noscript>
-        ${rendered}
+        <main id="root" />
         <script nonce="${nonce}" src="${scriptUri}"></script>
 			</body>
 			</html>`;

@@ -3,7 +3,7 @@ import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
 import resolve from '@rollup/plugin-node-resolve';
-
+import nodePolyfills from 'rollup-plugin-node-polyfills';
 export default {
   input: ['./src/webview/index.tsx'],
   output: [
@@ -15,9 +15,11 @@ export default {
     },
   ],
   plugins: [
+    nodePolyfills(),
     resolve({
       mainFields: ['module', 'main'],
       browser: true,
+      preferBuiltins: false,
     }),
     replace({
       values: {
@@ -29,9 +31,7 @@ export default {
       presets: ['@babel/preset-react'],
       babelHelpers: 'bundled',
     }),
-    commonjs({
-      include: /\/node_modules\//,
-    }),
+    commonjs(),
     typescript(),
   ],
 };
