@@ -6,7 +6,7 @@
     "outDir": "dist",
     "sourceMap": true,
     "esModuleInterop": true,
-    "rootDir": "extension",
+    "rootDir": "src/extension",
     "types": ["node"],
     "typeRoots": ["../../node_modules/@types", "node_modules/@types"]
   },

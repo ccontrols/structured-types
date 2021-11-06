@@ -15,7 +15,7 @@ export class ContentProvider {
   private config: VSCodeConfig;
   private previewPanels: Record<string, PanelStore> = {};
   private singlePreviewPanel: PanelStore | undefined;
-  private static readonly viewType = 'documentation';
+  private static readonly viewType = 'instant_documentation';
   private render: (fileName: string) => string;
   constructor(context: vscode.ExtensionContext, config: VSCodeConfig) {
     this.context = context;
