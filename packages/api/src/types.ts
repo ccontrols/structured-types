@@ -543,7 +543,8 @@ export const isClassLikeProp = (prop: PropType): prop is ClassLikeProp => {
   return (
     prop.kind === PropKind.Class ||
     prop.kind === PropKind.Interface ||
-    prop.kind === PropKind.Type
+    prop.kind === PropKind.Type ||
+    prop.kind === PropKind.Component
   );
 };
 export type ObjectLikeProp = ClassLikeProp | EnumProp | ObjectProp | IndexProp;
