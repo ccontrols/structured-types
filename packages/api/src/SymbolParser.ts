@@ -27,6 +27,7 @@ import {
   isEnumProp,
   PropParent,
   SourceLocation,
+  strValue,
 } from './types';
 import {
   getSymbolType,
@@ -436,22 +437,7 @@ export class SymbolParser implements ISymbolParser {
         prop.kind = PropKind.Unknown;
         if (typeof (node as ts.LiteralLikeNode)?.text !== 'undefined') {
           const value = (node as ts.LiteralLikeNode)?.text;
-          switch (value) {
-            case 'undefined':
-              prop.value = undefined;
-              break;
-            case 'null':
-              prop.value = null;
-              break;
-            case 'false':
-              prop.value = false;
-              break;
-            case 'true':
-              prop.value = true;
-              break;
-            default:
-              prop.value = value;
-          }
+          prop.value = strValue(value);
         }
       } else if (ts.isPrefixUnaryExpression(node)) {
         this.parseValue(prop, options, node.operand);

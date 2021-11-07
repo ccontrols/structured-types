@@ -113,9 +113,7 @@ const nodeContent = ({
   const value = isNodeWithChildren(node)
     ? nodeComponents({ nodes: node.children, inTable })
     : isNodeWithValue(node)
-    ? inTable
-      ? encodeURIComponent(node.value)
-      : node.value
+    ? node.value
     : null;
   return value;
 };

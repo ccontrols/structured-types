@@ -21,7 +21,8 @@ import {
   PropTypes,
   PropParent,
   HasPropertiesProp,
-} from '@structured-types/api';
+  hasValue,
+} from '@structured-types/api/types';
 import {
   DocumentationNode,
   SectionName,
@@ -142,7 +143,11 @@ export class PropsToDocumentation {
 
         type: this.extractPropType(prop, { extractProperties: true }),
         description: prop.description,
-        default: (prop as HasValueProp).value,
+        default: hasValue(prop)
+          ? typeof prop.value === 'string'
+            ? `"${prop.value}"`
+            : prop.value
+          : undefined,
         prop,
       } as PropItem);
     });

@@ -621,7 +621,7 @@ export type JSDocInfoType = {
  * @returns the modified property
  */
 export const propValue = (prop: PropType, value?: string): PropType => {
-  if (value) {
+  if (typeof value !== 'undefined') {
     if (isNumberProp(prop)) {
       prop.value = Number(value);
     } else if (isBooleanProp(prop)) {
@@ -640,3 +640,18 @@ export const propValue = (prop: PropType, value?: string): PropType => {
  */
 export const trimQuotes = (txt: string): string =>
   txt ? txt.replace(/['"]+/g, '') : txt;
+
+export const strValue = (value: string): any => {
+  switch (value) {
+    case 'undefined':
+      return undefined;
+    case 'null':
+      return null;
+    case 'false':
+      return false;
+    case 'true':
+      return true;
+    default:
+      return value;
+  }
+};

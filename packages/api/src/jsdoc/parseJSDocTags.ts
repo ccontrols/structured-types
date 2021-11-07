@@ -7,9 +7,10 @@ import {
   JSDocExample,
   JSDocPropTag,
   propValue,
+  strValue,
+  trimQuotes,
 } from '../types';
 import { ParseOptions } from '../ts-utils';
-import { trimQuotes } from '..';
 
 export const cleanJSDocText = (s: string): string => {
   const result = s
@@ -152,7 +153,7 @@ export const parseJSDocTag = (
         if (tag.comment) {
           const value = tagCommentToString(tag.comment);
           if (typeof value !== 'undefined') {
-            propValue(prop, trimQuotes(value));
+            propValue(prop, strValue(trimQuotes(value)));
           }
         }
 
