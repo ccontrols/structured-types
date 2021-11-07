@@ -48,10 +48,15 @@ export const getTypescriptConfig = (
           fileConfig?.compilerOptions,
         );
       }
+      if (config.baseUrl) {
+        config.baseUrl = path.resolve(path.dirname(configPath), config.baseUrl);
+      }
     }
+
     if (keepJson) {
       return config;
     }
+
     const { options } = ts.convertCompilerOptionsFromJson(config, '.');
 
     return options;
