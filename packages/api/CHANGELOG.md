@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.35.1](https://github.com/ccontrols/structured-types/compare/v3.35.0...v3.35.1) (2021-11-07)
+
+
+### Bug Fixes
+
+* **api:** jsdoc default values parse ([68010dd](https://github.com/ccontrols/structured-types/commit/68010dd313bdb9546b88d7b8e9c1ab41983e2cb7))
+* **api:** jsdoc defaults remove quotes ([59c51aa](https://github.com/ccontrols/structured-types/commit/59c51aaee74b6d957c2ddbfee08d2cc473c04e40))
+
+
+
+
+
 # [3.35.0](https://github.com/ccontrols/structured-types/compare/v3.34.2...v3.35.0) (2021-11-07)
 
 
