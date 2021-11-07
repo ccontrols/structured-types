@@ -2,6 +2,37 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('interface', () => {
+  it('jsdoc-default', () => {
+    const results = parseFiles([path.resolve(__dirname, 'jsdoc-default.ts')]);
+    expect(results).toEqual({
+      Interface: {
+        name: 'Interface',
+        kind: 14,
+        properties: [
+          {
+            name: 'eat',
+            kind: 4,
+            properties: [
+              {
+                kind: 1,
+                value: 'honey',
+              },
+              {
+                kind: 1,
+                value: 'bread',
+              },
+              {
+                kind: 1,
+                value: 'meat',
+              },
+            ],
+            value: 'bread',
+            description: 'union prop',
+          },
+        ],
+      },
+    });
+  });
   it('extends-record', () => {
     const results = parseFiles([path.resolve(__dirname, 'extends-record.ts')]);
 
@@ -15,7 +46,7 @@ describe('interface', () => {
             name: 'm',
             kind: 1,
             description: 'interface member property',
-            value: "'hello'",
+            value: 'hello',
           },
           {
             name: 'n',
@@ -296,38 +327,6 @@ describe('interface', () => {
           {
             name: 'contents',
             type: 'Type',
-          },
-        ],
-      },
-    });
-  });
-
-  it('jsdoc-default', () => {
-    const results = parseFiles([path.resolve(__dirname, 'jsdoc-default.ts')]);
-    expect(results).toEqual({
-      Interface: {
-        name: 'Interface',
-        kind: 14,
-        properties: [
-          {
-            name: 'eat',
-            kind: 4,
-            properties: [
-              {
-                kind: 1,
-                value: 'honey',
-              },
-              {
-                kind: 1,
-                value: 'bread',
-              },
-              {
-                kind: 1,
-                value: 'meat',
-              },
-            ],
-            value: 'bread',
-            description: 'union prop',
           },
         ],
       },

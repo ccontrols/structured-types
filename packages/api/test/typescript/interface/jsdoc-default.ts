@@ -1,7 +1,7 @@
 export interface Interface {
   /**
    * union prop
-   * @default bread
+   * @default 'bread'
    */
   eat: 'honey' | 'bread' | 'meat';
 }

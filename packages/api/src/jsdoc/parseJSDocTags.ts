@@ -9,6 +9,7 @@ import {
   propValue,
 } from '../types';
 import { ParseOptions } from '../ts-utils';
+import { trimQuotes } from '..';
 
 export const cleanJSDocText = (s: string): string => {
   const result = s
@@ -148,7 +149,13 @@ export const parseJSDocTag = (
       }
       case 'default':
       case 'defaultvalue': {
-        propValue(prop, tagCommentToString(tag.comment));
+        if (tag.comment) {
+          const value = tagCommentToString(tag.comment);
+          if (typeof value !== 'undefined') {
+            propValue(prop, trimQuotes(value));
+          }
+        }
+
         break;
       }
       case 'summary': {

@@ -73,7 +73,7 @@ describe('columns', () => {
             children: [
               {
                 kind: 11,
-                value: "'hello'",
+                value: 'hello',
               },
             ],
           },
@@ -276,7 +276,7 @@ describe('columns', () => {
               children: [
                 {
                   kind: 11,
-                  value: "'hello'",
+                  value: 'hello',
                 },
               ],
             },
