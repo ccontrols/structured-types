@@ -133,7 +133,7 @@ export class PropsToDocumentation {
           ? `...${prop.name}`
           : prop.name
         : '';
-      name = `${name}${prop.optional ? '' : '*'}`;
+      name = `${name}${!name || prop.optional ? '' : '*'}`;
       return this.configurePropItem({
         name: prop.loc
           ? this.propLink({ name, loc: prop.loc })
@@ -395,10 +395,11 @@ export class PropsToDocumentation {
         if (more) {
           typeArguments.push(more);
         }
-        result.push(textNode('{ '));
-        result.push(...typeArguments);
-
-        result.push(textNode(' }'));
+        if (typeArguments.length) {
+          result.push(textNode('{ '));
+          result.push(...typeArguments);
+          result.push(textNode(' }'));
+        }
       } else if (prop.generics?.length) {
         const genericArguments: DocumentationNode[] | undefined =
           prop.generics?.reduce(
