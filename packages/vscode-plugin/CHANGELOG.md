@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.35.0](https://github.com/ccontrols/structured-types/compare/v3.34.2...v3.35.0) (2021-11-07)
+
+
+### Features
+
+* **vscode-plugin:** react extension with rollup ([135f5cf](https://github.com/ccontrols/structured-types/commit/135f5cf5cc77b7a3409ee985cfba9b2823d2bfd6))
+
+
+
+
+
 ## [3.34.2](https://github.com/ccontrols/structured-types/compare/v3.34.1...v3.34.2) (2021-11-05)
 
 

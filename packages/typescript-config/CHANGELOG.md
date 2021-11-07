@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.35.0](https://github.com/ccontrols/component-controls/compare/v3.34.2...v3.35.0) (2021-11-07)
+
+
+### Bug Fixes
+
+* **tsconfig:** adjust baseUrl ([954040b](https://github.com/ccontrols/component-controls/commit/954040be9f63d9046ae184fd09dd1611ff838d6d))
+
+
+
+
+
 # [3.32.0](https://github.com/ccontrols/component-controls/compare/v3.31.0...v3.32.0) (2021-10-31)
 
 

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.35.0](https://github.com/ccontrols/structured-types/compare/v3.34.2...v3.35.0) (2021-11-07)
+
+
+### Bug Fixes
+
+* **api:** add component as class type ([bc129b0](https://github.com/ccontrols/structured-types/commit/bc129b059337939be72b7508a73afd86959de48d))
+* **api-docs:** remove decorators if empty prop ([5d4eeb2](https://github.com/ccontrols/structured-types/commit/5d4eeb2bd30fdb02ab5912b60fffeb45bdf49f1e))
+* **tsconfig:** adjust baseUrl ([954040b](https://github.com/ccontrols/structured-types/commit/954040be9f63d9046ae184fd09dd1611ff838d6d))
+* add regex prop kind ([57779cd](https://github.com/ccontrols/structured-types/commit/57779cd97b18771b270a41ca4f338c7a4dd5a417))
+
+
+### Features
+
+* **vscode-plugin:** react extension with rollup ([135f5cf](https://github.com/ccontrols/structured-types/commit/135f5cf5cc77b7a3409ee985cfba9b2823d2bfd6))
+
+
+
+
+
 ## [3.34.2](https://github.com/ccontrols/structured-types/compare/v3.34.1...v3.34.2) (2021-11-05)
 
 

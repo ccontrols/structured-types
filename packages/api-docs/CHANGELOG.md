@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.35.0](https://github.com/ccontrols/structured-types/compare/v3.34.2...v3.35.0) (2021-11-07)
+
+
+### Bug Fixes
+
+* **api-docs:** remove decorators if empty prop ([5d4eeb2](https://github.com/ccontrols/structured-types/commit/5d4eeb2bd30fdb02ab5912b60fffeb45bdf49f1e))
+
+
+
+
+
 ## [3.34.2](https://github.com/ccontrols/structured-types/compare/v3.34.1...v3.34.2) (2021-11-05)
 
 
