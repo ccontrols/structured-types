@@ -3,6 +3,33 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('function-component', () => {
+  it('string-component', () => {
+    const result = parseFiles(
+      [path.resolve(__dirname, 'string-component.tsx')],
+      {
+        plugins: [reactPlugin],
+      },
+    );
+    expect(result).toEqual({
+      StringComponent: {
+        name: 'StringComponent',
+        extension: 'react',
+        kind: 25,
+      },
+    });
+  });
+  it('null-component', () => {
+    const result = parseFiles([path.resolve(__dirname, 'null-component.tsx')], {
+      plugins: [reactPlugin],
+    });
+    expect(result).toEqual({
+      NullComponent: {
+        name: 'NullComponent',
+        extension: 'react',
+        kind: 25,
+      },
+    });
+  });
   it('props-with-children', () => {
     const result = parseFiles(
       [path.resolve(__dirname, 'props-with-children.tsx')],

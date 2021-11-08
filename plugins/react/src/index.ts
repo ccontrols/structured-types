@@ -176,7 +176,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
                 const returnSymbol =
                   returnType.aliasSymbol || returnType.symbol;
                 if (
-                  returnSymbol &&
+                  !returnSymbol ||
                   ['Element', 'ReactNode'].includes(returnSymbol.getName())
                 ) {
                   let propsType = undefined;
