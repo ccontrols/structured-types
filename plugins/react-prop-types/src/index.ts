@@ -244,6 +244,7 @@ export default {
           collectGenerics: false,
           collectParameters: false,
           collectProperties: false,
+          collectInheritance: false,
         };
       }
     }
