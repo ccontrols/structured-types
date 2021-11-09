@@ -399,7 +399,10 @@ export class SymbolParser implements ISymbolParser {
         addProperties(node.elements);
       } else if (ts.isObjectLiteralExpression(node)) {
         addProperties(node.properties);
-      } else if (ts.isTypeAssertionExpression(node)) {
+      } else if (
+        ts.isTypeAssertionExpression(node) ||
+        ts.isAsExpression(node)
+      ) {
         this.parseValue(prop, options, node.expression);
       } else if (
         ts.isArrayBindingPattern(node) ||

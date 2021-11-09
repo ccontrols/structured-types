@@ -4,7 +4,7 @@ type Site = {
 
 export const urls = {
   social: {
-    google: <Site>{ url: 'https://google.com' },
+    google: { url: 'https://google.com' } as Site,
     facebook: <Site>{ url: 'https://facebook.com' },
   },
 };
