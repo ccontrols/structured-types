@@ -2,7 +2,54 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('object', () => {
-  it('initialized object', () => {
+  it('typed-object', () => {
+    const results = parseFiles([path.resolve(__dirname, 'typed-object.ts')]);
+    expect(results).toEqual({
+      urls: {
+        name: 'urls',
+        kind: 26,
+        properties: [
+          {
+            name: 'social',
+            properties: [
+              {
+                name: 'google',
+                properties: [
+                  {
+                    name: 'url',
+                    parent: {
+                      name: 'Site',
+                    },
+                    kind: 1,
+                    value: 'https://google.com',
+                  },
+                ],
+                type: 'Site',
+                kind: 15,
+              },
+              {
+                name: 'facebook',
+                properties: [
+                  {
+                    name: 'url',
+                    parent: {
+                      name: 'Site',
+                    },
+                    kind: 1,
+                    value: 'https://facebook.com',
+                  },
+                ],
+                type: 'Site',
+                kind: 15,
+              },
+            ],
+            kind: 26,
+          },
+        ],
+      },
+    });
+  });
+  it('initialized', () => {
     const results = parseFiles([path.resolve(__dirname, 'initialized.ts')]);
     expect(results).toEqual({
       initializedObj: {
@@ -25,7 +72,7 @@ describe('object', () => {
     });
   });
 
-  it('export const', () => {
+  it('export-const', () => {
     const results = parseFiles([path.resolve(__dirname, 'export-const.ts')]);
     expect(results).toEqual({
       obj: {

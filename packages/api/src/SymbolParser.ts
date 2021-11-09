@@ -21,7 +21,6 @@ import {
   propValue,
   ClassProp,
   trimQuotes,
-  hasProperties,
   IndexProp,
   RestProp,
   isEnumProp,
@@ -384,6 +383,7 @@ export class SymbolParser implements ISymbolParser {
                   childProp.kind !== PropKind.Rest &&
                   this.filterProperty(childProp, options)
                 ) {
+                  this.parseValue(childProp, options, e.initializer);
                   properties.push(childProp);
                 }
               }
@@ -397,8 +397,10 @@ export class SymbolParser implements ISymbolParser {
         return this.parseFunction(prop, options, node);
       } else if (ts.isObjectBindingPattern(node)) {
         addProperties(node.elements);
-      } else if (ts.isObjectLiteralExpression(node) && hasProperties(prop)) {
+      } else if (ts.isObjectLiteralExpression(node)) {
         addProperties(node.properties);
+      } else if (ts.isTypeAssertionExpression(node)) {
+        this.parseValue(prop, options, node.expression);
       } else if (
         ts.isArrayBindingPattern(node) ||
         ts.isArrayLiteralExpression(node)
@@ -851,9 +853,7 @@ export class SymbolParser implements ISymbolParser {
         ) {
           const resolvedSymbol =
             resolvedType.aliasSymbol || resolvedType.symbol;
-          const resolvedDeclaration = resolvedSymbol
-            ? getSymbolDeclaration(resolvedSymbol)
-            : undefined;
+          const resolvedDeclaration = getSymbolDeclaration(resolvedSymbol);
 
           const internalKind = this.internalNode(resolvedDeclaration);
 
