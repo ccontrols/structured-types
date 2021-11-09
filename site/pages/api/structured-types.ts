@@ -18,13 +18,14 @@ export default async (
   const { extensions: e, ...otherOptions } = parseOptions;
   const extensions = !e ? ['react-prop-types', 'react'] : e;
   const plugins = [];
+  let isJsx = false;
   if (extensions.includes('react-prop-types')) {
     plugins.push(propTypesPlugin);
   }
   if (extensions.includes('react')) {
+    isJsx = true;
     plugins.push(reactPlugin);
   }
-
   const options: DocsOptions = {
     plugins,
     ...otherOptions,
@@ -32,7 +33,13 @@ export default async (
   };
 
   const { lang = 'typescript', ...compilerOptions } = options?.tsOptions || {};
-  const extension = lang === 'javascript' ? 'jsx' : 'tsx';
+  const extension = isJsx
+    ? lang === 'javascript'
+      ? 'jsx'
+      : 'tsx'
+    : lang === 'javascript'
+    ? 'js'
+    : 'ts';
   const fileName = `index.${extension}`;
   const host = await getHost(fileName, code || '', compilerOptions);
   const result = analyzeFiles([fileName], options, {
