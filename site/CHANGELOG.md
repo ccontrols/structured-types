@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.35.2](https://github.com/ccontrols/structured-types/compare/v3.35.1...v3.35.2) (2021-11-09)
+
+
+### Bug Fixes
+
+* **site:** jsx file select ([e4cc20f](https://github.com/ccontrols/structured-types/commit/e4cc20f32db8a5eb3d1e935055d8ed6e47794ecf))
+
+
+
+
+
 ## [3.35.1](https://github.com/ccontrols/structured-types/compare/v3.35.0...v3.35.1) (2021-11-07)
 
 **Note:** Version bump only for package structured-types-site

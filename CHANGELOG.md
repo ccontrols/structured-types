@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.35.2](https://github.com/ccontrols/structured-types/compare/v3.35.1...v3.35.2) (2021-11-09)
+
+
+### Bug Fixes
+
+* **api:** include Object as classlike ([09f7e27](https://github.com/ccontrols/structured-types/commit/09f7e2756610905360fd293aa0acaa7bc0d3970d))
+* **api:** initialized as expression ([b2eb4c5](https://github.com/ccontrols/structured-types/commit/b2eb4c51b2889b145d22737d435a3f8d03808b3a))
+* **api:** initialized nested objects ([c08055a](https://github.com/ccontrols/structured-types/commit/c08055aa33ca7e9378e76b5068eab7b3e74f7bc3))
+* **prop-types-plugin:** collectInheritance false ([d7a6d33](https://github.com/ccontrols/structured-types/commit/d7a6d33d3f17b280cf0add1b0b2a0cdf0914b51c))
+* **site:** jsx file select ([e4cc20f](https://github.com/ccontrols/structured-types/commit/e4cc20f32db8a5eb3d1e935055d8ed6e47794ecf))
+
+
+
+
+
 ## [3.35.1](https://github.com/ccontrols/structured-types/compare/v3.35.0...v3.35.1) (2021-11-07)
 
 

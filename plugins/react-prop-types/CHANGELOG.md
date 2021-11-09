@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.35.2](https://github.com/ccontrols/structured-types/compare/v3.35.1...v3.35.2) (2021-11-09)
+
+
+### Bug Fixes
+
+* **prop-types-plugin:** collectInheritance false ([d7a6d33](https://github.com/ccontrols/structured-types/commit/d7a6d33d3f17b280cf0add1b0b2a0cdf0914b51c))
+
+
+
+
+
 ## [3.35.1](https://github.com/ccontrols/structured-types/compare/v3.35.0...v3.35.1) (2021-11-07)
 
 **Note:** Version bump only for package @structured-types/prop-types-plugin

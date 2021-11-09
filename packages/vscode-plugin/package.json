@@ -2,7 +2,7 @@
   "name": "@structured-types/instant-documentation",
   "publisher": "atanasster",
   "private": true,
-  "version": "3.35.1",
+  "version": "3.35.2",
   "description": "VSCode plugin to display structured type documentation",
   "keywords": [
     "instant documentation",
@@ -44,10 +44,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@structured-types/api": "^3.35.1",
-    "@structured-types/api-docs": "^3.35.1",
-    "@structured-types/prop-types-plugin": "^3.35.1",
-    "@structured-types/react-plugin": "^3.35.1",
+    "@structured-types/api": "^3.35.2",
+    "@structured-types/api-docs": "^3.35.2",
+    "@structured-types/prop-types-plugin": "^3.35.2",
+    "@structured-types/react-plugin": "^3.35.2",
     "@vscode/webview-ui-toolkit": "^0.8.4",
     "deepmerge": "^4.2.2",
     "react": "^17.0.2",
