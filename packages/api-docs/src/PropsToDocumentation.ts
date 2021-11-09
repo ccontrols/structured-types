@@ -141,7 +141,7 @@ export class PropsToDocumentation {
           : [inlineCodeNode(name)],
         parents: prop.parent ? this.propLink(prop.parent) : undefined,
 
-        type: this.extractPropType(prop, { extractProperties: true }),
+        type: this.extractPropType(prop),
         description: prop.description,
         default: hasValue(prop)
           ? typeof prop.value === 'string'
@@ -322,7 +322,7 @@ export class PropsToDocumentation {
 
   private extractPropType(
     prop: PropType,
-    options?: { showValue?: boolean; extractProperties?: boolean },
+    options?: { showValue?: boolean },
   ): DocumentationNode[] {
     if (prop.parent) {
       const parent = this.getPropLink(prop.parent.name);
