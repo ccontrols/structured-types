@@ -544,6 +544,7 @@ export const isClassLikeProp = (prop: PropType): prop is ClassLikeProp => {
     prop.kind === PropKind.Class ||
     prop.kind === PropKind.Interface ||
     prop.kind === PropKind.Type ||
+    prop.kind === PropKind.Object ||
     prop.kind === PropKind.Component
   );
 };
