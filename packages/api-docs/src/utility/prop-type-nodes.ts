@@ -12,7 +12,6 @@ import {
   isTupleProp,
   isIndexProp,
   isFunctionProp,
-  FunctionProp,
 } from '@structured-types/api/types';
 import {
   DocumentationNode,
@@ -104,7 +103,7 @@ export class PropTypeNodes {
       return [textNode(value)];
     }
     if (prop.kind) {
-      const typeNode: DocumentationNode[] = [
+      const result: DocumentationNode[] = [
         inlineCodeNode(`${PropKind[prop.kind].toLowerCase()}`),
       ];
       if (
@@ -113,12 +112,12 @@ export class PropTypeNodes {
       ) {
         const link = this.config.propLinks.propLink(prop.parent);
         if (link.length) {
-          typeNode.push(textNode(` (`));
-          typeNode.push(...link);
-          typeNode.push(textNode(`)`));
+          result.push(textNode(` (`));
+          result.push(...link);
+          result.push(textNode(`)`));
         }
       }
-      return typeNode;
+      return result;
     }
     if (prop.name) {
       return [textNode(prop.name)];
@@ -259,40 +258,36 @@ export class PropTypeNodes {
       return results;
       //return this.extractFunctionDeclaration(prop);
     } else if (isFunctionProp(prop)) {
-      return this.extractFunctionDeclaration(prop);
-    }
-    return this.typeNode(prop, showValue);
-  }
+      const result: DocumentationNode[] = [textNode('(')];
+      if (prop.parameters) {
+        for (let i = 0; i < prop.parameters.length; i += 1) {
+          const p = prop.parameters[i];
+          if (i > 0) {
+            result.push(textNode(', '));
+          }
+          if (p.name) {
+            result.push(inlineCodeNode(p.name));
 
-  private extractFunctionDeclaration(prop: FunctionProp): DocumentationNode[] {
-    const result: DocumentationNode[] = [textNode('(')];
-    if (prop.parameters) {
-      for (let i = 0; i < prop.parameters.length; i += 1) {
-        const p = prop.parameters[i];
-        if (i > 0) {
-          result.push(textNode(', '));
-        }
-        if (p.name) {
-          result.push(inlineCodeNode(p.name));
-
-          if (!p.optional) {
+            if (!p.optional) {
+              result.push(textNode('*'));
+            }
+            result.push(textNode(': '));
+          }
+          result.push(...this.extractPropType(p));
+          if (!p.name && !p.optional) {
             result.push(textNode('*'));
           }
-          result.push(textNode(': '));
-        }
-        result.push(...this.extractPropType(p));
-        if (!p.name && !p.optional) {
-          result.push(textNode('*'));
         }
       }
+      result.push(textNode(')'));
+      result.push(textNode(' => '));
+      if (prop.returns) {
+        result.push(...this.extractPropType(prop.returns));
+      } else {
+        result.push(textNode('void'));
+      }
+      return result;
     }
-    result.push(textNode(')'));
-    result.push(textNode(' => '));
-    if (prop.returns) {
-      result.push(...this.extractPropType(prop.returns));
-    } else {
-      result.push(textNode('void'));
-    }
-    return result;
+    return this.typeNode(prop, showValue);
   }
 }
