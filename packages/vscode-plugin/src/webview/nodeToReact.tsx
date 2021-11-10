@@ -61,7 +61,17 @@ const renderNode = (props: {
   } else if (isInlineCodeNode(node)) {
     return <code>{nodeContent(props)}</code>;
   } else if (isCodeNode(node)) {
-    return <pre>{nodeContent(props)}</pre>;
+    return (
+      <pre
+        style={{
+          backgroundColor: 'var(--list-hover-background)',
+          margin: 0,
+          padding: '0.2em',
+        }}
+      >
+        {nodeContent(props)}
+      </pre>
+    );
   } else if (isTextNode(node)) {
     return node.value || '';
   } else if (isTableNode(node)) {
