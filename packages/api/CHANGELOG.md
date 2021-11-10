@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.35.3](https://github.com/ccontrols/structured-types/compare/v3.35.2...v3.35.3) (2021-11-10)
+
+
+### Bug Fixes
+
+* **api:** symbol location with jsdoc ([a4fa2ef](https://github.com/ccontrols/structured-types/commit/a4fa2efb451262b06d46c7a1eaa06100ce5fee82))
+
+
+
+
+
 ## [3.35.2](https://github.com/ccontrols/structured-types/compare/v3.35.1...v3.35.2) (2021-11-09)
 
 
