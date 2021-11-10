@@ -99,7 +99,6 @@ const renderNode = (props: {
     ) : null;
     return table;
   }
-  debugger;
   return null;
 };
 
@@ -124,9 +123,6 @@ const nodeComponents = ({
   nodes?: DocumentationNode[];
   inTable: boolean;
 }): React.ReactNode => {
-  if (!Array.isArray(nodes)) {
-    debugger;
-  }
   return nodes ? (
     <React.Fragment>
       {nodes.map((node, idx) =>
