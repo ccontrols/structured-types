@@ -64,17 +64,31 @@ export const defaultOptions: OptionsTypes = {
         skipLink: true,
         help: 'Whether to extract and consolidate the "parent" props into their own branch `__helpers`. Will allow full introspection of parent-level properties and can save space if the same properties are used multiple times across your code.',
       },
-      collectGenerics: {
-        defaultValue: true,
-        skipLink: true,
-        help: 'Whether to collect generics parameters.',
-      },
       collectSourceInfo: {
         defaultValue: false,
         skipLink: true,
         help: 'Whether to collect the file path and source location of symbols.',
       },
-
+      collectInnerLocations: {
+        defaultValue: false,
+        skipLink: true,
+        help: 'Whether to collect the source code location for inner symbol declarations. If set to true, the data will be collected in the `loc` prop.',
+      },
+      collectGenerics: {
+        defaultValue: true,
+        skipLink: true,
+        help: 'Whether to collect generics parameters.',
+      },
+      collectInheritance: {
+        defaultValue: true,
+        skipLink: true,
+        help: 'Whether to collect the inheritance properties.',
+      },
+      collectInternals: {
+        defaultValue: false,
+        skipLink: true,
+        help: 'Whether to collect internal (typescript) symbols.',
+      },
       scope: {
         defaultValue: 'exports',
         options: ['exports', 'all'],

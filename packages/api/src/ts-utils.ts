@@ -271,7 +271,7 @@ export interface ParseOptions {
   collectSourceInfo?: boolean;
 
   /**
-   * whether to collect the source code location for inner symbol declaration
+   * whether to collect the source code location for inner symbol declarations
    * if set to true, the data will be collected in the `loc` prop
    */
   collectInnerLocations?: boolean;
