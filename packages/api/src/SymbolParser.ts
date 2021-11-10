@@ -189,8 +189,8 @@ export class SymbolParser implements ISymbolParser {
       location.filePath = source.fileName;
       const name = ts.getNameOfDeclaration(node as ts.Declaration);
       if (name) {
-        const start = source.getLineAndCharacterOfPosition(name.pos);
-        const end = source.getLineAndCharacterOfPosition(name.end);
+        const start = source.getLineAndCharacterOfPosition(name.getStart());
+        const end = source.getLineAndCharacterOfPosition(name.getEnd());
         location.loc = {
           start: {
             line: start.line + 1,

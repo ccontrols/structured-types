@@ -10,7 +10,7 @@
       "name": "api",
       "program": "${workspaceFolder}/node_modules/.bin/jest",
       "cwd": "${workspaceFolder}/packages/api",
-      "args": ["object-prop"],
+      "args": ["loc"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true,
