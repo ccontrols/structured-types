@@ -6,6 +6,7 @@ exports[`create own api docs api-readme 1`] = `
 -   [API](#api)
     -   [MyComponent](#mycomponent)
     -   [OwnProps](#ownprops)
+    -   [TConfig](#tconfig)
 
 # API
 
@@ -19,14 +20,16 @@ exports[`create own api docs api-readme 1`] = `
 
 MyComponent special component
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L19)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L39)_
 
 **properties**
 
-| Name          | Type     | Parent                  | Default | Description            |
-| ------------- | -------- | ----------------------- | ------- | ---------------------- |
-| \`stringProp\`  | \`string\` | [\`OwnProps\`](#ownprops) | \`test\`  | stringProp description |
-| \`numberProp*\` | \`number\` | [\`OwnProps\`](#ownprops) | \`4\`     | numberProp description |
+| Name          | Type                                                                              | Parent                  | Default  | Description            |
+| ------------- | --------------------------------------------------------------------------------- | ----------------------- | -------- | ---------------------- |
+| \`stringProp\`  | \`string\`                                                                          | [\`OwnProps\`](#ownprops) | \`\\"test\\"\` | stringProp description |
+| \`numberProp*\` | \`number\`                                                                          | [\`OwnProps\`](#ownprops) | \`\\"4\\"\`    | numberProp description |
+| \`objectProp*\` | { \`name\`: \`string\`, \`sex\`: \\"male\\" \\\\| \\"female\\" }                                   | [\`OwnProps\`](#ownprops) |          | objectProp description |
+| \`fnProp*\`     | (\`p\`\\\\*: { \`config\`: [\`TConfig\`](#tconfig) }) => { \`state\`: { \`name\`: \`string\` } } | [\`OwnProps\`](#ownprops) |          |                        |
 
 ## OwnProps
 
@@ -34,14 +37,30 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 
 MyComponent properties.
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L5)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L16)_
 
 **properties**
 
-| Name          | Type     | Default | Description            |
-| ------------- | -------- | ------- | ---------------------- |
-| \`stringProp\`  | \`string\` | \`\`      | stringProp description |
-| \`numberProp*\` | \`number\` | \`4\`     | numberProp description |
+| Name          | Type                                                                              | Default | Description            |
+| ------------- | --------------------------------------------------------------------------------- | ------- | ---------------------- |
+| \`stringProp\`  | \`string\`                                                                          |         | stringProp description |
+| \`numberProp*\` | \`number\`                                                                          | \`\\"4\\"\`   | numberProp description |
+| \`objectProp*\` | { \`name\`: \`string\`, \`sex\`: \\"male\\" \\\\| \\"female\\" }                                   |         | objectProp description |
+| \`fnProp*\`     | (\`p\`\\\\*: { \`config\`: [\`TConfig\`](#tconfig) }) => { \`state\`: { \`name\`: \`string\` } } |         |                        |
+
+## TConfig
+
+**\`type\`**
+
+configuration object
+
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L6)_
+
+**properties**
+
+| Name      | Type      | Default | Description                    |
+| --------- | --------- | ------- | ------------------------------ |
+| \`system*\` | \`boolean\` | \`true\`  | is this a system configuration |
 
 <!-- END-API-README -->
 "

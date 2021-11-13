@@ -13,7 +13,7 @@ export const extendsSection = (
         const p = config.propLinks.getPropLink(key);
         let result: DocumentationNode[];
         if (p) {
-          result = config.propTypes.extractPropType(p);
+          result = [config.propTypes.extractPropType(p)];
         } else {
           result = [textNode(key)];
         }

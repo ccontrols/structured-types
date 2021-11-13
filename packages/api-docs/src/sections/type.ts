@@ -22,7 +22,7 @@ export const typeSection = (
   } else if (typeof prop.type === 'string') {
     return [
       headingNode(
-        config.propLinks.propLink({ name: prop.type, loc: prop.loc }),
+        [config.propLinks.propLink({ name: prop.type, loc: prop.loc })],
         3,
       ),
     ];

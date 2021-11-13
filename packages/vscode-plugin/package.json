@@ -201,11 +201,6 @@
           "uniqueItems": true,
           "default": []
         },
-        "instant-documentation.maxProps": {
-          "description": "Maximum number of properties to list in the props table rows, this is to avoid huge property sets.",
-          "type": "number",
-          "default": 30
-        },
         "instant-documentation.columns": {
           "markdownDescription": "Configuration of the columns in the property tables.ou can change the title or the hidden properties of each column.",
           "type": "object",

@@ -47,10 +47,6 @@ export class ConfigStore {
     this._config.extensions = this.readValue<
       DocumentationOptions['extensions']
     >(config, 'extensions');
-    this._config.maxProps = this.readValue<DocumentationOptions['maxProps']>(
-      config,
-      'maxProps',
-    );
     this._config.columns = this.readValue<DocumentationOptions['columns']>(
       config,
       'columns',

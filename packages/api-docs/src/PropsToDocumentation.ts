@@ -46,7 +46,7 @@ export class PropsToDocumentation {
     const result: DocumentationNode[] = [];
     if (prop.name) {
       if (isUnionProp(prop)) {
-        result.push(...this.config.propTypes.extractPropType(prop));
+        result.push(this.config.propTypes.extractPropType(prop));
       } else if (hasProperties(prop) && prop.properties) {
         const { propsTable } = propTable(prop, prop.properties, this.config);
         result.push(...propsTable);

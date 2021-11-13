@@ -6,7 +6,6 @@ import {
   isEnumProp,
   isArrayProp,
   HasPropertiesProp,
-  HasValueProp,
   isStringProp,
   PropKind,
   isTupleProp,
@@ -20,7 +19,12 @@ import {
 } from '../types';
 import { textNode } from '../blocks/text';
 import { inlineCodeNode } from '../blocks/inline-code';
+
 import { DocumentationConfig } from '../DocumentationConfig';
+import { collapsibleNode } from '../blocks/collapsible';
+import { hasValue } from '@structured-types/api';
+import { blockNode } from '../blocks/block';
+import { spanNode } from '../blocks/span';
 
 export class PropTypeNodes {
   private config: DocumentationConfig = {} as DocumentationConfig;
@@ -29,42 +33,40 @@ export class PropTypeNodes {
   }
   public extractPropType(
     prop: PropType,
+    nameNode?: DocumentationNode[],
     showValue?: boolean,
-  ): DocumentationNode[] {
+  ): DocumentationNode {
     if (prop.parent) {
       const parent = this.config.propLinks.getPropLink(prop.parent.name);
       if (parent && isClassLikeProp(parent)) {
         const p = parent.properties?.find((p) => p.name === prop.name);
         if (p) {
-          return this.extractType(p, showValue);
+          return this.extractTypeNode(p, nameNode, showValue);
         }
       }
     }
-    return this.extractType(prop, showValue);
+    return this.extractTypeNode(prop, nameNode, showValue);
   }
 
-  getPropProperties(prop: HasPropertiesProp): {
+  private getPropProperties(prop: HasPropertiesProp): {
     properties: PropType[];
-    more: DocumentationNode | undefined;
   } {
-    const { maxProps = 30 } = this.config.options;
     if (prop.properties) {
       return {
-        properties: maxProps ? prop.properties.slice(0, maxProps) : [],
-        more:
-          maxProps && prop.properties.length > maxProps
-            ? textNode(` ,...${prop.properties.length - maxProps} more`)
-            : undefined,
+        properties: prop.properties,
       };
     }
     return {
       properties: [],
-      more: undefined,
     };
   }
 
-  private inlineType(prop: PropType): DocumentationNode[] {
-    let typeNode: DocumentationNode[] | undefined = undefined;
+  private inlineType(prop: PropType): DocumentationNode | undefined {
+    let typeNode: DocumentationNode | undefined = undefined;
+    let nameNode: DocumentationNode[] | undefined = undefined;
+    if (prop.name && prop.name !== prop.type) {
+      nameNode = [inlineCodeNode(`${prop.name}`), textNode(': ')];
+    }
     if (typeof prop.type === 'string') {
       if (this.config.propLinks.getPropLink(prop.type)) {
         typeNode = this.config.propLinks.propLink({
@@ -72,35 +74,33 @@ export class PropTypeNodes {
           loc: prop.loc,
         });
       } else {
-        typeNode = this.extractPropType(prop);
+        typeNode = this.extractPropType(prop, nameNode);
       }
     } else if (prop.kind) {
-      typeNode = this.extractPropType(prop);
+      typeNode = this.extractPropType(prop, nameNode);
     }
-    if (prop.name && prop.name !== prop.type) {
-      return [
-        inlineCodeNode(`${prop.name}`),
-        textNode(`${typeNode ? ': ' : ''}`),
-        ...(typeNode || []),
-      ];
-    }
-    return typeNode || [];
+    return typeNode;
   }
-  private typeNode(prop: PropType, showValue = true): DocumentationNode[] {
+  private typeNode(
+    prop: PropType,
+    showValue = true,
+  ): DocumentationNode | undefined {
     if (typeof prop.type === 'string') {
       if (typeof prop.parent === 'string') {
-        return [
-          ...this.config.propLinks.propLink(prop.parent),
+        return spanNode([
+          this.config.propLinks.propLink(prop.parent),
           textNode(`.${prop.type}`),
-        ];
+        ]);
       }
       return this.config.propLinks.propLink({ name: prop.type, loc: prop.loc });
     }
-    if (showValue && (prop as HasValueProp).value !== undefined) {
+    if (showValue && hasValue(prop)) {
       const value = isStringProp(prop)
         ? `"${jsStringEscape(prop.value)}"`
-        : (prop as HasValueProp).value.toString();
-      return [textNode(value)];
+        : prop.value === undefined
+        ? 'undefined'
+        : prop.value.toString();
+      return textNode(value);
     }
     if (prop.kind) {
       const result: DocumentationNode[] = [
@@ -111,107 +111,116 @@ export class PropTypeNodes {
         this.config.propLinks.getPropLink(prop.parent)
       ) {
         const link = this.config.propLinks.propLink(prop.parent);
-        if (link.length) {
+        if (link) {
           result.push(textNode(` (`));
-          result.push(...link);
+          result.push(link);
           result.push(textNode(`)`));
         }
       }
-      return result;
+      return spanNode(result);
     }
     if (prop.name) {
-      return [textNode(prop.name)];
+      return textNode(prop.name);
     }
 
-    return [];
+    return undefined;
   }
-  extractType(prop: PropType, showValue = false): DocumentationNode[] {
+
+  private extractTypeNode(
+    prop: PropType,
+    nameNode?: DocumentationNode[],
+    showValue = false,
+  ): DocumentationNode {
     const unionSeparator = ' | ';
     const enumSeparator = ' | ';
+    const name = nameNode ? nameNode : [];
     if (
       typeof prop.type === 'string' &&
       this.config.options.collapsed?.includes(prop.type)
     ) {
-      return this.typeNode(prop, showValue);
+      return blockNode(
+        [...name, this.typeNode(prop, showValue)].filter(
+          Boolean,
+        ) as DocumentationNode[],
+      );
     } else if (isUnionProp(prop) || isEnumProp(prop)) {
       const separator = isUnionProp(prop) ? unionSeparator : enumSeparator;
-      const { properties, more } = this.getPropProperties(prop);
+      const { properties } = this.getPropProperties(prop);
       const nodes = properties.reduce((acc: DocumentationNode[], t, idx) => {
-        const r = [...acc, ...this.extractPropType(t, true)];
+        const r = [...acc, this.extractPropType(t, undefined, true)];
         if (idx < properties.length - 1) {
           r.push(textNode(separator));
         }
         return r;
-      }, []);
-      if (more) {
-        nodes.push(more);
-      }
-      return nodes;
+      }, name);
+
+      return blockNode(nodes);
     } else if (isClassLikeProp(prop)) {
       const propName = typeof prop.type === 'string' ? prop.type : prop.name;
       const result: DocumentationNode[] = [];
-      const { properties, more } = this.getPropProperties(prop);
+      const { properties } = this.getPropProperties(prop);
       if (
         typeof propName === 'string' &&
         this.config.propLinks.getPropLink(propName)
       ) {
         result.push(
-          ...this.config.propLinks.propLink({ name: propName, loc: prop.loc }),
+          this.config.propLinks.propLink({
+            name: propName,
+            loc: prop.loc,
+          }),
         );
       } else if (properties.length) {
         const typeArguments: DocumentationNode[] = properties.reduce(
-          (acc: DocumentationNode[], p: PropType, idx: number) => {
-            const result = [...acc, ...this.inlineType(p)];
-            if (properties && idx < properties.length - 1) {
-              result.push(textNode(', '));
-            }
-            return result;
+          (acc: DocumentationNode[], p: PropType) => {
+            return [...acc, this.inlineType(p)].filter(
+              Boolean,
+            ) as DocumentationNode[];
           },
           [],
         );
-        if (more) {
-          typeArguments.push(more);
-        }
-        if (typeArguments.length) {
-          result.push(textNode('{ '));
-          result.push(...typeArguments);
-          result.push(textNode(' }'));
-        }
+        return collapsibleNode(
+          typeArguments,
+          nameNode || [textNode(`...${properties.length} properties`)],
+        );
       } else if (prop.generics?.length) {
         const genericArguments: DocumentationNode[] | undefined =
           prop.generics?.reduce(
             (acc: DocumentationNode[], p: PropType, idx: number) => {
-              const result = [...acc, ...this.inlineType(p)];
+              const result = [...acc, this.inlineType(p)].filter(
+                Boolean,
+              ) as DocumentationNode[];
               if (prop.generics && idx < prop.generics.length - 1) {
                 result.push(textNode(', '));
               }
               return result;
             },
-            [],
+            name,
           );
-        result.push(...this.typeNode(prop));
+        result.push(...name);
+        const typeNode = this.typeNode(prop);
+        if (typeNode) {
+          result.push(typeNode);
+        }
         if (genericArguments?.length) {
           result.push(...[textNode('<'), ...genericArguments, textNode('>')]);
         }
       } else if (propName) {
         result.push(textNode(propName));
       }
-      return result;
+      return blockNode(result);
     } else if (isArrayProp(prop)) {
-      const { properties, more } = this.getPropProperties(prop);
+      const { properties } = this.getPropProperties(prop);
       const elements = properties.reduce(
         (acc: DocumentationNode[], p: PropType, idx: number) => {
-          const result = this.extractPropType(p);
+          const result = [this.extractPropType(p)];
           if (idx < properties.length - 1) {
             result.push(textNode(', '));
           }
           return [...acc, ...result];
         },
-        [],
+        name,
       ) as DocumentationNodeWithChildren[];
-      if (more) {
-        elements.push(more);
-      }
+
       const multiProps =
         elements.length &&
         ((elements[0].children && elements[0].children.length > 1) ||
@@ -220,42 +229,45 @@ export class PropTypeNodes {
             (elements[1].value === unionSeparator ||
               elements[1].value === enumSeparator)));
       if (multiProps) {
-        elements.splice(0, 0, textNode('('));
-        elements.push(textNode(')'));
+        elements.splice(
+          0,
+          0,
+          textNode('(') as unknown as DocumentationNodeWithChildren,
+        );
+        elements.push(
+          textNode(')') as unknown as DocumentationNodeWithChildren,
+        );
       }
-      elements.push(textNode('[]'));
-      return elements;
+      elements.push(textNode('[]') as unknown as DocumentationNodeWithChildren);
+      return blockNode(elements);
     } else if (isTupleProp(prop)) {
-      const { properties, more } = this.getPropProperties(prop);
+      const { properties } = this.getPropProperties(prop);
       const nodes = [
         textNode('['),
         ...properties.reduce(
           (acc: DocumentationNode[], p: PropType, idx: number) => {
-            const result = this.extractPropType(p);
+            const result = [this.extractPropType(p)];
             if (idx < properties.length - 1) {
               result.push(textNode(', '));
             }
             return [...acc, ...result];
           },
-          [],
+          name,
         ),
       ];
-      if (more) {
-        nodes.push(more);
-      }
       nodes.push(textNode(']'));
-      return nodes;
+      return blockNode(nodes);
     } else if (isIndexProp(prop)) {
       const results: DocumentationNode[] = [
         textNode('['),
-        ...this.extractPropType(prop.index),
+        this.extractPropType(prop.index),
         textNode(']'),
       ];
       if (prop.prop) {
         results.push(textNode(': '));
-        results.push(...this.extractPropType(prop.prop));
+        results.push(this.extractPropType(prop.prop));
       }
-      return results;
+      return blockNode([...name, ...results]);
       //return this.extractFunctionDeclaration(prop);
     } else if (isFunctionProp(prop)) {
       const result: DocumentationNode[] = [textNode('(')];
@@ -265,15 +277,16 @@ export class PropTypeNodes {
           if (i > 0) {
             result.push(textNode(', '));
           }
+          let nameNode: DocumentationNode[] | undefined = undefined;
           if (p.name) {
-            result.push(inlineCodeNode(p.name));
+            nameNode = [inlineCodeNode(p.name)];
 
             if (!p.optional) {
-              result.push(textNode('*'));
+              nameNode.push(textNode('*'));
             }
-            result.push(textNode(': '));
+            nameNode.push(textNode(': '));
           }
-          result.push(...this.extractPropType(p));
+          result.push(this.extractPropType(p, nameNode));
           if (!p.name && !p.optional) {
             result.push(textNode('*'));
           }
@@ -282,12 +295,16 @@ export class PropTypeNodes {
       result.push(textNode(')'));
       result.push(textNode(' => '));
       if (prop.returns) {
-        result.push(...this.extractPropType(prop.returns));
+        result.push(this.extractPropType(prop.returns, [textNode('returns')]));
       } else {
         result.push(textNode('void'));
       }
-      return result;
+      return blockNode([...name, ...result]);
     }
-    return this.typeNode(prop, showValue);
+    return blockNode(
+      [...name, this.typeNode(prop, showValue)].filter(
+        Boolean,
+      ) as DocumentationNode[],
+    );
   }
 }

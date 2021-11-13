@@ -9,6 +9,7 @@ import { createPropsTable, PropItem } from '../blocks/table';
 import { inlineCodeNode } from '../blocks/inline-code';
 import { DocumentationConfig } from '../DocumentationConfig';
 import { ColumnName } from '../types';
+import { isStringProp } from '@structured-types/api';
 
 export const propTable = (
   prop: PropType,
@@ -85,16 +86,16 @@ export const propTable = (
     return configurePropItem(
       {
         name: prop.loc
-          ? config.propLinks.propLink({ name, loc: prop.loc })
+          ? [config.propLinks.propLink({ name, loc: prop.loc })]
           : [inlineCodeNode(name)],
         parents: prop.parent
-          ? config.propLinks.propLink(prop.parent)
+          ? [config.propLinks.propLink(prop.parent)]
           : undefined,
 
-        type: config.propTypes.extractPropType(prop),
+        type: [config.propTypes.extractPropType(prop)],
         description: prop.description,
         default: hasValue(prop)
-          ? typeof prop.value === 'string'
+          ? isStringProp(prop) && typeof prop.value === 'string'
             ? `"${prop.value}"`
             : prop.value
           : undefined,

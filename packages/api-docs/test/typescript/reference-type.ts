@@ -1,5 +1,3 @@
-import React, { FC } from 'react';
-
 /**
  * configuration object
  */
@@ -13,7 +11,7 @@ type TConfig = {
 /**
  * MyComponent properties.
  */
-type OwnProps = {
+export type Props = {
   /** stringProp description */
   stringProp?: string;
 
@@ -38,15 +36,4 @@ type OwnProps = {
    * array property
    */
   arrProp: [string, number];
-};
-
-/**
- * MyComponent special component
- */
-export const MyComponent: FC<OwnProps> = ({ stringProp }) => (
-  <div>{stringProp}</div>
-);
-
-MyComponent.defaultProps = {
-  stringProp: 'test',
 };

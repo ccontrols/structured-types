@@ -13,6 +13,8 @@ import {
   isTextNode,
   isNodeWithChildren,
   isNodeWithValue,
+  isBlockNode,
+  isCollapsibleNode,
 } from '@structured-types/api-docs';
 import { RemarkNode } from '../types';
 
@@ -27,6 +29,61 @@ const renderNode = ({
     return nodeContent({ node, as: 'heading', depth: node.depth, ...props });
   } else if (isParagraphNode(node)) {
     return nodeContent({ node, as: 'paragraph', ...props });
+  } else if (isBlockNode(node) && node.children) {
+    return {
+      type: 'paragraph',
+      children: [
+        ...(node.children.map((node) => renderNode({ node })) as RemarkNode[]),
+        {
+          type: 'html',
+          value: '<br />',
+        },
+      ],
+    };
+  } else if (isCollapsibleNode(node)) {
+    return {
+      type: 'paragraph',
+      children: [
+        {
+          type: 'html',
+          value: '<details>',
+        },
+        {
+          type: 'html',
+          value: '<summary>',
+        },
+        ...nodesToRemark(node.summary),
+        {
+          type: 'html',
+          value: '</summary>',
+        },
+        {
+          type: 'html',
+          value: '<blockquote>',
+        },
+        ...(node.children
+          ? node.children.reduce((acc, n) => {
+              const r = renderNode({ node: n });
+              if (r?.value === 'optional') {
+                debugger;
+              }
+              if (r) {
+                const returns = [r];
+                return [...acc, ...returns];
+              }
+              return acc;
+            }, [] as RemarkNode[])
+          : []),
+        {
+          type: 'html',
+          value: '</blockquote>',
+        },
+        {
+          type: 'html',
+          value: '</details>',
+        },
+      ],
+    };
   } else if (isBoldNode(node)) {
     return nodeContent({ node, as: 'strong', ...props });
   } else if (isEmphasisNode(node)) {
@@ -47,6 +104,8 @@ const renderNode = ({
     return nodeContent({ node, as: 'tableRow', ...props });
   } else if (isTableNode(node)) {
     return nodeContent({ node, as: 'table', ...props });
+  } else if (isNodeWithChildren(node)) {
+    return nodeContent({ node, as: 'paragraph', ...props });
   }
   return null;
 };
