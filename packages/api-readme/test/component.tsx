@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
+import * as ts from 'typescript';
 
 /**
  * configuration object
@@ -9,11 +10,23 @@ type TConfig = {
    * @default true
    */
   system: boolean;
+  compiler: ts.CompilerOptions;
+
+  kind: Kind;
 };
 /**
  * MyComponent properties.
  */
 type OwnProps = {
+  /**
+   * Record prop
+   */
+  record?: Record<string, TConfig>;
+
+  /**
+   * external type
+   */
+  el?: ReactNode;
   /** stringProp description */
   stringProp?: string;
 
@@ -22,6 +35,9 @@ type OwnProps = {
    * @default 4
    */
   numberProp: number;
+  /** linked type */
+  config: TConfig;
+
   /**
    * objectProp description
    */
@@ -30,14 +46,24 @@ type OwnProps = {
     sex: 'male' | 'female';
     c: TConfig;
   };
+
   /**
    * function property
    */
-  fnProp: (p: { config: TConfig }) => { state: { name: string } };
+  fnProp: (
+    p: { config: TConfig },
+    b: boolean,
+    a: boolean,
+  ) => { state: { name: string } };
+  /**
+   * linked function
+   */
+  fnType: FnType;
   /**
    * array property
    */
   arrProp: [string, number];
+  arrType: ConfigArr;
 };
 
 /**
@@ -49,4 +75,17 @@ export const MyComponent: FC<OwnProps> = ({ stringProp }) => (
 
 MyComponent.defaultProps = {
   stringProp: 'test',
+};
+
+export enum Kind {
+  Table = 1,
+  TableRow = 2,
+}
+
+type FnType = (kind: Kind) => string;
+
+type ConfigArr = TConfig[];
+
+export type IndexedProps = {
+  [index: string]: TConfig;
 };
