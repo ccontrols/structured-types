@@ -73,8 +73,13 @@ describe('union', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 11,
-                    value: 'sections',
+                    kind: 9,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'sections',
+                      },
+                    ],
                   },
                 ],
               },
@@ -82,24 +87,13 @@ describe('union', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 6,
-                    value: '(',
-                  },
-                  {
-                    kind: 6,
-                    value: '"title"',
-                  },
-                  {
-                    kind: 6,
-                    value: ' | ',
-                  },
-                  {
-                    kind: 6,
-                    value: '"type"',
-                  },
-                  {
-                    kind: 6,
-                    value: ')',
+                    kind: 9,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'SectionName',
+                      },
+                    ],
                   },
                   {
                     kind: 6,

@@ -40,7 +40,7 @@ describe('interface', () => {
       Props: {
         name: 'Props',
         kind: 14,
-        extends: ['Base'],
+        extends: [{ name: 'Base' }],
         properties: [
           {
             name: 'm',
@@ -147,7 +147,7 @@ describe('interface', () => {
       Bear: {
         name: 'Bear',
         kind: 14,
-        extends: ['Internal', 'Home'],
+        extends: [{ name: 'Internal' }, { name: 'Home' }],
         properties: [
           {
             kind: 3,
@@ -277,6 +277,7 @@ describe('interface', () => {
                   kind: 8,
                 },
               ],
+              optional: true,
             },
             description:
               'Removes the last element from an array and returns it.',
@@ -298,6 +299,7 @@ describe('interface', () => {
             ],
             returns: {
               kind: 2,
+              optional: true,
             },
             description:
               'Appends new elements to an array, and returns the new length of the array.',
@@ -385,6 +387,7 @@ describe('interface', () => {
                   ],
                 },
               ],
+              optional: true,
             },
           },
         ],

@@ -74,8 +74,13 @@ describe('reference-type', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 11,
-                    value: 'stringProp',
+                    kind: 9,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'stringProp',
+                      },
+                    ],
                   },
                 ],
               },
@@ -83,18 +88,8 @@ describe('reference-type', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 12,
-                    children: [
-                      {
-                        kind: 13,
-                        children: [
-                          {
-                            kind: 11,
-                            value: 'string',
-                          },
-                        ],
-                      },
-                    ],
+                    kind: 11,
+                    value: 'string',
                   },
                 ],
               },
@@ -125,8 +120,13 @@ describe('reference-type', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 11,
-                    value: 'numberProp*',
+                    kind: 9,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'numberProp*',
+                      },
+                    ],
                   },
                 ],
               },
@@ -134,18 +134,8 @@ describe('reference-type', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 12,
-                    children: [
-                      {
-                        kind: 13,
-                        children: [
-                          {
-                            kind: 11,
-                            value: 'number',
-                          },
-                        ],
-                      },
-                    ],
+                    kind: 11,
+                    value: 'number',
                   },
                 ],
               },
@@ -176,8 +166,13 @@ describe('reference-type', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 11,
-                    value: 'objectProp*',
+                    kind: 9,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'objectProp*',
+                      },
+                    ],
                   },
                 ],
               },
@@ -185,73 +180,66 @@ describe('reference-type', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 14,
+                    kind: 13,
                     summary: [
                       {
-                        kind: 6,
-                        value: '...3 properties',
+                        kind: 11,
+                        value: 'type',
                       },
                     ],
                     children: [
                       {
-                        kind: 12,
-                        children: [
-                          {
-                            kind: 11,
-                            value: 'name',
-                          },
-                          {
-                            kind: 6,
-                            value: ': ',
-                          },
-                          {
-                            kind: 13,
-                            children: [
-                              {
-                                kind: 11,
-                                value: 'string',
-                              },
-                            ],
-                          },
-                        ],
+                        kind: 11,
+                        value: 'name',
+                      },
+                      {
+                        kind: 6,
+                        value: '*',
+                      },
+                      {
+                        kind: 6,
+                        value: ': ',
                       },
                       {
                         kind: 12,
                         children: [
                           {
                             kind: 11,
-                            value: 'sex',
+                            value: 'string',
                           },
+                        ],
+                      },
+                      {
+                        kind: 11,
+                        value: 'sex',
+                      },
+                      {
+                        kind: 6,
+                        value: '*',
+                      },
+                      {
+                        kind: 6,
+                        value: ': ',
+                      },
+                      {
+                        kind: 12,
+                        children: [
                           {
-                            kind: 6,
-                            value: ': ',
-                          },
-                          {
-                            kind: 12,
-                            children: [
-                              {
-                                kind: 6,
-                                value: '"male"',
-                              },
-                            ],
+                            kind: 11,
+                            value: '"male"',
                           },
                           {
                             kind: 6,
                             value: ' | ',
                           },
                           {
-                            kind: 12,
-                            children: [
-                              {
-                                kind: 6,
-                                value: '"female"',
-                              },
-                            ],
+                            kind: 11,
+                            value: '"female"',
                           },
                         ],
                       },
                       {
-                        kind: 14,
+                        kind: 13,
                         summary: [
                           {
                             kind: 11,
@@ -259,29 +247,28 @@ describe('reference-type', () => {
                           },
                           {
                             kind: 6,
-                            value: ': ',
+                            value: '*',
                           },
                         ],
                         children: [
+                          {
+                            kind: 11,
+                            value: 'system',
+                          },
+                          {
+                            kind: 6,
+                            value: '*',
+                          },
+                          {
+                            kind: 6,
+                            value: ': ',
+                          },
                           {
                             kind: 12,
                             children: [
                               {
                                 kind: 11,
-                                value: 'system',
-                              },
-                              {
-                                kind: 6,
-                                value: ': ',
-                              },
-                              {
-                                kind: 13,
-                                children: [
-                                  {
-                                    kind: 11,
-                                    value: 'boolean',
-                                  },
-                                ],
+                                value: 'boolean',
                               },
                             ],
                           },
@@ -318,8 +305,13 @@ describe('reference-type', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 11,
-                    value: 'fnProp*',
+                    kind: 9,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'fnProp*',
+                      },
+                    ],
                   },
                 ],
               },
@@ -331,14 +323,39 @@ describe('reference-type', () => {
                     children: [
                       {
                         kind: 6,
-                        value: '(',
+                        value: 'function (',
+                      },
+                    ],
+                  },
+                  {
+                    kind: 13,
+                    summary: [
+                      {
+                        kind: 11,
+                        value: 'p',
                       },
                       {
-                        kind: 14,
+                        kind: 6,
+                        value: '*',
+                      },
+                    ],
+                    children: [
+                      {
+                        kind: 13,
                         summary: [
                           {
                             kind: 11,
-                            value: 'p',
+                            value: 'config',
+                          },
+                          {
+                            kind: 6,
+                            value: '*',
+                          },
+                        ],
+                        children: [
+                          {
+                            kind: 11,
+                            value: 'system',
                           },
                           {
                             kind: 6,
@@ -348,75 +365,62 @@ describe('reference-type', () => {
                             kind: 6,
                             value: ': ',
                           },
-                        ],
-                        children: [
                           {
-                            kind: 14,
-                            summary: [
-                              {
-                                kind: 11,
-                                value: 'config',
-                              },
-                              {
-                                kind: 6,
-                                value: ': ',
-                              },
-                            ],
+                            kind: 12,
                             children: [],
                           },
                         ],
                       },
+                    ],
+                  },
+                  {
+                    kind: 6,
+                    value: ')',
+                  },
+                  {
+                    kind: 6,
+                    value: ' => ',
+                  },
+                  {
+                    kind: 13,
+                    summary: [
                       {
-                        kind: 6,
-                        value: ')',
+                        kind: 11,
+                        value: 'type',
                       },
+                    ],
+                    children: [
                       {
-                        kind: 6,
-                        value: ' => ',
-                      },
-                      {
-                        kind: 14,
+                        kind: 13,
                         summary: [
                           {
+                            kind: 11,
+                            value: 'state',
+                          },
+                          {
                             kind: 6,
-                            value: 'returns',
+                            value: '*',
                           },
                         ],
                         children: [
                           {
-                            kind: 14,
-                            summary: [
-                              {
-                                kind: 11,
-                                value: 'state',
-                              },
-                              {
-                                kind: 6,
-                                value: ': ',
-                              },
-                            ],
+                            kind: 11,
+                            value: 'name',
+                          },
+                          {
+                            kind: 6,
+                            value: '*',
+                          },
+                          {
+                            kind: 6,
+                            value: ': ',
+                          },
+                          {
+                            kind: 12,
                             children: [
                               {
-                                kind: 12,
-                                children: [
-                                  {
-                                    kind: 11,
-                                    value: 'name',
-                                  },
-                                  {
-                                    kind: 6,
-                                    value: ': ',
-                                  },
-                                  {
-                                    kind: 13,
-                                    children: [
-                                      {
-                                        kind: 11,
-                                        value: 'string',
-                                      },
-                                    ],
-                                  },
-                                ],
+                                kind: 11,
+                                value: 'string',
                               },
                             ],
                           },
@@ -453,8 +457,13 @@ describe('reference-type', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 11,
-                    value: 'arrProp*',
+                    kind: 9,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'arrProp*',
+                      },
+                    ],
                   },
                 ],
               },
@@ -462,49 +471,24 @@ describe('reference-type', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 12,
-                    children: [
-                      {
-                        kind: 6,
-                        value: '[',
-                      },
-                      {
-                        kind: 12,
-                        children: [
-                          {
-                            kind: 13,
-                            children: [
-                              {
-                                kind: 11,
-                                value: 'string',
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                      {
-                        kind: 6,
-                        value: ', ',
-                      },
-                      {
-                        kind: 12,
-                        children: [
-                          {
-                            kind: 13,
-                            children: [
-                              {
-                                kind: 11,
-                                value: 'number',
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                      {
-                        kind: 6,
-                        value: ']',
-                      },
-                    ],
+                    kind: 6,
+                    value: '[',
+                  },
+                  {
+                    kind: 11,
+                    value: 'string',
+                  },
+                  {
+                    kind: 6,
+                    value: ', ',
+                  },
+                  {
+                    kind: 11,
+                    value: 'number',
+                  },
+                  {
+                    kind: 6,
+                    value: ']',
                   },
                 ],
               },

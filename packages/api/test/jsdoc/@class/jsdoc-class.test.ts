@@ -11,6 +11,7 @@ describe('@class', () => {
         description: 'Creates a new Person.',
         returns: {
           kind: 12,
+          optional: true,
         },
       },
     });

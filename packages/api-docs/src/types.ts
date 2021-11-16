@@ -1,4 +1,4 @@
-import { PropType, SourceLocation } from '@structured-types/api';
+import { PropType, SourceLocation } from '@structured-types/api/types';
 
 /**
  * Documentation node kinds
@@ -16,8 +16,7 @@ export enum NodeKind {
   Code = 10,
   InlineCode = 11,
   Block = 12,
-  Span = 13,
-  Collapsible = 14,
+  Collapsible = 13,
 }
 
 /**
@@ -50,8 +49,7 @@ export const isNodeWithChildren = (
     node.kind === NodeKind.Emphasis ||
     node.kind === NodeKind.Link ||
     node.kind === NodeKind.Collapsible ||
-    node.kind === NodeKind.Block ||
-    node.kind === NodeKind.Span
+    node.kind === NodeKind.Block
   );
 };
 
@@ -259,20 +257,6 @@ export interface BlockNode extends DocumentationNodeWithChildren {
  */
 export const isBlockNode = (node: DocumentationNode): node is BlockNode => {
   return node.kind === NodeKind.Block;
-};
-
-/**
- * Span - "container" for elements
- */
-export interface SpanNode extends DocumentationNodeWithChildren {
-  kind: NodeKind.Span;
-}
-
-/**
- * SpanNode type guard predicate
- */
-export const isSpanNode = (node: DocumentationNode): node is SpanNode => {
-  return node.kind === NodeKind.Span;
 };
 
 /**

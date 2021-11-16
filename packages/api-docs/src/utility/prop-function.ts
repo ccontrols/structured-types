@@ -29,7 +29,7 @@ export const propFunction = (
               parents: prop.returns.parent
                 ? [config.propLinks.propLink(prop.returns.parent)]
                 : undefined,
-              type: [config.propTypes.extractPropType(prop.returns)],
+              type: config.propTypes.extractType(prop.returns),
               description: prop.returns.description,
               default: undefined,
               prop,

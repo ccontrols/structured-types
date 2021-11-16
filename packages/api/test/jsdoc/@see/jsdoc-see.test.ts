@@ -14,6 +14,7 @@ describe('see', () => {
         ],
         returns: {
           kind: 12,
+          optional: true,
         },
       },
     });
@@ -28,6 +29,7 @@ describe('see', () => {
         see: ['[bar](#bar)', 'bar'],
         returns: {
           kind: 12,
+          optional: true,
         },
       },
     });
@@ -42,6 +44,7 @@ describe('see', () => {
         see: ['https://reactjs.org/docs/context.html'],
         returns: {
           kind: 1,
+          optional: true,
         },
       },
     });

@@ -26,6 +26,7 @@ describe('@example', () => {
         returns: {
           description: 'Returns the value of x for the equation.',
           kind: 2,
+          optional: true,
         },
       },
     });
@@ -56,6 +57,7 @@ describe('@example', () => {
         returns: {
           description: 'Returns the value of x for the equation.',
           kind: 2,
+          optional: true,
         },
       },
     });

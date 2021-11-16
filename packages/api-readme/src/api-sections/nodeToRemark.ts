@@ -13,23 +13,26 @@ import {
   isTextNode,
   isNodeWithChildren,
   isNodeWithValue,
-  isBlockNode,
   isCollapsibleNode,
+  isBlockNode,
 } from '@structured-types/api-docs';
 import { RemarkNode } from '../types';
 
-const renderNode = ({
-  node,
-  ...props
-}: {
-  node: DocumentationNode;
-  [props: string]: any;
-}): RemarkNode | null => {
+const renderNode = (
+  {
+    node,
+    ...props
+  }: {
+    node: DocumentationNode;
+    [props: string]: any;
+  },
+  skipLineBreaks = false,
+): RemarkNode | null => {
   if (isHeadingNode(node)) {
     return nodeContent({ node, as: 'heading', depth: node.depth, ...props });
   } else if (isParagraphNode(node)) {
     return nodeContent({ node, as: 'paragraph', ...props });
-  } else if (isBlockNode(node) && node.children) {
+  } else if (isBlockNode(node) && node.children && !skipLineBreaks) {
     return {
       type: 'paragraph',
       children: [
@@ -62,11 +65,11 @@ const renderNode = ({
           value: '<blockquote>',
         },
         ...(node.children
-          ? node.children.reduce((acc, n) => {
-              const r = renderNode({ node: n });
-              if (r?.value === 'optional') {
-                debugger;
-              }
+          ? node.children.reduce((acc, n, idx) => {
+              const r = renderNode(
+                { node: n },
+                idx === node.children.length - 1,
+              );
               if (r) {
                 const returns = [r];
                 return [...acc, ...returns];

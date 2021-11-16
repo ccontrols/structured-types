@@ -1,9 +1,16 @@
-import { DocumentationNode, NodeKind, TableNode, TableRowNode } from '../types';
+import { PropType } from '@structured-types/api/types';
+import {
+  DocumentationNode,
+  NodeKind,
+  TableNode,
+  TableRowNode,
+  ColumnName,
+  ColumnObject,
+  ColumnConfig,
+} from '../types';
 import { textNode } from './text';
 import { tableCellNode } from './table-cell';
 import { inlineCodeNode } from './inline-code';
-import { ColumnName, ColumnObject, ColumnConfig } from '..';
-import { PropType } from '@structured-types/api';
 
 export type PropItem = Record<
   ColumnName,

@@ -26,6 +26,7 @@ describe('class', () => {
               kind: 14,
               name: 'Object',
               type: 'ObjectConstructor',
+              optional: true,
             },
           },
         ],
@@ -41,7 +42,7 @@ describe('class', () => {
       Bar: {
         name: 'Bar',
         kind: 13,
-        extends: ['Foo'],
+        extends: [{ name: 'Foo' }],
       },
       __helpers: {
         Foo: {
@@ -97,6 +98,7 @@ describe('class', () => {
             ],
             returns: {
               kind: 3,
+              optional: true,
             },
           },
         ],
@@ -123,6 +125,7 @@ describe('class', () => {
             kind: 22,
             returns: {
               kind: 2,
+              optional: true,
             },
           },
           {
@@ -170,6 +173,7 @@ describe('class', () => {
                   ],
                   returns: {
                     kind: 3,
+                    optional: true,
                   },
                 },
               ],
@@ -179,6 +183,7 @@ describe('class', () => {
             returns: {
               description: 'returns the value',
               kind: 3,
+              optional: true,
             },
             parameters: [
               {
@@ -211,6 +216,7 @@ describe('class', () => {
             returns: {
               description: 'a string value',
               kind: 1,
+              optional: true,
             },
             description: 'name accessor',
             name: 'getName',
@@ -277,6 +283,7 @@ describe('class', () => {
             kind: 11,
             returns: {
               kind: 12,
+              optional: true,
             },
           },
         ],
@@ -352,6 +359,7 @@ describe('class', () => {
             kind: 11,
             returns: {
               kind: 12,
+              optional: true,
             },
           },
         ],
@@ -375,6 +383,7 @@ describe('class', () => {
             kind: 11,
             returns: {
               kind: 12,
+              optional: true,
             },
           },
           {
@@ -384,6 +393,7 @@ describe('class', () => {
             kind: 11,
             returns: {
               kind: 12,
+              optional: true,
             },
           },
           {
@@ -393,6 +403,7 @@ describe('class', () => {
             kind: 11,
             returns: {
               kind: 12,
+              optional: true,
             },
           },
         ],

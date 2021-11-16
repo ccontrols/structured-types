@@ -26,10 +26,11 @@ import { typeSection } from './sections/type';
 import { PropRepos } from './utility/prop-repos';
 import { locationSection } from './sections/location';
 import { extendsSection } from './sections/extends';
-import { PropTypeNodes } from './utility/prop-type-nodes';
+import { PropTypeNodes } from './props/full-prop-type';
 import { DocumentationConfig } from './DocumentationConfig';
 import { propTable } from './utility/props-table';
 import { propFunction } from './utility/prop-function';
+import { unionPropNodes } from './props/union-prop';
 
 export class PropsToDocumentation {
   private sections: SectionObject = defaultSections;
@@ -46,7 +47,7 @@ export class PropsToDocumentation {
     const result: DocumentationNode[] = [];
     if (prop.name) {
       if (isUnionProp(prop)) {
-        result.push(this.config.propTypes.extractPropType(prop));
+        result.push(...unionPropNodes(prop, this.config));
       } else if (hasProperties(prop) && prop.properties) {
         const { propsTable } = propTable(prop, prop.properties, this.config);
         result.push(...propsTable);

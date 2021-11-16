@@ -4,12 +4,12 @@ import {
   EnumProp,
   hasProperties,
   hasValue,
+  isStringProp,
+  isIndexProp,
 } from '@structured-types/api/types';
 import { createPropsTable, PropItem } from '../blocks/table';
-import { inlineCodeNode } from '../blocks/inline-code';
 import { DocumentationConfig } from '../DocumentationConfig';
 import { ColumnName } from '../types';
-import { isStringProp } from '@structured-types/api';
 
 export const propTable = (
   prop: PropType,
@@ -77,22 +77,21 @@ export const propTable = (
     ? [...consolidatedProps, parentProp]
     : consolidatedProps;
   const items: PropItem[] = allProps.map((prop) => {
-    let name = prop.name
+    const nameProp = isIndexProp(prop) ? prop.index : prop;
+    let name = nameProp.name
       ? prop.kind === PropKind.Rest
-        ? `...${prop.name}`
-        : prop.name
+        ? `...${nameProp.name}`
+        : nameProp.name
       : '';
     name = `${name}${!name || prop.optional ? '' : '*'}`;
     return configurePropItem(
       {
-        name: prop.loc
-          ? [config.propLinks.propLink({ name, loc: prop.loc })]
-          : [inlineCodeNode(name)],
+        name: [config.propLinks.propLink({ name, loc: prop.loc })],
         parents: prop.parent
           ? [config.propLinks.propLink(prop.parent)]
           : undefined,
 
-        type: [config.propTypes.extractPropType(prop)],
+        type: config.propTypes.extractType(prop),
         description: prop.description,
         default: hasValue(prop)
           ? isStringProp(prop) && typeof prop.value === 'string'

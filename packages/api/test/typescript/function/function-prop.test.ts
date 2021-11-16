@@ -34,6 +34,7 @@ describe('function', () => {
         kind: 11,
         returns: {
           kind: 12,
+          optional: true,
         },
       },
     });
@@ -73,7 +74,7 @@ describe('function', () => {
         returns: {
           kind: 14,
           type: 'Bear',
-          extends: ['Internal'],
+          extends: [{ name: 'Internal' }],
           properties: [
             {
               name: 'honey',
@@ -91,6 +92,7 @@ describe('function', () => {
           ],
           name: 'Bear',
           description: 'interface extending another one',
+          optional: true,
         },
         description: 'exported function',
       },
@@ -99,7 +101,7 @@ describe('function', () => {
           description: 'interface extending another one',
           kind: 14,
           name: 'Bear',
-          extends: ['Internal'],
+          extends: [{ name: 'Internal' }],
           properties: [
             {
               description: 'boolean type member',
@@ -192,6 +194,7 @@ describe('function', () => {
         ],
         returns: {
           kind: 12,
+          optional: true,
         },
       },
     });
@@ -227,6 +230,7 @@ describe('function', () => {
             ],
             returns: {
               kind: 12,
+              optional: true,
             },
           },
         ],
@@ -245,6 +249,7 @@ describe('function', () => {
           kind: 14,
           name: 'Promise',
           type: 'PromiseConstructor',
+          optional: true,
         },
       },
     });
@@ -299,6 +304,7 @@ describe('function', () => {
               type: 'T',
             },
           ],
+          optional: true,
         },
         types: [
           {
@@ -344,6 +350,7 @@ describe('function', () => {
         ],
         returns: {
           kind: 2,
+          optional: true,
         },
       },
     });
@@ -369,6 +376,7 @@ describe('function', () => {
         ],
         returns: {
           kind: 12,
+          optional: true,
         },
       },
     });
@@ -395,6 +403,7 @@ describe('function', () => {
         ],
         returns: {
           kind: 2,
+          optional: true,
         },
       },
     });
@@ -434,6 +443,7 @@ describe('function', () => {
         ],
         returns: {
           kind: 12,
+          optional: true,
         },
       },
     });
@@ -461,6 +471,7 @@ describe('function', () => {
         ],
         returns: {
           kind: 12,
+          optional: true,
         },
       },
     });
@@ -482,6 +493,7 @@ describe('function', () => {
         kind: 11,
         returns: {
           kind: 12,
+          optional: true,
         },
       },
     });
@@ -502,6 +514,7 @@ describe('function', () => {
         ],
         returns: {
           kind: 12,
+          optional: true,
         },
       },
     });

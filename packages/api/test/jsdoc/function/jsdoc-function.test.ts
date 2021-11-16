@@ -23,6 +23,7 @@ describe('function', () => {
           kind: 14,
           name: 'Promise',
           type: 'Promise',
+          optional: true,
         },
         description: 'Returns the sum of a and b',
       },
@@ -44,6 +45,7 @@ describe('function', () => {
               name: 'MyClass',
               kind: 13,
               properties: [],
+              optional: true,
             },
           },
         ],
@@ -110,6 +112,7 @@ describe('function', () => {
         returns: {
           description: 'Sum of a and b',
           kind: 2,
+          optional: true,
         },
         description: 'Returns the sum of a and b',
       },
@@ -133,6 +136,7 @@ describe('function', () => {
         ],
         returns: {
           kind: 2,
+          optional: true,
         },
         description: 'Returns the sum of a and b',
       },
@@ -166,6 +170,7 @@ describe('function', () => {
         returns: {
           description: 'the sum of the two parameters',
           kind: 2,
+          optional: true,
         },
         tags: [
           {

@@ -277,6 +277,7 @@ export class SymbolParser implements ISymbolParser {
           const returns = this.parseTypeValueComments({}, options, node.type);
           if (returns) {
             prop.returns = returns;
+            prop.returns.optional = true;
           }
         }
       }
@@ -306,6 +307,7 @@ export class SymbolParser implements ISymbolParser {
 
           if (returnProp && returnProp.kind !== undefined) {
             prop.returns = returnProp;
+            prop.returns.optional = true;
           }
         }
       }
@@ -325,13 +327,22 @@ export class SymbolParser implements ISymbolParser {
       node.heritageClauses?.length &&
       isClassLikeProp(prop)
     ) {
-      const extendsProp: string[] = [];
+      const extendsProp: PropParent[] = [];
       node.heritageClauses.forEach((h) => {
         h.types.forEach((t) => {
           const symbol = this.getSymbolAtLocation(t.expression);
           if (symbol) {
             const name = symbol.escapedName as string;
-            extendsProp.push(name);
+            const loc = this.parseFilePath(
+              options,
+              false,
+              getSymbolDeclaration(symbol),
+            );
+            const p: PropParent = { name };
+            if (loc) {
+              p.loc = loc;
+            }
+            extendsProp.push(p);
             if (this.internalSymbol(symbol) !== undefined) {
               this.addRefSymbol({ name }, symbol, false);
             } else {
@@ -499,22 +510,27 @@ export class SymbolParser implements ISymbolParser {
         }
       } else if (ts.isIndexSignatureDeclaration(node)) {
         prop.kind = PropKind.Index;
-        if (isIndexProp(prop) && node.parameters.length) {
-          const index = node.parameters[0];
-          const indexProp = this.parseTypeValueComments(
-            {
-              name: index.name.getText(),
-            },
-            options,
-            index,
-          );
-          if (indexProp) {
-            prop.index = indexProp;
+        if (isIndexProp(prop)) {
+          if (node.parameters.length) {
+            const index = node.parameters[0];
+            const indexProp = this.parseTypeValueComments(
+              {
+                name: index.name.getText(),
+              },
+              options,
+              index,
+            );
+            if (indexProp) {
+              prop.index = indexProp;
+            }
           }
-        }
-        const type = this.parseTypeValueComments({}, options, node.type);
-        if (type) {
-          (prop as IndexProp).prop = type;
+          const type = this.parseTypeValueComments({}, options, node.type);
+          if (type) {
+            prop.prop = type;
+            if (type.name) {
+              prop.prop.type = type.name;
+            }
+          }
         }
       } else if (ts.isIndexedAccessTypeNode(node)) {
         if (
