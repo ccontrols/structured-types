@@ -44,7 +44,7 @@ export class ContentProvider {
     }
   }
   private getTitle(uri: vscode.Uri): string {
-    return `Documentation ${path.basename(uri.fsPath)}`;
+    return `InstantDoc ${path.basename(uri.fsPath)}`;
   }
   public createPreview(sourceUri: vscode.Uri, column: vscode.ViewColumn): void {
     const previewColumn =
