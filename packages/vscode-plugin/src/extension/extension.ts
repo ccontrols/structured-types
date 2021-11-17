@@ -7,15 +7,20 @@ export function activate(context: vscode.ExtensionContext): void {
   const config = new ConfigStore();
   const contentProvider = new ContentProvider(context, config.config);
 
-  const openPreview = (column: vscode.ViewColumn) => (uri?: vscode.Uri) => {
+  const openPreview = (uri?: vscode.Uri) => {
     let resource = uri;
+    let viewColumn = vscode.ViewColumn.One;
     if (!(resource instanceof vscode.Uri)) {
       if (vscode.window.activeTextEditor) {
         resource = vscode.window.activeTextEditor.document.uri;
+        viewColumn =
+          vscode.window.activeTextEditor.viewColumn === vscode.ViewColumn.One
+            ? vscode.ViewColumn.Two
+            : vscode.ViewColumn.One;
       }
     }
     if (resource) {
-      contentProvider.createPreview(resource, column);
+      contentProvider.createPreview(resource, viewColumn);
     }
   };
   context.subscriptions.push(
@@ -45,7 +50,7 @@ export function activate(context: vscode.ExtensionContext): void {
             config.config.autoShowDocumentation &&
             textEditor.viewColumn !== viewColumn
           ) {
-            openPreview(vscode.ViewColumn.Two)(sourceUri);
+            openPreview(sourceUri);
           }
         }
       }
@@ -54,7 +59,7 @@ export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(
     vscode.commands.registerCommand(
       'instant-documentation.openPreview',
-      openPreview(vscode.ViewColumn.Two),
+      openPreview,
     ),
   );
   context.subscriptions.push(
