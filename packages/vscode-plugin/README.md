@@ -9,9 +9,9 @@
     - [Options](#options)
   - [Keybindings](#keybindings)
 
-<h1 align="center">Instant Documentation Plugin</h1>
+<h1 align="center">Instant Documentation VSCode Plugin</h1>
 
-A VSCode extension that will show the structured type instant documentation for typescript and javascript files
+A VSCode extension that will show on-the-fly documentation for typescript and javascript files
 
 ![main screen](https://github.com/ccontrols/structured-types/raw/master/packages/vscode-plugin/main-screen.jpg)
 

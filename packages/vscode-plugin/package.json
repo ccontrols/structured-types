@@ -141,7 +141,7 @@
           "type": "boolean"
         },
         "instant-documentation.autoShowDocumentation": {
-          "description": "Automatically show a documentation page of the code being edited.",
+          "description": "Automatically display instant documentation of the code file being edited.",
           "default": false,
           "type": "boolean"
         },
