@@ -60,7 +60,7 @@ export class PropTypeNodes {
       }
     }
     return nameNode
-      ? [...nameNode, textNode(': '), blockNode(typeNode)]
+      ? [blockNode([...nameNode, textNode(': '), ...typeNode])]
       : typeNode;
   }
 

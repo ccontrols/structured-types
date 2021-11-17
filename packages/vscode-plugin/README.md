@@ -1,13 +1,13 @@
 # Table of contents
 
--   [Instant Documentation VSCode Extension](#structured-documentation-vscode-extension)
-    -   [Installation in VS Code](#installation-in-vs-code)
-        -   [Install from VS Code (Recommended)](#install-from-vs-code-recommended)
-        -   [Install from GitHub](#install-from-github)
-    -   [VSCode Settings](#vscode-settings)
-    -   [Configuration file](#configuration-file)
-        -   [Options](#options)
-    -   [Keybindings](#keybindings)
+- [Instant Documentation VSCode Extension](#structured-documentation-vscode-extension)
+  - [Installation in VS Code](#installation-in-vs-code)
+    - [Install from VS Code (Recommended)](#install-from-vs-code-recommended)
+    - [Install from GitHub](#install-from-github)
+  - [VSCode Settings](#vscode-settings)
+  - [Configuration file](#configuration-file)
+    - [Options](#options)
+  - [Keybindings](#keybindings)
 
 <h1 align="center">Instant Documentation Plugin</h1>
 
@@ -37,9 +37,9 @@ You can also use an external configuration file as documented in [@structured-ty
 
 ### Options
 
--   `singlePage`: Open only one documentation page, instead of a new one for every file.
+- `singlePage`: Open only one documentation page, instead of a new one for every file.
 
--   `autoShowDocumentation`: Automatically show a documentation page of the code being edited.
+- `autoShowDocumentation`: Automatically show a documentation page of the code being edited.
 
 And the other options are from `@structured-types/api-docs` [DocumentOptions](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs#documentationoptions)
 
@@ -47,7 +47,6 @@ And the other options are from `@structured-types/api-docs` [DocumentOptions](ht
 
 > The <kbd>cmd</kbd> key for _Windows_ is <kbd>ctrl</kbd>.
 
-| Shortcuts                                         | Functionality                  |
-| ------------------------------------------------- | ------------------------------ |
-| <kbd>cmd-k v</kbd> or <kbd>ctrl-k v</kbd>         | Open documentation to the Side |
-| <kbd>cmd-shift-v</kbd> or <kbd>ctrl-shift-v</kbd> | Open documentation             |
+| Shortcuts                                 | Functionality              |
+| ----------------------------------------- | -------------------------- |
+| <kbd>cmd-k i</kbd> or <kbd>ctrl-k i</kbd> | Open Instant Documentation |

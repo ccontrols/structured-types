@@ -22,9 +22,8 @@
   ],
   "scripts": {
     "vscode:prepublish": "yarn build",
-    "copy-toolkit": "copyfiles -f \"../../node_modules/@vscode/webview-ui-toolkit/dist/toolkit.js\" ./dist/",
     "postinstall": "node ../../node_modules/vscode/bin/install",
-    "build": "rollup -c rollup.config.js && tsc -p tsconfig.extension.json && yarn copy-toolkit",
+    "build": "rollup -c rollup.config.js && tsc -p tsconfig.extension.json",
     "dev": "yarn dev:webview & yarn dev:extension",
     "dev:webview": "NODE_ENV=development yarn rollup -cw",
     "dev:extension": "tsc -w -p tsconfig.extension.json",
@@ -44,6 +43,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@microsoft/fast-components": "^2.16.3",
     "@structured-types/api": "^3.35.3",
     "@structured-types/api-docs": "^3.35.3",
     "@structured-types/prop-types-plugin": "^3.35.3",
@@ -59,13 +59,11 @@
     "@rollup/plugin-replace": "^3.0.0",
     "@types/node": "^16.3.3",
     "@types/react": "^17.0.14",
-    "@types/react-dom": "^17.0.9",
-    "copyfiles": "^2.4.1"
+    "@types/react-dom": "^17.0.9"
   },
   "activationEvents": [
     "onCommand:instant-documentation.openPreview",
-    "onCommand:instant-documentation.refresh",
-    "onCommand:instant-documentation.openPreviewSide"
+    "onCommand:instant-documentation.refresh"
   ],
   "contributes": {
     "commands": [
@@ -73,12 +71,6 @@
         "command": "instant-documentation.openPreview",
         "title": "%instant-documentation.openPreview.title%",
         "category": "Documentation"
-      },
-      {
-        "command": "instant-documentation.openPreviewSide",
-        "title": "%instant-documentation.openPreviewSide.title%",
-        "category": "Documentation",
-        "icon": "$(open-preview)"
       },
       {
         "command": "instant-documentation.refresh",
@@ -89,15 +81,9 @@
     ],
     "keybindings": [
       {
-        "command": "instant-documentation.openPreviewSide",
-        "key": "ctrl+k v",
-        "mac": "cmd+k v",
-        "when": "(editorLangId == typescript || resourceLangId == typescriptreact || resourceLangId == javascript || resourceLangId == javascriptreact) && !notebookEditorFocused"
-      },
-      {
         "command": "instant-documentation.openPreview",
-        "key": "ctrl+shift+v",
-        "mac": "cmd+shift+v",
+        "key": "ctrl+shift+i",
+        "mac": "cmd+shift+i",
         "when": "(editorLangId == typescript || resourceLangId == typescriptreact || resourceLangId == javascript || resourceLangId == javascriptreact) && !notebookEditorFocused"
       }
     ],
@@ -111,9 +97,8 @@
       ],
       "editor/title": [
         {
-          "command": "instant-documentation.openPreviewSide",
+          "command": "instant-documentation.openPreview",
           "when": "(editorLangId == typescript || resourceLangId == typescriptreact || resourceLangId == javascript || resourceLangId == javascriptreact) && !notebookEditorFocused",
-          "alt": "instant-documentation.openPreview",
           "group": "navigation"
         },
         {
@@ -129,11 +114,6 @@
           "group": "1_open"
         },
         {
-          "command": "instant-documentation.openPreviewSide",
-          "when": "resourceLangId == typescript || resourceLangId == typescriptreact || resourceLangId == javascript || resourceLangId == javascriptreact",
-          "group": "1_open"
-        },
-        {
           "command": "instant-documentation.refresh",
           "when": "documentation_view_active",
           "group": "1_open"
@@ -142,11 +122,6 @@
       "commandPalette": [
         {
           "command": "instant-documentation.openPreview",
-          "when": "(resourceLangId == typescript || resourceLangId == typescriptreact || resourceLangId == javascript || resourceLangId == javascriptreact) && !notebookEditorFocused",
-          "group": "navigation"
-        },
-        {
-          "command": "instant-documentation.openPreviewSide",
           "when": "(resourceLangId == typescript || resourceLangId == typescriptreact || resourceLangId == javascript || resourceLangId == javascriptreact) && !notebookEditorFocused",
           "group": "navigation"
         },

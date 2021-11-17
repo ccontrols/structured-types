@@ -11,7 +11,6 @@ export function activate(context: vscode.ExtensionContext): void {
     let resource = uri;
     if (!(resource instanceof vscode.Uri)) {
       if (vscode.window.activeTextEditor) {
-        // we are relaxed and don't check for markdown files
         resource = vscode.window.activeTextEditor.document.uri;
       }
     }
@@ -55,12 +54,6 @@ export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(
     vscode.commands.registerCommand(
       'instant-documentation.openPreview',
-      openPreview(vscode.ViewColumn.One),
-    ),
-  );
-  context.subscriptions.push(
-    vscode.commands.registerCommand(
-      'instant-documentation.openPreviewSide',
       openPreview(vscode.ViewColumn.Two),
     ),
   );

@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { extractProps } from './extract-props';
-import { getUri, getNonce, openLocation } from './utils';
+import { getNonce, openLocation } from './utils';
 import { VSCodeConfig } from './config';
 
 type PanelStore = {
@@ -179,10 +179,6 @@ export class ContentProvider {
     );
   }
   private getHtml(panel: vscode.WebviewPanel, sourceUri: vscode.Uri) {
-    const toolkitUri = getUri(panel.webview, this.context.extensionUri, [
-      'dist',
-      'toolkit.js',
-    ]);
     const scriptUri = panel.webview.asWebviewUri(
       vscode.Uri.joinPath(this.context.extensionUri, 'dist', 'webview.js'),
     );
@@ -192,7 +188,6 @@ export class ContentProvider {
 			<head>
 				<meta charset="utf-8">
 				<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-        <script type="module" src="${toolkitUri}"></script>
 				<title>${this.getTitle(sourceUri)}</title>
 				<base href="${vscode.Uri.file(
           path.join(this.context.extensionPath, 'dist'),

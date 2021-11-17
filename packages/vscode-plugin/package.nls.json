@@ -1,7 +1,6 @@
 {
-  "displayName": "Markdown Preview Enhanced",
-  "description": "Structured types documentation vscode extension",
-  "instant-documentation.openPreview.title": "Open Documentation",
-  "instant-documentation.openPreviewSide.title": "Open Documentation to the side",
+  "displayName": "Instant Documentation",
+  "description": "Instant documentation vscode extension",
+  "instant-documentation.openPreview.title": "Instant Documentation",
   "instant-documentation.refresh.title": "Refresh Documentation"
 }

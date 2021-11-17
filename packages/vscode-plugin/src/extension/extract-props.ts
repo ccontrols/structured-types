@@ -27,6 +27,5 @@ export const extractProps = (
   });
 
   const nodes = propsToDocumentation(props, mergedConfig);
-
   return nodes;
 };
