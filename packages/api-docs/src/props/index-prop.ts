@@ -3,6 +3,7 @@ import { textNode } from '../blocks/text';
 import { DocumentationNode } from '../types';
 import { DocumentationConfig } from '../DocumentationConfig';
 import { shortPropType } from './short-prop-type';
+import { blockNode } from '../blocks/block';
 
 export const indexPropNodes = (
   prop: IndexProp,
@@ -17,5 +18,5 @@ export const indexPropNodes = (
     result.push(textNode(': '));
     result.push(...config.propTypes.extractType(prop.prop));
   }
-  return result;
+  return [blockNode(result)];
 };
