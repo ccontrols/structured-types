@@ -10,14 +10,14 @@ export function activate(context: vscode.ExtensionContext): void {
   const openPreview = (uri?: vscode.Uri) => {
     let resource = uri;
     let viewColumn = vscode.ViewColumn.One;
-    if (!(resource instanceof vscode.Uri)) {
-      if (vscode.window.activeTextEditor) {
+    if (vscode.window.activeTextEditor) {
+      if (!(resource instanceof vscode.Uri)) {
         resource = vscode.window.activeTextEditor.document.uri;
-        viewColumn =
-          vscode.window.activeTextEditor.viewColumn === vscode.ViewColumn.One
-            ? vscode.ViewColumn.Two
-            : vscode.ViewColumn.One;
       }
+      viewColumn =
+        vscode.window.activeTextEditor.viewColumn === vscode.ViewColumn.One
+          ? vscode.ViewColumn.Two
+          : vscode.ViewColumn.One;
     }
     if (resource) {
       contentProvider.createPreview(resource, viewColumn);
