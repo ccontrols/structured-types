@@ -43,17 +43,20 @@ export class PropsToDocumentation {
   };
   private repos: PropRepos = new PropRepos();
 
-  private extractClassLike(prop: InterfaceProp): DocumentationNode[] {
-    const result: DocumentationNode[] = [];
-    if (prop.name) {
+  private extractClassLike(
+    prop: InterfaceProp,
+  ): DocumentationNode[] | undefined {
+    if (prop.name && prop.properties?.length) {
+      const result: DocumentationNode[] = [];
       if (isUnionProp(prop)) {
         result.push(...unionPropNodes(prop, this.config));
-      } else if (hasProperties(prop) && prop.properties) {
+      } else if (hasProperties(prop)) {
         const { propsTable } = propTable(prop, prop.properties, this.config);
         result.push(...propsTable);
       }
+      return result;
     }
-    return result;
+    return undefined;
   }
 
   private getPropsTable(prop: PropType): DocumentationNode[] | undefined {
