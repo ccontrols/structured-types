@@ -19,11 +19,11 @@ A VSCode extension that will show on-the-fly documentation for typescript and ja
 
 ### Install from VS Code (Recommended)
 
-Open VSCode, search for `vscode-instant-documentation` in Extensions, and then click the Install button.
+Open VSCode, search for `instant-documentation-vscode` in Extensions, and then click the Install button.
 
 ### Install from GitHub
 
-Download `vscode-instant-documentation-_.vsix` file from [Releases](https://github.com/ccontrols/structured-types/raw/master/packages/vscode-plugin/releases).
+Download `instant-documentation-vscode-_.vsix` file from [Releases](https://github.com/ccontrols/instant-documentation-vscode/releases).
 Open vscode, run Extension: Install from VSIX, then choose the \_.vsix file you just downloaded.
 
 ## VSCode Settings
