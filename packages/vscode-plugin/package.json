@@ -3,11 +3,12 @@
   "publisher": "atanasster",
   "private": true,
   "version": "3.36.0",
-  "description": "VSCode plugin to display structured type documentation",
+  "description": "Preview instant documentation for typescript and jsdoc files",
   "keywords": [
     "instant documentation",
     "structured types",
     "vscode",
+    "jsdoc",
     "typescript"
   ],
   "engines": {
