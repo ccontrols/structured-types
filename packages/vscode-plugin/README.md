@@ -1,13 +1,13 @@
 # Table of contents
 
--   [Instant Documentation VSCode Extension](#structured-documentation-vscode-extension)
-    -   [Installation in VS Code](#installation-in-vs-code)
-        -   [Install from VS Code (Recommended)](#install-from-vs-code-recommended)
-        -   [Install from GitHub](#install-from-github)
-    -   [VSCode Settings](#vscode-settings)
-    -   [Configuration file](#configuration-file)
-        -   [Options](#options)
-    -   [Keybindings](#keybindings)
+- [Instant Documentation VSCode Extension](#structured-documentation-vscode-extension)
+  - [Installation in VS Code](#installation-in-vs-code)
+    - [Install from VS Code (Recommended)](#install-from-vs-code-recommended)
+    - [Install from GitHub](#install-from-github)
+  - [VSCode Settings](#vscode-settings)
+  - [Configuration file](#configuration-file)
+    - [Options](#options)
+  - [Keybindings](#keybindings)
 
 <h1 align="center">Instant Documentation VSCode Plugin</h1>
 
@@ -19,11 +19,11 @@ A VSCode extension that will show on-the-fly documentation for typescript and ja
 
 ### Install from VS Code (Recommended)
 
-Open VSCode, search for `@structured-types/instant-documentation` in Extensions, and then click the Install button.
+Open VSCode, search for `vscode-instant-documentation` in Extensions, and then click the Install button.
 
 ### Install from GitHub
 
-Download `@structured-types/instant-documentation-_.vsix` file from [Releases](https://github.com/ccontrols/structured-types/raw/master/packages/vscode-plugin/releases).
+Download `vscode-instant-documentation-_.vsix` file from [Releases](https://github.com/ccontrols/structured-types/raw/master/packages/vscode-plugin/releases).
 Open vscode, run Extension: Install from VSIX, then choose the \_.vsix file you just downloaded.
 
 ## VSCode Settings
@@ -37,9 +37,9 @@ You can also use an external configuration file as documented in [@structured-ty
 
 ### Options
 
--   `singlePage`: Open only one documentation page, instead of a new one for every file.
+- `singlePage`: Open only one documentation page, instead of a new one for every file.
 
--   `autoShowDocumentation`: Automatically show a documentation page of the code being edited.
+- `autoShowDocumentation`: Automatically show a documentation page of the code being edited.
 
 And the other options are from `@structured-types/api-docs` [DocumentOptions](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs#documentationoptions)
 
