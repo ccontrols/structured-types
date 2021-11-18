@@ -69,7 +69,7 @@ describe('enum', () => {
                 children: [
                   {
                     kind: 6,
-                    value: 'Default',
+                    value: 'Value',
                   },
                 ],
               },
@@ -82,8 +82,13 @@ describe('enum', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 11,
-                    value: 'String*',
+                    kind: 9,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'String*',
+                      },
+                    ],
                   },
                 ],
               },
@@ -114,8 +119,13 @@ describe('enum', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 11,
-                    value: 'Number*',
+                    kind: 9,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'Number*',
+                      },
+                    ],
                   },
                 ],
               },
@@ -146,8 +156,13 @@ describe('enum', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 11,
-                    value: 'Boolean*',
+                    kind: 9,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'Boolean*',
+                      },
+                    ],
                   },
                 ],
               },

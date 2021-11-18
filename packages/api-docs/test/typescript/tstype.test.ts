@@ -73,8 +73,13 @@ describe('ts-type', () => {
                 kind: 3,
                 children: [
                   {
-                    kind: 11,
-                    value: 'sections',
+                    kind: 9,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'sections',
+                      },
+                    ],
                   },
                 ],
               },
@@ -102,34 +107,6 @@ describe('ts-type', () => {
                         value: 'Record',
                       },
                     ],
-                  },
-                  {
-                    kind: 6,
-                    value: '<',
-                  },
-                  {
-                    kind: 6,
-                    value: '"title"',
-                  },
-                  {
-                    kind: 6,
-                    value: ' | ',
-                  },
-                  {
-                    kind: 6,
-                    value: '"type"',
-                  },
-                  {
-                    kind: 6,
-                    value: ', ',
-                  },
-                  {
-                    kind: 11,
-                    value: 'string',
-                  },
-                  {
-                    kind: 6,
-                    value: '>',
                   },
                   {
                     kind: 6,

@@ -1,4 +1,4 @@
-import { SourceLocation } from '@structured-types/api';
+import { SourceLocation } from '@structured-types/api/types';
 import { DocumentationNode, LinkNode, NodeKind } from '../types';
 
 export const linkNode = (

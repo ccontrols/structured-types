@@ -12,14 +12,16 @@ import {
   isNodeWithChildren,
   isNodeWithValue,
   isHeadingNode,
+  isBlockNode,
+  isCollapsibleNode,
 } from '@structured-types/api-docs/types';
 import { VSCodeAPI } from './VSCodeApi';
 const renderNode = (props: {
   node: DocumentationNode;
-  inTable: boolean;
+  inTree: boolean;
   key?: string;
 }): React.ReactNode => {
-  const { node } = props;
+  const { node, inTree } = props;
   if (isHeadingNode(node)) {
     switch (node.depth) {
       case 1:
@@ -33,10 +35,40 @@ const renderNode = (props: {
     }
   } else if (isParagraphNode(node)) {
     return <p>{nodeContent(props)}</p>;
+  } else if (isBlockNode(node) && node.children) {
+    return <div>{nodeContent(props)}</div>;
   } else if (isBoldNode(node)) {
     return <b>{nodeContent(props)}</b>;
   } else if (isEmphasisNode(node)) {
     return <em>{nodeContent(props)}</em>;
+  } else if (isCollapsibleNode(node)) {
+    const content = (
+      <>
+        <fast-tree-item>
+          {node.summary.map((item, idx) => {
+            return renderNode({
+              node: item,
+              key: `summary_${idx}`,
+              inTree: true,
+            });
+          })}
+
+          {node.children.map((item, idx) => {
+            const node = renderNode({
+              node: item,
+              inTree: true,
+              key: `item_${idx}`,
+            });
+            return !isCollapsibleNode(item) ? (
+              <fast-tree-item key={`item_${idx}`}>{node}</fast-tree-item>
+            ) : (
+              node
+            );
+          })}
+        </fast-tree-item>
+      </>
+    );
+    return inTree ? content : <fast-tree-view>{content}</fast-tree-view>;
   } else if (isLinkNode(node)) {
     return (
       <a
@@ -61,7 +93,17 @@ const renderNode = (props: {
   } else if (isInlineCodeNode(node)) {
     return <code>{nodeContent(props)}</code>;
   } else if (isCodeNode(node)) {
-    return <pre>{nodeContent(props)}</pre>;
+    return (
+      <pre
+        style={{
+          backgroundColor: 'var(--list-hover-background)',
+          margin: 0,
+          padding: '0.2em',
+        }}
+      >
+        {nodeContent(props)}
+      </pre>
+    );
   } else if (isTextNode(node)) {
     return node.value || '';
   } else if (isTableNode(node)) {
@@ -78,7 +120,7 @@ const renderNode = (props: {
               cell-type="columnheader"
               key={`head_${idx}`}
             >
-              {nodeContent({ node: cell, inTable: true })}
+              {nodeContent({ node: cell, inTree })}
             </vscode-data-grid-cell>
           ))}
         </vscode-data-grid-row>
@@ -90,7 +132,7 @@ const renderNode = (props: {
                 grid-column={(idx + 1).toString()}
                 key={`head_${idx}`}
               >
-                {nodeContent({ node: cell, inTable: true })}
+                {nodeContent({ node: cell, inTree })}
               </vscode-data-grid-cell>
             ))}
           </vscode-data-grid-row>
@@ -104,13 +146,10 @@ const renderNode = (props: {
 
 const nodeContent = ({
   node,
-  inTable,
-}: {
-  node: DocumentationNode;
-  inTable: boolean;
-}): React.ReactNode => {
+  inTree,
+}: Parameters<typeof renderNode>[0]): React.ReactNode => {
   const value = isNodeWithChildren(node)
-    ? nodeComponents({ nodes: node.children, inTable })
+    ? nodeComponents({ nodes: node.children, inTree })
     : isNodeWithValue(node)
     ? node.value
     : null;
@@ -118,15 +157,15 @@ const nodeContent = ({
 };
 const nodeComponents = ({
   nodes,
-  inTable,
+  inTree,
 }: {
   nodes?: DocumentationNode[];
-  inTable: boolean;
+  inTree: boolean;
 }): React.ReactNode => {
   return nodes ? (
     <React.Fragment>
       {nodes.map((node, idx) =>
-        renderNode({ node, inTable, key: `_node_${idx}` }),
+        renderNode({ node, inTree, key: `_node_${idx}` }),
       )}
     </React.Fragment>
   ) : null;
@@ -139,7 +178,7 @@ export const renderNodes = (nodes: DocumentationNode[]): React.ReactNode => {
         {nodes.map((node, idx) => {
           const rendered = renderNode({
             node,
-            inTable: false,
+            inTree: false,
             key: `_node_${idx}`,
           });
           return rendered;

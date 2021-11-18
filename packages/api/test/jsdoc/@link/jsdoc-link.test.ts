@@ -12,6 +12,7 @@ describe('@link', () => {
           "See [MyClass](#MyClass) and [MyClass's foo property](MyClass#foo).\nAlso, check out [Google](http://www.google.com) and\n[GitHub](https://github.com).",
         returns: {
           kind: 12,
+          optional: true,
         },
       },
     });

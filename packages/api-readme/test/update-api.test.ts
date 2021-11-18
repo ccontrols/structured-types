@@ -8,12 +8,12 @@ describe('create own api docs', () => {
     const contents = fs.readFileSync(filePath, 'utf8');
     expect(contents).toMatchSnapshot();
   });
-
-  //runCliTests('api-readme', path.resolve(__dirname, '../../../site/README.md'));
-  //runCliTests('api-readme', path.resolve(__dirname, '../../api/README.md'));
   // runCliTests(
   //   'api-readme',
   //   path.resolve(__dirname, '../../api-docs/README.md'),
   // );
+  //runCliTests('api-readme', path.resolve(__dirname, '../../../site/README.md'));
+  //runCliTests('api-readme', path.resolve(__dirname, '../../api/README.md'));
+  //
   //runCliTests('api-readme', path.resolve(__dirname, '../README.md'));
 });

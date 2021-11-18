@@ -14,6 +14,7 @@ Object {
           "description": "Options object as provided by the user.",
           "kind": 14,
           "name": "Configuration",
+          "optional": true,
           "properties": Array [
             Object {
               "description": "Set the value of \`require.amd\` and \`define.amd\`. Or disable AMD support.",
@@ -294,6 +295,7 @@ Object {
                   "kind": 11,
                   "returns": Object {
                     "kind": 4,
+                    "optional": true,
                     "properties": Array [
                       Object {
                         "kind": 1,
@@ -707,6 +709,7 @@ Object {
                                         },
                                         "returns": Object {
                                           "kind": 4,
+                                          "optional": true,
                                           "properties": Array [
                                             Object {
                                               "kind": 11,
@@ -723,6 +726,7 @@ Object {
                                               ],
                                               "returns": Object {
                                                 "kind": 12,
+                                                "optional": true,
                                               },
                                             },
                                             Object {
@@ -741,6 +745,7 @@ Object {
                                                     "kind": 1,
                                                   },
                                                 ],
+                                                "optional": true,
                                                 "type": "Promise",
                                               },
                                             },
@@ -772,11 +777,13 @@ Object {
                                     ],
                                     "returns": Object {
                                       "kind": 12,
+                                      "optional": true,
                                     },
                                   },
                                 ],
                                 "returns": Object {
                                   "kind": 12,
+                                  "optional": true,
                                 },
                               },
                               Object {
@@ -829,6 +836,7 @@ Object {
                                         },
                                         "returns": Object {
                                           "kind": 4,
+                                          "optional": true,
                                           "properties": Array [
                                             Object {
                                               "kind": 11,
@@ -845,6 +853,7 @@ Object {
                                               ],
                                               "returns": Object {
                                                 "kind": 12,
+                                                "optional": true,
                                               },
                                             },
                                             Object {
@@ -863,6 +872,7 @@ Object {
                                                     "kind": 1,
                                                   },
                                                 ],
+                                                "optional": true,
                                                 "type": "Promise",
                                               },
                                             },
@@ -920,6 +930,7 @@ Object {
                                       "type": "ExternalItemValue",
                                     },
                                   ],
+                                  "optional": true,
                                   "type": "Promise",
                                 },
                               },
@@ -947,6 +958,7 @@ Object {
                       ],
                       "returns": Object {
                         "kind": 4,
+                        "optional": true,
                         "properties": Array [
                           Object {
                             "kind": 1,
@@ -1018,6 +1030,7 @@ Object {
                                     },
                                     "returns": Object {
                                       "kind": 4,
+                                      "optional": true,
                                       "properties": Array [
                                         Object {
                                           "kind": 11,
@@ -1034,6 +1047,7 @@ Object {
                                           ],
                                           "returns": Object {
                                             "kind": 12,
+                                            "optional": true,
                                           },
                                         },
                                         Object {
@@ -1052,6 +1066,7 @@ Object {
                                                 "kind": 1,
                                               },
                                             ],
+                                            "optional": true,
                                             "type": "Promise",
                                           },
                                         },
@@ -1083,11 +1098,13 @@ Object {
                                 ],
                                 "returns": Object {
                                   "kind": 12,
+                                  "optional": true,
                                 },
                               },
                             ],
                             "returns": Object {
                               "kind": 12,
+                              "optional": true,
                             },
                           },
                           Object {
@@ -1140,6 +1157,7 @@ Object {
                                     },
                                     "returns": Object {
                                       "kind": 4,
+                                      "optional": true,
                                       "properties": Array [
                                         Object {
                                           "kind": 11,
@@ -1156,6 +1174,7 @@ Object {
                                           ],
                                           "returns": Object {
                                             "kind": 12,
+                                            "optional": true,
                                           },
                                         },
                                         Object {
@@ -1174,6 +1193,7 @@ Object {
                                                 "kind": 1,
                                               },
                                             ],
+                                            "optional": true,
                                             "type": "Promise",
                                           },
                                         },
@@ -1231,6 +1251,7 @@ Object {
                                   "type": "ExternalItemValue",
                                 },
                               ],
+                              "optional": true,
                               "type": "Promise",
                             },
                           },
@@ -1451,7 +1472,9 @@ Object {
                       "parameters": Array [
                         Object {
                           "extends": Array [
-                            "Error",
+                            Object {
+                              "name": "Error",
+                            },
                           ],
                           "kind": 13,
                           "name": "warning",
@@ -1473,6 +1496,7 @@ Object {
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                               "static": true,
                             },
@@ -1494,6 +1518,7 @@ Object {
                               },
                               "returns": Object {
                                 "kind": 17,
+                                "optional": true,
                               },
                               "static": true,
                             },
@@ -1514,7 +1539,9 @@ Object {
                             },
                             Object {
                               "extends": Array [
-                                "DependenciesBlock",
+                                Object {
+                                  "name": "DependenciesBlock",
+                                },
                               ],
                               "kind": 13,
                               "name": "module",
@@ -2395,6 +2422,7 @@ Object {
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -2410,6 +2438,7 @@ Object {
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                           ],
@@ -3239,6 +3268,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   ],
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compiler",
                                   },
                                   "type": "exports",
@@ -4166,6 +4196,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "CacheFacade",
                                       },
                                     },
@@ -4182,6 +4213,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "WebpackLogger",
                                       },
                                     },
@@ -4201,6 +4233,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "Watching",
                                       },
                                     },
@@ -4217,6 +4250,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -4232,6 +4266,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -4242,6 +4277,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -4260,6 +4296,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -4275,6 +4312,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -4290,6 +4328,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -4317,6 +4356,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "Compiler",
                                       },
                                     },
@@ -4328,6 +4368,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 3,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -4343,6 +4384,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "Compilation",
                                       },
                                     },
@@ -4359,6 +4401,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "Compilation",
                                       },
                                     },
@@ -4370,6 +4413,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "NormalModuleFactory",
                                       },
                                     },
@@ -4381,6 +4425,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "ContextModuleFactory",
                                       },
                                     },
@@ -4392,6 +4437,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 15,
+                                        "optional": true,
                                         "properties": Array [
                                           Object {
                                             "name": "normalModuleFactory",
@@ -4415,6 +4461,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -4430,6 +4477,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                   ],
@@ -5313,6 +5361,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "CacheFacade",
                                   },
                                 },
@@ -5329,6 +5378,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "WebpackLogger",
                                   },
                                 },
@@ -5348,6 +5398,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Watching",
                                   },
                                 },
@@ -5364,6 +5415,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -5379,6 +5431,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -5389,6 +5442,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -5407,6 +5461,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -5422,6 +5477,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -5437,6 +5493,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -5464,6 +5521,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compiler",
                                   },
                                 },
@@ -5475,6 +5533,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 3,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -5490,6 +5549,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compilation",
                                   },
                                 },
@@ -5506,6 +5566,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compilation",
                                   },
                                 },
@@ -5517,6 +5578,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "NormalModuleFactory",
                                   },
                                 },
@@ -5528,6 +5590,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "ContextModuleFactory",
                                   },
                                 },
@@ -5539,6 +5602,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 15,
+                                    "optional": true,
                                     "properties": Array [
                                       Object {
                                         "name": "normalModuleFactory",
@@ -5562,6 +5626,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -5577,6 +5642,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                               ],
@@ -8901,6 +8967,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Stats",
                               },
                             },
@@ -8920,6 +8987,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 15,
+                                "optional": true,
                                 "type": "NormalizedStatsOptions",
                               },
                             },
@@ -8936,6 +9004,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "StatsFactory",
                               },
                             },
@@ -8952,6 +9021,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "StatsPrinter",
                               },
                             },
@@ -8968,6 +9038,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "CacheFacade",
                               },
                             },
@@ -8984,6 +9055,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "WebpackLogger",
                               },
                             },
@@ -9003,6 +9075,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9019,6 +9092,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Module",
                               },
                             },
@@ -9036,6 +9110,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 4,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 8,
@@ -9064,6 +9139,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9082,6 +9158,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9097,6 +9174,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9115,6 +9193,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9136,6 +9215,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9154,6 +9234,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9178,6 +9259,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9202,6 +9284,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9220,6 +9303,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9235,6 +9319,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9245,6 +9330,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9260,6 +9346,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9278,6 +9365,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 3,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9293,6 +9381,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9308,6 +9397,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9329,6 +9419,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9353,6 +9444,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "ChunkGroup",
                               },
                             },
@@ -9378,6 +9470,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Entrypoint",
                               },
                             },
@@ -9396,6 +9489,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Chunk",
                               },
                             },
@@ -9412,6 +9506,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9427,6 +9522,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9445,6 +9541,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 16,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 4,
@@ -9482,6 +9579,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9500,6 +9598,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9518,6 +9617,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9528,6 +9628,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9538,6 +9639,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9548,6 +9650,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9558,6 +9661,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9568,6 +9672,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 16,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 15,
@@ -9624,6 +9729,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9645,6 +9751,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9663,6 +9770,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9678,6 +9786,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9688,6 +9797,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 16,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "generics": Array [
@@ -9715,6 +9825,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 4,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 8,
@@ -9740,6 +9851,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9750,6 +9862,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9765,6 +9878,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 16,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 15,
@@ -9786,6 +9900,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9804,6 +9919,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 1,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9822,6 +9938,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 15,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "name": "path",
@@ -9848,6 +9965,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 1,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -9866,6 +9984,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 15,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "name": "path",
@@ -9884,6 +10003,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 16,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 13,
@@ -9900,6 +10020,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 16,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 13,
@@ -9930,6 +10051,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 21,
@@ -10862,6 +10984,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 13,
+                                          "optional": true,
                                           "type": "CacheFacade",
                                         },
                                       },
@@ -10878,6 +11001,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 13,
+                                          "optional": true,
                                           "type": "WebpackLogger",
                                         },
                                       },
@@ -10897,6 +11021,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 13,
+                                          "optional": true,
                                           "type": "Watching",
                                         },
                                       },
@@ -10913,6 +11038,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 12,
+                                          "optional": true,
                                         },
                                       },
                                       Object {
@@ -10928,6 +11054,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 12,
+                                          "optional": true,
                                         },
                                       },
                                       Object {
@@ -10938,6 +11065,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 12,
+                                          "optional": true,
                                         },
                                       },
                                       Object {
@@ -10956,6 +11084,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 12,
+                                          "optional": true,
                                         },
                                       },
                                       Object {
@@ -10971,6 +11100,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 12,
+                                          "optional": true,
                                         },
                                       },
                                       Object {
@@ -10986,6 +11116,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 12,
+                                          "optional": true,
                                         },
                                       },
                                       Object {
@@ -11013,6 +11144,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 13,
+                                          "optional": true,
                                           "type": "Compiler",
                                         },
                                       },
@@ -11024,6 +11156,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 3,
+                                          "optional": true,
                                         },
                                       },
                                       Object {
@@ -11039,6 +11172,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 13,
+                                          "optional": true,
                                           "type": "Compilation",
                                         },
                                       },
@@ -11055,6 +11189,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 13,
+                                          "optional": true,
                                           "type": "Compilation",
                                         },
                                       },
@@ -11066,6 +11201,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 13,
+                                          "optional": true,
                                           "type": "NormalModuleFactory",
                                         },
                                       },
@@ -11077,6 +11213,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 13,
+                                          "optional": true,
                                           "type": "ContextModuleFactory",
                                         },
                                       },
@@ -11088,6 +11225,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 15,
+                                          "optional": true,
                                           "properties": Array [
                                             Object {
                                               "name": "normalModuleFactory",
@@ -11111,6 +11249,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 12,
+                                          "optional": true,
                                         },
                                       },
                                       Object {
@@ -11126,6 +11265,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         },
                                         "returns": Object {
                                           "kind": 12,
+                                          "optional": true,
                                         },
                                       },
                                     ],
@@ -11905,6 +12045,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     ],
                                     "returns": Object {
                                       "kind": 13,
+                                      "optional": true,
                                       "type": "CacheFacade",
                                     },
                                   },
@@ -11924,6 +12065,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     ],
                                     "returns": Object {
                                       "kind": 13,
+                                      "optional": true,
                                       "type": "Watching",
                                     },
                                   },
@@ -11937,6 +12079,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     ],
                                     "returns": Object {
                                       "kind": 12,
+                                      "optional": true,
                                     },
                                   },
                                   Object {
@@ -11947,6 +12090,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     "name": "purgeInputFileSystem",
                                     "returns": Object {
                                       "kind": 12,
+                                      "optional": true,
                                     },
                                   },
                                   Object {
@@ -11962,6 +12106,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     ],
                                     "returns": Object {
                                       "kind": 12,
+                                      "optional": true,
                                     },
                                   },
                                   Object {
@@ -11974,6 +12119,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     ],
                                     "returns": Object {
                                       "kind": 12,
+                                      "optional": true,
                                     },
                                   },
                                   Object {
@@ -11986,6 +12132,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     ],
                                     "returns": Object {
                                       "kind": 12,
+                                      "optional": true,
                                     },
                                   },
                                   Object {
@@ -12010,6 +12157,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     ],
                                     "returns": Object {
                                       "kind": 13,
+                                      "optional": true,
                                       "type": "Compiler",
                                     },
                                   },
@@ -12018,6 +12166,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     "name": "isChild",
                                     "returns": Object {
                                       "kind": 3,
+                                      "optional": true,
                                     },
                                   },
                                   Object {
@@ -12030,6 +12179,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     ],
                                     "returns": Object {
                                       "kind": 13,
+                                      "optional": true,
                                       "type": "Compilation",
                                     },
                                   },
@@ -12043,6 +12193,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     ],
                                     "returns": Object {
                                       "kind": 13,
+                                      "optional": true,
                                       "type": "Compilation",
                                     },
                                   },
@@ -12051,6 +12202,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     "name": "createNormalModuleFactory",
                                     "returns": Object {
                                       "kind": 13,
+                                      "optional": true,
                                       "type": "NormalModuleFactory",
                                     },
                                   },
@@ -12059,6 +12211,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     "name": "createContextModuleFactory",
                                     "returns": Object {
                                       "kind": 13,
+                                      "optional": true,
                                       "type": "ContextModuleFactory",
                                     },
                                   },
@@ -12075,6 +12228,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     ],
                                     "returns": Object {
                                       "kind": 12,
+                                      "optional": true,
                                     },
                                   },
                                   Object {
@@ -12087,6 +12241,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                     ],
                                     "returns": Object {
                                       "kind": 12,
+                                      "optional": true,
                                     },
                                   },
                                 ],
@@ -12112,6 +12267,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -12122,6 +12278,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -12137,6 +12294,7 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 3,
+                        "optional": true,
                       },
                     },
                   ],
@@ -12213,6 +12371,7 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 3,
+                        "optional": true,
                       },
                     },
                   ],
@@ -12911,6 +13070,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           ],
                           "returns": Object {
                             "kind": 12,
+                            "optional": true,
                           },
                         },
                         Object {
@@ -13150,6 +13310,7 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 1,
+                        "optional": true,
                       },
                     },
                   ],
@@ -13205,6 +13366,7 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 1,
+                        "optional": true,
                       },
                     },
                   ],
@@ -13434,6 +13596,7 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 1,
+                        "optional": true,
                       },
                     },
                   ],
@@ -13664,6 +13827,7 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 1,
+                        "optional": true,
                       },
                     },
                   ],
@@ -14287,6 +14451,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               ],
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compiler",
                               },
                               "type": "exports",
@@ -15214,6 +15379,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "CacheFacade",
                                   },
                                 },
@@ -15230,6 +15396,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "WebpackLogger",
                                   },
                                 },
@@ -15249,6 +15416,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Watching",
                                   },
                                 },
@@ -15265,6 +15433,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -15280,6 +15449,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -15290,6 +15460,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -15308,6 +15479,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -15323,6 +15495,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -15338,6 +15511,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -15365,6 +15539,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compiler",
                                   },
                                 },
@@ -15376,6 +15551,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 3,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -15391,6 +15567,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compilation",
                                   },
                                 },
@@ -15407,6 +15584,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compilation",
                                   },
                                 },
@@ -15418,6 +15596,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "NormalModuleFactory",
                                   },
                                 },
@@ -15429,6 +15608,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "ContextModuleFactory",
                                   },
                                 },
@@ -15440,6 +15620,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 15,
+                                    "optional": true,
                                     "properties": Array [
                                       Object {
                                         "name": "normalModuleFactory",
@@ -15463,6 +15644,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -15478,6 +15660,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                               ],
@@ -16361,6 +16544,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "CacheFacade",
                               },
                             },
@@ -16377,6 +16561,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "WebpackLogger",
                               },
                             },
@@ -16396,6 +16581,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Watching",
                               },
                             },
@@ -16412,6 +16598,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -16427,6 +16614,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -16437,6 +16625,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -16455,6 +16644,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -16470,6 +16660,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -16485,6 +16676,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -16512,6 +16704,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compiler",
                               },
                             },
@@ -16523,6 +16716,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 3,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -16538,6 +16732,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compilation",
                               },
                             },
@@ -16554,6 +16749,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compilation",
                               },
                             },
@@ -16565,6 +16761,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "NormalModuleFactory",
                               },
                             },
@@ -16576,6 +16773,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "ContextModuleFactory",
                               },
                             },
@@ -16587,6 +16785,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 15,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "name": "normalModuleFactory",
@@ -16610,6 +16809,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -16625,6 +16825,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                           ],
@@ -17007,6 +17208,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               ],
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compiler",
                               },
                               "type": "exports",
@@ -17934,6 +18136,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "CacheFacade",
                                   },
                                 },
@@ -17950,6 +18153,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "WebpackLogger",
                                   },
                                 },
@@ -17969,6 +18173,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Watching",
                                   },
                                 },
@@ -17985,6 +18190,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -18000,6 +18206,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -18010,6 +18217,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -18028,6 +18236,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -18043,6 +18252,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -18058,6 +18268,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -18085,6 +18296,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compiler",
                                   },
                                 },
@@ -18096,6 +18308,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 3,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -18111,6 +18324,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compilation",
                                   },
                                 },
@@ -18127,6 +18341,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compilation",
                                   },
                                 },
@@ -18138,6 +18353,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "NormalModuleFactory",
                                   },
                                 },
@@ -18149,6 +18365,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "ContextModuleFactory",
                                   },
                                 },
@@ -18160,6 +18377,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 15,
+                                    "optional": true,
                                     "properties": Array [
                                       Object {
                                         "name": "normalModuleFactory",
@@ -18183,6 +18401,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -18198,6 +18417,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                               ],
@@ -19081,6 +19301,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "CacheFacade",
                               },
                             },
@@ -19097,6 +19318,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "WebpackLogger",
                               },
                             },
@@ -19116,6 +19338,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Watching",
                               },
                             },
@@ -19132,6 +19355,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -19147,6 +19371,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -19157,6 +19382,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -19175,6 +19401,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -19190,6 +19417,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -19205,6 +19433,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -19232,6 +19461,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compiler",
                               },
                             },
@@ -19243,6 +19473,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 3,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -19258,6 +19489,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compilation",
                               },
                             },
@@ -19274,6 +19506,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compilation",
                               },
                             },
@@ -19285,6 +19518,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "NormalModuleFactory",
                               },
                             },
@@ -19296,6 +19530,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "ContextModuleFactory",
                               },
                             },
@@ -19307,6 +19542,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 15,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "name": "normalModuleFactory",
@@ -19330,6 +19566,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -19345,6 +19582,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                           ],
@@ -19353,6 +19591,7 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 12,
+                        "optional": true,
                       },
                     },
                     Object {
@@ -19381,6 +19620,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           ],
                           "returns": Object {
                             "kind": 12,
+                            "optional": true,
                           },
                         },
                       ],
@@ -19582,6 +19822,7 @@ from parent (or top level compiler) and creates a child Compilation",
                   },
                   "returns": Object {
                     "kind": 3,
+                    "optional": true,
                   },
                 },
                 Object {
@@ -20087,6 +20328,7 @@ from parent (or top level compiler) and creates a child Compilation",
                   },
                   "returns": Object {
                     "kind": 3,
+                    "optional": true,
                   },
                 },
                 Object {
@@ -20861,6 +21103,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           ],
                           "returns": Object {
                             "kind": 3,
+                            "optional": true,
                           },
                         },
                       ],
@@ -20898,6 +21141,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           ],
                           "returns": Object {
                             "kind": 3,
+                            "optional": true,
                           },
                         },
                       ],
@@ -20941,6 +21185,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           ],
                           "returns": Object {
                             "kind": 3,
+                            "optional": true,
                           },
                         },
                       ],
@@ -21097,6 +21342,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           ],
                           "returns": Object {
                             "kind": 3,
+                            "optional": true,
                           },
                         },
                       ],
@@ -21298,6 +21544,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           ],
                           "returns": Object {
                             "kind": 3,
+                            "optional": true,
                           },
                         },
                       ],
@@ -21435,6 +21682,7 @@ from parent (or top level compiler) and creates a child Compilation",
           "description": "Options object as provided by the user.",
           "kind": 14,
           "name": "Configuration",
+          "optional": true,
           "properties": Array [
             Object {
               "description": "Set the value of \`require.amd\` and \`define.amd\`. Or disable AMD support.",
@@ -21715,6 +21963,7 @@ from parent (or top level compiler) and creates a child Compilation",
                   "kind": 11,
                   "returns": Object {
                     "kind": 4,
+                    "optional": true,
                     "properties": Array [
                       Object {
                         "kind": 1,
@@ -22217,6 +22466,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 4,
+                                    "optional": true,
                                     "properties": Array [
                                       Object {
                                         "kind": 11,
@@ -22233,6 +22483,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         ],
                                         "returns": Object {
                                           "kind": 12,
+                                          "optional": true,
                                         },
                                       },
                                       Object {
@@ -22251,6 +22502,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                               "kind": 1,
                                             },
                                           ],
+                                          "optional": true,
                                           "type": "Promise",
                                         },
                                       },
@@ -22282,11 +22534,13 @@ from parent (or top level compiler) and creates a child Compilation",
                               ],
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                           ],
                           "returns": Object {
                             "kind": 12,
+                            "optional": true,
                           },
                         },
                         Object {
@@ -22339,6 +22593,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 4,
+                                    "optional": true,
                                     "properties": Array [
                                       Object {
                                         "kind": 11,
@@ -22355,6 +22610,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                         ],
                                         "returns": Object {
                                           "kind": 12,
+                                          "optional": true,
                                         },
                                       },
                                       Object {
@@ -22373,6 +22629,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                               "kind": 1,
                                             },
                                           ],
+                                          "optional": true,
                                           "type": "Promise",
                                         },
                                       },
@@ -22430,6 +22687,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 "type": "ExternalItemValue",
                               },
                             ],
+                            "optional": true,
                             "type": "Promise",
                           },
                         },
@@ -22538,6 +22796,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           },
                           "returns": Object {
                             "kind": 4,
+                            "optional": true,
                             "properties": Array [
                               Object {
                                 "kind": 11,
@@ -22554,6 +22813,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 ],
                                 "returns": Object {
                                   "kind": 12,
+                                  "optional": true,
                                 },
                               },
                               Object {
@@ -22572,6 +22832,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                       "kind": 1,
                                     },
                                   ],
+                                  "optional": true,
                                   "type": "Promise",
                                 },
                               },
@@ -22638,11 +22899,13 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 12,
+                        "optional": true,
                       },
                     },
                   ],
                   "returns": Object {
                     "kind": 12,
+                    "optional": true,
                   },
                 },
                 Object {
@@ -22695,6 +22958,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           },
                           "returns": Object {
                             "kind": 4,
+                            "optional": true,
                             "properties": Array [
                               Object {
                                 "kind": 11,
@@ -22711,6 +22975,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                 ],
                                 "returns": Object {
                                   "kind": 12,
+                                  "optional": true,
                                 },
                               },
                               Object {
@@ -22729,6 +22994,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                       "kind": 1,
                                     },
                                   ],
+                                  "optional": true,
                                   "type": "Promise",
                                 },
                               },
@@ -22786,6 +23052,7 @@ from parent (or top level compiler) and creates a child Compilation",
                         "type": "ExternalItemValue",
                       },
                     ],
+                    "optional": true,
                     "type": "Promise",
                   },
                 },
@@ -23000,7 +23267,9 @@ from parent (or top level compiler) and creates a child Compilation",
                       "parameters": Array [
                         Object {
                           "extends": Array [
-                            "Error",
+                            Object {
+                              "name": "Error",
+                            },
                           ],
                           "kind": 13,
                           "name": "warning",
@@ -23022,6 +23291,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                               "static": true,
                             },
@@ -23043,6 +23313,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 17,
+                                "optional": true,
                               },
                               "static": true,
                             },
@@ -23063,7 +23334,9 @@ from parent (or top level compiler) and creates a child Compilation",
                             },
                             Object {
                               "extends": Array [
-                                "DependenciesBlock",
+                                Object {
+                                  "name": "DependenciesBlock",
+                                },
                               ],
                               "kind": 13,
                               "name": "module",
@@ -23944,6 +24217,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -23959,6 +24233,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                           ],
@@ -24788,6 +25063,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   ],
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compiler",
                                   },
                                   "type": "exports",
@@ -25715,6 +25991,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "CacheFacade",
                                       },
                                     },
@@ -25731,6 +26008,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "WebpackLogger",
                                       },
                                     },
@@ -25750,6 +26028,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "Watching",
                                       },
                                     },
@@ -25766,6 +26045,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -25781,6 +26061,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -25791,6 +26072,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -25809,6 +26091,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -25824,6 +26107,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -25839,6 +26123,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -25866,6 +26151,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "Compiler",
                                       },
                                     },
@@ -25877,6 +26163,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 3,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -25892,6 +26179,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "Compilation",
                                       },
                                     },
@@ -25908,6 +26196,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "Compilation",
                                       },
                                     },
@@ -25919,6 +26208,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "NormalModuleFactory",
                                       },
                                     },
@@ -25930,6 +26220,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 13,
+                                        "optional": true,
                                         "type": "ContextModuleFactory",
                                       },
                                     },
@@ -25941,6 +26232,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 15,
+                                        "optional": true,
                                         "properties": Array [
                                           Object {
                                             "name": "normalModuleFactory",
@@ -25964,6 +26256,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                     Object {
@@ -25979,6 +26272,7 @@ e. g. creating an assets manifest of Service Workers.",
                                       },
                                       "returns": Object {
                                         "kind": 12,
+                                        "optional": true,
                                       },
                                     },
                                   ],
@@ -26862,6 +27156,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "CacheFacade",
                                   },
                                 },
@@ -26878,6 +27173,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "WebpackLogger",
                                   },
                                 },
@@ -26897,6 +27193,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Watching",
                                   },
                                 },
@@ -26913,6 +27210,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -26928,6 +27226,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -26938,6 +27237,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -26956,6 +27256,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -26971,6 +27272,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -26986,6 +27288,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -27013,6 +27316,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compiler",
                                   },
                                 },
@@ -27024,6 +27328,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 3,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -27039,6 +27344,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compilation",
                                   },
                                 },
@@ -27055,6 +27361,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compilation",
                                   },
                                 },
@@ -27066,6 +27373,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "NormalModuleFactory",
                                   },
                                 },
@@ -27077,6 +27385,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "ContextModuleFactory",
                                   },
                                 },
@@ -27088,6 +27397,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 15,
+                                    "optional": true,
                                     "properties": Array [
                                       Object {
                                         "name": "normalModuleFactory",
@@ -27111,6 +27421,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -27126,6 +27437,7 @@ e. g. creating an assets manifest of Service Workers.",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                               ],
@@ -30450,6 +30762,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Stats",
                               },
                             },
@@ -30469,6 +30782,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 15,
+                                "optional": true,
                                 "type": "NormalizedStatsOptions",
                               },
                             },
@@ -30485,6 +30799,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "StatsFactory",
                               },
                             },
@@ -30501,6 +30816,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "StatsPrinter",
                               },
                             },
@@ -30517,6 +30833,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "CacheFacade",
                               },
                             },
@@ -30533,6 +30850,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "WebpackLogger",
                               },
                             },
@@ -30552,6 +30870,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30568,6 +30887,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Module",
                               },
                             },
@@ -30585,6 +30905,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 4,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 8,
@@ -30613,6 +30934,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30631,6 +30953,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30646,6 +30969,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30664,6 +30988,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30685,6 +31010,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30703,6 +31029,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30727,6 +31054,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30751,6 +31079,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30769,6 +31098,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30784,6 +31114,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30794,6 +31125,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30809,6 +31141,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30827,6 +31160,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 3,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30842,6 +31176,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30857,6 +31192,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30878,6 +31214,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30902,6 +31239,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "ChunkGroup",
                               },
                             },
@@ -30927,6 +31265,7 @@ Needed to detect build cycles.",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Entrypoint",
                               },
                             },
@@ -30945,6 +31284,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Chunk",
                               },
                             },
@@ -30961,6 +31301,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30976,6 +31317,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -30994,6 +31336,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 16,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 4,
@@ -31031,6 +31374,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31049,6 +31393,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31067,6 +31412,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31077,6 +31423,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31087,6 +31434,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31097,6 +31445,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31107,6 +31456,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31117,6 +31467,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 16,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 15,
@@ -31173,6 +31524,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31194,6 +31546,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31212,6 +31565,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31227,6 +31581,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31237,6 +31592,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 16,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "generics": Array [
@@ -31264,6 +31620,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 4,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 8,
@@ -31289,6 +31646,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31299,6 +31657,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31314,6 +31673,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 16,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 15,
@@ -31335,6 +31695,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31353,6 +31714,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 1,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31371,6 +31733,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 15,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "name": "path",
@@ -31397,6 +31760,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 1,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31415,6 +31779,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 15,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "name": "path",
@@ -31433,6 +31798,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 16,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 13,
@@ -31449,6 +31815,7 @@ and first looks to see if any named chunks already exist and reuse that chunk in
                               },
                               "returns": Object {
                                 "kind": 16,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "kind": 13,
@@ -31479,6 +31846,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compiler",
                               },
                             },
@@ -31501,6 +31869,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31511,6 +31880,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -31526,6 +31896,7 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 3,
+                        "optional": true,
                       },
                     },
                   ],
@@ -31602,6 +31973,7 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 3,
+                        "optional": true,
                       },
                     },
                   ],
@@ -32208,6 +32580,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           ],
                           "returns": Object {
                             "kind": 12,
+                            "optional": true,
                           },
                         },
                         Object {
@@ -32447,6 +32820,7 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 1,
+                        "optional": true,
                       },
                     },
                   ],
@@ -32502,6 +32876,7 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 1,
+                        "optional": true,
                       },
                     },
                   ],
@@ -32731,6 +33106,7 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 1,
+                        "optional": true,
                       },
                     },
                   ],
@@ -32961,6 +33337,7 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 1,
+                        "optional": true,
                       },
                     },
                   ],
@@ -33584,6 +33961,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               ],
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compiler",
                               },
                               "type": "exports",
@@ -34511,6 +34889,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "CacheFacade",
                                   },
                                 },
@@ -34527,6 +34906,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "WebpackLogger",
                                   },
                                 },
@@ -34546,6 +34926,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Watching",
                                   },
                                 },
@@ -34562,6 +34943,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -34577,6 +34959,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -34587,6 +34970,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -34605,6 +34989,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -34620,6 +35005,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -34635,6 +35021,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -34662,6 +35049,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compiler",
                                   },
                                 },
@@ -34673,6 +35061,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 3,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -34688,6 +35077,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compilation",
                                   },
                                 },
@@ -34704,6 +35094,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compilation",
                                   },
                                 },
@@ -34715,6 +35106,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "NormalModuleFactory",
                                   },
                                 },
@@ -34726,6 +35118,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "ContextModuleFactory",
                                   },
                                 },
@@ -34737,6 +35130,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 15,
+                                    "optional": true,
                                     "properties": Array [
                                       Object {
                                         "name": "normalModuleFactory",
@@ -34760,6 +35154,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -34775,6 +35170,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                               ],
@@ -35658,6 +36054,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "CacheFacade",
                               },
                             },
@@ -35674,6 +36071,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "WebpackLogger",
                               },
                             },
@@ -35693,6 +36091,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Watching",
                               },
                             },
@@ -35709,6 +36108,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -35724,6 +36124,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -35734,6 +36135,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -35752,6 +36154,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -35767,6 +36170,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -35782,6 +36186,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -35809,6 +36214,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compiler",
                               },
                             },
@@ -35820,6 +36226,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 3,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -35835,6 +36242,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compilation",
                               },
                             },
@@ -35851,6 +36259,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compilation",
                               },
                             },
@@ -35862,6 +36271,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "NormalModuleFactory",
                               },
                             },
@@ -35873,6 +36283,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "ContextModuleFactory",
                               },
                             },
@@ -35884,6 +36295,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 15,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "name": "normalModuleFactory",
@@ -35907,6 +36319,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -35922,6 +36335,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                           ],
@@ -36304,6 +36718,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               ],
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compiler",
                               },
                               "type": "exports",
@@ -37231,6 +37646,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "CacheFacade",
                                   },
                                 },
@@ -37247,6 +37663,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "WebpackLogger",
                                   },
                                 },
@@ -37266,6 +37683,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Watching",
                                   },
                                 },
@@ -37282,6 +37700,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -37297,6 +37716,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -37307,6 +37727,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -37325,6 +37746,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -37340,6 +37762,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -37355,6 +37778,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -37382,6 +37806,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compiler",
                                   },
                                 },
@@ -37393,6 +37818,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 3,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -37408,6 +37834,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compilation",
                                   },
                                 },
@@ -37424,6 +37851,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "Compilation",
                                   },
                                 },
@@ -37435,6 +37863,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "NormalModuleFactory",
                                   },
                                 },
@@ -37446,6 +37875,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 13,
+                                    "optional": true,
                                     "type": "ContextModuleFactory",
                                   },
                                 },
@@ -37457,6 +37887,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 15,
+                                    "optional": true,
                                     "properties": Array [
                                       Object {
                                         "name": "normalModuleFactory",
@@ -37480,6 +37911,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                                 Object {
@@ -37495,6 +37927,7 @@ from parent (or top level compiler) and creates a child Compilation",
                                   },
                                   "returns": Object {
                                     "kind": 12,
+                                    "optional": true,
                                   },
                                 },
                               ],
@@ -38378,6 +38811,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "CacheFacade",
                               },
                             },
@@ -38394,6 +38828,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "WebpackLogger",
                               },
                             },
@@ -38413,6 +38848,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Watching",
                               },
                             },
@@ -38429,6 +38865,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -38444,6 +38881,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -38454,6 +38892,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -38472,6 +38911,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -38487,6 +38927,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -38502,6 +38943,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -38529,6 +38971,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compiler",
                               },
                             },
@@ -38540,6 +38983,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 3,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -38555,6 +38999,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compilation",
                               },
                             },
@@ -38571,6 +39016,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "Compilation",
                               },
                             },
@@ -38582,6 +39028,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "NormalModuleFactory",
                               },
                             },
@@ -38593,6 +39040,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 13,
+                                "optional": true,
                                 "type": "ContextModuleFactory",
                               },
                             },
@@ -38604,6 +39052,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 15,
+                                "optional": true,
                                 "properties": Array [
                                   Object {
                                     "name": "normalModuleFactory",
@@ -38627,6 +39076,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                             Object {
@@ -38642,6 +39092,7 @@ from parent (or top level compiler) and creates a child Compilation",
                               },
                               "returns": Object {
                                 "kind": 12,
+                                "optional": true,
                               },
                             },
                           ],
@@ -38650,6 +39101,7 @@ from parent (or top level compiler) and creates a child Compilation",
                       ],
                       "returns": Object {
                         "kind": 12,
+                        "optional": true,
                       },
                     },
                     Object {
@@ -38678,6 +39130,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           ],
                           "returns": Object {
                             "kind": 12,
+                            "optional": true,
                           },
                         },
                       ],
@@ -38879,6 +39332,7 @@ from parent (or top level compiler) and creates a child Compilation",
                   },
                   "returns": Object {
                     "kind": 3,
+                    "optional": true,
                   },
                 },
                 Object {
@@ -39384,6 +39838,7 @@ from parent (or top level compiler) and creates a child Compilation",
                   },
                   "returns": Object {
                     "kind": 3,
+                    "optional": true,
                   },
                 },
                 Object {
@@ -40158,6 +40613,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           ],
                           "returns": Object {
                             "kind": 3,
+                            "optional": true,
                           },
                         },
                       ],
@@ -40195,6 +40651,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           ],
                           "returns": Object {
                             "kind": 3,
+                            "optional": true,
                           },
                         },
                       ],
@@ -40238,6 +40695,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           ],
                           "returns": Object {
                             "kind": 3,
+                            "optional": true,
                           },
                         },
                       ],
@@ -40394,6 +40852,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           ],
                           "returns": Object {
                             "kind": 3,
+                            "optional": true,
                           },
                         },
                       ],
@@ -40595,6 +41054,7 @@ from parent (or top level compiler) and creates a child Compilation",
                           ],
                           "returns": Object {
                             "kind": 3,
+                            "optional": true,
                           },
                         },
                       ],

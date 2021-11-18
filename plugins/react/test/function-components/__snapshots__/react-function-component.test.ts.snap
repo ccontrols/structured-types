@@ -45,6 +45,7 @@ Object {
         "returns": Object {
           "kind": 4,
           "name": "ReactNode",
+          "optional": true,
           "properties": Array [
             Object {
               "kind": 4,
@@ -116,7 +117,9 @@ Object {
                 },
                 Object {
                   "extends": Array [
-                    "ReadonlyArray",
+                    Object {
+                      "name": "ReadonlyArray",
+                    },
                   ],
                   "kind": 14,
                   "name": "ReactNodeArray",
@@ -139,7 +142,9 @@ Object {
             },
             Object {
               "extends": Array [
-                "ReactElement",
+                Object {
+                  "name": "ReactElement",
+                },
               ],
               "kind": 14,
               "name": "ReactPortal",
@@ -232,6 +237,7 @@ Object {
         "returns": Object {
           "kind": 4,
           "name": "ReactNode",
+          "optional": true,
           "properties": Array [
             Object {
               "kind": 4,
@@ -303,7 +309,9 @@ Object {
                 },
                 Object {
                   "extends": Array [
-                    "ReadonlyArray",
+                    Object {
+                      "name": "ReadonlyArray",
+                    },
                   ],
                   "kind": 14,
                   "name": "ReactNodeArray",
@@ -326,7 +334,9 @@ Object {
             },
             Object {
               "extends": Array [
-                "ReactElement",
+                Object {
+                  "name": "ReactElement",
+                },
               ],
               "kind": 14,
               "name": "ReactPortal",
@@ -418,6 +428,7 @@ Object {
         },
         "returns": Object {
           "kind": 3,
+          "optional": true,
         },
       },
       Object {
@@ -436,6 +447,7 @@ Object {
         "returns": Object {
           "kind": 4,
           "name": "ReactNode",
+          "optional": true,
           "properties": Array [
             Object {
               "kind": 4,
@@ -507,7 +519,9 @@ Object {
                 },
                 Object {
                   "extends": Array [
-                    "ReadonlyArray",
+                    Object {
+                      "name": "ReadonlyArray",
+                    },
                   ],
                   "kind": 14,
                   "name": "ReactNodeArray",
@@ -530,7 +544,9 @@ Object {
             },
             Object {
               "extends": Array [
-                "ReactElement",
+                Object {
+                  "name": "ReactElement",
+                },
               ],
               "kind": 14,
               "name": "ReactPortal",
@@ -622,6 +638,7 @@ Object {
         },
         "returns": Object {
           "kind": 17,
+          "optional": true,
         },
       },
       Object {
@@ -632,6 +649,7 @@ Object {
         },
         "returns": Object {
           "kind": 3,
+          "optional": true,
         },
       },
       Object {
@@ -753,6 +771,7 @@ Based on https://github.com/chriskempson/base16",
           "returns": Object {
             "kind": 4,
             "name": "ReactNode",
+            "optional": true,
             "properties": Array [
               Object {
                 "kind": 4,
@@ -824,7 +843,9 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "ReadonlyArray",
+                      Object {
+                        "name": "ReadonlyArray",
+                      },
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -847,7 +868,9 @@ Based on https://github.com/chriskempson/base16",
               },
               Object {
                 "extends": Array [
-                  "ReactElement",
+                  Object {
+                    "name": "ReactElement",
+                  },
                 ],
                 "kind": 14,
                 "name": "ReactPortal",
@@ -940,6 +963,7 @@ Based on https://github.com/chriskempson/base16",
           "returns": Object {
             "kind": 4,
             "name": "ReactNode",
+            "optional": true,
             "properties": Array [
               Object {
                 "kind": 4,
@@ -1011,7 +1035,9 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "ReadonlyArray",
+                      Object {
+                        "name": "ReadonlyArray",
+                      },
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -1034,7 +1060,9 @@ Based on https://github.com/chriskempson/base16",
               },
               Object {
                 "extends": Array [
-                  "ReactElement",
+                  Object {
+                    "name": "ReactElement",
+                  },
                 ],
                 "kind": 14,
                 "name": "ReactPortal",
@@ -1126,6 +1154,7 @@ Based on https://github.com/chriskempson/base16",
           },
           "returns": Object {
             "kind": 3,
+            "optional": true,
           },
         },
         Object {
@@ -1144,6 +1173,7 @@ Based on https://github.com/chriskempson/base16",
           "returns": Object {
             "kind": 4,
             "name": "ReactNode",
+            "optional": true,
             "properties": Array [
               Object {
                 "kind": 4,
@@ -1215,7 +1245,9 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "ReadonlyArray",
+                      Object {
+                        "name": "ReadonlyArray",
+                      },
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -1238,7 +1270,9 @@ Based on https://github.com/chriskempson/base16",
               },
               Object {
                 "extends": Array [
-                  "ReactElement",
+                  Object {
+                    "name": "ReactElement",
+                  },
                 ],
                 "kind": 14,
                 "name": "ReactPortal",
@@ -1330,6 +1364,7 @@ Based on https://github.com/chriskempson/base16",
           },
           "returns": Object {
             "kind": 17,
+            "optional": true,
           },
         },
         Object {
@@ -1340,6 +1375,7 @@ Based on https://github.com/chriskempson/base16",
           },
           "returns": Object {
             "kind": 3,
+            "optional": true,
           },
         },
         Object {
@@ -1396,6 +1432,7 @@ Based on https://github.com/chriskempson/base16",
           ],
           "returns": Object {
             "kind": 3,
+            "optional": true,
           },
         },
         Object {
@@ -1488,7 +1525,9 @@ Based on https://github.com/chriskempson/base16",
                     },
                     Object {
                       "extends": Array [
-                        "ReadonlyArray",
+                        Object {
+                          "name": "ReadonlyArray",
+                        },
                       ],
                       "kind": 14,
                       "name": "ReactNodeArray",
@@ -1511,7 +1550,9 @@ Based on https://github.com/chriskempson/base16",
                 },
                 Object {
                   "extends": Array [
-                    "ReactElement",
+                    Object {
+                      "name": "ReactElement",
+                    },
                   ],
                   "kind": 14,
                   "name": "ReactPortal",
@@ -1620,6 +1661,7 @@ Based on https://github.com/chriskempson/base16",
           "returns": Object {
             "kind": 4,
             "name": "ReactNode",
+            "optional": true,
             "properties": Array [
               Object {
                 "kind": 4,
@@ -1691,7 +1733,9 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "ReadonlyArray",
+                      Object {
+                        "name": "ReadonlyArray",
+                      },
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -1714,7 +1758,9 @@ Based on https://github.com/chriskempson/base16",
               },
               Object {
                 "extends": Array [
-                  "ReactElement",
+                  Object {
+                    "name": "ReactElement",
+                  },
                 ],
                 "kind": 14,
                 "name": "ReactPortal",
@@ -1809,6 +1855,7 @@ Based on https://github.com/chriskempson/base16",
           ],
           "returns": Object {
             "kind": 17,
+            "optional": true,
           },
         },
         Object {
@@ -1822,6 +1869,7 @@ Based on https://github.com/chriskempson/base16",
           ],
           "returns": Object {
             "kind": 3,
+            "optional": true,
           },
         },
         Object {
@@ -1847,6 +1895,7 @@ Based on https://github.com/chriskempson/base16",
               ],
               "returns": Object {
                 "kind": 2,
+                "optional": true,
               },
             },
             Object {
@@ -1894,6 +1943,7 @@ Based on https://github.com/chriskempson/base16",
           "returns": Object {
             "kind": 4,
             "name": "ReactNode",
+            "optional": true,
             "properties": Array [
               Object {
                 "kind": 4,
@@ -1965,7 +2015,9 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "ReadonlyArray",
+                      Object {
+                        "name": "ReadonlyArray",
+                      },
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -1988,7 +2040,9 @@ Based on https://github.com/chriskempson/base16",
               },
               Object {
                 "extends": Array [
-                  "ReactElement",
+                  Object {
+                    "name": "ReactElement",
+                  },
                 ],
                 "kind": 14,
                 "name": "ReactPortal",
@@ -2411,7 +2465,9 @@ Based on https://github.com/chriskempson/base16",
     },
     "Props": Object {
       "extends": Array [
-        "CircularPropsPassedThroughJSONTree",
+        Object {
+          "name": "CircularPropsPassedThroughJSONTree",
+        },
       ],
       "kind": 14,
       "name": "Props",
@@ -2710,6 +2766,7 @@ Based on https://github.com/chriskempson/base16",
           "returns": Object {
             "kind": 4,
             "name": "ReactNode",
+            "optional": true,
             "properties": Array [
               Object {
                 "kind": 4,
@@ -2781,7 +2838,9 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "ReadonlyArray",
+                      Object {
+                        "name": "ReadonlyArray",
+                      },
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -2804,7 +2863,9 @@ Based on https://github.com/chriskempson/base16",
               },
               Object {
                 "extends": Array [
-                  "ReactElement",
+                  Object {
+                    "name": "ReactElement",
+                  },
                 ],
                 "kind": 14,
                 "name": "ReactPortal",
@@ -2897,6 +2958,7 @@ Based on https://github.com/chriskempson/base16",
           "returns": Object {
             "kind": 4,
             "name": "ReactNode",
+            "optional": true,
             "properties": Array [
               Object {
                 "kind": 4,
@@ -2968,7 +3030,9 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "ReadonlyArray",
+                      Object {
+                        "name": "ReadonlyArray",
+                      },
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -2991,7 +3055,9 @@ Based on https://github.com/chriskempson/base16",
               },
               Object {
                 "extends": Array [
-                  "ReactElement",
+                  Object {
+                    "name": "ReactElement",
+                  },
                 ],
                 "kind": 14,
                 "name": "ReactPortal",
@@ -3083,6 +3149,7 @@ Based on https://github.com/chriskempson/base16",
           },
           "returns": Object {
             "kind": 3,
+            "optional": true,
           },
         },
         Object {
@@ -3101,6 +3168,7 @@ Based on https://github.com/chriskempson/base16",
           "returns": Object {
             "kind": 4,
             "name": "ReactNode",
+            "optional": true,
             "properties": Array [
               Object {
                 "kind": 4,
@@ -3172,7 +3240,9 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "ReadonlyArray",
+                      Object {
+                        "name": "ReadonlyArray",
+                      },
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -3195,7 +3265,9 @@ Based on https://github.com/chriskempson/base16",
               },
               Object {
                 "extends": Array [
-                  "ReactElement",
+                  Object {
+                    "name": "ReactElement",
+                  },
                 ],
                 "kind": 14,
                 "name": "ReactPortal",
@@ -3287,6 +3359,7 @@ Based on https://github.com/chriskempson/base16",
           },
           "returns": Object {
             "kind": 17,
+            "optional": true,
           },
         },
         Object {
@@ -3297,6 +3370,7 @@ Based on https://github.com/chriskempson/base16",
           },
           "returns": Object {
             "kind": 3,
+            "optional": true,
           },
         },
         Object {
@@ -3361,7 +3435,9 @@ Based on https://github.com/chriskempson/base16",
     },
     "ReactPortal": Object {
       "extends": Array [
-        "ReactElement",
+        Object {
+          "name": "ReactElement",
+        },
       ],
       "kind": 14,
       "name": "ReactPortal",
@@ -3491,6 +3567,7 @@ Based on https://github.com/chriskempson/base16",
           "returns": Object {
             "kind": 4,
             "name": "ReactNode",
+            "optional": true,
             "properties": Array [
               Object {
                 "kind": 4,
@@ -3562,7 +3639,9 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "ReadonlyArray",
+                      Object {
+                        "name": "ReadonlyArray",
+                      },
                     ],
                     "kind": 14,
                     "name": "ReactNodeArray",
@@ -3585,7 +3664,9 @@ Based on https://github.com/chriskempson/base16",
               },
               Object {
                 "extends": Array [
-                  "ReactElement",
+                  Object {
+                    "name": "ReactElement",
+                  },
                 ],
                 "kind": 14,
                 "name": "ReactPortal",
@@ -4740,8 +4821,12 @@ Based on https://github.com/chriskempson/base16",
     },
     "StandardProperties": Object {
       "extends": Array [
-        "StandardLonghandProperties",
-        "StandardShorthandProperties",
+        Object {
+          "name": "StandardLonghandProperties",
+        },
+        Object {
+          "name": "StandardShorthandProperties",
+        },
       ],
       "generics": Array [
         Object {
@@ -7332,10 +7417,18 @@ Based on https://github.com/chriskempson/base16",
                   },
                   Object {
                     "extends": Array [
-                      "StandardProperties",
-                      "VendorProperties",
-                      "ObsoleteProperties",
-                      "SvgProperties",
+                      Object {
+                        "name": "StandardProperties",
+                      },
+                      Object {
+                        "name": "VendorProperties",
+                      },
+                      Object {
+                        "name": "ObsoleteProperties",
+                      },
+                      Object {
+                        "name": "SvgProperties",
+                      },
                     ],
                     "generics": Array [
                       Object {
@@ -22578,6 +22671,7 @@ _Supported in Multi-column Layout_
                         },
                       ],
                       "kind": 15,
+                      "optional": true,
                       "type": "Partial",
                     },
                     "type": "StylingValueFunction",
@@ -22769,10 +22863,18 @@ Based on https://github.com/chriskempson/base16",
                 },
                 Object {
                   "extends": Array [
-                    "StandardProperties",
-                    "VendorProperties",
-                    "ObsoleteProperties",
-                    "SvgProperties",
+                    Object {
+                      "name": "StandardProperties",
+                    },
+                    Object {
+                      "name": "VendorProperties",
+                    },
+                    Object {
+                      "name": "ObsoleteProperties",
+                    },
+                    Object {
+                      "name": "SvgProperties",
+                    },
                   ],
                   "generics": Array [
                     Object {
@@ -38015,6 +38117,7 @@ _Supported in Multi-column Layout_
                       },
                     ],
                     "kind": 15,
+                    "optional": true,
                     "type": "Partial",
                   },
                   "type": "StylingValueFunction",
@@ -38911,8 +39014,12 @@ _Supported in Multi-column Layout_
     },
     "VendorProperties": Object {
       "extends": Array [
-        "VendorLonghandProperties",
-        "VendorShorthandProperties",
+        Object {
+          "name": "VendorLonghandProperties",
+        },
+        Object {
+          "name": "VendorShorthandProperties",
+        },
       ],
       "generics": Array [
         Object {
@@ -40538,7 +40645,9 @@ Object {
         "properties": Array [
           Object {
             "extends": Array [
-              "Properties",
+              Object {
+                "name": "Properties",
+              },
             ],
             "kind": 14,
             "name": "CSSProperties",

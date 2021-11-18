@@ -1,7 +1,7 @@
 import { PropType } from '@structured-types/api/types';
 import { ColumnObject, DocumentationOptions } from './types';
 import { PropLinks } from './utility/prop-links';
-import { PropTypeNodes } from './utility/prop-type-nodes';
+import { PropTypeNodes } from './props/full-prop-type';
 
 export type DocumentationConfig = {
   columns: ColumnObject;

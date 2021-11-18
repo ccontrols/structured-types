@@ -4,5 +4,7 @@ declare namespace JSX {
     'vscode-data-grid-row': any;
     'vscode-data-grid-cell': any;
     'vscode-progress-ring': any;
+    'fast-tree-view': any;
+    'fast-tree-item': any;
   }
 }

@@ -1,34 +1,47 @@
 import * as vscode from 'vscode';
 import { ContentProvider } from './ContentProvider';
-import { isDocumentableFile } from './utils';
+import { getOpposingViewColumn, isDocumentableFile } from './utils';
 import { ConfigStore } from './config';
 
 export function activate(context: vscode.ExtensionContext): void {
   const config = new ConfigStore();
   const contentProvider = new ContentProvider(context, config.config);
 
-  const openPreview = (column: vscode.ViewColumn) => (uri?: vscode.Uri) => {
+  const openPreview = (uri?: vscode.Uri) => {
     let resource = uri;
-    if (!(resource instanceof vscode.Uri)) {
-      if (vscode.window.activeTextEditor) {
-        // we are relaxed and don't check for markdown files
-        resource = vscode.window.activeTextEditor.document.uri;
+    const selectedEditor =
+      (uri &&
+        vscode.window.visibleTextEditors.find(
+          (e) => e.document.uri.fsPath === uri.fsPath,
+        )) ||
+      vscode.window.activeTextEditor;
+    let viewColumn = vscode.ViewColumn.One;
+    if (selectedEditor) {
+      if (!(resource instanceof vscode.Uri)) {
+        resource = selectedEditor.document.uri;
       }
+      viewColumn = getOpposingViewColumn(
+        vscode.ViewColumn.Two,
+        selectedEditor.viewColumn,
+      );
     }
     if (resource) {
-      contentProvider.createPreview(resource, column);
+      contentProvider.createPreview(resource, viewColumn);
     }
   };
   context.subscriptions.push(
     vscode.window.onDidChangeActiveTextEditor((textEditor) => {
-      if (textEditor && textEditor.document && textEditor.document.uri) {
+      if (
+        textEditor.document.uri.fsPath ===
+        vscode.window.activeTextEditor.document.uri.fsPath
+      ) {
         if (isDocumentableFile(textEditor.document)) {
           const sourceUri = textEditor.document.uri;
 
           const isUsingSinglePreview = config.config.singlePage;
           const {
             panel: previewPanel,
-            viewColumn = vscode.ViewColumn.One,
+            viewColumn,
             uri = { fsPath: '' },
           } = contentProvider.getPreview(sourceUri) || {};
 
@@ -40,13 +53,13 @@ export function activate(context: vscode.ExtensionContext): void {
             ) {
               contentProvider.createPreview(sourceUri, viewColumn);
             } else if (!isUsingSinglePreview && previewPanel) {
-              previewPanel.reveal(vscode.ViewColumn.Two, true);
+              previewPanel.reveal(undefined, true);
             }
           } else if (
             config.config.autoShowDocumentation &&
             textEditor.viewColumn !== viewColumn
           ) {
-            openPreview(vscode.ViewColumn.Two)(sourceUri);
+            openPreview(sourceUri);
           }
         }
       }
@@ -55,13 +68,7 @@ export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(
     vscode.commands.registerCommand(
       'instant-documentation.openPreview',
-      openPreview(vscode.ViewColumn.One),
-    ),
-  );
-  context.subscriptions.push(
-    vscode.commands.registerCommand(
-      'instant-documentation.openPreviewSide',
-      openPreview(vscode.ViewColumn.Two),
+      openPreview,
     ),
   );
   context.subscriptions.push(

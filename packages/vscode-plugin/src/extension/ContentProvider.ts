@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { extractProps } from './extract-props';
-import { getUri, getNonce, openLocation } from './utils';
+import { getNonce, openLocation } from './utils';
 import { VSCodeConfig } from './config';
 
 type PanelStore = {
@@ -14,6 +14,7 @@ export class ContentProvider {
   private config: VSCodeConfig;
   private previewPanels: Record<string, PanelStore> = {};
   private singlePreviewPanel: PanelStore | undefined;
+  private activeUri: vscode.Uri | undefined = undefined;
   private static readonly viewType = 'instant_documentation';
   constructor(context: vscode.ExtensionContext, config: VSCodeConfig) {
     this.context = context;
@@ -31,20 +32,20 @@ export class ContentProvider {
   }
 
   private updateProps(uri: vscode.Uri): void {
-    const { panel } = this.getPreview(uri) || {};
+    const { panel, viewColumn } = this.getPreview(uri) || {};
     if (panel) {
       panel.webview.html = this.getHtml(panel, uri);
       this.render(uri.fsPath, panel);
       panel.webview.onDidReceiveMessage((data) => {
         switch (data.type) {
           case 'open_loc':
-            openLocation(data.value);
+            openLocation(data.value, viewColumn);
         }
       });
     }
   }
   private getTitle(uri: vscode.Uri): string {
-    return `Documentation ${path.basename(uri.fsPath)}`;
+    return `InstantDoc ${path.basename(uri.fsPath)}`;
   }
   public createPreview(sourceUri: vscode.Uri, column: vscode.ViewColumn): void {
     const previewColumn =
@@ -66,6 +67,7 @@ export class ContentProvider {
         {
           enableFindWidget: true,
           enableScripts: true,
+          //retainContextWhenHidden: true,
           localResourceRoots: [
             vscode.Uri.file(path.join(this.context.extensionPath, 'dist')),
           ],
@@ -81,18 +83,21 @@ export class ContentProvider {
         null,
         this.context.subscriptions,
       );
-      this.setPreviewActiveContext(true);
+      this.setPreviewActiveContext(sourceUri);
       // unregister previewPanel
       panel.onDidDispose(
         () => {
           this.destroyPreview(sourceUri);
-          this.setPreviewActiveContext(false);
+          this.setPreviewActiveContext();
         },
         null,
         this.context.subscriptions,
       );
-      panel.onDidChangeViewState(({ webviewPanel }) => {
-        this.setPreviewActiveContext(webviewPanel.active);
+      panel.onDidChangeViewState(({ webviewPanel, ...rest }) => {
+        console.log(rest);
+        this.setPreviewActiveContext(
+          webviewPanel.active ? sourceUri : undefined,
+        );
       });
     }
     const preview: PanelStore = {
@@ -111,7 +116,18 @@ export class ContentProvider {
   }
 
   public refreshPreview(sourceUri: vscode.Uri): void {
-    this.updateProps(sourceUri);
+    let webviewStore: PanelStore;
+    if (this.config.singlePage) {
+      webviewStore = this.singlePreviewPanel;
+    } else if (this.activeUri) {
+      webviewStore = this.previewPanels[this.activeUri.fsPath];
+    } else {
+      webviewStore = this.previewPanels[sourceUri.fsPath];
+    }
+    const { panel, uri } = webviewStore || {};
+    if (panel) {
+      this.render(uri.fsPath, panel);
+    }
   }
 
   public getPreview(sourceUri: vscode.Uri): PanelStore | undefined {
@@ -171,18 +187,15 @@ export class ContentProvider {
     }
   }
 
-  private setPreviewActiveContext(value: boolean) {
+  private setPreviewActiveContext(uri?: vscode.Uri) {
+    this.activeUri = uri;
     vscode.commands.executeCommand(
       'setContext',
       'documentation_view_active',
-      value,
+      !!uri,
     );
   }
   private getHtml(panel: vscode.WebviewPanel, sourceUri: vscode.Uri) {
-    const toolkitUri = getUri(panel.webview, this.context.extensionUri, [
-      'dist',
-      'toolkit.js',
-    ]);
     const scriptUri = panel.webview.asWebviewUri(
       vscode.Uri.joinPath(this.context.extensionUri, 'dist', 'webview.js'),
     );
@@ -192,7 +205,6 @@ export class ContentProvider {
 			<head>
 				<meta charset="utf-8">
 				<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-        <script type="module" src="${toolkitUri}"></script>
 				<title>${this.getTitle(sourceUri)}</title>
 				<base href="${vscode.Uri.file(
           path.join(this.context.extensionPath, 'dist'),

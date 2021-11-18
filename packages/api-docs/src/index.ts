@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { PropTypes } from '@structured-types/api';
+import { PropTypes } from '@structured-types/api/types';
 import { cosmiconfigSync } from 'cosmiconfig';
 import micromatch from 'micromatch';
 import deepmerge from 'deepmerge';

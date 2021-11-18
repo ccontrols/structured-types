@@ -13,20 +13,80 @@ import {
   isTextNode,
   isNodeWithChildren,
   isNodeWithValue,
+  isCollapsibleNode,
+  isBlockNode,
 } from '@structured-types/api-docs';
 import { RemarkNode } from '../types';
 
-const renderNode = ({
-  node,
-  ...props
-}: {
-  node: DocumentationNode;
-  [props: string]: any;
-}): RemarkNode | null => {
+const renderNode = (
+  {
+    node,
+    ...props
+  }: {
+    node: DocumentationNode;
+    [props: string]: any;
+  },
+  skipLineBreaks = false,
+): RemarkNode | null => {
   if (isHeadingNode(node)) {
     return nodeContent({ node, as: 'heading', depth: node.depth, ...props });
   } else if (isParagraphNode(node)) {
     return nodeContent({ node, as: 'paragraph', ...props });
+  } else if (isBlockNode(node) && node.children && !skipLineBreaks) {
+    return {
+      type: 'paragraph',
+      children: [
+        ...(node.children.map((node) => renderNode({ node })) as RemarkNode[]),
+        {
+          type: 'html',
+          value: '<br />',
+        },
+      ],
+    };
+  } else if (isCollapsibleNode(node)) {
+    return {
+      type: 'paragraph',
+      children: [
+        {
+          type: 'html',
+          value: '<details>',
+        },
+        {
+          type: 'html',
+          value: '<summary>',
+        },
+        ...nodesToRemark(node.summary),
+        {
+          type: 'html',
+          value: '</summary>',
+        },
+        {
+          type: 'html',
+          value: '<blockquote>',
+        },
+        ...(node.children
+          ? node.children.reduce((acc, n, idx) => {
+              const r = renderNode(
+                { node: n },
+                idx === node.children.length - 1,
+              );
+              if (r) {
+                const returns = [r];
+                return [...acc, ...returns];
+              }
+              return acc;
+            }, [] as RemarkNode[])
+          : []),
+        {
+          type: 'html',
+          value: '</blockquote>',
+        },
+        {
+          type: 'html',
+          value: '</details>',
+        },
+      ],
+    };
   } else if (isBoldNode(node)) {
     return nodeContent({ node, as: 'strong', ...props });
   } else if (isEmphasisNode(node)) {
@@ -47,6 +107,8 @@ const renderNode = ({
     return nodeContent({ node, as: 'tableRow', ...props });
   } else if (isTableNode(node)) {
     return nodeContent({ node, as: 'table', ...props });
+  } else if (isNodeWithChildren(node)) {
+    return nodeContent({ node, as: 'paragraph', ...props });
   }
   return null;
 };

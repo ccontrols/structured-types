@@ -9,9 +9,9 @@
         -   [Options](#options)
     -   [Keybindings](#keybindings)
 
-<h1 align="center">Instant Documentation Plugin</h1>
+<h1 align="center">Instant Documentation VSCode Plugin</h1>
 
-A VSCode extension that will show the structured type instant documentation for typescript and javascript files
+A VSCode extension that will show on-the-fly documentation for typescript and javascript files
 
 ![main screen](https://github.com/ccontrols/structured-types/raw/master/packages/vscode-plugin/main-screen.jpg)
 
@@ -47,7 +47,6 @@ And the other options are from `@structured-types/api-docs` [DocumentOptions](ht
 
 > The <kbd>cmd</kbd> key for _Windows_ is <kbd>ctrl</kbd>.
 
-| Shortcuts                                         | Functionality                  |
-| ------------------------------------------------- | ------------------------------ |
-| <kbd>cmd-k v</kbd> or <kbd>ctrl-k v</kbd>         | Open documentation to the Side |
-| <kbd>cmd-shift-v</kbd> or <kbd>ctrl-shift-v</kbd> | Open documentation             |
+| Shortcuts                                 | Functionality              |
+| ----------------------------------------- | -------------------------- |
+| <kbd>cmd-k i</kbd> or <kbd>ctrl-k i</kbd> | Open Instant Documentation |

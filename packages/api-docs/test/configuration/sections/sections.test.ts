@@ -184,40 +184,21 @@ const jsResults = [
     ],
   },
   {
-    kind: 6,
-    value: '[',
-  },
-  {
     kind: 11,
-    value: 'string',
-  },
-  {
-    kind: 6,
-    value: ', ',
-  },
-  {
-    kind: 11,
-    value: 'number',
-  },
-  {
-    kind: 6,
-    value: ']',
+    value: 'tuple',
   },
   {
     kind: 6,
     value: ' | ',
   },
   {
-    kind: 11,
-    value: 'string',
-  },
-  {
-    kind: 6,
-    value: ' | ',
-  },
-  {
-    kind: 11,
-    value: 'number',
+    kind: 9,
+    children: [
+      {
+        kind: 11,
+        value: 'NumArr',
+      },
+    ],
   },
   {
     kind: 5,
@@ -392,40 +373,21 @@ const jsonResult = [
     ],
   },
   {
-    kind: 6,
-    value: '[',
-  },
-  {
     kind: 11,
-    value: 'string',
-  },
-  {
-    kind: 6,
-    value: ', ',
-  },
-  {
-    kind: 11,
-    value: 'number',
-  },
-  {
-    kind: 6,
-    value: ']',
+    value: 'tuple',
   },
   {
     kind: 6,
     value: ' | ',
   },
   {
-    kind: 11,
-    value: 'string',
-  },
-  {
-    kind: 6,
-    value: ' | ',
-  },
-  {
-    kind: 11,
-    value: 'number',
+    kind: 9,
+    children: [
+      {
+        kind: 11,
+        value: 'NumArr',
+      },
+    ],
   },
   {
     kind: 5,

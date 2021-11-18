@@ -9,14 +9,10 @@ export const extendsSection = (
 ): DocumentationNode[] | undefined => {
   if (isClassLikeProp(prop) && prop.extends?.length) {
     const extendsList = prop.extends.reduce(
-      (acc: DocumentationNode[], key: string, idx: number) => {
-        const p = config.propLinks.getPropLink(key);
-        let result: DocumentationNode[];
-        if (p) {
-          result = config.propTypes.extractPropType(p);
-        } else {
-          result = [textNode(key)];
-        }
+      (acc: DocumentationNode[], extendsProp, idx: number) => {
+        const result: DocumentationNode[] = [
+          config.propLinks.propLink(extendsProp),
+        ];
         if (prop.extends && idx < prop.extends.length - 1) {
           result.push(textNode(', '));
         }

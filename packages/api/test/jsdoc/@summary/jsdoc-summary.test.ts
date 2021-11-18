@@ -11,6 +11,7 @@ describe('summary', () => {
         summary: 'A concise summary.',
         returns: {
           kind: 12,
+          optional: true,
         },
         description:
           'A very long, verbose, wordy, long-winded, tedious, verbacious, tautological,\nprofuse, expansive, enthusiastic, redundant, flowery, eloquent, articulate,\nloquacious, garrulous, chatty, extended, babbling description.',

@@ -89,7 +89,9 @@ Object {
                       },
                       Object {
                         "extends": Array [
-                          "ReadonlyArray",
+                          Object {
+                            "name": "ReadonlyArray",
+                          },
                         ],
                         "kind": 14,
                         "name": "ReactNodeArray",
@@ -112,7 +114,9 @@ Object {
                   },
                   Object {
                     "extends": Array [
-                      "ReactElement",
+                      Object {
+                        "name": "ReactElement",
+                      },
                     ],
                     "kind": 14,
                     "name": "ReactPortal",
@@ -261,6 +265,7 @@ Object {
     ],
     "returns": Object {
       "kind": 12,
+      "optional": true,
     },
     "type": "FC",
   },

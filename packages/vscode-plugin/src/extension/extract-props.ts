@@ -12,11 +12,7 @@ export const extractProps = (
   fileName: string,
   options: DocsOptions & DocumentationOptions = {},
 ): ReturnType<typeof propsToDocumentation> => {
-  const {
-    config = {
-      maxProps: 10,
-    },
-  } = apiDocsConfig(fileName) || {};
+  const { config } = apiDocsConfig(fileName) || {};
   const mergedConfig = deepmerge<DocsOptions & DocumentationOptions>(
     config,
     options,
@@ -31,6 +27,5 @@ export const extractProps = (
   });
 
   const nodes = propsToDocumentation(props, mergedConfig);
-
   return nodes;
 };

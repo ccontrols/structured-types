@@ -33,7 +33,7 @@ export class ConfigStore {
     this._config.singlePage = this.readValue<boolean>(config, 'singlePage');
     this._config.autoShowDocumentation = this.readValue<boolean>(
       config,
-      'singlePage',
+      'autoShowDocumentation',
     );
     this._config.collapsed = this.readValue<DocumentationOptions['collapsed']>(
       config,
@@ -47,10 +47,6 @@ export class ConfigStore {
     this._config.extensions = this.readValue<
       DocumentationOptions['extensions']
     >(config, 'extensions');
-    this._config.maxProps = this.readValue<DocumentationOptions['maxProps']>(
-      config,
-      'maxProps',
-    );
     this._config.columns = this.readValue<DocumentationOptions['columns']>(
       config,
       'columns',

@@ -54,8 +54,13 @@ describe('columns', () => {
             kind: 3,
             children: [
               {
-                kind: 11,
-                value: 'm*',
+                kind: 9,
+                children: [
+                  {
+                    kind: 11,
+                    value: 'm*',
+                  },
+                ],
               },
             ],
           },
@@ -95,8 +100,13 @@ describe('columns', () => {
             kind: 3,
             children: [
               {
-                kind: 11,
-                value: 'n',
+                kind: 9,
+                children: [
+                  {
+                    kind: 11,
+                    value: 'n',
+                  },
+                ],
               },
             ],
           },
@@ -125,24 +135,8 @@ describe('columns', () => {
                 value: ', ',
               },
               {
-                kind: 6,
-                value: '{ ',
-              },
-              {
                 kind: 11,
-                value: 'a',
-              },
-              {
-                kind: 6,
-                value: ': ',
-              },
-              {
-                kind: 11,
-                value: 'boolean',
-              },
-              {
-                kind: 6,
-                value: ' }',
+                value: 'type',
               },
               {
                 kind: 6,
@@ -333,24 +327,8 @@ describe('columns', () => {
                   value: ', ',
                 },
                 {
-                  kind: 6,
-                  value: '{ ',
-                },
-                {
                   kind: 11,
-                  value: 'a',
-                },
-                {
-                  kind: 6,
-                  value: ': ',
-                },
-                {
-                  kind: 11,
-                  value: 'boolean',
-                },
-                {
-                  kind: 6,
-                  value: ' }',
+                  value: 'type',
                 },
                 {
                   kind: 6,

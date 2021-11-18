@@ -124,6 +124,7 @@ describe('function-component', () => {
                 ],
                 returns: {
                   kind: 12,
+                  optional: true,
                 },
                 name: 'MouseEventHandler',
               },
@@ -310,6 +311,7 @@ describe('function-component', () => {
             ],
             returns: {
               kind: 3,
+              optional: true,
             },
           },
         ],

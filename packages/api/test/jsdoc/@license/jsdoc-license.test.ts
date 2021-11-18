@@ -17,6 +17,7 @@ describe('license', () => {
         ],
         returns: {
           kind: 1,
+          optional: true,
         },
       },
     });
@@ -40,6 +41,7 @@ describe('license', () => {
         ],
         returns: {
           kind: 1,
+          optional: true,
         },
       },
     });

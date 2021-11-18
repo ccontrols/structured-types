@@ -1,4 +1,4 @@
-import { PropType, SourceLocation } from '@structured-types/api';
+import { PropType, SourceLocation } from '@structured-types/api/types';
 
 /**
  * Documentation node kinds
@@ -15,6 +15,8 @@ export enum NodeKind {
   Link = 9,
   Code = 10,
   InlineCode = 11,
+  Block = 12,
+  Collapsible = 13,
 }
 
 /**
@@ -28,7 +30,7 @@ export interface DocumentationNode {
  * Documentation node with children
  */
 export interface DocumentationNodeWithChildren extends DocumentationNode {
-  children?: DocumentationNode[];
+  children: DocumentationNode[];
 }
 
 /**
@@ -45,7 +47,9 @@ export const isNodeWithChildren = (
     node.kind === NodeKind.Paragraph ||
     node.kind === NodeKind.Bold ||
     node.kind === NodeKind.Emphasis ||
-    node.kind === NodeKind.Link
+    node.kind === NodeKind.Link ||
+    node.kind === NodeKind.Collapsible ||
+    node.kind === NodeKind.Block
   );
 };
 
@@ -241,6 +245,37 @@ export const isInlineCodeNode = (
   return node.kind === NodeKind.InlineCode;
 };
 
+/**
+ * Block - needs a new line
+ */
+export interface BlockNode extends DocumentationNodeWithChildren {
+  kind: NodeKind.Block;
+}
+
+/**
+ * BlockNode type guard predicate
+ */
+export const isBlockNode = (node: DocumentationNode): node is BlockNode => {
+  return node.kind === NodeKind.Block;
+};
+
+/**
+ * Collapsible node, the content are in the child elements
+ */
+export interface CollapsibleNode extends DocumentationNodeWithChildren {
+  kind: NodeKind.Collapsible;
+  summary: DocumentationNode[];
+}
+
+/**
+ * CollapsibleNode type guard predicate
+ */
+export const isCollapsibleNode = (
+  node: DocumentationNode,
+): node is CollapsibleNode => {
+  return node.kind === NodeKind.Collapsible;
+};
+
 export type TitleCallback = (prop: PropType) => string | undefined;
 export type SectionRenderCallback = (
   prop: PropType,
@@ -348,10 +383,4 @@ export type DocumentationOptions = {
    * React library properties.
    */
   skipInherited?: boolean;
-
-  /**
-   * Maximum number of properties to list in the props table rows, this is to avoid huge property sets
-   * @default 30
-   */
-  maxProps?: number;
 };

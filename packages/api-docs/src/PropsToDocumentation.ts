@@ -26,10 +26,11 @@ import { typeSection } from './sections/type';
 import { PropRepos } from './utility/prop-repos';
 import { locationSection } from './sections/location';
 import { extendsSection } from './sections/extends';
-import { PropTypeNodes } from './utility/prop-type-nodes';
+import { PropTypeNodes } from './props/full-prop-type';
 import { DocumentationConfig } from './DocumentationConfig';
 import { propTable } from './utility/props-table';
 import { propFunction } from './utility/prop-function';
+import { unionPropNodes } from './props/union-prop';
 
 export class PropsToDocumentation {
   private sections: SectionObject = defaultSections;
@@ -42,17 +43,20 @@ export class PropsToDocumentation {
   };
   private repos: PropRepos = new PropRepos();
 
-  private extractClassLike(prop: InterfaceProp): DocumentationNode[] {
-    const result: DocumentationNode[] = [];
-    if (prop.name) {
+  private extractClassLike(
+    prop: InterfaceProp,
+  ): DocumentationNode[] | undefined {
+    if (prop.name && prop.properties?.length) {
+      const result: DocumentationNode[] = [];
       if (isUnionProp(prop)) {
-        result.push(...this.config.propTypes.extractPropType(prop));
-      } else if (hasProperties(prop) && prop.properties) {
+        result.push(...unionPropNodes(prop, this.config));
+      } else if (hasProperties(prop)) {
         const { propsTable } = propTable(prop, prop.properties, this.config);
         result.push(...propsTable);
       }
+      return result;
     }
-    return result;
+    return undefined;
   }
 
   private getPropsTable(prop: PropType): DocumentationNode[] | undefined {
