@@ -1,5 +1,4 @@
 import * as vscode from 'vscode';
-
 import { PropType } from '@structured-types/api';
 
 const goToLocation = (location: PropType['loc']): void => {
@@ -20,14 +19,25 @@ const goToLocation = (location: PropType['loc']): void => {
   }
 };
 
-export const openLocation = (location: PropType['loc']): void => {
+export const getOpposingViewColumn = (
+  defColumn?: vscode.ViewColumn,
+  column?: vscode.ViewColumn,
+): vscode.ViewColumn => {
+  return column === vscode.ViewColumn.One ? vscode.ViewColumn.Two : defColumn;
+};
+export const openLocation = (
+  location: PropType['loc'],
+  column: vscode.ViewColumn,
+): void => {
   if (location?.filePath)
     vscode.workspace
       .openTextDocument(vscode.Uri.file(location.filePath))
       .then((document) => {
-        vscode.window.showTextDocument(document).then(() => {
-          goToLocation(location);
-        });
+        vscode.window
+          .showTextDocument(document, getOpposingViewColumn(undefined, column))
+          .then(() => {
+            goToLocation(location);
+          });
       });
 };
 export const getUri = (

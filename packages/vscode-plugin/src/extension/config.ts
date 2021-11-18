@@ -33,7 +33,7 @@ export class ConfigStore {
     this._config.singlePage = this.readValue<boolean>(config, 'singlePage');
     this._config.autoShowDocumentation = this.readValue<boolean>(
       config,
-      'singlePage',
+      'autoShowDocumentation',
     );
     this._config.collapsed = this.readValue<DocumentationOptions['collapsed']>(
       config,
