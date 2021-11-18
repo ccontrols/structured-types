@@ -32,8 +32,6 @@ Top-level component that displays the editor, and the tabbed interface
 
 _defined in [structured-types-site/site/src/components/Playground.tsx](https://github.com/ccontrols/structured-types/tree/master/site/src/components/Playground.tsx#L21)_
 
-**properties**
-
 ## Editor
 
 **`react component`**
@@ -41,8 +39,6 @@ _defined in [structured-types-site/site/src/components/Playground.tsx](https://g
 Monaco editor component. Uses CodeContext for data repository.
 
 _defined in [structured-types-site/site/src/components/Editor.tsx](https://github.com/ccontrols/structured-types/tree/master/site/src/components/Editor.tsx#L11)_
-
-**properties**
 
 <!-- END-API-README -->
 
@@ -115,8 +111,6 @@ _defined in [structured-types-site/site/src/components/panels/ParseConfigPanel.t
 Display a 'loading..' flex box
 
 _defined in [structured-types-site/site/src/components/viewers/LoadingIndicator.tsx](https://github.com/ccontrols/structured-types/tree/master/site/src/components/viewers/LoadingIndicator.tsx#L7)_
-
-**properties**
 
 ## JSONViewer
 
