@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.36.0](https://github.com/ccontrols/component-controls/compare/v3.35.3...v3.36.0) (2021-11-18)
+
+
+### Features
+
+* **api-readme:** collapsible types ([b7b18e0](https://github.com/ccontrols/component-controls/commit/b7b18e0f24e4612006c5adc725705cb357f88c1a))
+
+
+
+
+
 # [3.35.0](https://github.com/ccontrols/component-controls/compare/v3.34.2...v3.35.0) (2021-11-07)
 
 

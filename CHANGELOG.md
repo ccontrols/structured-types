@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.36.0](https://github.com/ccontrols/structured-types/compare/v3.35.3...v3.36.0) (2021-11-18)
+
+
+### Bug Fixes
+
+* **api-docs:** hide section title if no props ([cb46bb3](https://github.com/ccontrols/structured-types/commit/cb46bb36eae99e9dbc9fd269ade3861fb239fca0))
+* **api-docs:** index prop in block ([c113781](https://github.com/ccontrols/structured-types/commit/c1137814f2b91ed6bc006ea2073bbb90dbb5e9ad))
+* **vscode-plugin:** default column opposite ([532d7f1](https://github.com/ccontrols/structured-types/commit/532d7f13018b239f5c6cf8fc99c8a1d5ab2f487c))
+* **vscode-plugin:** switch columns ([9586adb](https://github.com/ccontrols/structured-types/commit/9586adb028d7c4ead636c83dd86b6d0323227728))
+* **vscode-plugin:** update view columns ([d970b66](https://github.com/ccontrols/structured-types/commit/d970b661d86c9dbba8b298afd792580980e400e7))
+
+
+### Features
+
+* **api-docs:** customize prop titles ([d0ea3df](https://github.com/ccontrols/structured-types/commit/d0ea3df82b8096686ad507c341afb45765f0679d))
+* **api-readme:** collapsible types ([b7b18e0](https://github.com/ccontrols/structured-types/commit/b7b18e0f24e4612006c5adc725705cb357f88c1a))
+* **vscode-plugin:** collapsible types ([c322ae6](https://github.com/ccontrols/structured-types/commit/c322ae6472845cb4c2d9e0fa0ccb3a86812e5aa4))
+* collapsible props initial ([9c7741c](https://github.com/ccontrols/structured-types/commit/9c7741ceb62c97c261cce2a42fd61b6ff87a8eaf))
+
+
+
+
+
 ## [3.35.3](https://github.com/ccontrols/structured-types/compare/v3.35.2...v3.35.3) (2021-11-10)
 
 
