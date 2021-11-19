@@ -42,6 +42,7 @@
     "cosmiconfig": "^7.0.1",
     "deepmerge": "^4.2.2",
     "hosted-git-info": "^3.0.4",
+    "inherits": "^2.0.4",
     "js-string-escape": "^1.0.1",
     "micromatch": "^4.0.4"
   },
