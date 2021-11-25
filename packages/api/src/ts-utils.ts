@@ -528,3 +528,7 @@ export const getSymbolDeclaration = (
     ? symbol.valueDeclaration || symbol.declarations?.[0]
     : undefined;
 };
+
+export const getTypeSymbol = (type?: ts.Type): ts.Symbol | undefined => {
+  return type ? type.aliasSymbol || type.symbol : undefined;
+};

@@ -44,6 +44,7 @@ import {
   getTypeKind,
   updateModifiers,
   getSymbolDeclaration,
+  getTypeSymbol,
 } from './ts-utils';
 import { resolveType } from './ts/resolveType';
 import { getInitializer } from './ts/getInitializer';
@@ -159,7 +160,7 @@ export class SymbolParser implements ISymbolParser {
 
     const type = this.checker.getTypeAtLocation(node);
     if (type) {
-      const symbol = type.aliasSymbol || type.symbol;
+      const symbol = getTypeSymbol(type);
       if (symbol && (symbol.flags & ts.SymbolFlags.TypeAlias) === 0) {
         const declaration = getSymbolDeclaration(symbol);
         if (declaration && this.internalNode(declaration) === undefined) {
@@ -295,7 +296,7 @@ export class SymbolParser implements ISymbolParser {
 
         if (signature) {
           const returnType = this.checker.getReturnTypeOfSignature(signature);
-          const symbol = returnType.aliasSymbol || returnType.symbol;
+          const symbol = getTypeSymbol(returnType);
           const returnProp = symbol
             ? this.parseSymbolProp(
                 { name: symbol.escapedName as string },
@@ -755,7 +756,7 @@ export class SymbolParser implements ISymbolParser {
       if (index?.declaration) {
         return this.parseTypeValueComments({}, options, index.declaration);
       } else if (index?.type) {
-        const symbol = index.type.aliasSymbol || index.type.symbol;
+        const symbol = getTypeSymbol(index.type);
         const p: IndexProp = {
           kind: PropKind.Index,
           index: { kind },
@@ -831,7 +832,14 @@ export class SymbolParser implements ISymbolParser {
     const symbolDeclaration = getSymbolDeclaration(symbol);
 
     const symbolType = getSymbolType(this.checker, symbol);
-    const declaration = symbolDeclaration;
+    let declaration = symbolDeclaration;
+    if (symbol.flags & ts.SymbolFlags.Alias) {
+      const typeSymbol = getTypeSymbol(symbolType);
+      if (typeSymbol) {
+        declaration = getSymbolDeclaration(typeSymbol);
+      }
+    }
+
     updateModifiers(prop, declaration);
     this.updateSymbolName(prop, declaration);
     if (symbolType) {
@@ -870,8 +878,7 @@ export class SymbolParser implements ISymbolParser {
           (resolvedType.isIntersection() ||
             resolvedType.flags & ts.TypeFlags.Object)
         ) {
-          const resolvedSymbol =
-            resolvedType.aliasSymbol || resolvedType.symbol;
+          const resolvedSymbol = getTypeSymbol(resolvedType);
           const resolvedDeclaration = getSymbolDeclaration(resolvedSymbol);
 
           const internalKind = this.internalNode(resolvedDeclaration);
@@ -972,8 +979,7 @@ export class SymbolParser implements ISymbolParser {
                     ).typeArguments?.map((t) => {
                       const p: PropType = {};
                       const name =
-                        (t as any).intrinsicName ||
-                        (t.aliasSymbol || t.symbol)?.name;
+                        (t as any).intrinsicName || getTypeSymbol(t)?.name;
                       if (name) {
                         p.name = name;
                       }
@@ -1095,7 +1101,7 @@ export class SymbolParser implements ISymbolParser {
       if (kind !== undefined) {
         prop.kind = kind;
       }
-      const symbol = typeNode.aliasSymbol || typeNode.symbol;
+      const symbol = getTypeSymbol(typeNode);
       const internalKind = symbol ? this.internalSymbol(symbol) : undefined;
       if (internalKind !== undefined) {
         prop.kind = internalKind;
