@@ -461,10 +461,14 @@ const findFileNode = (node: ts.Node): ts.SourceFile | undefined => {
 
 export const getFunctionLike = (
   checker: ts.TypeChecker,
-  expression: ts.Expression,
+  input: ts.Node,
 ): FunctionLike | ts.CallExpression | undefined => {
-  const symbol = checker.getSymbolAtLocation(expression);
-  const node = getSymbolDeclaration(symbol) || expression;
+  const symbol = checker.getSymbolAtLocation(
+    ts.isExpressionStatement(input) || ts.isExportAssignment(input)
+      ? input.expression
+      : input,
+  );
+  const node = getSymbolDeclaration(symbol) || input;
   if (ts.isVariableDeclaration(node) && node.initializer) {
     if (
       isFunctionLike(node.initializer) ||
