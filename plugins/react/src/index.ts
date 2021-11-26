@@ -45,30 +45,22 @@ const getNodeResults = (
   return undefined;
 };
 const typesResolve: ParsePlugin['typesResolve'] = ({
-  symbolType: initialType,
-  declaration: initialDeclaration,
+  symbolType,
+  declaration,
+  expression,
   parser,
 }) => {
-  if (initialDeclaration) {
-    if (ts.isExportSpecifier(initialDeclaration)) {
-    }
-    const declaration = ts.isExportSpecifier(initialDeclaration)
-      ? getSymbolDeclaration(initialType.aliasSymbol || initialType.symbol) ||
-        initialDeclaration
-      : initialDeclaration;
-    const symbolType = initialType;
-
+  if (declaration) {
     if (
-      initialType.flags &
+      symbolType.flags &
       (ts.TypeFlags.Object | ts.TypeFlags.StructuredType)
     ) {
       const { checker } = parser;
       const functionCall =
-        ts.isExportAssignment(declaration) &&
-        declaration.expression &&
-        ts.isCallExpression(declaration.expression) &&
-        declaration.expression.arguments.length
-          ? declaration.expression.arguments[0]
+        expression &&
+        ts.isCallExpression(expression) &&
+        expression.arguments.length
+          ? expression.arguments[0]
           : undefined;
       if (functionCall) {
         return getNodeResults(parser, functionCall);
@@ -164,7 +156,10 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
           }
         }
       } else {
-        const reactFunction = getFunctionLike(checker, declaration);
+        const reactFunction = getFunctionLike(
+          checker,
+          expression || declaration,
+        );
         if (reactFunction) {
           const jsx = checker.getJsxIntrinsicTagNamesAt(reactFunction);
           if (jsx.length) {

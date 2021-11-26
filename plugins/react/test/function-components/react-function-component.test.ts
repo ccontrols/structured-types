@@ -3,6 +3,39 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('function-component', () => {
+  it('default-props', () => {
+    const result = parseFiles([path.resolve(__dirname, 'default-props.tsx')], {
+      plugins: [reactPlugin],
+      collectHelpers: false,
+    });
+    expect(result).toEqual({
+      default: {
+        name: 'MyComponent',
+        extension: 'react',
+        kind: 25,
+        properties: [
+          {
+            parent: {
+              name: 'OwnProps',
+            },
+            optional: true,
+            name: 'stringProp',
+            kind: 1,
+            description: 'stringProp description',
+            value: 'test',
+          },
+          {
+            parent: {
+              name: 'OwnProps',
+            },
+            name: 'numberProp',
+            kind: 2,
+            description: 'numberProp description',
+          },
+        ],
+      },
+    });
+  });
   it('string-component', () => {
     const result = parseFiles(
       [path.resolve(__dirname, 'string-component.tsx')],
@@ -234,39 +267,7 @@ describe('function-component', () => {
       },
     });
   });
-  it('default-props', () => {
-    const result = parseFiles([path.resolve(__dirname, 'default-props.tsx')], {
-      plugins: [reactPlugin],
-      collectHelpers: false,
-    });
-    expect(result).toEqual({
-      default: {
-        name: 'MyComponent',
-        extension: 'react',
-        kind: 25,
-        properties: [
-          {
-            parent: {
-              name: 'OwnProps',
-            },
-            optional: true,
-            name: 'stringProp',
-            kind: 1,
-            description: 'stringProp description',
-            value: 'test',
-          },
-          {
-            parent: {
-              name: 'OwnProps',
-            },
-            name: 'numberProp',
-            kind: 2,
-            description: 'numberProp description',
-          },
-        ],
-      },
-    });
-  });
+
   it('function-inline-props', () => {
     const result = parseFiles(
       [path.resolve(__dirname, 'function-inline-props.tsx')],

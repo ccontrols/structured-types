@@ -830,15 +830,11 @@ export class SymbolParser implements ISymbolParser {
     topLevel: boolean,
   ): PropType | null {
     const symbolDeclaration = getSymbolDeclaration(symbol);
-
     const symbolType = getSymbolType(this.checker, symbol);
-    let declaration = symbolDeclaration;
-    if (symbol.flags & ts.SymbolFlags.Alias) {
-      const typeSymbol = getTypeSymbol(symbolType);
-      if (typeSymbol) {
-        declaration = getSymbolDeclaration(typeSymbol);
-      }
-    }
+    const declaration =
+      symbol.flags & ts.SymbolFlags.Alias
+        ? getSymbolDeclaration(getTypeSymbol(symbolType)) || symbolDeclaration
+        : symbolDeclaration;
 
     updateModifiers(prop, declaration);
     this.updateSymbolName(prop, declaration);
@@ -848,6 +844,12 @@ export class SymbolParser implements ISymbolParser {
           symbolType,
           declaration,
           parser: this,
+          expression:
+            symbolDeclaration &&
+            (ts.isExpressionStatement(symbolDeclaration) ||
+              ts.isExportAssignment(symbolDeclaration))
+              ? symbolDeclaration.expression
+              : undefined,
         },
         defaultOptions,
       );

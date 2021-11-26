@@ -433,7 +433,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://
 
 **`function`**
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/index.ts#L76)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/package-info/package-info.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/package-info/package-info.ts#L43)_
 
 **parameters**
 

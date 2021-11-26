@@ -332,6 +332,7 @@ export type TypeResolver = (props: {
   symbolType: ts.Type;
   declaration?: ts.Declaration;
   parser: ISymbolParser;
+  expression?: ts.Expression;
 }) => ResolverReturnType | undefined;
 
 export const getTypeKind = (typeNode?: ts.Type): PropKind | undefined => {
@@ -460,13 +461,10 @@ const findFileNode = (node: ts.Node): ts.SourceFile | undefined => {
 
 export const getFunctionLike = (
   checker: ts.TypeChecker,
-  input: ts.Node,
+  expression: ts.Expression,
 ): FunctionLike | ts.CallExpression | undefined => {
-  let node = input;
-  if (ts.isExpressionStatement(node) || ts.isExportAssignment(node)) {
-    const symbol = checker.getSymbolAtLocation(node.expression);
-    node = symbol?.valueDeclaration || symbol?.declarations?.[0] || node;
-  }
+  const symbol = checker.getSymbolAtLocation(expression);
+  const node = getSymbolDeclaration(symbol) || expression;
   if (ts.isVariableDeclaration(node) && node.initializer) {
     if (
       isFunctionLike(node.initializer) ||
