@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.36.2](https://github.com/ccontrols/structured-types/compare/v3.36.1...v3.36.2) (2021-11-26)
+
+
+### Bug Fixes
+
+* **api:** plugins pass expression ([7e7fae0](https://github.com/ccontrols/structured-types/commit/7e7fae04b3566ae5bf18055eed0d55abbffa20df))
+
+
+
+
+
 ## [3.36.1](https://github.com/ccontrols/structured-types/compare/v3.36.0...v3.36.1) (2021-11-19)
 
 **Note:** Version bump only for package @structured-types/api-docs

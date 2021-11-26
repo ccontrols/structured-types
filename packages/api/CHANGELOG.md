@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.36.2](https://github.com/ccontrols/structured-types/compare/v3.36.1...v3.36.2) (2021-11-26)
+
+
+### Bug Fixes
+
+* functionlike input expression ([9cba628](https://github.com/ccontrols/structured-types/commit/9cba628b61a0545fc7e808df15cf8c5705e41f0d))
+* **api:** plugins pass expression ([7e7fae0](https://github.com/ccontrols/structured-types/commit/7e7fae04b3566ae5bf18055eed0d55abbffa20df))
+* aliased symbols ([c48e63e](https://github.com/ccontrols/structured-types/commit/c48e63e8023c942e73814e3dbee732c21eb22632))
+
+
+
+
+
 # [3.36.0](https://github.com/ccontrols/structured-types/compare/v3.35.3...v3.36.0) (2021-11-18)
 
 
