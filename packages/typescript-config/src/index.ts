@@ -1,4 +1,3 @@
-import * as path from 'path';
 import * as ts from 'typescript';
 import merge from 'deepmerge';
 
@@ -6,20 +5,6 @@ const deepMerge = <T>(a: any, b: any): T =>
   merge<T>(a, b, {
     arrayMerge: (dest: any[], src: any[]) => [...dest, ...src],
   });
-
-const readConfigFile = (configPath: string): any => {
-  let config = ts.readConfigFile(configPath, ts.sys.readFile).config;
-  if (config.extends) {
-    const extendsPath = ts.findConfigFile(
-      path.resolve(path.dirname(configPath), config.extends),
-      ts.sys.fileExists,
-    );
-    if (extendsPath && extendsPath !== configPath) {
-      config = deepMerge<any>(readConfigFile(extendsPath), config);
-    }
-  }
-  return config;
-};
 
 /**
  * Reads any typescript configuration files for a given file, including the extends references
@@ -33,13 +18,27 @@ export const getTypescriptConfig = (
   defaultConfig?: ts.CompilerOptions,
   keepJson?: boolean,
 ): ts.CompilerOptions | undefined => {
+  if (typeof window !== 'undefined') {
+    return defaultConfig;
+  }
+  const { resolve, dirname } = require('path');
+  const readConfigFile = (configPath: string): any => {
+    let config = ts.readConfigFile(configPath, ts.sys.readFile).config;
+    if (config.extends) {
+      const extendsPath = ts.findConfigFile(
+        resolve(dirname(configPath), config.extends),
+        ts.sys.fileExists,
+      );
+      if (extendsPath && extendsPath !== configPath) {
+        config = deepMerge<any>(readConfigFile(extendsPath), config);
+      }
+    }
+    return config;
+  };
   const ext = filePath.split('.').pop()?.toLowerCase() || 'js';
   if (['ts', 'tsx'].indexOf(ext) !== -1) {
     let config: ts.CompilerOptions = defaultConfig || {};
-    const configPath = ts.findConfigFile(
-      path.dirname(filePath),
-      ts.sys.fileExists,
-    );
+    const configPath = ts.findConfigFile(dirname(filePath), ts.sys.fileExists);
     if (configPath) {
       const fileConfig = readConfigFile(configPath);
       if (fileConfig?.compilerOptions) {
@@ -49,7 +48,7 @@ export const getTypescriptConfig = (
         );
       }
       if (config.baseUrl) {
-        config.baseUrl = path.resolve(path.dirname(configPath), config.baseUrl);
+        config.baseUrl = resolve(dirname(configPath), config.baseUrl);
       }
     }
 
