@@ -1,9 +1,14 @@
-import * as fs from 'fs';
 import path from 'path';
 import hostedGitInfo from 'hosted-git-info';
 import parseRepositoryURL from '@hutson/parse-repository-url';
 
+type FS = {
+  readdirSync(path: string): string[];
+  readFileSync(path: string, options?: string): string;
+  existsSync(path: string): boolean;
+};
 const traverseFolder = (
+  fs: FS,
   filePath: string,
   levels = 10,
   fileName = 'package.json',
@@ -19,7 +24,7 @@ const traverseFolder = (
   if (pckg) {
     return path.resolve(filePath, pckg);
   }
-  return traverseFolder(path.resolve(filePath, '..'), levels - 1, fileName);
+  return traverseFolder(fs, path.resolve(filePath, '..'), levels - 1, fileName);
 };
 
 interface RepoPathReturnValue {
@@ -41,7 +46,8 @@ interface RepoPathReturnValue {
  * @param filePath file path to start the search for a package.json
  */
 export const getRepoPath = (filePath: string): RepoPathReturnValue => {
-  const packageFileName = traverseFolder(path.dirname(filePath));
+  const fs = require('fs');
+  const packageFileName = traverseFolder(fs, path.dirname(filePath));
   const result: ReturnType<typeof getRepoPath> = {};
   if (packageFileName) {
     const packageJSON = JSON.parse(fs.readFileSync(packageFileName, 'utf8'));

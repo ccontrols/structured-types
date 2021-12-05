@@ -39,7 +39,7 @@ $ npm install @structured-types/typescript-config --save-dev
 
 Reads any typescript configuration files for a given file, including the extends references
 
-_defined in [@structured-types/typescript-config/misc/typescript-config/src/index.ts](https://github.com/ccontrols/component-controls/tree/master/misc/typescript-config/src/index.ts#L31)_
+_defined in [@structured-types/typescript-config/misc/typescript-config/src/index.ts](https://github.com/ccontrols/component-controls/tree/master/misc/typescript-config/src/index.ts#L16)_
 
 **parameters**
 

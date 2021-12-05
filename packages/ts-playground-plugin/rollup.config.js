@@ -1,6 +1,6 @@
 import externalGlobals from 'rollup-plugin-external-globals';
 import resolve from '@rollup/plugin-node-resolve';
-import nodePolyfills from 'rollup-plugin-node-polyfills';
+import nodePolyfills from 'rollup-plugin-polyfill-node';
 import { config } from '../../rollup-config';
 
 export default config({

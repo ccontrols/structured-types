@@ -1,4 +1,4 @@
-import { PropType, SourceLocation } from '@structured-types/api/types';
+import { PropType, SourceLocation } from '@structured-types/api';
 
 /**
  * Documentation node kinds

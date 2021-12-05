@@ -13,8 +13,6 @@
   "files": [
     "dist/",
     "package.json",
-    "types.d.ts",
-    "types.js",
     "README.md"
   ],
   "scripts": {

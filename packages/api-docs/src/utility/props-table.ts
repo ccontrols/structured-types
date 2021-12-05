@@ -6,7 +6,7 @@ import {
   hasValue,
   isStringProp,
   isIndexProp,
-} from '@structured-types/api/types';
+} from '@structured-types/api';
 import { createPropsTable, PropItem } from '../blocks/table';
 import { DocumentationConfig } from '../DocumentationConfig';
 import { ColumnName } from '../types';

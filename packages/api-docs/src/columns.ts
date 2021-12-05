@@ -1,4 +1,4 @@
-import { isEnumProp, PropType } from '@structured-types/api/types';
+import { isEnumProp, PropType } from '@structured-types/api';
 import { ColumnObject } from './types';
 
 export const defaultColumns: ColumnObject = {

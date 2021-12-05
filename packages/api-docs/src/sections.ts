@@ -1,4 +1,4 @@
-import { isFunctionProp, PropType } from '@structured-types/api/types';
+import { isFunctionProp, PropType } from '@structured-types/api';
 import { SectionObject } from './types';
 
 export const defaultSections: SectionObject = {

@@ -9,7 +9,7 @@ import {
   isUndefinedProp,
   isNullProp,
   isVoidProp,
-} from '@structured-types/api/types';
+} from '@structured-types/api';
 import { textNode } from '../blocks/text';
 import { DocumentationNode } from '../types';
 import { shortPropType } from './short-prop-type';

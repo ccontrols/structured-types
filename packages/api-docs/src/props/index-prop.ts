@@ -1,4 +1,4 @@
-import { IndexProp } from '@structured-types/api/types';
+import { IndexProp } from '@structured-types/api';
 import { textNode } from '../blocks/text';
 import { DocumentationNode } from '../types';
 import { DocumentationConfig } from '../DocumentationConfig';

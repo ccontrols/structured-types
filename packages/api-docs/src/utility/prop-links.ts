@@ -1,4 +1,4 @@
-import { PropType, PropParent } from '@structured-types/api/types';
+import { PropType, PropParent } from '@structured-types/api';
 import { DocumentationNode } from '../types';
 import { inlineCodeNode } from '../blocks/inline-code';
 import { linkNode } from '../blocks/link';
