@@ -1,4 +1,3 @@
-import path from 'path';
 import { getRepoPath } from '../package-info/package-info';
 
 type RepoInfo = {
@@ -19,8 +18,9 @@ type ReposList = {
 export class PropRepos {
   private repos: ReposList = {};
   public getRepo(filePath: string): RepoInfo | undefined {
-    if (!this.repos[filePath]) {
-      this.repos[filePath] = getRepoPath(path.resolve(filePath));
+    if (!this.repos[filePath] && typeof window === 'undefined') {
+      const { resolve } = require('path');
+      this.repos[filePath] = getRepoPath(resolve(filePath));
     }
     return this.repos[filePath];
   }

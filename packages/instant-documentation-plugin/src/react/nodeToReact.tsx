@@ -14,13 +14,14 @@ import {
   isHeadingNode,
   isBlockNode,
   isCollapsibleNode,
+  CollapsibleNode,
 } from '@structured-types/api-docs';
 const renderNode = (props: {
   node: DocumentationNode;
   inTree: boolean;
   key?: string;
 }): React.ReactNode => {
-  const { node, key } = props;
+  const { node, key, inTree } = props;
   if (isHeadingNode(node)) {
     switch (node.depth) {
       case 1:
@@ -41,45 +42,14 @@ const renderNode = (props: {
   } else if (isEmphasisNode(node)) {
     return <em key={key}>{nodeContent(props)}</em>;
   } else if (isCollapsibleNode(node)) {
-    /* const content = (
-      <fast-tree-item key={key}>
-        {node.summary.map((item, idx) => {
-          return renderNode({
-            node: item,
-            key: `summary_${idx}`,
-            inTree: true,
-          });
-        })}
-
-        {node.children.map((item, idx) => {
-          const node = renderNode({
-            node: item,
-            inTree: true,
-            key: `item_${idx}`,
-          });
-          return !isCollapsibleNode(item) ? (
-            <fast-tree-item key={`item_${idx}`}>{node}</fast-tree-item>
-          ) : (
-            node
-          );
-        })}
-      </fast-tree-item>
-    );
-    return inTree ? (
-      content
-    ) : (
-      <fast-tree-view key={key}>{content}</fast-tree-view>
-    ); */
+    return <CollapsibleTree node={node} inTree={inTree} />;
   } else if (isLinkNode(node)) {
-    return (
-      <a
-        href={
-          node.loc ? '#' : node.url ? encodeURIComponent(node.url) : undefined
-        }
-        key={key}
-      >
+    return node.url ? (
+      <a href={encodeURIComponent(node.url)} key={key}>
         {nodeContent(props)}
       </a>
+    ) : (
+      <span>{nodeContent(props)}</span>
     );
   } else if (isInlineCodeNode(node)) {
     return <code key={key}>{nodeContent(props)}</code>;
@@ -99,42 +69,88 @@ const renderNode = (props: {
   } else if (isTextNode(node)) {
     return node.value || '';
   } else if (isTableNode(node)) {
-    /* const table = node.children ? (
-      { <vscode-data-grid
-        grid-template-columns={node.children[0].children
-          .map(() => '1fr')
-          .join(' ')}
-        key={key}
+    const table = node.children ? (
+      <table
+        style={{
+          borderCollapse: 'collapse',
+          width: '100%',
+          boxSizing: 'border-box',
+          borderSpacing: 0,
+        }}
       >
-        <vscode-data-grid-row row-type="header">
-          {node.children[0].children?.map((cell, idx) => (
-            <vscode-data-grid-cell
-              grid-column={(idx + 1).toString()}
-              cell-type="columnheader"
-              key={`head_${idx}`}
-            >
-              {nodeContent({ node: cell, inTree })}
-            </vscode-data-grid-cell>
-          ))}
-        </vscode-data-grid-row>
-
-        {node.children.slice(1).map((row, index) => (
-          <vscode-data-grid-row key={`row_${index}`}>
-            {row.children?.map((cell, idx) => (
-              <vscode-data-grid-cell
+        <thead>
+          <tr
+            style={{
+              textAlign: 'left',
+              borderBottom: '2px solid var(--border-color)',
+            }}
+          >
+            {node.children[0].children?.map((cell, idx) => (
+              <th
                 grid-column={(idx + 1).toString()}
+                cell-type="columnheader"
                 key={`head_${idx}`}
               >
                 {nodeContent({ node: cell, inTree })}
-              </vscode-data-grid-cell>
+              </th>
             ))}
-          </vscode-data-grid-row>
-        ))}
-      </vscode-data-grid>
+          </tr>
+        </thead>
+        <tbody>
+          {node.children.slice(1).map((row, index) => (
+            <tr
+              key={`row_${index}`}
+              style={{ borderTop: '1px solid var(--border-color)' }}
+            >
+              {row.children?.map((cell, idx) => (
+                <td key={`head_${idx}`}>
+                  {nodeContent({ node: cell, inTree })}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     ) : null;
-    }return table; */
+    return table;
   }
   return null;
+};
+
+const CollapsibleTree: React.FC<{ node: CollapsibleNode; inTree: boolean }> = ({
+  node,
+  inTree,
+}) => {
+  const [open, setOpen] = React.useState(false);
+  const content = (
+    <div
+      className={`ast-tree-start ${open ? 'open' : ''}`}
+      data-pos="0"
+      data-end="127"
+      data-depth="0"
+    >
+      <a className="node-name" onClick={() => setOpen(!open)}>
+        {node.summary.map((item, idx) => {
+          return renderNode({
+            node: item,
+            inTree: true,
+            key: `summary_${idx}`,
+          });
+        })}
+      </a>
+      <ul className="ast-tree">
+        {node.children.map((item, idx) => {
+          const node = renderNode({
+            node: item,
+            inTree: true,
+            key: `item_${idx}`,
+          });
+          return <li key={`item_${idx}`}>{node}</li>;
+        })}
+      </ul>
+    </div>
+  );
+  return inTree ? content : <div className="ast">{content}</div>;
 };
 
 const nodeContent = ({
@@ -158,7 +174,7 @@ const nodeComponents = ({
   return nodes ? (
     <React.Fragment>
       {nodes.map((node, idx) =>
-        renderNode({ node, inTree, key: `_node_${idx}` }),
+        renderNode({ node, key: `_node_${idx}`, inTree }),
       )}
     </React.Fragment>
   ) : null;

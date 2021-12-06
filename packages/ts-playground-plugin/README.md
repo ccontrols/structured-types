@@ -21,6 +21,7 @@ Then it will show up as a tab in the sidebar.
 ```sh
 git clone https://github.com/ccontrols/structured-types
 yarn install
+cd packages/instant-documentation-plugin
 yarn start
 ```
 

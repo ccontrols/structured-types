@@ -53,7 +53,7 @@ export const Results: FC<{ sandbox: Sandbox }> = ({ sandbox }) => {
       const nodes = extractProps(
         file.fileName,
         {
-          scope: 'all',
+          //scope: 'all',
           plugins: [propTypesPlugin, reactPlugin],
           tsOptions: tsvfs.program.getCompilerOptions(),
         },

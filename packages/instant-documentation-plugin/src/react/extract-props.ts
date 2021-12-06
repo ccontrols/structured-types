@@ -1,4 +1,3 @@
-import deepmerge from 'deepmerge';
 import reactPlugin from '@structured-types/react-plugin';
 import propTypesPlugin from '@structured-types/prop-types-plugin';
 import {
@@ -10,6 +9,7 @@ import {
   propsToDocumentation,
   apiDocsConfig,
   DocumentationOptions,
+  mergeConfig,
 } from '@structured-types/api-docs';
 
 export const extractProps = (
@@ -18,10 +18,7 @@ export const extractProps = (
   programOptions: ProgramOptions,
 ): ReturnType<typeof propsToDocumentation> => {
   const { config } = apiDocsConfig(fileName) || {};
-  const mergedConfig = deepmerge<DocsOptions & DocumentationOptions>(
-    config,
-    options,
-  );
+  const mergedConfig = mergeConfig(config, options);
   const props = analyzeFiles(
     [fileName],
     {
@@ -34,7 +31,6 @@ export const extractProps = (
     },
     programOptions,
   );
-
   const nodes = propsToDocumentation(props, mergedConfig);
   return nodes;
 };

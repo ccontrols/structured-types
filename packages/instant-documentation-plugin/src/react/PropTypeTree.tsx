@@ -1,7 +1,8 @@
 import React, { FC, useState, ReactNode } from 'react';
-import { PropType, PropKind } from '@structured-types/api';
+import { PropKind } from '@structured-types/api';
+import { CollapsibleNode } from '@structured-types/api-docs';
 
-export type PropTypeTreeProps = { data: PropType; name?: string };
+export type PropTypeTreeProps = { data: CollapsibleNode; name?: string };
 const propValue = (name: string, value: any): ReactNode => {
   switch (typeof value) {
     case 'string':
@@ -54,8 +55,9 @@ const propValue = (name: string, value: any): ReactNode => {
       return null;
   }
 };
-export const PropTypeTree: FC<PropTypeTreeProps> = ({ data, name }) => {
+export const PropTypeTree: FC<PropTypeTreeProps> = ({ data }) => {
   const [open, setOpen] = useState(false);
+  debugger;
   return (
     <div
       className={`ast-tree-start ${open ? 'open' : ''}`}
@@ -63,11 +65,9 @@ export const PropTypeTree: FC<PropTypeTreeProps> = ({ data, name }) => {
       data-end="127"
       data-depth="0"
     >
-      {name && (
-        <a className="node-name" onClick={() => setOpen(!open)}>
-          {name}
-        </a>
-      )}
+      <a className="node-name" onClick={() => setOpen(!open)}>
+        {data.summary}
+      </a>
       <ul className="ast-tree">
         {Array.isArray(data)
           ? data.map((row, idx) => (

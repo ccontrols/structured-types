@@ -91,6 +91,9 @@ export const analyzeFiles = (
           if (file.hasNoDefaultLib) {
             return true;
           }
+          if (files.includes(file.fileName)) {
+            return false;
+          }
           if (typeof parseOptions.isInternal === 'function') {
             const result = parseOptions.isInternal(file, node);
             if (result !== undefined) {
