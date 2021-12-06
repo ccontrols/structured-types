@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.37.0](https://github.com/ccontrols/structured-types/compare/v3.36.2...v3.37.0) (2021-12-06)
+
+**Note:** Version bump only for package @structured-types/react-plugin
+
+
+
+
+
 ## [3.36.2](https://github.com/ccontrols/structured-types/compare/v3.36.1...v3.36.2) (2021-11-26)
 
 

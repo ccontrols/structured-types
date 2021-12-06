@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.37.0](https://github.com/ccontrols/component-controls/compare/v3.36.2...v3.37.0) (2021-12-06)
+
+
+### Bug Fixes
+
+* **api:** remove path dependency ([31f8d54](https://github.com/ccontrols/component-controls/commit/31f8d549a23d452ff994f9dc01aeff820644f945))
+
+
+
+
+
 # [3.36.0](https://github.com/ccontrols/component-controls/compare/v3.35.3...v3.36.0) (2021-11-18)
 
 
