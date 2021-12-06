@@ -27,6 +27,43 @@ yarn start
 
 Then tick the box for starting plugin development inside the TypeScript Playground.
 
+## Example
+
+To start quickly copy/paste the following example in the typescript playground code editor, the click Extract:
+
+```ts
+import React, { FC } from 'react';
+/**
+ * MyComponent properties.
+ */
+type OwnProps = {
+  /** stringProp description */
+  stringProp?: string;
+
+  /** numberProp description */
+  numberProp: number;
+  person?: {
+    address: {
+      street: string;
+      zip: string;
+      city: string;
+    };
+    age: number;
+  };
+};
+
+/**
+ * MyComponent special component
+ */
+export const MyComponent: FC<OwnProps> = ({ stringProp }) => (
+  <div>{stringProp}</div>
+);
+
+MyComponent.defaultProps = {
+  stringProp: 'test',
+};
+```
+
 ## VScode plugin
 
 You can also check the VSCode [instant documentation](https://github.com/ccontrols/instant-documentation-vscode) plugin. It can document types across multiple files, and also jump to the definition of a property.
