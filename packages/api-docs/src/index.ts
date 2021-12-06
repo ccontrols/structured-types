@@ -1,11 +1,6 @@
-import * as path from 'path';
-import { PropTypes } from '@structured-types/api/types';
-import { cosmiconfigSync } from 'cosmiconfig';
-import micromatch from 'micromatch';
+import { PropTypes } from '@structured-types/api';
 import deepmerge from 'deepmerge';
-
 import { CosmiconfigResult } from 'cosmiconfig/dist/types';
-
 import { DocumentationNode, DocumentationOptions } from './types';
 import { PropsToDocumentation } from './PropsToDocumentation';
 export * from './types';
@@ -46,22 +41,30 @@ export const apiDocsConfig = (
   configFileName?: string,
   elementId?: string,
 ): CosmiconfigResult => {
+  let results: CosmiconfigResult = { config: {}, filepath: '' };
+  if (typeof window !== 'undefined') {
+    return results;
+  }
+  const { cosmiconfigSync } = require('cosmiconfig');
+
+  const { dirname, relative, basename } = require('path');
   const configExplorer = cosmiconfigSync('api-docs');
-  let results: CosmiconfigResult;
+
   if (configFileName) {
     results = configExplorer.load(configFileName);
   } else {
-    const searchPath = path.dirname(fileName);
+    const searchPath = dirname(fileName);
     results = configExplorer.search(searchPath);
   }
   if (results) {
+    const micromatch = require('micromatch');
     const { filepath, config } = results;
     if (filepath && config) {
       const { elements, ...rest } = config;
       results.config = rest;
       if (elements) {
-        const id = elementId || path.relative(path.dirname(filepath), fileName);
-        const onlyName = path.basename(fileName);
+        const id = elementId || relative(dirname(filepath), fileName);
+        const onlyName = basename(fileName);
         Object.keys(elements).forEach((key) => {
           if (onlyName === key || micromatch.isMatch(id, key)) {
             results!.config = mergeConfig(results!.config, elements[key]);

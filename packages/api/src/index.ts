@@ -1,5 +1,4 @@
 import * as ts from 'typescript';
-import { dirname } from 'path';
 import { getTypescriptConfig } from '@structured-types/typescript-config';
 import { PropTypes, PropType, PropDiagnostic, FunctionProp } from './types';
 import { tsDefaults, DocsOptions, ProgramOptions } from './ts-utils';
@@ -39,6 +38,11 @@ const consolidateParentProps = (
   });
 };
 
+const dirname = (path: string): string => {
+  const sep = path.includes('/') ? '/' : '\\';
+  const parts = path.split(sep);
+  return parts.length > 1 ? parts.slice(0, -1).join(sep) : path;
+};
 /**
  * API to analyze the given files
  * @example
@@ -86,6 +90,9 @@ export const analyzeFiles = (
       : (file: ts.SourceFile, node: ts.Node) => {
           if (file.hasNoDefaultLib) {
             return true;
+          }
+          if (files.includes(file.fileName)) {
+            return false;
           }
           if (typeof parseOptions.isInternal === 'function') {
             const result = parseOptions.isInternal(file, node);

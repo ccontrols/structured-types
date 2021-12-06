@@ -1,4 +1,4 @@
-import { PropKind, FunctionProp } from '@structured-types/api/types';
+import { PropKind, FunctionProp } from '@structured-types/api';
 import { inlineCodeNode } from '../blocks/inline-code';
 import { createPropsRow } from '../blocks/table';
 import { DocumentationConfig } from '../DocumentationConfig';

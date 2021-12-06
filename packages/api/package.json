@@ -13,8 +13,6 @@
   "files": [
     "dist/",
     "package.json",
-    "types.d.ts",
-    "types.js",
     "README.md"
   ],
   "scripts": {
@@ -39,8 +37,7 @@
   "license": "MIT",
   "dependencies": {
     "@structured-types/typescript-config": "^3.36.0",
-    "deepmerge": "^4.2.2",
-    "path-browserify": "^1.0.1"
+    "deepmerge": "^4.2.2"
   },
   "devDependencies": {
     "typescript": "^4.2.4"

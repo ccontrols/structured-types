@@ -8,7 +8,7 @@ import {
   isIndexProp,
   isFunctionProp,
   HasPropertiesProp,
-} from '@structured-types/api/types';
+} from '@structured-types/api';
 import { DocumentationNode } from '../types';
 import { textNode } from '../blocks/text';
 import { inlineCodeNode } from '../blocks/inline-code';

@@ -13,6 +13,7 @@ const createOutput = (dir = 'dist', defaultOpts) => {
 
   const defaultPlugins = [
     commonjs({
+      ignoreDynamicRequires: true,
       include: /\/node_modules\//,
     }),
     json(),

@@ -1,4 +1,4 @@
-import { PropType, UnionProp, EnumProp } from '@structured-types/api/types';
+import { PropType, UnionProp, EnumProp } from '@structured-types/api';
 import { textNode } from '../blocks/text';
 import { DocumentationNode, DocumentationNodeWithChildren } from '../types';
 import { shortPropType } from './short-prop-type';

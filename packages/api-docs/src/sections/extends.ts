@@ -1,4 +1,4 @@
-import { PropType, isClassLikeProp } from '@structured-types/api/types';
+import { PropType, isClassLikeProp } from '@structured-types/api';
 import { DocumentationNode } from '../types';
 import { textNode } from '../blocks/text';
 import { DocumentationConfig } from '../DocumentationConfig';

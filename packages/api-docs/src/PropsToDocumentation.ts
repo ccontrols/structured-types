@@ -6,7 +6,7 @@ import {
   hasProperties,
   isFunctionProp,
   PropTypes,
-} from '@structured-types/api/types';
+} from '@structured-types/api';
 import {
   DocumentationNode,
   SectionName,

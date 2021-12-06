@@ -1,4 +1,4 @@
-import { PropType } from '@structured-types/api/types';
+import { PropType } from '@structured-types/api';
 import { ColumnObject, DocumentationOptions } from './types';
 import { PropLinks } from './utility/prop-links';
 import { PropTypeNodes } from './props/full-prop-type';

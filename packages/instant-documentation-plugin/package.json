@@ -1,0 +1,65 @@
+{
+  "name": "@structured-types/instant-documentation-plugin",
+  "version": "3.36.2",
+  "description": "Typescript playground plugin to display instant documentation.",
+  "keywords": [
+    "structured-types",
+    "playground-plugin",
+    "typescript"
+  ],
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "build:tsc": "tsc -b",
+    "create-dts": "node scripts/getDTS.js",
+    "start": "NODE_ENV=development concurrently -p \"[{name}]\" -n \"ROLLUP,SITE\" -c \"bgBlue.bold,bgMagenta.bold\" \"yarn rollup -c rollup.config.js --watch\" \"yarn serve dist\"",
+    "lint": "yarn eslint . --ext ts,tsx",
+    "fix": "yarn lint --fix",
+    "clean": "rimraf dist coverage tsconfig.tsbuildinfo"
+  },
+  "homepage": "https://github.com/ccontrols/structured-types",
+  "bugs": {
+    "url": "https://github.com/ccontrols/structured-types/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccontrols/structured-types.git",
+    "directory": "packages/instant-documentation-plugin"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@structured-types/api": "^3.36.2",
+    "@structured-types/api-docs": "^3.36.2",
+    "@structured-types/prop-types-plugin": "^3.36.2",
+    "@structured-types/react-plugin": "^3.36.2",
+    "deepmerge": "^4.2.2",
+    "lz-string": "^1.4.4",
+    "node-fetch": "^2.6.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/lz-string": "^1.3.34",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "concurrently": "^5.1.0",
+    "rollup-plugin-external-globals": "^0.6.1",
+    "serve": "^12.0.0",
+    "tslib": "^2.3.0"
+  },
+  "author": {
+    "name": "Atanas Stoyanov",
+    "email": "atanasster@gmail.com",
+    "url": "https://github.com/ccontrols"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
