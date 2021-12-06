@@ -26,3 +26,7 @@ yarn start
 ```
 
 Then tick the box for starting plugin development inside the TypeScript Playground.
+
+## VScode plugin
+
+You can also check the VSCode [instant documentation](https://github.com/ccontrols/instant-documentation-vscode) plugin. It can document types across multiple files, and also jump to the definition of a property.
