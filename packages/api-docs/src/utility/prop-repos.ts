@@ -1,3 +1,4 @@
+import { resolve } from 'path-browserify';
 import { getRepoPath } from '../package-info/package-info';
 
 type RepoInfo = {
@@ -19,7 +20,6 @@ export class PropRepos {
   private repos: ReposList = {};
   public getRepo(filePath: string): RepoInfo | undefined {
     if (!this.repos[filePath] && typeof window === 'undefined') {
-      const { resolve } = require('path');
       this.repos[filePath] = getRepoPath(resolve(filePath));
     }
     return this.repos[filePath];

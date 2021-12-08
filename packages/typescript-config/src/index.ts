@@ -1,4 +1,5 @@
 import * as ts from 'typescript';
+import { resolve, dirname } from 'path-browserify';
 import merge from 'deepmerge';
 
 const deepMerge = <T>(a: any, b: any): T =>
@@ -21,7 +22,6 @@ export const getTypescriptConfig = (
   if (typeof window !== 'undefined') {
     return defaultConfig;
   }
-  const { resolve, dirname } = require('path');
   const readConfigFile = (configPath: string): any => {
     let config = ts.readConfigFile(configPath, ts.sys.readFile).config;
     if (config.extends) {

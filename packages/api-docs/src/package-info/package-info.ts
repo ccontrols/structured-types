@@ -1,5 +1,6 @@
 import hostedGitInfo from 'hosted-git-info';
 import * as ts from 'typescript';
+import { dirname, relative, resolve } from 'path-browserify';
 import parseRepositoryURL from '@hutson/parse-repository-url';
 
 interface RepoPathReturnValue {
@@ -25,7 +26,7 @@ export const getRepoPath = (filePath: string): RepoPathReturnValue => {
   if (typeof window !== 'undefined') {
     return result;
   }
-  const { dirname, relative, resolve } = require('path');
+
   const { existsSync, readdirSync } = require('fs');
   const traverseFolder = (
     filePath: string,

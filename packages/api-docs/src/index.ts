@@ -1,5 +1,6 @@
 import { PropTypes } from '@structured-types/api';
 import deepmerge from 'deepmerge';
+import { dirname, relative, basename } from 'path-browserify';
 import { CosmiconfigResult } from 'cosmiconfig/dist/types';
 import { DocumentationNode, DocumentationOptions } from './types';
 import { PropsToDocumentation } from './PropsToDocumentation';
@@ -47,7 +48,6 @@ export const apiDocsConfig = (
   }
   const { cosmiconfigSync } = require('cosmiconfig');
 
-  const { dirname, relative, basename } = require('path');
   const configExplorer = cosmiconfigSync('api-docs');
 
   if (configFileName) {

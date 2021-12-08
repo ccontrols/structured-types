@@ -42,13 +42,15 @@
     "hosted-git-info": "^3.0.4",
     "inherits": "^2.0.4",
     "js-string-escape": "^1.0.1",
-    "micromatch": "^4.0.4"
+    "micromatch": "^4.0.4",
+    "path-browserify": "^1.0.1"
   },
   "devDependencies": {
     "@structured-types/api": "^3.37.0",
     "@types/hosted-git-info": "^3.0.0",
     "@types/js-string-escape": "^1.0.1",
-    "@types/micromatch": "^4.0.2"
+    "@types/micromatch": "^4.0.2",
+    "@types/path-browserify": "^1.0.0"
   },
   "peerDependencies": {
     "typescript": "^4.0.0"

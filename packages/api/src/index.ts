@@ -1,5 +1,6 @@
 import * as ts from 'typescript';
 import { getTypescriptConfig } from '@structured-types/typescript-config';
+import { dirname } from 'path-browserify';
 import { PropTypes, PropType, PropDiagnostic, FunctionProp } from './types';
 import { tsDefaults, DocsOptions, ProgramOptions } from './ts-utils';
 import { SymbolParser } from './SymbolParser';
@@ -38,11 +39,6 @@ const consolidateParentProps = (
   });
 };
 
-const dirname = (path: string): string => {
-  const sep = path.includes('/') ? '/' : '\\';
-  const parts = path.split(sep);
-  return parts.length > 1 ? parts.slice(0, -1).join(sep) : path;
-};
 /**
  * API to analyze the given files
  * @example
