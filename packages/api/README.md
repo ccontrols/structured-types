@@ -143,7 +143,7 @@ const docs = parseFiles(['../src/sum.js']);
 
 API to analyze the given files by also loading the local typescript options from tsconfig
 
-_defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L226)_
+_defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L225)_
 
 **parameters**
 
@@ -169,7 +169,7 @@ _defined in [@structured-types/api/packages/api/src/index.ts](https://github.com
 
 API to analyze the given files
 
-_defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L63)_
+_defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L59)_
 
 **parameters**
 

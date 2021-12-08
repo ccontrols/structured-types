@@ -402,7 +402,7 @@ The following element key will match any files in the `src/components` folder
 
 Creates a list of api documentation nodes
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/index.ts#L19)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/index.ts#L15)_
 
 **parameters**
 
@@ -418,7 +418,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://
 
 Read the api-docs configuration file
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/index.ts#L44)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/index.ts#L40)_
 
 **parameters**
 
@@ -433,7 +433,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://
 
 **`function`**
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/package-info/package-info.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/package-info/package-info.ts#L48)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/package-info/package-info.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/package-info/package-info.ts#L24)_
 
 **parameters**
 
