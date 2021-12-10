@@ -433,14 +433,15 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://
 
 **`function`**
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/package-info/package-info.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/package-info/package-info.ts#L24)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/package-info/package-info.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/package-info/package-info.ts#L44)_
 
 **parameters**
 
-| Name        | Type                                                                                                                                                            | Description                                      |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| `filePath*` | `string`                                                                                                                                                        | file path to start the search for a package.json |
-| `returns`   | <details><summary>`RepoPathReturnValue`</summary><blockquote>`repo`: `string`<br />`packageName`: `string`<br />`relativePath`: `string`</blockquote></details> |                                                  |
+| Name        | Type                                                                                                                                                                                                                                     | Description                                      |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| `fs*`       | <details><summary>`STFS`</summary><blockquote>`fileExists`\*: **function** (<br />`filePath`\*: `string`<br />) => `boolean`<br />`readDirectory`\*: **function** (<br />`path`\*: `string`<br />) => `string`\[]</blockquote></details> |                                                  |
+| `filePath*` | `string`                                                                                                                                                                                                                                 | file path to start the search for a package.json |
+| `returns`   | <details><summary>`RepoPathReturnValue`</summary><blockquote>`repo`: `string`<br />`packageName`: `string`<br />`relativePath`: `string`</blockquote></details>                                                                          |                                                  |
 
 ## NodeKind
 
@@ -448,7 +449,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/package-info/packa
 
 Documentation node kinds
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L6)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L11)_
 
 **properties**
 
@@ -474,7 +475,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Base documentation node
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L25)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L30)_
 
 **properties**
 
@@ -488,7 +489,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Documentation node with children
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L32)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L37)_
 
 **extends**
 
@@ -507,7 +508,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Documentation node with a value
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L59)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L64)_
 
 **extends**
 
@@ -526,7 +527,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Table node, where the first row is a table header row
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L79)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L84)_
 
 **extends**
 
@@ -545,7 +546,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Table row node - can be a header or data row
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L95)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L100)_
 
 **extends**
 
@@ -564,7 +565,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Table cell node, the content is a list of child nodes
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L112)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L117)_
 
 **extends**
 
@@ -583,7 +584,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Heading node with a depth parameter, the content is a list of child nodes
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L128)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L133)_
 
 **extends**
 
@@ -603,7 +604,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Paragraph node, the content is a list of child nodes
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L144)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L149)_
 
 **extends**
 
@@ -622,7 +623,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Text node, the content string is in the value field
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L160)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L165)_
 
 **extends**
 
@@ -641,7 +642,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Bold/Strong node, the content is a list of child nodes
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L174)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L179)_
 
 **extends**
 
@@ -660,7 +661,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Emphasis/Italic node, the content is a list of child nodes
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L188)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L193)_
 
 **extends**
 
@@ -679,7 +680,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Link node with url property, the content is a list of child nodes
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L205)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L210)_
 
 **extends**
 
@@ -700,7 +701,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Code node, the content string is in the value field
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L221)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L226)_
 
 **extends**
 
@@ -719,7 +720,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Inline code node, the content string is in the value field
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L235)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L240)_
 
 **extends**
 
@@ -738,17 +739,18 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Document page generation options
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L356)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L361)_
 
 **properties**
 
-| Name            | Type                 | Description                                                                                                                                                                                                           |
-| --------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `collapsed`     | `string`\[]          | List of type names, that should not be expanded. For example, some internal React objects can be kept just as a string and will not be detailed in the documentation, instead of listing their internal properties.   |
-| `extensions`    | `string`\[]          | List of plugins (or extensions). For example, for a react library, you can specify to include only react components, but not any additional types or utilities.                                                       |
-| `visible`       | `string`\[]          | List of type names, that should be "visible". This will limit which of the parsed props to be documented.                                                                                                             |
-| `columns`       | `array` \| `Partial` | Sections can be configured as an array of the visible sections, or an object with keys the section name, and values a configuration object                                                                            |
-| `sections`      | `array` \| `Partial` | Sections can be configured as an array of the visible sections, or an object with keys the section name, and values a configuration object                                                                            |
-| `skipInherited` | `boolean`            | Whether to skip properties that are "inherited", or "composed". For example,  `type OwnProps = { x: number } & React.LineProps`  will only output the  `x`  property and skip the inherited React library properties. |
+| Name            | Type                                                                                                                                                                                                                                     | Description                                                                                                                                                                                                           |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `collapsed`     | `string`\[]                                                                                                                                                                                                                              | List of type names, that should not be expanded. For example, some internal React objects can be kept just as a string and will not be detailed in the documentation, instead of listing their internal properties.   |
+| `extensions`    | `string`\[]                                                                                                                                                                                                                              | List of plugins (or extensions). For example, for a react library, you can specify to include only react components, but not any additional types or utilities.                                                       |
+| `visible`       | `string`\[]                                                                                                                                                                                                                              | List of type names, that should be "visible". This will limit which of the parsed props to be documented.                                                                                                             |
+| `columns`       | `array` \| `Partial`                                                                                                                                                                                                                     | Sections can be configured as an array of the visible sections, or an object with keys the section name, and values a configuration object                                                                            |
+| `sections`      | `array` \| `Partial`                                                                                                                                                                                                                     | Sections can be configured as an array of the visible sections, or an object with keys the section name, and values a configuration object                                                                            |
+| `skipInherited` | `boolean`                                                                                                                                                                                                                                | Whether to skip properties that are "inherited", or "composed". For example,  `type OwnProps = { x: number } & React.LineProps`  will only output the  `x`  property and skip the inherited React library properties. |
+| `fs`            | <details><summary>`STFS`</summary><blockquote>`fileExists`\*: **function** (<br />`filePath`\*: `string`<br />) => `boolean`<br />`readDirectory`\*: **function** (<br />`path`\*: `string`<br />) => `string`\[]</blockquote></details> | virtual file system for use in browser                                                                                                                                                                                |
 
 <!-- END-API-README -->
