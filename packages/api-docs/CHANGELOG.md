@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.38.0](https://github.com/ccontrols/structured-types/compare/v3.37.1...v3.38.0) (2021-12-10)
+
+
+### Features
+
+* **api-docs:** accept virtual fs config ([d470c4c](https://github.com/ccontrols/structured-types/commit/d470c4ccfae2c6b4a27b0c62e2e7c9250bc74158))
+
+
+
+
+
 ## [3.37.1](https://github.com/ccontrols/structured-types/compare/v3.37.0...v3.37.1) (2021-12-08)
 
 **Note:** Version bump only for package @structured-types/api-docs
