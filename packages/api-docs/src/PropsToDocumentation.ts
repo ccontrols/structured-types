@@ -151,6 +151,7 @@ export class PropsToDocumentation {
   ): DocumentationNode[] {
     const result: DocumentationNode[] = [];
     const { extensions, visible, sections = {}, columns = {} } = options;
+    this.repos.fs = options.fs;
     this.config.options = options;
     if (sections) {
       this.sections = Array.isArray(sections)

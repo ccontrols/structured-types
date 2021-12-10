@@ -1,5 +1,10 @@
 import { PropType, SourceLocation } from '@structured-types/api';
 
+export type STFS = {
+  fileExists: (filePath: string) => boolean;
+  readDirectory: (path: string) => string[];
+};
+
 /**
  * Documentation node kinds
  */
@@ -383,4 +388,9 @@ export type DocumentationOptions = {
    * React library properties.
    */
   skipInherited?: boolean;
+
+  /**
+   * virtual file system for use in browser
+   */
+  fs?: STFS;
 };

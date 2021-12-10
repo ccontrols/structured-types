@@ -2,7 +2,27 @@ import hostedGitInfo from 'hosted-git-info';
 import * as ts from 'typescript';
 import { dirname, relative, resolve } from 'path-browserify';
 import parseRepositoryURL from '@hutson/parse-repository-url';
+import { STFS } from '../types';
 
+const traverseFolder = (
+  fs: STFS,
+  filePath: string,
+  levels = 10,
+  fileName = 'package.json',
+): string | null => {
+  if (!fs.fileExists(filePath)) {
+    return null;
+  }
+  const files: string[] = fs.readDirectory(filePath);
+  if (levels === 0) {
+    return null;
+  }
+  const pckg = files.find((file) => file === fileName);
+  if (pckg) {
+    return resolve(filePath, pckg);
+  }
+  return traverseFolder(fs, resolve(filePath, '..'), levels - 1, fileName);
+};
 interface RepoPathReturnValue {
   /**
    * repository url
@@ -21,32 +41,13 @@ interface RepoPathReturnValue {
  * Retrieves the repo path from the project's package.json file.
  * @param filePath file path to start the search for a package.json
  */
-export const getRepoPath = (filePath: string): RepoPathReturnValue => {
+export const getRepoPath = (
+  fs: STFS,
+  filePath: string,
+): RepoPathReturnValue => {
   const result: ReturnType<typeof getRepoPath> = {};
-  if (typeof window !== 'undefined') {
-    return result;
-  }
 
-  const { existsSync, readdirSync } = require('fs');
-  const traverseFolder = (
-    filePath: string,
-    levels = 10,
-    fileName = 'package.json',
-  ): string | null => {
-    if (!existsSync(filePath)) {
-      return null;
-    }
-    const files: string[] = readdirSync(filePath);
-    if (levels === 0) {
-      return null;
-    }
-    const pckg = files.find((file) => file === fileName);
-    if (pckg) {
-      return resolve(filePath, pckg);
-    }
-    return traverseFolder(resolve(filePath, '..'), levels - 1, fileName);
-  };
-  const packageFileName = traverseFolder(dirname(filePath));
+  const packageFileName = traverseFolder(fs, dirname(filePath));
   if (packageFileName) {
     const content = ts.sys.readFile(packageFileName);
     if (content) {
