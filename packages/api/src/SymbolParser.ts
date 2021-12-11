@@ -278,6 +278,13 @@ export class SymbolParser implements ISymbolParser {
           const returns = this.parseTypeValueComments({}, options, node.type);
           if (returns) {
             prop.returns = returns;
+            if (!prop.returns.kind) {
+              if (tsKindToPropKind[node.type.kind]) {
+                prop.returns.kind = tsKindToPropKind[node.type.kind];
+              } else {
+                prop.returns.kind = PropKind.Type;
+              }
+            }
             prop.returns.optional = true;
           }
         }
@@ -962,6 +969,7 @@ export class SymbolParser implements ISymbolParser {
                 if (callSignatures?.length) {
                   const fnDeclaration = callSignatures[0].declaration;
                   if (fnDeclaration && isFunctionLike(fnDeclaration)) {
+                    updateModifiers(prop, fnDeclaration);
                     this.parseFunction(prop, options, fnDeclaration);
                   }
                 }
