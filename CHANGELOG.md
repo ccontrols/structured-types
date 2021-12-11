@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.38.1](https://github.com/ccontrols/structured-types/compare/v3.38.0...v3.38.1) (2021-12-11)
+
+
+### Bug Fixes
+
+* **api:** async function ([a82df89](https://github.com/ccontrols/structured-types/commit/a82df89402af1eae85e61e787cc64410eb77ec71))
+
+
+
+
+
 # [3.38.0](https://github.com/ccontrols/structured-types/compare/v3.37.1...v3.38.0) (2021-12-10)
 
 
