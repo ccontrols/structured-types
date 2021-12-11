@@ -26,7 +26,7 @@ describe('async', () => {
         children: [
           {
             kind: 11,
-            value: 'function',
+            value: 'async function',
           },
         ],
       },
