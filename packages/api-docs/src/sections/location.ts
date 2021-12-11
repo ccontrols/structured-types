@@ -6,13 +6,13 @@ import { emphasisNode } from '../blocks/emphasis';
 import { textNode } from '../blocks/text';
 import { linkNode } from '../blocks/link';
 
-export const locationSection = (
+export const locationSection = async (
   prop: PropType,
   repos: PropRepos,
-): DocumentationNode[] | undefined => {
+): Promise<DocumentationNode[] | undefined> => {
   const { filePath, loc } = prop.loc || {};
   if (filePath) {
-    const repo = repos.getRepo(filePath);
+    const repo = await repos.getRepo(filePath);
     if (repo) {
       const { repo: repoName, relativePath, packageName } = repo;
       const fileLocation = repoName || filePath;

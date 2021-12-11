@@ -3,9 +3,9 @@ import { analyzeFiles } from '@structured-types/api';
 import { propsToDocumentation } from '../../src';
 
 describe('union', () => {
-  it('array of union', () => {
+  it('array of union', async () => {
     const props = analyzeFiles([path.resolve(__dirname, `union_array.ts`)]);
-    const results = propsToDocumentation(props);
+    const results = await propsToDocumentation(props);
     expect(results).toEqual([
       {
         kind: 4,

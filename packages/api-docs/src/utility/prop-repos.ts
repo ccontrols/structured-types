@@ -1,5 +1,5 @@
 import { resolve } from 'path-browserify';
-import { STFS } from '..';
+import { STFS } from '../types';
 import { getRepoPath } from '../package-info/package-info';
 
 type RepoInfo = {
@@ -20,7 +20,7 @@ type ReposList = {
 export class PropRepos {
   private repos: ReposList = {};
   public fs?: STFS;
-  public getRepo(filePath: string): RepoInfo | undefined {
+  public async getRepo(filePath: string): Promise<RepoInfo | undefined> {
     if (!this.repos[filePath] && typeof window === 'undefined') {
       let fs = this.fs;
       if (!fs) {
@@ -34,7 +34,7 @@ export class PropRepos {
           readDirectory: readdirSync,
         };
       }
-      this.repos[filePath] = getRepoPath(fs, resolve(filePath));
+      this.repos[filePath] = await getRepoPath(fs, resolve(filePath));
     }
     return this.repos[filePath];
   }

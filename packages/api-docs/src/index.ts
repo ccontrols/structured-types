@@ -1,25 +1,9 @@
-import { PropTypes } from '@structured-types/api';
 import deepmerge from 'deepmerge';
 import { dirname, relative, basename } from 'path-browserify';
 import { CosmiconfigResult } from 'cosmiconfig/dist/types';
-import { DocumentationNode, DocumentationOptions } from './types';
-import { PropsToDocumentation } from './PropsToDocumentation';
+import { DocumentationOptions } from './types';
+export { propsToDocumentation } from './props-to-nodes';
 export * from './types';
-
-/**
- * Creates a list of api documentation nodes
- * @param props properties parsed from `structured-types/api`
- * @param options page generation options
- * @returns a list of documentation nodes
- */
-export const propsToDocumentation = (
-  props: PropTypes,
-  options?: DocumentationOptions,
-): DocumentationNode[] => {
-  const extractor = new PropsToDocumentation();
-  return extractor.extract(props, options);
-};
-
 /**
  * deep merge of documentation configurations, by replacing array members (ie sections, columns)
  */

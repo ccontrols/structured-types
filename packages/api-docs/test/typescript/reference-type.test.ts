@@ -3,9 +3,9 @@ import { analyzeFiles } from '@structured-types/api';
 import { propsToDocumentation } from '../../src';
 
 describe('reference-type', () => {
-  it('enum', () => {
+  it('enum', async () => {
     const props = analyzeFiles([path.resolve(__dirname, `reference-type.ts`)]);
-    const results = propsToDocumentation(props, {
+    const results = await propsToDocumentation(props, {
       sections: ['props'],
     });
     expect(results).toEqual([

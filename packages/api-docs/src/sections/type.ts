@@ -13,9 +13,9 @@ export const typeSection = (
     return [
       boldNode([
         inlineCodeNode(
-          `${prop.extension ? `${prop.extension} ` : ''}${PropKind[
-            prop.kind
-          ].toLowerCase()}`,
+          `${prop.extension ? `${prop.extension} ` : ''}${
+            prop.async ? 'async ' : ''
+          }${PropKind[prop.kind].toLowerCase()}`,
         ),
       ]),
     ];

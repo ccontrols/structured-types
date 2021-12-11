@@ -4,16 +4,16 @@ import { dirname, relative, resolve } from 'path-browserify';
 import parseRepositoryURL from '@hutson/parse-repository-url';
 import { STFS } from '../types';
 
-const traverseFolder = (
+const traverseFolder = async (
   fs: STFS,
   filePath: string,
   levels = 10,
   fileName = 'package.json',
-): string | null => {
+): Promise<string | null> => {
   if (!fs.fileExists(filePath)) {
     return null;
   }
-  const files: string[] = fs.readDirectory(filePath);
+  const files: string[] = await fs.readDirectory(filePath);
   if (levels === 0) {
     return null;
   }
@@ -41,13 +41,13 @@ interface RepoPathReturnValue {
  * Retrieves the repo path from the project's package.json file.
  * @param filePath file path to start the search for a package.json
  */
-export const getRepoPath = (
+export const getRepoPath = async (
   fs: STFS,
   filePath: string,
-): RepoPathReturnValue => {
-  const result: ReturnType<typeof getRepoPath> = {};
+): Promise<RepoPathReturnValue> => {
+  const result: RepoPathReturnValue = {};
 
-  const packageFileName = traverseFolder(fs, dirname(filePath));
+  const packageFileName = await traverseFolder(fs, dirname(filePath));
   if (packageFileName) {
     const content = ts.sys.readFile(packageFileName);
     if (content) {

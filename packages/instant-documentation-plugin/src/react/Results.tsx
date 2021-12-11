@@ -50,7 +50,7 @@ export const Results: FC<{ sandbox: Sandbox }> = ({ sandbox }) => {
       const file =
         files.find((f) => f.fileName.startsWith('/input')) ||
         files[files.length - 1];
-      const nodes = extractProps(
+      const nodes = await extractProps(
         file.fileName,
         {
           //scope: 'all',

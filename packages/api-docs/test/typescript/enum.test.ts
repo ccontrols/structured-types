@@ -3,9 +3,9 @@ import { analyzeFiles } from '@structured-types/api';
 import { propsToDocumentation } from '../../src';
 
 describe('enum', () => {
-  it('enum', () => {
+  it('enum', async () => {
     const props = analyzeFiles([path.resolve(__dirname, `enum.ts`)]);
-    const results = propsToDocumentation(props);
+    const results = await propsToDocumentation(props);
     expect(results).toEqual([
       {
         kind: 4,

@@ -3,9 +3,9 @@ import { analyzeFiles } from '@structured-types/api';
 import { propsToDocumentation } from '../../src';
 
 describe('ts-type', () => {
-  it('record partial', () => {
+  it('record partial', async () => {
     const props = analyzeFiles([path.resolve(__dirname, `type_record.ts`)]);
-    const results = propsToDocumentation(props);
+    const results = await propsToDocumentation(props);
     expect(results).toEqual([
       {
         kind: 4,

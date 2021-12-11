@@ -8,17 +8,17 @@ import {
 import { nodesToRemark } from './nodeToRemark';
 import { RemarkNode } from '../types';
 
-export const extractProps = (
+export const extractProps = async (
   files: string[],
   config?: DocsOptions & DocumentationOptions,
-): RemarkNode[] => {
+): Promise<RemarkNode[]> => {
   const props = parseFiles(files, {
     collectSourceInfo: true,
     collectHelpers: true,
     plugins: [propTypesPlugin, reactPlugin],
     ...config,
   });
-  const nodes = propsToDocumentation(props, config);
+  const nodes = await propsToDocumentation(props, config);
 
   return nodesToRemark(nodes);
 };

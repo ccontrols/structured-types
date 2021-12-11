@@ -35,10 +35,11 @@ export const insertAPISection =
       }
       return undefined;
     };
-    return (node: RemarkNode): void => {
+    return async (node: RemarkNode): Promise<void> => {
       const sections = extractCustomTag(node, 'api-readme');
       if (sections) {
-        sections.forEach(({ attrs, attributes = [] }) => {
+        for (const section of sections) {
+          const { attrs, attributes = [] } = section;
           if (attributes) {
             const newNodes: RemarkNode[] = [];
 
@@ -90,11 +91,11 @@ export const insertAPISection =
                 }
               }
             }
-            const tsNodes = extractProps(files, mergedConfig);
+            const tsNodes = await extractProps(files, mergedConfig);
             newNodes.push(...tsNodes);
             inlineNewContent(attrs, newNodes);
           }
-        });
+        }
       }
     };
   };

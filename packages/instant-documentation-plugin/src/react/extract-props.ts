@@ -10,13 +10,14 @@ import {
   apiDocsConfig,
   DocumentationOptions,
   mergeConfig,
+  DocumentationNode,
 } from '@structured-types/api-docs';
 
-export const extractProps = (
+export const extractProps = async (
   fileName: string,
   options: DocsOptions & DocumentationOptions = {},
   programOptions: ProgramOptions,
-): ReturnType<typeof propsToDocumentation> => {
+): Promise<DocumentationNode[]> => {
   const { config } = apiDocsConfig(fileName) || {};
   const mergedConfig = mergeConfig(config, options);
   const props = analyzeFiles(
@@ -31,6 +32,6 @@ export const extractProps = (
     },
     programOptions,
   );
-  const nodes = propsToDocumentation(props, mergedConfig);
+  const nodes = await propsToDocumentation(props, mergedConfig);
   return nodes;
 };
