@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.39.0](https://github.com/ccontrols/structured-types/compare/v3.38.1...v3.39.0) (2021-12-13)
+
+
+### Features
+
+* **api-docs:** vscode online cosmiconfig ([7541ef9](https://github.com/ccontrols/structured-types/commit/7541ef9b9edff6e42dc8562f4fea9e54b4edc940))
+
+
+
+
+
 ## [3.38.1](https://github.com/ccontrols/structured-types/compare/v3.38.0...v3.38.1) (2021-12-11)
 
 **Note:** Version bump only for package structured-types-site
