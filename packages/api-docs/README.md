@@ -420,12 +420,12 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/index.ts](https://
 
 **parameters**
 
-| Name             | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Description                                                                                          |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `fileName*`      | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | the file that is being analyzed, will be used the starting folder to search for configuration files. |
-| `configFileName` | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | pass directly the configuration file name                                                            |
-| `options`        | <details><summary>`ConfigOptions`</summary><blockquote><details><summary>`fs`</summary><blockquote>`fileExists`\*: **function** (<br />`filePath`\*: <br />) => `Promise`&lt;`boolean`><br />`readDirectory`\*: **function** (<br />`path`\*: <br />) => `Promise`&lt;`string`\[]<br />><br />`readFile`\*: **function** (<br />`filePath`\*: <br />) => `Promise`&lt;(`string`, `null`)<br />><br />`cwd`\*: **function** (<br />) => `string`</blockquote></details>`elementId`: `string`<br />`cosmic`: `Omit`&lt;`CosmicOptions`, `string`></blockquote></details> | Options for configuration file                                                                       |
-| `returns`        | `Promise`&lt;`CosmiconfigResult`>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | page generation options from the config file                                                         |
+| Name             | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Description                                                                                          |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `fileName*`      | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | the file that is being analyzed, will be used the starting folder to search for configuration files. |
+| `configFileName` | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | pass directly the configuration file name                                                            |
+| `options`        | <details><summary>`ConfigOptions`</summary><blockquote><details><summary>`fs`</summary><blockquote>`fileExists`\*: **function** (<br />`filePath`\*: <br />) => `Promise`&lt;`boolean`><br />`readDirectory`\*: **function** (<br />`path`\*: <br />) => `Promise`&lt;`string`\[]<br />><br />`isDirectory`\*: **function** (<br />`path`\*: <br />) => `Promise`&lt;`boolean`><br />`readFile`\*: **function** (<br />`filePath`\*: <br />) => `Promise`&lt;(`string`, `null`)<br />><br />`cwd`\*: **function** (<br />) => `string`</blockquote></details>`elementId`: `string`<br />`cosmic`: `Omit`&lt;`CosmicOptions`, `string`></blockquote></details> | Options for configuration file                                                                       |
+| `returns`        | `Promise`&lt;`CosmiconfigResult`>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | page generation options from the config file                                                         |
 
 ## getRepoPath
 
@@ -435,11 +435,11 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/package-info/packa
 
 **parameters**
 
-| Name        | Type                                                                                                                                                                                                                                                                                                                                                                                                                                      | Description                                      |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| `fs*`       | <details><summary>`STFS`</summary><blockquote>`fileExists`\*: **function** (<br />`filePath`\*: `string`<br />) => `Promise`&lt;`boolean`><br />`readDirectory`\*: **function** (<br />`path`\*: `string`<br />) => `Promise`&lt;`string`\[]<br />><br />`readFile`\*: **function** (<br />`filePath`\*: `string`<br />) => `Promise`&lt;(`string`, `null`)<br />><br />`cwd`\*: **function** (<br />) => `string`</blockquote></details> |                                                  |
-| `filePath*` | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                  | file path to start the search for a package.json |
-| `returns`   | `Promise`&lt;`RepoPathReturnValue`>                                                                                                                                                                                                                                                                                                                                                                                                       |                                                  |
+| Name        | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Description                                      |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| `fs*`       | <details><summary>`STFS`</summary><blockquote>`fileExists`\*: **function** (<br />`filePath`\*: `string`<br />) => `Promise`&lt;`boolean`><br />`readDirectory`\*: **function** (<br />`path`\*: `string`<br />) => `Promise`&lt;`string`\[]<br />><br />`isDirectory`\*: **function** (<br />`path`\*: `string`<br />) => `Promise`&lt;`boolean`><br />`readFile`\*: **function** (<br />`filePath`\*: `string`<br />) => `Promise`&lt;(`string`, `null`)<br />><br />`cwd`\*: **function** (<br />) => `string`</blockquote></details> |                                                  |
+| `filePath*` | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | file path to start the search for a package.json |
+| `returns`   | `Promise`&lt;`RepoPathReturnValue`>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                  |
 
 ## NodeKind
 
@@ -447,7 +447,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/package-info/packa
 
 Documentation node kinds
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L13)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L14)_
 
 **properties**
 
@@ -473,7 +473,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Base documentation node
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L32)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L33)_
 
 **properties**
 
@@ -487,7 +487,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Documentation node with children
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L39)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L40)_
 
 **extends**
 
@@ -506,7 +506,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Documentation node with a value
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L66)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L67)_
 
 **extends**
 
@@ -525,7 +525,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Table node, where the first row is a table header row
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L86)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L87)_
 
 **extends**
 
@@ -544,7 +544,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Table row node - can be a header or data row
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L102)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L103)_
 
 **extends**
 
@@ -563,7 +563,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Table cell node, the content is a list of child nodes
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L119)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L120)_
 
 **extends**
 
@@ -582,7 +582,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Heading node with a depth parameter, the content is a list of child nodes
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L135)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L136)_
 
 **extends**
 
@@ -602,7 +602,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Paragraph node, the content is a list of child nodes
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L151)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L152)_
 
 **extends**
 
@@ -621,7 +621,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Text node, the content string is in the value field
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L167)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L168)_
 
 **extends**
 
@@ -640,7 +640,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Bold/Strong node, the content is a list of child nodes
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L181)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L182)_
 
 **extends**
 
@@ -659,7 +659,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Emphasis/Italic node, the content is a list of child nodes
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L195)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L196)_
 
 **extends**
 
@@ -678,7 +678,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Link node with url property, the content is a list of child nodes
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L212)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L213)_
 
 **extends**
 
@@ -699,7 +699,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Code node, the content string is in the value field
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L228)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L229)_
 
 **extends**
 
@@ -718,7 +718,7 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Inline code node, the content string is in the value field
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L242)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L243)_
 
 **extends**
 
@@ -737,18 +737,18 @@ _defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://
 
 Document page generation options
 
-_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L363)_
+_defined in [@structured-types/api-docs/packages/api-docs/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api-docs/src/types.ts#L364)_
 
 **properties**
 
-| Name            | Type                                                                                                                                                                                                                                                                                                                                                                                                                                      | Description                                                                                                                                                                                                           |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `collapsed`     | `string`\[]                                                                                                                                                                                                                                                                                                                                                                                                                               | List of type names, that should not be expanded. For example, some internal React objects can be kept just as a string and will not be detailed in the documentation, instead of listing their internal properties.   |
-| `extensions`    | `string`\[]                                                                                                                                                                                                                                                                                                                                                                                                                               | List of plugins (or extensions). For example, for a react library, you can specify to include only react components, but not any additional types or utilities.                                                       |
-| `visible`       | `string`\[]                                                                                                                                                                                                                                                                                                                                                                                                                               | List of type names, that should be "visible". This will limit which of the parsed props to be documented.                                                                                                             |
-| `columns`       | `ColumnName`\[]<br /> \| `Partial`                                                                                                                                                                                                                                                                                                                                                                                                        | Sections can be configured as an array of the visible sections, or an object with keys the section name, and values a configuration object                                                                            |
-| `sections`      | `SectionName`\[]<br /> \| `Partial`                                                                                                                                                                                                                                                                                                                                                                                                       | Sections can be configured as an array of the visible sections, or an object with keys the section name, and values a configuration object                                                                            |
-| `skipInherited` | `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                 | Whether to skip properties that are "inherited", or "composed". For example,  `type OwnProps = { x: number } & React.LineProps`  will only output the  `x`  property and skip the inherited React library properties. |
-| `fs`            | <details><summary>`STFS`</summary><blockquote>`fileExists`\*: **function** (<br />`filePath`\*: `string`<br />) => `Promise`&lt;`boolean`><br />`readDirectory`\*: **function** (<br />`path`\*: `string`<br />) => `Promise`&lt;`string`\[]<br />><br />`readFile`\*: **function** (<br />`filePath`\*: `string`<br />) => `Promise`&lt;(`string`, `null`)<br />><br />`cwd`\*: **function** (<br />) => `string`</blockquote></details> | virtual file system for use in browser                                                                                                                                                                                |
+| Name            | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Description                                                                                                                                                                                                           |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `collapsed`     | `string`\[]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | List of type names, that should not be expanded. For example, some internal React objects can be kept just as a string and will not be detailed in the documentation, instead of listing their internal properties.   |
+| `extensions`    | `string`\[]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | List of plugins (or extensions). For example, for a react library, you can specify to include only react components, but not any additional types or utilities.                                                       |
+| `visible`       | `string`\[]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | List of type names, that should be "visible". This will limit which of the parsed props to be documented.                                                                                                             |
+| `columns`       | `ColumnName`\[]<br /> \| `Partial`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Sections can be configured as an array of the visible sections, or an object with keys the section name, and values a configuration object                                                                            |
+| `sections`      | `SectionName`\[]<br /> \| `Partial`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Sections can be configured as an array of the visible sections, or an object with keys the section name, and values a configuration object                                                                            |
+| `skipInherited` | `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Whether to skip properties that are "inherited", or "composed". For example,  `type OwnProps = { x: number } & React.LineProps`  will only output the  `x`  property and skip the inherited React library properties. |
+| `fs`            | <details><summary>`STFS`</summary><blockquote>`fileExists`\*: **function** (<br />`filePath`\*: `string`<br />) => `Promise`&lt;`boolean`><br />`readDirectory`\*: **function** (<br />`path`\*: `string`<br />) => `Promise`&lt;`string`\[]<br />><br />`isDirectory`\*: **function** (<br />`path`\*: `string`<br />) => `Promise`&lt;`boolean`><br />`readFile`\*: **function** (<br />`filePath`\*: `string`<br />) => `Promise`&lt;(`string`, `null`)<br />><br />`cwd`\*: **function** (<br />) => `string`</blockquote></details> | virtual file system for use in browser                                                                                                                                                                                |
 
 <!-- END-API-README -->

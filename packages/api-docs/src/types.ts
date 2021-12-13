@@ -3,6 +3,7 @@ import { PropType, SourceLocation } from '@structured-types/api';
 export type STFS = {
   fileExists: (filePath: string) => Promise<boolean>;
   readDirectory: (path: string) => Promise<string[]>;
+  isDirectory: (path: string) => Promise<boolean>;
   readFile: (filePath: string) => Promise<string | null>;
   cwd: () => string;
 };

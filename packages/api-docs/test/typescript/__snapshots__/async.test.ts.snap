@@ -1767,6 +1767,91 @@ Array [
                         "children": Array [
                           Object {
                             "kind": 11,
+                            "value": "isDirectory",
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": "*",
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": ": ",
+                          },
+                          Object {
+                            "children": Array [
+                              Object {
+                                "children": Array [
+                                  Object {
+                                    "kind": 6,
+                                    "value": "function",
+                                  },
+                                ],
+                                "kind": 7,
+                              },
+                              Object {
+                                "kind": 6,
+                                "value": " (",
+                              },
+                            ],
+                            "kind": 12,
+                          },
+                          Object {
+                            "children": Array [
+                              Object {
+                                "kind": 11,
+                                "value": "path",
+                              },
+                              Object {
+                                "kind": 6,
+                                "value": "*",
+                              },
+                              Object {
+                                "kind": 6,
+                                "value": ": ",
+                              },
+                              Object {
+                                "kind": 11,
+                                "value": "string",
+                              },
+                            ],
+                            "kind": 12,
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": ")",
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": " => ",
+                          },
+                          Object {
+                            "children": Array [
+                              Object {
+                                "kind": 11,
+                                "value": "Promise",
+                              },
+                            ],
+                            "kind": 9,
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": "<",
+                          },
+                          Object {
+                            "kind": 11,
+                            "value": "boolean",
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": ">",
+                          },
+                        ],
+                        "kind": 12,
+                      },
+                      Object {
+                        "children": Array [
+                          Object {
+                            "kind": 11,
                             "value": "readFile",
                           },
                           Object {

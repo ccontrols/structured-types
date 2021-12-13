@@ -1,22 +1,8 @@
 import path from 'path-browserify';
+import { STFS } from '../types';
 
-async function getDirectory(filepath: string): Promise<string> {
-  const { isDirectory } = require('path-type');
-
-  const filePathIsDirectory = await isDirectory(filepath);
-
-  if (filePathIsDirectory === true) {
-    return filepath;
-  }
-
-  const directory = path.dirname(filepath);
-
-  return directory;
-}
-
-function getDirectorySync(filepath: string): string {
-  const { isDirectorySync } = require('path-type');
-  const filePathIsDirectory = isDirectorySync(filepath);
+async function getDirectory(fs: STFS, filepath: string): Promise<string> {
+  const filePathIsDirectory = await fs.isDirectory(filepath);
 
   if (filePathIsDirectory === true) {
     return filepath;
@@ -27,4 +13,4 @@ function getDirectorySync(filepath: string): string {
   return directory;
 }
 
-export { getDirectory, getDirectorySync };
+export { getDirectory };

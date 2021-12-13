@@ -7,7 +7,7 @@ export const getFS = (fs?: STFS): STFS | undefined => {
   if (typeof window !== 'undefined') {
     return undefined;
   }
-  const { existsSync, readdirSync, readFileSync } = require('fs');
+  const { existsSync, readdirSync, readFileSync, statSync } = require('fs');
 
   return {
     fileExists: existsSync,
@@ -20,5 +20,9 @@ export const getFS = (fs?: STFS): STFS | undefined => {
       }
     },
     cwd: process.cwd,
+    isDirectory: (path: string) => {
+      const stats = statSync(path);
+      return stats.isDirectory();
+    },
   };
 };

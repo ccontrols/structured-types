@@ -19,6 +19,7 @@ class Explorer extends ExplorerBase<ExplorerOptions> {
       return emptyResults;
     }
     const startDirectory = await getDirectory(
+      this.config.fs,
       searchFrom || this.config.fs.cwd(),
     );
     const result = await this.searchFromDirectory(startDirectory);
