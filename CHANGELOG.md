@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.39.2](https://github.com/ccontrols/structured-types/compare/v3.39.1...v3.39.2) (2021-12-13)
+
+
+### Bug Fixes
+
+* **api-docs:** remove path-type dependency ([d85fd6f](https://github.com/ccontrols/structured-types/commit/d85fd6f5cffca682c0d3746bcce114ad0bd99d4d))
+
+
+
+
+
 ## [3.39.1](https://github.com/ccontrols/structured-types/compare/v3.39.0...v3.39.1) (2021-12-13)
 
 
