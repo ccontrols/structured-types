@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.39.1](https://github.com/ccontrols/structured-types/compare/v3.39.0...v3.39.1) (2021-12-13)
+
+
+### Bug Fixes
+
+* **api-docs:** remove process.cwd ([cb3a482](https://github.com/ccontrols/structured-types/commit/cb3a482ff43c3c05ca94ec75624772c0c9b2f42f))
+
+
+
+
+
 # [3.39.0](https://github.com/ccontrols/structured-types/compare/v3.38.1...v3.39.0) (2021-12-13)
 
 
