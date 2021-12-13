@@ -22,17 +22,9 @@ export class PropRepos {
   public fs?: STFS;
   public async getRepo(filePath: string): Promise<RepoInfo | undefined> {
     if (!this.repos[filePath] && typeof window === 'undefined') {
-      let fs = this.fs;
+      const fs = this.fs;
       if (!fs) {
-        if (typeof window !== 'undefined') {
-          return undefined;
-        }
-        const { existsSync, readdirSync } = require('fs');
-
-        fs = {
-          fileExists: existsSync,
-          readDirectory: readdirSync,
-        };
+        return undefined;
       }
       this.repos[filePath] = await getRepoPath(fs, resolve(filePath));
     }

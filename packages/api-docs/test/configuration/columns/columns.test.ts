@@ -168,7 +168,9 @@ describe('columns', () => {
   };
   it('json', async () => {
     const { config } =
-      apiDocsConfig(path.join(__dirname, 'json', 'api-docs.config.json')) || {};
+      (await apiDocsConfig(
+        path.join(__dirname, 'json', 'api-docs.config.json'),
+      )) || {};
     const props = analyzeFiles([path.resolve(__dirname, `props.ts`)]);
     const docs = await propsToDocumentation(props, {
       ...config,
@@ -178,7 +180,9 @@ describe('columns', () => {
   });
   it('yaml', async () => {
     const { config } =
-      apiDocsConfig(path.join(__dirname, 'yaml', 'api-docs.config.yaml')) || {};
+      (await apiDocsConfig(
+        path.join(__dirname, 'yaml', 'api-docs.config.yaml'),
+      )) || {};
     const props = analyzeFiles([path.resolve(__dirname, `props.ts`)]);
     const docs = await propsToDocumentation(props, {
       ...config,
@@ -189,7 +193,8 @@ describe('columns', () => {
 
   it('javascript', async () => {
     const { config } =
-      apiDocsConfig(path.join(__dirname, 'js', 'api-docs.config.js')) || {};
+      (await apiDocsConfig(path.join(__dirname, 'js', 'api-docs.config.js'))) ||
+      {};
     const props = analyzeFiles([path.resolve(__dirname, `props.ts`)]);
     const docs = await propsToDocumentation(props, {
       ...config,

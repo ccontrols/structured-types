@@ -1,12 +1,12 @@
 import path from 'path';
 import { apiDocsConfig } from '../../../src';
 describe('elements', () => {
-  it('no match', () => {
+  it('no match', async () => {
     const { config = {} } =
-      apiDocsConfig(
+      (await apiDocsConfig(
         path.resolve(__dirname, 'src', 'components', 'Toggle.tsx'),
         path.resolve(__dirname, 'micromatch-name.config.js'),
-      ) || {};
+      )) || {};
     expect(config).toMatchObject({
       columns: ['name'],
       sections: {
@@ -16,12 +16,12 @@ describe('elements', () => {
       },
     });
   });
-  it('micromatch name', () => {
+  it('micromatch name', async () => {
     const { config = {} } =
-      apiDocsConfig(
+      (await apiDocsConfig(
         path.resolve(__dirname, 'src', 'components', 'Component.tsx'),
         path.resolve(__dirname, 'micromatch-name.config.js'),
-      ) || {};
+      )) || {};
     expect(config).toMatchObject({
       columns: ['description'],
       sections: {
@@ -31,13 +31,13 @@ describe('elements', () => {
       },
     });
   });
-  it('micromatch id', () => {
+  it('micromatch id', async () => {
     const { config = {} } =
-      apiDocsConfig(
+      (await apiDocsConfig(
         path.resolve(__dirname, 'src', 'components', 'Component.tsx'),
         path.resolve(__dirname, 'elementid.config.js'),
-        'id1',
-      ) || {};
+        { elementId: 'id1' },
+      )) || {};
     expect(config).toMatchObject({
       columns: ['description'],
       sections: {
@@ -47,9 +47,9 @@ describe('elements', () => {
       },
     });
   });
-  it('micromatch-subfolders', () => {
+  it('micromatch-subfolders', async () => {
     const { config = {} } =
-      apiDocsConfig(
+      (await apiDocsConfig(
         path.resolve(
           __dirname,
           'src',
@@ -58,7 +58,7 @@ describe('elements', () => {
           'Component.tsx',
         ),
         path.resolve(__dirname, 'micromatch-subfolders.config.js'),
-      ) || {};
+      )) || {};
     expect(config).toMatchObject({
       columns: ['name'],
       sections: {
@@ -69,12 +69,12 @@ describe('elements', () => {
       },
     });
   });
-  it('micromatch folder', () => {
+  it('micromatch folder', async () => {
     const { config = {} } =
-      apiDocsConfig(
+      (await apiDocsConfig(
         path.resolve(__dirname, 'src', 'components', 'Component.tsx'),
         path.resolve(__dirname, 'micromatch-folder.config.js'),
-      ) || {};
+      )) || {};
     expect(config).toMatchObject({
       columns: ['description'],
       sections: {

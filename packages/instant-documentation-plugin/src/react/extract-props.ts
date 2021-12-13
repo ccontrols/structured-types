@@ -18,7 +18,7 @@ export const extractProps = async (
   options: DocsOptions & DocumentationOptions = {},
   programOptions: ProgramOptions,
 ): Promise<DocumentationNode[]> => {
-  const { config } = apiDocsConfig(fileName) || {};
+  const { config } = (await apiDocsConfig(fileName)) || {};
   const mergedConfig = mergeConfig(config, options);
   const props = analyzeFiles(
     [fileName],

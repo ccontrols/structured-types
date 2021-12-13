@@ -428,19 +428,24 @@ const jsonResult = [
 describe('sections', () => {
   it('javascript', async () => {
     const { config } =
-      apiDocsConfig(path.join(__dirname, 'js', 'api-docs.config.js')) || {};
+      (await apiDocsConfig(path.join(__dirname, 'js', 'api-docs.config.js'))) ||
+      {};
     const docs = await propsToDocumentation(input, config);
     expect(docs).toEqual(jsResults);
   });
   it('yaml', async () => {
     const { config } =
-      apiDocsConfig(path.join(__dirname, 'yaml', 'api-docs.config.yaml')) || {};
+      (await apiDocsConfig(
+        path.join(__dirname, 'yaml', 'api-docs.config.yaml'),
+      )) || {};
     const docs = await propsToDocumentation(input, config);
     expect(docs).toMatchObject(jsonResult);
   });
   it('json', async () => {
     const { config } =
-      apiDocsConfig(path.join(__dirname, 'json', 'api-docs.config.json')) || {};
+      (await apiDocsConfig(
+        path.join(__dirname, 'json', 'api-docs.config.json'),
+      )) || {};
     const docs = await propsToDocumentation(input, config);
     expect(docs).toMatchObject(jsonResult);
   });

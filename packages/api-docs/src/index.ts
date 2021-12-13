@@ -1,7 +1,13 @@
 import deepmerge from 'deepmerge';
 import { dirname, relative, basename } from 'path-browserify';
-import { CosmiconfigResult } from 'cosmiconfig/dist/types';
-import { DocumentationOptions } from './types';
+import { cosmiconfig } from './cosmiconfig';
+import {
+  CosmiconfigResult,
+  emptyResults,
+  OptionsBase as CosmicOptions,
+} from './cosmiconfig/types';
+import { DocumentationOptions, STFS } from './types';
+import { getFS } from './utility/vfs';
 export { propsToDocumentation } from './props-to-nodes';
 export * from './types';
 /**
@@ -14,31 +20,49 @@ export const mergeConfig = (
   deepmerge<DocumentationOptions>(dest, src, {
     arrayMerge: (dest: any[], src: any[]) => src,
   });
+
+/**
+ * Options for configuration file
+ */
+export interface ConfigOptions {
+  /**
+   * optional virtual file system, to use in environments like vscode web
+   */
+  fs?: STFS;
+  /**
+   * an optional element id. If not, the elements will be micromatch'ed based on relative path from configuration
+   */
+  elementId?: string;
+  /**
+   * cosmiconfig options
+   */
+  cosmic?: Omit<CosmicOptions, 'fs'>;
+}
 /**
  * Read the api-docs configuration file
  * @param fileName the file that is being analyzed, will be used the starting folder to search for configuration files.
  * @param configFileName pass directly the configuration file name
- * @param elementId an optional element id. If not, the elements will be micromatch'ed based on relative path from configuration
+ * @param options optional configuration options
  * @returns page generation options from the config file
  */
-export const apiDocsConfig = (
+export const apiDocsConfig = async (
   fileName: string,
   configFileName?: string,
-  elementId?: string,
-): CosmiconfigResult => {
-  let results: CosmiconfigResult = { config: {}, filepath: '' };
+  options?: ConfigOptions,
+): Promise<CosmiconfigResult> => {
+  const { fs, elementId, cosmic } = options || {};
+  let results: CosmiconfigResult = emptyResults;
   if (typeof window !== 'undefined') {
     return results;
   }
-  const { cosmiconfigSync } = require('cosmiconfig');
 
-  const configExplorer = cosmiconfigSync('api-docs');
+  const configExplorer = cosmiconfig('api-docs', { fs: getFS(fs), ...cosmic });
 
   if (configFileName) {
-    results = configExplorer.load(configFileName);
+    results = await configExplorer.load(configFileName);
   } else {
     const searchPath = dirname(fileName);
-    results = configExplorer.search(searchPath);
+    results = await configExplorer.search(searchPath);
   }
   if (results) {
     const micromatch = require('micromatch');

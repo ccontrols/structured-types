@@ -66,7 +66,9 @@ export const insertAPISection =
               { files: [] },
             ) as DocumentationOptions & { files: string[] };
             const { config = {}, filepath: configFilePath } =
-              apiDocsConfig(fileName, configFileName, elementId) || {};
+              (await apiDocsConfig(fileName, configFileName, {
+                elementId,
+              })) || {};
 
             const mergedConfig: DocumentationOptions = mergeConfig(
               config,

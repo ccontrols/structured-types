@@ -13,6 +13,7 @@ import { PropRepos } from './utility/prop-repos';
 import { PropTypeNodes } from './props/full-prop-type';
 import { DocumentationConfig } from './DocumentationConfig';
 import { generateSection } from './sections';
+import { getFS } from './utility/vfs';
 
 const generateNodes = async (
   prop: PropType,
@@ -66,7 +67,7 @@ export const propsToDocumentation = async (
     sections: propSections = {},
     columns = {},
   } = options;
-  repos.fs = options.fs;
+  repos.fs = getFS(options.fs);
   config.options = options;
   if (propSections) {
     sections = Array.isArray(propSections)
