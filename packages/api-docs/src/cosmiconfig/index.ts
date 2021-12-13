@@ -97,7 +97,7 @@ function normalizeOptions(
       `${moduleName}.config.cjs`,
     ],
     ignoreEmptySearchPlaces: true,
-    stopDir: typeof window === 'undefined' ? require('os').homedir() : '',
+    stopDir: options.fs?.cwd() || '',
     cache: true,
     transform: identity,
     loaders: defaultLoaders,
