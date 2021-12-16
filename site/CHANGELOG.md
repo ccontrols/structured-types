@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.39.5](https://github.com/ccontrols/structured-types/compare/v3.39.4...v3.39.5) (2021-12-16)
+
+
+### Bug Fixes
+
+* **ts-config:** use node ts is ts.sys unavailable ([290aa20](https://github.com/ccontrols/structured-types/commit/290aa20593114db747950a4fbf8f1202925758f8))
+
+
+
+
+
 ## [3.39.4](https://github.com/ccontrols/structured-types/compare/v3.39.3...v3.39.4) (2021-12-16)
 
 **Note:** Version bump only for package structured-types-site
