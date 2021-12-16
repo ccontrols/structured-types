@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.39.3](https://github.com/ccontrols/component-controls/compare/v3.39.2...v3.39.3) (2021-12-16)
+
+
+### Bug Fixes
+
+* **ts-config:** add typescript as external ([9d26ce2](https://github.com/ccontrols/component-controls/commit/9d26ce2f293fa4b7ff97b0b02a77de0e9410a91d))
+
+
+
+
+
 ## [3.37.1](https://github.com/ccontrols/component-controls/compare/v3.37.0...v3.37.1) (2021-12-08)
 
 **Note:** Version bump only for package @structured-types/typescript-config
