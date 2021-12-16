@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.39.6](https://github.com/ccontrols/structured-types/compare/v3.39.5...v3.39.6) (2021-12-16)
+
+
+### Bug Fixes
+
+* **ts-config:** bail out on vscode online ([4a89d63](https://github.com/ccontrols/structured-types/commit/4a89d639e39d3055895f3ee929bb77d80576ad3a))
+
+
+
+
+
 ## [3.39.5](https://github.com/ccontrols/structured-types/compare/v3.39.4...v3.39.5) (2021-12-16)
 
 
