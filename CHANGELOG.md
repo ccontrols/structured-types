@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.39.4](https://github.com/ccontrols/structured-types/compare/v3.39.3...v3.39.4) (2021-12-16)
+
+
+### Bug Fixes
+
+* **ts-config:** rollup resolve ([67f30b6](https://github.com/ccontrols/structured-types/commit/67f30b6ddf44e4656dde2171f520cb3392b2ad74))
+
+
+
+
+
 ## [3.39.3](https://github.com/ccontrols/structured-types/compare/v3.39.2...v3.39.3) (2021-12-16)
 
 
