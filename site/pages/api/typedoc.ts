@@ -29,7 +29,9 @@ export default async (
       extension,
       (fileNames) => {
         return fileNames.reduce((acc, fileName) => {
-          const tsOptions = getTypescriptConfig(fileName, options, true);
+          const tsOptions = getTypescriptConfig(fileName, options, {
+            keepJson: true,
+          });
           const tsconfig = createHash(Math.random().toString()) + '.json';
 
           ts.sys.writeFile(
