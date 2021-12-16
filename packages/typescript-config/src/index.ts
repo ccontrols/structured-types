@@ -38,9 +38,8 @@ export const getTypescriptConfig = (
     readFile = ts.sys.readFile;
     fileExists = ts.sys.fileExists;
   } else {
-    const { existsSync, readFileSync } = require('fs');
-    readFile = readFileSync;
-    fileExists = existsSync;
+    //in vscode onliine, ts.sys is undefined
+    return defaultConfig;
   }
 
   const readConfigFile = (configPath: string): any => {
