@@ -44,13 +44,14 @@ const renderNode = (props: {
   } else if (isCollapsibleNode(node)) {
     return <CollapsibleTree node={node} inTree={inTree} />;
   } else if (isLinkNode(node)) {
-    return node.url ? (
+    return <span>{nodeContent(props)}</span>;
+    /* return node.url ? (
       <a href={encodeURIComponent(node.url)} key={key}>
         {nodeContent(props)}
       </a>
     ) : (
       <span>{nodeContent(props)}</span>
-    );
+    ); */
   } else if (isInlineCodeNode(node)) {
     return <code key={key}>{nodeContent(props)}</code>;
   } else if (isCodeNode(node)) {

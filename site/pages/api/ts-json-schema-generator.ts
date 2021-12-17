@@ -27,7 +27,7 @@ export default async (
       async (fileNames) => {
         return fileNames.reduce((acc, fileName) => {
           const tsOptions =
-            getTypescriptConfig(fileName, options, { keepJson: true }) || {};
+            getTypescriptConfig(fileName, options, { json: true }) || {};
           if (lang === 'javascript') {
             tsOptions.allowJs = true;
           }

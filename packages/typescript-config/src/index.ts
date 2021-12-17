@@ -14,7 +14,14 @@ const deepMerge = <T>(a: any, b: any): T =>
  * Config parsing options
  */
 export type TSConfigOptions = {
-  keepJson?: boolean;
+  /**
+   * keep json format of ts config
+   */
+  json?: boolean;
+  /**
+   * optional compiler host to use instead of ts.sys
+   */
+  host?: ts.CompilerHost;
 };
 /**
  * Reads any typescript configuration files for a given file, including the extends references
@@ -28,17 +35,16 @@ export const getTypescriptConfig = (
   defaultConfig?: ts.CompilerOptions,
   options?: TSConfigOptions,
 ): ts.CompilerOptions | undefined => {
-  const { keepJson } = options || {};
-  if (typeof window !== 'undefined') {
-    return defaultConfig;
-  }
+  const { json, host } = options || {};
   let readFile: Parameters<typeof ts.readConfigFile>[1];
   let fileExists: Parameters<typeof ts.findConfigFile>[1];
-  if (ts.sys) {
+  if (host) {
+    readFile = host.readFile;
+    fileExists = host.fileExists;
+  } else if (ts.sys) {
     readFile = ts.sys.readFile;
     fileExists = ts.sys.fileExists;
   } else {
-    //in vscode onliine, ts.sys is undefined
     return defaultConfig;
   }
 
@@ -72,7 +78,7 @@ export const getTypescriptConfig = (
       }
     }
 
-    if (keepJson) {
+    if (json) {
       return config;
     }
 

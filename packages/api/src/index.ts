@@ -232,7 +232,9 @@ export const parseFiles = (
   }
   options.tsOptions = {
     ...tsDefaults,
-    ...getTypescriptConfig(files[0], options.tsOptions),
+    ...getTypescriptConfig(files[0], options.tsOptions, {
+      host: programOptions?.host,
+    }),
   };
   const results = analyzeFiles(files, options, programOptions);
   return results;

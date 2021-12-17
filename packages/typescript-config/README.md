@@ -58,9 +58,10 @@ _defined in [@structured-types/typescript-config/misc/typescript-config/src/inde
 
 **properties**
 
-| Name       | Type      |
-| ---------- | --------- |
-| `keepJson` | `boolean` |
+| Name   | Type            | Description                                     |
+| ------ | --------------- | ----------------------------------------------- |
+| `json` | `boolean`       | keep json format of ts config                   |
+| `host` | ts.CompilerHost | optional compiler host to use instead of ts.sys |
 
 ## getTypescriptConfig
 
@@ -68,7 +69,7 @@ _defined in [@structured-types/typescript-config/misc/typescript-config/src/inde
 
 Reads any typescript configuration files for a given file, including the extends references
 
-_defined in [@structured-types/typescript-config/misc/typescript-config/src/index.ts](https://github.com/ccontrols/component-controls/tree/master/misc/typescript-config/src/index.ts#L26)_
+_defined in [@structured-types/typescript-config/misc/typescript-config/src/index.ts](https://github.com/ccontrols/component-controls/tree/master/misc/typescript-config/src/index.ts#L33)_
 
 **parameters**
 

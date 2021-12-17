@@ -30,7 +30,7 @@ export default async (
       (fileNames) => {
         return fileNames.reduce((acc, fileName) => {
           const tsOptions = getTypescriptConfig(fileName, options, {
-            keepJson: true,
+            json: true,
           });
           const tsconfig = createHash(Math.random().toString()) + '.json';
 

@@ -76,7 +76,7 @@ export const Results: FC<{ sandbox: Sandbox }> = ({ sandbox }) => {
         }}
       >
         <button disabled={loading} onClick={onClick}>
-          Extract
+          Generate documentation
         </button>
       </div>
       <div style={{ marginTop: '20px' }}>{loading ? <Loader /> : results}</div>
