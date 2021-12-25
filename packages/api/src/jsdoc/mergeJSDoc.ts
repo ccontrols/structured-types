@@ -8,14 +8,14 @@ import {
   cleanJSDocText,
 } from './parseJSDocTags';
 
-const mergeProps = (prop: PropType, parsed: PropType) =>
-  deepmerge<PropType>(prop, parsed, {
+const mergeProps = (prop: PropType, parsed: PropType) => {
+  return deepmerge<PropType>(prop, parsed, {
     clone: false,
     arrayMerge: (dest: any[], src: any[]) => {
       const result =
         dest.length > 0
           ? dest.map((s, idx) => {
-              if (idx >= 0) {
+              if (idx < src.length) {
                 const merged = mergeProps(s, src[idx]);
                 Object.assign(s, merged);
               }
@@ -25,6 +25,7 @@ const mergeProps = (prop: PropType, parsed: PropType) =>
       return result;
     },
   });
+};
 export const mergeJSDoc = (
   parser: ISymbolParser,
   prop: PropType,
