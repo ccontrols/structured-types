@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.39.10](https://github.com/ccontrols/structured-types/compare/v3.39.9...v3.39.10) (2021-12-25)
+
+
+### Bug Fixes
+
+* **api-docs:** undefined row/cell value ([425ed8e](https://github.com/ccontrols/structured-types/commit/425ed8eae597118d6f7a1cb62b30feb3a4b6a2e9))
+
+
+
+
+
 ## [3.39.8](https://github.com/ccontrols/structured-types/compare/v3.39.7...v3.39.8) (2021-12-25)
 
 

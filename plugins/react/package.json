@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/react-plugin",
-  "version": "3.39.8",
+  "version": "3.39.10",
   "description": "react plugin for structured-types",
   "keywords": [
     "structured-types",
@@ -34,7 +34,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@structured-types/api": "^3.39.8"
+    "@structured-types/api": "^3.39.10"
   },
   "devDependencies": {
     "react": "^17.0.1",
