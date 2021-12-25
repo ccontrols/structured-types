@@ -78,7 +78,12 @@ export const createPropsRow = (
       }
       if (!cell) {
         const content = getCell(name);
-        cell = typeof content === 'string' ? textNode(content) : content;
+        cell =
+          typeof content === 'string'
+            ? textNode(content)
+            : content
+            ? content
+            : textNode('');
       }
       if (cell) {
         if (Array.isArray(cell)) {
