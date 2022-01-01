@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import ts from 'typescript';
 export declare class TypeScriptWorker implements ts.LanguageServiceHost {
   private _ctx;
