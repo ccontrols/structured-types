@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.40.0](https://github.com/ccontrols/structured-types/compare/v3.39.10...v3.40.0) (2022-01-01)
+
+
+### Features
+
+* **api-docs:** add initialized constant values ([8daa367](https://github.com/ccontrols/structured-types/commit/8daa36792bfbe4cff05b8f315529d45fbb9e7d87))
+
+
+
+
+
 ## [3.39.10](https://github.com/ccontrols/structured-types/compare/v3.39.9...v3.39.10) (2021-12-25)
 
 **Note:** Version bump only for package @structured-types/playground-plugin
