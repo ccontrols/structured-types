@@ -1,35 +1,10 @@
-import jsStringEscape from 'js-string-escape';
-import {
-  PropType,
-  UnionProp,
-  EnumProp,
-  isUnionProp,
-  hasValue,
-  isStringProp,
-  isUndefinedProp,
-  isNullProp,
-  isVoidProp,
-} from '@structured-types/api';
+import { UnionProp, EnumProp, isUnionProp } from '@structured-types/api';
 import { textNode } from '../blocks/text';
 import { DocumentationNode } from '../types';
 import { shortPropType } from './short-prop-type';
 import { DocumentationConfig } from '../DocumentationConfig';
 import { inlineCodeNode } from '../blocks/inline-code';
-
-const getPropValue = (prop: PropType): string | undefined => {
-  if (hasValue(prop) && prop.value !== undefined) {
-    return isStringProp(prop)
-      ? `"${jsStringEscape(prop.value)}"`
-      : prop.value.toString();
-  } else if (isNullProp(prop)) {
-    return 'null';
-  } else if (isUndefinedProp(prop)) {
-    return 'undefined';
-  } else if (isVoidProp(prop)) {
-    return 'void';
-  }
-  return undefined;
-};
+import { getPropValue } from '../utility/prop-value';
 
 export const unionPropNodes = (
   prop: UnionProp | EnumProp,

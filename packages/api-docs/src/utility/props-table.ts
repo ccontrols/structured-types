@@ -3,13 +3,12 @@ import {
   PropType,
   EnumProp,
   hasProperties,
-  hasValue,
-  isStringProp,
   isIndexProp,
 } from '@structured-types/api';
 import { createPropsTable, PropItem } from '../blocks/table';
 import { DocumentationConfig } from '../DocumentationConfig';
 import { ColumnName } from '../types';
+import { getPropValue } from './prop-value';
 
 export const propTable = (
   prop: PropType,
@@ -93,11 +92,7 @@ export const propTable = (
 
         type: config.propTypes.extractType(prop),
         description: prop.description,
-        default: hasValue(prop)
-          ? isStringProp(prop) && typeof prop.value === 'string'
-            ? `"${prop.value}"`
-            : prop.value
-          : undefined,
+        default: getPropValue(prop),
         prop,
       } as PropItem,
       config,

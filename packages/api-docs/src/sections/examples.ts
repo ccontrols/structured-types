@@ -3,7 +3,7 @@ import { DocumentationNode } from '../types';
 import { paragraphNode } from '../blocks/paragraph';
 import { codeNode } from '../blocks/code';
 
-export const getExamples = (
+export const examplesSection = (
   prop: PropType,
 ): DocumentationNode[] | undefined => {
   if (prop.examples) {

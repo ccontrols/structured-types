@@ -27,7 +27,7 @@ const extractClassLike = (
   }
   return undefined;
 };
-export const getPropsTable = (
+export const propsSection = (
   prop: PropType,
   config: DocumentationConfig,
 ): DocumentationNode[] | undefined => {

@@ -13,7 +13,7 @@ import { insertAPISection } from './api-sections/insert-api';
  * @param {boolean} t - whether to generate a table of contents, default is true
  * @param {boolean} l - whether to output logs, default is true
  */
-export default (): void => {
+export default async (): Promise<void> => {
   const args = yargs
     .help()
     .alias('help', 'h')

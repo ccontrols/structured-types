@@ -65,18 +65,23 @@ export const insertAPISection =
               },
               { files: [] },
             ) as DocumentationOptions & { files: string[] };
-            const { config = {}, filepath: configFilePath } =
-              (await apiDocsConfig(fileName, configFileName, {
+            let mergedConfig: DocumentationOptions;
+            let config: Partial<Awaited<ReturnType<typeof apiDocsConfig>>>;
+            if (configFileName !== 'none') {
+              config = await apiDocsConfig(fileName, configFileName, {
                 elementId,
-              })) || {};
+              });
 
-            const mergedConfig: DocumentationOptions = mergeConfig(
-              config,
-              inlineOptions,
-            );
+              mergedConfig = mergeConfig(config?.config, inlineOptions);
+            } else {
+              mergedConfig = inlineOptions;
+              config = {};
+            }
             const files =
-              configFilePath && config.files
-                ? config.files.map((f: string) => resolve(f, configFilePath))
+              config && config.config?.files
+                ? config.config.files.map((f: string) =>
+                    config?.filepath ? resolve(f, config?.filepath) : f,
+                  )
                 : inlineOptions.files?.map((f) => resolve(f, fileName));
 
             if (!files.length) {

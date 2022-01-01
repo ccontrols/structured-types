@@ -10,8 +10,8 @@ import { descriptionSection } from './description';
 import { typeSection } from './type';
 import { locationSection } from './location';
 import { extendsSection } from './extends';
-import { getPropsTable } from './props';
-import { getExamples } from './examples';
+import { propsSection } from './props';
+import { examplesSection } from './examples';
 
 const getSection = async (
   prop: PropType,
@@ -28,11 +28,11 @@ const getSection = async (
     case 'location':
       return await locationSection(prop, repos);
     case 'props':
-      return getPropsTable(prop, config);
+      return propsSection(prop, config);
     case 'extends':
       return extendsSection(prop, config);
     case 'examples':
-      return getExamples(prop);
+      return examplesSection(prop);
     default:
       return undefined;
   }

@@ -2,6 +2,11 @@ import React, { FC, ReactNode } from 'react';
 import * as ts from 'typescript';
 
 /**
+ * a string global constant
+ */
+export const STRING_CONST = 'my string';
+
+/**
  * configuration object
  */
 type TConfig = {
