@@ -126,12 +126,12 @@ _defined in [@types/react/types/react/index.d.ts](https://github.com/DefinitelyT
 
 **properties**
 
-| Name        | Type                                                                                                   | Parent                          |
-| ----------- | ------------------------------------------------------------------------------------------------------ | ------------------------------- |
-| \`key*\`      | \`Key\` \\\\| \`null\`                                                                                        |                                 |
-| \`children*\` | \`ReactChild\` \\\\| \`ReactFragment\` \\\\| [\`ReactPortal\`](#reactportal) \\\\| \`boolean\` \\\\| \`null\` \\\\| \`undefined\` |                                 |
-| \`type*\`     | \`T\`                                                                                                    | [\`ReactElement\`](#reactelement) |
-| \`props*\`    | \`P\`                                                                                                    | [\`ReactElement\`](#reactelement) |
+| Name        | Type            | Parent                          |
+| ----------- | --------------- | ------------------------------- |
+| \`key*\`      | \`Key\` \\\\| \`null\` |                                 |
+| \`children*\` | ReactNode       |                                 |
+| \`type*\`     | \`T\`             | [\`ReactElement\`](#reactelement) |
+| \`props*\`    | \`P\`             | [\`ReactElement\`](#reactelement) |
 
 ## ReactElement
 
