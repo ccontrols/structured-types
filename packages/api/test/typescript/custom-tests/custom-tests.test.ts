@@ -2,6 +2,13 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('custom-tests', () => {
+  it('webpack-config', () => {
+    const results = parseFiles([path.resolve(__dirname, 'webpack-config.ts')], {
+      maxDepth: 7,
+    });
+
+    expect(results).toMatchSnapshot();
+  });
   it('default-export-jsdoc', () => {
     const results = parseFiles([
       path.resolve(__dirname, 'default-export-jsdoc.ts'),
@@ -39,10 +46,5 @@ describe('custom-tests', () => {
         description: 'this is an interface',
       },
     });
-  });
-  it('webpack-config', () => {
-    const results = parseFiles([path.resolve(__dirname, 'webpack-config.ts')]);
-
-    expect(results).toMatchSnapshot();
   });
 });

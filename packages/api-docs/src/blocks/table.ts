@@ -136,7 +136,7 @@ export const createPropsTable = (
       const name = key as ColumnName;
       const column = columnOptions[name];
       if (column && !column.hidden) {
-        visibleColumns[name] = children.some(
+        visibleColumns[name] = !!children.find(
           (item) => item[name] !== undefined,
         );
         if (visibleColumns[name]) {

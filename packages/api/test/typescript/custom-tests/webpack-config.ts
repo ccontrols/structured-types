@@ -1,7 +1,7 @@
 import { Configuration } from 'webpack';
 
 export interface FullAnimal {
-  webpackConfig?: () => Configuration;
+  webpackConfig?: () => Pick<Configuration, 'watchOptions'>;
 }
 
 export type NameOnly = FullAnimal;

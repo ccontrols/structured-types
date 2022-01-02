@@ -55,7 +55,7 @@ export class SymbolParser implements ISymbolParser {
   public checker: ts.TypeChecker;
   public readonly options: Required<ParseOptions>;
   private refSymbols: {
-    props: { prop: PropType; topLevel: boolean }[];
+    newProps: { prop: PropType; topLevel: boolean }[];
     resolved?: PropType;
     symbol: ts.Symbol;
   }[] = [];
@@ -81,14 +81,12 @@ export class SymbolParser implements ISymbolParser {
   ): PropType {
     const refSymbol = this.refSymbols.find((r) => r.symbol === symbol);
     if (!refSymbol) {
-      this.refSymbols.push({ props: [{ prop, topLevel }], symbol });
+      this.refSymbols.push({
+        newProps: [{ prop, topLevel }],
+        symbol,
+      });
     } else if (!refSymbol.resolved) {
-      refSymbol.props.push({ prop, topLevel });
-    } else {
-      const p = this.findProp(this.root, refSymbol.resolved);
-      if (!p) {
-        refSymbol.props.push({ prop, topLevel });
-      }
+      refSymbol.newProps.push({ prop, topLevel });
     }
     return prop;
   }
@@ -1149,26 +1147,6 @@ export class SymbolParser implements ISymbolParser {
     return mergeNodeComments(this, prop, options, declaration);
   }
 
-  private findProp = (
-    root: PropType | undefined,
-    prop: PropType | undefined,
-  ): boolean => {
-    if (root && prop) {
-      if (root === prop) {
-        return true;
-      }
-      const keys = Object.keys(root);
-      for (const key of keys) {
-        const p = (root as any)[key];
-        if (Array.isArray(p)) {
-          return p.some((i) => this.findProp(i, prop));
-        } else if (typeof p === 'object') {
-          return this.findProp(p, prop);
-        }
-      }
-    }
-    return false;
-  };
   private filterProps = (root: PropType) => {
     if (this.options.filter && !this.options.filter(root)) {
       return false;
@@ -1192,14 +1170,14 @@ export class SymbolParser implements ISymbolParser {
     let i = 0;
     const { maxDepth = 6 } = this.options;
     while (i < maxDepth) {
-      const cachedSymbols = this.refSymbols.filter((r) => r.props.length);
+      const cachedSymbols = this.refSymbols.filter((r) => r.newProps.length);
       if (!cachedSymbols.length) {
         break;
       }
       cachedSymbols.forEach((ref) => {
-        const { props, symbol } = ref;
-        ref.props = [];
-        props.forEach(({ prop, topLevel }) => {
+        const { newProps, symbol } = ref;
+        ref.newProps = [];
+        newProps.forEach(({ prop, topLevel }) => {
           const p = this.parseSymbolProp(prop, symbol, this.options, topLevel);
           if (p && !ref.resolved) {
             ref.resolved = p;

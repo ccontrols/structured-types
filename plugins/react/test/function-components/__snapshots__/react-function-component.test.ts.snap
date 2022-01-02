@@ -171,31 +171,8 @@ Object {
                   ],
                 },
                 Object {
-                  "kind": 4,
+                  "kind": 15,
                   "name": "children",
-                  "properties": Array [
-                    Object {
-                      "kind": 15,
-                      "type": "ReactChild",
-                    },
-                    Object {
-                      "kind": 15,
-                      "type": "ReactFragment",
-                    },
-                    Object {
-                      "kind": 14,
-                      "type": "ReactPortal",
-                    },
-                    Object {
-                      "kind": 3,
-                    },
-                    Object {
-                      "kind": 10,
-                    },
-                    Object {
-                      "kind": 8,
-                    },
-                  ],
                   "type": "ReactNode",
                 },
                 Object {
@@ -363,31 +340,8 @@ Object {
                   ],
                 },
                 Object {
-                  "kind": 4,
+                  "kind": 15,
                   "name": "children",
-                  "properties": Array [
-                    Object {
-                      "kind": 15,
-                      "type": "ReactChild",
-                    },
-                    Object {
-                      "kind": 15,
-                      "type": "ReactFragment",
-                    },
-                    Object {
-                      "kind": 14,
-                      "type": "ReactPortal",
-                    },
-                    Object {
-                      "kind": 3,
-                    },
-                    Object {
-                      "kind": 10,
-                    },
-                    Object {
-                      "kind": 8,
-                    },
-                  ],
                   "type": "ReactNode",
                 },
                 Object {
@@ -573,31 +527,8 @@ Object {
                   ],
                 },
                 Object {
-                  "kind": 4,
+                  "kind": 15,
                   "name": "children",
-                  "properties": Array [
-                    Object {
-                      "kind": 15,
-                      "type": "ReactChild",
-                    },
-                    Object {
-                      "kind": 15,
-                      "type": "ReactFragment",
-                    },
-                    Object {
-                      "kind": 14,
-                      "type": "ReactPortal",
-                    },
-                    Object {
-                      "kind": 3,
-                    },
-                    Object {
-                      "kind": 10,
-                    },
-                    Object {
-                      "kind": 8,
-                    },
-                  ],
                   "type": "ReactNode",
                 },
                 Object {
@@ -755,640 +686,61 @@ Based on https://github.com/chriskempson/base16",
       "name": "CircularPropsPassedThroughJSONTree",
       "properties": Array [
         Object {
-          "kind": 16,
           "name": "keyPath",
           "parent": Object {
             "name": "SharedCircularPropsPassedThroughJSONTree",
           },
-          "type": "Array",
         },
         Object {
-          "kind": 11,
           "name": "labelRenderer",
           "parent": Object {
             "name": "SharedCircularPropsPassedThroughJSONTree",
           },
-          "returns": Object {
-            "kind": 4,
-            "name": "ReactNode",
-            "optional": true,
-            "properties": Array [
-              Object {
-                "kind": 4,
-                "properties": Array [
-                  Object {
-                    "generics": Array [
-                      Object {
-                        "name": "P",
-                      },
-                      Object {
-                        "name": "T",
-                      },
-                    ],
-                    "kind": 14,
-                    "name": "ReactElement",
-                    "properties": Array [
-                      Object {
-                        "name": "type",
-                        "type": "T",
-                      },
-                      Object {
-                        "name": "props",
-                        "type": "P",
-                      },
-                      Object {
-                        "kind": 4,
-                        "name": "key",
-                        "properties": Array [
-                          Object {
-                            "kind": 4,
-                            "properties": Array [
-                              Object {
-                                "kind": 1,
-                              },
-                              Object {
-                                "kind": 2,
-                              },
-                            ],
-                            "type": "Key",
-                          },
-                          Object {
-                            "kind": 10,
-                          },
-                        ],
-                      },
-                    ],
-                    "type": "ReactElement",
-                  },
-                  Object {
-                    "kind": 4,
-                    "properties": Array [
-                      Object {
-                        "kind": 1,
-                      },
-                      Object {
-                        "kind": 2,
-                      },
-                    ],
-                    "type": "ReactText",
-                  },
-                ],
-                "type": "ReactChild",
-              },
-              Object {
-                "kind": 4,
-                "properties": Array [
-                  Object {
-                    "kind": 15,
-                  },
-                  Object {
-                    "extends": Array [
-                      Object {
-                        "name": "ReadonlyArray",
-                      },
-                    ],
-                    "kind": 14,
-                    "name": "ReactNodeArray",
-                    "properties": Array [
-                      Object {
-                        "index": Object {
-                          "kind": 2,
-                          "name": "n",
-                        },
-                        "kind": 20,
-                        "prop": Object {
-                          "type": "T",
-                        },
-                      },
-                    ],
-                    "type": "ReactNodeArray",
-                  },
-                ],
-                "type": "ReactFragment",
-              },
-              Object {
-                "extends": Array [
-                  Object {
-                    "name": "ReactElement",
-                  },
-                ],
-                "kind": 14,
-                "name": "ReactPortal",
-                "properties": Array [
-                  Object {
-                    "kind": 4,
-                    "name": "key",
-                    "properties": Array [
-                      Object {
-                        "kind": 4,
-                        "properties": Array [
-                          Object {
-                            "kind": 1,
-                          },
-                          Object {
-                            "kind": 2,
-                          },
-                        ],
-                        "type": "Key",
-                      },
-                      Object {
-                        "kind": 10,
-                      },
-                    ],
-                  },
-                  Object {
-                    "kind": 4,
-                    "name": "children",
-                    "properties": Array [
-                      Object {
-                        "kind": 15,
-                        "type": "ReactChild",
-                      },
-                      Object {
-                        "kind": 15,
-                        "type": "ReactFragment",
-                      },
-                      Object {
-                        "kind": 14,
-                        "type": "ReactPortal",
-                      },
-                      Object {
-                        "kind": 3,
-                      },
-                      Object {
-                        "kind": 10,
-                      },
-                      Object {
-                        "kind": 8,
-                      },
-                    ],
-                    "type": "ReactNode",
-                  },
-                  Object {
-                    "name": "type",
-                    "parent": Object {
-                      "name": "ReactElement",
-                    },
-                    "type": "T",
-                  },
-                  Object {
-                    "name": "props",
-                    "parent": Object {
-                      "name": "ReactElement",
-                    },
-                    "type": "P",
-                  },
-                ],
-                "type": "ReactPortal",
-              },
-              Object {
-                "kind": 3,
-              },
-              Object {
-                "kind": 10,
-              },
-              Object {
-                "kind": 8,
-              },
-            ],
-            "type": "React.ReactNode",
-          },
         },
         Object {
-          "kind": 11,
           "name": "valueRenderer",
           "parent": Object {
             "name": "JSONValueNodeCircularPropsPassedThroughJSONTree",
           },
-          "returns": Object {
-            "kind": 4,
-            "name": "ReactNode",
-            "optional": true,
-            "properties": Array [
-              Object {
-                "kind": 4,
-                "properties": Array [
-                  Object {
-                    "generics": Array [
-                      Object {
-                        "name": "P",
-                      },
-                      Object {
-                        "name": "T",
-                      },
-                    ],
-                    "kind": 14,
-                    "name": "ReactElement",
-                    "properties": Array [
-                      Object {
-                        "name": "type",
-                        "type": "T",
-                      },
-                      Object {
-                        "name": "props",
-                        "type": "P",
-                      },
-                      Object {
-                        "kind": 4,
-                        "name": "key",
-                        "properties": Array [
-                          Object {
-                            "kind": 4,
-                            "properties": Array [
-                              Object {
-                                "kind": 1,
-                              },
-                              Object {
-                                "kind": 2,
-                              },
-                            ],
-                            "type": "Key",
-                          },
-                          Object {
-                            "kind": 10,
-                          },
-                        ],
-                      },
-                    ],
-                    "type": "ReactElement",
-                  },
-                  Object {
-                    "kind": 4,
-                    "properties": Array [
-                      Object {
-                        "kind": 1,
-                      },
-                      Object {
-                        "kind": 2,
-                      },
-                    ],
-                    "type": "ReactText",
-                  },
-                ],
-                "type": "ReactChild",
-              },
-              Object {
-                "kind": 4,
-                "properties": Array [
-                  Object {
-                    "kind": 15,
-                  },
-                  Object {
-                    "extends": Array [
-                      Object {
-                        "name": "ReadonlyArray",
-                      },
-                    ],
-                    "kind": 14,
-                    "name": "ReactNodeArray",
-                    "properties": Array [
-                      Object {
-                        "index": Object {
-                          "kind": 2,
-                          "name": "n",
-                        },
-                        "kind": 20,
-                        "prop": Object {
-                          "type": "T",
-                        },
-                      },
-                    ],
-                    "type": "ReactNodeArray",
-                  },
-                ],
-                "type": "ReactFragment",
-              },
-              Object {
-                "extends": Array [
-                  Object {
-                    "name": "ReactElement",
-                  },
-                ],
-                "kind": 14,
-                "name": "ReactPortal",
-                "properties": Array [
-                  Object {
-                    "kind": 4,
-                    "name": "key",
-                    "properties": Array [
-                      Object {
-                        "kind": 4,
-                        "properties": Array [
-                          Object {
-                            "kind": 1,
-                          },
-                          Object {
-                            "kind": 2,
-                          },
-                        ],
-                        "type": "Key",
-                      },
-                      Object {
-                        "kind": 10,
-                      },
-                    ],
-                  },
-                  Object {
-                    "kind": 4,
-                    "name": "children",
-                    "properties": Array [
-                      Object {
-                        "kind": 15,
-                        "type": "ReactChild",
-                      },
-                      Object {
-                        "kind": 15,
-                        "type": "ReactFragment",
-                      },
-                      Object {
-                        "kind": 14,
-                        "type": "ReactPortal",
-                      },
-                      Object {
-                        "kind": 3,
-                      },
-                      Object {
-                        "kind": 10,
-                      },
-                      Object {
-                        "kind": 8,
-                      },
-                    ],
-                    "type": "ReactNode",
-                  },
-                  Object {
-                    "name": "type",
-                    "parent": Object {
-                      "name": "ReactElement",
-                    },
-                    "type": "T",
-                  },
-                  Object {
-                    "name": "props",
-                    "parent": Object {
-                      "name": "ReactElement",
-                    },
-                    "type": "P",
-                  },
-                ],
-                "type": "ReactPortal",
-              },
-              Object {
-                "kind": 3,
-              },
-              Object {
-                "kind": 10,
-              },
-              Object {
-                "kind": 8,
-              },
-            ],
-            "type": "React.ReactNode",
-          },
         },
         Object {
-          "kind": 11,
           "name": "shouldExpandNode",
           "parent": Object {
             "name": "JSONNestedNodeCircularPropsPassedThroughJSONTree",
           },
-          "returns": Object {
-            "kind": 3,
-            "optional": true,
-          },
         },
         Object {
-          "kind": 3,
           "name": "hideRoot",
           "parent": Object {
             "name": "JSONNestedNodeCircularPropsPassedThroughJSONTree",
           },
         },
         Object {
-          "kind": 11,
           "name": "getItemString",
           "parent": Object {
             "name": "JSONNestedNodeCircularPropsPassedThroughJSONTree",
           },
-          "returns": Object {
-            "kind": 4,
-            "name": "ReactNode",
-            "optional": true,
-            "properties": Array [
-              Object {
-                "kind": 4,
-                "properties": Array [
-                  Object {
-                    "generics": Array [
-                      Object {
-                        "name": "P",
-                      },
-                      Object {
-                        "name": "T",
-                      },
-                    ],
-                    "kind": 14,
-                    "name": "ReactElement",
-                    "properties": Array [
-                      Object {
-                        "name": "type",
-                        "type": "T",
-                      },
-                      Object {
-                        "name": "props",
-                        "type": "P",
-                      },
-                      Object {
-                        "kind": 4,
-                        "name": "key",
-                        "properties": Array [
-                          Object {
-                            "kind": 4,
-                            "properties": Array [
-                              Object {
-                                "kind": 1,
-                              },
-                              Object {
-                                "kind": 2,
-                              },
-                            ],
-                            "type": "Key",
-                          },
-                          Object {
-                            "kind": 10,
-                          },
-                        ],
-                      },
-                    ],
-                    "type": "ReactElement",
-                  },
-                  Object {
-                    "kind": 4,
-                    "properties": Array [
-                      Object {
-                        "kind": 1,
-                      },
-                      Object {
-                        "kind": 2,
-                      },
-                    ],
-                    "type": "ReactText",
-                  },
-                ],
-                "type": "ReactChild",
-              },
-              Object {
-                "kind": 4,
-                "properties": Array [
-                  Object {
-                    "kind": 15,
-                  },
-                  Object {
-                    "extends": Array [
-                      Object {
-                        "name": "ReadonlyArray",
-                      },
-                    ],
-                    "kind": 14,
-                    "name": "ReactNodeArray",
-                    "properties": Array [
-                      Object {
-                        "index": Object {
-                          "kind": 2,
-                          "name": "n",
-                        },
-                        "kind": 20,
-                        "prop": Object {
-                          "type": "T",
-                        },
-                      },
-                    ],
-                    "type": "ReactNodeArray",
-                  },
-                ],
-                "type": "ReactFragment",
-              },
-              Object {
-                "extends": Array [
-                  Object {
-                    "name": "ReactElement",
-                  },
-                ],
-                "kind": 14,
-                "name": "ReactPortal",
-                "properties": Array [
-                  Object {
-                    "kind": 4,
-                    "name": "key",
-                    "properties": Array [
-                      Object {
-                        "kind": 4,
-                        "properties": Array [
-                          Object {
-                            "kind": 1,
-                          },
-                          Object {
-                            "kind": 2,
-                          },
-                        ],
-                        "type": "Key",
-                      },
-                      Object {
-                        "kind": 10,
-                      },
-                    ],
-                  },
-                  Object {
-                    "kind": 4,
-                    "name": "children",
-                    "properties": Array [
-                      Object {
-                        "kind": 15,
-                        "type": "ReactChild",
-                      },
-                      Object {
-                        "kind": 15,
-                        "type": "ReactFragment",
-                      },
-                      Object {
-                        "kind": 14,
-                        "type": "ReactPortal",
-                      },
-                      Object {
-                        "kind": 3,
-                      },
-                      Object {
-                        "kind": 10,
-                      },
-                      Object {
-                        "kind": 8,
-                      },
-                    ],
-                    "type": "ReactNode",
-                  },
-                  Object {
-                    "name": "type",
-                    "parent": Object {
-                      "name": "ReactElement",
-                    },
-                    "type": "T",
-                  },
-                  Object {
-                    "name": "props",
-                    "parent": Object {
-                      "name": "ReactElement",
-                    },
-                    "type": "P",
-                  },
-                ],
-                "type": "ReactPortal",
-              },
-              Object {
-                "kind": 3,
-              },
-              Object {
-                "kind": 10,
-              },
-              Object {
-                "kind": 8,
-              },
-            ],
-            "type": "React.ReactNode",
-          },
         },
         Object {
-          "kind": 11,
           "name": "postprocessValue",
           "parent": Object {
             "name": "JSONNestedNodeCircularPropsPassedThroughJSONTree",
           },
-          "returns": Object {
-            "kind": 17,
-            "optional": true,
-          },
         },
         Object {
-          "kind": 11,
           "name": "isCustomNode",
           "parent": Object {
             "name": "JSONNestedNodeCircularPropsPassedThroughJSONTree",
           },
-          "returns": Object {
-            "kind": 3,
-            "optional": true,
-          },
         },
         Object {
-          "kind": 2,
           "name": "collectionLimit",
           "parent": Object {
             "name": "JSONNestedNodeCircularPropsPassedThroughJSONTree",
           },
         },
         Object {
-          "kind": 4,
           "name": "sortObjectKeys",
-          "optional": true,
           "parent": Object {
             "name": "JSONNestedNodeCircularPropsPassedThroughJSONTree",
           },
@@ -1452,187 +804,8 @@ Based on https://github.com/chriskempson/base16",
               "name": "data",
             },
             Object {
-              "kind": 4,
+              "kind": 15,
               "name": "itemType",
-              "properties": Array [
-                Object {
-                  "kind": 4,
-                  "properties": Array [
-                    Object {
-                      "generics": Array [
-                        Object {
-                          "name": "P",
-                        },
-                        Object {
-                          "name": "T",
-                        },
-                      ],
-                      "kind": 14,
-                      "name": "ReactElement",
-                      "properties": Array [
-                        Object {
-                          "name": "type",
-                          "type": "T",
-                        },
-                        Object {
-                          "name": "props",
-                          "type": "P",
-                        },
-                        Object {
-                          "kind": 4,
-                          "name": "key",
-                          "properties": Array [
-                            Object {
-                              "kind": 4,
-                              "properties": Array [
-                                Object {
-                                  "kind": 1,
-                                },
-                                Object {
-                                  "kind": 2,
-                                },
-                              ],
-                              "type": "Key",
-                            },
-                            Object {
-                              "kind": 10,
-                            },
-                          ],
-                        },
-                      ],
-                      "type": "ReactElement",
-                    },
-                    Object {
-                      "kind": 4,
-                      "properties": Array [
-                        Object {
-                          "kind": 1,
-                        },
-                        Object {
-                          "kind": 2,
-                        },
-                      ],
-                      "type": "ReactText",
-                    },
-                  ],
-                  "type": "ReactChild",
-                },
-                Object {
-                  "kind": 4,
-                  "properties": Array [
-                    Object {
-                      "kind": 15,
-                    },
-                    Object {
-                      "extends": Array [
-                        Object {
-                          "name": "ReadonlyArray",
-                        },
-                      ],
-                      "kind": 14,
-                      "name": "ReactNodeArray",
-                      "properties": Array [
-                        Object {
-                          "index": Object {
-                            "kind": 2,
-                            "name": "n",
-                          },
-                          "kind": 20,
-                          "prop": Object {
-                            "type": "T",
-                          },
-                        },
-                      ],
-                      "type": "ReactNodeArray",
-                    },
-                  ],
-                  "type": "ReactFragment",
-                },
-                Object {
-                  "extends": Array [
-                    Object {
-                      "name": "ReactElement",
-                    },
-                  ],
-                  "kind": 14,
-                  "name": "ReactPortal",
-                  "properties": Array [
-                    Object {
-                      "kind": 4,
-                      "name": "key",
-                      "properties": Array [
-                        Object {
-                          "kind": 4,
-                          "properties": Array [
-                            Object {
-                              "kind": 1,
-                            },
-                            Object {
-                              "kind": 2,
-                            },
-                          ],
-                          "type": "Key",
-                        },
-                        Object {
-                          "kind": 10,
-                        },
-                      ],
-                    },
-                    Object {
-                      "kind": 4,
-                      "name": "children",
-                      "properties": Array [
-                        Object {
-                          "kind": 15,
-                          "type": "ReactChild",
-                        },
-                        Object {
-                          "kind": 15,
-                          "type": "ReactFragment",
-                        },
-                        Object {
-                          "kind": 14,
-                          "type": "ReactPortal",
-                        },
-                        Object {
-                          "kind": 3,
-                        },
-                        Object {
-                          "kind": 10,
-                        },
-                        Object {
-                          "kind": 8,
-                        },
-                      ],
-                      "type": "ReactNode",
-                    },
-                    Object {
-                      "name": "type",
-                      "parent": Object {
-                        "name": "ReactElement",
-                      },
-                      "type": "T",
-                    },
-                    Object {
-                      "name": "props",
-                      "parent": Object {
-                        "name": "ReactElement",
-                      },
-                      "type": "P",
-                    },
-                  ],
-                  "type": "ReactPortal",
-                },
-                Object {
-                  "kind": 3,
-                },
-                Object {
-                  "kind": 10,
-                },
-                Object {
-                  "kind": 8,
-                },
-              ],
               "type": "React.ReactNode",
             },
             Object {
@@ -1787,31 +960,8 @@ Based on https://github.com/chriskempson/base16",
                     ],
                   },
                   Object {
-                    "kind": 4,
+                    "kind": 15,
                     "name": "children",
-                    "properties": Array [
-                      Object {
-                        "kind": 15,
-                        "type": "ReactChild",
-                      },
-                      Object {
-                        "kind": 15,
-                        "type": "ReactFragment",
-                      },
-                      Object {
-                        "kind": 14,
-                        "type": "ReactPortal",
-                      },
-                      Object {
-                        "kind": 3,
-                      },
-                      Object {
-                        "kind": 10,
-                      },
-                      Object {
-                        "kind": 8,
-                      },
-                    ],
                     "type": "ReactNode",
                   },
                   Object {
@@ -2069,31 +1219,8 @@ Based on https://github.com/chriskempson/base16",
                     ],
                   },
                   Object {
-                    "kind": 4,
+                    "kind": 15,
                     "name": "children",
-                    "properties": Array [
-                      Object {
-                        "kind": 15,
-                        "type": "ReactChild",
-                      },
-                      Object {
-                        "kind": 15,
-                        "type": "ReactFragment",
-                      },
-                      Object {
-                        "kind": 14,
-                        "type": "ReactPortal",
-                      },
-                      Object {
-                        "kind": 3,
-                      },
-                      Object {
-                        "kind": 10,
-                      },
-                      Object {
-                        "kind": 8,
-                      },
-                    ],
                     "type": "ReactNode",
                   },
                   Object {
@@ -2567,179 +1694,6 @@ Based on https://github.com/chriskempson/base16",
             },
             Object {
               "kind": 15,
-              "name": "StylingConfig",
-              "properties": Array [
-                Object {
-                  "index": Object {
-                    "kind": 1,
-                    "name": "name",
-                  },
-                  "kind": 20,
-                  "prop": Object {
-                    "kind": 4,
-                    "properties": Array [
-                      Object {
-                        "kind": 4,
-                        "properties": Array [
-                          Object {
-                            "kind": 1,
-                          },
-                          Object {
-                            "generics": Array [
-                              Object {
-                                "kind": 4,
-                                "properties": Array [
-                                  Object {
-                                    "kind": 1,
-                                  },
-                                  Object {
-                                    "kind": 2,
-                                  },
-                                ],
-                              },
-                            ],
-                            "kind": 14,
-                            "type": "CSS.Properties",
-                          },
-                          Object {
-                            "kind": 15,
-                            "type": "StylingValueFunction",
-                          },
-                        ],
-                        "type": "StylingValue",
-                      },
-                      Object {
-                        "kind": 1,
-                      },
-                      Object {
-                        "description": "Type describing a syntax highlighting scheme as a JS object, as used in redux dev tools
-Based on https://github.com/chriskempson/base16",
-                        "kind": 14,
-                        "name": "Base16Theme",
-                        "properties": Array [
-                          Object {
-                            "kind": 1,
-                            "name": "scheme",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "author",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base00",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base01",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base02",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base03",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base04",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base05",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base06",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base07",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base08",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base09",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base0A",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base0B",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base0C",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base0D",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base0E",
-                          },
-                          Object {
-                            "kind": 1,
-                            "name": "base0F",
-                          },
-                        ],
-                        "type": "Base16Theme",
-                      },
-                    ],
-                  },
-                },
-                Object {
-                  "kind": 4,
-                  "name": "extend",
-                  "optional": true,
-                  "properties": Array [
-                    Object {
-                      "kind": 1,
-                    },
-                    Object {
-                      "kind": 14,
-                      "type": "Base16Theme",
-                    },
-                    Object {
-                      "kind": 4,
-                      "properties": Array [
-                        Object {
-                          "kind": 1,
-                        },
-                        Object {
-                          "generics": Array [
-                            Object {
-                              "kind": 4,
-                              "properties": Array [
-                                Object {
-                                  "kind": 1,
-                                },
-                                Object {
-                                  "kind": 2,
-                                },
-                              ],
-                            },
-                          ],
-                          "kind": 14,
-                          "type": "CSS.Properties",
-                        },
-                        Object {
-                          "kind": 15,
-                          "type": "StylingValueFunction",
-                        },
-                      ],
-                      "type": "StylingValue",
-                    },
-                  ],
-                },
-              ],
               "type": "StylingConfig",
             },
           ],
@@ -2892,31 +1846,8 @@ Based on https://github.com/chriskempson/base16",
                     ],
                   },
                   Object {
-                    "kind": 4,
+                    "kind": 15,
                     "name": "children",
-                    "properties": Array [
-                      Object {
-                        "kind": 15,
-                        "type": "ReactChild",
-                      },
-                      Object {
-                        "kind": 15,
-                        "type": "ReactFragment",
-                      },
-                      Object {
-                        "kind": 14,
-                        "type": "ReactPortal",
-                      },
-                      Object {
-                        "kind": 3,
-                      },
-                      Object {
-                        "kind": 10,
-                      },
-                      Object {
-                        "kind": 8,
-                      },
-                    ],
                     "type": "ReactNode",
                   },
                   Object {
@@ -3084,31 +2015,8 @@ Based on https://github.com/chriskempson/base16",
                     ],
                   },
                   Object {
-                    "kind": 4,
+                    "kind": 15,
                     "name": "children",
-                    "properties": Array [
-                      Object {
-                        "kind": 15,
-                        "type": "ReactChild",
-                      },
-                      Object {
-                        "kind": 15,
-                        "type": "ReactFragment",
-                      },
-                      Object {
-                        "kind": 14,
-                        "type": "ReactPortal",
-                      },
-                      Object {
-                        "kind": 3,
-                      },
-                      Object {
-                        "kind": 10,
-                      },
-                      Object {
-                        "kind": 8,
-                      },
-                    ],
                     "type": "ReactNode",
                   },
                   Object {
@@ -3294,31 +2202,8 @@ Based on https://github.com/chriskempson/base16",
                     ],
                   },
                   Object {
-                    "kind": 4,
+                    "kind": 15,
                     "name": "children",
-                    "properties": Array [
-                      Object {
-                        "kind": 15,
-                        "type": "ReactChild",
-                      },
-                      Object {
-                        "kind": 15,
-                        "type": "ReactFragment",
-                      },
-                      Object {
-                        "kind": 14,
-                        "type": "ReactPortal",
-                      },
-                      Object {
-                        "kind": 3,
-                      },
-                      Object {
-                        "kind": 10,
-                      },
-                      Object {
-                        "kind": 8,
-                      },
-                    ],
                     "type": "ReactNode",
                   },
                   Object {
@@ -3464,31 +2349,8 @@ Based on https://github.com/chriskempson/base16",
           ],
         },
         Object {
-          "kind": 4,
+          "kind": 15,
           "name": "children",
-          "properties": Array [
-            Object {
-              "kind": 15,
-              "type": "ReactChild",
-            },
-            Object {
-              "kind": 15,
-              "type": "ReactFragment",
-            },
-            Object {
-              "kind": 14,
-              "type": "ReactPortal",
-            },
-            Object {
-              "kind": 3,
-            },
-            Object {
-              "kind": 10,
-            },
-            Object {
-              "kind": 8,
-            },
-          ],
           "type": "ReactNode",
         },
         Object {
@@ -3693,31 +2555,8 @@ Based on https://github.com/chriskempson/base16",
                     ],
                   },
                   Object {
-                    "kind": 4,
+                    "kind": 15,
                     "name": "children",
-                    "properties": Array [
-                      Object {
-                        "kind": 15,
-                        "type": "ReactChild",
-                      },
-                      Object {
-                        "kind": 15,
-                        "type": "ReactFragment",
-                      },
-                      Object {
-                        "kind": 14,
-                        "type": "ReactPortal",
-                      },
-                      Object {
-                        "kind": 3,
-                      },
-                      Object {
-                        "kind": 10,
-                      },
-                      Object {
-                        "kind": 8,
-                      },
-                    ],
                     "type": "ReactNode",
                   },
                   Object {
