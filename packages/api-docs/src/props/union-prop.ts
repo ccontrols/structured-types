@@ -5,6 +5,7 @@ import { shortPropType } from './short-prop-type';
 import { DocumentationConfig } from '../DocumentationConfig';
 import { inlineCodeNode } from '../blocks/inline-code';
 import { getPropValue } from '../utility/prop-value';
+import { paragraphNode } from '../blocks/paragraph';
 
 export const unionPropNodes = (
   prop: UnionProp | EnumProp,
@@ -45,7 +46,7 @@ export const unionPropNodes = (
       return acc;
     }, []);
 
-    return propsList;
+    return [paragraphNode(propsList)];
   }
   return [];
 };

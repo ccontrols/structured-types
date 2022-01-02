@@ -1,4 +1,4 @@
-import { isFunctionProp, PropType } from '@structured-types/api';
+import { isFunctionProp, isUnionProp, PropType } from '@structured-types/api';
 import { SectionObject } from './types';
 
 export const defaultSections: SectionObject = {
@@ -8,8 +8,14 @@ export const defaultSections: SectionObject = {
   location: {},
   extends: { title: 'extends' },
   props: {
-    title: (prop: PropType) =>
-      isFunctionProp(prop) ? 'parameters' : 'properties',
+    title: (prop: PropType) => {
+      if (isFunctionProp(prop)) {
+        return 'parameters';
+      } else if (isUnionProp(prop)) {
+        return 'values';
+      }
+      return 'properties';
+    },
   },
   examples: {
     title: (prop: PropType) =>

@@ -225,16 +225,21 @@ describe('reference-type', () => {
                             value: ': ',
                           },
                           {
-                            kind: 11,
-                            value: '"male"',
-                          },
-                          {
-                            kind: 6,
-                            value: ' | ',
-                          },
-                          {
-                            kind: 11,
-                            value: '"female"',
+                            kind: 5,
+                            children: [
+                              {
+                                kind: 11,
+                                value: '"male"',
+                              },
+                              {
+                                kind: 6,
+                                value: ' | ',
+                              },
+                              {
+                                kind: 11,
+                                value: '"female"',
+                              },
+                            ],
                           },
                         ],
                       },

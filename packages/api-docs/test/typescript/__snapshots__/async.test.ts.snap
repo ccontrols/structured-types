@@ -131,674 +131,679 @@ Array [
                               Object {
                                 "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "String",
+                                    "kind": 6,
+                                    "value": ".",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "String",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Number",
+                                    "kind": 6,
+                                    "value": ", ",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Boolean",
+                                    "kind": 6,
+                                    "value": ".",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Number",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Union",
+                                    "kind": 6,
+                                    "value": ", ",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Enum",
+                                    "kind": 6,
+                                    "value": ".",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Boolean",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Tuple",
+                                    "kind": 6,
+                                    "value": ", ",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Rest",
+                                    "kind": 6,
+                                    "value": ".",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Union",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Undefined",
+                                    "kind": 6,
+                                    "value": ", ",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Unknown",
+                                    "kind": 6,
+                                    "value": ".",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Enum",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Null",
+                                    "kind": 6,
+                                    "value": ", ",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Function",
+                                    "kind": 6,
+                                    "value": ".",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Tuple",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Void",
+                                    "kind": 6,
+                                    "value": ", ",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Class",
+                                    "kind": 6,
+                                    "value": ".",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Rest",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Interface",
+                                    "kind": 6,
+                                    "value": ", ",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Type",
+                                    "kind": 6,
+                                    "value": ".",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Undefined",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Array",
+                                    "kind": 6,
+                                    "value": ", ",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Any",
+                                    "kind": 6,
+                                    "value": ".",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Unknown",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Index",
+                                    "kind": 6,
+                                    "value": ", ",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Constructor",
+                                    "kind": 6,
+                                    "value": ".",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Null",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Getter",
+                                    "kind": 6,
+                                    "value": ", ",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Setter",
+                                    "kind": 6,
+                                    "value": ".",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Function",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "BigInt",
+                                    "kind": 6,
+                                    "value": ", ",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Component",
+                                    "kind": 6,
+                                    "value": ".",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Void",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Object",
+                                    "kind": 6,
+                                    "value": ", ",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "Namespace",
+                                    "kind": 6,
+                                    "value": ".",
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "PropKind",
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Class",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ".",
-                              },
-                              Object {
-                                "children": Array [
                                   Object {
-                                    "kind": 11,
-                                    "value": "RegEx",
+                                    "kind": 6,
+                                    "value": ", ",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ".",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Interface",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ", ",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ".",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Type",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ", ",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ".",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Array",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ", ",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ".",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Any",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ", ",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ".",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Index",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ", ",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ".",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Constructor",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ", ",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ".",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Getter",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ", ",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ".",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Setter",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ", ",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ".",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "BigInt",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ", ",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ".",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Component",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ", ",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ".",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Object",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ", ",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ".",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "Namespace",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ", ",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "PropKind",
+                                      },
+                                    ],
+                                    "kind": 9,
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ".",
+                                  },
+                                  Object {
+                                    "children": Array [
+                                      Object {
+                                        "kind": 11,
+                                        "value": "RegEx",
+                                      },
+                                    ],
+                                    "kind": 9,
                                   },
                                 ],
-                                "kind": 9,
+                                "kind": 5,
                               },
                             ],
                             "kind": 12,
@@ -1021,24 +1026,29 @@ Array [
                                 "value": ": ",
                               },
                               Object {
-                                "kind": 11,
-                                "value": "\\"private\\"",
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": " | ",
-                              },
-                              Object {
-                                "kind": 11,
-                                "value": "\\"protected\\"",
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": " | ",
-                              },
-                              Object {
-                                "kind": 11,
-                                "value": "\\"public\\"",
+                                "children": Array [
+                                  Object {
+                                    "kind": 11,
+                                    "value": "\\"private\\"",
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": " | ",
+                                  },
+                                  Object {
+                                    "kind": 11,
+                                    "value": "\\"protected\\"",
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": " | ",
+                                  },
+                                  Object {
+                                    "kind": 11,
+                                    "value": "\\"public\\"",
+                                  },
+                                ],
+                                "kind": 5,
                               },
                             ],
                             "kind": 12,
@@ -1233,16 +1243,21 @@ Array [
                                 "value": ": ",
                               },
                               Object {
-                                "kind": 11,
-                                "value": "string",
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": " | ",
-                              },
-                              Object {
-                                "kind": 11,
-                                "value": "true",
+                                "children": Array [
+                                  Object {
+                                    "kind": 11,
+                                    "value": "string",
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": " | ",
+                                  },
+                                  Object {
+                                    "kind": 11,
+                                    "value": "true",
+                                  },
+                                ],
+                                "kind": 5,
                               },
                             ],
                             "kind": 12,
@@ -1492,31 +1507,36 @@ Array [
                           Object {
                             "children": Array [
                               Object {
+                                "children": Array [
+                                  Object {
+                                    "kind": 11,
+                                    "value": "ColumnName",
+                                  },
+                                ],
+                                "kind": 9,
+                              },
+                              Object {
+                                "kind": 6,
+                                "value": "[]",
+                              },
+                            ],
+                            "kind": 12,
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": " | ",
+                          },
+                          Object {
+                            "children": Array [
+                              Object {
                                 "kind": 11,
-                                "value": "ColumnName",
+                                "value": "Partial",
                               },
                             ],
                             "kind": 9,
                           },
-                          Object {
-                            "kind": 6,
-                            "value": "[]",
-                          },
                         ],
-                        "kind": 12,
-                      },
-                      Object {
-                        "kind": 6,
-                        "value": " | ",
-                      },
-                      Object {
-                        "children": Array [
-                          Object {
-                            "kind": 11,
-                            "value": "Partial",
-                          },
-                        ],
-                        "kind": 9,
+                        "kind": 5,
                       },
                     ],
                     "kind": 12,
@@ -1536,31 +1556,36 @@ Array [
                           Object {
                             "children": Array [
                               Object {
+                                "children": Array [
+                                  Object {
+                                    "kind": 11,
+                                    "value": "SectionName",
+                                  },
+                                ],
+                                "kind": 9,
+                              },
+                              Object {
+                                "kind": 6,
+                                "value": "[]",
+                              },
+                            ],
+                            "kind": 12,
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": " | ",
+                          },
+                          Object {
+                            "children": Array [
+                              Object {
                                 "kind": 11,
-                                "value": "SectionName",
+                                "value": "Partial",
                               },
                             ],
                             "kind": 9,
                           },
-                          Object {
-                            "kind": 6,
-                            "value": "[]",
-                          },
                         ],
-                        "kind": 12,
-                      },
-                      Object {
-                        "kind": 6,
-                        "value": " | ",
-                      },
-                      Object {
-                        "children": Array [
-                          Object {
-                            "kind": 11,
-                            "value": "Partial",
-                          },
-                        ],
-                        "kind": 9,
+                        "kind": 5,
                       },
                     ],
                     "kind": 12,

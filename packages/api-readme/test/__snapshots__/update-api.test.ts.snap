@@ -37,6 +37,17 @@ Function without parameters
 
 _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L13)_
 
+## FileType
+
+**\`union\`**
+
+Exported union type
+
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L20)_
+
+**values**
+
+\`\\"file\\"\` \\\\| \`\\"folder\\"\` \\\\| \`\\"unknown\\"\`
 
 ## MyComponent
 

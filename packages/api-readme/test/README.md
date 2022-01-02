@@ -42,17 +42,9 @@ Exported union type
 
 _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L20)_
 
-**properties**
+**values**
 
-`"file"`
-
- \| 
-
-`"folder"`
-
- \| 
-
-`"unknown"`
+`"file"` \| `"folder"` \| `"unknown"`
 
 ## MyComponent
 

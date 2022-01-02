@@ -184,19 +184,24 @@ const jsResults = [
     ],
   },
   {
-    kind: 11,
-    value: 'tuple',
-  },
-  {
-    kind: 6,
-    value: ' | ',
-  },
-  {
-    kind: 9,
+    kind: 5,
     children: [
       {
         kind: 11,
-        value: 'NumArr',
+        value: 'tuple',
+      },
+      {
+        kind: 6,
+        value: ' | ',
+      },
+      {
+        kind: 9,
+        children: [
+          {
+            kind: 11,
+            value: 'NumArr',
+          },
+        ],
       },
     ],
   },
@@ -373,19 +378,24 @@ const jsonResult = [
     ],
   },
   {
-    kind: 11,
-    value: 'tuple',
-  },
-  {
-    kind: 6,
-    value: ' | ',
-  },
-  {
-    kind: 9,
+    kind: 5,
     children: [
       {
         kind: 11,
-        value: 'NumArr',
+        value: 'tuple',
+      },
+      {
+        kind: 6,
+        value: ' | ',
+      },
+      {
+        kind: 9,
+        children: [
+          {
+            kind: 11,
+            value: 'NumArr',
+          },
+        ],
       },
     ],
   },

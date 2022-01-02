@@ -15,6 +15,11 @@ export function Fn(): string {
 }
 
 /**
+ * Exported union type
+ */
+export type FileType = 'file' | 'folder' | 'unknown';
+
+/**
  * configuration object
  */
 type TConfig = {
