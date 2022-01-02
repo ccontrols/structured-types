@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.40.2](https://github.com/ccontrols/structured-types/compare/v3.40.1...v3.40.2) (2022-01-02)
+
+
+### Bug Fixes
+
+* **api-docs:** function with no props and return type ([db82a55](https://github.com/ccontrols/structured-types/commit/db82a55e9fe31e422d310de800b2027c19f97d99))
+* **api-docs:** top level union prop values ([ee71aff](https://github.com/ccontrols/structured-types/commit/ee71aff24dcad3d5622425bd29e0d560480a3351))
+
+
+
+
+
 ## [3.40.1](https://github.com/ccontrols/structured-types/compare/v3.40.0...v3.40.1) (2022-01-02)
 
 
