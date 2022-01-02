@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.40.1](https://github.com/ccontrols/structured-types/compare/v3.40.0...v3.40.1) (2022-01-02)
+
+
+### Bug Fixes
+
+* **api:** deep recursive props ([4015554](https://github.com/ccontrols/structured-types/commit/4015554483490c0e320b55d398b909878b4d9cf5))
+
+
+
+
+
 # [3.40.0](https://github.com/ccontrols/structured-types/compare/v3.39.10...v3.40.0) (2022-01-01)
 
 
