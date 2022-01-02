@@ -2,7 +2,12 @@ import * as ts from 'typescript';
 import { getTypescriptConfig } from '@structured-types/typescript-config';
 import { dirname } from 'path-browserify';
 import { PropTypes, PropType, PropDiagnostic, FunctionProp } from './types';
-import { tsDefaults, DocsOptions, ProgramOptions } from './ts-utils';
+import {
+  tsDefaults,
+  DocsOptions,
+  ProgramOptions,
+  getSymbolDeclaration,
+} from './ts-utils';
 import { SymbolParser } from './SymbolParser';
 
 export * from './jsdoc';
@@ -135,7 +140,16 @@ export const analyzeFiles = (
       }
       const module = parser.checker.getSymbolAtLocation(sourceFile);
       if (module) {
-        const exports = parser.checker.getExportsOfModule(module);
+        const exports = parser.checker
+          .getExportsOfModule(module)
+          .sort((s1, s2) => {
+            // getExportsOfModule returns unsorted exports
+            const d1 = getSymbolDeclaration(s1);
+            const d2 = getSymbolDeclaration(s2);
+            return (
+              (d1?.pos || Number.MAX_VALUE) - (d2?.pos || Number.MAX_VALUE)
+            );
+          });
         exports.forEach((symbol) => addSymbol(symbol));
       }
     }
