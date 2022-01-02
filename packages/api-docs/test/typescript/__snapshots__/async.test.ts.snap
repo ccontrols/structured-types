@@ -2069,8 +2069,13 @@ Array [
           Object {
             "children": Array [
               Object {
-                "kind": 11,
-                "value": "returns",
+                "children": Array [
+                  Object {
+                    "kind": 11,
+                    "value": "returns",
+                  },
+                ],
+                "kind": 9,
               },
             ],
             "kind": 3,

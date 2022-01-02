@@ -105,11 +105,7 @@ export const createPropsTable = (
   children: PropItem[],
   columnOptions: ColumnObject,
   prop: PropType,
-): {
-  propsTable: DocumentationNode[];
-  table?: TableNode;
-  visibleColumns: VisibleColumns;
-} => {
+): DocumentationNode[] => {
   const propsTable: DocumentationNode[] = [];
   let table: TableNode | undefined = undefined;
   const visibleColumns: Record<ColumnName, boolean> = {
@@ -160,5 +156,5 @@ export const createPropsTable = (
       ),
     );
   }
-  return { propsTable: propsTable, table, visibleColumns };
+  return propsTable;
 };

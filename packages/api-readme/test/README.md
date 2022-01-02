@@ -3,10 +3,12 @@
 -   [API](#api)
     -   [STRING_CONST](#string_const)
     -   [Fn](#fn)
+    -   [getDefaultStore](#getdefaultstore)
     -   [FileType](#filetype)
     -   [MyComponent](#mycomponent)
     -   [Kind](#kind)
     -   [IndexedProps](#indexedprops)
+    -   [Store](#store)
     -   [OwnProps](#ownprops)
     -   [TConfig](#tconfig)
     -   [ReactPortal](#reactportal)
@@ -34,13 +36,25 @@ Function without parameters
 
 _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L13)_
 
+## getDefaultStore
+
+**`function`**
+
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L25)_
+
+**parameters**
+
+| Name      | Type              |
+| --------- | ----------------- |
+| `returns` | [`Store`](#store) |
+
 ## FileType
 
 **`union`**
 
 Exported union type
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L20)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L30)_
 
 **values**
 
@@ -52,7 +66,7 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 
 MyComponent special component
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L90)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L100)_
 
 **properties**
 
@@ -73,7 +87,7 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 
 **`enum`**
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L98)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L108)_
 
 **properties**
 
@@ -86,7 +100,7 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 
 **`type`**
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L107)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L117)_
 
 **properties**
 
@@ -94,13 +108,25 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 | -------- | ---------------------------------------- |
 | `index*` | \[`string`]: [`TConfig`](#tconfig)<br /> |
 
+## Store
+
+**`interface`**
+
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L21)_
+
+**properties**
+
+| Name          | Type                                                                                  |
+| ------------- | ------------------------------------------------------------------------------------- |
+| `components*` | <details><summary>`type`</summary><blockquote>`name`: `string`</blockquote></details> |
+
 ## OwnProps
 
 **`type`**
 
 MyComponent properties.
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L38)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L48)_
 
 **properties**
 
@@ -123,7 +149,7 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 
 configuration object
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L25)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L35)_
 
 **properties**
 

@@ -14,6 +14,16 @@ export function Fn(): string {
   return 'test';
 }
 
+class DefaultStore {
+  components = {};
+}
+
+interface Store {
+  components: { name?: string };
+}
+
+export const getDefaultStore = (): Store => new DefaultStore();
+
 /**
  * Exported union type
  */

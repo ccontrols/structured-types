@@ -30,11 +30,54 @@ describe('function', () => {
         children: [
           {
             kind: 2,
-            children: [],
+            children: [
+              {
+                kind: 3,
+                children: [
+                  {
+                    kind: 6,
+                    value: 'Name',
+                  },
+                ],
+              },
+              {
+                kind: 3,
+                children: [
+                  {
+                    kind: 6,
+                    value: 'Type',
+                  },
+                ],
+              },
+            ],
           },
           {
             kind: 2,
-            children: [],
+            children: [
+              {
+                kind: 3,
+                children: [
+                  {
+                    kind: 9,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'returns',
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                kind: 3,
+                children: [
+                  {
+                    kind: 11,
+                    value: 'string',
+                  },
+                ],
+              },
+            ],
           },
         ],
       },
