@@ -20,7 +20,7 @@ const extractClassLike = (
     if (isUnionProp(prop)) {
       result.push(...unionPropNodes(prop, config));
     } else if (hasProperties(prop)) {
-      const { propsTable } = propTable(prop, prop.properties, config);
+      const { propsTable } = propTable(prop, config, prop.properties);
       result.push(...propsTable);
     }
     return result;

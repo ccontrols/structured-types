@@ -9,39 +9,36 @@ export const propFunction = (
   prop: FunctionProp,
   config: DocumentationConfig,
 ): DocumentationNode[] | undefined => {
-  if (prop.parameters) {
-    const { propsTable, table, visibleColumns } = propTable(
-      prop,
-      prop.parameters,
-      config,
-    );
-    if (
-      table &&
-      table.children &&
-      prop.returns &&
-      prop.returns.kind !== PropKind.Void
-    ) {
-      table.children.push(
-        createPropsRow(
-          configurePropItem(
-            {
-              name: [inlineCodeNode('returns')],
-              parents: prop.returns.parent
-                ? [config.propLinks.propLink(prop.returns.parent)]
-                : undefined,
-              type: config.propTypes.extractType(prop.returns),
-              description: prop.returns.description,
-              default: undefined,
-              prop,
-            },
-            config,
-          ),
-          config.columns,
-          visibleColumns,
+  const { propsTable, table, visibleColumns } = propTable(
+    prop,
+    config,
+    prop.parameters,
+  );
+  if (
+    table &&
+    table.children &&
+    prop.returns &&
+    prop.returns.kind !== PropKind.Void
+  ) {
+    table.children.push(
+      createPropsRow(
+        configurePropItem(
+          {
+            name: [inlineCodeNode('returns')],
+            parents: prop.returns.parent
+              ? [config.propLinks.propLink(prop.returns.parent)]
+              : undefined,
+            type: config.propTypes.extractType(prop.returns),
+            description: prop.returns.description,
+            default: undefined,
+            prop,
+          },
+          config,
         ),
-      );
-    }
-    return propsTable;
+        config.columns,
+        visibleColumns,
+      ),
+    );
   }
-  return undefined;
+  return propsTable.length ? propsTable : undefined;
 };

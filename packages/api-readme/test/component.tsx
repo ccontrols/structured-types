@@ -7,6 +7,14 @@ import * as ts from 'typescript';
 export const STRING_CONST = 'my string';
 
 /**
+ * Function without parameters
+ * @returns the string test
+ */
+export function Fn(): string {
+  return 'test';
+}
+
+/**
  * configuration object
  */
 type TConfig = {

@@ -12,8 +12,8 @@ import { getPropValue } from './prop-value';
 
 export const propTable = (
   prop: PropType,
-  rows: PropType[],
   config: DocumentationConfig,
+  rows?: PropType[],
 ): ReturnType<typeof createPropsTable> => {
   let parentProp: EnumProp | undefined = undefined;
   const addParentProp = (prop: PropType) => {
@@ -42,36 +42,39 @@ export const propTable = (
       }
     }
   };
-  const consolidatedProps = rows.filter((prop) => {
-    if (prop.parent) {
-      if (
-        config.options.skipInherited ||
-        config.options.collapsed?.includes(prop.parent.name)
-      ) {
-        addParentProp(prop);
-        return false;
-      }
-      if (config.options.collapsed) {
-        for (const collapsedProp of config.options.collapsed) {
-          const helperParent = config.helpers[collapsedProp];
-          if (helperParent && hasProperties(helperParent)) {
-            const helpProp = helperParent.properties?.find(
-              (p) =>
-                p.name === prop.name && p.parent?.name === prop.parent?.name,
-            );
-            if (helpProp) {
-              addParentProp({
-                ...prop,
-                parent: { name: collapsedProp, loc: helperParent.loc },
-              });
-              return false;
+  const consolidatedProps = rows
+    ? rows.filter((prop) => {
+        if (prop.parent) {
+          if (
+            config.options.skipInherited ||
+            config.options.collapsed?.includes(prop.parent.name)
+          ) {
+            addParentProp(prop);
+            return false;
+          }
+          if (config.options.collapsed) {
+            for (const collapsedProp of config.options.collapsed) {
+              const helperParent = config.helpers[collapsedProp];
+              if (helperParent && hasProperties(helperParent)) {
+                const helpProp = helperParent.properties?.find(
+                  (p) =>
+                    p.name === prop.name &&
+                    p.parent?.name === prop.parent?.name,
+                );
+                if (helpProp) {
+                  addParentProp({
+                    ...prop,
+                    parent: { name: collapsedProp, loc: helperParent.loc },
+                  });
+                  return false;
+                }
+              }
             }
           }
         }
-      }
-    }
-    return true;
-  });
+        return true;
+      })
+    : [];
   const allProps = parentProp
     ? [...consolidatedProps, parentProp]
     : consolidatedProps;
