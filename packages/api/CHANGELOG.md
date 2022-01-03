@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.40.3](https://github.com/ccontrols/structured-types/compare/v3.40.2...v3.40.3) (2022-01-03)
+
+
+### Bug Fixes
+
+* **api:** ananymous props name ([b4b9fe4](https://github.com/ccontrols/structured-types/commit/b4b9fe4764c41166cd12cc61e73d151bcd566319))
+* **api:** collect helpers index types ([00aad5f](https://github.com/ccontrols/structured-types/commit/00aad5f6eb69aa5193cb879748df693670ed375a))
+* **api:** comment typo ([9e44601](https://github.com/ccontrols/structured-types/commit/9e446011fa635b6eff2d0e539de32a46bdd7b0c0))
+* **api-docs:** anonymous parameters name ([96f8d81](https://github.com/ccontrols/structured-types/commit/96f8d81c9f78671130c4c7e9ccd796100cf328a7))
+
+
+
+
+
 ## [3.40.2](https://github.com/ccontrols/structured-types/compare/v3.40.1...v3.40.2) (2022-01-02)
 
 

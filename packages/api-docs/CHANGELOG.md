@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.40.3](https://github.com/ccontrols/structured-types/compare/v3.40.2...v3.40.3) (2022-01-03)
+
+
+### Bug Fixes
+
+* **api:** collect helpers index types ([00aad5f](https://github.com/ccontrols/structured-types/commit/00aad5f6eb69aa5193cb879748df693670ed375a))
+* **api-docs:** anonymous parameters name ([96f8d81](https://github.com/ccontrols/structured-types/commit/96f8d81c9f78671130c4c7e9ccd796100cf328a7))
+* **api-docs:** function table refactor ([b06f817](https://github.com/ccontrols/structured-types/commit/b06f8174e61489d448cc880f19ac2e0f1460b006))
+
+
+
+
+
 ## [3.40.2](https://github.com/ccontrols/structured-types/compare/v3.40.1...v3.40.2) (2022-01-02)
 
 

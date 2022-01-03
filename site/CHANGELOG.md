@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.40.3](https://github.com/ccontrols/structured-types/compare/v3.40.2...v3.40.3) (2022-01-03)
+
+
+### Bug Fixes
+
+* **api-docs:** anonymous parameters name ([96f8d81](https://github.com/ccontrols/structured-types/commit/96f8d81c9f78671130c4c7e9ccd796100cf328a7))
+
+
+
+
+
 ## [3.40.2](https://github.com/ccontrols/structured-types/compare/v3.40.1...v3.40.2) (2022-01-02)
 
 **Note:** Version bump only for package structured-types-site
