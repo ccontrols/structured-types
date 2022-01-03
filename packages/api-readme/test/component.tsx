@@ -25,6 +25,12 @@ interface Store {
 export const getDefaultStore = (): Store => new DefaultStore();
 
 /**
+ * anonymous parameter
+ */
+export const anonParamFn = ({ components }: Store): void => {
+  console.log(components.name);
+};
+/**
  * Exported union type
  */
 export type FileType = 'file' | 'folder' | 'unknown';

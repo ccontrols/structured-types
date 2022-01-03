@@ -57,7 +57,6 @@ const propValue = (name: string, value: any): ReactNode => {
 };
 export const PropTypeTree: FC<PropTypeTreeProps> = ({ data }) => {
   const [open, setOpen] = useState(false);
-  debugger;
   return (
     <div
       className={`ast-tree-start ${open ? 'open' : ''}`}

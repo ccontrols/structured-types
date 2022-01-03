@@ -143,7 +143,7 @@ const docs = parseFiles(['../src/sum.js']);
 
 API to analyze the given files by also loading the local typescript options from tsconfig
 
-_defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L225)_
+_defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L239)_
 
 **parameters**
 
@@ -169,7 +169,7 @@ _defined in [@structured-types/api/packages/api/src/index.ts](https://github.com
 
 API to analyze the given files
 
-_defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L59)_
+_defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L64)_
 
 **parameters**
 
@@ -268,7 +268,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 **`type`**
 
-Top-level prop type, with aded optional \_\_helpers and \_\_diagnostics fields.
+Top-level prop type, with added optional \_\_helpers and \_\_diagnostics fields.
 
 _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L594)_
 
@@ -276,42 +276,11 @@ _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com
 
 | Name            | Type                                           | Description                                                                                                   |
 | --------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-|                 | \[`string`]: [`PropType`](#proptype)<br />     |                                                                                                               |
+| _anonymous_     | \[`string`]: [`PropType`](#proptype)<br />     |                                                                                                               |
 | `__helpers`     | `Record`&lt;`string`, [`PropType`](#proptype)> | Utility symbols such as parent types are stored here. Only available if option collectHelpers is set to true. |
 | `__diagnostics` | [`PropDiagnostic`](#propdiagnostic)\[]         | Typescript program diagnostics / errors. Only available if option collectDiagnostics is set to true.          |
 
 ## PropType
-
-**`interface`**
-
-Base prop type interface
-
-_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L103)_
-
-**properties**
-
-| Name          | Type                                       | Description                                                                                                           |
-| ------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
-| `kind`        | [`PropKind`](#propkind)                    | The property type or kind                                                                                             |
-| `name`        | `string`                                   | name of the property                                                                                                  |
-| `parent`      | [`PropParent`](#propparent)                | Parent of a property field                                                                                            |
-| `loc`         | [`SourceLocation`](#sourcelocation)        | source location of the symbol and source file position will be available when collectSourceInfo option is set to true |
-| `optional`    | `boolean`                                  | by default, properties are required                                                                                   |
-| `readonly`    | `boolean`                                  | readonly property                                                                                                     |
-| `abstract`    | `boolean`                                  | abstract property                                                                                                     |
-| `async`       | `boolean`                                  | async function                                                                                                        |
-| `visibility`  | `"private"` \| `"protected"` \| `"public"` | property visibility                                                                                                   |
-| `static`      | `boolean`                                  | true, of the class property is static                                                                                 |
-| `type`        | `string`                                   | type name of the property or lookup into \_\_helpers list of symbols                                                  |
-| `extension`   | `string`                                   | used plugin name ie 'react'...                                                                                        |
-| `description` | `string`                                   | jsdoc description                                                                                                     |
-| `fires`       | `string`\[]                                | jsdoc fires events list                                                                                               |
-| `see`         | `string`\[]                                | jsdoc see links list                                                                                                  |
-| `examples`    | [`JSDocExample`](#jsdocexample)\[]         | jsdoc examples list                                                                                                   |
-| `tags`        | [`JSDocPropTag`](#jsdocproptag)\[]         | jsdoc generic tags, not covered by other props                                                                        |
-| `summary`     | `string`                                   | jsdoc summary                                                                                                         |
-| `deprecated`  | `string` \| `true`                         | jsdoc deprecated tag                                                                                                  |
-| `ignore`      | `boolean`                                  | jsdoc ignore tag, to be excluded from documentations                                                                  |
 
 ## PropKind
 
@@ -471,7 +440,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 | `type*`                 | `ts.Type` \| `undefined`                                                                        |                                 |                                                                                                                                                   |
 | `initializer`           | ts.Node                                                                                         |                                 |                                                                                                                                                   |
 | `declaration`           | ts.Node                                                                                         |                                 |                                                                                                                                                   |
-| `prop`                  | [`PropType`](#proptype)                                                                         |                                 | Base prop type interface                                                                                                                          |
+| `prop`                  | [`PropType`](#proptype)                                                                         |                                 |                                                                                                                                                   |
 | `pluginName`            | `string`                                                                                        |                                 |                                                                                                                                                   |
 | `isInternal`            | **function** (<br />`file`\*: SourceFile<br />`node`\*: Node<br />) => `boolean` \| `undefined` | [`ParseOptions`](#parseoptions) | callback function to determine if a node is an internal (typescript) symbol return undefined if you need to use the default isInternal processing |
 | `tsOptions`             | ts.CompilerOptions                                                                              | [`DocsOptions`](#docsoptions)   |                                                                                                                                                   |

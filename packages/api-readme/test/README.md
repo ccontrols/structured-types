@@ -4,6 +4,7 @@
     -   [STRING_CONST](#string_const)
     -   [Fn](#fn)
     -   [getDefaultStore](#getdefaultstore)
+    -   [anonParamFn](#anonparamfn)
     -   [FileType](#filetype)
     -   [MyComponent](#mycomponent)
     -   [Kind](#kind)
@@ -48,13 +49,27 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 | --------- | ----------------- |
 | `returns` | [`Store`](#store) |
 
+## anonParamFn
+
+**`react component`**
+
+anonymous parameter
+
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L30)_
+
+**properties**
+
+| Name          | Type                                                                                  | Parent            |
+| ------------- | ------------------------------------------------------------------------------------- | ----------------- |
+| `components*` | <details><summary>`type`</summary><blockquote>`name`: `string`</blockquote></details> | [`Store`](#store) |
+
 ## FileType
 
 **`union`**
 
 Exported union type
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L30)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L36)_
 
 **values**
 
@@ -66,7 +81,7 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 
 MyComponent special component
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L100)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L106)_
 
 **properties**
 
@@ -87,7 +102,7 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 
 **`enum`**
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L108)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L114)_
 
 **properties**
 
@@ -100,7 +115,7 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 
 **`type`**
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L117)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L123)_
 
 **properties**
 
@@ -126,7 +141,7 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 
 MyComponent properties.
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L48)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L54)_
 
 **properties**
 
@@ -149,7 +164,7 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 
 configuration object
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L35)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L41)_
 
 **properties**
 

@@ -5,6 +5,7 @@ import {
   hasProperties,
   isIndexProp,
 } from '@structured-types/api';
+import { emphasisNode } from '../blocks/emphasis';
 import { createPropsTable, PropItem } from '../blocks/table';
 import { DocumentationConfig } from '../DocumentationConfig';
 import { ColumnName } from '../types';
@@ -80,15 +81,21 @@ export const propTable = (
     : consolidatedProps;
   const items: PropItem[] = allProps.map((prop) => {
     const nameProp = isIndexProp(prop) ? prop.index : prop;
-    let name = nameProp.name
+    const name = nameProp.name
       ? prop.kind === PropKind.Rest
         ? `...${nameProp.name}`
         : nameProp.name
-      : '';
-    name = `${name}${!name || prop.optional ? '' : '*'}`;
+      : undefined;
+    const nameNode =
+      name === undefined
+        ? emphasisNode(`anonymous${prop.optional ? '' : '*'}`)
+        : config.propLinks.propLink({
+            name: `${name}${prop.optional ? '' : '*'}`,
+            loc: prop.loc,
+          });
     return configurePropItem(
       {
-        name: [config.propLinks.propLink({ name, loc: prop.loc })],
+        name: [nameNode],
         parents: prop.parent
           ? [config.propLinks.propLink(prop.parent)]
           : undefined,
