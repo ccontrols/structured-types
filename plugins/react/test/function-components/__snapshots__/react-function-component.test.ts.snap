@@ -60,7 +60,6 @@ Object {
                     },
                   ],
                   "kind": 14,
-                  "name": "ReactElement",
                   "properties": Array [
                     Object {
                       "name": "type",
@@ -122,7 +121,6 @@ Object {
                     },
                   ],
                   "kind": 14,
-                  "name": "ReactNodeArray",
                   "properties": Array [
                     Object {
                       "index": Object {
@@ -147,7 +145,6 @@ Object {
                 },
               ],
               "kind": 14,
-              "name": "ReactPortal",
               "properties": Array [
                 Object {
                   "kind": 4,
@@ -229,7 +226,6 @@ Object {
                     },
                   ],
                   "kind": 14,
-                  "name": "ReactElement",
                   "properties": Array [
                     Object {
                       "name": "type",
@@ -291,7 +287,6 @@ Object {
                     },
                   ],
                   "kind": 14,
-                  "name": "ReactNodeArray",
                   "properties": Array [
                     Object {
                       "index": Object {
@@ -316,7 +311,6 @@ Object {
                 },
               ],
               "kind": 14,
-              "name": "ReactPortal",
               "properties": Array [
                 Object {
                   "kind": 4,
@@ -416,7 +410,6 @@ Object {
                     },
                   ],
                   "kind": 14,
-                  "name": "ReactElement",
                   "properties": Array [
                     Object {
                       "name": "type",
@@ -478,7 +471,6 @@ Object {
                     },
                   ],
                   "kind": 14,
-                  "name": "ReactNodeArray",
                   "properties": Array [
                     Object {
                       "index": Object {
@@ -503,7 +495,6 @@ Object {
                 },
               ],
               "kind": 14,
-              "name": "ReactPortal",
               "properties": Array [
                 Object {
                   "kind": 4,
@@ -849,7 +840,6 @@ Based on https://github.com/chriskempson/base16",
                       },
                     ],
                     "kind": 14,
-                    "name": "ReactElement",
                     "properties": Array [
                       Object {
                         "name": "type",
@@ -911,7 +901,6 @@ Based on https://github.com/chriskempson/base16",
                       },
                     ],
                     "kind": 14,
-                    "name": "ReactNodeArray",
                     "properties": Array [
                       Object {
                         "index": Object {
@@ -936,7 +925,6 @@ Based on https://github.com/chriskempson/base16",
                   },
                 ],
                 "kind": 14,
-                "name": "ReactPortal",
                 "properties": Array [
                   Object {
                     "kind": 4,
@@ -1108,7 +1096,6 @@ Based on https://github.com/chriskempson/base16",
                       },
                     ],
                     "kind": 14,
-                    "name": "ReactElement",
                     "properties": Array [
                       Object {
                         "name": "type",
@@ -1170,7 +1157,6 @@ Based on https://github.com/chriskempson/base16",
                       },
                     ],
                     "kind": 14,
-                    "name": "ReactNodeArray",
                     "properties": Array [
                       Object {
                         "index": Object {
@@ -1195,7 +1181,6 @@ Based on https://github.com/chriskempson/base16",
                   },
                 ],
                 "kind": 14,
-                "name": "ReactPortal",
                 "properties": Array [
                   Object {
                     "kind": 4,
@@ -1615,7 +1600,6 @@ Based on https://github.com/chriskempson/base16",
               "description": "Type describing a syntax highlighting scheme as a JS object, as used in redux dev tools
 Based on https://github.com/chriskempson/base16",
               "kind": 14,
-              "name": "Base16Theme",
               "properties": Array [
                 Object {
                   "kind": 1,
@@ -1735,7 +1719,6 @@ Based on https://github.com/chriskempson/base16",
                       },
                     ],
                     "kind": 14,
-                    "name": "ReactElement",
                     "properties": Array [
                       Object {
                         "name": "type",
@@ -1797,7 +1780,6 @@ Based on https://github.com/chriskempson/base16",
                       },
                     ],
                     "kind": 14,
-                    "name": "ReactNodeArray",
                     "properties": Array [
                       Object {
                         "index": Object {
@@ -1822,7 +1804,6 @@ Based on https://github.com/chriskempson/base16",
                   },
                 ],
                 "kind": 14,
-                "name": "ReactPortal",
                 "properties": Array [
                   Object {
                     "kind": 4,
@@ -1904,7 +1885,6 @@ Based on https://github.com/chriskempson/base16",
                       },
                     ],
                     "kind": 14,
-                    "name": "ReactElement",
                     "properties": Array [
                       Object {
                         "name": "type",
@@ -1966,7 +1946,6 @@ Based on https://github.com/chriskempson/base16",
                       },
                     ],
                     "kind": 14,
-                    "name": "ReactNodeArray",
                     "properties": Array [
                       Object {
                         "index": Object {
@@ -1991,7 +1970,6 @@ Based on https://github.com/chriskempson/base16",
                   },
                 ],
                 "kind": 14,
-                "name": "ReactPortal",
                 "properties": Array [
                   Object {
                     "kind": 4,
@@ -2091,7 +2069,6 @@ Based on https://github.com/chriskempson/base16",
                       },
                     ],
                     "kind": 14,
-                    "name": "ReactElement",
                     "properties": Array [
                       Object {
                         "name": "type",
@@ -2153,7 +2130,6 @@ Based on https://github.com/chriskempson/base16",
                       },
                     ],
                     "kind": 14,
-                    "name": "ReactNodeArray",
                     "properties": Array [
                       Object {
                         "index": Object {
@@ -2178,7 +2154,6 @@ Based on https://github.com/chriskempson/base16",
                   },
                 ],
                 "kind": 14,
-                "name": "ReactPortal",
                 "properties": Array [
                   Object {
                     "kind": 4,
@@ -2444,7 +2419,6 @@ Based on https://github.com/chriskempson/base16",
                       },
                     ],
                     "kind": 14,
-                    "name": "ReactElement",
                     "properties": Array [
                       Object {
                         "name": "type",
@@ -2506,7 +2480,6 @@ Based on https://github.com/chriskempson/base16",
                       },
                     ],
                     "kind": 14,
-                    "name": "ReactNodeArray",
                     "properties": Array [
                       Object {
                         "index": Object {
@@ -2531,7 +2504,6 @@ Based on https://github.com/chriskempson/base16",
                   },
                 ],
                 "kind": 14,
-                "name": "ReactPortal",
                 "properties": Array [
                   Object {
                     "kind": 4,
@@ -21464,7 +21436,6 @@ _Supported in Multi-column Layout_
                   },
                   Object {
                     "kind": 11,
-                    "name": "StylingValueFunction",
                     "parameters": Array [
                       Object {
                         "kind": 14,
@@ -21497,7 +21468,6 @@ _Supported in Multi-column Layout_
                       "generics": Array [
                         Object {
                           "kind": 14,
-                          "name": "Styling",
                           "properties": Array [
                             Object {
                               "name": "className",
@@ -21525,7 +21495,6 @@ _Supported in Multi-column Layout_
                 "description": "Type describing a syntax highlighting scheme as a JS object, as used in redux dev tools
 Based on https://github.com/chriskempson/base16",
                 "kind": 14,
-                "name": "Base16Theme",
                 "properties": Array [
                   Object {
                     "kind": 1,
@@ -21617,7 +21586,6 @@ Based on https://github.com/chriskempson/base16",
               "description": "Type describing a syntax highlighting scheme as a JS object, as used in redux dev tools
 Based on https://github.com/chriskempson/base16",
               "kind": 14,
-              "name": "Base16Theme",
               "properties": Array [
                 Object {
                   "kind": 1,
@@ -36910,7 +36878,6 @@ _Supported in Multi-column Layout_
                 },
                 Object {
                   "kind": 11,
-                  "name": "StylingValueFunction",
                   "parameters": Array [
                     Object {
                       "kind": 14,
@@ -36943,7 +36910,6 @@ _Supported in Multi-column Layout_
                     "generics": Array [
                       Object {
                         "kind": 14,
-                        "name": "Styling",
                         "properties": Array [
                           Object {
                             "name": "className",
@@ -39489,7 +39455,6 @@ Object {
               },
             ],
             "kind": 14,
-            "name": "CSSProperties",
             "properties": Array [
               Object {
                 "description": "The **\`accent-color\`** CSS property sets the color of the elements accent. An accent appears in elements such as \`<input>\` of \`type=\\"checkbox\\"\`, or \`type=\\"radio\\"\`.

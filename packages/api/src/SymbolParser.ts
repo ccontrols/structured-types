@@ -1017,7 +1017,10 @@ export class SymbolParser implements ISymbolParser {
               //any initializer values
               this.parseValue(prop, options, initializer);
               if (!prop.name) {
-                prop.name = symbol.getName();
+                const typeName = symbol.getName();
+                if (typeName !== prop.type) {
+                  prop.name = typeName;
+                }
               }
               return this.filterProperty(
                 mergeNodeComments(this, prop, options, declaration),

@@ -18,7 +18,6 @@ describe('array', () => {
                 name: 'm',
               },
             ],
-            name: 'Internal',
             type: 'Internal',
           },
         ],

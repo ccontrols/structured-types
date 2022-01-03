@@ -376,7 +376,6 @@ Object {
               },
             ],
             "kind": 14,
-            "name": "CSSProperties",
             "properties": Array [
               Object {
                 "description": "The **\`accent-color\`** CSS property sets the color of the elements accent. An accent appears in elements such as \`<input>\` of \`type=\\"checkbox\\"\`, or \`type=\\"radio\\"\`.
@@ -56922,7 +56921,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ClipboardEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -56955,7 +56953,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ClipboardEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -56988,7 +56985,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ClipboardEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57021,7 +57017,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ClipboardEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57054,7 +57049,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ClipboardEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57087,7 +57081,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ClipboardEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57120,7 +57113,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "CompositionEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57153,7 +57145,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "CompositionEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57186,7 +57177,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "CompositionEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57219,7 +57209,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "CompositionEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57252,7 +57241,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "CompositionEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57285,7 +57273,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "CompositionEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57318,7 +57305,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FocusEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57351,7 +57337,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FocusEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57384,7 +57369,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FocusEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57417,7 +57401,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FocusEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57450,7 +57433,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FormEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57483,7 +57465,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FormEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57516,7 +57497,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FormEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57549,7 +57529,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FormEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57582,7 +57561,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FormEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57615,7 +57593,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FormEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57648,7 +57625,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FormEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57681,7 +57657,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FormEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57714,7 +57689,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FormEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57747,7 +57721,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FormEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57780,7 +57753,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FormEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57813,7 +57785,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "FormEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57846,7 +57817,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57879,7 +57849,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57912,7 +57881,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57945,7 +57913,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -57978,7 +57945,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "KeyboardEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58011,7 +57977,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "KeyboardEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58044,7 +58009,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "KeyboardEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58077,7 +58041,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "KeyboardEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58110,7 +58073,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "KeyboardEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58143,7 +58105,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "KeyboardEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58176,7 +58137,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58209,7 +58169,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58242,7 +58201,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58275,7 +58233,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58308,7 +58265,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58341,7 +58297,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58374,7 +58329,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58407,7 +58361,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58440,7 +58393,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58473,7 +58425,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58506,7 +58457,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58539,7 +58489,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58572,7 +58521,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58605,7 +58553,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58638,7 +58585,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58671,7 +58617,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58704,7 +58649,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58737,7 +58681,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58770,7 +58713,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58803,7 +58745,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58836,7 +58777,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58869,7 +58809,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58902,7 +58841,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58935,7 +58873,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -58968,7 +58905,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59001,7 +58937,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59034,7 +58969,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59067,7 +59001,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59100,7 +59033,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59133,7 +59065,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59166,7 +59097,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59199,7 +59129,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59232,7 +59161,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59265,7 +59193,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59298,7 +59225,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59331,7 +59257,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59364,7 +59289,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59397,7 +59321,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59430,7 +59353,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59463,7 +59385,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59496,7 +59417,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59529,7 +59449,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59562,7 +59481,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59595,7 +59513,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59628,7 +59545,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59661,7 +59577,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59694,7 +59609,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59727,7 +59641,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59760,7 +59673,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59793,7 +59705,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59826,7 +59737,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59859,7 +59769,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59892,7 +59801,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59925,7 +59833,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59958,7 +59865,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -59991,7 +59897,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60024,7 +59929,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60057,7 +59961,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60090,7 +59993,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60123,7 +60025,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60156,7 +60057,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60189,7 +60089,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60222,7 +60121,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60255,7 +60153,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60288,7 +60185,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60321,7 +60217,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60354,7 +60249,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60387,7 +60281,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "DragEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60420,7 +60313,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60453,7 +60345,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60486,7 +60377,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60519,7 +60409,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60552,7 +60441,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60585,7 +60473,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60618,7 +60505,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60651,7 +60537,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60684,7 +60569,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60717,7 +60601,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60750,7 +60633,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60783,7 +60665,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "MouseEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60816,7 +60697,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60849,7 +60729,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "ReactEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60882,7 +60761,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "TouchEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60915,7 +60793,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "TouchEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60948,7 +60825,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "TouchEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -60981,7 +60857,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "TouchEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61014,7 +60889,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "TouchEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61047,7 +60921,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "TouchEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61080,7 +60953,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "TouchEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61113,7 +60985,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "TouchEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61146,7 +61017,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61179,7 +61049,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61212,7 +61081,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61245,7 +61113,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61278,7 +61145,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61311,7 +61177,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61344,7 +61209,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61377,7 +61241,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61410,7 +61273,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61443,7 +61305,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61476,7 +61337,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61509,7 +61369,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61542,7 +61401,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61575,7 +61433,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61608,7 +61465,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61641,7 +61497,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61674,7 +61529,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61707,7 +61561,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61740,7 +61593,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61773,7 +61625,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "PointerEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61806,7 +61657,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "UIEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61839,7 +61689,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "UIEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61872,7 +61721,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "WheelEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61905,7 +61753,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "WheelEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61938,7 +61785,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "AnimationEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -61971,7 +61817,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "AnimationEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -62004,7 +61849,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "AnimationEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -62037,7 +61881,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "AnimationEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -62070,7 +61913,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "AnimationEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -62103,7 +61945,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "AnimationEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -62136,7 +61977,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "TransitionEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",
@@ -62169,7 +62009,6 @@ A hint could be a sample value or a brief description of the expected format.",
               },
             ],
             "kind": 11,
-            "name": "TransitionEventHandler",
             "parameters": Array [
               Object {
                 "name": "event",

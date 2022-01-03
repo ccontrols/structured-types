@@ -67,7 +67,6 @@ describe('function', () => {
                 description: 'own member',
               },
             ],
-            name: 'ExtendT',
             description: 'extended type',
           },
         ],
@@ -90,7 +89,6 @@ describe('function', () => {
               description: 'string type member',
             },
           ],
-          name: 'Bear',
           description: 'interface extending another one',
           optional: true,
         },
@@ -296,7 +294,6 @@ describe('function', () => {
               name: 'T',
             },
           ],
-          name: 'GenericInterface',
           type: 'GenericInterface',
           properties: [
             {

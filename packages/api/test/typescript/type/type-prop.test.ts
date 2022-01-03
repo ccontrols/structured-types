@@ -210,7 +210,6 @@ describe('type', () => {
                     description: 'self-referencing items',
                   },
                 ],
-                name: 'Children',
                 description: 'this is type Children',
               },
             ],

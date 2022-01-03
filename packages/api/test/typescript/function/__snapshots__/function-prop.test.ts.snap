@@ -52,7 +52,6 @@ Object {
                           },
                         ],
                         "kind": 14,
-                        "name": "ReactElement",
                         "properties": Array [
                           Object {
                             "name": "type",
@@ -94,7 +93,6 @@ Object {
                           },
                         ],
                         "kind": 14,
-                        "name": "ReactNodeArray",
                         "properties": Array [
                           Object {
                             "index": Object {
@@ -119,7 +117,6 @@ Object {
                       },
                     ],
                     "kind": 14,
-                    "name": "ReactPortal",
                     "properties": Array [
                       Object {
                         "kind": 4,
@@ -193,7 +190,6 @@ Object {
               },
             ],
             "kind": 15,
-            "name": "WeakValidationMap",
             "type": "WeakValidationMap",
           },
           Object {
@@ -216,7 +212,6 @@ Object {
               },
             ],
             "kind": 15,
-            "name": "ValidationMap",
             "type": "ValidationMap",
           },
           Object {

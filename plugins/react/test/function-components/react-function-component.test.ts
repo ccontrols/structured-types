@@ -159,7 +159,6 @@ describe('function-component', () => {
                   kind: 12,
                   optional: true,
                 },
-                name: 'MouseEventHandler',
               },
               {
                 kind: 8,
