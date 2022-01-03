@@ -589,7 +589,7 @@ export type PropDiagnostic = {
 };
 
 /**
- * Top-level prop type, with aded optional __helpers and __diagnostics fields.
+ * Top-level prop type, with added optional __helpers and __diagnostics fields.
  */
 export type PropTypes =
   /**
