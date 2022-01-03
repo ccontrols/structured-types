@@ -100,9 +100,21 @@ export class SymbolParser implements ISymbolParser {
       if (!this._helpers[name]) {
         const prop = { name };
         this._helpers[name] = prop;
-        this.addRefSymbol(prop, symbol, true);
+        return this.addRefSymbol(prop, symbol, true);
       }
     }
+    return undefined;
+  }
+
+  private addHelperSymbol(
+    name: string,
+    symbol: ts.Symbol,
+    options: ParseOptions,
+  ) {
+    return (
+      this.addParentSymbol(name, symbol, options) ||
+      this.addRefSymbol({ name }, symbol, false)
+    );
   }
   private getParent(
     node: ts.Node,
@@ -767,7 +779,7 @@ export class SymbolParser implements ISymbolParser {
           index: { kind },
           optional: true,
           prop: symbol
-            ? this.addRefSymbol({}, symbol, false)
+            ? this.addHelperSymbol(symbol.getName(), symbol, options)
             : this.updatePropKind({}, index?.type),
         };
         return p;

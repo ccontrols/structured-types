@@ -282,6 +282,37 @@ _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com
 
 ## PropType
 
+**`interface`**
+
+Base prop type interface
+
+_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L103)_
+
+**properties**
+
+| Name          | Type                                       | Description                                                                                                           |
+| ------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| `kind`        | [`PropKind`](#propkind)                    | generic properties                                                                                                    |
+| `name`        | `string`                                   | name of the property                                                                                                  |
+| `parent`      | [`PropParent`](#propparent)                | Parent of a property field                                                                                            |
+| `loc`         | [`SourceLocation`](#sourcelocation)        | source location of the symbol and source file position will be available when collectSourceInfo option is set to true |
+| `optional`    | `boolean`                                  | by default, properties are required                                                                                   |
+| `readonly`    | `boolean`                                  | readonly property                                                                                                     |
+| `abstract`    | `boolean`                                  | abstract property                                                                                                     |
+| `async`       | `boolean`                                  | async function                                                                                                        |
+| `visibility`  | `"private"` \| `"protected"` \| `"public"` | property visibility                                                                                                   |
+| `static`      | `boolean`                                  | true, of the class property is static                                                                                 |
+| `type`        | `string`                                   | type name of the property or lookup into \_\_helpers list of symbols                                                  |
+| `extension`   | `string`                                   | used plugin name ie 'react'...                                                                                        |
+| `description` | `string`                                   | jsdoc description                                                                                                     |
+| `fires`       | `string`\[]                                | jsdoc fires events list                                                                                               |
+| `see`         | `string`\[]                                | jsdoc see links list                                                                                                  |
+| `examples`    | [`JSDocExample`](#jsdocexample)\[]         | jsdoc examples list                                                                                                   |
+| `tags`        | [`JSDocPropTag`](#jsdocproptag)\[]         | jsdoc generic tags, not covered by other props                                                                        |
+| `summary`     | `string`                                   | jsdoc summary                                                                                                         |
+| `deprecated`  | `string` \| `true`                         | jsdoc deprecated tag                                                                                                  |
+| `ignore`      | `boolean`                                  | jsdoc ignore tag, to be excluded from documentations                                                                  |
+
 ## PropKind
 
 **`enum`**
