@@ -277,6 +277,9 @@ export interface ParseOptions {
   collectInnerLocations?: boolean;
 }
 
+/**
+ * Plugin type - provides the plugin name and the type resolver
+ */
 export type ParsePlugin = Omit<DocsOptions, 'resolvers' | 'isInternal'> & {
   /**
    * type resolving custom function

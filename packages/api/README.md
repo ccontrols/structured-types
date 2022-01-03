@@ -196,7 +196,7 @@ _defined in [@structured-types/api/packages/api/src/index.ts](https://github.com
 
 **`type`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L319)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L322)_
 
 **properties**
 
@@ -255,7 +255,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 **`type`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L320)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L323)_
 
 **properties**
 
@@ -356,7 +356,9 @@ _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com
 
 **`type`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L280)_
+Plugin type - provides the plugin name and the type resolver
+
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L283)_
 
 **properties**
 
@@ -462,7 +464,7 @@ _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com
 
 **`type`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L324)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L327)_
 
 **properties**
 
@@ -496,7 +498,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 **`interface`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L389)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L392)_
 
 **properties**
 
