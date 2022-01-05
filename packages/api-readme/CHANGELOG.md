@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.40.5](https://github.com/ccontrols/structured-types/compare/v3.40.4...v3.40.5) (2022-01-05)
+
+
+### Bug Fixes
+
+* **api-docs:** generics parameters ([8b7932f](https://github.com/ccontrols/structured-types/commit/8b7932f4e88508a72429ae1b3f4bde6daca1a274))
+
+
+
+
+
 ## [3.40.4](https://github.com/ccontrols/structured-types/compare/v3.40.3...v3.40.4) (2022-01-03)
 
 **Note:** Version bump only for package @structured-types/api-readme

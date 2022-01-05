@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/api",
-  "version": "3.40.4",
+  "version": "3.40.5",
   "description": "api to extract structured type information from typescript types and jsdoc comments",
   "keywords": [
     "jsdoc",
@@ -36,7 +36,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@structured-types/typescript-config": "^3.40.0",
+    "@structured-types/typescript-config": "^3.40.5",
     "deepmerge": "^4.2.2",
     "path-browserify": "^1.0.1"
   },
