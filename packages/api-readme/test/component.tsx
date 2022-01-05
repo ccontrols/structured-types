@@ -35,6 +35,7 @@ export const anonParamFn = ({ components }: Store): void => {
  */
 export type FileType = 'file' | 'folder' | 'unknown';
 
+export const defFileType: FileType = 'file';
 /**
  * configuration object
  */
