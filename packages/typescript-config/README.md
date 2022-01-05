@@ -43,10 +43,10 @@ _defined in [@structured-types/typescript-config/misc/typescript-config/src/inde
 
 **properties**
 
-| Name          | Type                                                                                        |
-| ------------- | ------------------------------------------------------------------------------------------- |
-| `fileExists*` | **function** (<br />`filePath`\*: `string`<br />) => `Promise`&lt;`boolean`>                |
-| `readFile*`   | **function** (<br />`filePath`\*: `string`<br />) => `Promise`&lt;(`string`, `null`)<br />> |
+| Name          | Type                                                                                  |
+| ------------- | ------------------------------------------------------------------------------------- |
+| `fileExists*` | **function** (<br />`filePath`\*: `string`<br />) => `Promise`&lt;`boolean`>          |
+| `readFile*`   | **function** (<br />`filePath`\*: `string`<br />) => `Promise`&lt;(`string`, `null`)> |
 
 ## TSConfigOptions
 

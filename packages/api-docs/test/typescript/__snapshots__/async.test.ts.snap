@@ -1507,20 +1507,15 @@ Array [
                           Object {
                             "children": Array [
                               Object {
-                                "children": Array [
-                                  Object {
-                                    "kind": 11,
-                                    "value": "ColumnName",
-                                  },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": "[]",
+                                "kind": 11,
+                                "value": "ColumnName",
                               },
                             ],
-                            "kind": 12,
+                            "kind": 9,
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": "[]",
                           },
                           Object {
                             "kind": 6,
@@ -1534,6 +1529,53 @@ Array [
                               },
                             ],
                             "kind": 9,
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": "<",
+                          },
+                          Object {
+                            "children": Array [
+                              Object {
+                                "kind": 11,
+                                "value": "Record",
+                              },
+                            ],
+                            "kind": 9,
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": "<",
+                          },
+                          Object {
+                            "children": Array [
+                              Object {
+                                "kind": 11,
+                                "value": "ColumnName",
+                              },
+                            ],
+                            "kind": 9,
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": ", ",
+                          },
+                          Object {
+                            "children": Array [
+                              Object {
+                                "kind": 11,
+                                "value": "ColumnConfig",
+                              },
+                            ],
+                            "kind": 9,
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": ">",
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": ">",
                           },
                         ],
                         "kind": 5,
@@ -1556,20 +1598,15 @@ Array [
                           Object {
                             "children": Array [
                               Object {
-                                "children": Array [
-                                  Object {
-                                    "kind": 11,
-                                    "value": "SectionName",
-                                  },
-                                ],
-                                "kind": 9,
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": "[]",
+                                "kind": 11,
+                                "value": "SectionName",
                               },
                             ],
-                            "kind": 12,
+                            "kind": 9,
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": "[]",
                           },
                           Object {
                             "kind": 6,
@@ -1583,6 +1620,53 @@ Array [
                               },
                             ],
                             "kind": 9,
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": "<",
+                          },
+                          Object {
+                            "children": Array [
+                              Object {
+                                "kind": 11,
+                                "value": "Record",
+                              },
+                            ],
+                            "kind": 9,
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": "<",
+                          },
+                          Object {
+                            "children": Array [
+                              Object {
+                                "kind": 11,
+                                "value": "SectionName",
+                              },
+                            ],
+                            "kind": 9,
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": ", ",
+                          },
+                          Object {
+                            "children": Array [
+                              Object {
+                                "kind": 11,
+                                "value": "SectionConfig",
+                              },
+                            ],
+                            "kind": 9,
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": ">",
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": ">",
                           },
                         ],
                         "kind": 5,
@@ -1769,17 +1853,12 @@ Array [
                             "value": "<",
                           },
                           Object {
-                            "children": Array [
-                              Object {
-                                "kind": 11,
-                                "value": "string",
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": "[]",
-                              },
-                            ],
-                            "kind": 12,
+                            "kind": 11,
+                            "value": "string",
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": "[]",
                           },
                           Object {
                             "kind": 6,
@@ -1948,29 +2027,24 @@ Array [
                             "value": "<",
                           },
                           Object {
-                            "children": Array [
-                              Object {
-                                "kind": 6,
-                                "value": "(",
-                              },
-                              Object {
-                                "kind": 11,
-                                "value": "string",
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ", ",
-                              },
-                              Object {
-                                "kind": 11,
-                                "value": "null",
-                              },
-                              Object {
-                                "kind": 6,
-                                "value": ")",
-                              },
-                            ],
-                            "kind": 12,
+                            "kind": 6,
+                            "value": "(",
+                          },
+                          Object {
+                            "kind": 11,
+                            "value": "string",
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": ", ",
+                          },
+                          Object {
+                            "kind": 11,
+                            "value": "null",
+                          },
+                          Object {
+                            "kind": 6,
+                            "value": ")",
                           },
                           Object {
                             "kind": 6,
@@ -2098,20 +2172,15 @@ Array [
               Object {
                 "children": Array [
                   Object {
-                    "children": Array [
-                      Object {
-                        "kind": 11,
-                        "value": "DocumentationNode",
-                      },
-                    ],
-                    "kind": 9,
-                  },
-                  Object {
-                    "kind": 6,
-                    "value": "[]",
+                    "kind": 11,
+                    "value": "DocumentationNode",
                   },
                 ],
-                "kind": 12,
+                "kind": 9,
+              },
+              Object {
+                "kind": 6,
+                "value": "[]",
               },
               Object {
                 "kind": 6,

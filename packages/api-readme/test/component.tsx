@@ -48,6 +48,10 @@ type TConfig = {
 
   kind: Kind;
 };
+
+export interface ConfigNoTypeArr {
+  [key: string]: Omit<TConfig, 'kind'>[];
+}
 /**
  * MyComponent properties.
  */

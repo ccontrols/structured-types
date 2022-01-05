@@ -36,7 +36,10 @@ const renderNode = (
     return {
       type: 'paragraph',
       children: [
-        ...(node.children.map((node) => renderNode({ node })) as RemarkNode[]),
+        ...(node.children.map(
+          (node) => renderNode({ node }),
+          true,
+        ) as RemarkNode[]),
         {
           type: 'html',
           value: '<br />',

@@ -32,7 +32,7 @@ export const unionPropNodes = (
         } else {
           const pt = shortPropType(p, config);
           if (pt) {
-            propType = [pt];
+            propType = pt;
           }
         }
       }

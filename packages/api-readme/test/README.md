@@ -6,12 +6,13 @@
     -   [getDefaultStore](#getdefaultstore)
     -   [anonParamFn](#anonparamfn)
     -   [FileType](#filetype)
+    -   [ConfigNoTypeArr](#confignotypearr)
     -   [MyComponent](#mycomponent)
     -   [Kind](#kind)
     -   [IndexedProps](#indexedprops)
     -   [Store](#store)
-    -   [OwnProps](#ownprops)
     -   [TConfig](#tconfig)
+    -   [OwnProps](#ownprops)
     -   [ReactPortal](#reactportal)
     -   [ReactElement](#reactelement)
 
@@ -75,13 +76,25 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 
 `"file"` \| `"folder"` \| `"unknown"`
 
+## ConfigNoTypeArr
+
+**`interface`**
+
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L52)_
+
+**properties**
+
+| Name   | Type                                                               |
+| ------ | ------------------------------------------------------------------ |
+| `key*` | \[`string`]: (`Omit`&lt;[`TConfig`](#tconfig), `"kind"`>)\[]<br /> |
+
 ## MyComponent
 
 **`react component`**
 
 MyComponent special component
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L106)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L110)_
 
 **properties**
 
@@ -102,7 +115,7 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 
 **`enum`**
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L114)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L118)_
 
 **properties**
 
@@ -115,7 +128,7 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 
 **`type`**
 
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L123)_
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L127)_
 
 **properties**
 
@@ -135,29 +148,6 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 | ------------- | ------------------------------------------------------------------------------------- |
 | `components*` | <details><summary>`type`</summary><blockquote>`name`: `string`</blockquote></details> |
 
-## OwnProps
-
-**`type`**
-
-MyComponent properties.
-
-_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L54)_
-
-**properties**
-
-| Name          | Type                                                                                                                                                                                                                                                                                                                                      | Default | Description            |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ---------------------- |
-| `record`      | `Record`&lt;`string`, [`TConfig`](#tconfig)>                                                                                                                                                                                                                                                                                              |         | Record prop            |
-| `el`          | `ReactChild` \| `ReactFragment` \| [`ReactPortal`](#reactportal) \| `boolean` \| `null` \| `undefined`                                                                                                                                                                                                                                    |         | external type          |
-| `stringProp`  | `string`                                                                                                                                                                                                                                                                                                                                  |         | stringProp description |
-| `numberProp*` | `number`                                                                                                                                                                                                                                                                                                                                  | `4`     | numberProp description |
-| `config*`     | [`TConfig`](#tconfig)                                                                                                                                                                                                                                                                                                                     |         | linked type            |
-| `objectProp*` | <details><summary>`type`</summary><blockquote>`name`\*: `string`<br />`sex`\*: `"male"` \| `"female"`<br />`c`\*: [`TConfig`](#tconfig)</blockquote></details>                                                                                                                                                                            |         | objectProp description |
-| `fnProp*`     | **function** (<br /><details><summary>`p`\*</summary><blockquote>`config`\*: [`TConfig`](#tconfig)</blockquote></details>`b`\*: `boolean`<br />`a`\*: `boolean`<br />) => <details><summary>`type`</summary><blockquote><details><summary>`state`\*</summary><blockquote>`name`\*: `string`</blockquote></details></blockquote></details> |         | function property      |
-| `fnType*`     | **function** (<br />`kind`\*: [`Kind`](#kind)<br />) => `string`                                                                                                                                                                                                                                                                          |         | linked function        |
-| `arrProp*`    | \[`string`, `number`]                                                                                                                                                                                                                                                                                                                     |         | array property         |
-| `arrType*`    | [`TConfig`](#tconfig)\[]                                                                                                                                                                                                                                                                                                                  |         |                        |
-
 ## TConfig
 
 **`type`**
@@ -173,6 +163,29 @@ _defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx
 | `system*`   | `boolean`                                                                                                                                                  | `true`  | is this a system configuration |
 | `compiler*` | <details><summary>`CompilerOptions`</summary><blockquote>\[`string`]: `CompilerOptionsValue` \| `TsConfigSourceFile` \| `undefined`</blockquote></details> |         |                                |
 | `kind*`     | [`Kind`](#kind)                                                                                                                                            |         |                                |
+
+## OwnProps
+
+**`type`**
+
+MyComponent properties.
+
+_defined in [@structured-types/api-readme/packages/api-readme/test/component.tsx](https://github.com/ccontrols/structured-types/tree/master/packages/api-readme/test/component.tsx#L58)_
+
+**properties**
+
+| Name          | Type                                                                                                                                                                                                                                                                                                                                      | Default | Description            |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ---------------------- |
+| `record`      | `Record`&lt;`string`, [`TConfig`](#tconfig)>                                                                                                                                                                                                                                                                                              |         | Record prop            |
+| `el`          | `ReactChild` \| `ReactFragment` \| [`ReactPortal`](#reactportal) \| `boolean` \| `null` \| `undefined`                                                                                                                                                                                                                                    |         | external type          |
+| `stringProp`  | `string`                                                                                                                                                                                                                                                                                                                                  |         | stringProp description |
+| `numberProp*` | `number`                                                                                                                                                                                                                                                                                                                                  | `4`     | numberProp description |
+| `config*`     | [`TConfig`](#tconfig)                                                                                                                                                                                                                                                                                                                     |         | linked type            |
+| `objectProp*` | <details><summary>`type`</summary><blockquote>`name`\*: `string`<br />`sex`\*: `"male"` \| `"female"`<br />`c`\*: [`TConfig`](#tconfig)</blockquote></details>                                                                                                                                                                            |         | objectProp description |
+| `fnProp*`     | **function** (<br /><details><summary>`p`\*</summary><blockquote>`config`\*: [`TConfig`](#tconfig)</blockquote></details>`b`\*: `boolean`<br />`a`\*: `boolean`<br />) => <details><summary>`type`</summary><blockquote><details><summary>`state`\*</summary><blockquote>`name`\*: `string`</blockquote></details></blockquote></details> |         | function property      |
+| `fnType*`     | **function** (<br />`kind`\*: [`Kind`](#kind)<br />) => `string`                                                                                                                                                                                                                                                                          |         | linked function        |
+| `arrProp*`    | \[`string`, `number`]                                                                                                                                                                                                                                                                                                                     |         | array property         |
+| `arrType*`    | [`TConfig`](#tconfig)\[]                                                                                                                                                                                                                                                                                                                  |         |                        |
 
 ## ReactPortal
 

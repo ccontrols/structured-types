@@ -54,7 +54,7 @@ export class PropTypeNodes {
       } else {
         const propType = shortPropType(linkedProp, this.config);
         if (propType) {
-          return [this.collapsibleType(linkedProp, typeNode, [propType])];
+          return [this.collapsibleType(linkedProp, typeNode, propType)];
         }
       }
     }
@@ -126,7 +126,7 @@ export class PropTypeNodes {
     ) {
       const propType = shortPropType(prop, this.config);
       if (propType) {
-        return [propType];
+        return propType;
       }
     } else if (isUnionProp(prop) || isEnumProp(prop)) {
       return unionPropNodes(prop, this.config);
@@ -143,7 +143,7 @@ export class PropTypeNodes {
     }
     const propType = shortPropType(prop, this.config);
     if (propType) {
-      return [propType];
+      return propType;
     }
     return [];
   }

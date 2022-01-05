@@ -7,12 +7,38 @@ import {
   ArrayProp,
   isUnionProp,
   isEnumProp,
+  hasGenerics,
 } from '@structured-types/api';
 import { inlineCodeNode } from '../blocks/inline-code';
-import { blockNode } from '../blocks/block';
 import { textNode } from '../blocks/text';
 import { DocumentationNode, DocumentationNodeWithChildren } from '../types';
 import { DocumentationConfig } from '../DocumentationConfig';
+import { getPropValue } from '../utility/prop-value';
+
+export const getGenerics = (
+  prop: PropType,
+  config: DocumentationConfig,
+): DocumentationNode[] => {
+  const result: DocumentationNode[] = [];
+  if (hasGenerics(prop)) {
+    const generics = prop.generics;
+    if (generics) {
+      result.push(textNode('<'));
+
+      generics.forEach((p, idx) => {
+        const propType = shortPropType(p, config, true);
+        if (propType) {
+          result.push(...propType);
+          if (idx < generics.length - 1) {
+            result.push(textNode(', '));
+          }
+        }
+      });
+      result.push(textNode('>'));
+    }
+  }
+  return result;
+};
 
 export const arrayPropNodes = (
   prop: UnionProp | EnumProp | ArrayProp,
@@ -24,7 +50,7 @@ export const arrayPropNodes = (
       (acc: DocumentationNode[], p: PropType, idx: number) => {
         const propType = shortPropType(p, config);
         if (propType) {
-          const result = [propType];
+          const result = propType;
           if (idx < properties.length - 1) {
             result.push(textNode(', '));
           }
@@ -55,18 +81,27 @@ export const arrayPropNodes = (
 export const shortPropType = (
   prop: PropType,
   config: DocumentationConfig,
-): DocumentationNode | undefined => {
+  useValue?: boolean,
+): DocumentationNode[] | undefined => {
   if (typeof prop.type === 'string') {
-    return config.propLinks.propLink({
+    const typeLink = config.propLinks.propLink({
       name: prop.type,
       loc: prop.loc,
     });
+    const generics = getGenerics(prop, config);
+    return [typeLink, ...generics];
   }
   if (isArrayProp(prop) || isUnionProp(prop) || isEnumProp(prop)) {
-    return blockNode(arrayPropNodes(prop, config));
+    return arrayPropNodes(prop, config);
   }
   if (prop.kind) {
-    return inlineCodeNode(`${PropKind[prop.kind].toLowerCase()}`);
+    if (useValue) {
+      const value = getPropValue(prop);
+      if (typeof value === 'string') {
+        return [inlineCodeNode(value)];
+      }
+    }
+    return [inlineCodeNode(`${PropKind[prop.kind].toLowerCase()}`)];
   }
   return undefined;
 };

@@ -110,6 +110,31 @@ describe('ts-type', () => {
                   },
                   {
                     kind: 6,
+                    value: '<',
+                  },
+                  {
+                    kind: 9,
+                    children: [
+                      {
+                        kind: 11,
+                        value: 'SectionName',
+                      },
+                    ],
+                  },
+                  {
+                    kind: 6,
+                    value: ', ',
+                  },
+                  {
+                    kind: 11,
+                    value: 'string',
+                  },
+                  {
+                    kind: 6,
+                    value: '>',
+                  },
+                  {
+                    kind: 6,
                     value: '>',
                   },
                 ],

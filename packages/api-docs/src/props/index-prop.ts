@@ -12,7 +12,7 @@ export const indexPropNodes = (
   const propType = shortPropType(prop.index, config);
   const result: DocumentationNode[] = [];
   if (propType) {
-    result.push(textNode('['), propType, textNode(']'));
+    result.push(textNode('['), ...propType, textNode(']'));
   }
   if (prop.prop) {
     result.push(textNode(': '));

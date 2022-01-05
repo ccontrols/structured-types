@@ -16,7 +16,7 @@ export const tuplePropNodes = (
         (acc: DocumentationNode[], p: PropType, idx: number) => {
           const propType = shortPropType(p, config);
           if (propType) {
-            const result = [propType];
+            const result = propType;
             if (idx < properties.length - 1) {
               result.push(textNode(', '));
             }
