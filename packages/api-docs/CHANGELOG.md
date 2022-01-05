@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.40.6](https://github.com/ccontrols/structured-types/compare/v3.40.5...v3.40.6) (2022-01-05)
+
+
+### Bug Fixes
+
+* **api-docs:** union default string value ([5141940](https://github.com/ccontrols/structured-types/commit/5141940f58aacfe46cb95187f5426b99f87ddb2c))
+
+
+
+
+
 ## [3.40.5](https://github.com/ccontrols/structured-types/compare/v3.40.4...v3.40.5) (2022-01-05)
 
 
