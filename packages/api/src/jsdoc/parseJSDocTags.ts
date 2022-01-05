@@ -240,7 +240,8 @@ export const parseJSDocTags = (
 ): PropType | undefined => {
   if (declaration) {
     const result: PropType = {};
-    const parentTags = ts.getJSDocTags(declaration.parent) || [];
+    const parentTags =
+      (declaration.parent && ts.getJSDocTags(declaration.parent)) || [];
     const tags = ts.getJSDocTags(declaration).filter((tag) => {
       return parentTags.indexOf(tag) < 0;
     });
