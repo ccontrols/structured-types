@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.40.7](https://github.com/ccontrols/structured-types/compare/v3.40.6...v3.40.7) (2022-01-05)
+
+
+### Bug Fixes
+
+* **api:** top-level declaration with no parent ([7863454](https://github.com/ccontrols/structured-types/commit/7863454a56813d479bdbaf906d5850beea0c2d44))
+
+
+
+
+
 ## [3.40.6](https://github.com/ccontrols/structured-types/compare/v3.40.5...v3.40.6) (2022-01-05)
 
 

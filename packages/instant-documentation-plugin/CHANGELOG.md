@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.40.7](https://github.com/ccontrols/structured-types/compare/v3.40.6...v3.40.7) (2022-01-05)
+
+**Note:** Version bump only for package @structured-types/instant-documentation-plugin
+
+
+
+
+
 ## [3.40.6](https://github.com/ccontrols/structured-types/compare/v3.40.5...v3.40.6) (2022-01-05)
 
 **Note:** Version bump only for package @structured-types/instant-documentation-plugin
