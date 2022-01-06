@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.40.8](https://github.com/ccontrols/structured-types/compare/v3.40.7...v3.40.8) (2022-01-06)
+
+
+### Bug Fixes
+
+* **api-docs:** props cache ([24edacd](https://github.com/ccontrols/structured-types/commit/24edacd2804675dc03b859b84a38ce2622cc1c95))
+
+
+
+
+
 ## [3.40.7](https://github.com/ccontrols/structured-types/compare/v3.40.6...v3.40.7) (2022-01-05)
 
 
