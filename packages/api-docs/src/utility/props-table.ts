@@ -79,31 +79,29 @@ export const propTable = (
   const allProps = parentProp
     ? [...consolidatedProps, parentProp]
     : consolidatedProps;
-  const items: PropItem[] = allProps.map((prop) => {
-    const nameProp = isIndexProp(prop) ? prop.index : prop;
+  const items: PropItem[] = allProps.map((p) => {
+    const nameProp = isIndexProp(p) ? p.index : p;
     const name = nameProp.name
-      ? prop.kind === PropKind.Rest
+      ? p.kind === PropKind.Rest
         ? `...${nameProp.name}`
         : nameProp.name
       : undefined;
     const nameNode =
       name === undefined
-        ? emphasisNode(`anonymous${prop.optional ? '' : '*'}`)
+        ? emphasisNode(`anonymous${p.optional ? '' : '*'}`)
         : config.propLinks.propLink({
-            name: `${name}${prop.optional ? '' : '*'}`,
-            loc: prop.loc,
+            name: `${name}${p.optional ? '' : '*'}`,
+            loc: p.loc,
           });
     return configurePropItem(
       {
         name: [nameNode],
-        parents: prop.parent
-          ? [config.propLinks.propLink(prop.parent)]
-          : undefined,
+        parents: p.parent ? [config.propLinks.propLink(p.parent)] : undefined,
 
-        type: config.propTypes.extractType(prop),
-        description: prop.description,
-        default: getPropValue(prop),
-        prop,
+        type: config.propTypes.extractType(p),
+        description: p.description,
+        default: getPropValue(p),
+        prop: p,
       } as PropItem,
       config,
     );

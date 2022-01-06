@@ -1,3 +1,4 @@
+import hash from 'object-hash';
 import {
   PropType,
   isClassLikeProp,
@@ -24,6 +25,7 @@ import { functionPropNodes } from './function-prop';
 
 export class PropTypeNodes {
   private config: DocumentationConfig = {} as DocumentationConfig;
+  private cache: Record<string, DocumentationNode[]> = {};
   public init(config: DocumentationConfig): void {
     this.config = config;
   }
@@ -119,32 +121,45 @@ export class PropTypeNodes {
     return this.extractTypeNode(prop);
   }
 
+  private propToHash(prop: PropType): string {
+    return hash(prop);
+  }
   private extractTypeNode(prop: PropType): DocumentationNode[] {
-    if (
-      typeof prop.type === 'string' &&
-      this.config.options.collapsed?.includes(prop.type)
-    ) {
+    const hash = this.propToHash(prop);
+    if (this.cache[hash]) {
+      return this.cache[hash];
+    }
+    this.cache[hash] = [];
+    const convertType = () => {
+      if (
+        typeof prop.type === 'string' &&
+        this.config.options.collapsed?.includes(prop.type)
+      ) {
+        const propType = shortPropType(prop, this.config);
+        if (propType) {
+          return propType;
+        }
+      } else if (isUnionProp(prop) || isEnumProp(prop)) {
+        return unionPropNodes(prop, this.config);
+      } else if (isClassLikeProp(prop)) {
+        return classPropNodes(prop, this.config);
+      } else if (isArrayProp(prop)) {
+        return arrayPropNodes(prop, this.config);
+      } else if (isTupleProp(prop)) {
+        return tuplePropNodes(prop, this.config);
+      } else if (isIndexProp(prop)) {
+        return indexPropNodes(prop, this.config);
+      } else if (isFunctionProp(prop)) {
+        return functionPropNodes(prop, this.config);
+      }
       const propType = shortPropType(prop, this.config);
       if (propType) {
         return propType;
       }
-    } else if (isUnionProp(prop) || isEnumProp(prop)) {
-      return unionPropNodes(prop, this.config);
-    } else if (isClassLikeProp(prop)) {
-      return classPropNodes(prop, this.config);
-    } else if (isArrayProp(prop)) {
-      return arrayPropNodes(prop, this.config);
-    } else if (isTupleProp(prop)) {
-      return tuplePropNodes(prop, this.config);
-    } else if (isIndexProp(prop)) {
-      return indexPropNodes(prop, this.config);
-    } else if (isFunctionProp(prop)) {
-      return functionPropNodes(prop, this.config);
-    }
-    const propType = shortPropType(prop, this.config);
-    if (propType) {
-      return propType;
-    }
-    return [];
+      return [];
+    };
+    const result = convertType();
+    this.cache[hash] = result;
+    return result;
   }
 }
