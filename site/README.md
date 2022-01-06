@@ -100,7 +100,7 @@ _defined in [structured-types-site/site/src/components/panels/ParseConfigPanel.t
 
 # Viewers
 
-<api-readme visible="LoadingIndicator,JSONViewer,DataViewer" files="./src/components/viewers/LoadingIndicator.tsx,./src/components/viewers/JSONViewer.tsx,./src/components/viewers/DataViewer.tsx" collectHelpers=false/>
+<api-readme visible="LoadingIndicator,JSONViewer,DataViewer" files="./src/components/viewers/LoadingIndicator.tsx,./src/components/viewers/JSONViewer.tsx,./src/components/viewers/DataViewer.tsx"/>
 
 <!-- START-API-README -->
 

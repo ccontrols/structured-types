@@ -14,7 +14,7 @@ export const extractProps = async (
 ): Promise<RemarkNode[]> => {
   const props = parseFiles(files, {
     collectSourceInfo: true,
-    collectHelpers: true,
+    collectHelpers: false,
     plugins: [propTypesPlugin, reactPlugin],
     ...config,
   });

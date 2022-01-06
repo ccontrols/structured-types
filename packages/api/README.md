@@ -133,7 +133,7 @@ const docs = parseFiles(['../src/sum.js']);
 
 # API
 
-<api-readme />
+<api-readme collectHelpers=true/>
 
 <!-- START-API-README -->
 

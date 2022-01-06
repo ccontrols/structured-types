@@ -92,10 +92,10 @@ You can configure api-readme either directly in your markdown file with [inline 
 <api-readme columns="name,type,value,description"/>
 ```
 
--   `collectHelpers`: boolean, to specify whether to document also helper props (parents, inherited, etc) or just the main extracted exports. By default, the helper props will be documented and linked from the main props.
+-   `collectHelpers`: boolean, to specify whether to document also helper props (parents, inherited, etc) or just the main extracted exports. By default, the helper props will be excluded from your documentation.
 
 ```md
-<api-readme files="./src/index.ts" collectHelpers=false/>
+<api-readme files="./src/index.ts" collectHelpers=true/>
 ```
 
 -   `skipInherited`: boolean, to specify whether to skip properties that are "inherited", or "composed". For example, `type OwnProps = { x: number } & React.LineProps` will only output the `x` property and skip the inherited React library properties.
