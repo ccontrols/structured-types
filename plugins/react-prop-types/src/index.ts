@@ -208,7 +208,11 @@ export default {
     const react = reactPlugin.typesResolve(input);
     if (react) {
       if (input.declaration) {
-        const propTypes = getObjectStaticProp(input.declaration, 'propTypes');
+        const propTypes = getObjectStaticProp(
+          input.declaration,
+          'propTypes',
+          input.parser.checker,
+        );
         if (propTypes) {
           return {
             ...react,
@@ -218,7 +222,11 @@ export default {
         }
       }
       if (react.declaration) {
-        const propTypes = getObjectStaticProp(react.declaration, 'propTypes');
+        const propTypes = getObjectStaticProp(
+          react.declaration,
+          'propTypes',
+          input.parser.checker,
+        );
         if (propTypes) {
           const prop = mergeNodeComments(
             input.parser,

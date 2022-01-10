@@ -1,4 +1,5 @@
 import * as ts from 'typescript';
+import { getInitializer } from '.';
 import { PropKind, PropType } from './types';
 
 type VariableDeclaration =
@@ -489,6 +490,7 @@ export const getFunctionLike = (
 export const getObjectStaticProp = (
   obj: ts.Node,
   propName: string,
+  checker: ts.TypeChecker,
 ): ts.Expression | undefined => {
   const staticProp =
     isObjectTypeDeclaration(obj) &&
@@ -515,6 +517,14 @@ export const getObjectStaticProp = (
               expression.left.expression.getText() === objName
             ) {
               if (expression.left.name.text === propName) {
+                if (ts.isIdentifier(expression.right)) {
+                  const symbol = checker.getSymbolAtLocation(expression.right);
+                  const declaration = getSymbolDeclaration(symbol);
+                  const initializer = getInitializer(declaration);
+                  if (initializer) {
+                    return initializer;
+                  }
+                }
                 return expression.right;
               }
             }

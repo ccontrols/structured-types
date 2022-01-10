@@ -99,7 +99,11 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
               : typeRef.typeArguments[0]
             : undefined;
         }
-        const displayName = getObjectStaticProp(declaration, 'displayName');
+        const displayName = getObjectStaticProp(
+          declaration,
+          'displayName',
+          checker,
+        );
         const name =
           displayName && ts.isStringLiteral(displayName)
             ? displayName.text
@@ -107,6 +111,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
         const defaultProps: ts.Node | undefined = getObjectStaticProp(
           declaration,
           'defaultProps',
+          checker,
         );
         return {
           type,
@@ -136,7 +141,11 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
             if (propsType.isUnionOrIntersection()) {
               propsType = propsType.types[0];
             }
-            const displayName = getObjectStaticProp(declaration, 'displayName');
+            const displayName = getObjectStaticProp(
+              declaration,
+              'displayName',
+              checker,
+            );
 
             const name =
               typeof displayName === 'string'
@@ -145,7 +154,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
                 ? displayName.text
                 : declaration.name?.text;
             const defaultProps =
-              getObjectStaticProp(declaration, 'defaultProps') ||
+              getObjectStaticProp(declaration, 'defaultProps', checker) ||
               getInitializer(declaration);
             return {
               type: propsType,
@@ -175,12 +184,19 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
                   ['Element', 'ReactNode'].includes(returnSymbol.getName())
                 ) {
                   let propsType = undefined;
-                  let defaultProps: ts.Node | undefined = getObjectStaticProp(
-                    reactFunction.parent,
-                    'defaultProps',
-                  );
+                  let defaultProps: ts.Node | undefined =
+                    getObjectStaticProp(
+                      reactFunction.parent,
+                      'defaultProps',
+                      checker,
+                    ) ||
+                    getObjectStaticProp(reactFunction, 'defaultProps', checker);
                   const displayName =
-                    getObjectStaticProp(reactFunction.parent, 'displayName') ||
+                    getObjectStaticProp(
+                      reactFunction.parent,
+                      'displayName',
+                      checker,
+                    ) ||
                     reactFunction.name?.getText() ||
                     (ts.isVariableDeclaration(reactFunction.parent) &&
                       reactFunction.parent.name.getText());
