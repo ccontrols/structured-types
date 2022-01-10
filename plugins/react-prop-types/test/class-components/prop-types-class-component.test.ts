@@ -3,6 +3,51 @@ import { parseFiles } from '@structured-types/api';
 import propsPlugin from '../../src';
 
 describe('prop-types-class-component', () => {
+  it('with-children', () => {
+    const result = parseFiles([path.resolve(__dirname, 'with-children.jsx')], {
+      plugins: [{ ...propsPlugin, filter: undefined }],
+      collectHelpers: false,
+    });
+    expect(result).toEqual({
+      default: {
+        name: 'ButtonWithPropTypes',
+        extension: 'react-prop-types',
+        kind: 25,
+        properties: [
+          {
+            name: 'children',
+            kind: 15,
+            type: 'React.Element',
+            optional: true,
+            description: 'Description of prop "children".',
+          },
+          {
+            name: 'foo',
+            kind: 2,
+            optional: true,
+            value: 42,
+            description: 'Description of prop "foo".',
+          },
+          {
+            name: 'baz',
+            kind: 4,
+            properties: [
+              {
+                kind: 2,
+                optional: true,
+              },
+              {
+                kind: 1,
+                optional: true,
+              },
+            ],
+            optional: true,
+            description: 'Description of prop "baz".',
+          },
+        ],
+      },
+    });
+  });
   it('hoc', () => {
     const result = parseFiles([path.resolve(__dirname, 'hoc.jsx')], {
       plugins: [propsPlugin],

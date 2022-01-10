@@ -18,6 +18,7 @@
     "build": "NODE_ENV=production yarn rollup -c",
     "dev": "NODE_ENV=development yarn rollup -cw",
     "prepare": "yarn build",
+    "docs": "api-readme",
     "lint": "yarn eslint . --ext ts,tsx",
     "fix": "yarn lint --fix",
     "clean": "rimraf dist coverage tsconfig.tsbuildinfo",
