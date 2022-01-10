@@ -22,13 +22,8 @@ type APIItem = {
   jsonTree?: Partial<ReactJSONProps>;
 };
 
-const kindEntries = Object.entries(PropKind);
-const getKindName = (kind: PropKind): string | PropKind | undefined => {
-  const strKind = kind ? kind.toString() : 'unknown';
-  const found = kindEntries.find(([v, _]) => {
-    return v === strKind;
-  });
-  return found ? found[1] : undefined;
+const getKindName = (kind: PropKind): string => {
+  return PropKind[kind];
 };
 export const InfoContainer: FC = () => {
   const [visibleTabs, setVisibleTabs] = useURLParams<string[]>('viewer-tabs', [

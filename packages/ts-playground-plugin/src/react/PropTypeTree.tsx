@@ -15,12 +15,9 @@ const propValue = (name: string, value: any): ReactNode => {
     case 'number':
       const getValue = () => {
         if (name === 'kind') {
-          const strValue = value.toString();
-          const typename = Object.entries(PropKind).find(([v, _]) => {
-            return v === strValue;
-          });
+          const typename = PropKind[value as number];
           if (typename) {
-            return `${typename[1]} (${value})`;
+            return `${typename} (${value})`;
           }
         }
         return value;
