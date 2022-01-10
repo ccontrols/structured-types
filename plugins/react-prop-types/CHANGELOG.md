@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.40.10](https://github.com/ccontrols/structured-types/compare/v3.40.9...v3.40.10) (2022-01-10)
+
+
+### Bug Fixes
+
+* **api:** object static props from variable ([29f8136](https://github.com/ccontrols/structured-types/commit/29f813653c19893d7fffaa9e81755e4b3f2ace18))
+
+
+
+
+
 ## [3.40.9](https://github.com/ccontrols/structured-types/compare/v3.40.8...v3.40.9) (2022-01-06)
 
 **Note:** Version bump only for package @structured-types/prop-types-plugin
