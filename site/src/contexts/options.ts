@@ -99,6 +99,11 @@ export const defaultOptions: OptionsTypes = {
         options: ['react-prop-types', 'react'],
         help: 'Select the extensions/plugins to use.',
       },
+      maxDepth: {
+        defaultValue: '6',
+        options: ['6', '7', '8', '9', '10'],
+        help: 'Select the maximum depth to use for recursion.',
+      },
     },
   },
   tsOptions: {
