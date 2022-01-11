@@ -217,7 +217,8 @@ export interface ParseOptions {
   isInternal?: (file: ts.SourceFile, node: ts.Node) => boolean | undefined;
 
   /**
-   * max depth for extracting child props. default is 5
+   * max depth for extracting child props.
+   * @default 6
    */
   maxDepth?: number;
   /**
