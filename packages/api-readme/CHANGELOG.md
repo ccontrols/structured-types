@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.41.0](https://github.com/ccontrols/structured-types/compare/v3.40.10...v3.41.0) (2022-01-13)
+
+
+### Bug Fixes
+
+* **api-readme:** add prop-types dependency ([11b1979](https://github.com/ccontrols/structured-types/commit/11b19793fa707189615dfbac15678f1a6e232961))
+
+
+
+
+
 ## [3.40.10](https://github.com/ccontrols/structured-types/compare/v3.40.9...v3.40.10) (2022-01-10)
 
 **Note:** Version bump only for package @structured-types/api-readme

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.41.0](https://github.com/ccontrols/structured-types/compare/v3.40.10...v3.41.0) (2022-01-13)
+
+
+### Bug Fixes
+
+* **api-readme:** add prop-types dependency ([11b1979](https://github.com/ccontrols/structured-types/commit/11b19793fa707189615dfbac15678f1a6e232961))
+* **site:** prop kind name mapping ([9a1e044](https://github.com/ccontrols/structured-types/commit/9a1e04446fa6a922b7448843a0ee0469b200c2cb))
+
+
+### Features
+
+* **site:** add maxDepth to options ([7039cc5](https://github.com/ccontrols/structured-types/commit/7039cc597d8935f7004f6b804096f343d0d3fc2f))
+
+
+
+
+
 ## [3.40.10](https://github.com/ccontrols/structured-types/compare/v3.40.9...v3.40.10) (2022-01-10)
 
 

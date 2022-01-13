@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.41.0](https://github.com/ccontrols/structured-types/compare/v3.40.10...v3.41.0) (2022-01-13)
+
+
+### Bug Fixes
+
+* **site:** prop kind name mapping ([9a1e044](https://github.com/ccontrols/structured-types/commit/9a1e04446fa6a922b7448843a0ee0469b200c2cb))
+
+
+
+
+
 ## [3.40.10](https://github.com/ccontrols/structured-types/compare/v3.40.9...v3.40.10) (2022-01-10)
 
 **Note:** Version bump only for package @structured-types/playground-plugin
