@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.41.1](https://github.com/ccontrols/structured-types/compare/v3.41.0...v3.41.1) (2022-01-15)
+
+
+### Bug Fixes
+
+* **react-plugin:** assigned class components ([48424c1](https://github.com/ccontrols/structured-types/commit/48424c18ec2133d271d47720def0405b120d2855))
+
+
+
+
+
 # [3.41.0](https://github.com/ccontrols/structured-types/compare/v3.40.10...v3.41.0) (2022-01-13)
 
 
