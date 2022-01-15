@@ -16,6 +16,31 @@ const simpleResults = {
   },
 };
 describe('class-component', () => {
+  it('assign-const', () => {
+    const result = parseFiles([path.resolve(__dirname, 'assign-const.tsx')], {
+      plugins: [reactPlugin],
+      collectHelpers: false,
+    });
+    expect(result).toEqual({
+      Tab: {
+        name: 'MyOriginalName',
+        extension: 'react',
+        kind: 25,
+        properties: [
+          {
+            name: 'name',
+            parent: {
+              name: 'TabProps',
+            },
+            kind: 1,
+            value: 'my-name',
+            optional: true,
+          },
+        ],
+        description: 'Tab heading - you should specify the title/label',
+      },
+    });
+  });
   it('exports-by-name', () => {
     const result = parseFiles(
       [path.resolve(__dirname, 'exports-by-name.tsx')],

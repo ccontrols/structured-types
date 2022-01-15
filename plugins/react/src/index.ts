@@ -44,6 +44,7 @@ const getNodeResults = (
   }
   return undefined;
 };
+
 const typesResolve: ParsePlugin['typesResolve'] = ({
   symbolType,
   declaration,
@@ -123,7 +124,76 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
           collectInheritance: false,
         };
       }
-      if (isObjectTypeDeclaration(declaration)) {
+      const reactFunction = getFunctionLike(checker, expression || declaration);
+      if (reactFunction) {
+        const jsx = checker.getJsxIntrinsicTagNamesAt(reactFunction);
+        if (jsx.length) {
+          if (isSignatureDeclaration(reactFunction)) {
+            const signature =
+              checker.getSignatureFromDeclaration(reactFunction);
+            if (signature) {
+              const returnType = checker.getReturnTypeOfSignature(signature);
+              const returnSymbol = returnType.aliasSymbol || returnType.symbol;
+              if (
+                !returnSymbol ||
+                ['Element', 'ReactNode'].includes(returnSymbol.getName())
+              ) {
+                let propsType = undefined;
+                let defaultProps: ts.Node | undefined =
+                  getObjectStaticProp(
+                    reactFunction.parent,
+                    'defaultProps',
+                    checker,
+                  ) ||
+                  getObjectStaticProp(reactFunction, 'defaultProps', checker);
+                const displayName =
+                  getObjectStaticProp(
+                    reactFunction.parent,
+                    'displayName',
+                    checker,
+                  ) ||
+                  reactFunction.name?.getText() ||
+                  (ts.isVariableDeclaration(reactFunction.parent) &&
+                    reactFunction.parent.name.getText());
+                if (reactFunction.parameters.length) {
+                  const props = reactFunction.parameters[0];
+                  if (!defaultProps && ts.isObjectBindingPattern(props.name)) {
+                    defaultProps = props.name;
+                  }
+                  propsType = checker.getTypeAtLocation(props);
+                } else {
+                  propsType = checker.getTypeAtLocation(reactFunction);
+                }
+                const name =
+                  typeof displayName === 'string'
+                    ? displayName
+                    : displayName && ts.isStringLiteral(displayName)
+                    ? displayName.text
+                    : undefined;
+                return {
+                  declaration: reactFunction.parent,
+                  type: propsType,
+                  initializer: defaultProps,
+                  prop: { kind: PropKind.Component, name },
+                  collectGenerics: false,
+                  collectParameters: false,
+                  collectInheritance: false,
+                };
+              }
+            }
+          } else if (reactFunction.arguments.length) {
+            return getNodeResults(parser, reactFunction.arguments[0]);
+          }
+        }
+      }
+      const classDeclaration = getSymbolDeclaration(symbol);
+      if (classDeclaration && isObjectTypeDeclaration(classDeclaration)) {
+        const classImplementation =
+          getSymbolDeclaration(
+            checker.getSymbolAtLocation(
+              getInitializer(declaration) || declaration,
+            ),
+          ) || declaration;
         const jsx = checker.getJsxIntrinsicTagNamesAt(declaration);
         if (jsx.length) {
           const signatures = symbolType.getConstructSignatures();
@@ -142,7 +212,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
               propsType = propsType.types[0];
             }
             const displayName = getObjectStaticProp(
-              declaration,
+              classImplementation,
               'displayName',
               checker,
             );
@@ -152,86 +222,19 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
                 ? displayName
                 : displayName && ts.isStringLiteral(displayName)
                 ? displayName.text
-                : declaration.name?.text;
+                : (declaration as ts.NamedDeclaration).name?.getText();
             const defaultProps =
-              getObjectStaticProp(declaration, 'defaultProps', checker) ||
-              getInitializer(declaration);
+              getObjectStaticProp(
+                classImplementation,
+                'defaultProps',
+                checker,
+              ) || getInitializer(classImplementation);
             return {
               type: propsType,
               declaration,
               prop: { kind: PropKind.Component, name },
               initializer: defaultProps,
             };
-          }
-        }
-      } else {
-        const reactFunction = getFunctionLike(
-          checker,
-          expression || declaration,
-        );
-        if (reactFunction) {
-          const jsx = checker.getJsxIntrinsicTagNamesAt(reactFunction);
-          if (jsx.length) {
-            if (isSignatureDeclaration(reactFunction)) {
-              const signature =
-                checker.getSignatureFromDeclaration(reactFunction);
-              if (signature) {
-                const returnType = checker.getReturnTypeOfSignature(signature);
-                const returnSymbol =
-                  returnType.aliasSymbol || returnType.symbol;
-                if (
-                  !returnSymbol ||
-                  ['Element', 'ReactNode'].includes(returnSymbol.getName())
-                ) {
-                  let propsType = undefined;
-                  let defaultProps: ts.Node | undefined =
-                    getObjectStaticProp(
-                      reactFunction.parent,
-                      'defaultProps',
-                      checker,
-                    ) ||
-                    getObjectStaticProp(reactFunction, 'defaultProps', checker);
-                  const displayName =
-                    getObjectStaticProp(
-                      reactFunction.parent,
-                      'displayName',
-                      checker,
-                    ) ||
-                    reactFunction.name?.getText() ||
-                    (ts.isVariableDeclaration(reactFunction.parent) &&
-                      reactFunction.parent.name.getText());
-                  if (reactFunction.parameters.length) {
-                    const props = reactFunction.parameters[0];
-                    if (
-                      !defaultProps &&
-                      ts.isObjectBindingPattern(props.name)
-                    ) {
-                      defaultProps = props.name;
-                    }
-                    propsType = checker.getTypeAtLocation(props);
-                  } else {
-                    propsType = checker.getTypeAtLocation(reactFunction);
-                  }
-                  const name =
-                    typeof displayName === 'string'
-                      ? displayName
-                      : displayName && ts.isStringLiteral(displayName)
-                      ? displayName.text
-                      : undefined;
-                  return {
-                    declaration: reactFunction.parent,
-                    type: propsType,
-                    initializer: defaultProps,
-                    prop: { kind: PropKind.Component, name },
-                    collectGenerics: false,
-                    collectParameters: false,
-                    collectInheritance: false,
-                  };
-                }
-              }
-            } else if (reactFunction.arguments.length) {
-              return getNodeResults(parser, reactFunction.arguments[0]);
-            }
           }
         }
       }
