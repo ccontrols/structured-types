@@ -3,6 +3,21 @@ import { parseFiles } from '@structured-types/api';
 import reactPlugin from '../../src';
 
 describe('react-forward-ref', () => {
+  it('theme-ui-button', () => {
+    const result = parseFiles(
+      [
+        path.resolve(
+          __dirname,
+          '../../../../node_modules/@theme-ui/components/index.d.ts',
+        ),
+      ],
+      {
+        plugins: [reactPlugin],
+        extract: ['Button'],
+      },
+    );
+    expect(result).toMatchSnapshot();
+  });
   it('initialized', () => {
     const result = parseFiles([path.resolve(__dirname, 'initialized.tsx')], {
       plugins: [reactPlugin],

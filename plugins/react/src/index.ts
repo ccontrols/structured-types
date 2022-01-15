@@ -73,6 +73,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
           'MemoExoticComponent',
           'NamedExoticComponent',
           'ForwardRefExoticComponent',
+          'ForwardRef',
         ].includes(symbol.getName())
       ) {
         let type;
