@@ -1,5 +1,9 @@
-import { TypeResolver, ResolverReturnType, DocsOptions } from '../ts-utils';
-import { getInitializer } from './getInitializer';
+import {
+  TypeResolver,
+  ResolverReturnType,
+  DocsOptions,
+  getInitializer,
+} from '../ts-utils';
 
 export const resolveType: (
   props: Parameters<TypeResolver>[0],

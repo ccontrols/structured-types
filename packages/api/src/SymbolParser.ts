@@ -45,11 +45,12 @@ import {
   updateModifiers,
   getSymbolDeclaration,
   getTypeSymbol,
+  getInitializer,
 } from './ts-utils';
 import { resolveType } from './ts/resolveType';
-import { getInitializer } from './ts/getInitializer';
 import { mergeNodeComments } from './jsdoc/mergeJSDoc';
 import { parseJSDocTag } from './jsdoc/parseJSDocTags';
+import { ObjectProp } from './types';
 
 export class SymbolParser implements ISymbolParser {
   public checker: ts.TypeChecker;
@@ -266,7 +267,12 @@ export class SymbolParser implements ISymbolParser {
           }
         }
       }
-      const prop = this.parseTypeValueComments({}, options, p, p);
+      const prop = this.parseTypeValueComments(
+        {},
+        options,
+        p,
+        getInitializer(p) || p,
+      );
       if (prop) {
         addProp(prop);
       }
@@ -695,6 +701,8 @@ export class SymbolParser implements ISymbolParser {
         if (type) {
           (prop as RestProp).prop = type;
         }
+      } else if (ts.isParameter(node)) {
+        return this.parseType(prop, options, node.name);
       } else if (ts.isUnionTypeNode(node)) {
         prop.kind = PropKind.Union;
         (prop as UnionProp).properties = this.parseProperties(
@@ -709,6 +717,12 @@ export class SymbolParser implements ISymbolParser {
       } else if (ts.isTupleTypeNode(node)) {
         prop.kind = PropKind.Tuple;
         (prop as TupleProp).properties = this.parseProperties(
+          node.elements,
+          options,
+        );
+      } else if (ts.isObjectBindingPattern(node)) {
+        prop.kind = PropKind.Object;
+        (prop as ObjectProp).properties = this.parseProperties(
           node.elements,
           options,
         );

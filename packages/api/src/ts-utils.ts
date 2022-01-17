@@ -1,5 +1,4 @@
 import * as ts from 'typescript';
-import { getInitializer } from '.';
 import { PropKind, PropType } from './types';
 
 type VariableDeclaration =
@@ -488,6 +487,20 @@ export const getFunctionLike = (
   }
   return undefined;
 };
+export const getInitializer = (
+  declaration?: ts.Node,
+): ts.Expression | undefined => {
+  if (declaration) {
+    if (isVariableLikeDeclaration(declaration)) {
+      return declaration.initializer;
+    }
+    if (declaration.parent && ts.isBinaryExpression(declaration.parent)) {
+      return declaration.parent.right;
+    }
+  }
+  return undefined;
+};
+
 export const getObjectStaticProp = (
   obj: ts.Node,
   propName: string,

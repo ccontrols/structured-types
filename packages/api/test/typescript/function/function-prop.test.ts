@@ -2,6 +2,32 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('function', () => {
+  it('tuple parameters', () => {
+    const results = parseFiles([path.resolve(__dirname, 'tuple-parameter.ts')]);
+    expect(results).toEqual({
+      distanceFromOrigin: {
+        name: 'distanceFromOrigin',
+        kind: 11,
+        parameters: [
+          {
+            kind: 6,
+            properties: [
+              {
+                kind: 2,
+              },
+              {
+                kind: 2,
+              },
+            ],
+          },
+        ],
+        returns: {
+          kind: 2,
+          optional: true,
+        },
+      },
+    });
+  });
   it('object-parameter', () => {
     const results = parseFiles([
       path.resolve(__dirname, 'object-parameter.ts'),
@@ -379,32 +405,6 @@ describe('function', () => {
     });
   });
 
-  it('tuple parameters', () => {
-    const results = parseFiles([path.resolve(__dirname, 'tuple-parameter.ts')]);
-    expect(results).toEqual({
-      distanceFromOrigin: {
-        name: 'distanceFromOrigin',
-        kind: 11,
-        parameters: [
-          {
-            kind: 6,
-            properties: [
-              {
-                kind: 2,
-              },
-              {
-                kind: 2,
-              },
-            ],
-          },
-        ],
-        returns: {
-          kind: 2,
-          optional: true,
-        },
-      },
-    });
-  });
   it('spread-tuple-parameter', () => {
     const results = parseFiles([
       path.resolve(__dirname, 'spread-tuple-parameter.ts'),
