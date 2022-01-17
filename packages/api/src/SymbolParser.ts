@@ -50,7 +50,7 @@ import {
 import { resolveType } from './ts/resolveType';
 import { mergeNodeComments } from './jsdoc/mergeJSDoc';
 import { parseJSDocTag } from './jsdoc/parseJSDocTags';
-import { ObjectProp } from './types';
+import { isTypeProp, ObjectProp } from './types';
 
 export class SymbolParser implements ISymbolParser {
   public checker: ts.TypeChecker;
@@ -199,7 +199,7 @@ export class SymbolParser implements ISymbolParser {
         location = {};
       }
       location.filePath = source.fileName;
-      const name = ts.getNameOfDeclaration(node as ts.Declaration);
+      const name = ts.getNameOfDeclaration(node as ts.Declaration) || node;
       if (name) {
         const start = source.getLineAndCharacterOfPosition(name.getStart());
         const end = source.getLineAndCharacterOfPosition(name.getEnd());
@@ -434,6 +434,11 @@ export class SymbolParser implements ISymbolParser {
         addProperties(node.elements);
       } else if (ts.isObjectLiteralExpression(node)) {
         addProperties(node.properties);
+      } else if (ts.isIdentifier(node)) {
+        const symbol = this.getSymbolAtLocation(node);
+        if (symbol && isTypeProp(prop)) {
+          prop.value = this.addHelperSymbol(symbol.name, symbol, options);
+        }
       } else if (
         ts.isTypeAssertionExpression(node) ||
         ts.isAsExpression(node)

@@ -432,6 +432,7 @@ export interface TypeProp extends PropType {
   extends?: PropParent[];
   properties?: PropType[];
   generics?: PropType[];
+  value?: PropType;
 }
 
 /**
