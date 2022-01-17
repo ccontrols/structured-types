@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.42.0](https://github.com/ccontrols/structured-types/compare/v3.41.2...v3.42.0) (2022-01-17)
+
+
+### Bug Fixes
+
+* **api:** anonymous function parameters ([79c9383](https://github.com/ccontrols/structured-types/commit/79c938398f3c69163506df1680ec002abf135316))
+
+
+### Features
+
+* **api:** add initializer value to type prop ([acf07b4](https://github.com/ccontrols/structured-types/commit/acf07b427fb8c53adb660c703b2334c0467558fa))
+
+
+
+
+
 # [3.41.0](https://github.com/ccontrols/structured-types/compare/v3.40.10...v3.41.0) (2022-01-13)
 
 **Note:** Version bump only for package @structured-types/api

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.42.0](https://github.com/ccontrols/structured-types/compare/v3.41.2...v3.42.0) (2022-01-17)
+
+
+### Features
+
+* **api:** add initializer value to type prop ([acf07b4](https://github.com/ccontrols/structured-types/commit/acf07b427fb8c53adb660c703b2334c0467558fa))
+
+
+
+
+
 ## [3.41.2](https://github.com/ccontrols/structured-types/compare/v3.41.1...v3.41.2) (2022-01-15)
 
 
