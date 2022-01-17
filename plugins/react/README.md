@@ -114,7 +114,7 @@ By default, the plugin removes the `children` property that is part of most reac
 
 Plugin type - provides the plugin name and the type resolver
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L285)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L284)_
 
 **properties**
 

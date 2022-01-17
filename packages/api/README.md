@@ -196,7 +196,7 @@ _defined in [@structured-types/api/packages/api/src/index.ts](https://github.com
 
 **`type`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L324)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L323)_
 
 **properties**
 
@@ -227,7 +227,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 parsing options
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L196)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L195)_
 
 **properties**
 
@@ -255,7 +255,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 **`type`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L325)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L324)_
 
 **properties**
 
@@ -270,7 +270,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 Top-level prop type, with added optional \_\_helpers and \_\_diagnostics fields.
 
-_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L594)_
+_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L595)_
 
 **properties**
 
@@ -358,7 +358,7 @@ _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com
 
 Plugin type - provides the plugin name and the type resolver
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L285)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L284)_
 
 **properties**
 
@@ -390,7 +390,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 diagnostics row data
 
-_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L568)_
+_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L569)_
 
 **properties**
 
@@ -464,7 +464,7 @@ _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com
 
 **`type`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L329)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L328)_
 
 **properties**
 
@@ -498,7 +498,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 **`interface`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L394)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L393)_
 
 **properties**
 
