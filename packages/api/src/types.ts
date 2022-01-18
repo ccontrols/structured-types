@@ -261,7 +261,12 @@ export const isUnionProp = (prop: PropType): prop is UnionProp => {
   return prop.kind === PropKind.Union;
 };
 
-export type HasValueProp = StringProp | NumberProp | BooleanProp | UnionProp;
+export type HasValueProp =
+  | StringProp
+  | NumberProp
+  | BooleanProp
+  | UnionProp
+  | TypeProp;
 
 /**
  * type guard predicate to determine if the prop has a value field
@@ -271,6 +276,7 @@ export const hasValue = (prop: PropType): prop is HasValueProp => {
     prop.kind === PropKind.String ||
     prop.kind === PropKind.Number ||
     prop.kind === PropKind.Boolean ||
+    prop.kind === PropKind.Type ||
     prop.kind === PropKind.Union
   );
 };
