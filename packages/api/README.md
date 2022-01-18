@@ -270,7 +270,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 Top-level prop type, with added optional \_\_helpers and \_\_diagnostics fields.
 
-_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L595)_
+_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L601)_
 
 **properties**
 
@@ -390,7 +390,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 diagnostics row data
 
-_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L569)_
+_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L575)_
 
 **properties**
 
