@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.42.1](https://github.com/ccontrols/structured-types/compare/v3.42.0...v3.42.1) (2022-01-18)
+
+
+### Bug Fixes
+
+* **api:** add TypeProp as hasValue ([a87fd40](https://github.com/ccontrols/structured-types/commit/a87fd40eccfdb11aca20584c3d1e295bde0551f1))
+
+
+
+
+
 # [3.42.0](https://github.com/ccontrols/structured-types/compare/v3.41.2...v3.42.0) (2022-01-17)
 
 
