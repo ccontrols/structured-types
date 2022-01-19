@@ -135,26 +135,37 @@ export type GenericsType = TypeParameterType | ts.TypeLiteralNode;
 export const isGenericsType = (node: ts.Node): node is GenericsType =>
   isTypeParameterType(node) || node.kind === ts.SyntaxKind.TypeLiteral;
 
-export type FunctionLike =
-  | ts.FunctionDeclaration
-  | ts.ConstructorDeclaration
-  | ts.GetAccessorDeclaration
-  | ts.SetAccessorDeclaration
+export type FunctionBodyType =
   | ts.ArrowFunction
+  | ts.FunctionExpression
+  | ts.GetAccessorDeclaration
+  | ts.ConstructorDeclaration
+  | ts.MethodDeclaration
+  | ts.FunctionDeclaration;
+
+export const isFunctionBodyType = (node: ts.Node): node is FunctionBodyType => {
+  return (
+    node.kind === ts.SyntaxKind.ArrowFunction ||
+    node.kind === ts.SyntaxKind.FunctionDeclaration ||
+    node.kind === ts.SyntaxKind.FunctionExpression ||
+    node.kind === ts.SyntaxKind.GetAccessor ||
+    node.kind === ts.SyntaxKind.Constructor ||
+    node.kind === ts.SyntaxKind.MethodDeclaration
+  );
+};
+
+export type FunctionLike =
+  | FunctionBodyType
+  | ts.SetAccessorDeclaration
   | ts.FunctionTypeNode
-  | ts.MethodSignature
-  | ts.MethodDeclaration;
+  | ts.MethodSignature;
 
 export const isFunctionLike = (node: ts.Node): node is FunctionLike => {
   return (
-    node.kind === ts.SyntaxKind.FunctionDeclaration ||
-    node.kind === ts.SyntaxKind.ArrowFunction ||
-    node.kind === ts.SyntaxKind.Constructor ||
-    node.kind === ts.SyntaxKind.GetAccessor ||
+    isFunctionBodyType(node) ||
     node.kind === ts.SyntaxKind.SetAccessor ||
     node.kind === ts.SyntaxKind.FunctionType ||
-    node.kind === ts.SyntaxKind.MethodSignature ||
-    node.kind === ts.SyntaxKind.MethodDeclaration
+    node.kind === ts.SyntaxKind.MethodSignature
   );
 };
 
@@ -234,6 +245,10 @@ export interface ParseOptions {
    * whether to collect function parameters
    */
   collectParameters?: boolean;
+  /**
+   * whether to collect function parameters usage locations within the function body
+   */
+  collectParametersUsage?: boolean;
 
   /**
    * whether to collect object/type properties

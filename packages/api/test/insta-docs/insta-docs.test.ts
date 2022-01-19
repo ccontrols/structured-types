@@ -1,12 +1,13 @@
 import path from 'path';
 import fs from 'fs';
-import { parseFiles, SourceLocation } from '../../src/index';
+import { parseFiles, SourceLocation, FunctionProp } from '../../src/index';
 
 describe('insta-docs', () => {
   it('story-source', () => {
     const fileName = path.resolve(__dirname, 'story-source.tsx');
     const result = parseFiles([fileName], {
       collectSourceInfo: 'body',
+      collectParametersUsage: true,
     });
     const fileContent = fs.readFileSync(fileName, 'utf-8');
     const extractSource = (
@@ -36,13 +37,31 @@ describe('insta-docs', () => {
       return undefined;
     };
     expect(extractSource(fileContent, result['fnStory'].loc?.loc)).toEqual(
-      "{\n  return '';\n}",
+      "() {\n  return '';\n}",
     );
     expect(extractSource(fileContent, result['singleLine'].loc?.loc)).toEqual(
-      "() => 'test'",
+      '(text: string): string => text',
     );
+    expect((result['singleLine'] as FunctionProp).parameters).toEqual([
+      {
+        name: 'text',
+        usage: [
+          {
+            start: {
+              line: 16,
+              col: 53,
+            },
+            end: {
+              line: 16,
+              col: 57,
+            },
+          },
+        ],
+        kind: 1,
+      },
+    ]);
     expect(extractSource(fileContent, result['asyncStory'].loc?.loc)).toEqual(
-      "async () => {\n  const response = await fetch(\n    'http://dummy.restapiexample.com/api/v1/employee/1',\n  );\n  const { data } = await response.json();\n  // eslint-disable-next-line react/display-name\n  return () => <h2>{`Hello, my name is ${data.employee_name}.`}</h2>;\n}",
+      "() => {\n  const response = await fetch(\n    'http://dummy.restapiexample.com/api/v1/employee/1',\n  );\n  const { data } = await response.json();\n  // eslint-disable-next-line react/display-name\n  return () => <h2>{`Hello, my name is ${data.employee_name}.`}</h2>;\n}",
     );
   });
   it('document', () => {

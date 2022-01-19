@@ -27,6 +27,7 @@ import {
   PropParent,
   SourceLocation,
   strValue,
+  SourcePosition,
 } from './types';
 import {
   getSymbolType,
@@ -46,6 +47,7 @@ import {
   getSymbolDeclaration,
   getTypeSymbol,
   getInitializer,
+  isFunctionBodyType,
 } from './ts-utils';
 import { resolveType } from './ts/resolveType';
 import { mergeNodeComments } from './jsdoc/mergeJSDoc';
@@ -182,7 +184,21 @@ export class SymbolParser implements ISymbolParser {
     }
     return undefined;
   }
-
+  private adjustLocation(
+    start: ts.LineAndCharacter,
+    end: ts.LineAndCharacter,
+  ): { start: SourcePosition; end: SourcePosition } {
+    return {
+      start: {
+        line: start.line + 1,
+        col: start.character + 1,
+      },
+      end: {
+        line: end.line + 1,
+        col: end.character + 1,
+      },
+    };
+  }
   private parseFilePath = (
     options: ParseOptions,
     isTopLevel: boolean,
@@ -199,36 +215,33 @@ export class SymbolParser implements ISymbolParser {
         location = {};
       }
       location.filePath = source.fileName;
-      let locNode: ts.Node | undefined;
+
       if (options.collectSourceInfo === 'body') {
-        locNode = getInitializer(node);
+        const fn = getInitializer(node) || node;
         if (
-          !locNode &&
-          (ts.isArrowFunction(node) ||
-            ts.isFunctionExpression(node) ||
-            ts.isGetAccessorDeclaration(node) ||
-            ts.isConstructorDeclaration(node) ||
-            ts.isMethodDeclaration(node) ||
-            ts.isFunctionDeclaration(node))
+          ts.isArrowFunction(fn) ||
+          ts.isFunctionExpression(fn) ||
+          ts.isGetAccessorDeclaration(fn) ||
+          ts.isConstructorDeclaration(fn) ||
+          ts.isMethodDeclaration(fn) ||
+          ts.isFunctionDeclaration(fn)
         ) {
-          locNode = node.body;
+          const start = source.getLineAndCharacterOfPosition(
+            fn.parameters.pos - 1,
+          );
+          const end = source.getLineAndCharacterOfPosition(
+            (fn.body || getInitializer(fn) || fn).getEnd(),
+          );
+          location.loc = this.adjustLocation(start, end);
+          return location;
         }
       }
-      locNode =
-        locNode || ts.getNameOfDeclaration(node as ts.Declaration) || node;
-      if (locNode) {
-        const start = source.getLineAndCharacterOfPosition(locNode.getStart());
-        const end = source.getLineAndCharacterOfPosition(locNode.getEnd());
-        location.loc = {
-          start: {
-            line: start.line + 1,
-            col: start.character + 1,
-          },
-          end: {
-            line: end.line + 1,
-            col: end.character + 1,
-          },
-        };
+      const nameNode = ts.getNameOfDeclaration(node as ts.Declaration) || node;
+      if (nameNode) {
+        const start = source.getLineAndCharacterOfPosition(nameNode.getStart());
+        const end = source.getLineAndCharacterOfPosition(nameNode.getEnd());
+        location.loc = this.adjustLocation(start, end);
+        return location;
       }
     }
     return location;
@@ -295,6 +308,51 @@ export class SymbolParser implements ISymbolParser {
     }
     return results;
   }
+  private getSymbolUsagePositions(
+    container: ts.Node | undefined,
+    symbolName: string,
+  ): ReturnType<typeof this.adjustLocation>[] | undefined {
+    if (!container || !symbolName || !symbolName.length) {
+      return undefined;
+    }
+    const positions: ReturnType<typeof this.adjustLocation>[] = [];
+    const text = container.getFullText();
+    const sourceFile = container.getSourceFile();
+    const sourceLength = text.length;
+    const symbolNameLength = symbolName.length;
+    let position = text.indexOf(symbolName);
+    while (position >= 0) {
+      if (position > container.end) {
+        break;
+      }
+
+      const endPosition = position + symbolNameLength;
+      if (
+        (position === 0 ||
+          !ts.isIdentifierPart(
+            text.charCodeAt(position - 1),
+            ts.ScriptTarget.Latest,
+          )) &&
+        (endPosition === sourceLength ||
+          !ts.isIdentifierPart(
+            text.charCodeAt(endPosition),
+            ts.ScriptTarget.Latest,
+          ))
+      ) {
+        const start = sourceFile.getLineAndCharacterOfPosition(
+          position + container.pos,
+        );
+        const end = sourceFile.getLineAndCharacterOfPosition(
+          endPosition + container.pos,
+        );
+
+        positions.push(this.adjustLocation(start, end));
+      }
+      position = text.indexOf(symbolName, position + symbolNameLength + 1);
+    }
+
+    return positions;
+  }
   private parseFunction(
     prop: PropType,
     options: ParseOptions,
@@ -304,6 +362,17 @@ export class SymbolParser implements ISymbolParser {
     if (isFunctionBaseType(prop)) {
       if (node.parameters.length && !prop.parameters) {
         prop.parameters = this.parseProperties(node.parameters, options);
+        if (options.collectParametersUsage && isFunctionBodyType(node)) {
+          prop.parameters.forEach((p) => {
+            const positions = this.getSymbolUsagePositions(
+              node.body,
+              node.parameters[0].name.getText(),
+            );
+            if (positions) {
+              p.usage = positions;
+            }
+          });
+        }
       }
       if (node.type && !prop.returns) {
         if (!prop.returns) {

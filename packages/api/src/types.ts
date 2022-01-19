@@ -351,8 +351,11 @@ export const isNullProp = (prop: PropType): prop is NullProp => {
   return prop.kind === PropKind.Null;
 };
 
+export type FunctionParameter = PropType & {
+  usage?: { start: SourcePosition; end: SourcePosition }[];
+};
 export interface BaseFunctionProp extends PropType {
-  parameters?: PropType[];
+  parameters?: FunctionParameter[];
   returns?: PropType;
   types?: PropType[];
 }

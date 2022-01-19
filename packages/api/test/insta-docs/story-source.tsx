@@ -13,4 +13,4 @@ export function fnStory() {
   return '';
 }
 
-export const singleLine = () => 'test';
+export const singleLine = (text: string): string => text;
