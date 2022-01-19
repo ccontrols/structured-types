@@ -896,47 +896,19 @@ Array [
                               Object {
                                 "children": Array [
                                   Object {
-                                    "children": Array [
-                                      Object {
-                                        "kind": 11,
-                                        "value": "start",
-                                      },
-                                      Object {
-                                        "kind": 6,
-                                        "value": "*",
-                                      },
-                                      Object {
-                                        "kind": 6,
-                                        "value": ": ",
-                                      },
-                                    ],
-                                    "kind": 12,
-                                  },
-                                  Object {
-                                    "children": Array [
-                                      Object {
-                                        "kind": 11,
-                                        "value": "end",
-                                      },
-                                      Object {
-                                        "kind": 6,
-                                        "value": "*",
-                                      },
-                                      Object {
-                                        "kind": 6,
-                                        "value": ": ",
-                                      },
-                                    ],
-                                    "kind": 12,
-                                  },
-                                ],
-                                "kind": 13,
-                                "summary": Array [
-                                  Object {
                                     "kind": 11,
                                     "value": "loc",
                                   },
+                                  Object {
+                                    "kind": 6,
+                                    "value": ": ",
+                                  },
+                                  Object {
+                                    "kind": 6,
+                                    "value": "SourcePositions",
+                                  },
                                 ],
+                                "kind": 12,
                               },
                             ],
                             "kind": 13,
