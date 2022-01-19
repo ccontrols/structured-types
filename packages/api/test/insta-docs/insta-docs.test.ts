@@ -1,7 +1,50 @@
 import path from 'path';
-import { parseFiles } from '../../src/index';
+import fs from 'fs';
+import { parseFiles, SourceLocation } from '../../src/index';
 
 describe('insta-docs', () => {
+  it('story-source', () => {
+    const fileName = path.resolve(__dirname, 'story-source.tsx');
+    const result = parseFiles([fileName], {
+      collectSourceInfo: 'body',
+    });
+    const fileContent = fs.readFileSync(fileName, 'utf-8');
+    const extractSource = (
+      source?: string,
+      loc?: SourceLocation['loc'],
+    ): string | undefined => {
+      if (loc && source) {
+        const { start, end } = loc || {};
+        if (start && end) {
+          const lines = source.split('\n');
+
+          if (start.line === end.line) {
+            return lines[start.line - 1].substring(start.col - 1, end.col - 1);
+          } else {
+            const startLine = lines[start.line - 1];
+            const endLine = lines[end.line - 1];
+            if (startLine !== undefined && endLine !== undefined) {
+              return [
+                startLine.substring(start.col - 1),
+                ...lines.slice(start.line, end.line - 1),
+                endLine.substring(0, end.col - 1),
+              ].join('\n');
+            }
+          }
+        }
+      }
+      return undefined;
+    };
+    expect(extractSource(fileContent, result['fnStory'].loc?.loc)).toEqual(
+      "{\n  return '';\n}",
+    );
+    expect(extractSource(fileContent, result['singleLine'].loc?.loc)).toEqual(
+      "() => 'test'",
+    );
+    expect(extractSource(fileContent, result['asyncStory'].loc?.loc)).toEqual(
+      "async () => {\n  const response = await fetch(\n    'http://dummy.restapiexample.com/api/v1/employee/1',\n  );\n  const { data } = await response.json();\n  // eslint-disable-next-line react/display-name\n  return () => <h2>{`Hello, my name is ${data.employee_name}.`}</h2>;\n}",
+    );
+  });
   it('document', () => {
     const result = parseFiles([path.resolve(__dirname, 'document.docs.tsx')], {
       collectSourceInfo: true,

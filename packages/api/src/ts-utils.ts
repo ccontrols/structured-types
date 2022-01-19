@@ -267,9 +267,10 @@ export interface ParseOptions {
   scope?: 'exports' | 'all';
 
   /**
-   * whether to collect the file path and the source code location for the symbol declarations
+   * whether to collect the file path and the source code location for the symbol declarations.
+   * If set to 'body', the source will refer to the function body instead of the variable declaration.
    */
-  collectSourceInfo?: boolean;
+  collectSourceInfo?: boolean | 'body';
 
   /**
    * whether to collect the source code location for inner symbol declarations

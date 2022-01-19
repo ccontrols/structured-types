@@ -199,10 +199,26 @@ export class SymbolParser implements ISymbolParser {
         location = {};
       }
       location.filePath = source.fileName;
-      const name = ts.getNameOfDeclaration(node as ts.Declaration) || node;
-      if (name) {
-        const start = source.getLineAndCharacterOfPosition(name.getStart());
-        const end = source.getLineAndCharacterOfPosition(name.getEnd());
+      let locNode: ts.Node | undefined;
+      if (options.collectSourceInfo === 'body') {
+        locNode = getInitializer(node);
+        if (
+          !locNode &&
+          (ts.isArrowFunction(node) ||
+            ts.isFunctionExpression(node) ||
+            ts.isGetAccessorDeclaration(node) ||
+            ts.isConstructorDeclaration(node) ||
+            ts.isMethodDeclaration(node) ||
+            ts.isFunctionDeclaration(node))
+        ) {
+          locNode = node.body;
+        }
+      }
+      locNode =
+        locNode || ts.getNameOfDeclaration(node as ts.Declaration) || node;
+      if (locNode) {
+        const start = source.getLineAndCharacterOfPosition(locNode.getStart());
+        const end = source.getLineAndCharacterOfPosition(locNode.getEnd());
         location.loc = {
           start: {
             line: start.line + 1,
