@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.43.0](https://github.com/ccontrols/structured-types/compare/v3.42.1...v3.43.0) (2022-01-19)
+
+
+### Features
+
+* **api:** source location 'body' option ([e609e7d](https://github.com/ccontrols/structured-types/commit/e609e7d06d557b6b41a802afc6449a80c9502368))
+
+
+
+
+
 ## [3.42.1](https://github.com/ccontrols/structured-types/compare/v3.42.0...v3.42.1) (2022-01-18)
 
 **Note:** Version bump only for package @structured-types/prop-types-plugin
