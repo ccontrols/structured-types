@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import { parseFiles, SourceLocation, FunctionProp } from '../../src/index';
+import { parseFiles, SourcePositions, FunctionProp } from '../../src/index';
 
 describe('insta-docs', () => {
   it('story-source', () => {
@@ -12,7 +12,7 @@ describe('insta-docs', () => {
     const fileContent = fs.readFileSync(fileName, 'utf-8');
     const extractSource = (
       source?: string,
-      loc?: SourceLocation['loc'],
+      loc?: SourcePositions,
     ): string | undefined => {
       if (loc && source) {
         const { start, end } = loc || {};

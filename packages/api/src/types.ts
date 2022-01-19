@@ -71,6 +71,10 @@ export interface SourcePosition {
   col: number;
 }
 
+export interface SourcePositions {
+  start: SourcePosition;
+  end: SourcePosition;
+}
 export interface SourceLocation {
   /**
    * name of the file where the symbol is defined
@@ -80,7 +84,7 @@ export interface SourceLocation {
   /**
    * source code location for the symbol declaration
    */
-  loc?: { start: SourcePosition; end: SourcePosition };
+  loc?: SourcePositions;
 }
 
 /**
