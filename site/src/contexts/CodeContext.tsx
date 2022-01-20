@@ -8,7 +8,34 @@ type CodeContextType = {
 const CodeContext = createContext<CodeContextType>({} as CodeContextType);
 
 export const CodeContextProvider: FC = ({ children }) => {
-  const [code, setCode] = useURLParams('code', '');
+  const [code, setCode] = useURLParams(
+    'code',
+    `interface Home {
+    resident: { name: string; age: number };
+  }
+  /**
+   * internal interface with one member
+   */
+  
+  interface Internal {
+    /**
+     * string type member
+     */
+  
+    m: string;
+  }
+  /**
+   * interface extending another one
+   */
+  
+  export interface Bear extends Internal, Home {
+    /**
+     * boolean type member
+     */
+  
+    honey: boolean;
+  }`,
+  );
   return (
     <CodeContext.Provider
       value={{
