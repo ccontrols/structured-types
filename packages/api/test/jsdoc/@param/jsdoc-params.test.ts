@@ -134,7 +134,7 @@ describe('params', () => {
       },
     });
   });
-  it('only param', () => {
+  it('just-param', () => {
     const results = parseFiles([path.resolve(__dirname, 'just-param.js')]);
     expect(results).toEqual({
       sayHello: {
@@ -142,6 +142,7 @@ describe('params', () => {
         kind: 11,
         parameters: [
           {
+            kind: 17,
             name: 'somebody',
           },
         ],

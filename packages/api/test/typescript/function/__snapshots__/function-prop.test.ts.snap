@@ -144,6 +144,7 @@ Object {
                         "type": "T",
                       },
                       Object {
+                        "kind": 17,
                         "name": "props",
                         "parent": Object {
                           "name": "ReactElement",

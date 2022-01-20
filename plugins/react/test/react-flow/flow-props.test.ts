@@ -17,6 +17,7 @@ describe('react-flow', () => {
             parent: {
               name: 'Props',
             },
+            kind: 17,
             name: 'DefaultProps',
           },
           {

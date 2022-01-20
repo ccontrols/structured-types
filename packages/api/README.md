@@ -502,7 +502,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 **`interface`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L409)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L411)_
 
 **properties**
 

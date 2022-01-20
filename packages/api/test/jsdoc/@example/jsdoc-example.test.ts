@@ -10,9 +10,11 @@ describe('@example', () => {
         kind: 11,
         parameters: [
           {
+            kind: 17,
             name: 'a',
           },
           {
+            kind: 17,
             name: 'b',
           },
         ],
@@ -39,9 +41,11 @@ describe('@example', () => {
         kind: 11,
         parameters: [
           {
+            kind: 17,
             name: 'a',
           },
           {
+            kind: 17,
             name: 'b',
           },
         ],

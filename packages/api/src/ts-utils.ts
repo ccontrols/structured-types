@@ -373,6 +373,8 @@ export const getTypeKind = (typeNode?: ts.Type): PropKind | undefined => {
       return PropKind.Void;
     } else if (typeNode.flags & ts.TypeFlags.Undefined) {
       return PropKind.Undefined;
+    } else if (typeNode.flags & ts.TypeFlags.Any) {
+      return PropKind.Any;
     } else if (typeNode.flags & ts.TypeFlags.Null) {
       return PropKind.Null;
     } else if (typeNode.flags & ts.TypeFlags.Never) {

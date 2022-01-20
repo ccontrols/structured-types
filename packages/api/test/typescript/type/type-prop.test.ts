@@ -2,6 +2,27 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('type', () => {
+  it('index-any', () => {
+    const results = parseFiles([path.resolve(__dirname, 'index-any.ts')]);
+    expect(results).toEqual({
+      AnyType: {
+        name: 'AnyType',
+        kind: 15,
+        properties: [
+          {
+            kind: 20,
+            index: {
+              kind: 1,
+            },
+            optional: true,
+            prop: {
+              kind: 17,
+            },
+          },
+        ],
+      },
+    });
+  });
   it('union-generic-param', () => {
     const results = parseFiles([
       path.resolve(__dirname, 'union-generic-param.ts'),
@@ -343,6 +364,7 @@ describe('type', () => {
                 {
                   name: 'a',
                   type: 'Bear',
+                  kind: 17,
                 },
                 {
                   name: 'b',
