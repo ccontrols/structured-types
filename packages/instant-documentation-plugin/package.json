@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/instant-documentation-plugin",
-  "version": "3.43.2",
+  "version": "3.43.3",
   "description": "Typescript playground plugin to display instant documentation.",
   "keywords": [
     "structured-types",
@@ -34,10 +34,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@structured-types/api": "^3.43.2",
-    "@structured-types/api-docs": "^3.43.2",
-    "@structured-types/prop-types-plugin": "^3.43.2",
-    "@structured-types/react-plugin": "^3.43.2",
+    "@structured-types/api": "^3.43.3",
+    "@structured-types/api-docs": "^3.43.3",
+    "@structured-types/prop-types-plugin": "^3.43.3",
+    "@structured-types/react-plugin": "^3.43.3",
     "deepmerge": "^4.2.2",
     "lz-string": "^1.4.4",
     "node-fetch": "^2.6.0",

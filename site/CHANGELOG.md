@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.43.3](https://github.com/ccontrols/structured-types/compare/v3.43.2...v3.43.3) (2022-01-20)
+
+
+### Bug Fixes
+
+* **site:** reduce exmpty examples ([6b9ee85](https://github.com/ccontrols/structured-types/commit/6b9ee858f53de404486c04f9b8e6694d9c9beb1a))
+
+
+
+
+
 ## [3.43.2](https://github.com/ccontrols/structured-types/compare/v3.43.1...v3.43.2) (2022-01-19)
 
 **Note:** Version bump only for package structured-types-site
