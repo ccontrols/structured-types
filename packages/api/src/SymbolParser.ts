@@ -27,7 +27,6 @@ import {
   PropParent,
   SourceLocation,
   strValue,
-  SourcePosition,
 } from './types';
 import {
   getSymbolType,
@@ -53,6 +52,7 @@ import { resolveType } from './ts/resolveType';
 import { mergeNodeComments } from './jsdoc/mergeJSDoc';
 import { parseJSDocTag } from './jsdoc/parseJSDocTags';
 import { isTypeProp, ObjectProp } from './types';
+import { SourcePositions } from '.';
 
 export class SymbolParser implements ISymbolParser {
   public checker: ts.TypeChecker;
@@ -187,7 +187,7 @@ export class SymbolParser implements ISymbolParser {
   private adjustLocation(
     start: ts.LineAndCharacter,
     end: ts.LineAndCharacter,
-  ): { start: SourcePosition; end: SourcePosition } {
+  ): SourcePositions {
     return {
       start: {
         line: start.line + 1,
@@ -311,48 +311,24 @@ export class SymbolParser implements ISymbolParser {
   private getSymbolUsagePositions(
     container: ts.Node | undefined,
     symbolName: string,
-  ): ReturnType<typeof this.adjustLocation>[] | undefined {
-    if (!container || !symbolName || !symbolName.length) {
+  ): SourcePositions[] | undefined {
+    if (!container || !symbolName) {
       return undefined;
     }
-    const positions: ReturnType<typeof this.adjustLocation>[] = [];
-    const text = container.getFullText();
+    const positions: SourcePositions[] = [];
     const sourceFile = container.getSourceFile();
-    const sourceLength = text.length;
-    const symbolNameLength = symbolName.length;
-    let position = text.indexOf(symbolName);
-    while (position >= 0) {
-      if (position > container.end) {
-        break;
-      }
-
-      const endPosition = position + symbolNameLength;
-      if (
-        (position === 0 ||
-          !ts.isIdentifierPart(
-            text.charCodeAt(position - 1),
-            ts.ScriptTarget.Latest,
-          )) &&
-        (endPosition === sourceLength ||
-          !ts.isIdentifierPart(
-            text.charCodeAt(endPosition),
-            ts.ScriptTarget.Latest,
-          ))
-      ) {
-        const start = sourceFile.getLineAndCharacterOfPosition(
-          position + container.pos,
-        );
-        const end = sourceFile.getLineAndCharacterOfPosition(
-          endPosition + container.pos,
-        );
-
+    const visit = (node: ts.Node): void => {
+      if (ts.isIdentifier(node) && node.getText() === symbolName) {
+        const start = sourceFile.getLineAndCharacterOfPosition(node.getStart());
+        const end = sourceFile.getLineAndCharacterOfPosition(node.getEnd());
         positions.push(this.adjustLocation(start, end));
       }
-      position = text.indexOf(symbolName, position + symbolNameLength + 1);
-    }
-
+      node.forEachChild(visit);
+    };
+    container.forEachChild(visit);
     return positions;
   }
+
   private parseFunction(
     prop: PropType,
     options: ParseOptions,

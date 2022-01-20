@@ -7,6 +7,7 @@ describe('insta-docs', () => {
     const fileName = path.resolve(__dirname, 'story-source.tsx');
     const result = parseFiles([fileName], {
       collectSourceInfo: 'body',
+      collectInnerLocations: true,
       collectParametersUsage: true,
     });
     const fileContent = fs.readFileSync(fileName, 'utf-8');
@@ -40,20 +41,32 @@ describe('insta-docs', () => {
       "() {\n  return '';\n}",
     );
     expect(extractSource(fileContent, result['singleLine'].loc?.loc)).toEqual(
-      '(text: string): string => text',
+      '(text: string): string =>\n  `this is my text variable ${text}`',
     );
-    expect((result['singleLine'] as FunctionProp).parameters).toEqual([
+    expect((result['singleLine'] as FunctionProp).parameters).toMatchObject([
       {
         name: 'text',
-        usage: [
-          {
+        loc: {
+          loc: {
             start: {
               line: 16,
-              col: 53,
+              col: 28,
             },
             end: {
               line: 16,
-              col: 57,
+              col: 32,
+            },
+          },
+        },
+        usage: [
+          {
+            start: {
+              line: 17,
+              col: 31,
+            },
+            end: {
+              line: 17,
+              col: 35,
             },
           },
         ],
