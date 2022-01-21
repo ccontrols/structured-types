@@ -2,6 +2,28 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('object', () => {
+  it('shorthand-prop', () => {
+    const results = parseFiles([path.resolve(__dirname, 'shorthand-prop.ts')]);
+    expect(results).toEqual({
+      ShorthandObj: {
+        name: 'ShorthandObj',
+        kind: 26,
+        properties: [
+          {
+            name: 'name',
+            kind: 1,
+            description: 'initialized shorthand prop',
+            value: 'name',
+          },
+          {
+            name: 'address',
+            kind: 1,
+            value: '1022 Glover str',
+          },
+        ],
+      },
+    });
+  });
   it('typed-object', () => {
     const results = parseFiles([path.resolve(__dirname, 'typed-object.ts')]);
     expect(results).toEqual({

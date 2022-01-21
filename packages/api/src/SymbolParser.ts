@@ -458,13 +458,17 @@ export class SymbolParser implements ISymbolParser {
         const properties = (prop as ClassProp).properties as PropType[];
         nodeProperties.forEach((e) => {
           if (
-            (ts.isPropertyAssignment(e) || ts.isBindingElement(e)) &&
-            e.initializer
+            ts.isShorthandPropertyAssignment(e) ||
+            ((ts.isPropertyAssignment(e) || ts.isBindingElement(e)) &&
+              e.initializer)
           ) {
             const propName = 'text' in e.name ? e.name.text : e.name.getText();
             const p = properties.find((p) => p.name === propName);
+            const initializer = ts.isShorthandPropertyAssignment(e)
+              ? e
+              : e.initializer;
             if (p) {
-              this.parseValue(p, options, e.initializer);
+              this.parseValue(p, options, initializer);
             } else {
               const childSymbol = this.getSymbolAtLocation(e.name);
 
@@ -480,7 +484,7 @@ export class SymbolParser implements ISymbolParser {
                   childProp.kind !== PropKind.Rest &&
                   this.filterProperty(childProp, options)
                 ) {
-                  this.parseValue(childProp, options, e.initializer);
+                  this.parseValue(childProp, options, initializer);
                   properties.push(childProp);
                 }
               }
@@ -527,7 +531,13 @@ export class SymbolParser implements ISymbolParser {
           prop.kind = PropKind.String;
         }
         propValue(prop, node.text);
-      } else if (ts.isRegularExpressionLiteral(node)) {
+      } else if (ts.isShorthandPropertyAssignment(node)) {
+        if (!prop.kind) {
+          prop.kind = PropKind.String;
+        }
+        propValue(prop, node.name.text);
+      }
+      if (ts.isRegularExpressionLiteral(node)) {
         prop.kind = PropKind.RegEx;
         propValue(prop, node.text);
       } else if (node.kind === ts.SyntaxKind.FalseKeyword) {
