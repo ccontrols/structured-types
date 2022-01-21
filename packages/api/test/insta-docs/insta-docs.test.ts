@@ -4,6 +4,38 @@ import { parseFiles, SourcePositions, FunctionProp } from '../../src/index';
 
 describe('insta-docs', () => {
   it('story-source', () => {
+    const result = parseFiles([path.resolve(__dirname, 'story-props.tsx')], {});
+    expect(result).toEqual({
+      story: {
+        name: 'story',
+        kind: 11,
+        returns: {
+          kind: 1,
+          optional: true,
+        },
+        properties: [
+          {
+            name: 'story',
+            kind: 26,
+            properties: [
+              {
+                name: 'subcomponents',
+                properties: [
+                  {
+                    name: 'My Button Tab',
+                    kind: 1,
+                    value: 'Button',
+                  },
+                ],
+                kind: 26,
+              },
+            ],
+          },
+        ],
+      },
+    });
+  });
+  it('story-source', () => {
     const fileName = path.resolve(__dirname, 'story-source.tsx');
     const result = parseFiles([fileName], {
       collectSourceInfo: 'body',

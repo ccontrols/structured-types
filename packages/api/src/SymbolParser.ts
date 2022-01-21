@@ -461,7 +461,8 @@ export class SymbolParser implements ISymbolParser {
             (ts.isPropertyAssignment(e) || ts.isBindingElement(e)) &&
             e.initializer
           ) {
-            const p = properties.find((p) => p.name === e.name.getText());
+            const propName = 'text' in e.name ? e.name.text : e.name.getText();
+            const p = properties.find((p) => p.name === propName);
             if (p) {
               this.parseValue(p, options, e.initializer);
             } else {
@@ -564,7 +565,7 @@ export class SymbolParser implements ISymbolParser {
     }
     const name = ts.getNameOfDeclaration(declaration);
     if (name) {
-      return 'text' in name ? name.getText() : undefined;
+      return 'text' in name ? name.text : undefined;
     }
     return undefined;
   }
