@@ -505,12 +505,13 @@ export const getFunctionLike = (
   }
   return undefined;
 };
-export const getInitializer = (
-  declaration?: ts.Node,
-): ts.Expression | undefined => {
+export const getInitializer = (declaration?: ts.Node): ts.Node | undefined => {
   if (declaration) {
     if (isVariableLikeDeclaration(declaration)) {
       return declaration.initializer;
+    }
+    if (ts.isShorthandPropertyAssignment(declaration)) {
+      return declaration;
     }
     if (declaration.parent && ts.isBinaryExpression(declaration.parent)) {
       return declaration.parent.right;
@@ -523,7 +524,7 @@ export const getObjectStaticProp = (
   obj: ts.Node,
   propName: string,
   checker: ts.TypeChecker,
-): ts.Expression | undefined => {
+): ts.Node | undefined => {
   const staticProp =
     isObjectTypeDeclaration(obj) &&
     obj.members &&

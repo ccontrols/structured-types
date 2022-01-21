@@ -457,16 +457,10 @@ export class SymbolParser implements ISymbolParser {
         }
         const properties = (prop as ClassProp).properties as PropType[];
         nodeProperties.forEach((e) => {
-          if (
-            ts.isShorthandPropertyAssignment(e) ||
-            ((ts.isPropertyAssignment(e) || ts.isBindingElement(e)) &&
-              e.initializer)
-          ) {
+          const initializer = getInitializer(e);
+          if (initializer && e.name) {
             const propName = 'text' in e.name ? e.name.text : e.name.getText();
             const p = properties.find((p) => p.name === propName);
-            const initializer = ts.isShorthandPropertyAssignment(e)
-              ? e
-              : e.initializer;
             if (p) {
               this.parseValue(p, options, initializer);
             } else {

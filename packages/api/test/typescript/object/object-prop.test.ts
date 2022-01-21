@@ -5,8 +5,8 @@ describe('object', () => {
   it('shorthand-prop', () => {
     const results = parseFiles([path.resolve(__dirname, 'shorthand-prop.ts')]);
     expect(results).toEqual({
-      ShorthandObj: {
-        name: 'ShorthandObj',
+      default: {
+        name: 'default',
         kind: 26,
         properties: [
           {
@@ -14,11 +14,17 @@ describe('object', () => {
             kind: 1,
             description: 'initialized shorthand prop',
             value: 'name',
+            parent: {
+              name: 'ShorthandObj',
+            },
           },
           {
             name: 'address',
             kind: 1,
             value: '1022 Glover str',
+            parent: {
+              name: 'ShorthandObj',
+            },
           },
         ],
       },

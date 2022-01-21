@@ -1,9 +1,11 @@
 const name = 'name';
 
-export const ShorthandObj = {
+const ShorthandObj = {
   /**
    * initialized shorthand prop
    */
   name,
   address: '1022 Glover str',
 };
+
+export default ShorthandObj;
