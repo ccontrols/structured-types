@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.43.4](https://github.com/ccontrols/structured-types/compare/v3.43.3...v3.43.4) (2022-01-21)
+
+
+### Bug Fixes
+
+* **api:** property names as string with spaces ([45f7f06](https://github.com/ccontrols/structured-types/commit/45f7f0685b79ba96d8100161e99f451946ce912e))
+
+
+
+
+
 ## [3.43.3](https://github.com/ccontrols/structured-types/compare/v3.43.2...v3.43.3) (2022-01-20)
 
 
