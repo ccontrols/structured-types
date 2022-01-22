@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.44.0](https://github.com/ccontrols/structured-types/compare/v3.43.4...v3.44.0) (2022-01-22)
+
+
+### Bug Fixes
+
+* **api:** shorthand object property value ([d9eec05](https://github.com/ccontrols/structured-types/commit/d9eec0551150415dee40007c49b50413f1ad7734))
+* **api:** shorthand prop as initializer ([f38f0b7](https://github.com/ccontrols/structured-types/commit/f38f0b72b982a782276c139e56a404e934318e44))
+
+
+### Features
+
+* **api:** alias field for prop fields ([2f24e9a](https://github.com/ccontrols/structured-types/commit/2f24e9ab9685b071a4deba5848fd6567801250c2))
+
+
+
+
+
 ## [3.43.4](https://github.com/ccontrols/structured-types/compare/v3.43.3...v3.43.4) (2022-01-21)
 
 
