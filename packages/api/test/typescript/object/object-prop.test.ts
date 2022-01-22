@@ -2,6 +2,68 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('object', () => {
+  it('default-prop-component', () => {
+    const results = parseFiles([
+      path.resolve(__dirname, 'default-prop-component.ts'),
+    ]);
+    expect(results).toMatchObject({
+      def: {
+        name: 'def',
+        kind: 26,
+        properties: [
+          {
+            name: 'myprop',
+            parent: {
+              name: 'Component',
+            },
+            alias: 'Shorthand',
+            type: 'Component',
+            kind: 11,
+          },
+        ],
+      },
+    });
+  });
+  it('default-prop-value', () => {
+    const results = parseFiles([
+      path.resolve(__dirname, 'default-prop-value.ts'),
+    ]);
+    expect(results).toEqual({
+      def: {
+        name: 'def',
+        kind: 26,
+        properties: [
+          {
+            name: 'myprop',
+            parent: {
+              name: 'ShorthandObj',
+            },
+            kind: 26,
+            alias: 'shorthand',
+            properties: [
+              {
+                name: 'name',
+                parent: {
+                  name: 'ShorthandObj',
+                },
+                kind: 1,
+                value: 'name',
+                description: 'initialized shorthand prop',
+              },
+              {
+                name: 'address',
+                parent: {
+                  name: 'ShorthandObj',
+                },
+                kind: 1,
+                value: '1022 Glover str',
+              },
+            ],
+          },
+        ],
+      },
+    });
+  });
   it('shorthand-prop', () => {
     const results = parseFiles([path.resolve(__dirname, 'shorthand-prop.ts')]);
     expect(results).toEqual({

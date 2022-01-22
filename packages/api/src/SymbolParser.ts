@@ -495,9 +495,18 @@ export class SymbolParser implements ISymbolParser {
       } else if (ts.isObjectLiteralExpression(node)) {
         addProperties(node.properties);
       } else if (ts.isIdentifier(node)) {
-        const symbol = this.getSymbolAtLocation(node);
-        if (symbol && isTypeProp(prop)) {
-          prop.value = this.addHelperSymbol(symbol.name, symbol, options);
+        if (
+          options.collectAliasName &&
+          node.text !== 'undefined' &&
+          node.text !== prop.name
+        ) {
+          prop.alias = node.text;
+        }
+        if (isTypeProp(prop)) {
+          const symbol = this.getSymbolAtLocation(node);
+          if (symbol) {
+            prop.value = this.addHelperSymbol(symbol.name, symbol, options);
+          }
         }
       } else if (
         ts.isTypeAssertionExpression(node) ||

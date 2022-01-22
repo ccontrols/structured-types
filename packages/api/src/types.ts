@@ -115,6 +115,10 @@ export interface PropType {
   name?: string;
 
   /**
+   * alias - when the assigned property is being imported as an aliased name
+   */
+  alias?: string;
+  /**
    * the name of the parent property, if combined props
    */
   parent?: PropParent;

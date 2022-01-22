@@ -828,6 +828,23 @@ Array [
                           Object {
                             "children": Array [
                               Object {
+                                "kind": 11,
+                                "value": "alias",
+                              },
+                              Object {
+                                "kind": 6,
+                                "value": ": ",
+                              },
+                              Object {
+                                "kind": 11,
+                                "value": "string",
+                              },
+                            ],
+                            "kind": 12,
+                          },
+                          Object {
+                            "children": Array [
+                              Object {
                                 "children": Array [
                                   Object {
                                     "kind": 11,

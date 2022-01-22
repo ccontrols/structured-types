@@ -10,7 +10,15 @@ import {
   PropKind,
   ISymbolParser,
   getSymbolDeclaration,
+  ParseOptions,
 } from '@structured-types/api';
+
+const defaultReactParseOptions: ParseOptions = {
+  collectGenerics: false,
+  collectParameters: false,
+  collectInheritance: false,
+  collectAliasName: false,
+};
 
 const getNodeResults = (
   parser: ISymbolParser,
@@ -120,9 +128,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
           declaration,
           prop: { kind: PropKind.Component, name },
           initializer: defaultProps || initializer,
-          collectGenerics: false,
-          collectParameters: false,
-          collectInheritance: false,
+          ...defaultReactParseOptions,
         };
       }
       const reactFunction = getFunctionLike(checker, expression || declaration);
@@ -176,9 +182,7 @@ const typesResolve: ParsePlugin['typesResolve'] = ({
                   type: propsType,
                   initializer: defaultProps,
                   prop: { kind: PropKind.Component, name },
-                  collectGenerics: false,
-                  collectParameters: false,
-                  collectInheritance: false,
+                  ...defaultReactParseOptions,
                 };
               }
             }

@@ -234,15 +234,18 @@ export interface ParseOptions {
   /**
    * whether to save "helper" props that are used by the main parsed props
    * if set to false will result in a smaller result set
+  
    */
   collectHelpers?: boolean;
   /**
    * whether to collect generics parameters
+   * @default true
    */
   collectGenerics?: boolean;
 
   /**
    * whether to collect function parameters
+   * @default true
    */
   collectParameters?: boolean;
   /**
@@ -252,21 +255,30 @@ export interface ParseOptions {
 
   /**
    * whether to collect object/type properties
+   * @default true
    */
   collectProperties?: boolean;
   /**
    * whether to collect the inheritance properties
+   * @default true
    */
   collectInheritance?: boolean;
 
   /**
    * whether to collect the plugin/extension name
+   * @default true
    */
   collectExtension?: boolean;
   /**
    * whether to collect errors/diagnostics
    */
   collectDiagnostics?: boolean;
+  /**
+   * whether to collect alias names - for example: when imported default symbol from another file,
+   * this will be the import name
+   * @default true
+   */
+  collectAliasName?: boolean;
   /**
    * whether to collect internal (typescript) symbols
    */
@@ -317,6 +329,7 @@ export const defaultParseOptions: ParseOptions = {
   collectProperties: true,
   collectInheritance: true,
   collectExtension: true,
+  collectAliasName: true,
 
   filter: (prop) => !prop.ignore,
   internalTypes: {
