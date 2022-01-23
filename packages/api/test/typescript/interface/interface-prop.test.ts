@@ -2,6 +2,29 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('interface', () => {
+  it('initialized-object', () => {
+    const results = parseFiles([
+      path.resolve(__dirname, 'initialized-object.ts'),
+    ]);
+    expect(results).toEqual({
+      default: {
+        name: 'Person',
+        kind: 14,
+        properties: [
+          {
+            name: 'title',
+            kind: 1,
+            value: 'Mr',
+          },
+          {
+            name: 'name',
+            optional: true,
+            kind: 1,
+          },
+        ],
+      },
+    });
+  });
   it('jsdoc-default', () => {
     const results = parseFiles([path.resolve(__dirname, 'jsdoc-default.ts')]);
     expect(results).toEqual({

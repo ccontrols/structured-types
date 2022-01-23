@@ -1,8 +1,10 @@
+import ts from 'typescript';
 import {
   TypeResolver,
   ResolverReturnType,
   DocsOptions,
   getInitializer,
+  getSymbolDeclaration,
 } from '../ts-utils';
 
 export const resolveType: (
@@ -21,9 +23,19 @@ export const resolveType: (
       }
     }
   }
+  let initializer: ts.Node | undefined = undefined;
+  if (props.expression) {
+    const expressionSymbol = props.parser.checker.getSymbolAtLocation(
+      props.expression,
+    );
+    const expressionDeclaration = getSymbolDeclaration(expressionSymbol);
+    initializer = getInitializer(expressionDeclaration);
+  } else {
+    initializer = getInitializer(props.declaration);
+  }
   return {
     type: props.symbolType,
-    initializer: getInitializer(props.declaration),
+    initializer,
     ...options,
   };
 };
