@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.44.1](https://github.com/ccontrols/structured-types/compare/v3.44.0...v3.44.1) (2022-01-23)
+
+
+### Bug Fixes
+
+* **api:** initialized export expressions ([e616c0f](https://github.com/ccontrols/structured-types/commit/e616c0ffbd59c5399ae4e464213e664cdd849c62))
+
+
+
+
+
 # [3.44.0](https://github.com/ccontrols/structured-types/compare/v3.43.4...v3.44.0) (2022-01-22)
 
 
