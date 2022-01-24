@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.44.2](https://github.com/ccontrols/structured-types/compare/v3.44.1...v3.44.2) (2022-01-24)
+
+
+### Bug Fixes
+
+* **api:** iniitialized nested object props ([f1e11ff](https://github.com/ccontrols/structured-types/commit/f1e11ffa193135775194e420d954976de9281c87))
+
+
+
+
+
 ## [3.44.1](https://github.com/ccontrols/structured-types/compare/v3.44.0...v3.44.1) (2022-01-23)
 
 
