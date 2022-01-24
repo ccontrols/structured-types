@@ -2,6 +2,41 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('object', () => {
+  it('initialized-default', () => {
+    const results = parseFiles([
+      path.resolve(__dirname, 'initialized-default.ts'),
+    ]);
+    expect(results).toMatchObject({
+      default: {
+        kind: 26,
+        properties: [
+          {
+            name: 'title',
+            kind: 1,
+            value: 'Mr',
+          },
+          {
+            name: 'name',
+            kind: 26,
+            properties: [
+              {
+                name: 'first',
+                kind: 1,
+                value: 'John',
+              },
+              {
+                name: 'male',
+                kind: 3,
+                value: true,
+              },
+            ],
+          },
+        ],
+        name: 'default',
+      },
+    });
+  });
+
   it('default-prop-component', () => {
     const results = parseFiles([
       path.resolve(__dirname, 'default-prop-component.ts'),
