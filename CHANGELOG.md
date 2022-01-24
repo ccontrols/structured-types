@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.44.3](https://github.com/ccontrols/structured-types/compare/v3.44.2...v3.44.3) (2022-01-24)
+
+
+### Bug Fixes
+
+* **api:** initialized objects typecast ([1a4bdb2](https://github.com/ccontrols/structured-types/commit/1a4bdb20d46be9633f9f2fe30d9e9ec6e46cd692))
+
+
+
+
+
 ## [3.44.2](https://github.com/ccontrols/structured-types/compare/v3.44.1...v3.44.2) (2022-01-24)
 
 
