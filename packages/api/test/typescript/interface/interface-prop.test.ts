@@ -18,8 +18,21 @@ describe('interface', () => {
           },
           {
             name: 'name',
+            properties: [
+              {
+                name: 'first',
+                kind: 1,
+                value: 'John',
+                optional: true,
+              },
+              {
+                name: 'family',
+                optional: true,
+                kind: 1,
+              },
+            ],
             optional: true,
-            kind: 1,
+            kind: 15,
           },
         ],
       },

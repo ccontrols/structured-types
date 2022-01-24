@@ -52,7 +52,7 @@ import { resolveType } from './ts/resolveType';
 import { mergeNodeComments } from './jsdoc/mergeJSDoc';
 import { parseJSDocTag } from './jsdoc/parseJSDocTags';
 import { isTypeProp, ObjectProp } from './types';
-import { SourcePositions } from '.';
+import { HasValueProp, SourcePositions } from '.';
 
 export class SymbolParser implements ISymbolParser {
   public checker: ts.TypeChecker;
@@ -264,6 +264,17 @@ export class SymbolParser implements ISymbolParser {
     const results: PropType[] = [...types];
     const addProp = (prop: PropType) => {
       if (this.filterProperty(prop, options)) {
+        if (prop.name) {
+          const idx = results.findIndex((p) => p.name === prop.name);
+          if (idx >= 0) {
+            const value = (results[idx] as HasValueProp).value;
+            if (typeof value !== 'undefined') {
+              (prop as HasValueProp).value = value;
+            }
+            results[idx] = prop;
+            return;
+          }
+        }
         results.push(prop);
       }
     };
@@ -770,6 +781,7 @@ export class SymbolParser implements ISymbolParser {
           (prop as TypeProp).properties = this.parseProperties(
             node.members,
             options,
+            (prop as TypeProp).properties,
           );
         }
       } else if (ts.isOptionalTypeNode(node)) {
