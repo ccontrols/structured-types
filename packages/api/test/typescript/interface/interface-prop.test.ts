@@ -2,6 +2,43 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('interface', () => {
+  it('initialized-typecast', () => {
+    const results = parseFiles([
+      path.resolve(__dirname, 'initialized-typecast.ts'),
+    ]);
+    expect(results).toEqual({
+      default: {
+        name: 'default',
+        kind: 14,
+        type: 'Person',
+        properties: [
+          {
+            name: 'title',
+            kind: 1,
+            value: 'Mr',
+          },
+          {
+            name: 'name',
+            properties: [
+              {
+                name: 'first',
+                kind: 1,
+                value: 'John',
+                optional: true,
+              },
+              {
+                name: 'family',
+                optional: true,
+                kind: 1,
+              },
+            ],
+            optional: true,
+            kind: 15,
+          },
+        ],
+      },
+    });
+  });
   it('initialized-object', () => {
     const results = parseFiles([
       path.resolve(__dirname, 'initialized-object.ts'),

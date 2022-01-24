@@ -25,11 +25,15 @@ export const resolveType: (
   }
   let initializer: ts.Node | undefined = undefined;
   if (props.expression) {
-    const expressionSymbol = props.parser.checker.getSymbolAtLocation(
-      props.expression,
-    );
-    const expressionDeclaration = getSymbolDeclaration(expressionSymbol);
-    initializer = getInitializer(expressionDeclaration);
+    if (ts.isAsExpression(props.expression)) {
+      initializer = props.expression.expression;
+    } else {
+      const expressionSymbol = props.parser.checker.getSymbolAtLocation(
+        props.expression,
+      );
+      const expressionDeclaration = getSymbolDeclaration(expressionSymbol);
+      initializer = getInitializer(expressionDeclaration);
+    }
   } else {
     initializer = getInitializer(props.declaration);
   }
