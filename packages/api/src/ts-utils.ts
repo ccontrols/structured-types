@@ -304,6 +304,12 @@ export interface ParseOptions {
    * if set to true, the data will be collected in the `loc` prop
    */
   collectInnerLocations?: boolean;
+
+  /**
+   * callback with the parsed module. Can be used to retrieve additional information
+   * such as the imports of a file etc.
+   */
+  moduleCallback?: (module: ts.Symbol, checker: ts.TypeChecker) => void;
 }
 
 /**

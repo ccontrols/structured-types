@@ -72,12 +72,18 @@ export const analyzeFiles = (
     ...parseOptions
   } = options;
   const tsOptions = { ...tsDefaults, ...userTsOptions };
-  const { extract, collectDiagnostics, internalTypes, collectHelpers } =
-    parseOptions || {};
+  const {
+    extract,
+    collectDiagnostics,
+    internalTypes,
+    collectHelpers,
+    moduleCallback,
+  } = parseOptions || {};
   const { program: userProgram, host: userHost } = programOptions;
   const host = userHost || ts.createCompilerHost(tsOptions);
   const program = userProgram || ts.createProgram(files, tsOptions, host);
   const defaultLibraryFileName = host.getDefaultLibFileName(tsOptions);
+
   const defaultLibraryPath = host.getDefaultLibLocation
     ? host.getDefaultLibLocation()
     : dirname(defaultLibraryFileName);
@@ -151,6 +157,9 @@ export const analyzeFiles = (
             );
           });
         exports.forEach((symbol) => addSymbol(symbol));
+        if (moduleCallback) {
+          moduleCallback(module, parser.checker);
+        }
       }
     }
   }

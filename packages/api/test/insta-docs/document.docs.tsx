@@ -1,5 +1,5 @@
 import React from 'react';
-import { MyComponent } from './component';
+import { MyComponent } from './component/component';
 
 export default {
   name: 'documentation for MyComponent',

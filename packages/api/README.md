@@ -143,7 +143,7 @@ const docs = parseFiles(['../src/sum.js']);
 
 API to analyze the given files by also loading the local typescript options from tsconfig
 
-_defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L239)_
+_defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L248)_
 
 **parameters**
 
@@ -196,7 +196,7 @@ _defined in [@structured-types/api/packages/api/src/index.ts](https://github.com
 
 **`type`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L352)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L358)_
 
 **properties**
 
@@ -222,6 +222,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 | `scope`                  | `"exports"` \| `"all"`                                                                          | [`ParseOptions`](#parseoptions) |         | by default collects only the exported symbols                                                                                                                                                |
 | `collectSourceInfo`      | `boolean` \| `"body"`                                                                           | [`ParseOptions`](#parseoptions) |         | whether to collect the file path and the source code location for the symbol declarations. If set to 'body', the source will refer to the function body instead of the variable declaration. |
 | `collectInnerLocations`  | `boolean`                                                                                       | [`ParseOptions`](#parseoptions) |         | whether to collect the source code location for inner symbol declarations if set to true, the data will be collected in the  `loc`  prop                                                     |
+| `moduleCallback`         | **function** (<br />`module`\*: Symbol<br />`checker`\*: TypeChecker<br />) => `void`           | [`ParseOptions`](#parseoptions) |         | callback with the parsed module. Can be used to retrieve additional information such as the imports of a file etc.                                                                           |
 
 ## ParseOptions
 
@@ -254,12 +255,13 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 | `scope`                  | `"exports"` \| `"all"`                                                                          |         | by default collects only the exported symbols                                                                                                                                                |
 | `collectSourceInfo`      | `boolean` \| `"body"`                                                                           |         | whether to collect the file path and the source code location for the symbol declarations. If set to 'body', the source will refer to the function body instead of the variable declaration. |
 | `collectInnerLocations`  | `boolean`                                                                                       |         | whether to collect the source code location for inner symbol declarations if set to true, the data will be collected in the  `loc`  prop                                                     |
+| `moduleCallback`         | **function** (<br />`module`\*: Symbol<br />`checker`\*: TypeChecker<br />) => `void`           |         | callback with the parsed module. Can be used to retrieve additional information such as the imports of a file etc.                                                                           |
 
 ## ProgramOptions
 
 **`type`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L353)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L359)_
 
 **properties**
 
@@ -363,7 +365,7 @@ _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com
 
 Plugin type - provides the plugin name and the type resolver
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L312)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L318)_
 
 **properties**
 
@@ -388,6 +390,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 | `scope`                  | `"exports"` \| `"all"`                                                                                                                                                                                                                                                                                 | [`ParseOptions`](#parseoptions) |         | by default collects only the exported symbols                                                                                                                                                |
 | `collectSourceInfo`      | `boolean` \| `"body"`                                                                                                                                                                                                                                                                                  | [`ParseOptions`](#parseoptions) |         | whether to collect the file path and the source code location for the symbol declarations. If set to 'body', the source will refer to the function body instead of the variable declaration. |
 | `collectInnerLocations`  | `boolean`                                                                                                                                                                                                                                                                                              | [`ParseOptions`](#parseoptions) |         | whether to collect the source code location for inner symbol declarations if set to true, the data will be collected in the  `loc`  prop                                                     |
+| `moduleCallback`         | **function** (<br />`module`\*: Symbol<br />`checker`\*: TypeChecker<br />) => `void`                                                                                                                                                                                                                  | [`ParseOptions`](#parseoptions) |         | callback with the parsed module. Can be used to retrieve additional information such as the imports of a file etc.                                                                           |
 | `typesResolve*`          | **function** (<br /><details><summary>`props`\*</summary><blockquote>`symbolType`\*: Type<br />`declaration`: ts.Declaration<br />`parser`\*: [`ISymbolParser`](#isymbolparser)<br />`expression`: ts.Expression</blockquote></details>) => [`ResolverReturnType`](#resolverreturntype) \| `undefined` |                                 |         | type resolving custom function ie from a react component will return the props type if the plugin does not recognize the type, should return undefined                                       |
 | `pluginName`             | `string`                                                                                                                                                                                                                                                                                               |                                 |         | plugin name                                                                                                                                                                                  |
 
@@ -471,7 +474,7 @@ _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com
 
 **`type`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L357)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L363)_
 
 **properties**
 
@@ -502,12 +505,13 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 | `scope`                  | `"exports"` \| `"all"`                                                                          | [`ParseOptions`](#parseoptions) |         | by default collects only the exported symbols                                                                                                                                                |
 | `collectSourceInfo`      | `boolean` \| `"body"`                                                                           | [`ParseOptions`](#parseoptions) |         | whether to collect the file path and the source code location for the symbol declarations. If set to 'body', the source will refer to the function body instead of the variable declaration. |
 | `collectInnerLocations`  | `boolean`                                                                                       | [`ParseOptions`](#parseoptions) |         | whether to collect the source code location for inner symbol declarations if set to true, the data will be collected in the  `loc`  prop                                                     |
+| `moduleCallback`         | **function** (<br />`module`\*: Symbol<br />`checker`\*: TypeChecker<br />) => `void`           | [`ParseOptions`](#parseoptions) |         | callback with the parsed module. Can be used to retrieve additional information such as the imports of a file etc.                                                                           |
 
 ## ISymbolParser
 
 **`interface`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L424)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L430)_
 
 **properties**
 
