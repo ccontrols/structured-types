@@ -1268,6 +1268,27 @@ Array [
                             ],
                             "kind": 12,
                           },
+                          Object {
+                            "children": Array [
+                              Object {
+                                "kind": 11,
+                                "value": "usage",
+                              },
+                              Object {
+                                "kind": 6,
+                                "value": ": ",
+                              },
+                              Object {
+                                "kind": 11,
+                                "value": "type",
+                              },
+                              Object {
+                                "kind": 6,
+                                "value": "[]",
+                              },
+                            ],
+                            "kind": 12,
+                          },
                         ],
                         "kind": 13,
                         "summary": Array [
