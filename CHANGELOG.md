@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.46.0](https://github.com/ccontrols/structured-types/compare/v3.45.0...v3.46.0) (2022-02-17)
+
+
+### Features
+
+* **api:** hostCallback source code adjustments ([dd5690a](https://github.com/ccontrols/structured-types/commit/dd5690a427ef7130773a09670463b806fd9ee44f))
+
+
+
+
+
 # [3.45.0](https://github.com/ccontrols/structured-types/compare/v3.44.3...v3.45.0) (2022-01-30)
 
 
