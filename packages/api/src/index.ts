@@ -79,8 +79,12 @@ export const analyzeFiles = (
     collectHelpers,
     moduleCallback,
   } = parseOptions || {};
-  const { program: userProgram, host: userHost } = programOptions;
+  const { program: userProgram, host: userHost, hostCallback } = programOptions;
   const host = userHost || ts.createCompilerHost(tsOptions);
+  if (hostCallback) {
+    hostCallback(host);
+  }
+
   const program = userProgram || ts.createProgram(files, tsOptions, host);
   const defaultLibraryFileName = host.getDefaultLibFileName(tsOptions);
 

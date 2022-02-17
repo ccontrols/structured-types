@@ -226,12 +226,30 @@ export class SymbolParser implements ISymbolParser {
           ts.isMethodDeclaration(fn) ||
           ts.isFunctionDeclaration(fn)
         ) {
-          const start = source.getLineAndCharacterOfPosition(
-            fn.parameters.pos - 1,
-          );
+          let startPost = fn.parameters.pos;
+          let start = source.getLineAndCharacterOfPosition(startPost);
+          const newLineChar =
+            ts.getDefaultFormatCodeSettings().newLineCharacter || /\r?\n/;
+          const line = fn.getSourceFile().text.split(newLineChar)[start.line];
+          if (
+            start.character > 0 &&
+            (line[start.character - 1] === '(' ||
+              line[start.character - 1] === ' ')
+          ) {
+            startPost -= 1;
+            start = source.getLineAndCharacterOfPosition(startPost);
+          }
+          while (
+            start.character < line.length &&
+            line[start.character] === ' '
+          ) {
+            startPost += 1;
+            start = source.getLineAndCharacterOfPosition(startPost);
+          }
           const end = source.getLineAndCharacterOfPosition(
             (fn.body || getInitializer(fn) || fn).getEnd(),
           );
+
           location.loc = this.adjustLocation(start, end);
           return location;
         }

@@ -359,6 +359,10 @@ export type DocsOptions = { tsOptions?: ts.CompilerOptions } & ParseOptions;
 export type ProgramOptions = {
   host?: ts.CompilerHost;
   program?: ts.Program;
+  /**
+   * callback with the created host, gives an opportunity to change some properties of the host.
+   */
+  hostCallback?: (host: ts.CompilerHost) => void;
 };
 export type ResolverReturnType = {
   type: ts.Type | undefined;
