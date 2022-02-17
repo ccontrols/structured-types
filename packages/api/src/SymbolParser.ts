@@ -52,7 +52,7 @@ import { resolveType } from './ts/resolveType';
 import { mergeNodeComments } from './jsdoc/mergeJSDoc';
 import { parseJSDocTag } from './jsdoc/parseJSDocTags';
 import { isTypeProp, ObjectProp } from './types';
-import { HasValueProp, SourcePositions } from '.';
+import { ClassLikeProp, HasValueProp, SourcePositions } from '.';
 
 export class SymbolParser implements ISymbolParser {
   public checker: ts.TypeChecker;
@@ -368,15 +368,24 @@ export class SymbolParser implements ISymbolParser {
       if (node.parameters.length && !prop.parameters) {
         prop.parameters = this.parseProperties(node.parameters, options);
         if (options.collectParametersUsage && isFunctionBodyType(node)) {
-          prop.parameters.forEach((p) => {
-            const positions = this.getSymbolUsagePositions(
-              node.body,
-              node.parameters[0].name.getText(),
-            );
-            if (positions) {
-              p.usage = positions;
+          const collectUsage = (p: PropType) => {
+            if (isClassLikeProp(p)) {
+              (p as ClassLikeProp).properties?.forEach((child) =>
+                collectUsage(child),
+              );
+            } else {
+              if (p.name) {
+                const positions = this.getSymbolUsagePositions(
+                  node.body,
+                  p.name,
+                );
+                if (positions) {
+                  p.usage = positions;
+                }
+              }
             }
-          });
+          };
+          prop.parameters.forEach((p) => collectUsage(p));
         }
       }
       if (node.type && !prop.returns) {

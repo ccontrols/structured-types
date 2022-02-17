@@ -193,6 +193,10 @@ export interface PropType {
    * jsdoc ignore tag, to be excluded from documentations
    */
   ignore?: boolean;
+  /**
+   * if collectParametersUsage option is set, this will collect parameters usage in function body
+   */
+  usage?: { start: SourcePosition; end: SourcePosition }[];
 }
 
 /**
@@ -359,11 +363,8 @@ export const isNullProp = (prop: PropType): prop is NullProp => {
   return prop.kind === PropKind.Null;
 };
 
-export type FunctionParameter = PropType & {
-  usage?: { start: SourcePosition; end: SourcePosition }[];
-};
 export interface BaseFunctionProp extends PropType {
-  parameters?: FunctionParameter[];
+  parameters?: PropType[];
   returns?: PropType;
   types?: PropType[];
 }
@@ -552,7 +553,11 @@ export type ValueProp =
   | StringProp
   | ObjectProp;
 
-export type ClassLikeProp = ClassProp | InterfaceProp | TypeProp;
+export type ClassLikeProp =
+  | ClassProp
+  | InterfaceProp
+  | TypeProp
+  | ComponentProp;
 
 /**
  * ClassLikeProp predicate to determine if a prop is class-like
