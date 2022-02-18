@@ -354,7 +354,7 @@ export class SymbolParser implements ISymbolParser {
       }
       node.forEachChild(visit);
     };
-    container.forEachChild(visit);
+    visit(container);
     return positions;
   }
 
