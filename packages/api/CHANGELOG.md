@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.46.3](https://github.com/ccontrols/structured-types/compare/v3.46.2...v3.46.3) (2022-02-18)
+
+
+### Bug Fixes
+
+* **api:** usage function scoped vars ([97b538b](https://github.com/ccontrols/structured-types/commit/97b538b2d60464483950852bf4911f3ee3db5713))
+
+
+
+
+
 ## [3.46.2](https://github.com/ccontrols/structured-types/compare/v3.46.1...v3.46.2) (2022-02-18)
 
 
