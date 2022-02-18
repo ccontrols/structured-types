@@ -23,9 +23,9 @@
     -   [SourceLocation](#sourcelocation)
     -   [JSDocExample](#jsdocexample)
     -   [JSDocPropTag](#jsdocproptag)
+    -   [SourcePosition](#sourceposition)
     -   [ResolverReturnType](#resolverreturntype)
     -   [ISymbolParser](#isymbolparser)
-    -   [SourcePosition](#sourceposition)
 
 # Overview
 
@@ -143,7 +143,7 @@ const docs = parseFiles(['../src/sum.js']);
 
 API to analyze the given files by also loading the local typescript options from tsconfig
 
-_defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L248)_
+_defined in [@structured-types/api/packages/api/src/index.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/index.ts#L252)_
 
 **parameters**
 
@@ -265,10 +265,11 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 **properties**
 
-| Name      | Type            |
-| --------- | --------------- |
-| `host`    | ts.CompilerHost |
-| `program` | ts.Program      |
+| Name           | Type                                                        | Description                                                                                 |
+| -------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `host`         | ts.CompilerHost                                             |                                                                                             |
+| `program`      | ts.Program                                                  |                                                                                             |
+| `hostCallback` | **function** (<br />`host`\*: CompilerHost<br />) => `void` | callback with the created host, gives an opportunity to change some properties of the host. |
 
 ## PropTypes
 
@@ -276,7 +277,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 Top-level prop type, with added optional \_\_helpers and \_\_diagnostics fields.
 
-_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L612)_
+_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L617)_
 
 **properties**
 
@@ -319,6 +320,7 @@ _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com
 | `summary`     | `string`                                   | jsdoc summary                                                                                                         |
 | `deprecated`  | `string` \| `true`                         | jsdoc deprecated tag                                                                                                  |
 | `ignore`      | `boolean`                                  | jsdoc ignore tag, to be excluded from documentations                                                                  |
+| `usage`       | `type`\[]                                  | if collectParametersUsage option is set, this will collect parameters usage in function body                          |
 
 ## PropKind
 
@@ -400,7 +402,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 diagnostics row data
 
-_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L586)_
+_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L591)_
 
 **properties**
 
@@ -470,11 +472,24 @@ _defined in [@structured-types/api/packages/api/src/types.ts](https://github.com
 | `tag*`    | `string` | tag name             |
 | `content` | `string` | optional tag content |
 
+## SourcePosition
+
+**`interface`**
+
+_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L63)_
+
+**properties**
+
+| Name    | Type     | Description                 |
+| ------- | -------- | --------------------------- |
+| `line*` | `number` | source line of the symbol   |
+| `col*`  | `number` | source column of the symbol |
+
 ## ResolverReturnType
 
 **`type`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L363)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L367)_
 
 **properties**
 
@@ -511,7 +526,7 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 
 **`interface`**
 
-_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L430)_
+_defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/ts-utils.ts#L434)_
 
 **properties**
 
@@ -524,18 +539,5 @@ _defined in [@structured-types/api/packages/api/src/ts-utils.ts](https://github.
 | `parseType*`              | **function** (<br />`prop`\*: [`PropType`](#proptype)<br />`options`\*: [`ParseOptions`](#parseoptions)<br />`node`: ts.Node<br />) => [`PropType`](#proptype)                                                                              |
 | `parseTypeValueComments*` | **function** (<br />`prop`\*: [`PropType`](#proptype)<br />`options`\*: [`ParseOptions`](#parseoptions)<br />`declaration`: ts.Node<br />`initializer`: ts.Node<br />) => [`PropType`](#proptype) \| `null`                                 |
 | `parseSymbol*`            | **function** (<br />`symbol`\*: Symbol<br />`options`\*: [`ParseOptions`](#parseoptions)<br />) => [`PropType`](#proptype) \| `undefined`                                                                                                   |
-
-## SourcePosition
-
-**`interface`**
-
-_defined in [@structured-types/api/packages/api/src/types.ts](https://github.com/ccontrols/structured-types/tree/master/packages/api/src/types.ts#L63)_
-
-**properties**
-
-| Name    | Type     | Description                 |
-| ------- | -------- | --------------------------- |
-| `line*` | `number` | source line of the symbol   |
-| `col*`  | `number` | source column of the symbol |
 
 <!-- END-API-README -->
