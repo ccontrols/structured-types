@@ -2,6 +2,59 @@ import path from 'path';
 import { parseFiles, FunctionProp, ClassLikeProp } from '../../../src';
 
 describe('docs-story-props', () => {
+  it('react-props', () => {
+    const result = parseFiles(
+      [path.resolve(__dirname, 'react-props.docs.tsx')],
+      {
+        collectSourceInfo: 'body',
+        collectInnerLocations: true,
+        collectParametersUsage: true,
+      },
+    );
+    expect(
+      ((result.myStory as FunctionProp)['parameters']?.[0] as ClassLikeProp)
+        .properties,
+    ).toMatchObject([
+      {
+        name: 'age',
+        usage: [
+          {
+            start: {
+              line: 4,
+              col: 18,
+            },
+            end: {
+              line: 4,
+              col: 21,
+            },
+          },
+          {
+            start: {
+              line: 5,
+              col: 17,
+            },
+            end: {
+              line: 5,
+              col: 20,
+            },
+          },
+        ],
+        kind: 17,
+        loc: {
+          loc: {
+            start: {
+              line: 2,
+              col: 27,
+            },
+            end: {
+              line: 2,
+              col: 30,
+            },
+          },
+        },
+      },
+    ]);
+  });
   it('simple-usage', () => {
     const result = parseFiles(
       [path.resolve(__dirname, 'simple-usage.docs.tsx')],

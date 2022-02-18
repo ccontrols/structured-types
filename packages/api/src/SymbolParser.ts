@@ -348,9 +348,14 @@ export class SymbolParser implements ISymbolParser {
     const sourceFile = container.getSourceFile();
     const visit = (node: ts.Node): void => {
       if (ts.isIdentifier(node) && node.getText() === symbolName) {
-        const start = sourceFile.getLineAndCharacterOfPosition(node.getStart());
-        const end = sourceFile.getLineAndCharacterOfPosition(node.getEnd());
-        positions.push(this.adjustLocation(start, end));
+        const symbol = this.getSymbolAtLocation(node);
+        if (symbol && symbol.flags & ts.SymbolFlags.FunctionScopedVariable) {
+          const start = sourceFile.getLineAndCharacterOfPosition(
+            node.getStart(),
+          );
+          const end = sourceFile.getLineAndCharacterOfPosition(node.getEnd());
+          positions.push(this.adjustLocation(start, end));
+        }
       }
       node.forEachChild(visit);
     };
