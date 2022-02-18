@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.46.1](https://github.com/ccontrols/structured-types/compare/v3.46.0...v3.46.1) (2022-02-18)
+
+
+### Bug Fixes
+
+* **api:** collectParametersUsage nested props ([565c2a2](https://github.com/ccontrols/structured-types/commit/565c2a27b893d98ae3213ab718fe1c0c6741f6a2))
+
+
+
+
+
 # [3.46.0](https://github.com/ccontrols/structured-types/compare/v3.45.0...v3.46.0) (2022-02-17)
 
 
