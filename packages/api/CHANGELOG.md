@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.46.2](https://github.com/ccontrols/structured-types/compare/v3.46.1...v3.46.2) (2022-02-18)
+
+
+### Bug Fixes
+
+* **api:** parameters usage single container ([604bddc](https://github.com/ccontrols/structured-types/commit/604bddc1b8dbb04fd8894618e6a51f83bb6f698a))
+
+
+
+
+
 ## [3.46.1](https://github.com/ccontrols/structured-types/compare/v3.46.0...v3.46.1) (2022-02-18)
 
 
