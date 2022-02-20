@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/prop-types-plugin",
-  "version": "3.46.3",
+  "version": "3.46.4",
   "description": "react prop-types plugin for structured-types",
   "keywords": [
     "structured-types",
@@ -35,7 +35,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@structured-types/react-plugin": "^3.46.3"
+    "@structured-types/react-plugin": "^3.46.4"
   },
   "devDependencies": {
     "prop-types": "^15.7.2",

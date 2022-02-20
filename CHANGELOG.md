@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.46.4](https://github.com/ccontrols/structured-types/compare/v3.46.3...v3.46.4) (2022-02-20)
+
+
+### Bug Fixes
+
+* **api:** usage with ShorthandPropertyAssignment ([690e80e](https://github.com/ccontrols/structured-types/commit/690e80e299a1d111068c468016038f74f87881a8))
+
+
+
+
+
 ## [3.46.3](https://github.com/ccontrols/structured-types/compare/v3.46.2...v3.46.3) (2022-02-18)
 
 
