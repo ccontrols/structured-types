@@ -2,6 +2,49 @@ import path from 'path';
 import { parseFiles, FunctionProp, ClassLikeProp } from '../../../src';
 
 describe('docs-story-props', () => {
+  it('name-shortcut', () => {
+    const result = parseFiles(
+      [path.resolve(__dirname, 'name-shortcut.docs.tsx')],
+      {
+        collectSourceInfo: 'body',
+        collectInnerLocations: true,
+        collectParametersUsage: true,
+      },
+    );
+    expect(
+      ((result.selectProp as FunctionProp)['parameters']?.[0] as ClassLikeProp)
+        .properties,
+    ).toMatchObject([
+      {
+        name: 'value',
+        usage: [
+          {
+            start: {
+              line: 4,
+              col: 26,
+            },
+            end: {
+              line: 4,
+              col: 31,
+            },
+          },
+        ],
+        kind: 17,
+        loc: {
+          loc: {
+            start: {
+              line: 3,
+              col: 30,
+            },
+            end: {
+              line: 3,
+              col: 35,
+            },
+          },
+        },
+      },
+    ]);
+  });
   it('react-props', () => {
     const result = parseFiles(
       [path.resolve(__dirname, 'react-props.docs.tsx')],
