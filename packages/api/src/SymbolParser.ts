@@ -840,7 +840,13 @@ export class SymbolParser implements ISymbolParser {
         return this.parseType(prop, options, node.name);
       } else if (ts.isBindingElement(node)) {
         if (node.propertyName) {
-          prop.name = node.propertyName.getText();
+          const propName = node.propertyName.getText();
+          if (prop.name && prop.name !== propName) {
+            prop.alias = prop.name;
+            prop.name = propName;
+          } else {
+            prop.name = propName;
+          }
         }
         return this.parseType(prop, options, node.name);
       } else if (ts.isUnionTypeNode(node)) {

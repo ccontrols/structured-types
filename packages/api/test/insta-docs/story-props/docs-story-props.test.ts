@@ -2,6 +2,47 @@ import path from 'path';
 import { parseFiles, FunctionProp, ClassLikeProp } from '../../../src';
 
 describe('docs-story-props', () => {
+  it('alias', () => {
+    const result = parseFiles([path.resolve(__dirname, 'alias.docs.tsx')], {
+      collectSourceInfo: 'body',
+      collectInnerLocations: true,
+      collectParametersUsage: true,
+    });
+    const properties = (
+      (result.story as FunctionProp)['parameters']?.[0] as ClassLikeProp
+    ).properties;
+    expect(properties).toMatchObject([
+      {
+        alias: 'MyName',
+        usage: [
+          {
+            start: {
+              line: 3,
+              col: 58,
+            },
+            end: {
+              line: 3,
+              col: 64,
+            },
+          },
+        ],
+        kind: 17,
+        loc: {
+          loc: {
+            start: {
+              line: 3,
+              col: 31,
+            },
+            end: {
+              line: 3,
+              col: 37,
+            },
+          },
+        },
+        name: 'name',
+      },
+    ]);
+  });
   it('nested-props', () => {
     const result = parseFiles(
       [path.resolve(__dirname, 'nested-props.docs.tsx')],
