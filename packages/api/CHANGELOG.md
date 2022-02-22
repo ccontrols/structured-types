@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.46.5](https://github.com/ccontrols/structured-types/compare/v3.46.4...v3.46.5) (2022-02-22)
+
+
+### Bug Fixes
+
+* **api:** binding element parameters ([0ef247c](https://github.com/ccontrols/structured-types/commit/0ef247cee417a16ac5e3b7838f8d4348c925958c))
+
+
+
+
+
 ## [3.46.4](https://github.com/ccontrols/structured-types/compare/v3.46.3...v3.46.4) (2022-02-20)
 
 
