@@ -838,6 +838,11 @@ export class SymbolParser implements ISymbolParser {
         }
       } else if (ts.isParameter(node)) {
         return this.parseType(prop, options, node.name);
+      } else if (ts.isBindingElement(node)) {
+        if (node.propertyName) {
+          prop.name = node.propertyName.getText();
+        }
+        return this.parseType(prop, options, node.name);
       } else if (ts.isUnionTypeNode(node)) {
         prop.kind = PropKind.Union;
         (prop as UnionProp).properties = this.parseProperties(

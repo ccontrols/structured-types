@@ -2,6 +2,55 @@ import path from 'path';
 import { parseFiles, FunctionProp, ClassLikeProp } from '../../../src';
 
 describe('docs-story-props', () => {
+  it('nested-props', () => {
+    const result = parseFiles(
+      [path.resolve(__dirname, 'nested-props.docs.tsx')],
+      {
+        collectSourceInfo: 'body',
+        collectInnerLocations: true,
+        collectParametersUsage: true,
+      },
+    );
+    const properties = (
+      (result.story as FunctionProp)['parameters']?.[0] as ClassLikeProp
+    ).properties;
+    expect(properties).toMatchObject([
+      {
+        name: 'style',
+        kind: 26,
+        properties: [
+          {
+            name: 'color',
+            usage: [
+              {
+                start: {
+                  line: 3,
+                  col: 60,
+                },
+                end: {
+                  line: 3,
+                  col: 65,
+                },
+              },
+            ],
+            kind: 17,
+            loc: {
+              loc: {
+                start: {
+                  line: 3,
+                  col: 34,
+                },
+                end: {
+                  line: 3,
+                  col: 39,
+                },
+              },
+            },
+          },
+        ],
+      },
+    ]);
+  });
   it('name-shortcut', () => {
     const result = parseFiles(
       [path.resolve(__dirname, 'name-shortcut.docs.tsx')],
