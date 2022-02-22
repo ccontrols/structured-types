@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.46.6](https://github.com/ccontrols/structured-types/compare/v3.46.5...v3.46.6) (2022-02-22)
+
+
+### Bug Fixes
+
+* **api:** aliased parameter prop ([b0bdf29](https://github.com/ccontrols/structured-types/commit/b0bdf29889af9ab8cabfae7813c50cfcb59f871f))
+
+
+
+
+
 ## [3.46.5](https://github.com/ccontrols/structured-types/compare/v3.46.4...v3.46.5) (2022-02-22)
 
 
