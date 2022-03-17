@@ -8,10 +8,3 @@ export const asyncStory = async () => {
   // eslint-disable-next-line react/display-name
   return () => <h2>{`Hello, my name is ${data.employee_name}.`}</h2>;
 };
-
-export function fnStory() {
-  return '';
-}
-
-export const singleLine = (text: string): string =>
-  `this is my text variable ${text}`;

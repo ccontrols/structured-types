@@ -2,44 +2,6 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('docs-document', () => {
-  it('require-import', () => {
-    const result = parseFiles(
-      [path.resolve(__dirname, 'require-import.docs.tsx')],
-      {
-        collectSourceInfo: 'body',
-        collectInnerLocations: true,
-        collectParametersUsage: true,
-        collectGenerics: false,
-      },
-    );
-    expect(result).toMatchObject({
-      default: {
-        type: 'Document',
-        kind: 15,
-        properties: [
-          {
-            name: 'name',
-            kind: 1,
-            value: 'documentation for MyComponent',
-          },
-          {
-            name: 'subcomponents',
-            properties: [
-              {
-                name: 'MyComponent',
-                kind: 17,
-                value: 'MyComponent',
-              },
-            ],
-            kind: 15,
-            type: 'Record',
-          },
-        ],
-        name: 'default',
-      },
-    });
-  });
-
   it('export-default', () => {
     const result = parseFiles(
       [path.resolve(__dirname, 'export-default.docs.tsx')],
@@ -271,6 +233,43 @@ describe('docs-document', () => {
                 optional: true,
               },
             },
+          },
+        ],
+        name: 'default',
+      },
+    });
+  });
+  it('require-import', () => {
+    const result = parseFiles(
+      [path.resolve(__dirname, 'require-import.docs.tsx')],
+      {
+        collectSourceInfo: 'body',
+        collectInnerLocations: true,
+        collectParametersUsage: true,
+        collectGenerics: false,
+      },
+    );
+    expect(result).toMatchObject({
+      default: {
+        type: 'Document',
+        kind: 15,
+        properties: [
+          {
+            name: 'name',
+            kind: 1,
+            value: 'documentation for MyComponent',
+          },
+          {
+            name: 'subcomponents',
+            properties: [
+              {
+                name: 'MyComponent',
+                kind: 17,
+                value: 'MyComponent',
+              },
+            ],
+            kind: 15,
+            type: 'Record',
           },
         ],
         name: 'default',

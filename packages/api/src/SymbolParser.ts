@@ -210,56 +210,67 @@ export class SymbolParser implements ISymbolParser {
       node &&
       (isTopLevel || options.collectInnerLocations)
     ) {
-      const source = node.getSourceFile();
-      if (!location) {
-        location = {};
-      }
-      location.filePath = source.fileName;
+      const typeNode =
+        ts.isVariableDeclaration(node) &&
+        node.initializer &&
+        ts.isIdentifier(node.initializer)
+          ? getSymbolDeclaration(this.getSymbolAtLocation(node.initializer))
+          : node;
+      if (typeNode) {
+        const source = typeNode.getSourceFile();
+        if (!location) {
+          location = {};
+        }
+        location.filePath = source.fileName;
 
-      if (options.collectSourceInfo === 'body') {
-        const fn = getInitializer(node) || node;
-        if (
-          ts.isArrowFunction(fn) ||
-          ts.isFunctionExpression(fn) ||
-          ts.isGetAccessorDeclaration(fn) ||
-          ts.isConstructorDeclaration(fn) ||
-          ts.isMethodDeclaration(fn) ||
-          ts.isFunctionDeclaration(fn)
-        ) {
-          let startPost = fn.parameters.pos;
-          let start = source.getLineAndCharacterOfPosition(startPost);
-          const newLineChar =
-            ts.getDefaultFormatCodeSettings().newLineCharacter || /\r?\n/;
-          const line = fn.getSourceFile().text.split(newLineChar)[start.line];
+        if (options.collectSourceInfo === 'body') {
+          const fn = getInitializer(typeNode) || typeNode;
           if (
-            start.character > 0 &&
-            (line[start.character - 1] === '(' ||
-              line[start.character - 1] === ' ')
+            ts.isArrowFunction(fn) ||
+            ts.isFunctionExpression(fn) ||
+            ts.isGetAccessorDeclaration(fn) ||
+            ts.isConstructorDeclaration(fn) ||
+            ts.isMethodDeclaration(fn) ||
+            ts.isFunctionDeclaration(fn)
           ) {
-            startPost -= 1;
-            start = source.getLineAndCharacterOfPosition(startPost);
-          }
-          while (
-            start.character < line.length &&
-            line[start.character] === ' '
-          ) {
-            startPost += 1;
-            start = source.getLineAndCharacterOfPosition(startPost);
-          }
-          const end = source.getLineAndCharacterOfPosition(
-            (fn.body || getInitializer(fn) || fn).getEnd(),
-          );
+            let startPost = fn.parameters.pos;
+            let start = source.getLineAndCharacterOfPosition(startPost);
+            const newLineChar =
+              ts.getDefaultFormatCodeSettings().newLineCharacter || /\r?\n/;
+            const line = fn.getSourceFile().text.split(newLineChar)[start.line];
+            if (
+              start.character > 0 &&
+              (line[start.character - 1] === '(' ||
+                line[start.character - 1] === ' ')
+            ) {
+              startPost -= 1;
+              start = source.getLineAndCharacterOfPosition(startPost);
+            }
+            while (
+              start.character < line.length &&
+              line[start.character] === ' '
+            ) {
+              startPost += 1;
+              start = source.getLineAndCharacterOfPosition(startPost);
+            }
+            const end = source.getLineAndCharacterOfPosition(
+              (fn.body || getInitializer(fn) || fn).getEnd(),
+            );
 
+            location.loc = this.adjustLocation(start, end);
+            return location;
+          }
+        }
+        const nameNode =
+          ts.getNameOfDeclaration(typeNode as ts.Declaration) || typeNode;
+        if (nameNode) {
+          const start = source.getLineAndCharacterOfPosition(
+            nameNode.getStart(),
+          );
+          const end = source.getLineAndCharacterOfPosition(nameNode.getEnd());
           location.loc = this.adjustLocation(start, end);
           return location;
         }
-      }
-      const nameNode = ts.getNameOfDeclaration(node as ts.Declaration) || node;
-      if (nameNode) {
-        const start = source.getLineAndCharacterOfPosition(nameNode.getStart());
-        const end = source.getLineAndCharacterOfPosition(nameNode.getEnd());
-        location.loc = this.adjustLocation(start, end);
-        return location;
       }
     }
     return location;
