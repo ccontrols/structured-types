@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.46.7](https://github.com/ccontrols/structured-types/compare/v3.46.6...v3.46.7) (2022-03-17)
+
+
+### Bug Fixes
+
+* **api:** assiged variable source code ([5092d79](https://github.com/ccontrols/structured-types/commit/5092d79e0bf12775b01c9a6a2bba44bd67c3ff8c))
+
+
+
+
+
 ## [3.46.6](https://github.com/ccontrols/structured-types/compare/v3.46.5...v3.46.6) (2022-02-22)
 
 
