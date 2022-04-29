@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/api-docs",
-  "version": "3.46.7",
+  "version": "3.46.8",
   "description": "Create api documentation nodes using structured-types/api",
   "keywords": [
     "jsdoc",
@@ -37,17 +37,17 @@
   "license": "MIT",
   "dependencies": {
     "@hutson/parse-repository-url": "^5.0.0",
+    "cosmiconfig": "^7.0.1",
     "deepmerge": "^4.2.2",
     "hosted-git-info": "^3.0.4",
     "inherits": "^2.0.4",
     "js-string-escape": "^1.0.1",
     "micromatch": "^4.0.4",
     "object-hash": "^2.2.0",
-    "cosmiconfig": "^7.0.1",
     "path-browserify": "^1.0.1"
   },
   "devDependencies": {
-    "@structured-types/api": "^3.46.7",
+    "@structured-types/api": "^3.46.8",
     "@types/hosted-git-info": "^3.0.0",
     "@types/js-string-escape": "^1.0.1",
     "@types/micromatch": "^4.0.2",

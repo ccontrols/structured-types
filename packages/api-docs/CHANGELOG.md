@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.46.8](https://github.com/ccontrols/structured-types/compare/v3.46.7...v3.46.8) (2022-04-29)
+
+
+### Bug Fixes
+
+* **api-docs:** add cosmiconfig dependency ([c69cbab](https://github.com/ccontrols/structured-types/commit/c69cbab7fba6d2c3eb76a7ac337cc9740249848c))
+* **api-docs:** add json-parse dependency ([1307f9a](https://github.com/ccontrols/structured-types/commit/1307f9ac938291303c694d38a222ab6b56b61722))
+
+
+
+
+
 ## [3.46.7](https://github.com/ccontrols/structured-types/compare/v3.46.6...v3.46.7) (2022-03-17)
 
 **Note:** Version bump only for package @structured-types/api-docs
