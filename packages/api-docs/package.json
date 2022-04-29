@@ -43,6 +43,7 @@
     "js-string-escape": "^1.0.1",
     "micromatch": "^4.0.4",
     "object-hash": "^2.2.0",
+    "parse-json": "^6.0.2",
     "path-browserify": "^1.0.1"
   },
   "devDependencies": {
