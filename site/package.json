@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn clean && next",
-    "clean": "rimraf dist .next public",
+    "clean": "rimraf dist .next public node_modules",
     "docs": "api-readme",
     "create-examples": "yarn node ./scripts/create-examples.js && yarn eslint ./src/api/examples.ts --fix",
     "lint": "yarn eslint . --ext ts,tsx",

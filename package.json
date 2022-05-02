@@ -14,7 +14,7 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "clean": "lerna run --parallel clean",
+    "clean": "lerna run --parallel clean && rimraf node_modules ",
     "start": "cd site && yarn start",
     "docs": "lerna run docs && api-readme",
     "dev": "lerna run --parallel dev",

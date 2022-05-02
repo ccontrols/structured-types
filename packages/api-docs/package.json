@@ -22,7 +22,7 @@
     "prepare": "yarn build",
     "lint": "yarn eslint . --ext ts,tsx",
     "fix": "yarn lint --fix",
-    "clean": "rimraf dist coverage tsconfig.tsbuildinfo",
+    "clean": "rimraf dist coverage node_modules tsconfig.tsbuildinfo",
     "test": "yarn jest"
   },
   "homepage": "https://github.com/ccontrols/structured-types",
@@ -37,14 +37,17 @@
   "license": "MIT",
   "dependencies": {
     "@hutson/parse-repository-url": "^5.0.0",
-    "cosmiconfig": "^7.0.1",
+    "@types/parse-json": "^4.0.0",
     "deepmerge": "^4.2.2",
     "hosted-git-info": "^3.0.4",
+    "import-fresh": "^3.2.1",
     "inherits": "^2.0.4",
     "js-string-escape": "^1.0.1",
     "micromatch": "^4.0.4",
     "object-hash": "^2.2.0",
-    "path-browserify": "^1.0.1"
+    "parse-json": "^5.0.0",
+    "path-browserify": "^1.0.1",
+    "yaml": "^1.10.0"
   },
   "devDependencies": {
     "@structured-types/api": "^3.46.8",

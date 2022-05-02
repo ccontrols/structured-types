@@ -21,7 +21,7 @@
     "lint": "yarn eslint . --ext ts,tsx",
     "fix": "yarn lint --fix",
     "test": "yarn jest",
-    "clean": "rimraf dist coverage tsconfig.tsbuildinfo"
+    "clean": "rimraf dist coverage node_modules tsconfig.tsbuildinfo"
   },
   "homepage": "https://github.com/ccontrols/structured-types",
   "bugs": {
