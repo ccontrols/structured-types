@@ -13,7 +13,9 @@
   "files": [
     "dist/",
     "package.json",
-    "README.md"
+    "README.md",
+    "props-to-nodes.js",
+    "props-to-nodes.d.ts"
   ],
   "scripts": {
     "build": "NODE_ENV=production yarn rollup -c",
