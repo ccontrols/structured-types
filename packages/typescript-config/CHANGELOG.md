@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.46.9](https://github.com/ccontrols/component-controls/compare/v3.46.8...v3.46.9) (2022-05-11)
+
+
+### Bug Fixes
+
+* clean node_modules ([a1f98ef](https://github.com/ccontrols/component-controls/commit/a1f98efadefd6f8e9da80b185a474cda3884e3f9))
+
+
+
+
+
 ## [3.40.5](https://github.com/ccontrols/component-controls/compare/v3.40.4...v3.40.5) (2022-01-05)
 
 

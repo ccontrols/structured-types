@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.46.9](https://github.com/ccontrols/structured-types/compare/v3.46.8...v3.46.9) (2022-05-11)
+
+
+### Bug Fixes
+
+* clean node_modules ([a1f98ef](https://github.com/ccontrols/structured-types/commit/a1f98efadefd6f8e9da80b185a474cda3884e3f9))
+
+
+
+
+
 ## [3.46.8](https://github.com/ccontrols/structured-types/compare/v3.46.7...v3.46.8) (2022-04-29)
 
 **Note:** Version bump only for package @structured-types/api-readme
