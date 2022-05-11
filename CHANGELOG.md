@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.46.10](https://github.com/ccontrols/structured-types/compare/v3.46.9...v3.46.10) (2022-05-11)
+
+
+### Bug Fixes
+
+* **api-docs:** useBuiltins ([9c20618](https://github.com/ccontrols/structured-types/commit/9c20618d1fb4bf90794d2aaf7327750f3a45e61a))
+
+
+
+
+
 ## [3.46.9](https://github.com/ccontrols/structured-types/compare/v3.46.8...v3.46.9) (2022-05-11)
 
 

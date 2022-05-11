@@ -1,6 +1,6 @@
 {
   "name": "@structured-types/api-readme",
-  "version": "3.46.9",
+  "version": "3.46.10",
   "description": "API documentation extractor for Readme.md files",
   "keywords": [
     "markdown",
@@ -38,7 +38,7 @@
   "license": "MIT",
   "dependencies": {
     "@structured-types/api": "^3.46.9",
-    "@structured-types/api-docs": "^3.46.9",
+    "@structured-types/api-docs": "^3.46.10",
     "@structured-types/prop-types-plugin": "^3.46.9",
     "@structured-types/react-plugin": "^3.46.9",
     "chalk": "^4.1.0",
