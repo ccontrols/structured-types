@@ -294,7 +294,11 @@ export class SymbolParser implements ISymbolParser {
     const addProp = (prop: PropType) => {
       if (this.filterProperty(prop, options)) {
         if (prop.name) {
-          const idx = results.findIndex((p) => p.name === prop.name);
+          const idx = results.findIndex(
+            (p) =>
+              p.name === prop.name &&
+              (p.kind === prop.kind || prop.kind === undefined),
+          );
           if (idx >= 0) {
             const value = (results[idx] as HasValueProp).value;
             if (typeof value !== 'undefined') {
@@ -307,7 +311,9 @@ export class SymbolParser implements ISymbolParser {
         results.push(prop);
       }
     };
+
     for (const p of properties) {
+      let propName: string | undefined = undefined;
       if (
         !ts.isTypeNode(p) &&
         !ts.isOmittedExpression(p) &&
@@ -321,14 +327,11 @@ export class SymbolParser implements ISymbolParser {
         const numProps = properties.filter(
           (f) => (f as ts.TypeElement).name?.getText() === name,
         );
-        if (numProps.length <= 1) {
-          const symbol = this.getSymbolAtLocation(p.name);
-          if (symbol) {
-            const prop = this.addRefSymbol(
-              { name: symbol.escapedName as string },
-              symbol,
-              false,
-            );
+        const symbol = this.getSymbolAtLocation(p.name);
+        if (symbol) {
+          propName = symbol.escapedName as string;
+          if (numProps.length <= 1) {
+            const prop = this.addRefSymbol({ name: propName }, symbol, false);
             if (prop) {
               addProp(prop);
             }
@@ -337,7 +340,7 @@ export class SymbolParser implements ISymbolParser {
         }
       }
       const prop = this.parseTypeValueComments(
-        {},
+        propName === undefined ? {} : { name: propName },
         options,
         p,
         getInitializer(p) || p,

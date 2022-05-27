@@ -2,6 +2,45 @@ import path from 'path';
 import { parseFiles } from '../../../src/index';
 
 describe('class', () => {
+  it('getters/setters', () => {
+    const results = parseFiles([path.resolve(__dirname, 'getters-setters.ts')]);
+
+    expect(results).toEqual({
+      ClassGetters: {
+        name: 'ClassGetters',
+        kind: 13,
+        properties: [
+          {
+            description: 'member description',
+            kind: 2,
+            name: '_length',
+            value: 0,
+          },
+          {
+            description: 'getter description',
+            kind: 22,
+            name: 'length',
+            returns: {
+              kind: 2,
+              optional: true,
+            },
+          },
+          {
+            parameters: [
+              {
+                kind: 2,
+                name: 'value',
+                description: 'the new value',
+              },
+            ],
+            description: 'setter description',
+            kind: 23,
+            name: 'length',
+          },
+        ],
+      },
+    });
+  });
   it('object-type', () => {
     const results = parseFiles([path.resolve(__dirname, 'object-type.ts')]);
 
@@ -106,43 +145,6 @@ describe('class', () => {
     });
   });
 
-  it('getters/setters', () => {
-    const results = parseFiles([path.resolve(__dirname, 'getters-setters.ts')]);
-
-    expect(results).toEqual({
-      ClassGetters: {
-        name: 'ClassGetters',
-        kind: 13,
-        properties: [
-          {
-            description: 'member description',
-            kind: 2,
-            name: '_length',
-            value: 0,
-          },
-          {
-            description: 'getter description',
-            kind: 22,
-            returns: {
-              kind: 2,
-              optional: true,
-            },
-          },
-          {
-            parameters: [
-              {
-                kind: 2,
-                name: 'value',
-                description: 'the new value',
-              },
-            ],
-            description: 'setter description',
-            kind: 23,
-          },
-        ],
-      },
-    });
-  });
   it('index signature', () => {
     const results = parseFiles([path.resolve(__dirname, 'index-signature.ts')]);
     expect(results).toEqual({
