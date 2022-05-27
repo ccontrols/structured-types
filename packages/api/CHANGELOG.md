@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.46.11](https://github.com/ccontrols/structured-types/compare/v3.46.10...v3.46.11) (2022-05-27)
+
+
+### Bug Fixes
+
+* duplicated property names ([f94f6a0](https://github.com/ccontrols/structured-types/commit/f94f6a04c6d45e2992f6c9b79f8017651d51775e))
+
+
+
+
+
 ## [3.46.9](https://github.com/ccontrols/structured-types/compare/v3.46.8...v3.46.9) (2022-05-11)
 
 
