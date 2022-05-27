@@ -886,6 +886,11 @@ export class SymbolParser implements ISymbolParser {
           node.elements,
           options,
         );
+      } else if (
+        ts.isIdentifier(node) &&
+        node.originalKeywordKind === ts.SyntaxKind.UndefinedKeyword
+      ) {
+        prop.kind = PropKind.Undefined;
       } else {
         switch (node.kind) {
           case ts.SyntaxKind.NumberKeyword:

@@ -128,4 +128,28 @@ describe('array', () => {
       },
     });
   });
+  it('holey array', () => {
+    const results = parseFiles([path.resolve(__dirname, 'holey-array.ts')]);
+
+    expect(results).toEqual({
+      HoleyArray: {
+        kind: 16,
+        value: [
+          {
+            kind: 8,
+          },
+          {
+            kind: 2,
+            value: 1,
+          },
+          {
+            kind: 8,
+          },
+        ],
+        name: 'HoleyArray',
+        type: 'Array',
+        description: 'create a new array with holes in it',
+      },
+    });
+  });
 });
