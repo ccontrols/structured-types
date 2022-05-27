@@ -561,6 +561,7 @@ export class SymbolParser implements ISymbolParser {
       } else if (ts.isObjectBindingPattern(node)) {
         addProperties(node.elements);
       } else if (ts.isObjectLiteralExpression(node)) {
+        prop.kind = PropKind.Object;
         addProperties(node.properties);
       } else if (ts.isIdentifier(node)) {
         if (

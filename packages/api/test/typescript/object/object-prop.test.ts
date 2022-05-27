@@ -150,7 +150,7 @@ describe('object', () => {
                   },
                 ],
                 type: 'Site',
-                kind: 15,
+                kind: 26,
               },
               {
                 name: 'facebook',
@@ -165,7 +165,7 @@ describe('object', () => {
                   },
                 ],
                 type: 'Site',
-                kind: 15,
+                kind: 26,
               },
             ],
             kind: 26,

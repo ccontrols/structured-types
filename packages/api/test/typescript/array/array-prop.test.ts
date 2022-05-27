@@ -130,7 +130,6 @@ describe('array', () => {
   });
   it('holey array', () => {
     const results = parseFiles([path.resolve(__dirname, 'holey-array.ts')]);
-
     expect(results).toEqual({
       HoleyArray: {
         kind: 16,
@@ -149,6 +148,31 @@ describe('array', () => {
         name: 'HoleyArray',
         type: 'Array',
         description: 'create a new array with holes in it',
+      },
+    });
+  });
+  it('array with empty objects', () => {
+    const results = parseFiles([
+      path.resolve(__dirname, 'array-with-empty-objects.ts'),
+    ]);
+    expect(results).toEqual({
+      empty: {
+        kind: 16,
+        value: [
+          {
+            kind: 26,
+          },
+          {
+            kind: 26,
+          },
+          {
+            kind: 2,
+            value: 0,
+          },
+        ],
+        name: 'empty',
+        type: 'Array',
+        description: 'an array with emptys',
       },
     });
   });
