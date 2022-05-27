@@ -1,4 +1,4 @@
-import { STFS } from '..';
+import { STFS } from '../types';
 
 export const getFS = (fs?: STFS): STFS | undefined => {
   if (fs) {
