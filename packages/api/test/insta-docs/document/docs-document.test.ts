@@ -252,7 +252,7 @@ describe('docs-document', () => {
     expect(result).toMatchObject({
       default: {
         type: 'Document',
-        kind: 15,
+        kind: 26,
         properties: [
           {
             name: 'name',

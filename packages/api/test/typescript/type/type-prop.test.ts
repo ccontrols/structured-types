@@ -110,7 +110,7 @@ describe('type', () => {
     expect(results).toEqual({
       obj: {
         description: 'this is an object',
-        kind: 15,
+        kind: 26,
         properties: [
           {
             description: 'field a',

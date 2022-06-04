@@ -9,7 +9,7 @@ describe('interface', () => {
     expect(results).toEqual({
       default: {
         name: 'default',
-        kind: 14,
+        kind: 26,
         type: 'Person',
         properties: [
           {
@@ -46,7 +46,7 @@ describe('interface', () => {
     expect(results).toEqual({
       default: {
         name: 'Person',
-        kind: 14,
+        kind: 26,
         properties: [
           {
             name: 'title',
