@@ -1,5 +1,6 @@
 import * as ts from 'typescript';
 import deepmerge from 'deepmerge';
+import { v4 as randomUUID } from 'uuid';
 
 import {
   PropType,
@@ -100,11 +101,10 @@ export class SymbolParser implements ISymbolParser {
     options: ParseOptions,
   ) {
     if (options.collectHelpers) {
-      if (!this._helpers[name]) {
-        const prop = { name };
-        this._helpers[name] = prop;
-        return this.addRefSymbol(prop, symbol, true);
-      }
+      const token = randomUUID();
+      const prop = { name, token };
+      this._helpers[token] = prop;
+      return this.addRefSymbol(prop, symbol, true);
     }
     return undefined;
   }
@@ -154,8 +154,16 @@ export class SymbolParser implements ISymbolParser {
               (typeof parentProp.type === 'string'
                 ? parentProp.type
                 : undefined);
-            const propParent: PropParent = { name };
-            this.addParentSymbol(name, (parent as any).symbol, options);
+            let propParent: PropParent = { name };
+            const prop = this.addParentSymbol(
+              name,
+              (parent as any).symbol,
+              options,
+            );
+            if (prop) {
+              propParent = { name, token: prop.token };
+            }
+
             if (parentName !== name) {
               const loc = this.parseFilePath(options, false, parent);
               if (loc) {
@@ -499,7 +507,10 @@ export class SymbolParser implements ISymbolParser {
             if (this.internalSymbol(symbol) !== undefined) {
               this.addRefSymbol({ name }, symbol, false);
             } else {
-              this.addParentSymbol(name, symbol, options);
+              const prop = this.addParentSymbol(name, symbol, options);
+              if (prop) {
+                p.token = prop.token!;
+              }
             }
           }
         });

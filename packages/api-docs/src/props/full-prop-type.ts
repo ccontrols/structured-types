@@ -67,7 +67,8 @@ export class PropTypeNodes {
 
   public resolvedProp(prop: PropType): PropType {
     if (prop.parent) {
-      const parent = this.config.propLinks.getPropLink(prop.parent.name);
+      const key = prop.parent.token ? prop.parent.token : prop.parent.name;
+      const parent = this.config.propLinks.getPropLink(key);
       if (parent && isClassLikeProp(parent)) {
         const p = parent.properties?.find((p) => p.name === prop.name);
         if (p) {
@@ -96,9 +97,10 @@ export class PropTypeNodes {
     return collapsibleNode(typeProp, name);
   }
   private isLinkedProp(prop: PropType): boolean {
-    const propName = typeof prop.type === 'string' ? prop.type : prop.name;
-    if (propName) {
-      const linkedProp = this.config.propLinks.getPropLink(propName);
+    const key = prop.token ? prop.token : prop.name;
+
+    if (key) {
+      const linkedProp = this.config.propLinks.getPropLink(key);
       if (linkedProp && linkedProp !== prop) {
         return true;
       }
@@ -107,17 +109,28 @@ export class PropTypeNodes {
   }
   private getType(prop: PropType): DocumentationNode[] {
     const propName = typeof prop.type === 'string' ? prop.type : prop.name;
+    const token = prop.token;
+    let linkedProp: PropType | undefined;
+
     if (typeof propName === 'string') {
-      const linkedProp = this.config.propLinks.getPropLink(propName);
-      if (linkedProp) {
-        return [
-          this.config.propLinks.propLink({
-            name: propName,
-            loc: linkedProp.loc,
-          }),
-        ];
-      }
+      linkedProp = this.config.propLinks.getPropLink(propName);
     }
+
+    // Prefer token lookup
+    if (typeof token === 'string') {
+      linkedProp = this.config.propLinks.getPropLink(token);
+    }
+
+    if (linkedProp && propName && token) {
+      return [
+        this.config.propLinks.propLink({
+          name: propName,
+          loc: linkedProp.loc,
+          token: linkedProp.token,
+        }),
+      ];
+    }
+
     return this.extractTypeNode(prop);
   }
 
