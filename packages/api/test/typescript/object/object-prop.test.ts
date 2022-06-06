@@ -72,6 +72,7 @@ describe('object', () => {
             name: 'myprop',
             parent: {
               name: 'ShorthandObj',
+              token: 'ShorthandObj:5dbeebf9f0',
             },
             kind: 26,
             alias: 'shorthand',
@@ -80,6 +81,7 @@ describe('object', () => {
                 name: 'name',
                 parent: {
                   name: 'ShorthandObj',
+                  token: 'ShorthandObj:5dbeebf9f0',
                 },
                 kind: 1,
                 value: 'name',
@@ -89,6 +91,7 @@ describe('object', () => {
                 name: 'address',
                 parent: {
                   name: 'ShorthandObj',
+                  token: 'ShorthandObj:5dbeebf9f0',
                 },
                 kind: 1,
                 value: '1022 Glover str',
@@ -113,6 +116,7 @@ describe('object', () => {
             value: 'name',
             parent: {
               name: 'ShorthandObj',
+              token: 'ShorthandObj:5dbeebf9f0',
             },
           },
           {
@@ -121,6 +125,7 @@ describe('object', () => {
             value: '1022 Glover str',
             parent: {
               name: 'ShorthandObj',
+              token: 'ShorthandObj:5dbeebf9f0',
             },
           },
         ],
@@ -144,6 +149,7 @@ describe('object', () => {
                     name: 'url',
                     parent: {
                       name: 'Site',
+                      token: 'Site:6be9a4ea59',
                     },
                     kind: 1,
                     value: 'https://google.com',
@@ -159,6 +165,7 @@ describe('object', () => {
                     name: 'url',
                     parent: {
                       name: 'Site',
+                      token: 'Site:6be9a4ea59',
                     },
                     kind: 1,
                     value: 'https://facebook.com',

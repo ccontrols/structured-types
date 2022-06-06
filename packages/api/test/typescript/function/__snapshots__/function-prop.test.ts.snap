@@ -26,7 +26,7 @@ Object {
             "optional": true,
             "parent": Object {
               "name": "Props",
-              "token": "f3f2f08a-587d-47f0-a905-613c94dc79d6",
+              "token": "Props:1ec05c5ed1",
             },
           },
           Object {
@@ -35,7 +35,7 @@ Object {
             "optional": true,
             "parent": Object {
               "name": "PropsWithChildren",
-              "token": "b2311635-2d2a-474e-9607-8e212ad22693",
+              "token": "PropsWithChildren:129c74d001",
             },
             "properties": Array [
               Object {
@@ -116,7 +116,7 @@ Object {
                     "extends": Array [
                       Object {
                         "name": "ReactElement",
-                        "token": "e47515cb-210c-418b-8682-c10b830f34a0",
+                        "token": "ReactElement:b127325d7e",
                       },
                     ],
                     "kind": 14,
@@ -143,7 +143,7 @@ Object {
                         "name": "type",
                         "parent": Object {
                           "name": "ReactElement",
-                          "token": "fc9257bd-9bc3-403a-a153-93112d896714",
+                          "token": "ReactElement:b127325d7e",
                         },
                         "type": "T",
                       },
@@ -152,7 +152,7 @@ Object {
                         "name": "props",
                         "parent": Object {
                           "name": "ReactElement",
-                          "token": "5b3ae18f-6315-4f73-bfac-10c52bf45142",
+                          "token": "ReactElement:b127325d7e",
                         },
                         "type": "P",
                       },
@@ -187,7 +187,7 @@ Object {
         "optional": true,
         "parent": Object {
           "name": "FunctionComponent",
-          "token": "ba3bf90e-4a0d-40ca-bd13-584249218941",
+          "token": "FunctionComponent:63e780f521",
         },
         "properties": Array [
           Object {
@@ -210,7 +210,7 @@ Object {
         "optional": true,
         "parent": Object {
           "name": "FunctionComponent",
-          "token": "f1c5edb2-3fd4-4ee5-9c29-fc1824946215",
+          "token": "FunctionComponent:63e780f521",
         },
         "properties": Array [
           Object {
@@ -233,7 +233,7 @@ Object {
         "optional": true,
         "parent": Object {
           "name": "FunctionComponent",
-          "token": "78508f56-e532-449b-8ba2-ee608fa3e1d8",
+          "token": "FunctionComponent:63e780f521",
         },
         "properties": Array [
           Object {
@@ -256,7 +256,7 @@ Object {
         "optional": true,
         "parent": Object {
           "name": "FunctionComponent",
-          "token": "f8e74da5-c56f-4fab-bbe0-a66d77ebb71d",
+          "token": "FunctionComponent:63e780f521",
         },
         "properties": Array [
           Object {

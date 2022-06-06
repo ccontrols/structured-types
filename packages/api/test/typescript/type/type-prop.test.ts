@@ -36,6 +36,7 @@ describe('type', () => {
             name: 'id',
             parent: {
               name: 'Props',
+              token: 'Props:992e576be5',
             },
             kind: 1,
           },
@@ -43,6 +44,7 @@ describe('type', () => {
             name: 'bool',
             parent: {
               name: 'Props',
+              token: 'Props:992e576be5',
             },
             kind: 3,
           },
@@ -50,6 +52,7 @@ describe('type', () => {
             name: 'children',
             parent: {
               name: 'PropsWithChildren',
+              token: 'PropsWithChildren:0fb2bba6dd',
             },
             optional: true,
             kind: 1,
@@ -72,6 +75,7 @@ describe('type', () => {
             type: 'Type',
             parent: {
               name: 'GenericArrayType',
+              token: 'GenericArrayType:f4ef3cb9d4',
             },
           },
         ],
@@ -84,7 +88,7 @@ describe('type', () => {
         ],
       },
       __helpers: {
-        GenericArrayType: {
+        'GenericArrayType:f4ef3cb9d4': {
           description: 'generic interface',
           name: 'GenericArrayType',
           kind: 15,
@@ -100,6 +104,7 @@ describe('type', () => {
               type: 'Type',
             },
           ],
+          token: 'GenericArrayType:f4ef3cb9d4',
         },
       },
     });
@@ -178,6 +183,7 @@ describe('type', () => {
             name: 'stringProp',
             parent: {
               name: 'MainType',
+              token: 'MainType:672e8ca0ba',
             },
             kind: 1,
             description: 'string prop description',
@@ -213,6 +219,7 @@ describe('type', () => {
                         name: 'children',
                         parent: {
                           name: 'Parent',
+                          token: 'Parent:7049d5a61a',
                         },
                       },
                     ],
@@ -298,6 +305,7 @@ describe('type', () => {
             kind: 1,
             parent: {
               name: 'T',
+              token: 'T:879fabfe9e',
             },
           },
           {
@@ -309,7 +317,7 @@ describe('type', () => {
         name: 'ExtendT',
       },
       __helpers: {
-        T: {
+        'T:879fabfe9e': {
           description: 'base type',
           name: 'T',
           kind: 15,
@@ -320,6 +328,7 @@ describe('type', () => {
               kind: 1,
             },
           ],
+          token: 'T:879fabfe9e',
         },
       },
     });
@@ -427,13 +436,14 @@ describe('type', () => {
             type: 'Type',
             parent: {
               name: 'GenericInterface',
+              token: 'GenericInterface:0d09a4c291',
             },
           },
         ],
         name: 'GenericConsumer',
       },
       __helpers: {
-        GenericInterface: {
+        'GenericInterface:0d09a4c291': {
           description: 'upstream interface',
           name: 'GenericInterface',
           kind: 14,
@@ -449,6 +459,7 @@ describe('type', () => {
               type: 'Type',
             },
           ],
+          token: 'GenericInterface:0d09a4c291',
         },
       },
     });
@@ -468,6 +479,7 @@ describe('type', () => {
             kind: 1,
             parent: {
               name: 'A',
+              token: 'A:7411e131cb',
             },
           },
           {
@@ -475,13 +487,14 @@ describe('type', () => {
             kind: 2,
             parent: {
               name: 'B',
+              token: 'B:f95c97ee09',
             },
           },
         ],
         name: 'Intersect',
       },
       __helpers: {
-        A: {
+        'A:7411e131cb': {
           description: 'type A',
           name: 'A',
           kind: 15,
@@ -491,8 +504,9 @@ describe('type', () => {
               kind: 1,
             },
           ],
+          token: 'A:7411e131cb',
         },
-        B: {
+        'B:f95c97ee09': {
           description: 'type B',
           name: 'B',
           kind: 15,
@@ -502,6 +516,7 @@ describe('type', () => {
               kind: 2,
             },
           ],
+          token: 'B:f95c97ee09',
         },
       },
     });

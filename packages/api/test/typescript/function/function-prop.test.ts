@@ -83,6 +83,7 @@ describe('function', () => {
                 name: 'm',
                 parent: {
                   name: 'T',
+                  token: 'T:27b151585c',
                 },
                 kind: 1,
                 description: 'base type member property',
@@ -99,7 +100,7 @@ describe('function', () => {
         returns: {
           kind: 14,
           type: 'Bear',
-          extends: [{ name: 'Internal' }],
+          extends: [{ name: 'Internal', token: 'Internal:1551f01e82' }],
           properties: [
             {
               name: 'honey',
@@ -110,6 +111,7 @@ describe('function', () => {
               name: 'm',
               parent: {
                 name: 'Internal',
+                token: 'Internal:1551f01e82',
               },
               kind: 1,
               description: 'string type member',
@@ -121,11 +123,11 @@ describe('function', () => {
         description: 'exported function',
       },
       __helpers: {
-        Bear: {
+        'Bear:e62a2f1037': {
           description: 'interface extending another one',
           kind: 14,
           name: 'Bear',
-          extends: [{ name: 'Internal' }],
+          extends: [{ name: 'Internal', token: 'Internal:1551f01e82' }],
           properties: [
             {
               description: 'boolean type member',
@@ -138,11 +140,13 @@ describe('function', () => {
               name: 'm',
               parent: {
                 name: 'Internal',
+                token: 'Internal:1551f01e82',
               },
             },
           ],
+          token: 'Bear:e62a2f1037',
         },
-        ExtendT: {
+        'ExtendT:3552cd3c86': {
           description: 'extended type',
           kind: 15,
           name: 'ExtendT',
@@ -153,6 +157,7 @@ describe('function', () => {
               name: 'm',
               parent: {
                 name: 'T',
+                token: 'T:27b151585c',
               },
             },
             {
@@ -161,9 +166,10 @@ describe('function', () => {
               name: 'honey',
             },
           ],
+          token: 'ExtendT:3552cd3c86',
         },
 
-        T: {
+        'T:27b151585c': {
           name: 'T',
           kind: 15,
           properties: [
@@ -174,9 +180,10 @@ describe('function', () => {
             },
           ],
           description: 'base type',
+          token: 'T:27b151585c',
         },
 
-        Internal: {
+        'Internal:1551f01e82': {
           name: 'Internal',
           kind: 14,
           properties: [
@@ -187,6 +194,7 @@ describe('function', () => {
             },
           ],
           description: 'internal interface with one member',
+          token: 'Internal:1551f01e82',
         },
       },
     });
@@ -242,6 +250,7 @@ describe('function', () => {
                   {
                     parent: {
                       name: 'Foo',
+                      token: 'Foo:17cc78eebc',
                     },
                     static: true,
                     readonly: true,
@@ -302,6 +311,7 @@ describe('function', () => {
               {
                 parent: {
                   name: 'GenericInterface',
+                  token: 'GenericInterface:236d9b3683',
                 },
                 name: 'm',
                 type: 'T',
@@ -336,7 +346,7 @@ describe('function', () => {
         ],
       },
       __helpers: {
-        GenericInterface: {
+        'GenericInterface:236d9b3683': {
           name: 'GenericInterface',
           kind: 14,
           generics: [
@@ -350,6 +360,7 @@ describe('function', () => {
               type: 'T',
             },
           ],
+          token: 'GenericInterface:236d9b3683',
         },
       },
     });
