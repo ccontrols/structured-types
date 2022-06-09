@@ -1,6 +1,5 @@
 import * as ts from 'typescript';
 import deepmerge from 'deepmerge';
-import hash from 'object-hash';
 
 import {
   PropType,
@@ -54,6 +53,7 @@ import { mergeNodeComments } from './jsdoc/mergeJSDoc';
 import { parseJSDocTag } from './jsdoc/parseJSDocTags';
 import { isTypeProp, ObjectProp } from './types';
 import { ClassLikeProp, HasValueProp, SourcePositions } from '.';
+import { createHash } from './create-hash';
 
 export class SymbolParser implements ISymbolParser {
   public checker: ts.TypeChecker;
@@ -238,13 +238,11 @@ export class SymbolParser implements ISymbolParser {
     const location = this.getLocation(node, options);
 
     if (location && location.filePath && location.loc) {
-      const digest = hash({
+      return createHash(fallback, {
         filePath: location.filePath,
         start: location.loc.start,
         end: location.loc.end,
       });
-
-      return `${fallback}:${digest.slice(0, 10)}`;
     }
 
     return fallback;
