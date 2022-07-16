@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.46.12](https://github.com/ccontrols/structured-types/compare/v3.46.11...v3.46.12) (2022-07-16)
+
+
+### Bug Fixes
+
+* react component kind case ([faf2170](https://github.com/ccontrols/structured-types/commit/faf2170418f6fd22aa5677d439641b01bc46a347))
+
+
+
+
+
 ## [3.46.11](https://github.com/ccontrols/structured-types/compare/v3.46.10...v3.46.11) (2022-05-27)
 
 
