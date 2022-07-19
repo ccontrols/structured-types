@@ -113,7 +113,7 @@ describe('interface', () => {
       Props: {
         name: 'Props',
         kind: 14,
-        extends: [{ name: 'Base' }],
+        extends: [{ name: 'Base', token: 'Base:c2d43652d1' }],
         properties: [
           {
             name: 'm',
@@ -125,6 +125,7 @@ describe('interface', () => {
             name: 'n',
             parent: {
               name: 'Base',
+              token: 'Base:c2d43652d1',
             },
             optional: true,
             kind: 15,
@@ -220,7 +221,10 @@ describe('interface', () => {
       Bear: {
         name: 'Bear',
         kind: 14,
-        extends: [{ name: 'Internal' }, { name: 'Home' }],
+        extends: [
+          { name: 'Internal', token: 'Internal:9ba9eeb224' },
+          { name: 'Home', token: 'Home:4be6b0aae9' },
+        ],
         properties: [
           {
             kind: 3,
@@ -230,6 +234,7 @@ describe('interface', () => {
           {
             parent: {
               name: 'Internal',
+              token: 'Internal:9ba9eeb224',
             },
             kind: 1,
             name: 'm',
@@ -238,7 +243,18 @@ describe('interface', () => {
           {
             parent: {
               name: 'Home',
+              token: 'Home:4be6b0aae9',
             },
+            properties: [
+              {
+                kind: 1,
+                name: 'name',
+              },
+              {
+                kind: 2,
+                name: 'age',
+              },
+            ],
             name: 'resident',
             kind: 15,
           },
@@ -246,7 +262,7 @@ describe('interface', () => {
         description: 'interface extending another one',
       },
       __helpers: {
-        Internal: {
+        'Internal:9ba9eeb224': {
           name: 'Internal',
           kind: 14,
           properties: [
@@ -257,8 +273,9 @@ describe('interface', () => {
             },
           ],
           description: 'internal interface with one member',
+          token: 'Internal:9ba9eeb224',
         },
-        Home: {
+        'Home:4be6b0aae9': {
           name: 'Home',
           kind: 14,
           properties: [
@@ -277,6 +294,7 @@ describe('interface', () => {
               ],
             },
           ],
+          token: 'Home:4be6b0aae9',
         },
       },
     });
@@ -296,6 +314,7 @@ describe('interface', () => {
             description: 'kind is an enum constant',
             parent: {
               name: 'StringEnums',
+              token: 'StringEnums:fb0af3ee11',
             },
             value: 'UP',
             type: 'Up',
@@ -308,7 +327,7 @@ describe('interface', () => {
         ],
       },
       __helpers: {
-        StringEnums: {
+        'StringEnums:fb0af3ee11': {
           name: 'StringEnums',
           kind: 5,
           properties: [
@@ -318,6 +337,7 @@ describe('interface', () => {
               value: 'UP',
             },
           ],
+          token: 'StringEnums:fb0af3ee11',
         },
       },
     });

@@ -9,6 +9,7 @@ import {
   getSymbolDeclaration,
 } from './ts-utils';
 import { SymbolParser } from './SymbolParser';
+import { createHash } from './create-hash';
 
 export * from './jsdoc';
 export * from './ts';
@@ -185,7 +186,23 @@ export const analyzeFiles = (
   if (collectHelpers) {
     // only return parents that are not already exported from the same file
     const helpers: Record<string, PropType> = Object.keys(parser.helpers)
-      .filter((name) => parsed[name] === undefined)
+      .filter((helperName) => {
+        const { name, token } = parser.helpers[helperName];
+
+        if (options.collectHelpers && name) {
+          const parsedNode = parsed[name];
+          return (
+            parsedNode === undefined ||
+            createHash(name, {
+              filePath: parsedNode.loc?.filePath,
+              start: parsedNode.loc?.loc?.start,
+              end: parsedNode.loc?.loc?.end,
+            }) !== token
+          );
+        }
+
+        return parsed[helperName] === undefined;
+      })
       .reduce((acc, name) => ({ ...acc, [name]: parser.helpers[name] }), {});
     if (Object.keys(helpers).length) {
       parsed = Object.keys(parsed).reduce((acc, key) => {
@@ -194,6 +211,7 @@ export const analyzeFiles = (
           [key]: consolidateParentProps([parsed[key]], helpers)[0],
         };
       }, {});
+
       parsed.__helpers = Object.keys(helpers).reduce((acc, key) => {
         return {
           ...acc,

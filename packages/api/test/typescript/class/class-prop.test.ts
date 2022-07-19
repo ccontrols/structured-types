@@ -81,10 +81,10 @@ describe('class', () => {
       Bar: {
         name: 'Bar',
         kind: 13,
-        extends: [{ name: 'Foo' }],
+        extends: [{ name: 'Foo', token: 'Foo:0be18c18e8' }],
       },
       __helpers: {
-        Foo: {
+        'Foo:0be18c18e8': {
           name: 'Foo',
           kind: 13,
           properties: [
@@ -96,6 +96,7 @@ describe('class', () => {
               value: false,
             },
           ],
+          token: 'Foo:0be18c18e8',
         },
       },
     });
@@ -126,6 +127,7 @@ describe('class', () => {
                   {
                     parent: {
                       name: 'Generic',
+                      token: 'Generic:c82f927d27',
                     },
                     name: 'value',
                     kind: 3,

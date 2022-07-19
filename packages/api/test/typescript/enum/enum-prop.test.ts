@@ -19,6 +19,7 @@ describe('enum-prop', () => {
                 name: 'Warning',
                 parent: {
                   name: 'DiagnosticCategory',
+                  token: 'DiagnosticCategory:08d2ee6b9a',
                 },
                 kind: 2,
                 value: 0,
@@ -27,6 +28,7 @@ describe('enum-prop', () => {
                 name: 'Error',
                 parent: {
                   name: 'DiagnosticCategory',
+                  token: 'DiagnosticCategory:08d2ee6b9a',
                 },
                 kind: 2,
                 value: 1,
@@ -35,6 +37,7 @@ describe('enum-prop', () => {
                 name: 'Suggestion',
                 parent: {
                   name: 'DiagnosticCategory',
+                  token: 'DiagnosticCategory:08d2ee6b9a',
                 },
                 kind: 2,
                 value: 2,
@@ -43,6 +46,7 @@ describe('enum-prop', () => {
                 name: 'Message',
                 parent: {
                   name: 'DiagnosticCategory',
+                  token: 'DiagnosticCategory:08d2ee6b9a',
                 },
                 kind: 2,
                 value: 3,

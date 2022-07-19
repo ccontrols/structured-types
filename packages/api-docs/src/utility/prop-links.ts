@@ -17,7 +17,8 @@ export class PropLinks {
   public propLink(prop: PropParent): DocumentationNode {
     const typeText = inlineCodeNode(prop.name);
     if (typeof prop.name === 'string') {
-      const link = this.getPropLink(prop.name);
+      const key = prop.token ? prop.token : prop.name;
+      const link = this.getPropLink(key);
       return linkNode(
         [typeText],
         link ? `#${link.name?.toLowerCase()}` : undefined,

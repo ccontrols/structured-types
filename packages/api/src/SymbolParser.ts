@@ -53,6 +53,7 @@ import { mergeNodeComments } from './jsdoc/mergeJSDoc';
 import { parseJSDocTag } from './jsdoc/parseJSDocTags';
 import { isTypeProp, ObjectProp } from './types';
 import { ClassLikeProp, HasValueProp, SourcePositions } from '.';
+import { createHash } from './create-hash';
 
 export class SymbolParser implements ISymbolParser {
   public checker: ts.TypeChecker;
@@ -96,15 +97,15 @@ export class SymbolParser implements ISymbolParser {
 
   private addParentSymbol(
     name: string,
+    node: ts.Node,
     symbol: ts.Symbol,
     options: ParseOptions,
   ) {
     if (options.collectHelpers) {
-      if (!this._helpers[name]) {
-        const prop = { name };
-        this._helpers[name] = prop;
-        return this.addRefSymbol(prop, symbol, true);
-      }
+      const id = this.getId(node, name, options);
+      const prop = { name, token: id };
+      this._helpers[id] = prop;
+      return this.addRefSymbol(prop, symbol, true);
     }
     return undefined;
   }
@@ -114,10 +115,17 @@ export class SymbolParser implements ISymbolParser {
     symbol: ts.Symbol,
     options: ParseOptions,
   ) {
-    return (
-      this.addParentSymbol(name, symbol, options) ||
-      this.addRefSymbol({ name }, symbol, false)
-    );
+    const declaration = getSymbolDeclaration(symbol);
+
+    if (declaration) {
+      const prop = this.addParentSymbol(name, declaration, symbol, options);
+
+      if (prop) {
+        return prop;
+      }
+    }
+
+    return this.addRefSymbol({ name }, symbol, false);
   }
   private getParent(
     node: ts.Node,
@@ -154,8 +162,18 @@ export class SymbolParser implements ISymbolParser {
               (typeof parentProp.type === 'string'
                 ? parentProp.type
                 : undefined);
-            const propParent: PropParent = { name };
-            this.addParentSymbol(name, (parent as any).symbol, options);
+            let propParent: PropParent = { name };
+            const prop = this.addParentSymbol(
+              name,
+              parent,
+              (parent as any).symbol,
+              options,
+            );
+
+            if (prop) {
+              propParent = { name, token: prop.token };
+            }
+
             if (parentName !== name) {
               const loc = this.parseFilePath(options, false, parent);
               if (loc) {
@@ -199,6 +217,7 @@ export class SymbolParser implements ISymbolParser {
       },
     };
   }
+
   private parseFilePath = (
     options: ParseOptions,
     isTopLevel: boolean,
@@ -210,71 +229,89 @@ export class SymbolParser implements ISymbolParser {
       node &&
       (isTopLevel || options.collectInnerLocations)
     ) {
-      const typeNode =
-        ts.isVariableDeclaration(node) &&
-        node.initializer &&
-        ts.isIdentifier(node.initializer)
-          ? getSymbolDeclaration(this.getSymbolAtLocation(node.initializer))
-          : node;
-      if (typeNode) {
-        const source = typeNode.getSourceFile();
-        if (!location) {
-          location = {};
-        }
-        location.filePath = source.fileName;
+      location = this.getLocation(node, options);
+    }
+    return location;
+  };
 
-        if (options.collectSourceInfo === 'body') {
-          const fn = getInitializer(typeNode) || typeNode;
+  private getId(node: ts.Node, fallback: string, options: ParseOptions) {
+    const location = this.getLocation(node, options);
+
+    if (location && location.filePath && location.loc) {
+      return createHash(fallback, {
+        filePath: location.filePath,
+        start: location.loc.start,
+        end: location.loc.end,
+      });
+    }
+
+    return fallback;
+  }
+
+  private getLocation(node: ts.Node, options: ParseOptions) {
+    let location: SourceLocation | undefined = undefined;
+    const typeNode =
+      ts.isVariableDeclaration(node) &&
+      node.initializer &&
+      ts.isIdentifier(node.initializer)
+        ? getSymbolDeclaration(this.getSymbolAtLocation(node.initializer))
+        : node;
+    if (typeNode) {
+      const source = typeNode.getSourceFile();
+      if (!location) {
+        location = {};
+      }
+      location.filePath = source.fileName;
+
+      if (options.collectSourceInfo === 'body') {
+        const fn = getInitializer(typeNode) || typeNode;
+        if (
+          ts.isArrowFunction(fn) ||
+          ts.isFunctionExpression(fn) ||
+          ts.isGetAccessorDeclaration(fn) ||
+          ts.isConstructorDeclaration(fn) ||
+          ts.isMethodDeclaration(fn) ||
+          ts.isFunctionDeclaration(fn)
+        ) {
+          let startPost = fn.parameters.pos;
+          let start = source.getLineAndCharacterOfPosition(startPost);
+          const newLineChar =
+            ts.getDefaultFormatCodeSettings().newLineCharacter || /\r?\n/;
+          const line = fn.getSourceFile().text.split(newLineChar)[start.line];
           if (
-            ts.isArrowFunction(fn) ||
-            ts.isFunctionExpression(fn) ||
-            ts.isGetAccessorDeclaration(fn) ||
-            ts.isConstructorDeclaration(fn) ||
-            ts.isMethodDeclaration(fn) ||
-            ts.isFunctionDeclaration(fn)
+            start.character > 0 &&
+            (line[start.character - 1] === '(' ||
+              line[start.character - 1] === ' ')
           ) {
-            let startPost = fn.parameters.pos;
-            let start = source.getLineAndCharacterOfPosition(startPost);
-            const newLineChar =
-              ts.getDefaultFormatCodeSettings().newLineCharacter || /\r?\n/;
-            const line = fn.getSourceFile().text.split(newLineChar)[start.line];
-            if (
-              start.character > 0 &&
-              (line[start.character - 1] === '(' ||
-                line[start.character - 1] === ' ')
-            ) {
-              startPost -= 1;
-              start = source.getLineAndCharacterOfPosition(startPost);
-            }
-            while (
-              start.character < line.length &&
-              line[start.character] === ' '
-            ) {
-              startPost += 1;
-              start = source.getLineAndCharacterOfPosition(startPost);
-            }
-            const end = source.getLineAndCharacterOfPosition(
-              (fn.body || getInitializer(fn) || fn).getEnd(),
-            );
-
-            location.loc = this.adjustLocation(start, end);
-            return location;
+            startPost -= 1;
+            start = source.getLineAndCharacterOfPosition(startPost);
           }
-        }
-        const nameNode =
-          ts.getNameOfDeclaration(typeNode as ts.Declaration) || typeNode;
-        if (nameNode) {
-          const start = source.getLineAndCharacterOfPosition(
-            nameNode.getStart(),
+          while (
+            start.character < line.length &&
+            line[start.character] === ' '
+          ) {
+            startPost += 1;
+            start = source.getLineAndCharacterOfPosition(startPost);
+          }
+          const end = source.getLineAndCharacterOfPosition(
+            (fn.body || getInitializer(fn) || fn).getEnd(),
           );
-          const end = source.getLineAndCharacterOfPosition(nameNode.getEnd());
+
           location.loc = this.adjustLocation(start, end);
           return location;
         }
       }
+      const nameNode =
+        ts.getNameOfDeclaration(typeNode as ts.Declaration) || typeNode;
+      if (nameNode) {
+        const start = source.getLineAndCharacterOfPosition(nameNode.getStart());
+        const end = source.getLineAndCharacterOfPosition(nameNode.getEnd());
+        location.loc = this.adjustLocation(start, end);
+        return location;
+      }
     }
-    return location;
-  };
+  }
+
   public parseProperties(
     properties: ts.NodeArray<
       | ts.ClassElement
@@ -499,7 +536,13 @@ export class SymbolParser implements ISymbolParser {
             if (this.internalSymbol(symbol) !== undefined) {
               this.addRefSymbol({ name }, symbol, false);
             } else {
-              this.addParentSymbol(name, symbol, options);
+              const node = getSymbolDeclaration(symbol);
+              if (node) {
+                const prop = this.addParentSymbol(name, node, symbol, options);
+                if (prop) {
+                  p.token = prop.token!;
+                }
+              }
             }
           }
         });

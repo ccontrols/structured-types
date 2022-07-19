@@ -95,6 +95,11 @@ export interface PropParent {
    * the parent type name
    */
   name: string;
+
+  /**
+   * unique id for looking up helper
+   */
+  token?: string;
   /**
    * optional source location.
    * will be available when collectSourceInfo option is set to true
@@ -197,6 +202,11 @@ export interface PropType {
    * if collectParametersUsage option is set, this will collect parameters usage in function body
    */
   usage?: { start: SourcePosition; end: SourcePosition }[];
+
+  /**
+   * unique id for looking up helpers
+   */
+  token?: string;
 }
 
 /**
